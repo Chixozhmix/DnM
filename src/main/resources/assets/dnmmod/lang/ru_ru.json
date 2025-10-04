@@ -1,0 +1,34 @@
+{
+  "item.dnmmod.cummon_dagger": "Кинжал",
+  "item.dnmmod.cummon_spear": "Копье",
+
+  "item.dnmmod.fire_staff": "Посох Пламени",
+
+  "item.dnmmod.firebalt": "Огненная стрела",
+
+  "item.dnmmod.raw_steel": "Необработанная сталь",
+  "item.dnmmod.steel_ingot": "Слиток стали",
+  "item.dnmmod.coke_coal": "Коксовый уголь",
+  "item.dnmmod.flux": "Флюс",
+
+  "block.dnmmod.clay_shale": "Глинистый сланец",
+  "block.dnmmod.coke_oven": "Коксовая печь",
+
+
+  "tooltip.dnmmod.spear.mainhand.title": "Когда в ведущей руке:",
+  "tooltip.dnmmod.spear.damage": "  1 - 10 урона",
+  "tooltip.dnmmod.spear.speed": "  Скорость: обычная",
+
+  "tooltip.dnmmod.dagger.mainhand.title": "Когда в ведущей руке:",
+  "tooltip.dnmmod.dagger.damage": "  1 - 4 Урона",
+  "tooltip.dnmmod.dagger.speed": "  Скорость: быстрая",
+
+  "tooltip.dnmmod.fire_staff.mainhand.title": "Когда в ведущей руке:",
+  "tooltip.dnmmod.fire_staff.damage": "1 - 6 ближнего урона",
+  "tooltip.dnmmod.fire_staff.magic_damage": "1 - 10 магического урона",
+
+  "creativetab.dnmmod.weapons": "Оружие",
+  "creativetab.dnmmod.staffs": "Посохи",
+  "creativetab.dnmmod.items": "Предметы",
+  "creativetab.dnmmod.blocks": "Блоки"
+}

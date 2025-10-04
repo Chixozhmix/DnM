@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "dnmmod:coke_coal"
+    },
+    "F": {
+      "item": "dnmmod:flux"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "III",
+    "FFF"
+  ],
+  "result": {
+    "count": 3,
+    "item": "dnmmod:raw_steel"
+  },
+  "show_notification": true
+}

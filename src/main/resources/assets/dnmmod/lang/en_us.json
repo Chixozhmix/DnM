@@ -1,0 +1,33 @@
+{
+  "item.dnmmod.cummon_dagger": "Dagger",
+  "item.dnmmod.cummon_spear": "Spear",
+
+  "item.dnmmod.fire_staff": "Fire Staff",
+
+  "item.dnmmod.firebalt": "Firebalt",
+
+  "item.dnmmod.raw_steel": "Raw steel",
+  "item.dnmmod.steel_ingot": "Steel ingot",
+  "item.dnmmod.coke_coal": "Coke coal",
+  "item.dnmmod.flux": "flux",
+
+  "block.dnmmod.clay_shale": "Clay shale",
+  "block.dnmmod.coke_oven": "Coke oven",
+
+  "tooltip.dnmmod.spear.mainhand.title": "When in main hand:",
+  "tooltip.dnmmod.spear.damage": "  1 - 10 damage",
+  "tooltip.dnmmod.spear.speed": "  Speed: normal",
+
+  "tooltip.dnmmod.dagger.mainhand.title": "When in main hand:",
+  "tooltip.dnmmod.dagger.damage": "  1 - 4 damage",
+  "tooltip.dnmmod.dagger.speed": "  Speed: fast",
+
+  "tooltip.dnmmod.fire_staff.mainhand.title": "When in main hand:",
+  "tooltip.dnmmod.fire_staff.damage": "1 - 6 melee damage",
+  "tooltip.dnmmod.fire_staff.magic_damage": "1 - 10 fire damage",
+
+  "creativetab.dnmmod.weapons": "Weapons",
+  "creativetab.dnmmod.staffs": "Staffs",
+  "creativetab.dnmmod.items": "Items",
+  "creativetab.dnmmod.blocks": "Blocks"
+}
