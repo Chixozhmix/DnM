@@ -1,6 +1,9 @@
 {
   "item.dnmmod.cummon_dagger": "Dagger",
   "item.dnmmod.cummon_spear": "Spear",
+  "item.dnmmod.cummon_greataxe": "Greataxe",
+  "item.dnmmod.common_halberd": "Halberd",
+  "item.dnmmod.common_battleaxe": "Battleaxe",
 
   "item.dnmmod.fire_staff": "Fire Staff",
 
@@ -14,17 +17,25 @@
   "block.dnmmod.clay_shale": "Clay shale",
   "block.dnmmod.coke_oven": "Coke oven",
 
-  "tooltip.dnmmod.spear.mainhand.title": "When in main hand:",
+  "tooltip.dnmmod.weapon.mainhand.title": "When in main hand:",
+
   "tooltip.dnmmod.spear.damage": "  1 - 10 damage",
   "tooltip.dnmmod.spear.speed": "  Speed: normal",
 
-  "tooltip.dnmmod.dagger.mainhand.title": "When in main hand:",
+
   "tooltip.dnmmod.dagger.damage": "  1 - 4 damage",
   "tooltip.dnmmod.dagger.speed": "  Speed: fast",
 
-  "tooltip.dnmmod.fire_staff.mainhand.title": "When in main hand:",
-  "tooltip.dnmmod.fire_staff.damage": "1 - 6 melee damage",
-  "tooltip.dnmmod.fire_staff.magic_damage": "1 - 10 fire damage",
+
+  "tooltip.dnmmod.fire_staff.damage": "  1 - 6 melee damage",
+  "tooltip.dnmmod.fire_staff.magic_damage": "  1 - 10 fire damage",
+
+
+  "tooltip.dnmmod.greataxe.damage":  "  1 - 12 melee damage",
+  "tooltip.dnmmod.greataxe.speed": "  Speed: slow",
+
+  "tooltip.dnmmod.battleaxe.damage": "1 - 8 melee damage",
+  "tooltip.dnmmod.battleaxe.speed": "Speed: normal",
 
   "creativetab.dnmmod.weapons": "Weapons",
   "creativetab.dnmmod.staffs": "Staffs",

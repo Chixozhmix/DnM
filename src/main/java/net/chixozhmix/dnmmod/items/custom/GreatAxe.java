@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.items.custom;
 
+import net.chixozhmix.dnmmod.Util.GreatAxeItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,9 +18,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class DaggerItem extends net.chixozhmix.dnmmod.Util.DaggerItem {
-    public DaggerItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
-        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties.durability(250));
+public class GreatAxe extends GreatAxeItem {
+    public GreatAxe(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
+        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
     }
 
     @Override
@@ -31,6 +32,7 @@ public class DaggerItem extends net.chixozhmix.dnmmod.Util.DaggerItem {
 
             // Если индикатор атаки не заполнен полностью (меньше 1.0), наносим 0 урона
             if (attackStrength < 1.0F) {
+
                 pTarget.hurt(pAttacker.damageSources().mobAttack(pAttacker), 0);
 
                 return false; // Возвращаем true, так как атака "произошла", но без урона
@@ -39,7 +41,7 @@ public class DaggerItem extends net.chixozhmix.dnmmod.Util.DaggerItem {
 
         // Если индикатор атаки заполнен полностью или атакующий не игрок - наносим нормальный урон
         Random random = new Random();
-        float damage = random.nextFloat(4.0f) + 1; // Урон от 1 до 4
+        float damage = random.nextFloat(12.0f) + 1; // Урон от 1 до 12
 
         if(pAttacker.hasEffect(MobEffects.DAMAGE_BOOST)) {
             MobEffectInstance strengthEffect = pAttacker.getEffect(MobEffects.DAMAGE_BOOST);
@@ -53,8 +55,12 @@ public class DaggerItem extends net.chixozhmix.dnmmod.Util.DaggerItem {
             }
         }
 
+        System.out.println("Урон: " + damage);
+
         // Применяем урон
         pTarget.hurt(pAttacker.damageSources().mobAttack(pAttacker), damage);
+
+
 
         // Повреждаем предмет
         pStack.hurtAndBreak(1, pAttacker, (entity) -> {
@@ -101,11 +107,11 @@ public class DaggerItem extends net.chixozhmix.dnmmod.Util.DaggerItem {
                 .withStyle(ChatFormatting.GRAY));
 
         // Урон (с динамическим значением)
-        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.dagger.damage")
+        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.greataxe.damage")
                 .withStyle(ChatFormatting.DARK_GREEN));
 
         // Скорость
-        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.dagger.speed")
+        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.greataxe.speed")
                 .withStyle(ChatFormatting.DARK_GREEN));
 
         // Пустая строка для разделения

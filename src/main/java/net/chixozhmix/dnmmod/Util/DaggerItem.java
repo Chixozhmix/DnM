@@ -74,24 +74,4 @@ public class DaggerItem extends TieredItem implements Vanishable {
     public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
         return ToolActions.DEFAULT_SWORD_ACTIONS.contains(toolAction);
     }
-
-    @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-
-        // Заголовок
-        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.dagger.mainhand.title")
-                .withStyle(ChatFormatting.GRAY));
-
-        // Урон (с динамическим значением)
-        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.dagger.damage")
-                .withStyle(ChatFormatting.DARK_GREEN));
-
-        // Скорость
-        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.dagger.speed")
-                .withStyle(ChatFormatting.DARK_GREEN));
-
-        // Пустая строка для разделения
-        pTooltipComponents.add(Component.empty());
-    }
 }

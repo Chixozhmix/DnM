@@ -146,7 +146,7 @@ public class FireStaff extends Item implements GeoItem {
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
 
         // Заголовок
-        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.fire_staff.mainhand.title")
+        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.weapon.mainhand.title")
                 .withStyle(ChatFormatting.GRAY));
 
         // Урон в близи

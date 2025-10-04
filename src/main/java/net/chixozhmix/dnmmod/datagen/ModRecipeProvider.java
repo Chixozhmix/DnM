@@ -44,6 +44,36 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
                 .save(consumer);
 
+        //Greataxe
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CUMMON_GREATAXE.get())
+                .pattern("III")
+                .pattern("ISI")
+                .pattern(" S ")
+                .define('I', ModItems.STEEL_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
+                .save(consumer);
+
+        //Greataxe
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COMMON_HALBERD.get())
+                .pattern(" II")
+                .pattern("ISI")
+                .pattern(" S ")
+                .define('I', ModItems.STEEL_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
+                .save(consumer);
+
+        //Battleaxe
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COMMON_BATTLEAXE.get())
+                .pattern(" II")
+                .pattern(" SI")
+                .pattern(" S ")
+                .define('I', ModItems.STEEL_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
+                .save(consumer);
+
         //Clay shale
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.CLAY_SHALE.get(), 4)
                 .pattern("CCC")

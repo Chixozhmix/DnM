@@ -1,12 +1,20 @@
-// 1.20.1	2025-09-30T14:39:05.6484283	Recipes
+// 1.20.1	2025-10-04T12:49:24.666724	Recipes
+2cbe609f85ef4fd9ebb24730d7ab3c701e9196b7 data/dnmmod/advancements/recipes/combat/common_battleaxe.json
+bbc1189b4fd0de8ad3ddfa67f6f7ad02b1b341b0 data/dnmmod/advancements/recipes/combat/common_halberd.json
 6984f21d677a5f6f3cf803745670ab18731edf41 data/dnmmod/advancements/recipes/combat/cummon_dagger.json
+d1d32b4047083ed96c305e8173be6db5dd558b5d data/dnmmod/advancements/recipes/combat/cummon_greataxe.json
 1810fa4f8ff4b0bb1f5ecfa47f37fdbd382da0cf data/dnmmod/advancements/recipes/combat/cummon_spear.json
 a28c0d6b69ada52dfee2926052179a103152395d data/dnmmod/advancements/recipes/misc/clay_shale.json
+ac7044b76877aad67e7ea6cd91af00c0f48d35b2 data/dnmmod/advancements/recipes/misc/coke_oven.json
 1b323101a22d2001daf4aa3598e7813be2401459 data/dnmmod/advancements/recipes/misc/flux.json
 1e5a8956904350d5b2b0bc73b8c3f1613c93d7bf data/dnmmod/advancements/recipes/misc/raw_steel.json
 f18fc0cbea4ab50ba0b8eae3533ed71b57067eaa data/dnmmod/advancements/recipes/misc/steel_ingot_from_blasting_raw_steel.json
 241ee8bcc56165ffc4488c9abe3c8cd88ed9753e data/dnmmod/recipes/clay_shale.json
+7bdf7cc1f1078021eb967b7b099ca7d4c6419f92 data/dnmmod/recipes/coke_oven.json
+18268cce5ef45b89ab953d9864c6cf3e65423819 data/dnmmod/recipes/common_battleaxe.json
+53f5dc8768a3ec48a6462b881a2472c66343af28 data/dnmmod/recipes/common_halberd.json
 21872f8f24fab6e97280df401406b61471623e0a data/dnmmod/recipes/cummon_dagger.json
+130e07117da9d5a8090c3f782ade16e64e7923e9 data/dnmmod/recipes/cummon_greataxe.json
 182ae266c12a50dcf61ef009b2b3c237012bd8d6 data/dnmmod/recipes/cummon_spear.json
 e3ae71f89b92cd13286f870723843631fafa8832 data/dnmmod/recipes/flux.json
 7627fa6e10a7cad751ed58ed5176428dbf3ed529 data/dnmmod/recipes/raw_steel.json

@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.handlers;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.GreatAxeItem;
 import net.chixozhmix.dnmmod.Util.SpearItem;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -17,8 +18,8 @@ public class TwoHandWeaponEvent {
             Player player = event.player;
             ItemStack mainHand = player.getMainHandItem();
 
-            // Если игрок держит копье в основной руке и что-то во второй руке
-            if (mainHand.getItem() instanceof SpearItem && !player.getOffhandItem().isEmpty()) {
+            // Если игрок держит оружие в основной руке и что-то во второй руке
+            if (mainHand.getItem() instanceof SpearItem || mainHand.getItem() instanceof GreatAxeItem && !player.getOffhandItem().isEmpty()) {
                 // Выбрасываем предмет из второй руки
                 player.drop(player.getOffhandItem(), false);
                 player.setItemInHand(InteractionHand.OFF_HAND, ItemStack.EMPTY);

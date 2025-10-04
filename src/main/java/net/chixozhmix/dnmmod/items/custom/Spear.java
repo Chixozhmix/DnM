@@ -1,16 +1,21 @@
 package net.chixozhmix.dnmmod.items.custom;
 
 import net.chixozhmix.dnmmod.Util.SpearItem;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Random;
 
 public class Spear extends SpearItem {
@@ -89,5 +94,25 @@ public class Spear extends SpearItem {
     @Override
     public boolean isDamageable(ItemStack stack) {
         return true;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+
+        // Заголовок
+        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.weapon.mainhand.title")
+                .withStyle(ChatFormatting.GRAY));
+
+        // Урон (с динамическим значением)
+        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.spear.damage")
+                .withStyle(ChatFormatting.DARK_GREEN));
+
+        // Скорость
+        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.spear.speed")
+                .withStyle(ChatFormatting.DARK_GREEN));
+
+        // Пустая строка для разделения
+        pTooltipComponents.add(Component.empty());
     }
 }

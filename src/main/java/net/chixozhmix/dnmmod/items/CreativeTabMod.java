@@ -20,8 +20,10 @@ public class CreativeTabMod {
                     .title(Component.translatable("creativetab.dnmmod.weapons"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.CUMMON_DAGGER.get());
-
                         output.accept(ModItems.CUMMON_SPEAR.get());
+                        output.accept(ModItems.CUMMON_GREATAXE.get());
+                        output.accept(ModItems.COMMON_HALBERD.get());
+                        output.accept(ModItems.COMMON_BATTLEAXE.get());
                     })
                     .build());
 

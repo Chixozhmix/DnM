@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.items;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.items.custom.*;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,6 +29,30 @@ public class ModItems {
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(200)));
+
+    public static final RegistryObject<Item> COMMON_HALBERD = ITEMS.register("common_halberd", () ->
+            new Spear(Tiers.IRON,
+                    0,
+                    -2.0f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(210)));
+
+    public static final RegistryObject<Item> CUMMON_GREATAXE = ITEMS.register("cummon_greataxe", () ->
+            new GreatAxe(Tiers.IRON,
+                    0,
+                    -3.0f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(300)));
+
+    public static final RegistryObject<Item> COMMON_BATTLEAXE = ITEMS.register("common_battleaxe", () ->
+            new Battleaxe(Tiers.IRON,
+                    0,
+                    -2.5f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(260)));
 
     //Staffs
     public static final RegistryObject<Item> FIRE_STAFF = ITEMS.register("fire_staff", () ->

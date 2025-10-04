@@ -2,9 +2,7 @@ package net.chixozhmix.dnmmod.Util;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -19,9 +17,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class SpearItem extends TieredItem implements Vanishable {
     private final float attackDamage;
@@ -87,25 +82,5 @@ public class SpearItem extends TieredItem implements Vanishable {
         }
 
         return super.canEquip(stack, armorType, entity);
-    }
-
-    @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-
-        // Заголовок
-        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.spear.mainhand.title")
-                .withStyle(ChatFormatting.GRAY));
-
-        // Урон (с динамическим значением)
-        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.spear.damage")
-                .withStyle(ChatFormatting.DARK_GREEN));
-
-        // Скорость
-        pTooltipComponents.add(Component.translatable("tooltip.dnmmod.spear.speed")
-                .withStyle(ChatFormatting.DARK_GREEN));
-
-        // Пустая строка для разделения
-        pTooltipComponents.add(Component.empty());
     }
 }

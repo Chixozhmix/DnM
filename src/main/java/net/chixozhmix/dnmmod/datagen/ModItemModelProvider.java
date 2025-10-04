@@ -21,6 +21,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         //Weapons
         handheldItem(ModItems.CUMMON_DAGGER);
+        handheldItem(ModItems.COMMON_BATTLEAXE);
 
         //Items
         simpleItem(ModItems.COKE_COAL);
