@@ -13,13 +13,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
-import java.util.Random;
 import java.util.function.Supplier;
 
 public abstract class CustomMagicProjectile extends ThrowableItemProjectile {
 
-    protected final float minDamage;
-    protected final float maxDamage;
+    protected final float damage; // Фиксированный урон
     protected final Supplier<? extends ParticleOptions> trailParticle;
     protected final int maxLifetime;
     protected final float gravity;
@@ -32,24 +30,23 @@ public abstract class CustomMagicProjectile extends ThrowableItemProjectile {
 
     // Конструктор без эффекта
     public CustomMagicProjectile(EntityType<? extends ThrowableItemProjectile> entityType, Level level,
-                                 float minDamage, float maxDamage,
+                                 float damage, // Фиксированный урон
                                  Supplier<? extends ParticleOptions> trailParticle,
                                  int maxLifetime, float gravity,
                                  SoundEvent hitSound, SoundEvent missSound) {
-        this(entityType, level, minDamage, maxDamage, trailParticle, maxLifetime, gravity,
+        this(entityType, level, damage, trailParticle, maxLifetime, gravity,
                 hitSound, missSound, null, 0, 0, 0f);
     }
 
     // Конструктор с эффектом
     public CustomMagicProjectile(EntityType<? extends ThrowableItemProjectile> entityType, Level level,
-                                 float minDamage, float maxDamage,
+                                 float damage, // Фиксированный урон
                                  Supplier<? extends ParticleOptions> trailParticle,
                                  int maxLifetime, float gravity,
                                  SoundEvent hitSound, SoundEvent missSound,
                                  MobEffect effect, int effectDuration, int effectAmplifier, float effectProbability) {
         super(entityType, level);
-        this.minDamage = minDamage;
-        this.maxDamage = maxDamage;
+        this.damage = damage;
         this.trailParticle = trailParticle;
         this.maxLifetime = maxLifetime;
         this.gravity = gravity;
@@ -63,24 +60,23 @@ public abstract class CustomMagicProjectile extends ThrowableItemProjectile {
 
     // Конструктор без эффекта
     public CustomMagicProjectile(EntityType<? extends ThrowableItemProjectile> entityType, Level level, LivingEntity shooter,
-                                 float minDamage, float maxDamage,
+                                 float damage, // Фиксированный урон
                                  Supplier<? extends ParticleOptions> trailParticle,
                                  int maxLifetime, float gravity,
                                  SoundEvent hitSound, SoundEvent missSound) {
-        this(entityType, level, shooter, minDamage, maxDamage, trailParticle, maxLifetime, gravity,
+        this(entityType, level, shooter, damage, trailParticle, maxLifetime, gravity,
                 hitSound, missSound, null, 0, 0, 0f);
     }
 
     // Конструктор с эффектом
     public CustomMagicProjectile(EntityType<? extends ThrowableItemProjectile> entityType, Level level, LivingEntity shooter,
-                                 float minDamage, float maxDamage,
+                                 float damage, // Фиксированный урон
                                  Supplier<? extends ParticleOptions> trailParticle,
                                  int maxLifetime, float gravity,
                                  SoundEvent hitSound, SoundEvent missSound,
                                  MobEffect effect, int effectDuration, int effectAmplifier, float effectProbability) {
         super(entityType, shooter, level);
-        this.minDamage = minDamage;
-        this.maxDamage = maxDamage;
+        this.damage = damage;
         this.trailParticle = trailParticle;
         this.maxLifetime = maxLifetime;
         this.gravity = gravity;
@@ -94,24 +90,23 @@ public abstract class CustomMagicProjectile extends ThrowableItemProjectile {
 
     // Конструктор без эффекта
     public CustomMagicProjectile(EntityType<? extends ThrowableItemProjectile> entityType, Level level, double x, double y, double z,
-                                 float minDamage, float maxDamage,
+                                 float damage, // Фиксированный урон
                                  Supplier<? extends ParticleOptions> trailParticle,
                                  int maxLifetime, float gravity,
                                  SoundEvent hitSound, SoundEvent missSound) {
-        this(entityType, level, x, y, z, minDamage, maxDamage, trailParticle, maxLifetime, gravity,
+        this(entityType, level, x, y, z, damage, trailParticle, maxLifetime, gravity,
                 hitSound, missSound, null, 0, 0, 0f);
     }
 
     // Конструктор с эффектом
     public CustomMagicProjectile(EntityType<? extends ThrowableItemProjectile> entityType, Level level, double x, double y, double z,
-                                 float minDamage, float maxDamage,
+                                 float damage, // Фиксированный урон
                                  Supplier<? extends ParticleOptions> trailParticle,
                                  int maxLifetime, float gravity,
                                  SoundEvent hitSound, SoundEvent missSound,
                                  MobEffect effect, int effectDuration, int effectAmplifier, float effectProbability) {
         super(entityType, x, y, z, level);
-        this.minDamage = minDamage;
-        this.maxDamage = maxDamage;
+        this.damage = damage;
         this.trailParticle = trailParticle;
         this.maxLifetime = maxLifetime;
         this.gravity = gravity;
@@ -148,20 +143,17 @@ public abstract class CustomMagicProjectile extends ThrowableItemProjectile {
     protected void onHit(HitResult result) {
         super.onHit(result);
 
-        Random random = new Random();
-        float randomDamage = minDamage + random.nextFloat() * (maxDamage - minDamage);
-
         if(!this.level().isClientSide) {
             if(result.getType() == HitResult.Type.ENTITY) {
                 EntityHitResult entityHitResult = (EntityHitResult) result;
                 if(entityHitResult.getEntity() instanceof LivingEntity livingEntity) {
-                    // Наносим урон
-                    livingEntity.hurt(this.damageSources().indirectMagic(this, this.getOwner()), randomDamage);
+                    // Наносим фиксированный урон
+                    livingEntity.hurt(this.damageSources().indirectMagic(this, this.getOwner()), damage);
 
-                    System.out.println("Projectile damage: " + randomDamage);
+                    System.out.println("Projectile damage: " + damage);
 
                     // Применяем эффект, если он есть и сработала вероятность
-                    if (effect != null && random.nextFloat() <= effectProbability) {
+                    if (effect != null && this.random.nextFloat() <= effectProbability) {
                         livingEntity.addEffect(new MobEffectInstance(effect, effectDuration, effectAmplifier));
                         System.out.println("Applied effect: " + effect.getDisplayName().getString());
                     }

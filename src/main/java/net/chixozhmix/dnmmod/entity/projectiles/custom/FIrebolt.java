@@ -17,7 +17,7 @@ public class FIrebolt extends CustomMagicProjectile {
     // Конструктор для сущности
     public FIrebolt(EntityType<? extends ThrowableItemProjectile> entityType, Level level) {
         super(entityType, level,
-                1.0F, 10.0F,
+                10.0F,
                 () -> ParticleTypes.FLAME,
                 120,
                 0.0F,
@@ -29,7 +29,7 @@ public class FIrebolt extends CustomMagicProjectile {
     // Конструктор для стрелка
     public FIrebolt(Level level, LivingEntity shooter) {
         super(ModEntityType.FIREBALT.get(), level, shooter,
-                1.0F, 10.0F,
+               10.0F,
                 () -> ParticleTypes.FLAME,
                 120,
                 0.0F,
@@ -41,7 +41,7 @@ public class FIrebolt extends CustomMagicProjectile {
     // Конструктор для позиции (опционально)
     public FIrebolt(Level level, double x, double y, double z) {
         super(ModEntityType.FIREBALT.get(), level, x, y, z,
-                1.0F, 10.0F,
+                10.0F,
                 () -> ParticleTypes.FLAME,
                 120,
                 0.0F,

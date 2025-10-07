@@ -17,23 +17,7 @@
   "block.dnmmod.clay_shale": "Глинистый сланец",
   "block.dnmmod.coke_oven": "Коксовая печь",
 
-
-  "tooltip.dnmmod.weapon.mainhand.title": "Когда в ведущей руке:",
-
-  "tooltip.dnmmod.spear.damage": "  1 - 10 урона",
-  "tooltip.dnmmod.spear.speed": "  Скорость: обычная",
-
-  "tooltip.dnmmod.dagger.damage": "  1 - 4 Урона",
-  "tooltip.dnmmod.dagger.speed": "  Скорость: быстрая",
-
-  "tooltip.dnmmod.fire_staff.damage": "1 - 6 ближнего урона",
-  "tooltip.dnmmod.fire_staff.magic_damage": "1 - 10 магического урона",
-
-  "tooltip.dnmmod.greataxe.damage":  "  1 - 12 ближнего урона",
-  "tooltip.dnmmod.greataxe.speed": "  Скорость: медленная",
-
-  "tooltip.dnmmod.battleaxe.damage": "1 - 8 ближнего урона",
-  "tooltip.dnmmod.battleaxe.speed": "Скорость: средняя",
+  "tooltip.dnmmod.fire_staff.magic_damage": "10 огненного урона",
 
   "creativetab.dnmmod.weapons": "Оружие",
   "creativetab.dnmmod.staffs": "Посохи",
