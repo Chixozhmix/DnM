@@ -22,12 +22,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         //Weapons
         handheldItem(ModItems.CUMMON_DAGGER);
         handheldItem(ModItems.COMMON_BATTLEAXE);
+        handheldItem(ModItems.COMMON_MACE);
+        handheldItem(ModItems.COMMON_SCIMITAR);
 
         //Items
         simpleItem(ModItems.COKE_COAL);
         simpleItem(ModItems.FLUX);
         simpleItem(ModItems.RAW_STEEL);
         simpleItem(ModItems.STEEL_INGOT);
+        simpleItem(ModItems.STEEL_NUGGET);
 
         //Projectiles
         simpleItem(ModItems.FIREBALT);

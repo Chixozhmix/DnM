@@ -4,6 +4,8 @@
   "item.dnmmod.cummon_greataxe": "Greataxe",
   "item.dnmmod.common_halberd": "Halberd",
   "item.dnmmod.common_battleaxe": "Battleaxe",
+  "item.dnmmod.common_greatsword": "Greatsword",
+  "item.dnmmod.common_mace": "Mace",
 
   "item.dnmmod.fire_staff": "Fire Staff",
 
@@ -12,15 +14,21 @@
   "item.dnmmod.raw_steel": "Raw steel",
   "item.dnmmod.steel_ingot": "Steel ingot",
   "item.dnmmod.coke_coal": "Coke coal",
-  "item.dnmmod.flux": "flux",
+  "item.dnmmod.flux": "Flux",
+  "item.dnmmod.steel_nugget": "Steel nugget",
 
   "block.dnmmod.clay_shale": "Clay shale",
   "block.dnmmod.coke_oven": "Coke oven",
 
-  "tooltip.dnmmod.fire_staff.magic_damage": "10 fire damage",
+  "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
   "creativetab.dnmmod.weapons": "Weapons",
   "creativetab.dnmmod.staffs": "Staffs",
   "creativetab.dnmmod.items": "Items",
-  "creativetab.dnmmod.blocks": "Blocks"
+  "creativetab.dnmmod.blocks": "Blocks",
+
+  "effect.dnmmod.mage_armor": "Mage Armor",
+
+  "spell.dnmmod.mage_armor": "Mage Armor",
+  "spell.dnmmod.mage_armor.guide": "You surround yourself with a web of magic, forming a shield. Your armor rating increases."
 }

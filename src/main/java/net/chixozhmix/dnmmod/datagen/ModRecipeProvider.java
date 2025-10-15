@@ -54,7 +54,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
                 .save(consumer);
 
-        //Greataxe
+        //HALBERD
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COMMON_HALBERD.get())
                 .pattern(" II")
                 .pattern("ISI")
@@ -71,6 +71,37 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" S ")
                 .define('I', ModItems.STEEL_INGOT.get())
                 .define('S', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
+                .save(consumer);
+
+        //Greatsword
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COMMON_GREATSWORD.get())
+                .pattern(" I ")
+                .pattern("III")
+                .pattern(" S ")
+                .define('I', ModItems.STEEL_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
+                .save(consumer);
+
+        //Scimitar
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COMMON_SCIMITAR.get())
+                .pattern("  I")
+                .pattern(" I ")
+                .pattern("S  ")
+                .define('I', ModItems.STEEL_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
+                .save(consumer);
+
+        //Mace
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COMMON_MACE.get())
+                .pattern("NIN")
+                .pattern(" S ")
+                .pattern(" S ")
+                .define('I', ModItems.STEEL_INGOT.get())
+                .define('S', Items.STICK)
+                .define('N', ModItems.STEEL_NUGGET.get())
                 .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
                 .save(consumer);
 
@@ -112,8 +143,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.CLAY_SHALE.get()), has(ModBlocks.CLAY_SHALE.get()))
                 .save(consumer);
 
+        //Steel nugget
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.STEEL_NUGGET.get(), 9)
+                .requires(ModItems.STEEL_INGOT.get())
+                .unlockedBy(getHasName(ModItems.STEEL_INGOT.get()), has(ModItems.STEEL_INGOT.get()))
+                .save(consumer);
+
         //Steel Ingot
         oreBlasting(consumer, STEEL_SMELTABLES, RecipeCategory.MISC, ModItems.STEEL_INGOT.get(), 0.25f, 200, "steel");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.STEEL_INGOT.get(), 1)
+                .pattern("NNN")
+                .pattern("NNN")
+                .pattern("NNN")
+                .define('N', ModItems.STEEL_NUGGET.get())
+                .unlockedBy("has_steel_nugget", has(ModItems.STEEL_NUGGET.get()))
+                .save(consumer);
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory,

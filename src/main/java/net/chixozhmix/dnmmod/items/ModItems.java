@@ -1,8 +1,12 @@
 package net.chixozhmix.dnmmod.items;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.GreatAxeItem;
+import net.chixozhmix.dnmmod.Util.SpearItem;
 import net.chixozhmix.dnmmod.items.custom.*;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -19,39 +23,63 @@ public class ModItems {
                     -1.4f,
                     new Item.Properties()
                             .stacksTo(1)
-                            .durability(250)));
+                            .durability(600)));
 
-    public static final RegistryObject<Item> CUMMON_SPEAR = ITEMS.register("cummon_spear", () ->
-            new Spear(Tiers.IRON,
-                    4,
-                    -2.4f,
-                    new Item.Properties()
-                            .stacksTo(1)
-                            .durability(200)));
-
-    public static final RegistryObject<Item> COMMON_HALBERD = ITEMS.register("common_halberd", () ->
-            new Spear(Tiers.IRON,
-                    4,
+    public static final RegistryObject<Item> COMMON_MACE = ITEMS.register("common_mace", () ->
+            new DaggerItem(Tiers.IRON,
+                    2,
                     -2.0f,
                     new Item.Properties()
                             .stacksTo(1)
-                            .durability(210)));
+                            .durability(660)));
 
-    public static final RegistryObject<Item> CUMMON_GREATAXE = ITEMS.register("cummon_greataxe", () ->
-            new GreatAxe(Tiers.DIAMOND,
-                    8,
-                    -3.4f,
+    public static final RegistryObject<Item> COMMON_SCIMITAR = ITEMS.register("common_scimitar", () ->
+            new SwordItem(Tiers.IRON,
+                    3,
+                    -1.8f,
                     new Item.Properties()
                             .stacksTo(1)
-                            .durability(300)));
+                            .durability(640)));
 
     public static final RegistryObject<Item> COMMON_BATTLEAXE = ITEMS.register("common_battleaxe", () ->
-            new Battleaxe(Tiers.IRON,
+            new AxeItem(Tiers.IRON,
                     3.5F,
                     -2.5f,
                     new Item.Properties()
                             .stacksTo(1)
-                            .durability(260)));
+                            .durability(560)));
+
+    public static final RegistryObject<Item> CUMMON_SPEAR = ITEMS.register("cummon_spear", () ->
+            new SpearItem(Tiers.IRON,
+                    4,
+                    -2.4f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(650)));
+
+    public static final RegistryObject<Item> COMMON_HALBERD = ITEMS.register("common_halberd", () ->
+            new SpearItem(Tiers.IRON,
+                    4,
+                    -2.0f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(610)));
+
+    public static final RegistryObject<Item> CUMMON_GREATAXE = ITEMS.register("cummon_greataxe", () ->
+            new GreatAxeItem(Tiers.DIAMOND,
+                    8,
+                    -3.4f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(700)));
+
+    public static final RegistryObject<Item> COMMON_GREATSWORD = ITEMS.register("common_greatsword", () ->
+            new GreatAxeItem(Tiers.DIAMOND,
+                    7,
+                    -2.8f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(760)));
 
     //Staffs
     public static final RegistryObject<Item> FIRE_STAFF = ITEMS.register("fire_staff", () ->
@@ -59,6 +87,7 @@ public class ModItems {
                     2,
                     -2.0F,
                     new Item.Properties()
+                            .durability(-1)
                             .stacksTo(1)));
 
     //Projectiles
@@ -80,6 +109,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> COKE_COAL = ITEMS.register("coke_coal", () ->
             new FuelItem(new Item.Properties().stacksTo(64), 2000));
+
+    public static final RegistryObject<Item> STEEL_NUGGET = ITEMS.register("steel_nugget", () ->
+            new Item(new Item.Properties()
+                    .stacksTo(64)));
 
 
     public static void register(IEventBus eventBus) {

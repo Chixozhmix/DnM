@@ -4,6 +4,8 @@
   "item.dnmmod.cummon_greataxe": "Секира",
   "item.dnmmod.common_halberd": "Алебарда",
   "item.dnmmod.common_battleaxe": "Боевой топор",
+  "item.dnmmod.common_greatsword": "Двуручный меч",
+  "item.dnmmod.common_mace": "Булова",
 
   "item.dnmmod.fire_staff": "Посох Пламени",
 
@@ -13,14 +15,20 @@
   "item.dnmmod.steel_ingot": "Слиток стали",
   "item.dnmmod.coke_coal": "Коксовый уголь",
   "item.dnmmod.flux": "Флюс",
+  "item.dnmmod.steel_nugget": "Кусочек стали",
 
   "block.dnmmod.clay_shale": "Глинистый сланец",
   "block.dnmmod.coke_oven": "Коксовая печь",
 
-  "tooltip.dnmmod.fire_staff.magic_damage": "10 огненного урона",
+  "tooltip.dnmmod.fire_staff.magic_damage": "10 магического урона",
 
   "creativetab.dnmmod.weapons": "Оружие",
   "creativetab.dnmmod.staffs": "Посохи",
   "creativetab.dnmmod.items": "Предметы",
-  "creativetab.dnmmod.blocks": "Блоки"
+  "creativetab.dnmmod.blocks": "Блоки",
+
+  "effect.dnmmod.mage_armor": "Доспехи Мага",
+
+  "spell.dnmmod.mage_armor": "Доспехи Мага",
+  "spell.dnmmod.mage_armor.guide": "Вы окружаете себя плетением магии, образуя защиту. Ваш показатель брони увеличивается."
 }

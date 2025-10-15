@@ -12,7 +12,7 @@
 			},
 			"bones": [
 				{
-					"name": "handle",
+					"name": "bb_main",
 					"pivot": [0, 0, 0],
 					"cubes": [
 						{"origin": [-1, -9, -1], "size": [1, 25, 1], "uv": [0, 0]},
@@ -23,8 +23,8 @@
 					]
 				},
 				{
-					"name": "Crystal",
-					"pivot": [-0.5, 19, -0.5],
+					"name": "crystal",
+					"pivot": [-0.5, 19, -0.3],
 					"cubes": [
 						{"origin": [-1.5, 19, -1.5], "size": [2, 0, 2], "pivot": [-0.5, 19, -0.5], "rotation": [-90, 0, 0], "uv": [10, 0]},
 						{"origin": [-1.5, 19, -1.5], "size": [2, 0, 2], "pivot": [-0.5, 19, -0.5], "rotation": [0, 0, 90], "uv": [10, 2]}

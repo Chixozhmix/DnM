@@ -24,6 +24,9 @@ public class CreativeTabMod {
                         output.accept(ModItems.CUMMON_GREATAXE.get());
                         output.accept(ModItems.COMMON_HALBERD.get());
                         output.accept(ModItems.COMMON_BATTLEAXE.get());
+                        output.accept(ModItems.COMMON_GREATSWORD.get());
+                        output.accept(ModItems.COMMON_MACE.get());
+                        output.accept(ModItems.COMMON_SCIMITAR.get());
                     })
                     .build());
 
@@ -45,6 +48,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.RAW_STEEL.get());
                         output.accept(ModItems.COKE_COAL.get());
                         output.accept(ModItems.FLUX.get());
+                        output.accept(ModItems.STEEL_NUGGET.get());
                     })
                     .build());
 

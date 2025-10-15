@@ -1,0 +1,21 @@
+package net.chixozhmix.dnmmod.effect;
+
+import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.effect.custom.MageArmorEffect;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+public class ModEffects {
+    public static final DeferredRegister<MobEffect> EFFECTS =
+            DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, DnMmod.MOD_ID);
+
+    public static final RegistryObject<MobEffect> MAGE_ARMOR =
+            EFFECTS.register("mage_armor", MageArmorEffect::new);
+
+    public static void register(IEventBus eventBus) {
+        EFFECTS.register(eventBus);
+    }
+}

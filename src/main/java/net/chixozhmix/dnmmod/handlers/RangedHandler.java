@@ -20,24 +20,22 @@ public class RangedHandler {
 
         double distance = 0.0f;
 
-        // Проверяем, является ли оружие нашим кастомным оружием
         if (itemStack.getItem() instanceof DaggerItem) {
             // Получаем текущую дистанцию до цели
             distance = player.distanceTo(event.getTarget());
 
             // Если дистанция больше допустимой, отменяем атаку
-            if (distance > 3.0D) { // Максимальная дистанция 3 блока
+            if (distance > 3.0D) {
                 event.setCanceled(true);
             }
         }
 
-        // Проверяем, является ли оружие нашим кастомным оружием
         if (itemStack.getItem() instanceof SwordItem || itemStack.getItem() instanceof AxeItem) {
             // Получаем текущую дистанцию до цели
             distance = player.distanceTo(event.getTarget());
 
             // Если дистанция больше допустимой, отменяем атаку
-            if (distance > 4.0D) { // Максимальная дистанция 4 блока
+            if (distance > 4.0D) {
                 event.setCanceled(true);
             }
         }
@@ -47,7 +45,7 @@ public class RangedHandler {
             distance = player.distanceTo(event.getTarget());
 
             // Если дистанция больше допустимой, отменяем атаку
-            if (distance > 4.5D) { // Максимальная дистанция 4 блока
+            if (distance > 4.5D) {
                 event.setCanceled(true);
             }
         }

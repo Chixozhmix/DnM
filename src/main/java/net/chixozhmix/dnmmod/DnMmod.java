@@ -3,12 +3,14 @@ package net.chixozhmix.dnmmod;
 import com.mojang.logging.LogUtils;
 import net.chixozhmix.dnmmod.blocks.ModBlocks;
 import net.chixozhmix.dnmmod.blocks.entity.ModBlockEntity;
+import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.items.CreativeTabMod;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.screen.CokeOvenMenu;
 import net.chixozhmix.dnmmod.screen.CokeOvenScreen;
 import net.chixozhmix.dnmmod.screen.ModMenuTypes;
+import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -51,6 +53,12 @@ public class DnMmod
 
         //Blocks
         ModBlocks.register(modEventBus);
+
+        //Effects
+        ModEffects.register(modEventBus);
+
+        //Spells
+        RegistrySpells.register(modEventBus);
 
         //CreativeTab
         CreativeTabMod.register(modEventBus);
