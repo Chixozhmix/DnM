@@ -136,6 +136,16 @@ public class CloudDagger extends LivingEntity implements GeoEntity, AntiMagicSus
         return false;
     }
 
+    @Override
+    public Component getDisplayName() {
+        return Component.empty();
+    }
+
+    @Override
+    public Component getName() {
+        return Component.empty();
+    }
+
     public void setOwner(@Nullable LivingEntity owner) {
         this.owner = owner;
         this.ownerUUID = owner == null ? null : owner.getUUID();

@@ -33,7 +33,7 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<IceDagger>> ICE_DAGGER =
             ENTITY_TYPES.register("ice_dagger",
                     () -> EntityType.Builder.<IceDagger>of(IceDagger::new, MobCategory.MISC)
-                            .sized(1.0f, 1.0f)
+                            .sized(2.0f, 2.0f)
                             .clientTrackingRange(64)
                             .build("ice_dagger"));
 

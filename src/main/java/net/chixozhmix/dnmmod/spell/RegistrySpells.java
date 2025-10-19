@@ -5,6 +5,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.spell.evocation.CloudDaggerSpell;
 import net.chixozhmix.dnmmod.spell.evocation.MageArmorSpell;
 import net.chixozhmix.dnmmod.spell.evocation.NightVisionSpell;
+import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;

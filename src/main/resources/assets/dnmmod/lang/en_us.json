@@ -38,5 +38,8 @@
   "spell.dnmmod.night_vision.guide": "You enhance your vision, allowing you to see in the dark.",
 
   "spell.dnmmod.cloud_daggers": "Cloud of Daggers",
-  "spell.dnmmod.cloud_daggers.guide": "You summon a cloud of spinning daggers that slice enemies apart."
+  "spell.dnmmod.cloud_daggers.guide": "You summon a cloud of spinning daggers that slice enemies apart.",
+
+  "spell.dnmmod.ice_dagger": "Ice Dagger",
+  "spell.dnmmod.ice_dagger.guide": "You create an ice dagger that explodes and deals damage to the target and everyone nearby."
 }

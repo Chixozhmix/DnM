@@ -11,6 +11,11 @@ public class CloudDaggerRenderer extends GeoEntityRenderer<CloudDagger> {
     }
 
     @Override
+    public boolean shouldShowName(CloudDagger animatable) {
+        return false;
+    }
+
+    @Override
     public ResourceLocation getTextureLocation(CloudDagger animatable) {
         return new ResourceLocation(DnMmod.MOD_ID, "textures/entity/magic_dagger.png");
     }

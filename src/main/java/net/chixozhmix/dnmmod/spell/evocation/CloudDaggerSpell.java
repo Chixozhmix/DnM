@@ -136,7 +136,7 @@ public class CloudDaggerSpell extends AbstractSpell {
     }
 
     private int getDaggerCount(int spellLevel, LivingEntity entity) {
-        return 4 + spellLevel * 2;
+        return 14;
     }
 
     private float getCylinderRadius(int spellLevel, LivingEntity entity) {
