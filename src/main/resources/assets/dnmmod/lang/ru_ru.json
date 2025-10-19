@@ -20,6 +20,8 @@
   "block.dnmmod.clay_shale": "Глинистый сланец",
   "block.dnmmod.coke_oven": "Коксовая печь",
 
+  "entity.dnmmod.cloud_dagger": "Магический кинжал",
+
   "tooltip.dnmmod.fire_staff.magic_damage": "10 магического урона",
 
   "creativetab.dnmmod.weapons": "Оружие",
@@ -30,5 +32,11 @@
   "effect.dnmmod.mage_armor": "Доспехи Мага",
 
   "spell.dnmmod.mage_armor": "Доспехи Мага",
-  "spell.dnmmod.mage_armor.guide": "Вы окружаете себя плетением магии, образуя защиту. Ваш показатель брони увеличивается."
+  "spell.dnmmod.mage_armor.guide": "Вы окружаете себя плетением магии, образуя защиту. Ваш показатель брони увеличивается.",
+
+  "spell.dnmmod.night_vision": "Ночное зрение",
+  "spell.dnmmod.night_vision.guide": "Вы усиливаете свое зрение, что позволяет вам видеть в темноте.",
+
+  "spell.dnmmod.cloud_daggers": "Облако Кинжалов",
+  "spell.dnmmod.cloud_daggers.guide": "Вы призываете облако вращающихся кинжалов, которые кромсают врагов на части."
 }

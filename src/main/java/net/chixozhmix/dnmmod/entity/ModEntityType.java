@@ -2,6 +2,8 @@ package net.chixozhmix.dnmmod.entity;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.projectiles.custom.FIrebolt;
+import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
+import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -20,6 +22,20 @@ public class ModEntityType {
                             .clientTrackingRange(4)
                             .updateInterval(20)
                             .build("fire_balt"));
+
+    public static final RegistryObject<EntityType<CloudDagger>> MAGIC_DAGGER =
+            ENTITY_TYPES.register("magic_dagger",
+                    () -> EntityType.Builder.<CloudDagger>of(CloudDagger::new, MobCategory.MISC)
+                            .sized(2f, 2f)
+                            .clientTrackingRange(32)
+                            .build("magic_dagger"));
+
+    public static final RegistryObject<EntityType<IceDagger>> ICE_DAGGER =
+            ENTITY_TYPES.register("ice_dagger",
+                    () -> EntityType.Builder.<IceDagger>of(IceDagger::new, MobCategory.MISC)
+                            .sized(1.0f, 1.0f)
+                            .clientTrackingRange(64)
+                            .build("ice_dagger"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

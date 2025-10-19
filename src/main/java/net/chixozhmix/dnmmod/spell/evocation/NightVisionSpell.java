@@ -5,34 +5,34 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
 
 @AutoSpellConfig
-public class MageArmorSpell extends AbstractSpell {
+public class NightVisionSpell extends AbstractSpell {
 
-    private static final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "mage_armor");
+    private static final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "night_vision");
 
-    public MageArmorSpell() {
+    public NightVisionSpell() {
         this.manaCostPerLevel = 10;
         this.baseSpellPower = 1;
         this.spellPowerPerLevel = 1;
         this.castTime = 20;
-        this.baseManaCost = 35;
+        this.baseManaCost = 60;
     }
 
     private DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.UNCOMMON)
+            .setMinRarity(SpellRarity.RARE)
             .setSchoolResource(SchoolRegistry.EVOCATION_RESOURCE)
-            .setMaxLevel(10)
-            .setCooldownSeconds(120)
+            .setMaxLevel(1)
+            .setCooldownSeconds(180)
             .build();
 
     @Override
@@ -60,14 +60,14 @@ public class MageArmorSpell extends AbstractSpell {
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
-        entity.addEffect(
-                new MobEffectInstance(
-                        ModEffects.MAGE_ARMOR.get(),
-                        1200,
-                        (int) this.getSpellPower(spellLevel, entity) / 2,
-                        false,
-                        false,
-                        true
+
+        entity.addEffect(new MobEffectInstance(
+                MobEffects.NIGHT_VISION,
+                1200,
+                0,
+                false,
+                false,
+                true
         ));
     }
 }

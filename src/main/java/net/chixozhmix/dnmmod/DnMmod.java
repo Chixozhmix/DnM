@@ -5,9 +5,9 @@ import net.chixozhmix.dnmmod.blocks.ModBlocks;
 import net.chixozhmix.dnmmod.blocks.entity.ModBlockEntity;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
+import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDaggerRenderer;
 import net.chixozhmix.dnmmod.items.CreativeTabMod;
 import net.chixozhmix.dnmmod.items.ModItems;
-import net.chixozhmix.dnmmod.screen.CokeOvenMenu;
 import net.chixozhmix.dnmmod.screen.CokeOvenScreen;
 import net.chixozhmix.dnmmod.screen.ModMenuTypes;
 import net.chixozhmix.dnmmod.spell.RegistrySpells;
@@ -25,7 +25,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-import org.spongepowered.asm.launch.MixinBootstrap;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(DnMmod.MOD_ID)
@@ -95,6 +94,7 @@ public class DnMmod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntityType.FIREBALT.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COKE_OVEN_MENU.get(), CokeOvenScreen::new);
         }

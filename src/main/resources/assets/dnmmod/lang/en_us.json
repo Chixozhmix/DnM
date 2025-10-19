@@ -20,6 +20,8 @@
   "block.dnmmod.clay_shale": "Clay shale",
   "block.dnmmod.coke_oven": "Coke oven",
 
+  "entity.dnmmod.cloud_dagger": "Magic Dagger",
+
   "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
   "creativetab.dnmmod.weapons": "Weapons",
@@ -30,5 +32,11 @@
   "effect.dnmmod.mage_armor": "Mage Armor",
 
   "spell.dnmmod.mage_armor": "Mage Armor",
-  "spell.dnmmod.mage_armor.guide": "You surround yourself with a web of magic, forming a shield. Your armor rating increases."
+  "spell.dnmmod.mage_armor.guide": "You surround yourself with a web of magic, forming a shield. Your armor rating increases.",
+
+  "spell.dnmmod.night_vision": "Night Vision",
+  "spell.dnmmod.night_vision.guide": "You enhance your vision, allowing you to see in the dark.",
+
+  "spell.dnmmod.cloud_daggers": "Cloud of Daggers",
+  "spell.dnmmod.cloud_daggers.guide": "You summon a cloud of spinning daggers that slice enemies apart."
 }
