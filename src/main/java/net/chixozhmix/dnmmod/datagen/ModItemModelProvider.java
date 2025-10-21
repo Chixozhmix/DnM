@@ -24,6 +24,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.COMMON_BATTLEAXE);
         handheldItem(ModItems.COMMON_MACE);
         handheldItem(ModItems.COMMON_SCIMITAR);
+        handheldItem(ModItems.COMMON_SICKLE);
+        handheldItem(ModItems.COMMON_KLEVETS);
 
         //Items
         simpleItem(ModItems.COKE_COAL);

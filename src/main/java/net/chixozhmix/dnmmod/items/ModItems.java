@@ -25,6 +25,22 @@ public class ModItems {
                             .stacksTo(1)
                             .durability(600)));
 
+    public static final RegistryObject<Item> COMMON_KLEVETS = ITEMS.register("common_klevets", () ->
+            new DaggerItem(Tiers.IRON,
+                    3,
+                    -1.6f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(630)));
+
+    public static final RegistryObject<Item> COMMON_SICKLE = ITEMS.register("common_sickle", () ->
+            new DaggerItem(Tiers.IRON,
+                    2,
+                    -1.5f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(620)));
+
     public static final RegistryObject<Item> COMMON_MACE = ITEMS.register("common_mace", () ->
             new DaggerItem(Tiers.IRON,
                     2,
@@ -77,6 +93,14 @@ public class ModItems {
             new GreatAxeItem(Tiers.DIAMOND,
                     7,
                     -2.8f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(760)));
+
+    public static final RegistryObject<Item> COMMON_GLAIVE = ITEMS.register("common_glaive", () ->
+            new GreatAxeItem(Tiers.IRON,
+                    4,
+                    -2.4f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(760)));

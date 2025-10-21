@@ -34,6 +34,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
                 .save(consumer);
 
+        //Klevets
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COMMON_KLEVETS.get())
+                .pattern(" IS")
+                .pattern(" SI")
+                .pattern("S  ")
+                .define('I', ModItems.STEEL_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
+                .save(consumer);
+
+        //Sikle
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COMMON_SICKLE.get())
+                .pattern(" I ")
+                .pattern("  I")
+                .pattern("S  ")
+                .define('I', ModItems.STEEL_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
+                .save(consumer);
+
         //Spear
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.CUMMON_SPEAR.get())
                 .pattern(" I ")
@@ -41,6 +61,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" S ")
                 .define('I', ModItems.STEEL_INGOT.get())
                 .define('S', Items.STICK)
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
+                .save(consumer);
+
+        //Glaive
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COMMON_GLAIVE.get())
+                .pattern(" IN")
+                .pattern(" S ")
+                .pattern(" S ")
+                .define('I', ModItems.STEEL_INGOT.get())
+                .define('S', Items.STICK)
+                .define('N', ModItems.STEEL_NUGGET.get())
                 .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
                 .save(consumer);
 

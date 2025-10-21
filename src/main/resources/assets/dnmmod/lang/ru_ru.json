@@ -6,6 +6,10 @@
   "item.dnmmod.common_battleaxe": "Боевой топор",
   "item.dnmmod.common_greatsword": "Двуручный меч",
   "item.dnmmod.common_mace": "Булова",
+  "item.dnmmod.common_scimitar": "Скимитар",
+  "item.dnmmod.common_glaive": "Глефа",
+  "item.dnmmod.common_klevets": "Клевец",
+  "item.dnmmod.common_sickle": "Серп",
 
   "item.dnmmod.fire_staff": "Посох Пламени",
 
@@ -41,5 +45,14 @@
   "spell.dnmmod.cloud_daggers.guide": "Вы призываете облако вращающихся кинжалов, которые кромсают врагов на части.",
 
   "spell.dnmmod.ice_dagger": "Ледяной Кинжал",
-  "spell.dnmmod.ice_dagger.guide": "Вы создаете кинжал из льда, который взрывается и наносит урон цели и всем рядом.."
+  "spell.dnmmod.ice_dagger.guide": "Вы создаете кинжал из льда, который взрывается и наносит урон цели и всем рядом.",
+
+  "spell.dnmmod.thunderwave": "Волна грома",
+  "spell.dnmmod.thunderwave.guide": "Вы испускаете из себя волну оглушительного грома, которая отталкивает врагов вокруг.",
+
+  "spell.dnmmod.purity": "Чистота",
+  "spell.dnmmod.purity.guide": "Вы снимаете с себя все негативные эффекты.",
+
+  "spell.dnmmod.caustic_brew": "Едкое Варево",
+  "spell.dnmmod.caustic_brew.guide": "Вы испускаете струю кислоты вдоль линии по направлению своего взгляда, нанося урон всем существам на пути. Кислота разъедает существ, нанося им урон в течение короткого времени."
 }

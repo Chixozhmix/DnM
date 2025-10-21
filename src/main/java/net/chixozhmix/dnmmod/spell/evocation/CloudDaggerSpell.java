@@ -144,6 +144,6 @@ public class CloudDaggerSpell extends AbstractSpell {
     }
 
     private float getCylinderHeight(int spellLevel, LivingEntity entity) {
-        return 2.5F + spellLevel * 0.3F;
+        return 2.5F + spellLevel * 0.5F;
     }
 }

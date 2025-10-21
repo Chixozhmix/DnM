@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.entity;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.projectiles.custom.FIrebolt;
+import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
 import net.minecraft.world.entity.EntityType;
@@ -36,6 +37,14 @@ public class ModEntityType {
                             .sized(2.0f, 2.0f)
                             .clientTrackingRange(64)
                             .build("ice_dagger"));
+
+    public static final RegistryObject<EntityType<AcidProjectile>> ACID_PROJECTILE =
+            ENTITY_TYPES.register("acid_projectile",
+                    () -> EntityType.Builder.<AcidProjectile>of(AcidProjectile::new, MobCategory.MISC)
+                            .sized(1.0f, 1.0f)
+                            .clientTrackingRange(32)
+                            .build("acid_projectile")
+                    );
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -55,7 +55,6 @@ public class IceDagger extends AbstractMagicProjectile {
     @Override
     public void impactParticles(double v, double v1, double v2) {
         MagicManager.spawnParticles(this.level(), ParticleTypes.SNOWFLAKE, v, v1, v2, 25, (double)0.0F, (double)0.0F, (double)0.0F, 0.18, true);
-
     }
 
     @Override
@@ -109,9 +108,6 @@ public class IceDagger extends AbstractMagicProjectile {
                 float finalDamage = this.damage * (float)(1.0 - (Math.sqrt(distance) / 3.0) * 0.5);
 
                 DamageSources.applyDamage(entity, finalDamage, damageSource);
-
-                // Добавляем эффекты, если нужно (например, замедление)
-                // entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
             }
         }
 

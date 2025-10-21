@@ -6,6 +6,10 @@
   "item.dnmmod.common_battleaxe": "Battleaxe",
   "item.dnmmod.common_greatsword": "Greatsword",
   "item.dnmmod.common_mace": "Mace",
+  "item.dnmmod.common_scimitar": "Scimitar",
+  "item.dnmmod.common_glaive": "Glaive",
+  "item.dnmmod.common_klevets": "Klevets",
+  "item.dnmmod.common_sickle": "Sikle",
 
   "item.dnmmod.fire_staff": "Fire Staff",
 
@@ -30,6 +34,7 @@
   "creativetab.dnmmod.blocks": "Blocks",
 
   "effect.dnmmod.mage_armor": "Mage Armor",
+  "effect.dnmmod.acid_effect": "Acid",
 
   "spell.dnmmod.mage_armor": "Mage Armor",
   "spell.dnmmod.mage_armor.guide": "You surround yourself with a web of magic, forming a shield. Your armor rating increases.",
@@ -41,5 +46,14 @@
   "spell.dnmmod.cloud_daggers.guide": "You summon a cloud of spinning daggers that slice enemies apart.",
 
   "spell.dnmmod.ice_dagger": "Ice Dagger",
-  "spell.dnmmod.ice_dagger.guide": "You create an ice dagger that explodes and deals damage to the target and everyone nearby."
+  "spell.dnmmod.ice_dagger.guide": "You create an ice dagger that explodes and deals damage to the target and everyone nearby.",
+
+  "spell.dnmmod.thunderwave": "Thunderwave",
+  "spell.dnmmod.thunderwave.guide": "You emit a wave of deafening thunder that repels the enemies around you.",
+
+  "spell.dnmmod.purity": "Purity",
+  "spell.dnmmod.purity.guide": "You remove all negative effects from yourself.",
+
+  "spell.dnmmod.caustic_brew": "Caustic Brew",
+  "spell.dnmmod.caustic_brew.guide": "You emit a stream of acid along the line of your gaze, dealing damage to all creatures in your path. The acid corrodes creatures, dealing damage to them for a short time."
 }

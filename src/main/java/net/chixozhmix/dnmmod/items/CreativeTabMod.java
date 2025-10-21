@@ -27,6 +27,9 @@ public class CreativeTabMod {
                         output.accept(ModItems.COMMON_GREATSWORD.get());
                         output.accept(ModItems.COMMON_MACE.get());
                         output.accept(ModItems.COMMON_SCIMITAR.get());
+                        output.accept(ModItems.COMMON_GLAIVE.get());
+                        output.accept(ModItems.COMMON_SICKLE.get());
+                        output.accept(ModItems.COMMON_KLEVETS.get());
                     })
                     .build());
 
