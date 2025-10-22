@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
+import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;

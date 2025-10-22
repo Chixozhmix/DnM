@@ -6,6 +6,7 @@ import net.chixozhmix.dnmmod.blocks.entity.ModBlockEntity;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectileRenderer;
+import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrbRenderer;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDaggerRenderer;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDaggerRenderer;
 import net.chixozhmix.dnmmod.items.CreativeTabMod;
@@ -100,6 +101,7 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);
             EntityRenderers.register(ModEntityType.ICE_DAGGER.get(), IceDaggerRenderer::new);
             EntityRenderers.register(ModEntityType.ACID_PROJECTILE.get(), AcidProjectileRenderer::new);
+            EntityRenderers.register(ModEntityType.CHROMATIC_ORB.get(), ChromaticOrbRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COKE_OVEN_MENU.get(), CokeOvenScreen::new);
         }
@@ -108,6 +110,7 @@ public class DnMmod
         public static void onRegisterLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
             event.registerLayerDefinition(IceDaggerRenderer.MODEL_LAYER_LOCATION, IceDaggerRenderer::createBodyLayer);
             event.registerLayerDefinition(AcidProjectileRenderer.MODEL_LAYER_LOCATION, AcidProjectileRenderer::createBodyLayer);
+            event.registerLayerDefinition(ChromaticOrbRenderer.MODEL_LAYER_LOCATION, ChromaticOrbRenderer::createBodyLayer);
         }
     }
 }

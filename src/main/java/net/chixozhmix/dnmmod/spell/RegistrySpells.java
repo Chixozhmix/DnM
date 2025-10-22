@@ -2,10 +2,7 @@ package net.chixozhmix.dnmmod.spell;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.spell.evocation.CausticBrewSpell;
-import net.chixozhmix.dnmmod.spell.evocation.CloudDaggerSpell;
-import net.chixozhmix.dnmmod.spell.evocation.MageArmorSpell;
-import net.chixozhmix.dnmmod.spell.evocation.NightVisionSpell;
+import net.chixozhmix.dnmmod.spell.evocation.*;
 import net.chixozhmix.dnmmod.spell.holy.PuritySpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
 import net.chixozhmix.dnmmod.spell.lightning.ThunderwaveSpell;
@@ -27,6 +24,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> THUNDERWAVE = registerSpell(new ThunderwaveSpell());
     public static final RegistryObject<AbstractSpell> PURITY = registerSpell(new PuritySpell());
     public static final RegistryObject<AbstractSpell> CAUSTIC_BREW = registerSpell(new CausticBrewSpell());
+    public static final RegistryObject<AbstractSpell> CHROMATIC_ORB = registerSpell(new ChromaticOrbSpell());
 
 
     public static void register(IEventBus eventBus) {

@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.entity.spell.acid_projectile;
+package net.chixozhmix.dnmmod.entity.spell.chromatic_orb;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -20,12 +20,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 
-public class AcidProjectileRenderer extends EntityRenderer<AcidProjectile> {
-    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "textures/entity/acid_projectile.png");
-    public static final ModelLayerLocation MODEL_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("dnmmod", "acid_projectile_model"), "main");
+public class ChromaticOrbRenderer extends EntityRenderer<ChromaticOrb> {
+
+    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "textures/entity/chromatic_orb.png");
+    public static final ModelLayerLocation MODEL_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("dnmmod", "chromatic_orb_model"), "main");
     private final ModelPart body;
 
-    public AcidProjectileRenderer(EntityRendererProvider.Context pContext) {
+    public ChromaticOrbRenderer(EntityRendererProvider.Context pContext) {
         super(pContext);
         ModelPart modelpart = pContext.bakeLayer(MODEL_LAYER_LOCATION);
         this.body = modelpart.getChild("body");
@@ -38,18 +39,14 @@ public class AcidProjectileRenderer extends EntityRenderer<AcidProjectile> {
 
         partdefinition.addOrReplaceChild("body", CubeListBuilder.create()
                 .texOffs(0, 0)
-                .addBox(-1.0F, -1.0F, -12.0F, 2.0F, 2.0F, 12.0F), PartPose.ZERO);
+                .addBox(-1.0F, -1.0F, -12.0F,
+                        6.0F, 6.0F, 12.0F), PartPose.ZERO);
 
         return LayerDefinition.create(meshdefinition, 32, 32);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(AcidProjectile acidProjectile) {
-        return new ResourceLocation(DnMmod.MOD_ID, "textures/entity/acid_projectile.png");
-    }
-
-    @Override
-    public void render(AcidProjectile pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
+    public void render(ChromaticOrb pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
         super.render(pEntity, pEntityYaw, pPartialTick, pPoseStack, pBuffer, pPackedLight);
 
         pPoseStack.pushPose();
@@ -76,5 +73,10 @@ public class AcidProjectileRenderer extends EntityRenderer<AcidProjectile> {
         this.body.render(pPoseStack, consumer, pPackedLight, OverlayTexture.NO_OVERLAY);
 
         pPoseStack.popPose();
+    }
+
+    @Override
+    public ResourceLocation getTextureLocation(ChromaticOrb chromaticOrb) {
+        return new ResourceLocation(DnMmod.MOD_ID, "textures/entity/chromatic_orb.png");
     }
 }

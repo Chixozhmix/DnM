@@ -28,6 +28,8 @@
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
+  "ui.dnmmod.bounces": "Bounces: %d",
+
   "creativetab.dnmmod.weapons": "Weapons",
   "creativetab.dnmmod.staffs": "Staffs",
   "creativetab.dnmmod.items": "Items",
@@ -55,5 +57,10 @@
   "spell.dnmmod.purity.guide": "You remove all negative effects from yourself.",
 
   "spell.dnmmod.caustic_brew": "Caustic Brew",
-  "spell.dnmmod.caustic_brew.guide": "You emit a stream of acid along the line of your gaze, dealing damage to all creatures in your path. The acid corrodes creatures, dealing damage to them for a short time."
+  "spell.dnmmod.caustic_brew.guide": "You emit a stream of acid along the line of your gaze, dealing damage to all creatures in your path. The acid corrodes creatures, dealing damage to them for a short time.",
+
+  "spell.dnmmod.chromatic_orb": "Chromatic Orb",
+  "spell.dnmmod.chromatic_orb.guide": "You release a ball of concentrated magical energy that hits the enemy and the creatures closest to it."
+
+
 }

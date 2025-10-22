@@ -3,6 +3,7 @@ package net.chixozhmix.dnmmod.entity;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.projectiles.custom.FIrebolt;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
+import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
 import net.minecraft.world.entity.EntityType;
@@ -45,6 +46,14 @@ public class ModEntityType {
                             .clientTrackingRange(32)
                             .build("acid_projectile")
                     );
+
+    public static final RegistryObject<EntityType<ChromaticOrb>> CHROMATIC_ORB =
+            ENTITY_TYPES.register("chromatic_orb",
+                    () -> EntityType.Builder.<ChromaticOrb>of(ChromaticOrb::new, MobCategory.MISC)
+                            .sized(1.0f, 1.0f)
+                            .clientTrackingRange(32)
+                            .build("chromatic_orb")
+            );
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
