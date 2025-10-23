@@ -26,6 +26,8 @@
 
   "entity.dnmmod.cloud_dagger": "Магический кинжал",
 
+  "entity.dnmmod.undead_spirit": "Дух Нежити",
+
   "tooltip.dnmmod.fire_staff.magic_damage": "10 магического урона",
 
   "ui.dnmmod.bounces": "Отскакиваний: %d",

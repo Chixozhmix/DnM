@@ -26,6 +26,8 @@
 
   "entity.dnmmod.cloud_dagger": "Magic Dagger",
 
+  "entity.dnmmod.undead_spirit": "Undead Spirit",
+
   "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
   "ui.dnmmod.bounces": "Bounces: %d",

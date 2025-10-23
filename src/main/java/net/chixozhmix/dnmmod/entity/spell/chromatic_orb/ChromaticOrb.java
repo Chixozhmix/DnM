@@ -66,7 +66,7 @@ public class ChromaticOrb extends AbstractMagicProjectile {
 
     @Override
     public float getSpeed() {
-        return 1.4f;
+        return 1.2f;
     }
 
     @Override

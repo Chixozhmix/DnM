@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.entity;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.projectiles.custom.FIrebolt;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
@@ -54,6 +55,11 @@ public class ModEntityType {
                             .clientTrackingRange(32)
                             .build("chromatic_orb")
             );
+
+    public static final RegistryObject<EntityType<UndeadSpiritEntity>> UNDEAD_SPIRIT =
+            ENTITY_TYPES.register("undead_spirit", () -> EntityType.Builder.of(UndeadSpiritEntity::new, MobCategory.MONSTER)
+                    .sized(1.0f, 1.6f)
+                    .build("undead_spirit"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
