@@ -7,6 +7,7 @@ import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
+import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -56,10 +57,18 @@ public class ModEntityType {
                             .build("chromatic_orb")
             );
 
+    //Mobs
     public static final RegistryObject<EntityType<UndeadSpiritEntity>> UNDEAD_SPIRIT =
             ENTITY_TYPES.register("undead_spirit", () -> EntityType.Builder.of(UndeadSpiritEntity::new, MobCategory.MONSTER)
                     .sized(1.0f, 1.6f)
                     .build("undead_spirit"));
+
+    //SummonedMobs
+    public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =
+            ENTITY_TYPES.register("summoned_undead_spirit", () -> EntityType.Builder.<SummonedUndeadSpirit>of(SummonedUndeadSpirit::new, MobCategory.MONSTER)
+                    .sized(1.0f, 1.6f)
+                    .clientTrackingRange(64)
+                    .build("summoned_undead_spirit"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
