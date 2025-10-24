@@ -27,6 +27,7 @@
   "entity.dnmmod.cloud_dagger": "Магический кинжал",
 
   "entity.dnmmod.undead_spirit": "Дух Нежити",
+  "entity.dnmmod.summoned_undead_spirit": "Дух Нежити",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 магического урона",
 
@@ -38,6 +39,8 @@
   "creativetab.dnmmod.blocks": "Блоки",
 
   "effect.dnmmod.mage_armor": "Доспехи Мага",
+  "effect.dnmmod.acid_effect": "Кислота",
+  "effect.dnmmod.summon_undead_spirit": "Призыв Духа Нежити",
 
   "spell.dnmmod.mage_armor": "Доспехи Мага",
   "spell.dnmmod.mage_armor.guide": "Вы окружаете себя плетением магии, образуя защиту. Ваш показатель брони увеличивается.",
@@ -61,5 +64,9 @@
   "spell.dnmmod.caustic_brew.guide": "Вы испускаете струю кислоты вдоль линии по направлению своего взгляда, нанося урон всем существам на пути. Кислота разъедает существ, нанося им урон в течение короткого времени.",
 
   "spell.dnmmod.chromatic_orb": "Хроматический шар",
-  "spell.dnmmod.chromatic_orb.guide": "Вы выпускаете шар сконцентрированной магической энергии, который поражает врага и ближайших к нему существ."
+  "spell.dnmmod.chromatic_orb.guide": "Вы выпускаете шар сконцентрированной магической энергии, который поражает врага и ближайших к нему существ.",
+
+
+  "spell.dnmmod.summon_undead_spirit": "Призыв Духа Нежити",
+  "spell.dnmmod.summon_undead_spirit.guide": "Вы вызываете дух могущественной нежити, который защищает вас от врагов."
 }

@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.effect;
 
+import io.redspace.ironsspellbooks.effect.SummonTimer;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.effect.custom.AcidEffect;
 import net.chixozhmix.dnmmod.effect.custom.MageArmorEffect;
@@ -19,6 +20,9 @@ public class ModEffects {
 
     public static final RegistryObject<MobEffect> ACID =
             EFFECTS.register("acid_effect", () -> new AcidEffect(MobEffectCategory.HARMFUL, 0x4CAF50, 2.0f));
+
+    public static final RegistryObject<MobEffect> SUMMON_UNDEAD_SPIRIT =
+            EFFECTS.register("summon_undead_spirit", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 12495141));
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

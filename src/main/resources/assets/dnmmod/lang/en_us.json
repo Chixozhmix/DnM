@@ -27,6 +27,7 @@
   "entity.dnmmod.cloud_dagger": "Magic Dagger",
 
   "entity.dnmmod.undead_spirit": "Undead Spirit",
+  "entity.dnmmod.summoned_undead_spirit": "Undead Spirit",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
@@ -39,6 +40,7 @@
 
   "effect.dnmmod.mage_armor": "Mage Armor",
   "effect.dnmmod.acid_effect": "Acid",
+  "effect.dnmmod.summon_undead_spirit": "Summon Undead Spirit",
 
   "spell.dnmmod.mage_armor": "Mage Armor",
   "spell.dnmmod.mage_armor.guide": "You surround yourself with a web of magic, forming a shield. Your armor rating increases.",
@@ -62,7 +64,10 @@
   "spell.dnmmod.caustic_brew.guide": "You emit a stream of acid along the line of your gaze, dealing damage to all creatures in your path. The acid corrodes creatures, dealing damage to them for a short time.",
 
   "spell.dnmmod.chromatic_orb": "Chromatic Orb",
-  "spell.dnmmod.chromatic_orb.guide": "You release a ball of concentrated magical energy that hits the enemy and the creatures closest to it."
+  "spell.dnmmod.chromatic_orb.guide": "You release a ball of concentrated magical energy that hits the enemy and the creatures closest to it.",
+
+  "spell.dnmmod.summon_undead_spirit": "Summon Undead Spirit",
+  "spell.dnmmod.summon_undead_spirit.guide": "You summon the spirit of a powerful undead that protects you from your enemies."
 
 
 }

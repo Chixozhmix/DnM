@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.spell;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.spell.blood.SummonUndeadSpiritSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
 import net.chixozhmix.dnmmod.spell.holy.PuritySpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
@@ -25,6 +26,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> PURITY = registerSpell(new PuritySpell());
     public static final RegistryObject<AbstractSpell> CAUSTIC_BREW = registerSpell(new CausticBrewSpell());
     public static final RegistryObject<AbstractSpell> CHROMATIC_ORB = registerSpell(new ChromaticOrbSpell());
+    public static final RegistryObject<AbstractSpell> SUMMON_UNDEAD_SPIRIT = registerSpell(new SummonUndeadSpiritSpell());
 
 
     public static void register(IEventBus eventBus) {
