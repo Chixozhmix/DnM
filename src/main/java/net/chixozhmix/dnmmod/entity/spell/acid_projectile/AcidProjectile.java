@@ -86,8 +86,6 @@ public class AcidProjectile extends AbstractMagicProjectile {
     }
 
     private void applyAcidEffect(LivingEntity target) {
-        // Создаем экземпляр эффекта кислоты
-        // Предполагается, что у вас есть зарегистрированный эффект ACID_EFFECT
         MobEffectInstance acidEffect = new MobEffectInstance(
                 ModEffects.ACID.get(),
                 100, // 5 секунд
@@ -96,8 +94,6 @@ public class AcidProjectile extends AbstractMagicProjectile {
                 true,  // Показывать частицы
                 true   // Показывать иконку
         );
-
-        // Применяем эффект к цели
         target.addEffect(acidEffect);
     }
 }

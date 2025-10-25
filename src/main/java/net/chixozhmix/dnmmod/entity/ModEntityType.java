@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.entity;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
+import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
 import net.chixozhmix.dnmmod.entity.projectiles.custom.FIrebolt;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
@@ -63,9 +64,16 @@ public class ModEntityType {
                     .sized(1.0f, 1.6f)
                     .build("undead_spirit"));
 
+    public static final RegistryObject<EntityType<GoblinShamanEntity>> GOBLIN_SHAMAN =
+            ENTITY_TYPES.register("goblin_shaman", () ->
+                    EntityType.Builder.of(GoblinShamanEntity::new, MobCategory.MONSTER)
+                            .sized(0.6f, 0.8f)
+                            .build("goblin_shaman"));
+
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =
-            ENTITY_TYPES.register("summoned_undead_spirit", () -> EntityType.Builder.<SummonedUndeadSpirit>of(SummonedUndeadSpirit::new, MobCategory.MONSTER)
+            ENTITY_TYPES.register("summoned_undead_spirit", () ->
+                    EntityType.Builder.<SummonedUndeadSpirit>of(SummonedUndeadSpirit::new, MobCategory.MONSTER)
                     .sized(1.0f, 1.6f)
                     .clientTrackingRange(64)
                     .build("summoned_undead_spirit"));

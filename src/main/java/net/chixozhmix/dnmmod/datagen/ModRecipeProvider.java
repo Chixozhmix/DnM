@@ -48,7 +48,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COMMON_SICKLE.get())
                 .pattern(" I ")
                 .pattern("  I")
-                .pattern("S  ")
+                .pattern(" S ")
                 .define('I', ModItems.STEEL_INGOT.get())
                 .define('S', Items.STICK)
                 .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))

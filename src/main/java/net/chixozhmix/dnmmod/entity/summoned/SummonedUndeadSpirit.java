@@ -153,20 +153,18 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
                 this.setXRot(0.0F);
                 this.setOldPosAndRot();
             }
-            return; // Важно: во время анимации появления не обновляем атаку
+            return;
         }
 
-        // Обновляем счетчик анимации атаки
         if (this.attackAnimationTick > 0) {
             this.attackAnimationTick--;
         }
 
-        // Исправленная логика атаки
         if (this.swinging) {
             if (this.attackAnimationTick <= 0) {
-                this.attackAnimationTick = 20; // Уменьшите длительность для лучшей синхронизации
+                this.attackAnimationTick = 20;
             }
-            this.swinging = false; // Сбрасываем флаг сразу
+            this.swinging = false;
         }
     }
 
@@ -221,7 +219,6 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
     @Override
     public boolean doHurtTarget(Entity pEntity) {
         this.swing(InteractionHand.MAIN_HAND);
-        // Замените на ваше заклинание если нужно
         return Utils.doMeleeAttack(this, pEntity, (RegistrySpells.SUMMON_UNDEAD_SPIRIT.get()).getDamageSource(this, this.getSummoner()));
     }
 
