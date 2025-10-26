@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-21T11:25:01.202617	Recipes
+// 1.20.1	2025-10-26T14:41:52.8472211	Recipes
 2cbe609f85ef4fd9ebb24730d7ab3c701e9196b7 data/dnmmod/advancements/recipes/combat/common_battleaxe.json
 9761a0d9f6745bdc54521f29283a869241d62b9c data/dnmmod/advancements/recipes/combat/common_glaive.json
 7fe830b7940066de48c78e0486185c5868baf0bc data/dnmmod/advancements/recipes/combat/common_greatsword.json
@@ -26,7 +26,7 @@ d7be33a74b5572c961eefc50d888745521e81bec data/dnmmod/recipes/common_greatsword.j
 e1d7f2190a7caf55f7957a5cc507f82d0a729b09 data/dnmmod/recipes/common_klevets.json
 edc139ca8bf952f1fb055be7a00b91497acb0492 data/dnmmod/recipes/common_mace.json
 90215353a938df93c513c3f9fe70113507ed5a70 data/dnmmod/recipes/common_scimitar.json
-d299c4334bb4cf52e3eadd3a22024e34d828e3f7 data/dnmmod/recipes/common_sickle.json
+0081a421a6a738dd47ae6fd3acc75dc91fbe4421 data/dnmmod/recipes/common_sickle.json
 21872f8f24fab6e97280df401406b61471623e0a data/dnmmod/recipes/cummon_dagger.json
 130e07117da9d5a8090c3f782ade16e64e7923e9 data/dnmmod/recipes/cummon_greataxe.json
 182ae266c12a50dcf61ef009b2b3c237012bd8d6 data/dnmmod/recipes/cummon_spear.json

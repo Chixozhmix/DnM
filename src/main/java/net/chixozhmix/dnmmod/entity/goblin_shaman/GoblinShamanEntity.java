@@ -64,7 +64,7 @@ public class GoblinShamanEntity extends AbstractSpellCastingMob implements Enemy
 
     @Override
     public MobType getMobType() {
-        return  MobType.ILLAGER;
+        return  MobType.UNDEFINED;
     }
 
     public static AttributeSupplier.Builder prepareAttributes() {
@@ -89,11 +89,8 @@ public class GoblinShamanEntity extends AbstractSpellCastingMob implements Enemy
         if (pRandom.nextFloat() < 0.3F) {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistry.GRAYBEARD_STAFF.get()));
         }
-        if (pRandom.nextFloat() < 0.2F) {
-            this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ItemRegistry.TARNISHED_CROWN.get()));
-        }
+
         this.setDropChance(EquipmentSlot.MAINHAND, 0.1F);
-        this.setDropChance(EquipmentSlot.HEAD, 0.05F);
     }
 
     @Override
