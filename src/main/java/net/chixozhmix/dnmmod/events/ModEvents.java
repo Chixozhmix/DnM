@@ -4,6 +4,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
+import net.chixozhmix.dnmmod.entity.green_hag.GreenHagEntity;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -18,5 +19,6 @@ public class ModEvents {
         event.put(ModEntityType.UNDEAD_SPIRIT.get(), UndeadSpiritEntity.createAttributes());
         event.put(ModEntityType.SUMMONED_UNDEAD_SPIRIT.get(), SummonedUndeadSpirit.createAttributes());
         event.put(ModEntityType.GOBLIN_SHAMAN.get(), GoblinShamanEntity.prepareAttributes().build());
+        event.put(ModEntityType.GREEN_HAG.get(), GreenHagEntity.prepareAttributes().build());
     }
 }

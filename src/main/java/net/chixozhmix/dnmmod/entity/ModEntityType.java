@@ -3,6 +3,7 @@ package net.chixozhmix.dnmmod.entity;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
+import net.chixozhmix.dnmmod.entity.green_hag.GreenHagEntity;
 import net.chixozhmix.dnmmod.entity.projectiles.custom.FIrebolt;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
@@ -69,6 +70,12 @@ public class ModEntityType {
                     EntityType.Builder.of(GoblinShamanEntity::new, MobCategory.MONSTER)
                             .sized(0.6f, 0.8f)
                             .build("goblin_shaman"));
+
+    public static final RegistryObject<EntityType<GreenHagEntity>> GREEN_HAG =
+            ENTITY_TYPES.register("green_hag", () ->
+                    EntityType.Builder.of(GreenHagEntity::new, MobCategory.MONSTER)
+                            .sized(1.0f, 1.5f)
+                            .build("green_hag"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =

@@ -8,6 +8,7 @@ import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanRenderer;
+import net.chixozhmix.dnmmod.entity.green_hag.GreenHagRenderer;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectileRenderer;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrbRenderer;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDaggerRenderer;
@@ -112,6 +113,7 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.UNDEAD_SPIRIT.get(), UndeadSpiritRenderer::new);
             EntityRenderers.register(ModEntityType.SUMMONED_UNDEAD_SPIRIT.get(), SummonedUndeadSpiritRenderer::new);
             EntityRenderers.register(ModEntityType.GOBLIN_SHAMAN.get(), GoblinShamanRenderer::new);
+            EntityRenderers.register(ModEntityType.GREEN_HAG.get(), GreenHagRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COKE_OVEN_MENU.get(), CokeOvenScreen::new);
         }

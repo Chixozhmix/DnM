@@ -25,10 +25,19 @@
   "block.dnmmod.coke_oven": "Коксовая печь",
 
   "entity.dnmmod.cloud_dagger": "Магический кинжал",
+  "entity.dnmmod.ice_dagger": "Ледяной кинжал",
+  "entity.dnmmod.chromatic_orb": "Хроматический шар",
+  "entity.dnmmod.acid_projectile": "Кислотный снаряд",
+
+  "death.attack.dnmmod.ice_dagger": "%1$s был проткнут льдом",
+  "death.attack.dnmmod.cloud_dagger": "%1$s был изрезан на куски",
+  "death.attack.dnmmod.chromatic_orb": "%1$s был разорван на куски",
+  "death.attack.dnmmod.acid_projectile": "%1$s был растворен заживо",
 
   "entity.dnmmod.undead_spirit": "Дух Нежити",
   "entity.dnmmod.summoned_undead_spirit": "Дух Нежити",
   "entity.dnmmod.goblin_shaman": "Шаман гоблинов",
+  "entity.dnmmod.green_hag": "Зеленая Карга",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 магического урона",
 

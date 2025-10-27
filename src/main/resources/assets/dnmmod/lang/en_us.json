@@ -25,10 +25,19 @@
   "block.dnmmod.coke_oven": "Coke oven",
 
   "entity.dnmmod.cloud_dagger": "Magic Dagger",
+  "entity.dnmmod.ice_dagger": "Ice dagger",
+  "entity.dnmmod.chromatic_orb": "Chromatic orb",
+  "entity.dnmmod.acid_projectile": "Acid projectile",
+
+  "death.attack.dnmmod.ice_dagger": "%1$s was pierced by ice",
+  "death.attack.dnmmod.cloud_dagger": "%1$s was cut to pieces",
+  "death.attack.dnmmod.chromatic_orb": "%1$s was torn to pieces",
+  "death.attack.dnmmod.acid_projectile": "%1$s was dissolved alive",
 
   "entity.dnmmod.undead_spirit": "Undead Spirit",
   "entity.dnmmod.summoned_undead_spirit": "Undead Spirit",
   "entity.dnmmod.goblin_shaman": "Goblin Shaman",
+  "entity.dnmmod.green_hag": "Green Hag",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
