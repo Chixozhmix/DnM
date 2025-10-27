@@ -4,10 +4,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.GreatAxeItem;
 import net.chixozhmix.dnmmod.Util.SpearItem;
 import net.chixozhmix.dnmmod.items.custom.*;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -138,6 +135,11 @@ public class ModItems {
             new Item(new Item.Properties()
                     .stacksTo(64)));
 
+    //Magic Item
+    public static final RegistryObject<Item> HAG_EYE = ITEMS.register("hag_eye", () ->
+            new HagEye(new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.RARE)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

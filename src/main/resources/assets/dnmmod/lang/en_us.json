@@ -11,6 +11,8 @@
   "item.dnmmod.common_klevets": "Klevets",
   "item.dnmmod.common_sickle": "Sikle",
 
+  "item.dnmmod.hag_eye": "Hag Eye",
+
   "item.dnmmod.fire_staff": "Fire Staff",
 
   "item.dnmmod.firebalt": "Firebalt",
@@ -41,12 +43,15 @@
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
+  "tooltip.dnmmod.hag_eye": "The Hag Coven often creates similar trinkets from those they once ate. A simple magical trinket that hides pleasant bonuses. They say it helps you see in the dark, and you can also use it to spot even those who are outside the walls!",
+
   "ui.dnmmod.bounces": "Bounces: %d",
 
   "creativetab.dnmmod.weapons": "Weapons",
   "creativetab.dnmmod.staffs": "Staffs",
   "creativetab.dnmmod.items": "Items",
   "creativetab.dnmmod.blocks": "Blocks",
+  "creativetab.dnmmod.magic_items": "Magic items",
 
   "effect.dnmmod.mage_armor": "Mage Armor",
   "effect.dnmmod.acid_effect": "Acid",

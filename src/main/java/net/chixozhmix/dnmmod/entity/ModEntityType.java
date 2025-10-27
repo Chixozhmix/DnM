@@ -74,7 +74,7 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<GreenHagEntity>> GREEN_HAG =
             ENTITY_TYPES.register("green_hag", () ->
                     EntityType.Builder.of(GreenHagEntity::new, MobCategory.MONSTER)
-                            .sized(1.0f, 1.5f)
+                            .sized(1.0f, 2.3f)
                             .build("green_hag"));
 
     //SummonedMobs

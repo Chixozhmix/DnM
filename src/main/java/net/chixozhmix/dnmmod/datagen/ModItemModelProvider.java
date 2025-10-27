@@ -33,6 +33,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.RAW_STEEL);
         simpleItem(ModItems.STEEL_INGOT);
         simpleItem(ModItems.STEEL_NUGGET);
+        simpleItem(ModItems.HAG_EYE);
 
         //Staff
         handheldItem(ModItems.FIRE_STAFF);

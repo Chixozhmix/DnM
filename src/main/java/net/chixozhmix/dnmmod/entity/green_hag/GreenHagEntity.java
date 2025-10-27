@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.Abstra
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -18,7 +19,6 @@ import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -56,7 +56,8 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy {
         this.goalSelector.addGoal(4, (new WizardAttackGoal(this, (double)1.25F, 35, 80))
                 .setSpells(List.of((AbstractSpell) SpellRegistry.WITHER_SKULL_SPELL.get(),
                         (AbstractSpell)SpellRegistry.POISON_ARROW_SPELL.get(),
-                        (AbstractSpell)RegistrySpells.ICE_DAGGER.get()),
+                        (AbstractSpell)RegistrySpells.ICE_DAGGER.get(),
+                        (AbstractSpell)SpellRegistry.BLOOD_STEP_SPELL.get()),
                         List.of((AbstractSpell)RegistrySpells.THUNDERWAVE.get()),
                         List.of(),
                         List.of((AbstractSpell)SpellRegistry.FANG_WARD_SPELL.get(),
@@ -104,6 +105,9 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy {
         if(randomSource.nextFloat() == 0f) {
             this.spawnAtLocation(new ItemStack(ItemRegistry.NATURE_RUNE.get(), randomSource.nextInt(1, 3)));
         }
+
+        if(randomSource.nextInt(0, 6) == 0)
+            this.spawnAtLocation(new ItemStack(ModItems.HAG_EYE.get(), 1));
 
         else if(randomSource.nextFloat() == 1.0f) {
             this.spawnAtLocation(new ItemStack(ItemRegistry.BLOOD_RUNE.get(), randomSource.nextInt(1, 3)));

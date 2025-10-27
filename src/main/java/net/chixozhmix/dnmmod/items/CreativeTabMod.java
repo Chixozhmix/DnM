@@ -55,6 +55,15 @@ public class CreativeTabMod {
                     })
                     .build());
 
+    //Magic Items
+    public static final RegistryObject<CreativeModeTab> MAGIC_ITEMS_TAB = CREATIVE_MOD_TABS.register("magic_items",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.HAG_EYE.get()))
+                    .title(Component.translatable("creativetab.dnmmod.magic_items"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.HAG_EYE.get());
+                    })
+                    .build());
+
     //Blocks
     public static final RegistryObject<CreativeModeTab> BLOCKS_TAB = CREATIVE_MOD_TABS.register("blocks",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.CLAY_SHALE.get()))

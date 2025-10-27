@@ -11,6 +11,9 @@
   "item.dnmmod.common_klevets": "Клевец",
   "item.dnmmod.common_sickle": "Серп",
 
+
+  "item.dnmmod.hag_eye": "Глаз Карги",
+
   "item.dnmmod.fire_staff": "Посох Пламени",
 
   "item.dnmmod.firebalt": "Огненная стрела",
@@ -41,12 +44,15 @@
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 магического урона",
 
+  "tooltip.dnmmod.hag_eye": "Шабаш карг часто создает подобные безделушки из тех, кого когда-то они употребили в пищу. Простая магическая безделушка, скрывающая в себе приятные бонусы. Говорят, она помогает видеть в темноте, а еще с ее помощью можно заметить даже тех, кто находится за стенами!",
+
   "ui.dnmmod.bounces": "Отскакиваний: %d",
 
   "creativetab.dnmmod.weapons": "Оружие",
   "creativetab.dnmmod.staffs": "Посохи",
   "creativetab.dnmmod.items": "Предметы",
   "creativetab.dnmmod.blocks": "Блоки",
+  "creativetab.dnmmod.magic_items": "Магические предметы",
 
   "effect.dnmmod.mage_armor": "Доспехи Мага",
   "effect.dnmmod.acid_effect": "Кислота",

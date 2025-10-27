@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-21T21:29:34.3995808	Item Models: dnmmod
+// 1.20.1	2025-10-27T18:01:48.6596818	Item Models: dnmmod
 ce53e646f17f225f910a10c18eeec041a9e6ec85 assets/dnmmod/models/item/coke_coal.json
 70877d9d1b4540eaa3e1a269389665301b3a783b assets/dnmmod/models/item/common_battleaxe.json
 d47ce670311d2eb9edd8da970aaf3dbfce74db19 assets/dnmmod/models/item/common_klevets.json
@@ -9,6 +9,7 @@ d47ce670311d2eb9edd8da970aaf3dbfce74db19 assets/dnmmod/models/item/common_klevet
 91a5dd7d711cebf4b13a887d6b4b0ceee4c74574 assets/dnmmod/models/item/firebalt.json
 7d3502733d63678fe7b00216e5ed9b04f069cbf1 assets/dnmmod/models/item/fire_staff.json
 7aabdc6632ffe73b661aa8ed25fe741b406366f7 assets/dnmmod/models/item/flux.json
+b1305a5b9f21ff7d150660da71f4064d036416c3 assets/dnmmod/models/item/hag_eye.json
 ae80c53a8ff4092cb5ca35a6ca93897ad749e3a7 assets/dnmmod/models/item/raw_steel.json
 234ea0350d7dd45a0a4e9389c269e9f0d4b1a75e assets/dnmmod/models/item/steel_ingot.json
 18a50a839ca18b5d2342462d7ed1555ada9cd2e0 assets/dnmmod/models/item/steel_nugget.json
