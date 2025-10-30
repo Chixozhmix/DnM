@@ -39,6 +39,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ELECTROMANCER_WAND_CORE);
         simpleItem(ModItems.EVOKER_WAND_CORE);
         simpleItem(ModItems.BLOOD_WAND_CORE);
+        simpleItem(ModItems.ENDER_WAND_CORE);
         //Staff and wands
         handheldItem(ModItems.WOODEN_WAND);
         handheldItem(ModItems.CRYOMANCER_WAND);
@@ -47,6 +48,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.PYROMANCER_WAND);
         handheldItem(ModItems.BLOOD_WAND);
         handheldItem(ModItems.EVOKER_WAND);
+        handheldItem(ModItems.ENDER_WAND);
         handheldItem(ModItems.SACRED_SYMBOL);
         //Projectiles
         simpleItem(ModItems.FIREBALT);

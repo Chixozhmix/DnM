@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-30T13:43:17.3717576	Item Models: dnmmod
+// 1.20.1	2025-10-30T15:54:48.0429627	Item Models: dnmmod
 afcc952ce0db6e1184fb9a9347ff79b125ccef76 assets/dnmmod/models/item/blood_wand.json
 ba00481093cc18d9af0be8250395299563b9ae8d assets/dnmmod/models/item/blood_wand_core.json
 ce53e646f17f225f910a10c18eeec041a9e6ec85 assets/dnmmod/models/item/coke_coal.json
@@ -14,6 +14,8 @@ a841d0e50a7ce09d0e25f4e958ef1ba2577cdab7 assets/dnmmod/models/item/druid_wand.js
 fdcd70c1a6a9b92a38a3bb8c8336ebf8dd60008c assets/dnmmod/models/item/druid_wand_core.json
 15135ed3a80cf4baa18b7c6eca92aa50cb5e0880 assets/dnmmod/models/item/electromancer_wand.json
 083df51276b0dcd393abca6ef8271eeb665e6764 assets/dnmmod/models/item/electromancer_wand_core.json
+bad901a2e66acf730206fce5dee4272452dc4025 assets/dnmmod/models/item/ender_wand.json
+36caada17a6024eaf07be7a92cc4ed87fd797fb0 assets/dnmmod/models/item/ender_wand_core.json
 14250d1e40e96c6d26d9cc2985313202e10bed77 assets/dnmmod/models/item/evoker_wand.json
 c17373fb6f5b039d59a309fa464d788c6a7daa80 assets/dnmmod/models/item/evoker_wand_core.json
 91a5dd7d711cebf4b13a887d6b4b0ceee4c74574 assets/dnmmod/models/item/firebalt.json

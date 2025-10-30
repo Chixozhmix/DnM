@@ -195,6 +195,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ItemRegistry.BLOOD_VIAL.get())
                 .unlockedBy(getHasName(ModItems.WAND_CORE.get()), has(ModItems.WAND_CORE.get()))
                 .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ENDER_WAND_CORE.get(), 1)
+                .requires(ModItems.WAND_CORE.get())
+                .requires(Items.ENDER_PEARL)
+                .unlockedBy(getHasName(ModItems.WAND_CORE.get()), has(ModItems.WAND_CORE.get()))
+                .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WOODEN_WAND.get(), 1)
                 .pattern("  S")
                 .pattern(" W ")
@@ -204,11 +209,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_wand_core", has(ModItems.WAND_CORE.get()))
                 .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ELECTROMANCER_WAND.get(), 1)
-                .pattern("  S")
+                .pattern("  C")
                 .pattern(" W ")
-                .pattern("S  ")
+                .pattern("C  ")
                 .define('W', ModItems.ELECTROMANCER_WAND_CORE.get())
-                .define('S', Items.STICK)
+                .define('C', Items.COPPER_INGOT)
                 .unlockedBy("has_wand_core", has(ModItems.WAND_CORE.get()))
                 .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PYROMANCER_WAND.get(), 1)
@@ -248,6 +253,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" W ")
                 .pattern("S  ")
                 .define('W', ModItems.DRUID_WAND_CORE.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_wand_core", has(ModItems.WAND_CORE.get()))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ENDER_WAND.get(), 1)
+                .pattern("  S")
+                .pattern(" W ")
+                .pattern("S  ")
+                .define('W', ModItems.ENDER_WAND_CORE.get())
                 .define('S', Items.STICK)
                 .unlockedBy("has_wand_core", has(ModItems.WAND_CORE.get()))
                 .save(consumer);

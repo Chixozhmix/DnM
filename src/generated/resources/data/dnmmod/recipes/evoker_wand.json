@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "dnmmod:evoker_wand_core"
+    }
+  },
+  "pattern": [
+    "  S",
+    " W ",
+    "S  "
+  ],
+  "result": {
+    "item": "dnmmod:evoker_wand"
+  },
+  "show_notification": true
+}

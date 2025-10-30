@@ -19,6 +19,7 @@
   "item.dnmmod.evoker_wand_core": "Evoker wand core",
   "item.dnmmod.pyromancer_wand_core": "Pyromancer wand core",
   "item.dnmmod.blood_wand_core": "Blood wand core",
+  "item.dnmmod.ender_wand_core": "Ender wand core",
 
   "item.dnmmod.wooden_wand": "Wooden wand",
   "item.dnmmod.cryomancer_wand": "Cryomancer wand",
@@ -27,6 +28,7 @@
   "item.dnmmod.evoker_wand": "Evoker wand",
   "item.dnmmod.pyromancer_wand": "Pyromancer wand",
   "item.dnmmod.blood_wand": "Blood wand",
+  "item.dnmmod.ender_wand": "Ender wand",
   "item.dnmmod.sacred_symbol": "Sacred wand",
 
   "item.dnmmod.firebalt": "Firebalt",
@@ -54,7 +56,8 @@
   "entity.dnmmod.summoned_undead_spirit": "Undead Spirit",
   "entity.dnmmod.goblin_shaman": "Goblin Shaman",
   "entity.dnmmod.green_hag": "Green Hag",
-  "entity.dnmmod.gnome": "Gnome",
+  "entity.dnmmod.raven": "Raven",
+  "entity.dnmmod.summon_raven": "Summon raven",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
@@ -72,6 +75,7 @@
   "effect.dnmmod.mage_armor": "Mage Armor",
   "effect.dnmmod.acid_effect": "Acid",
   "effect.dnmmod.summon_undead_spirit": "Summon Undead Spirit",
+  "effect.dnmmod.summon_raven": "Summon Ravens",
 
   "spell.dnmmod.mage_armor": "Mage Armor",
   "spell.dnmmod.mage_armor.guide": "You surround yourself with a web of magic, forming a shield. Your armor rating increases.",
@@ -98,7 +102,8 @@
   "spell.dnmmod.chromatic_orb.guide": "You release a ball of concentrated magical energy that hits the enemy and the creatures closest to it.",
 
   "spell.dnmmod.summon_undead_spirit": "Summon Undead Spirit",
-  "spell.dnmmod.summon_undead_spirit.guide": "You summon the spirit of a powerful undead that protects you from your enemies."
+  "spell.dnmmod.summon_undead_spirit.guide": "You summon the spirit of a powerful undead that protects you from your enemies.",
 
-
+  "spell.dnmmod.summon_ravens": "Summon Ravens",
+  "spell.dnmmod.summon_ravens.guide": "You summon a flock of crows that protect you from your enemies."
 }

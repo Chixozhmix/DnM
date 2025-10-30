@@ -32,7 +32,6 @@ public class CreativeTabMod {
                         output.accept(ModItems.COMMON_KLEVETS.get());
                     })
                     .build());
-
     //Staffs
     public static final RegistryObject<CreativeModeTab> STAFFS_TAB = CREATIVE_MOD_TABS.register("staffs_and_wand",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.WOODEN_WAND.get()))
@@ -45,10 +44,10 @@ public class CreativeTabMod {
                         output.accept(ModItems.BLOOD_WAND.get());
                         output.accept(ModItems.EVOKER_WAND.get());
                         output.accept(ModItems.PYROMANCER_WAND.get());
+                        output.accept(ModItems.ENDER_WAND.get());
                         output.accept(ModItems.SACRED_SYMBOL.get());
                     })
                     .build());
-
     //Items
     public static final RegistryObject<CreativeModeTab> ITEMS_TAB = CREATIVE_MOD_TABS.register("items",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.STEEL_INGOT.get()))
@@ -61,7 +60,6 @@ public class CreativeTabMod {
                         output.accept(ModItems.STEEL_NUGGET.get());
                     })
                     .build());
-
     //Magic Items
     public static final RegistryObject<CreativeModeTab> MAGIC_ITEMS_TAB = CREATIVE_MOD_TABS.register("magic_items",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.HAG_EYE.get()))
@@ -75,9 +73,9 @@ public class CreativeTabMod {
                         output.accept(ModItems.DRUID_WAND_CORE.get());
                         output.accept(ModItems.BLOOD_WAND_CORE.get());
                         output.accept(ModItems.EVOKER_WAND_CORE.get());
+                        output.accept(ModItems.ENDER_WAND_CORE.get());
                     })
                     .build());
-
     //Blocks
     public static final RegistryObject<CreativeModeTab> BLOCKS_TAB = CREATIVE_MOD_TABS.register("blocks",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.CLAY_SHALE.get()))

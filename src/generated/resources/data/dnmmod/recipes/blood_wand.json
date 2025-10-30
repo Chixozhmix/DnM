@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "W": {
+      "item": "dnmmod:blood_wand_core"
+    }
+  },
+  "pattern": [
+    "  B",
+    " W ",
+    "B  "
+  ],
+  "result": {
+    "item": "dnmmod:blood_wand"
+  },
+  "show_notification": true
+}

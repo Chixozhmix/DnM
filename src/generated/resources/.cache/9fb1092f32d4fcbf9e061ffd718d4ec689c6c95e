@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-30T13:43:17.3777389	Recipes
+// 1.20.1	2025-10-30T15:54:48.0459506	Recipes
 2cbe609f85ef4fd9ebb24730d7ab3c701e9196b7 data/dnmmod/advancements/recipes/combat/common_battleaxe.json
 9761a0d9f6745bdc54521f29283a869241d62b9c data/dnmmod/advancements/recipes/combat/common_glaive.json
 7fe830b7940066de48c78e0486185c5868baf0bc data/dnmmod/advancements/recipes/combat/common_greatsword.json
@@ -20,6 +20,8 @@ e2f06612ed3de558adb6f5bd85dcc21dbb4db4be data/dnmmod/advancements/recipes/misc/c
 916046b2a1b8fdfdb9a9b36b1b3b0877629e6416 data/dnmmod/advancements/recipes/misc/druid_wand_core.json
 4fb3e8765a4e34adf36ec57ffdaf7faaa4185efe data/dnmmod/advancements/recipes/misc/electromancer_wand.json
 9870a154d7c33480d25a2952cac6f39d0df05296 data/dnmmod/advancements/recipes/misc/electromancer_wand_core.json
+00d732c5cb8baf98dae1ed89af60ffa944dcf802 data/dnmmod/advancements/recipes/misc/ender_wand.json
+42a52bb80daddc716c8ed6f308ed679aabd4b300 data/dnmmod/advancements/recipes/misc/ender_wand_core.json
 5789533753d94a481cdc7e6fc0e00c21e769f856 data/dnmmod/advancements/recipes/misc/evoker_wand.json
 06f18db6b9436f823cfa6ef5043156a92654128b data/dnmmod/advancements/recipes/misc/evoker_wand_core.json
 1b323101a22d2001daf4aa3598e7813be2401459 data/dnmmod/advancements/recipes/misc/flux.json
@@ -51,8 +53,10 @@ e00e080ae832379a5bfb21d6d26069df07ccafa2 data/dnmmod/recipes/cryomancer_wand_cor
 182ae266c12a50dcf61ef009b2b3c237012bd8d6 data/dnmmod/recipes/cummon_spear.json
 cb9afb83ad6933c48f6d25625a999a4fae53f42d data/dnmmod/recipes/druid_wand.json
 c7ea2d991bffb2d0d5e4395e6597d3a8868cfa59 data/dnmmod/recipes/druid_wand_core.json
-6ba3802fd6ae459caeb42ed196455efa7a97df2f data/dnmmod/recipes/electromancer_wand.json
+10bdd30fc6a6117f18252fed3aafc206519c8829 data/dnmmod/recipes/electromancer_wand.json
 f44cb7fdea4f0332b62a814c4966a4266ae459a6 data/dnmmod/recipes/electromancer_wand_core.json
+a1edfb9c79b2581c418cdfd5d08724d548eac6b7 data/dnmmod/recipes/ender_wand.json
+fa8cfa6b6c2fb36d5269ec213b532f2ef050565f data/dnmmod/recipes/ender_wand_core.json
 ddbba40cc092b4db2fdcd83a56a26b9adaf83c5f data/dnmmod/recipes/evoker_wand.json
 005603180772fcc1418fe13fb0f430320f16114c data/dnmmod/recipes/evoker_wand_core.json
 e3ae71f89b92cd13286f870723843631fafa8832 data/dnmmod/recipes/flux.json

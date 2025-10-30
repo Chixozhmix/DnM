@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bricks"
+    },
+    "C": {
+      "item": "minecraft:coal_block"
+    },
+    "T": {
+      "item": "minecraft:iron_trapdoor"
+    }
+  },
+  "pattern": [
+    "B B",
+    "BCB",
+    "BTB"
+  ],
+  "result": {
+    "item": "dnmmod:coke_oven"
+  },
+  "show_notification": true
+}

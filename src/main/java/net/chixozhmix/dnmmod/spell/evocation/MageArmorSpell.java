@@ -31,7 +31,7 @@ public class MageArmorSpell extends AbstractSpell {
     private DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.UNCOMMON)
             .setSchoolResource(SchoolRegistry.EVOCATION_RESOURCE)
-            .setMaxLevel(10)
+            .setMaxLevel(5)
             .setCooldownSeconds(120)
             .build();
 

@@ -19,6 +19,7 @@
   "item.dnmmod.evoker_wand_core": "Сердцевина палочки призывателя",
   "item.dnmmod.pyromancer_wand_core": "Сердцевина палочки пироманта",
   "item.dnmmod.blood_wand_core": "Сердцевина кровавой палочки",
+  "item.dnmmod.ender_wand_core": "Сердцевина палочки эндера",
 
   "item.dnmmod.wooden_wand": "Деревянная палочка",
   "item.dnmmod.cryomancer_wand": "Палочка криоманта",
@@ -27,6 +28,7 @@
   "item.dnmmod.evoker_wand": "Палочка призывателя",
   "item.dnmmod.pyromancer_wand": "Палочка пироманта",
   "item.dnmmod.blood_wand": "Кровавая палочка",
+  "item.dnmmod.ender_wand": "Палочка эндера",
   "item.dnmmod.sacred_symbol": "Священный символ",
 
   "item.dnmmod.firebalt": "Огненная стрела",
@@ -54,7 +56,8 @@
   "entity.dnmmod.summoned_undead_spirit": "Дух Нежити",
   "entity.dnmmod.goblin_shaman": "Шаман гоблинов",
   "entity.dnmmod.green_hag": "Зеленая Карга",
-  "entity.dnmmod.gnome": "Гном",
+  "entity.dnmmod.raven": "Ворон",
+  "entity.dnmmod.summon_raven": "Призванный ворон",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 магического урона",
 
@@ -72,6 +75,7 @@
   "effect.dnmmod.mage_armor": "Доспехи Мага",
   "effect.dnmmod.acid_effect": "Кислота",
   "effect.dnmmod.summon_undead_spirit": "Призыв Духа Нежити",
+  "effect.dnmmod.summon_raven": "Призыв Воронов",
 
   "spell.dnmmod.mage_armor": "Доспехи Мага",
   "spell.dnmmod.mage_armor.guide": "Вы окружаете себя плетением магии, образуя защиту. Ваш показатель брони увеличивается.",
@@ -98,5 +102,8 @@
   "spell.dnmmod.chromatic_orb.guide": "Вы выпускаете шар сконцентрированной магической энергии, который поражает врага и ближайших к нему существ.",
 
   "spell.dnmmod.summon_undead_spirit": "Призыв Духа Нежити",
-  "spell.dnmmod.summon_undead_spirit.guide": "Вы вызываете дух могущественной нежити, который защищает вас от врагов."
+  "spell.dnmmod.summon_undead_spirit.guide": "Вы вызываете дух могущественной нежити, который защищает вас от врагов.",
+
+  "spell.dnmmod.summon_ravens": "Вызов Воронов",
+  "spell.dnmmod.summon_ravens.guide": "Вы вызываете стаю воронов, которые защищают вас от врагов."
 }

@@ -17,12 +17,12 @@ public class ModEffects {
 
     public static final RegistryObject<MobEffect> MAGE_ARMOR =
             EFFECTS.register("mage_armor", MageArmorEffect::new);
-
     public static final RegistryObject<MobEffect> ACID =
             EFFECTS.register("acid_effect", () -> new AcidEffect(MobEffectCategory.HARMFUL, 0x4CAF50, 2.0f));
-
     public static final RegistryObject<MobEffect> SUMMON_UNDEAD_SPIRIT =
             EFFECTS.register("summon_undead_spirit", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 12495141));
+    public static final RegistryObject<MobEffect> SUMMON_RAVEN =
+            EFFECTS.register("summon_raven", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 12495141));
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

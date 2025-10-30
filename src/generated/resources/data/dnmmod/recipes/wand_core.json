@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "M": {
+      "item": "irons_spellbooks:arcane_essence"
+    }
+  },
+  "pattern": [
+    "  A",
+    " M ",
+    "   "
+  ],
+  "result": {
+    "item": "dnmmod:wand_core"
+  },
+  "show_notification": true
+}

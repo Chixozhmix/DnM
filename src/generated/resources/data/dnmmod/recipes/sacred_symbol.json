@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "irons_spellbooks:divine_pearl"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    " GG",
+    " DG",
+    "G  "
+  ],
+  "result": {
+    "item": "dnmmod:sacred_symbol"
+  },
+  "show_notification": true
+}

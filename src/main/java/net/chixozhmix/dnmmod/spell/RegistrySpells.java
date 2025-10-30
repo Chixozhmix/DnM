@@ -7,6 +7,7 @@ import net.chixozhmix.dnmmod.spell.evocation.*;
 import net.chixozhmix.dnmmod.spell.holy.PuritySpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
 import net.chixozhmix.dnmmod.spell.lightning.ThunderwaveSpell;
+import net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -27,6 +28,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> CAUSTIC_BREW = registerSpell(new CausticBrewSpell());
     public static final RegistryObject<AbstractSpell> CHROMATIC_ORB = registerSpell(new ChromaticOrbSpell());
     public static final RegistryObject<AbstractSpell> SUMMON_UNDEAD_SPIRIT = registerSpell(new SummonUndeadSpiritSpell());
+    public static final RegistryObject<AbstractSpell> SUMMON_RAVEN = registerSpell(new SummonRavenSpell());
 
 
     public static void register(IEventBus eventBus) {
