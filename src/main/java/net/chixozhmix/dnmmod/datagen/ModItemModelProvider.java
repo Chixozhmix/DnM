@@ -18,7 +18,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-
         //Weapons
         handheldItem(ModItems.CUMMON_DAGGER);
         handheldItem(ModItems.COMMON_BATTLEAXE);
@@ -26,7 +25,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.COMMON_SCIMITAR);
         handheldItem(ModItems.COMMON_SICKLE);
         handheldItem(ModItems.COMMON_KLEVETS);
-
         //Items
         simpleItem(ModItems.COKE_COAL);
         simpleItem(ModItems.FLUX);
@@ -34,10 +32,22 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.STEEL_INGOT);
         simpleItem(ModItems.STEEL_NUGGET);
         simpleItem(ModItems.HAG_EYE);
-
-        //Staff
-        handheldItem(ModItems.FIRE_STAFF);
-
+        simpleItem(ModItems.WAND_CORE);
+        simpleItem(ModItems.DRUID_WAND_CORE);
+        simpleItem(ModItems.PYROMANCER_WAND_CORE);
+        simpleItem(ModItems.CRYOMANCER_WAND_CORE);
+        simpleItem(ModItems.ELECTROMANCER_WAND_CORE);
+        simpleItem(ModItems.EVOKER_WAND_CORE);
+        simpleItem(ModItems.BLOOD_WAND_CORE);
+        //Staff and wands
+        handheldItem(ModItems.WOODEN_WAND);
+        handheldItem(ModItems.CRYOMANCER_WAND);
+        handheldItem(ModItems.ELECTROMANCER_WAND);
+        handheldItem(ModItems.DRUID_WAND);
+        handheldItem(ModItems.PYROMANCER_WAND);
+        handheldItem(ModItems.BLOOD_WAND);
+        handheldItem(ModItems.EVOKER_WAND);
+        handheldItem(ModItems.SACRED_SYMBOL);
         //Projectiles
         simpleItem(ModItems.FIREBALT);
     }

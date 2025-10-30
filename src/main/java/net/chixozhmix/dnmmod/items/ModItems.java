@@ -1,14 +1,21 @@
 package net.chixozhmix.dnmmod.items;
 
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.GreatAxeItem;
 import net.chixozhmix.dnmmod.Util.SpearItem;
 import net.chixozhmix.dnmmod.items.custom.*;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.Map;
+import java.util.UUID;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID);
@@ -102,14 +109,102 @@ public class ModItems {
                             .stacksTo(1)
                             .durability(760)));
 
-    //Staffs
-    public static final RegistryObject<Item> FIRE_STAFF = ITEMS.register("fire_staff", () ->
-            new FireStaff(Tiers.IRON,
-                    2,
-                    -2.0F,
-                    new Item.Properties()
-                            .durability(-1)
-                            .stacksTo(1)));
+    //Staffs and wands
+    public static final RegistryObject<Item> WOODEN_WAND = ITEMS.register("wooden_wand",
+            () -> new StaffItem(new Item.Properties().stacksTo(1),
+                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", (double)0.25F,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.1,
+                            AttributeModifier.Operation.MULTIPLY_BASE))));
+
+    public static final RegistryObject<Item> DRUID_WAND = ITEMS.register("druid_wand",
+            () -> new StaffItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON),
+                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", (double)0.25F,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.05,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.NATURE_SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.15,
+                            AttributeModifier.Operation.MULTIPLY_BASE))));
+
+    public static final RegistryObject<Item> ELECTROMANCER_WAND = ITEMS.register("electromancer_wand",
+            () -> new StaffItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON),
+                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", (double)0.25F,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.05,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.LIGHTNING_SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.15,
+                            AttributeModifier.Operation.MULTIPLY_BASE))));
+
+    public static final RegistryObject<Item> CRYOMANCER_WAND = ITEMS.register("cryomancer_wand",
+            () -> new StaffItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON),
+                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", (double)0.25F,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.05,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.ICE_SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.15,
+                            AttributeModifier.Operation.MULTIPLY_BASE))));
+
+    public static final RegistryObject<Item> PYROMANCER_WAND = ITEMS.register("pyromancer_wand",
+            () -> new StaffItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON),
+                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", (double)0.25F,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.05,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.FIRE_SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.15,
+                            AttributeModifier.Operation.MULTIPLY_BASE))));
+
+    public static final RegistryObject<Item> BLOOD_WAND = ITEMS.register("blood_wand",
+            () -> new StaffItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON),
+                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", (double)0.25F,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.05,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.BLOOD_SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.15,
+                            AttributeModifier.Operation.MULTIPLY_BASE))));
+
+    public static final RegistryObject<Item> SACRED_SYMBOL = ITEMS.register("sacred_symbol",
+            () -> new StaffItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON),
+                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", (double)0.25F,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.05,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.HOLY_SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.15,
+                            AttributeModifier.Operation.MULTIPLY_BASE))));
+
+    public static final RegistryObject<Item> EVOKER_WAND = ITEMS.register("evoker_wand",
+            () -> new StaffItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON),
+                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", (double)0.25F,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.05,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.EVOCATION_SPELL_POWER.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.15,
+                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute)AttributeRegistry.SUMMON_DAMAGE.get(),
+                    new AttributeModifier(UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3"), "Weapon modifier", 0.10,
+                            AttributeModifier.Operation.MULTIPLY_BASE))));
 
     //Projectiles
     public static final RegistryObject<Item> FIREBALT = ITEMS.register("firebalt", () ->
@@ -140,6 +235,35 @@ public class ModItems {
             new HagEye(new Item.Properties()
                     .stacksTo(1)
                     .rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> WAND_CORE = ITEMS.register("wand_core", () ->
+            new WandCore(new Item.Properties()
+                    .stacksTo(64)
+                    .rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> DRUID_WAND_CORE = ITEMS.register("druid_wand_core", () ->
+            new WandCore(new Item.Properties()
+                    .stacksTo(16)
+                    .rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> BLOOD_WAND_CORE = ITEMS.register("blood_wand_core", () ->
+            new WandCore(new Item.Properties()
+                    .stacksTo(16)
+                    .rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> PYROMANCER_WAND_CORE = ITEMS.register("pyromancer_wand_core", () ->
+            new WandCore(new Item.Properties()
+                    .stacksTo(16)
+                    .rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> CRYOMANCER_WAND_CORE = ITEMS.register("cryomancer_wand_core", () ->
+            new WandCore(new Item.Properties()
+                    .stacksTo(16)
+                    .rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> ELECTROMANCER_WAND_CORE = ITEMS.register("electromancer_wand_core", () ->
+            new WandCore(new Item.Properties()
+                    .stacksTo(16)
+                    .rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> EVOKER_WAND_CORE = ITEMS.register("evoker_wand_core", () ->
+            new WandCore(new Item.Properties()
+                    .stacksTo(16)
+                    .rarity(Rarity.UNCOMMON)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -34,11 +34,18 @@ public class CreativeTabMod {
                     .build());
 
     //Staffs
-    public static final RegistryObject<CreativeModeTab> STAFFS_TAB = CREATIVE_MOD_TABS.register("staffs",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.FIRE_STAFF.get()))
+    public static final RegistryObject<CreativeModeTab> STAFFS_TAB = CREATIVE_MOD_TABS.register("staffs_and_wand",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.WOODEN_WAND.get()))
                     .title(Component.translatable("creativetab.dnmmod.staffs"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.FIRE_STAFF.get());
+                        output.accept(ModItems.WOODEN_WAND.get());
+                        output.accept(ModItems.ELECTROMANCER_WAND.get());
+                        output.accept(ModItems.CRYOMANCER_WAND.get());
+                        output.accept(ModItems.DRUID_WAND.get());
+                        output.accept(ModItems.BLOOD_WAND.get());
+                        output.accept(ModItems.EVOKER_WAND.get());
+                        output.accept(ModItems.PYROMANCER_WAND.get());
+                        output.accept(ModItems.SACRED_SYMBOL.get());
                     })
                     .build());
 
@@ -61,6 +68,13 @@ public class CreativeTabMod {
                     .title(Component.translatable("creativetab.dnmmod.magic_items"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.HAG_EYE.get());
+                        output.accept(ModItems.WAND_CORE.get());
+                        output.accept(ModItems.CRYOMANCER_WAND_CORE.get());
+                        output.accept(ModItems.PYROMANCER_WAND_CORE.get());
+                        output.accept(ModItems.ELECTROMANCER_WAND_CORE.get());
+                        output.accept(ModItems.DRUID_WAND_CORE.get());
+                        output.accept(ModItems.BLOOD_WAND_CORE.get());
+                        output.accept(ModItems.EVOKER_WAND_CORE.get());
                     })
                     .build());
 

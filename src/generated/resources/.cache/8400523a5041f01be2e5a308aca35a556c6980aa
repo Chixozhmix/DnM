@@ -1,15 +1,29 @@
-// 1.20.1	2025-10-27T18:01:48.6596818	Item Models: dnmmod
+// 1.20.1	2025-10-30T13:43:17.3717576	Item Models: dnmmod
+afcc952ce0db6e1184fb9a9347ff79b125ccef76 assets/dnmmod/models/item/blood_wand.json
+ba00481093cc18d9af0be8250395299563b9ae8d assets/dnmmod/models/item/blood_wand_core.json
 ce53e646f17f225f910a10c18eeec041a9e6ec85 assets/dnmmod/models/item/coke_coal.json
 70877d9d1b4540eaa3e1a269389665301b3a783b assets/dnmmod/models/item/common_battleaxe.json
 d47ce670311d2eb9edd8da970aaf3dbfce74db19 assets/dnmmod/models/item/common_klevets.json
 070eadf0aa0a97c4884d7ec2a73e2ea540369893 assets/dnmmod/models/item/common_mace.json
 2386adb3574fc496bb6fd1a40d93c8fdd35b9bf2 assets/dnmmod/models/item/common_scimitar.json
 80c86dd042d40e981c9042b4ef95716179a46943 assets/dnmmod/models/item/common_sickle.json
+b8b985f080c11123b66420d9c4407f8df6ed8ce4 assets/dnmmod/models/item/cryomancer_wand.json
+1c6bcd6989fdb7d87f3bd9e8faff8949bf6c6a41 assets/dnmmod/models/item/cryomancer_wand_core.json
 6c612f6b81eb3762aa884a2f10c4d3b914510660 assets/dnmmod/models/item/cummon_dagger.json
+a841d0e50a7ce09d0e25f4e958ef1ba2577cdab7 assets/dnmmod/models/item/druid_wand.json
+fdcd70c1a6a9b92a38a3bb8c8336ebf8dd60008c assets/dnmmod/models/item/druid_wand_core.json
+15135ed3a80cf4baa18b7c6eca92aa50cb5e0880 assets/dnmmod/models/item/electromancer_wand.json
+083df51276b0dcd393abca6ef8271eeb665e6764 assets/dnmmod/models/item/electromancer_wand_core.json
+14250d1e40e96c6d26d9cc2985313202e10bed77 assets/dnmmod/models/item/evoker_wand.json
+c17373fb6f5b039d59a309fa464d788c6a7daa80 assets/dnmmod/models/item/evoker_wand_core.json
 91a5dd7d711cebf4b13a887d6b4b0ceee4c74574 assets/dnmmod/models/item/firebalt.json
-7d3502733d63678fe7b00216e5ed9b04f069cbf1 assets/dnmmod/models/item/fire_staff.json
 7aabdc6632ffe73b661aa8ed25fe741b406366f7 assets/dnmmod/models/item/flux.json
 b1305a5b9f21ff7d150660da71f4064d036416c3 assets/dnmmod/models/item/hag_eye.json
+076a49d47ab5abf4c058c95e7e54faa4c2fd1823 assets/dnmmod/models/item/pyromancer_wand.json
+bff4666c5792b6c45bc79e73ea5acae62da6fee9 assets/dnmmod/models/item/pyromancer_wand_core.json
 ae80c53a8ff4092cb5ca35a6ca93897ad749e3a7 assets/dnmmod/models/item/raw_steel.json
+3eb32a592747e97ec8bf62e5eb218b00a3a0017e assets/dnmmod/models/item/sacred_symbol.json
 234ea0350d7dd45a0a4e9389c269e9f0d4b1a75e assets/dnmmod/models/item/steel_ingot.json
 18a50a839ca18b5d2342462d7ed1555ada9cd2e0 assets/dnmmod/models/item/steel_nugget.json
+65bad3bcd9abdeccb9af0b76dab8c5763d4a0413 assets/dnmmod/models/item/wand_core.json
+32aebf44ccf517da61fcdce5c85d1f9e7ecb3a1d assets/dnmmod/models/item/wooden_wand.json

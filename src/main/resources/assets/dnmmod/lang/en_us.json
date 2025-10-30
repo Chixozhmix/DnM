@@ -12,8 +12,22 @@
   "item.dnmmod.common_sickle": "Sikle",
 
   "item.dnmmod.hag_eye": "Hag Eye",
+  "item.dnmmod.wand_core": "Wand core",
+  "item.dnmmod.cryomancer_wand_core": "Cryomancer wand core",
+  "item.dnmmod.electromancer_wand_core": "Electromancer wand core",
+  "item.dnmmod.druid_wand_core": "Druid wand core",
+  "item.dnmmod.evoker_wand_core": "Evoker wand core",
+  "item.dnmmod.pyromancer_wand_core": "Pyromancer wand core",
+  "item.dnmmod.blood_wand_core": "Blood wand core",
 
-  "item.dnmmod.fire_staff": "Fire Staff",
+  "item.dnmmod.wooden_wand": "Wooden wand",
+  "item.dnmmod.cryomancer_wand": "Cryomancer wand",
+  "item.dnmmod.electromancer_wand": "Electromancer wand",
+  "item.dnmmod.druid_wand": "Druid wand",
+  "item.dnmmod.evoker_wand": "Evoker wand",
+  "item.dnmmod.pyromancer_wand": "Pyromancer wand",
+  "item.dnmmod.blood_wand": "Blood wand",
+  "item.dnmmod.sacred_symbol": "Sacred wand",
 
   "item.dnmmod.firebalt": "Firebalt",
 
@@ -40,15 +54,17 @@
   "entity.dnmmod.summoned_undead_spirit": "Undead Spirit",
   "entity.dnmmod.goblin_shaman": "Goblin Shaman",
   "entity.dnmmod.green_hag": "Green Hag",
+  "entity.dnmmod.gnome": "Gnome",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
   "tooltip.dnmmod.hag_eye": "The Hag Coven often creates similar trinkets from those they once ate. A simple magical trinket that hides pleasant bonuses. They say it helps you see in the dark, and you can also use it to spot even those who are outside the walls!",
+  "tooltip.dnmmod.wand_core": "In order for the wand to have magical properties, it needs to be powered. The core of the wand is made from various magical components that grant magical properties to the wand created by the caster.",
 
   "ui.dnmmod.bounces": "Bounces: %d",
 
   "creativetab.dnmmod.weapons": "Weapons",
-  "creativetab.dnmmod.staffs": "Staffs",
+  "creativetab.dnmmod.staffs": "Staffs and wands",
   "creativetab.dnmmod.items": "Items",
   "creativetab.dnmmod.blocks": "Blocks",
   "creativetab.dnmmod.magic_items": "Magic items",
