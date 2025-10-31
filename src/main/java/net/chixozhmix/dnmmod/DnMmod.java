@@ -8,6 +8,7 @@ import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanRenderer;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagRenderer;
+import net.chixozhmix.dnmmod.entity.leshy.LeshyRenderer;
 import net.chixozhmix.dnmmod.entity.raven.RavenModel;
 import net.chixozhmix.dnmmod.entity.raven.RavenRenderer;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectileRenderer;
@@ -119,6 +120,8 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.GREEN_HAG.get(), GreenHagRenderer::new);
             EntityRenderers.register(ModEntityType.RAVEN.get(), RavenRenderer::new);
             EntityRenderers.register(ModEntityType.SUMMON_RAVEN.get(), SummonedRavenRenderer::new);
+            EntityRenderers.register(ModEntityType.SUMMON_RAVEN.get(), SummonedRavenRenderer::new);
+            EntityRenderers.register(ModEntityType.LESHY.get(), LeshyRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COKE_OVEN_MENU.get(), CokeOvenScreen::new);
         }

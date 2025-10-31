@@ -51,6 +51,7 @@
   "death.attack.dnmmod.cloud_dagger": "%1$s was cut to pieces",
   "death.attack.dnmmod.chromatic_orb": "%1$s was torn to pieces",
   "death.attack.dnmmod.acid_projectile": "%1$s was dissolved alive",
+  "death.attack.dnmmod.caustic_brew": "%1$s has been corroded",
 
   "entity.dnmmod.undead_spirit": "Undead Spirit",
   "entity.dnmmod.summoned_undead_spirit": "Undead Spirit",
@@ -58,6 +59,7 @@
   "entity.dnmmod.green_hag": "Green Hag",
   "entity.dnmmod.raven": "Raven",
   "entity.dnmmod.summon_raven": "Summon raven",
+  "entity.dnmmod.leshy": "Leshy",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
@@ -65,6 +67,9 @@
   "tooltip.dnmmod.wand_core": "In order for the wand to have magical properties, it needs to be powered. The core of the wand is made from various magical components that grant magical properties to the wand created by the caster.",
 
   "ui.dnmmod.bounces": "Bounces: %d",
+
+  "ui.dnmmod.green_hag_bossbar": "Green Hag",
+  "ui.dnmmod.leshy_bossbar": "Leshy",
 
   "creativetab.dnmmod.weapons": "Weapons",
   "creativetab.dnmmod.staffs": "Staffs and wands",

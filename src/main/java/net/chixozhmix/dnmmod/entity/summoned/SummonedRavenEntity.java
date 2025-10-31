@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.entity.summoned;
 
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.effect.SummonTimer;
 import io.redspace.ironsspellbooks.entity.mobs.MagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
@@ -9,6 +10,7 @@ import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
 import net.chixozhmix.dnmmod.spell.RegistrySpells;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
@@ -83,7 +85,7 @@ public class SummonedRavenEntity extends RavenEntity implements MagicSummon {
 
     @Override
     public void onRemovedFromWorld() {
-        this.onRemovedHelper(this, (SummonTimer) ModEffects.SUMMON_UNDEAD_SPIRIT.get());
+        this.onRemovedHelper(this, (SummonTimer) ModEffects.SUMMON_RAVEN.get());
         super.onRemovedFromWorld();
     }
 
@@ -100,12 +102,34 @@ public class SummonedRavenEntity extends RavenEntity implements MagicSummon {
 
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
-        return pSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) && !this.shouldIgnoreDamage(pSource) ? super.hurt(pSource, pAmount) : false;
+        // Исправленная логика получения урона
+        if (pSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+            return super.hurt(pSource, pAmount);
+        }
+
+        // Проверяем, должен ли призванный моб игнорировать этот урон
+        if (this.shouldIgnoreDamage(pSource)) {
+            return false;
+        }
+
+        return super.hurt(pSource, pAmount);
+    }
+
+    @Override
+    public boolean shouldIgnoreDamage(DamageSource damageSource) {
+        // Логика определения, когда призванный моб должен игнорировать урон
+        // Например, урон от владельца или союзников
+        return damageSource.getEntity() instanceof LivingEntity livingEntity &&
+                this.isAlliedTo(livingEntity);
     }
 
     @Override
     public void onUnSummon() {
-
+        if (!this.level().isClientSide) {
+            MagicManager.spawnParticles(this.level(), ParticleTypes.ASH, this.getX(), this.getY(), this.getZ(),
+                    25, 0.4, 0.8, 0.4, 0.03, false);
+            this.discard();
+        }
     }
 
     @Override

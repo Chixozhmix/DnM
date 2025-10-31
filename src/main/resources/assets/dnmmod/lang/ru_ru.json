@@ -51,6 +51,7 @@
   "death.attack.dnmmod.cloud_dagger": "%1$s был изрезан на куски",
   "death.attack.dnmmod.chromatic_orb": "%1$s был разорван на куски",
   "death.attack.dnmmod.acid_projectile": "%1$s был растворен заживо",
+  "death.attack.dnmmod.caustic_brew": "%1$s был разъеден",
 
   "entity.dnmmod.undead_spirit": "Дух Нежити",
   "entity.dnmmod.summoned_undead_spirit": "Дух Нежити",
@@ -58,6 +59,7 @@
   "entity.dnmmod.green_hag": "Зеленая Карга",
   "entity.dnmmod.raven": "Ворон",
   "entity.dnmmod.summon_raven": "Призванный ворон",
+  "entity.dnmmod.leshy": "Леший",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 магического урона",
 
@@ -65,6 +67,9 @@
   "tooltip.dnmmod.wand_core": "Чтобы волшебная палочка обладала магическими свойствами, она должна быть заряжена энергией. Ядро палочки состоит из различных магических компонентов, которые придают волшебные свойства палочке, созданной заклинателем.",
 
   "ui.dnmmod.bounces": "Отскакиваний: %d",
+
+  "ui.dnmmod.green_hag_bossbar": "Зеленая Карга",
+  "ui.dnmmod.leshy_bossbar": "Леший",
 
   "creativetab.dnmmod.weapons": "Оружие",
   "creativetab.dnmmod.staffs": "Посохи и палочки",

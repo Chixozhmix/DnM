@@ -4,6 +4,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagEntity;
+import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
 import net.chixozhmix.dnmmod.entity.projectiles.custom.FIrebolt;
 import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
@@ -12,7 +13,6 @@ import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
-import net.chixozhmix.dnmmod.entity.summoned.client.SummonedRavenModel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -87,6 +87,11 @@ public class ModEntityType {
                     EntityType.Builder.<SummonedRavenEntity>of(SummonedRavenEntity::new, MobCategory.MONSTER)
                             .sized(0.375f, 0.5f)
                             .build("summon_raven"));
+    public static final RegistryObject<EntityType<LeshyEntity>> LESHY =
+            ENTITY_TYPES.register("leshy", () ->
+                    EntityType.Builder.of(LeshyEntity::new, MobCategory.MONSTER)
+                            .sized(1.2f, 4.7f)
+                            .build("leshy"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =
