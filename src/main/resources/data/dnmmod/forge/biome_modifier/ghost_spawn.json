@@ -6,12 +6,11 @@
     "minecraft:dark_forest",
     "minecraft:swamp",
     "minecraft:taiga",
-    "minecraft:meadow",
-    "minecraft:sunflower_plains"
+    "minecraft:meadow"
   ],
   "spawners": {
-    "type": "dnmmod:undead_spirit",
-    "weight": 10,
+    "type": "dnmmod:ghost",
+    "weight": 14,
     "minCount": 1,
     "maxCount": 2
   }
