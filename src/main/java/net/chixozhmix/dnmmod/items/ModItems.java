@@ -98,6 +98,13 @@ public class ModItems {
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(760)));
+    public static final RegistryObject<Item> COMMON_TRIDENT = ITEMS.register("common_trident", () ->
+            new GreatAxeItem(Tiers.IRON,
+                    4,
+                    -2.6f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(730)));
     //Staffs and wands
     public static final RegistryObject<Item> WOODEN_WAND = ITEMS.register("wooden_wand",
             () -> new StaffItem(new Item.Properties().stacksTo(1),

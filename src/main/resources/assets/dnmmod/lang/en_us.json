@@ -10,6 +10,7 @@
   "item.dnmmod.common_glaive": "Glaive",
   "item.dnmmod.common_klevets": "Klevets",
   "item.dnmmod.common_sickle": "Sikle",
+  "item.dnmmod.common_trident": "Trident",
 
   "item.dnmmod.hag_eye": "Hag Eye",
   "item.dnmmod.wand_core": "Wand core",
@@ -60,6 +61,7 @@
   "entity.dnmmod.raven": "Raven",
   "entity.dnmmod.summon_raven": "Summon raven",
   "entity.dnmmod.leshy": "Leshy",
+  "entity.dnmmod.ghost": "Ghost",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
@@ -81,6 +83,10 @@
   "effect.dnmmod.acid_effect": "Acid",
   "effect.dnmmod.summon_undead_spirit": "Summon Undead Spirit",
   "effect.dnmmod.summon_raven": "Summon Ravens",
+
+  "sounds.dnmmod.ghost_ambient": "Ghost",
+  "sounds.dnmmod.undead_spirit": "Undead Spirit",
+  "sounds.dnmmod.raven": "Raven",
 
   "spell.dnmmod.mage_armor": "Mage Armor",
   "spell.dnmmod.mage_armor.guide": "You surround yourself with a web of magic, forming a shield. Your armor rating increases.",

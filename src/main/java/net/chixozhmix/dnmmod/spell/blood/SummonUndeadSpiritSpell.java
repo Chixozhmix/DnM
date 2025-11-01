@@ -9,11 +9,13 @@ import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
+import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -24,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
+import java.util.Optional;
 
 @AutoSpellConfig
 public class SummonUndeadSpiritSpell extends AbstractSpell {
@@ -58,6 +61,11 @@ public class SummonUndeadSpiritSpell extends AbstractSpell {
     @Override
     public CastType getCastType() {
         return CastType.LONG;
+    }
+
+    @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(SoundsRegistry.SUMMON_UNDEAD_SPIRIT.get());
     }
 
     @Override

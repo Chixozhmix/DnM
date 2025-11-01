@@ -56,7 +56,7 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy {
                 .setSpells(List.of((AbstractSpell) SpellRegistry.WITHER_SKULL_SPELL.get(),
                         (AbstractSpell)SpellRegistry.POISON_ARROW_SPELL.get(),
                         (AbstractSpell)RegistrySpells.ICE_DAGGER.get(),
-                        (AbstractSpell)SpellRegistry.BLOOD_STEP_SPELL.get()),
+                        (AbstractSpell)SpellRegistry.BLOOD_SLASH_SPELL.get()),
                         List.of((AbstractSpell)RegistrySpells.THUNDERWAVE.get()),
                         List.of(),
                         List.of((AbstractSpell)SpellRegistry.FANG_WARD_SPELL.get(),

@@ -30,6 +30,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.COMMON_GLAIVE.get());
                         output.accept(ModItems.COMMON_SICKLE.get());
                         output.accept(ModItems.COMMON_KLEVETS.get());
+                        output.accept(ModItems.COMMON_TRIDENT.get());
                     })
                     .build());
     //Staffs

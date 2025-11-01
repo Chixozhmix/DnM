@@ -6,6 +6,7 @@ import net.chixozhmix.dnmmod.blocks.entity.ModBlockEntity;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
+import net.chixozhmix.dnmmod.entity.ghost.GhostRenderer;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanRenderer;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagRenderer;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyRenderer;
@@ -22,6 +23,7 @@ import net.chixozhmix.dnmmod.items.CreativeTabMod;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.screen.CokeOvenScreen;
 import net.chixozhmix.dnmmod.screen.ModMenuTypes;
+import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -57,6 +59,9 @@ public class DnMmod
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+
+        //Sounds
+        SoundsRegistry.register(modEventBus);
 
         //Entity
         ModEntityType.register(modEventBus);
@@ -122,6 +127,7 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.SUMMON_RAVEN.get(), SummonedRavenRenderer::new);
             EntityRenderers.register(ModEntityType.SUMMON_RAVEN.get(), SummonedRavenRenderer::new);
             EntityRenderers.register(ModEntityType.LESHY.get(), LeshyRenderer::new);
+            EntityRenderers.register(ModEntityType.GHOST.get(), GhostRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COKE_OVEN_MENU.get(), CokeOvenScreen::new);
         }

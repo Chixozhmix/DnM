@@ -115,6 +115,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('N', ModItems.STEEL_NUGGET.get())
                 .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.COMMON_TRIDENT.get())
+                .pattern(" NN")
+                .pattern(" SN")
+                .pattern("S  ")
+                .define('S', Items.STICK)
+                .define('N', ModItems.STEEL_NUGGET.get())
+                .unlockedBy("has_steel_ingot", has(ModItems.STEEL_INGOT.get()))
+                .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.CLAY_SHALE.get(), 4)
                 .pattern("CCC")
                 .pattern("CDC")

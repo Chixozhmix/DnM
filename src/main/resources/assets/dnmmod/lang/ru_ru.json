@@ -10,6 +10,7 @@
   "item.dnmmod.common_glaive": "Глефа",
   "item.dnmmod.common_klevets": "Клевец",
   "item.dnmmod.common_sickle": "Серп",
+  "item.dnmmod.common_trident": "Трезубец",
 
   "item.dnmmod.hag_eye": "Глаз Карги",
   "item.dnmmod.wand_core": "Сердцевина палочки",
@@ -60,6 +61,7 @@
   "entity.dnmmod.raven": "Ворон",
   "entity.dnmmod.summon_raven": "Призванный ворон",
   "entity.dnmmod.leshy": "Леший",
+  "entity.dnmmod.ghost": "Призрак",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 магического урона",
 
@@ -81,6 +83,10 @@
   "effect.dnmmod.acid_effect": "Кислота",
   "effect.dnmmod.summon_undead_spirit": "Призыв Духа Нежити",
   "effect.dnmmod.summon_raven": "Призыв Воронов",
+
+  "sounds.dnmmod.ghost_ambient": "Призрак",
+  "sounds.dnmmod.undead_spirit": "Дух Нежити",
+  "sounds.dnmmod.raven": "Ворон",
 
   "spell.dnmmod.mage_armor": "Доспехи Мага",
   "spell.dnmmod.mage_armor.guide": "Вы окружаете себя плетением магии, образуя защиту. Ваш показатель брони увеличивается.",

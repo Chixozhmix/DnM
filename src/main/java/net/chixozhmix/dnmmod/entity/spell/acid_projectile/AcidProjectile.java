@@ -88,7 +88,7 @@ public class AcidProjectile extends AbstractMagicProjectile {
     private void applyAcidEffect(LivingEntity target) {
         MobEffectInstance acidEffect = new MobEffectInstance(
                 ModEffects.ACID.get(),
-                100, // 5 секунд
+                60, // 3 секунды
                 0,   // Уровень эффекта (0 = базовый)
                 false, // Является ли эффектом амбьента
                 true,  // Показывать частицы

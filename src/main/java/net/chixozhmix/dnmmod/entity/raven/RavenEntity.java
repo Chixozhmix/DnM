@@ -1,5 +1,7 @@
 package net.chixozhmix.dnmmod.entity.raven;
 
+import net.chixozhmix.dnmmod.sound.SoundsRegistry;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -13,6 +15,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import org.jetbrains.annotations.Nullable;
 
 public class RavenEntity extends PathfinderMob implements FlyingAnimal {
 
@@ -62,5 +65,10 @@ public class RavenEntity extends PathfinderMob implements FlyingAnimal {
     @Override
     protected int calculateFallDamage(float pFallDistance, float pDamageMultiplier) {
         return 0;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return SoundsRegistry.RAVEN_AMBIENT.get();
     }
 }

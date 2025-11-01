@@ -8,11 +8,13 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
+import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -23,6 +25,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
+import java.util.Optional;
 
 @AutoSpellConfig
 public class SummonRavenSpell extends AbstractSpell {
@@ -61,6 +64,11 @@ public class SummonRavenSpell extends AbstractSpell {
     }
 
     @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(SoundsRegistry.SUMMON_RAVEN.get());
+    }
+
+    @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(Component.translatable("ui.irons_spellbooks.summon_count", new Object[]{spellLevel}));
     }
@@ -90,6 +98,5 @@ public class SummonRavenSpell extends AbstractSpell {
         }
 
         entity.addEffect(new MobEffectInstance((MobEffect)ModEffects.SUMMON_RAVEN.get(), summonTime, effectAmplifier, false, false, true));
-
     }
 }

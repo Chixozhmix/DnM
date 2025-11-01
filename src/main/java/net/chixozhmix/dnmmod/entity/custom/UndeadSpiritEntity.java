@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.entity.custom;
 
+import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -115,11 +117,6 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return SoundEvents.ZOMBIE_HURT;
-    }
-
-    @Override
     protected boolean isSunBurnTick() {
         if (this.level().isDay() && !this.level().isClientSide) {
             // Проверяем, находится ли моб под открытым небом
@@ -145,7 +142,7 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.ZOMBIE_DEATH;
+    protected @Nullable SoundEvent getAmbientSound() {
+        return SoundsRegistry.UNDEAD_SPIRIT.get();
     }
 }

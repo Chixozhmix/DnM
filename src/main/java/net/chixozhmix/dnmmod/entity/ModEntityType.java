@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.entity;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
+import net.chixozhmix.dnmmod.entity.ghost.GhostEntity;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagEntity;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
@@ -92,6 +93,11 @@ public class ModEntityType {
                     EntityType.Builder.of(LeshyEntity::new, MobCategory.MONSTER)
                             .sized(1.2f, 4.7f)
                             .build("leshy"));
+    public static final RegistryObject<EntityType<GhostEntity>> GHOST =
+            ENTITY_TYPES.register("ghost", () ->
+                    EntityType.Builder.of(GhostEntity::new, MobCategory.MONSTER)
+                            .sized(0.8f, 2.2f)
+                            .build("ghost"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =

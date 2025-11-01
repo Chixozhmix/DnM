@@ -1,0 +1,30 @@
+{
+  "ghost_ambient": {
+    "subtitles": "sounds.dnmmod.ghost_ambient",
+    "sounds": [
+      "dnmmod:ghost_ambient"
+    ]
+  },
+    "summon_undead_spirit": {
+      "sounds": [
+        "dnmmod:summon_undead_spirit"
+      ]
+    },
+    "undead_spirit": {
+      "subtitles": "sounds.dnmmod.undead_spirit",
+      "sounds": [
+        "dnmmod:undead_spirit"
+      ]
+    },
+  "summon_raven": {
+    "sounds": [
+      "dnmmod:summon_raven"
+    ]
+  },
+  "raven_ambient": {
+    "subtitles": "sounds.dnmmod.raven",
+    "sounds": [
+      "dnmmod:raven_ambient"
+    ]
+  }
+}
