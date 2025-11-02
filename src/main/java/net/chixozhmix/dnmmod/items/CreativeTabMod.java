@@ -59,6 +59,8 @@ public class CreativeTabMod {
                         output.accept(ModItems.COKE_COAL.get());
                         output.accept(ModItems.FLUX.get());
                         output.accept(ModItems.STEEL_NUGGET.get());
+                        output.accept(ModItems.ECTOPLASM.get());
+                        output.accept(ModItems.PHANTOM_POTION.get());
                     })
                     .build());
     //Magic Items
@@ -67,6 +69,7 @@ public class CreativeTabMod {
                     .title(Component.translatable("creativetab.dnmmod.magic_items"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.HAG_EYE.get());
+                        output.accept(ModItems.FOREST_HEART.get());
                         output.accept(ModItems.WAND_CORE.get());
                         output.accept(ModItems.CRYOMANCER_WAND_CORE.get());
                         output.accept(ModItems.PYROMANCER_WAND_CORE.get());
@@ -84,6 +87,7 @@ public class CreativeTabMod {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.CLAY_SHALE.get());
                         output.accept(ModBlocks.COKE_OVEN.get());
+                        output.accept(ModBlocks.LESHY_ALTAR.get());
                     })
                     .build());
 

@@ -25,7 +25,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL);
 
-        this.tag(BlockTags.MINEABLE_WITH_AXE);
+        this.tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.LESHY_ALTAR.get());
 
         this.tag(BlockTags.MINEABLE_WITH_HOE);
 

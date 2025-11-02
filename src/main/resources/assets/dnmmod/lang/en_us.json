@@ -13,6 +13,7 @@
   "item.dnmmod.common_trident": "Trident",
 
   "item.dnmmod.hag_eye": "Hag Eye",
+  "item.dnmmod.forest_heart": "Forest Heart",
   "item.dnmmod.wand_core": "Wand core",
   "item.dnmmod.cryomancer_wand_core": "Cryomancer wand core",
   "item.dnmmod.electromancer_wand_core": "Electromancer wand core",
@@ -40,8 +41,12 @@
   "item.dnmmod.flux": "Flux",
   "item.dnmmod.steel_nugget": "Steel nugget",
 
+  "item.dnmmod.ectoplasm": "Ectoplasm",
+  "item.dnmmod.phantom_potion": "Phantom potion",
+
   "block.dnmmod.clay_shale": "Clay shale",
   "block.dnmmod.coke_oven": "Coke oven",
+  "block.dnmmod.leshy_altar": "Leshy Altar",
 
   "entity.dnmmod.cloud_dagger": "Magic Dagger",
   "entity.dnmmod.ice_dagger": "Ice dagger",
@@ -67,6 +72,7 @@
 
   "tooltip.dnmmod.hag_eye": "The Hag Coven often creates similar trinkets from those they once ate. A simple magical trinket that hides pleasant bonuses. They say it helps you see in the dark, and you can also use it to spot even those who are outside the walls!",
   "tooltip.dnmmod.wand_core": "In order for the wand to have magical properties, it needs to be powered. The core of the wand is made from various magical components that grant magical properties to the wand created by the caster.",
+  "tooltip.dnmmod.forest_heart": "By killing a Leshy, which happens to a very small number of mortals, the killer can get a truly valuable thing - the Forest Heart, which has amazing properties to control plants and protect the lives of those who touch the ground.",
 
   "ui.dnmmod.bounces": "Bounces: %d",
 
@@ -83,6 +89,7 @@
   "effect.dnmmod.acid_effect": "Acid",
   "effect.dnmmod.summon_undead_spirit": "Summon Undead Spirit",
   "effect.dnmmod.summon_raven": "Summon Ravens",
+  "effect.dnmmod.phantom_effect": "Phantom",
 
   "sounds.dnmmod.ghost_ambient": "Ghost",
   "sounds.dnmmod.undead_spirit": "Undead Spirit",

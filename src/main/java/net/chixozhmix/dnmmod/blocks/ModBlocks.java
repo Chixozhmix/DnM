@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.blocks;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.blocks.custom.CokeOvenBlock;
+import net.chixozhmix.dnmmod.blocks.custom.LeshyAltarBlock;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -23,6 +24,11 @@ public class ModBlocks {
     //CommonBLocks
     public static final RegistryObject<Block> CLAY_SHALE = registerBlock("clay_shale", () ->
             new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE).sound(SoundType.DEEPSLATE)));
+    public static final RegistryObject<Block> LESHY_ALTAR = registerBlock("leshy_altar",
+            () -> new LeshyAltarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noOcclusion()
+                    .isRedstoneConductor((state, getter, pos) -> false)
+                    .isSuffocating((state, getter, pos) -> false)
+                    .isViewBlocking((state, getter, pos) -> false)));
 
     //EntityBlocks
     public static final RegistryObject<Block> COKE_OVEN = registerBlock("coke_oven", () ->

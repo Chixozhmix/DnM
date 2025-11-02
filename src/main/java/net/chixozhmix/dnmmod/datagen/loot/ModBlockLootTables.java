@@ -5,6 +5,7 @@ import net.chixozhmix.dnmmod.blocks.ModBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -25,9 +26,12 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
         this.dropSelf(ModBlocks.CLAY_SHALE.get());
         this.dropSelf(ModBlocks.COKE_OVEN.get());
+
+        this.add(ModBlocks.LESHY_ALTAR.get(),
+                block -> createBlockDrop(ModBlocks.LESHY_ALTAR.get(), Items.BONE));
     }
 
-    protected LootTable.Builder createBlockBlockDrop(Block pBlock, Item item) {
+    protected LootTable.Builder createBlockDrop(Block pBlock, Item item) {
         return createSilkTouchDispatchTable(pBlock,
                 this.applyExplosionDecay(pBlock, LootItem.lootTableItem(item)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0f, 2.0f)))

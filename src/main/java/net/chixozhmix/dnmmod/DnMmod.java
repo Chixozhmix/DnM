@@ -1,6 +1,9 @@
 package net.chixozhmix.dnmmod;
 
 import com.mojang.logging.LogUtils;
+import io.redspace.ironsspellbooks.block.alchemist_cauldron.AlchemistCauldronRecipe;
+import io.redspace.ironsspellbooks.block.alchemist_cauldron.AlchemistCauldronRecipeRegistry;
+import net.chixozhmix.dnmmod.Util.BrewingRecipe;
 import net.chixozhmix.dnmmod.blocks.ModBlocks;
 import net.chixozhmix.dnmmod.blocks.entity.ModBlockEntity;
 import net.chixozhmix.dnmmod.effect.ModEffects;
@@ -21,6 +24,7 @@ import net.chixozhmix.dnmmod.entity.summoned.client.SummonedRavenRenderer;
 import net.chixozhmix.dnmmod.entity.summoned.client.SummonedUndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.items.CreativeTabMod;
 import net.chixozhmix.dnmmod.items.ModItems;
+import net.chixozhmix.dnmmod.potion.ModPotions;
 import net.chixozhmix.dnmmod.screen.CokeOvenScreen;
 import net.chixozhmix.dnmmod.screen.ModMenuTypes;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
@@ -29,6 +33,7 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -40,7 +45,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -69,6 +73,7 @@ public class DnMmod
 
         //Items
         ModItems.register(modEventBus);
+        ModPotions.reggister(modEventBus);
 
         //Blocks
         ModBlocks.register(modEventBus);
@@ -125,7 +130,6 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.GREEN_HAG.get(), GreenHagRenderer::new);
             EntityRenderers.register(ModEntityType.RAVEN.get(), RavenRenderer::new);
             EntityRenderers.register(ModEntityType.SUMMON_RAVEN.get(), SummonedRavenRenderer::new);
-            EntityRenderers.register(ModEntityType.SUMMON_RAVEN.get(), SummonedRavenRenderer::new);
             EntityRenderers.register(ModEntityType.LESHY.get(), LeshyRenderer::new);
             EntityRenderers.register(ModEntityType.GHOST.get(), GhostRenderer::new);
 
@@ -140,9 +144,12 @@ public class DnMmod
             event.registerLayerDefinition(RavenRenderer.MODEL_LAYER_LOCATION, RavenModel::createBodyLayer);
             event.registerLayerDefinition(SummonedRavenRenderer.MODEL_LAYER_LOCATION, SummonedRavenModel::createBodyLayer);
         }
-    }
 
-    public static ResourceLocation id(@NotNull String path) {
-        return new ResourceLocation("dnmmod", path);
+        @SubscribeEvent
+        public static void brewingRecipe(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            //BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModPotions.PHANTOM_POTION.get()));
+
+            AlchemistCauldronRecipeRegistry.registerRecipe(ResourceLocation.parse(DnMmod.MOD_ID), new AlchemistCauldronRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModItems.PHANTOM_POTION.get())).setBaseRequirement(2).setResultLimit(1);
+        }
     }
 }

@@ -1,11 +1,15 @@
 package net.chixozhmix.dnmmod.items;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.item.consumables.SimpleElixir;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
+import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.GreatAxeItem;
 import net.chixozhmix.dnmmod.Util.SpearItem;
+import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.items.custom.*;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.*;
@@ -223,6 +227,9 @@ public class ModItems {
     public static final RegistryObject<Item> STEEL_NUGGET = ITEMS.register("steel_nugget", () ->
             new Item(new Item.Properties()
                     .stacksTo(64)));
+    public static final RegistryObject<Item> ECTOPLASM = ITEMS.register("ectoplasm", () ->
+            new Item(new Item.Properties()
+                    .stacksTo(64)));
     //Magic Item
     public static final RegistryObject<Item> HAG_EYE = ITEMS.register("hag_eye", () ->
             new HagEye(new Item.Properties()
@@ -260,6 +267,14 @@ public class ModItems {
             new WandCore(new Item.Properties()
                     .stacksTo(16)
                     .rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> FOREST_HEART = ITEMS.register("forest_heart", () ->
+            new ForestHeart(new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.RARE)));
+    //Potions
+    public static final RegistryObject<Item> PHANTOM_POTION = ITEMS.register("phantom_potion",
+            () -> new SimpleElixir(ItemPropertiesHelper.material(), () ->
+                    new MobEffectInstance(ModEffects.PHANTOM_EFFECT.get(), 900, 0)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

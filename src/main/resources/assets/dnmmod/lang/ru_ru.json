@@ -13,6 +13,7 @@
   "item.dnmmod.common_trident": "Трезубец",
 
   "item.dnmmod.hag_eye": "Глаз Карги",
+  "item.dnmmod.forest_heart": "Сердце Леса",
   "item.dnmmod.wand_core": "Сердцевина палочки",
   "item.dnmmod.cryomancer_wand_core": "Сердцевина палочки криоманта",
   "item.dnmmod.electromancer_wand_core": "Сердцевина палочки электроманта",
@@ -40,8 +41,15 @@
   "item.dnmmod.flux": "Флюс",
   "item.dnmmod.steel_nugget": "Кусочек стали",
 
+  "item.dnmmod.ectoplasm": "Эктоплазма",
+  "effect.dnmmod.phantom_effect": "Фантом",
+  "item.minecraft.potion.effect.phantom_potion": "Зелье фантома",
+  "item.minecraft.splash_potion.effect.phantom_potion": "Взрывное зелье фантома",
+  "item.minecraft.lingering_potion.effect.phantom_potion": "Туманное зелье фантома",
+
   "block.dnmmod.clay_shale": "Глинистый сланец",
   "block.dnmmod.coke_oven": "Коксовая печь",
+  "block.dnmmod.leshy_altar": "Алтарь Лешего",
 
   "entity.dnmmod.cloud_dagger": "Магический кинжал",
   "entity.dnmmod.ice_dagger": "Ледяной кинжал",
@@ -67,6 +75,7 @@
 
   "tooltip.dnmmod.hag_eye": "Шабаш карг часто создает подобные безделушки из тех, кого когда-то они употребили в пищу. Простая магическая безделушка, скрывающая в себе приятные бонусы. Говорят, она помогает видеть в темноте, а еще с ее помощью можно заметить даже тех, кто находится за стенами!",
   "tooltip.dnmmod.wand_core": "Чтобы волшебная палочка обладала магическими свойствами, она должна быть заряжена энергией. Ядро палочки состоит из различных магических компонентов, которые придают волшебные свойства палочке, созданной заклинателем.",
+  "tooltip.dnmmod.forest_heart": "Убив лешего, что получается у очень малого количества смертных, убийца может получить по-настоящему ценную вещь - Сердце Лешего, обладающее удивительными свойствами управлять растениями и защищать жизнь тех, кто прикасается к земле.",
 
   "ui.dnmmod.bounces": "Отскакиваний: %d",
 

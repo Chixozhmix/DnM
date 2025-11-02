@@ -1,15 +1,14 @@
 package net.chixozhmix.dnmmod.entity.ghost;
 
-import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -22,6 +21,7 @@ import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
@@ -224,6 +224,15 @@ public class GhostEntity extends Monster implements GeoEntity {
         this.goalSelector.addGoal(5, new RandomStrollGoal(this, 1.0D, 20));
 
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
+    }
+
+    @Override
+    protected void dropCustomDeathLoot(DamageSource pSource, int pLooting, boolean pRecentlyHit) {
+        super.dropCustomDeathLoot(pSource, pLooting, pRecentlyHit);
+
+        RandomSource randomSource = this.random;
+
+        this.spawnAtLocation(new ItemStack(ModItems.ECTOPLASM.get(), randomSource.nextInt(3)));
     }
 
     @Override

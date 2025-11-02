@@ -25,6 +25,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.COMMON_SCIMITAR);
         handheldItem(ModItems.COMMON_SICKLE);
         handheldItem(ModItems.COMMON_KLEVETS);
+        handheldItem(ModItems.PHANTOM_POTION);
         //Items
         simpleItem(ModItems.COKE_COAL);
         simpleItem(ModItems.FLUX);
@@ -40,6 +41,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.EVOKER_WAND_CORE);
         simpleItem(ModItems.BLOOD_WAND_CORE);
         simpleItem(ModItems.ENDER_WAND_CORE);
+        simpleItem(ModItems.ECTOPLASM);
         //Staff and wands
         handheldItem(ModItems.WOODEN_WAND);
         handheldItem(ModItems.CRYOMANCER_WAND);

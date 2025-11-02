@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.Abstra
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import net.chixozhmix.dnmmod.goals.CasterBossAttackGoal;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.nbt.CompoundTag;
@@ -52,16 +53,16 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(4, (new WizardAttackGoal(this, (double)1.25F, 35, 80))
-                .setSpells(List.of((AbstractSpell) SpellRegistry.WITHER_SKULL_SPELL.get(),
-                        (AbstractSpell)SpellRegistry.POISON_ARROW_SPELL.get(),
-                        (AbstractSpell)RegistrySpells.ICE_DAGGER.get(),
-                        (AbstractSpell)SpellRegistry.BLOOD_SLASH_SPELL.get()),
-                        List.of((AbstractSpell)RegistrySpells.THUNDERWAVE.get()),
+        this.goalSelector.addGoal(4, (new CasterBossAttackGoal(this, (double)1.25F, 35, 80))
+                .setSpells(List.of(SpellRegistry.WITHER_SKULL_SPELL.get(),
+                        SpellRegistry.POISON_ARROW_SPELL.get(),
+                        RegistrySpells.ICE_DAGGER.get(),
+                        SpellRegistry.BLOOD_SLASH_SPELL.get()),
+                        List.of(RegistrySpells.THUNDERWAVE.get()),
                         List.of(),
-                        List.of((AbstractSpell)SpellRegistry.FANG_WARD_SPELL.get(),
-                                (AbstractSpell)SpellRegistry.ROOT_SPELL.get()))
-                .setSingleUseSpell((AbstractSpell) RegistrySpells.SUMMON_UNDEAD_SPIRIT.get(), 80, 350, 2, 3)
+                        List.of(SpellRegistry.FANG_WARD_SPELL.get(),
+                                SpellRegistry.ROOT_SPELL.get()))
+                .setSingleUseSpell(RegistrySpells.SUMMON_UNDEAD_SPIRIT.get(), 80, 350, 2, 3)
                 .setDrinksPotions());
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, (double)1.0F));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));

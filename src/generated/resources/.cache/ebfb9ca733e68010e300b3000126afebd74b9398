@@ -1,6 +1,8 @@
-// 1.20.1	2025-10-02T12:43:43.6688687	Block States: dnmmod
+// 1.20.1	2025-11-02T15:13:15.0799821	Block States: dnmmod
 8fe8affe8d9c9667b52258b63c6a83e2bac1a5c2 assets/dnmmod/blockstates/clay_shale.json
 670e6f9a505a6a535db5b6b81709b4138e810141 assets/dnmmod/blockstates/coke_oven.json
+f2228b8ae8de40e52ba6f2265c5c3c89df30acbb assets/dnmmod/blockstates/leshy_altar.json
 b54d17a81837e975d96e0469d0be1c666dcbae4e assets/dnmmod/models/block/clay_shale.json
 992491acb19a011cefd7c47c25e5f29528409a9e assets/dnmmod/models/item/clay_shale.json
 629c0ce29930c47070a7b38e298db6c045d369b9 assets/dnmmod/models/item/coke_oven.json
+78df505f1150f9b0c9608844b771279bb46e3d09 assets/dnmmod/models/item/leshy_altar.json
