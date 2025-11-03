@@ -3,7 +3,6 @@ package net.chixozhmix.dnmmod;
 import com.mojang.logging.LogUtils;
 import io.redspace.ironsspellbooks.block.alchemist_cauldron.AlchemistCauldronRecipe;
 import io.redspace.ironsspellbooks.block.alchemist_cauldron.AlchemistCauldronRecipeRegistry;
-import net.chixozhmix.dnmmod.Util.BrewingRecipe;
 import net.chixozhmix.dnmmod.blocks.ModBlocks;
 import net.chixozhmix.dnmmod.blocks.entity.ModBlockEntity;
 import net.chixozhmix.dnmmod.effect.ModEffects;
@@ -11,6 +10,7 @@ import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.entity.ghost.GhostRenderer;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanRenderer;
+import net.chixozhmix.dnmmod.entity.greemon.GreemonRenderer;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagRenderer;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyRenderer;
 import net.chixozhmix.dnmmod.entity.raven.RavenModel;
@@ -132,6 +132,7 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.SUMMON_RAVEN.get(), SummonedRavenRenderer::new);
             EntityRenderers.register(ModEntityType.LESHY.get(), LeshyRenderer::new);
             EntityRenderers.register(ModEntityType.GHOST.get(), GhostRenderer::new);
+            EntityRenderers.register(ModEntityType.GREEMON.get(), GreemonRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COKE_OVEN_MENU.get(), CokeOvenScreen::new);
         }

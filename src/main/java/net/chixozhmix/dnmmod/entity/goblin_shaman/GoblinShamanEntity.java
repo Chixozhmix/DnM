@@ -95,7 +95,7 @@ public class GoblinShamanEntity extends AbstractSpellCastingMob implements Enemy
 
     @Override
     protected boolean shouldDespawnInPeaceful() {
-        return true;
+        return false;
     }
 
     @Override

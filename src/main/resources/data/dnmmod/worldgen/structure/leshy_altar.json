@@ -15,7 +15,12 @@
     "creature": {
       "bounding_box": "piece",
       "spawns": [
-
+        {
+          "type": "dnmmod:raven",
+          "weight": 30,
+          "minCount": 2,
+          "maxCount": 5
+        }
       ]
     }
   }

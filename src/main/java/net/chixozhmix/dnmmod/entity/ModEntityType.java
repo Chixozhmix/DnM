@@ -4,6 +4,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.ghost.GhostEntity;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
+import net.chixozhmix.dnmmod.entity.greemon.GreemonEntity;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagEntity;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
 import net.chixozhmix.dnmmod.entity.projectiles.custom.FIrebolt;
@@ -83,11 +84,6 @@ public class ModEntityType {
                     EntityType.Builder.of(RavenEntity::new, MobCategory.CREATURE)
                             .sized(0.375f, 0.5f)
                             .build("raven"));
-    public static final RegistryObject<EntityType<SummonedRavenEntity>> SUMMON_RAVEN =
-            ENTITY_TYPES.register("summon_raven", () ->
-                    EntityType.Builder.<SummonedRavenEntity>of(SummonedRavenEntity::new, MobCategory.MONSTER)
-                            .sized(0.375f, 0.5f)
-                            .build("summon_raven"));
     public static final RegistryObject<EntityType<LeshyEntity>> LESHY =
             ENTITY_TYPES.register("leshy", () ->
                     EntityType.Builder.of(LeshyEntity::new, MobCategory.MONSTER)
@@ -98,6 +94,11 @@ public class ModEntityType {
                     EntityType.Builder.of(GhostEntity::new, MobCategory.MONSTER)
                             .sized(0.8f, 2.2f)
                             .build("ghost"));
+    public static final RegistryObject<EntityType<GreemonEntity>> GREEMON =
+            ENTITY_TYPES.register("greemon", () ->
+                    EntityType.Builder.of(GreemonEntity::new, MobCategory.MONSTER)
+                            .sized(1.3f, 2.2f)
+                            .build("greemon"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =
@@ -106,6 +107,11 @@ public class ModEntityType {
                     .sized(1.0f, 1.6f)
                     .clientTrackingRange(64)
                     .build("summoned_undead_spirit"));
+    public static final RegistryObject<EntityType<SummonedRavenEntity>> SUMMON_RAVEN =
+            ENTITY_TYPES.register("summon_raven", () ->
+                    EntityType.Builder.<SummonedRavenEntity>of(SummonedRavenEntity::new, MobCategory.MONSTER)
+                            .sized(0.375f, 0.5f)
+                            .build("summon_raven"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -5,6 +5,7 @@ import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.ghost.GhostEntity;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
+import net.chixozhmix.dnmmod.entity.greemon.GreemonEntity;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagEntity;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
 import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
@@ -28,5 +29,6 @@ public class ModEvents {
         event.put(ModEntityType.SUMMON_RAVEN.get(), SummonedRavenEntity.createAttributes());
         event.put(ModEntityType.LESHY.get(), LeshyEntity.prepareAttributes().build());
         event.put(ModEntityType.GHOST.get(), GhostEntity.createAttributes());
+        event.put(ModEntityType.GREEMON.get(), GreemonEntity.createAttributes());
     }
 }

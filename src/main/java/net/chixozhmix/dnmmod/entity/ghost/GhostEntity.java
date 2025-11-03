@@ -23,6 +23,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fluids.FluidType;
@@ -99,6 +100,13 @@ public class GhostEntity extends Monster implements GeoEntity {
     public void tick() {
         super.tick();
 
+        // Проверяем, горит ли моб на солнце
+        if (!this.level().isClientSide) {
+            if (this.isSunBurnTick()) {
+                this.setSecondsOnFire(8); // Горит 8 секунд
+            }
+        }
+
         // Обновляем счетчик анимации атаки
         if (this.attackAnimationTick > 0) {
             this.attackAnimationTick--;
@@ -122,6 +130,31 @@ public class GhostEntity extends Monster implements GeoEntity {
             this.attackAnimationTick = 20;
             this.swinging = false; // Сбрасываем флаг swinging
         }
+    }
+
+    @Override
+    protected boolean isSunBurnTick() {
+        if (this.level().isDay() && !this.level().isClientSide) {
+            // Проверяем, находится ли моб под открытым небом
+            BlockPos blockpos = this.blockPosition();
+            if (this.level().canSeeSky(blockpos)) {
+                // Проверяем уровень света (блокового и небесного)
+                float f = this.getLightLevelDependentMagicValue();
+                // Проверяем, что моб не находится в воде и не под дождем для охлаждения
+                boolean flag = this.isInWaterRainOrBubble() || this.isInPowderSnow || this.wasInPowderSnow;
+
+                // Уровень света должен быть достаточно высоким и моб не должен охлаждаться
+                if (f > 0.5F && this.random.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && !flag) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public float getLightLevelDependentMagicValue() {
+        return this.level().getBrightness(LightLayer.SKY, this.blockPosition()) / 15.0F;
     }
 
     @Override

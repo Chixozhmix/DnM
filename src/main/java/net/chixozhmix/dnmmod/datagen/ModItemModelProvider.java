@@ -42,6 +42,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.BLOOD_WAND_CORE);
         simpleItem(ModItems.ENDER_WAND_CORE);
         simpleItem(ModItems.ECTOPLASM);
+        simpleItem(ModItems.FOREST_HEART);
         //Staff and wands
         handheldItem(ModItems.WOODEN_WAND);
         handheldItem(ModItems.CRYOMANCER_WAND);
