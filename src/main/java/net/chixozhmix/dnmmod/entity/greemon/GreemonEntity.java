@@ -25,8 +25,6 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class GreemonEntity extends Monster implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private int attackAnimationTick = 0;
-
     public GreemonEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.xpReward = 10;
@@ -38,7 +36,7 @@ public class GreemonEntity extends Monster implements GeoEntity {
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
-        if (this.attackAnimationTick > 0) {
+        if (this.swinging) {
             state.getController().setAnimation(RawAnimation.begin().thenPlay("attack"));
             return PlayState.CONTINUE;
         }
@@ -70,18 +68,6 @@ public class GreemonEntity extends Monster implements GeoEntity {
     @Override
     public void tick() {
         super.tick();
-
-        // Обновляем счетчик анимации атаки
-        if (this.attackAnimationTick > 0) {
-            this.attackAnimationTick--;
-        }
-
-        if (this.swinging) {
-            this.getNavigation().stop();
-            // Устанавливаем длительность анимации атаки (например, 10 тиков)
-            this.attackAnimationTick = 20;
-            this.swinging = false; // Сбрасываем флаг swinging
-        }
     }
 
     @Override

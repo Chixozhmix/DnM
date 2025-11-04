@@ -1,21 +1,26 @@
-package net.chixozhmix.dnmmod.entity.custom;
+package net.chixozhmix.dnmmod.entity.goblin_warior;
 
+import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
-import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -27,13 +32,22 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class UndeadSpiritEntity extends Monster implements GeoEntity {
+public class GoblinWariorEntity extends Monster implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private int attackAnimationTick = 0;
-
-    public UndeadSpiritEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public GoblinWariorEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        this.xpReward = 5;
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+    }
+
+    @Override
+    public EntityDimensions getDimensions(Pose pPose) {
+        return EntityDimensions.fixed(0.6f, 0.7f);
     }
 
     @Override
@@ -42,21 +56,22 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
-        // В первую очередь проверяем анимацию атаки
-        if (this.attackAnimationTick > 0) {
+        if (this.swinging) {
+            state.getController().setAnimationSpeed(1.0);
             state.getController().setAnimation(RawAnimation.begin().thenPlay("attack"));
             return PlayState.CONTINUE;
         }
 
         if (state.isMoving()) {
+            state.getController().setAnimationSpeed(1.5);
             state.getController().setAnimation(RawAnimation.begin().thenLoop("walk"));
             return  PlayState.CONTINUE;
         }
 
+        state.getController().setAnimationSpeed(1.0);
         state.getController().setAnimation(RawAnimation.begin().thenLoop("idle"));
         return PlayState.CONTINUE;
     }
-
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
@@ -65,37 +80,17 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
 
     public static AttributeSupplier createAttributes () {
         return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 30.0D)
+                .add(Attributes.MAX_HEALTH, 16.0D)
                 .add(Attributes.ARMOR, 4.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.20D)
+                .add(Attributes.MOVEMENT_SPEED, 0.26D)
+                .add(Attributes.ATTACK_SPEED, 1.2F)
                 .add(Attributes.ATTACK_DAMAGE, 2.0D)
-                .add(Attributes.FOLLOW_RANGE, 40.0D)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 0.2D).build();
+                .add(Attributes.FOLLOW_RANGE, 25.0D).build();
     }
 
     @Override
     public void tick() {
         super.tick();
-
-        // Проверяем, горит ли моб на солнце
-        if (!this.level().isClientSide) {
-            if (this.isSunBurnTick()) {
-                this.setSecondsOnFire(8); // Горит 8 секунд
-            }
-        }
-
-        // Обновляем счетчик анимации атаки
-        if (this.attackAnimationTick > 0) {
-            this.attackAnimationTick--;
-        }
-
-        if (this.swinging) {
-            this.getNavigation().stop();
-            this.attackAnimationTick = 20;
-            this.swinging = false;
-        }
-
-
     }
 
     @Override
@@ -116,32 +111,41 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
     }
 
     @Override
-    protected boolean isSunBurnTick() {
-        if (this.level().isDay() && !this.level().isClientSide) {
-            // Проверяем, находится ли моб под открытым небом
-            BlockPos blockpos = this.blockPosition();
-            if (this.level().canSeeSky(blockpos)) {
-                // Проверяем уровень света (блокового и небесного)
-                float f = this.getLightLevelDependentMagicValue();
-                // Проверяем, что моб не находится в воде и не под дождем для охлаждения
-                boolean flag = this.isInWaterRainOrBubble() || this.isInPowderSnow || this.wasInPowderSnow;
+    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+        RandomSource randomsource = Utils.random;
+        this.populateDefaultEquipmentSlots(randomsource, pDifficulty);
+        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+    }
 
-                // Уровень света должен быть достаточно высоким и моб не должен охлаждаться
-                if (f > 0.5F && this.random.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && !flag) {
-                    return true;
-                }
-            }
+    @Override
+    protected void populateDefaultEquipmentSlots(RandomSource pRandom, DifficultyInstance pDifficulty) {
+        if (pRandom.nextFloat() < 0.3F) {
+            this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.CUMMON_DAGGER.get()));
         }
+        if (pRandom.nextFloat() > 0.3F) {
+            this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
+        }
+
+        if (pRandom.nextFloat() == 0.3F) {
+            this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.LEATHER_HELMET));
+        }
+
+
+        this.setDropChance(EquipmentSlot.MAINHAND, 0.1F);
+    }
+
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
         return false;
     }
 
     @Override
-    public float getLightLevelDependentMagicValue() {
-        return this.level().getBrightness(LightLayer.SKY, this.blockPosition()) / 15.0F;
+    protected @Nullable SoundEvent getAmbientSound() {
+        return SoundsRegistry.GOBLIN_AMBIENT.get();
     }
 
     @Override
-    protected @Nullable SoundEvent getAmbientSound() {
-        return SoundsRegistry.UNDEAD_SPIRIT.get();
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return SoundsRegistry.GOBLIN_HURT.get();
     }
 }

@@ -4,7 +4,6 @@ import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.spell.blood.SummonUndeadSpiritSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
-import net.chixozhmix.dnmmod.spell.holy.PuritySpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
 import net.chixozhmix.dnmmod.spell.lightning.ThunderwaveSpell;
 import net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell;
@@ -24,7 +23,6 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> CLOUD_DAGGER = registerSpell(new CloudDaggerSpell());
     public static final RegistryObject<AbstractSpell> ICE_DAGGER = registerSpell(new IceDaggerSpell());
     public static final RegistryObject<AbstractSpell> THUNDERWAVE = registerSpell(new ThunderwaveSpell());
-    public static final RegistryObject<AbstractSpell> PURITY = registerSpell(new PuritySpell());
     public static final RegistryObject<AbstractSpell> CAUSTIC_BREW = registerSpell(new CausticBrewSpell());
     public static final RegistryObject<AbstractSpell> CHROMATIC_ORB = registerSpell(new ChromaticOrbSpell());
     public static final RegistryObject<AbstractSpell> SUMMON_UNDEAD_SPIRIT = registerSpell(new SummonUndeadSpiritSpell());

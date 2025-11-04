@@ -26,5 +26,16 @@
     "sounds": [
       "dnmmod:raven_ambient"
     ]
+  },
+  "goblin_ambient": {
+    "subtitles": "sounds.dnmmod.goblin",
+    "sounds": [
+      "dnmmod:goblin_ambient"
+    ]
+  },
+  "goblin_hurt": {
+    "sounds": [
+      "dnmmod:goblin_hurt"
+    ]
   }
 }

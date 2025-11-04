@@ -5,7 +5,7 @@
   "item.dnmmod.common_halberd": "Алебарда",
   "item.dnmmod.common_battleaxe": "Боевой топор",
   "item.dnmmod.common_greatsword": "Двуручный меч",
-  "item.dnmmod.common_mace": "Булова",
+  "item.dnmmod.common_mace": "Булава",
   "item.dnmmod.common_scimitar": "Скимитар",
   "item.dnmmod.common_glaive": "Глефа",
   "item.dnmmod.common_klevets": "Клевец",
@@ -32,6 +32,15 @@
   "item.dnmmod.blood_wand": "Кровавая палочка",
   "item.dnmmod.ender_wand": "Палочка эндера",
   "item.dnmmod.sacred_symbol": "Священный символ",
+
+  "item.dnmmod.raven_spawn_egg": "Яйцо призыва ворона",
+  "item.dnmmod.undead_spirit_spawn_egg": "Яйцо призыва Духа Нежити",
+  "item.dnmmod.ghost_spawn_egg": "Яйцо призыва g",
+  "item.dnmmod.goblin_shaman_spawn_egg": "Яйцо призыва гоблина шамана",
+  "item.dnmmod.goblin_warrior_spawn_egg": "Яйцо призыва гоблина воина",
+  "item.dnmmod.greemon_spawn_egg": "Яйцо призыва гримона",
+  "item.dnmmod.green_hag_spawn_egg": "GЯйцо призыва зеленой карги",
+  "item.dnmmod.leshy_spawn_egg": "Яйцо призыва Лешего",
 
   "item.dnmmod.firebalt": "Огненная стрела",
 
@@ -61,6 +70,7 @@
   "death.attack.dnmmod.chromatic_orb": "%1$s был разорван на куски",
   "death.attack.dnmmod.acid_projectile": "%1$s был растворен заживо",
   "death.attack.dnmmod.caustic_brew": "%1$s был разъеден",
+  "death.attack.dnmmod.summon_ravens": "%1$s были выклеваны глаза",
 
   "entity.dnmmod.undead_spirit": "Дух Нежити",
   "entity.dnmmod.summoned_undead_spirit": "Дух Нежити",
@@ -71,6 +81,7 @@
   "entity.dnmmod.leshy": "Леший",
   "entity.dnmmod.ghost": "Призрак",
   "entity.dnmmod.greemon": "Гримон",
+  "entity.dnmmod.goblin_warrior": "Гобилн воин",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 магического урона",
 
@@ -88,6 +99,7 @@
   "creativetab.dnmmod.items": "Предметы",
   "creativetab.dnmmod.blocks": "Блоки",
   "creativetab.dnmmod.magic_items": "Магические предметы",
+  "creativetab.dnmmod.eggs": "Яйца",
 
   "effect.dnmmod.mage_armor": "Доспехи Мага",
   "effect.dnmmod.acid_effect": "Кислота",
@@ -97,6 +109,7 @@
   "sounds.dnmmod.ghost_ambient": "Призрак",
   "sounds.dnmmod.undead_spirit": "Дух Нежити",
   "sounds.dnmmod.raven": "Ворон",
+  "sounds.dnmmod.goblin": "Гоблин",
 
   "spell.dnmmod.mage_armor": "Доспехи Мага",
   "spell.dnmmod.mage_armor.guide": "Вы окружаете себя плетением магии, образуя защиту. Ваш показатель брони увеличивается.",

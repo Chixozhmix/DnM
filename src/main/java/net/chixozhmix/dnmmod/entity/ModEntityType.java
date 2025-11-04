@@ -4,6 +4,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.ghost.GhostEntity;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
+import net.chixozhmix.dnmmod.entity.goblin_warior.GoblinWariorEntity;
 import net.chixozhmix.dnmmod.entity.greemon.GreemonEntity;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagEntity;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
@@ -74,6 +75,11 @@ public class ModEntityType {
                     EntityType.Builder.of(GoblinShamanEntity::new, MobCategory.MONSTER)
                             .sized(0.6f, 0.8f)
                             .build("goblin_shaman"));
+    public static final RegistryObject<EntityType<GoblinWariorEntity>> GOBLIN_WARRIOR =
+            ENTITY_TYPES.register("goblin_warrior", () ->
+                    EntityType.Builder.of(GoblinWariorEntity::new, MobCategory.MONSTER)
+                            .sized(0.6f, 0.8f)
+                            .build("goblin_warrior"));
     public static final RegistryObject<EntityType<GreenHagEntity>> GREEN_HAG =
             ENTITY_TYPES.register("green_hag", () ->
                     EntityType.Builder.of(GreenHagEntity::new, MobCategory.MONSTER)

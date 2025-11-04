@@ -8,6 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -55,6 +56,17 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.SACRED_SYMBOL);
         //Projectiles
         simpleItem(ModItems.FIREBALT);
+        //eggs
+        spawnEggItem(ModItems.GHOST_SPAWN_EGG);
+        spawnEggItem(ModItems.UNDEAD_SPIRIT_SPAWN_EGG);
+        spawnEggItem(ModItems.RAVEN_SPAWN_EGG);
+        spawnEggItem(ModItems.LESHY_SPAWN_EGG);
+        spawnEggItem(ModItems.GREEMON_SPAWN_EGG);
+        spawnEggItem(ModItems.GREEN_HAG_SPAWN_EGG);
+        spawnEggItem(ModItems.GOBLIN_SHAMAN_SPAWN_EGG);
+        spawnEggItem(ModItems.GOBLIN_WARRIOR_SPAWN_EGG);
+
+
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
@@ -73,5 +85,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(DnMmod.MOD_ID, "block/" + item.getId().getPath()));
+    }
+
+    private ItemModelBuilder spawnEggItem (RegistryObject<ForgeSpawnEggItem> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/template_spawn_egg"));
     }
 }

@@ -53,7 +53,6 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
     protected UUID summonerUUID;
     private int riseAnimTime;
     private final AnimatableInstanceCache cache;
-    private int attackAnimationTick = 0;
 
     // Основной конструктор для регистрации EntityType
     public SummonedUndeadSpirit(EntityType<? extends Monster> pEntityType, Level pLevel) {
@@ -104,7 +103,7 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
         // Анимация атаки
-        if (this.attackAnimationTick > 0) {
+        if (this.swinging) {
             state.getController().setAnimation(RawAnimation.begin().thenPlay("attack"));
             return PlayState.CONTINUE;
         }
@@ -151,17 +150,6 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
                 this.setOldPosAndRot();
             }
             return;
-        }
-
-        if (this.attackAnimationTick > 0) {
-            this.attackAnimationTick--;
-        }
-
-        if (this.swinging) {
-            if (this.attackAnimationTick <= 0) {
-                this.attackAnimationTick = 20;
-            }
-            this.swinging = false;
         }
     }
 

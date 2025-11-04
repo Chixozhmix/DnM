@@ -1,6 +1,6 @@
 {
   "type": "forge:add_spawns",
-  "biomes": "is_forest",
+  "biomes": "#minecraft:is_forest",
   "spawners": {
     "type": "dnmmod:raven",
     "weight": 12,

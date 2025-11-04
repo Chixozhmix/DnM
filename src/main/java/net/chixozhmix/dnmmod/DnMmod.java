@@ -10,6 +10,7 @@ import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.entity.ghost.GhostRenderer;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanRenderer;
+import net.chixozhmix.dnmmod.entity.goblin_warior.GoblinWariorRenderer;
 import net.chixozhmix.dnmmod.entity.greemon.GreemonRenderer;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagRenderer;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyRenderer;
@@ -66,27 +67,20 @@ public class DnMmod
 
         //Sounds
         SoundsRegistry.register(modEventBus);
-
         //Entity
         ModEntityType.register(modEventBus);
         ModBlockEntity.register(modEventBus);
-
         //Items
         ModItems.register(modEventBus);
         ModPotions.reggister(modEventBus);
-
         //Blocks
         ModBlocks.register(modEventBus);
-
         //Effects
         ModEffects.register(modEventBus);
-
         //Spells
         RegistrySpells.register(modEventBus);
-
         //CreativeTab
         CreativeTabMod.register(modEventBus);
-
         //Menus
         ModMenuTypes.register(modEventBus);
 
@@ -133,6 +127,7 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.LESHY.get(), LeshyRenderer::new);
             EntityRenderers.register(ModEntityType.GHOST.get(), GhostRenderer::new);
             EntityRenderers.register(ModEntityType.GREEMON.get(), GreemonRenderer::new);
+            EntityRenderers.register(ModEntityType.GOBLIN_WARRIOR.get(), GoblinWariorRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COKE_OVEN_MENU.get(), CokeOvenScreen::new);
         }

@@ -90,6 +90,21 @@ public class CreativeTabMod {
                         output.accept(ModBlocks.LESHY_ALTAR.get());
                     })
                     .build());
+    //Eggs
+    public static final RegistryObject<CreativeModeTab> EGGS = CREATIVE_MOD_TABS.register("eggs",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.GHOST_SPAWN_EGG.get()))
+                    .title(Component.translatable("creativetab.dnmmod.eggs"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.GHOST_SPAWN_EGG.get());
+                        output.accept(ModItems.UNDEAD_SPIRIT_SPAWN_EGG.get());
+                        output.accept(ModItems.RAVEN_SPAWN_EGG.get());
+                        output.accept(ModItems.GOBLIN_SHAMAN_SPAWN_EGG.get());
+                        output.accept(ModItems.GOBLIN_WARRIOR_SPAWN_EGG.get());
+                        output.accept(ModItems.LESHY_SPAWN_EGG.get());
+                        output.accept(ModItems.GREEMON_SPAWN_EGG.get());
+                        output.accept(ModItems.GREEN_HAG_SPAWN_EGG.get());
+                    })
+                    .build());
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MOD_TABS.register(eventBus);

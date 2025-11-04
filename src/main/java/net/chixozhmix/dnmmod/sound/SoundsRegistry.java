@@ -17,6 +17,8 @@ public class SoundsRegistry{
     public static final RegistryObject<SoundEvent> UNDEAD_SPIRIT = registerSoundEvent("undead_spirit");
     public static final RegistryObject<SoundEvent> RAVEN_AMBIENT = registerSoundEvent("raven_ambient");
     public static final RegistryObject<SoundEvent> SUMMON_RAVEN = registerSoundEvent("summon_raven");
+    public static final RegistryObject<SoundEvent> GOBLIN_AMBIENT = registerSoundEvent("goblin_ambient");
+    public static final RegistryObject<SoundEvent> GOBLIN_HURT = registerSoundEvent("goblin_hurt");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENT.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(DnMmod.MOD_ID, name)));

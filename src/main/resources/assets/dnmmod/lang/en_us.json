@@ -33,6 +33,15 @@
   "item.dnmmod.ender_wand": "Ender wand",
   "item.dnmmod.sacred_symbol": "Sacred wand",
 
+  "item.dnmmod.raven_spawn_egg": "Raven spawn egg",
+  "item.dnmmod.undead_spirit_spawn_egg": "Undead Spirit spawn egg",
+  "item.dnmmod.ghost_spawn_egg": "Ghost spawn egg",
+  "item.dnmmod.goblin_shaman_spawn_egg": "Goblin shaman spawn egg",
+  "item.dnmmod.goblin_warrior_spawn_egg": "Goblin warrior spawn egg",
+  "item.dnmmod.greemon_spawn_egg": "Greemon spawn egg",
+  "item.dnmmod.green_hag_spawn_egg": "Green hag spawn egg",
+  "item.dnmmod.leshy_spawn_egg": "Leshy spawn egg",
+
   "item.dnmmod.firebalt": "Firebalt",
 
   "item.dnmmod.raw_steel": "Raw steel",
@@ -58,6 +67,7 @@
   "death.attack.dnmmod.chromatic_orb": "%1$s was torn to pieces",
   "death.attack.dnmmod.acid_projectile": "%1$s was dissolved alive",
   "death.attack.dnmmod.caustic_brew": "%1$s has been corroded",
+  "death.attack.dnmmod.summon_ravens": "%1$s had their eyes pecked out",
 
   "entity.dnmmod.undead_spirit": "Undead Spirit",
   "entity.dnmmod.summoned_undead_spirit": "Undead Spirit",
@@ -68,6 +78,7 @@
   "entity.dnmmod.leshy": "Leshy",
   "entity.dnmmod.ghost": "Ghost",
   "entity.dnmmod.greemon": "Greemon",
+  "entity.dnmmod.goblin_warrior": "Goblin warrior",
 
   "tooltip.dnmmod.fire_staff.magic_damage": "10 magic damage",
 
@@ -85,6 +96,7 @@
   "creativetab.dnmmod.items": "Items",
   "creativetab.dnmmod.blocks": "Blocks",
   "creativetab.dnmmod.magic_items": "Magic items",
+  "creativetab.dnmmod.eggs": "Eggs",
 
   "effect.dnmmod.mage_armor": "Mage Armor",
   "effect.dnmmod.acid_effect": "Acid",
@@ -95,6 +107,7 @@
   "sounds.dnmmod.ghost_ambient": "Ghost",
   "sounds.dnmmod.undead_spirit": "Undead Spirit",
   "sounds.dnmmod.raven": "Raven",
+  "sounds.dnmmod.goblin": "Goblin",
 
   "spell.dnmmod.mage_armor": "Mage Armor",
   "spell.dnmmod.mage_armor.guide": "You surround yourself with a web of magic, forming a shield. Your armor rating increases.",
