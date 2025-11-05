@@ -61,6 +61,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.STEEL_NUGGET.get());
                         output.accept(ModItems.ECTOPLASM.get());
                         output.accept(ModItems.PHANTOM_POTION.get());
+                        output.accept(ModItems.RAVEN_FEATHER.get());
                     })
                     .build());
     //Magic Items

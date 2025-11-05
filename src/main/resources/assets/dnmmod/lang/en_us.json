@@ -49,6 +49,7 @@
   "item.dnmmod.coke_coal": "Coke coal",
   "item.dnmmod.flux": "Flux",
   "item.dnmmod.steel_nugget": "Steel nugget",
+  "item.dnmmod.raven_feather": "Raven Feather",
 
   "item.dnmmod.ectoplasm": "Ectoplasm",
   "item.dnmmod.phantom_potion": "Phantom potion",
@@ -108,6 +109,8 @@
   "sounds.dnmmod.undead_spirit": "Undead Spirit",
   "sounds.dnmmod.raven": "Raven",
   "sounds.dnmmod.goblin": "Goblin",
+  "sounds.dnmmod.greemon": "Greemon",
+  "sounds.dnmmod.leshy": "Leshy",
 
   "spell.dnmmod.mage_armor": "Mage Armor",
   "spell.dnmmod.mage_armor.guide": "You surround yourself with a web of magic, forming a shield. Your armor rating increases.",

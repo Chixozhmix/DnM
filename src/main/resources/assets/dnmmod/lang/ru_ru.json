@@ -49,6 +49,7 @@
   "item.dnmmod.coke_coal": "Коксовый уголь",
   "item.dnmmod.flux": "Флюс",
   "item.dnmmod.steel_nugget": "Кусочек стали",
+  "item.dnmmod.raven_feather": "Перо ворона",
 
   "item.dnmmod.ectoplasm": "Эктоплазма",
   "effect.dnmmod.phantom_effect": "Фантом",
@@ -110,6 +111,8 @@
   "sounds.dnmmod.undead_spirit": "Дух Нежити",
   "sounds.dnmmod.raven": "Ворон",
   "sounds.dnmmod.goblin": "Гоблин",
+  "sounds.dnmmod.greemon": "Гримон",
+  "sounds.dnmmod.leshy": "Леший",
 
   "spell.dnmmod.mage_armor": "Доспехи Мага",
   "spell.dnmmod.mage_armor.guide": "Вы окружаете себя плетением магии, образуя защиту. Ваш показатель брони увеличивается.",

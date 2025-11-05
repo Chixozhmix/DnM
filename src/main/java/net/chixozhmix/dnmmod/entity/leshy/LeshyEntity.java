@@ -7,11 +7,13 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.chixozhmix.dnmmod.goals.CasterBossAttackGoal;
 import net.chixozhmix.dnmmod.items.ModItems;
+import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
@@ -152,6 +154,11 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
     @Override
     protected boolean shouldDespawnInPeaceful() {
         return false;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return SoundsRegistry.LESHY_AMBIENT.get();
     }
 
     /* BOSS BAR */

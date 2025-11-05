@@ -5,8 +5,6 @@ import io.redspace.ironsspellbooks.item.consumables.SimpleElixir;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.Util.GreatAxeItem;
-import net.chixozhmix.dnmmod.Util.SpearItem;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.items.custom.*;
@@ -14,6 +12,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -28,28 +27,28 @@ public class ModItems {
 
     //Weapons
     public static final RegistryObject<Item> CUMMON_DAGGER = ITEMS.register("cummon_dagger", () ->
-            new DaggerItem(Tiers.IRON,
+            new SwordItem(Tiers.IRON,
                     1,
                     -1.4f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(600)));
     public static final RegistryObject<Item> COMMON_KLEVETS = ITEMS.register("common_klevets", () ->
-            new DaggerItem(Tiers.IRON,
+            new SwordItem(Tiers.IRON,
                     3,
                     -1.6f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(630)));
     public static final RegistryObject<Item> COMMON_SICKLE = ITEMS.register("common_sickle", () ->
-            new DaggerItem(Tiers.IRON,
+            new SwordItem(Tiers.IRON,
                     2,
                     -1.5f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(620)));
     public static final RegistryObject<Item> COMMON_MACE = ITEMS.register("common_mace", () ->
-            new DaggerItem(Tiers.IRON,
+            new SwordItem(Tiers.IRON,
                     2,
                     -2.0f,
                     new Item.Properties()
@@ -70,42 +69,42 @@ public class ModItems {
                             .stacksTo(1)
                             .durability(560)));
     public static final RegistryObject<Item> CUMMON_SPEAR = ITEMS.register("cummon_spear", () ->
-            new SpearItem(Tiers.IRON,
+            new SwordItem(Tiers.IRON,
                     4,
                     -2.4f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(650)));
     public static final RegistryObject<Item> COMMON_HALBERD = ITEMS.register("common_halberd", () ->
-            new SpearItem(Tiers.IRON,
+            new SwordItem(Tiers.IRON,
                     4,
                     -2.0f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(610)));
     public static final RegistryObject<Item> CUMMON_GREATAXE = ITEMS.register("cummon_greataxe", () ->
-            new GreatAxeItem(Tiers.DIAMOND,
+            new AxeItem(Tiers.DIAMOND,
                     8,
                     -3.4f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(700)));
     public static final RegistryObject<Item> COMMON_GREATSWORD = ITEMS.register("common_greatsword", () ->
-            new GreatAxeItem(Tiers.DIAMOND,
+            new SwordItem(Tiers.DIAMOND,
                     7,
                     -2.8f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(760)));
     public static final RegistryObject<Item> COMMON_GLAIVE = ITEMS.register("common_glaive", () ->
-            new GreatAxeItem(Tiers.IRON,
+            new SwordItem(Tiers.IRON,
                     4,
                     -2.4f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(760)));
     public static final RegistryObject<Item> COMMON_TRIDENT = ITEMS.register("common_trident", () ->
-            new GreatAxeItem(Tiers.IRON,
+            new SwordItem(Tiers.IRON,
                     4,
                     -2.6f,
                     new Item.Properties()
@@ -230,6 +229,9 @@ public class ModItems {
             new Item(new Item.Properties()
                     .stacksTo(64)));
     public static final RegistryObject<Item> ECTOPLASM = ITEMS.register("ectoplasm", () ->
+            new Item(new Item.Properties()
+                    .stacksTo(64)));
+    public static final RegistryObject<Item> RAVEN_FEATHER = ITEMS.register("raven_feather", () ->
             new Item(new Item.Properties()
                     .stacksTo(64)));
     //Magic Item

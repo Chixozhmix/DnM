@@ -37,5 +37,17 @@
     "sounds": [
       "dnmmod:goblin_hurt"
     ]
+  },
+  "greemon_ambient": {
+    "subtitles": "sounds.dnmmod.greemon",
+    "sounds": [
+      "dnmmod:greemon_ambient"
+    ]
+  },
+  "leshy_ambient": {
+    "subtitles": "sounds.dnmmod.leshy",
+    "sounds": [
+      "dnmmod:leshy_ambient"
+    ]
   }
 }

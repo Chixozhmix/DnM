@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-04T19:38:11.9852804	Item Models: dnmmod
+// 1.20.1	2025-11-05T19:25:00.9772512	Item Models: dnmmod
 afcc952ce0db6e1184fb9a9347ff79b125ccef76 assets/dnmmod/models/item/blood_wand.json
 ba00481093cc18d9af0be8250395299563b9ae8d assets/dnmmod/models/item/blood_wand_core.json
 ce53e646f17f225f910a10c18eeec041a9e6ec85 assets/dnmmod/models/item/coke_coal.json
@@ -32,6 +32,7 @@ b1305a5b9f21ff7d150660da71f4064d036416c3 assets/dnmmod/models/item/hag_eye.json
 299b7d66545c0461ae8a20ab0cf1dd3878d54cad assets/dnmmod/models/item/phantom_potion.json
 076a49d47ab5abf4c058c95e7e54faa4c2fd1823 assets/dnmmod/models/item/pyromancer_wand.json
 bff4666c5792b6c45bc79e73ea5acae62da6fee9 assets/dnmmod/models/item/pyromancer_wand_core.json
+e956d3f901ac08687c6a9524afd8c6060cc114c5 assets/dnmmod/models/item/raven_feather.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/raven_spawn_egg.json
 ae80c53a8ff4092cb5ca35a6ca93897ad749e3a7 assets/dnmmod/models/item/raw_steel.json
 3eb32a592747e97ec8bf62e5eb218b00a3a0017e assets/dnmmod/models/item/sacred_symbol.json
