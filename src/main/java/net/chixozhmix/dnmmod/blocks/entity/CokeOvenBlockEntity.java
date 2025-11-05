@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.blocks.entity;
 
 import net.chixozhmix.dnmmod.items.ModItems;
+import net.chixozhmix.dnmmod.recipe.CokeOvenRecipes;
 import net.chixozhmix.dnmmod.screen.CokeOvenMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -24,6 +25,8 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class CokeOvenBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemStackHandler = new ItemStackHandler(2);
@@ -140,7 +143,10 @@ public class CokeOvenBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void craftItem() {
-        ItemStack result = new ItemStack(ModItems.COKE_COAL.get(), 1);
+        Optional<CokeOvenRecipes> recipes = getCurrentRecipe();
+
+        ItemStack result = recipes.get().getResultItem(null);
+
         this.itemStackHandler.extractItem(INPUT_SLOT, 1, false);
 
         this.itemStackHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
@@ -156,10 +162,23 @@ public class CokeOvenBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private boolean hasRecipe() {
-        boolean hasCrafttingItem = this.itemStackHandler.getStackInSlot(INPUT_SLOT).getItem() == Items.COAL;
-        ItemStack result = new ItemStack(ModItems.COKE_COAL.get());
+        Optional<CokeOvenRecipes> recipes = getCurrentRecipe();
 
-        return hasCrafttingItem && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+        if(recipes.isEmpty())
+            return false;
+
+        ItemStack result = recipes.get().getResultItem(null);
+
+        return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+    }
+
+    private Optional<CokeOvenRecipes> getCurrentRecipe() {
+        SimpleContainer inventory = new SimpleContainer(this.itemStackHandler.getSlots());
+
+        for (int i = 0; i < itemStackHandler.getSlots(); i++)
+            inventory.setItem(i, itemStackHandler.getStackInSlot(i));
+
+        return this.level.getRecipeManager().getRecipeFor(CokeOvenRecipes.Type.INSTANCE, inventory, level);
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {

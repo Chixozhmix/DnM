@@ -26,6 +26,7 @@ import net.chixozhmix.dnmmod.entity.summoned.client.SummonedUndeadSpiritRenderer
 import net.chixozhmix.dnmmod.items.CreativeTabMod;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.potion.ModPotions;
+import net.chixozhmix.dnmmod.recipe.ModRecipes;
 import net.chixozhmix.dnmmod.screen.CokeOvenScreen;
 import net.chixozhmix.dnmmod.screen.ModMenuTypes;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
@@ -83,6 +84,8 @@ public class DnMmod
         CreativeTabMod.register(modEventBus);
         //Menus
         ModMenuTypes.register(modEventBus);
+        //Recipes
+        ModRecipes.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
     }

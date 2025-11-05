@@ -1,0 +1,12 @@
+{
+  "type": "dnmmod:coke_oven",
+  "ingredients":[
+    {
+      "item": "minecraft:coal"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "dnmmod:coke_coal"
+  }
+}
