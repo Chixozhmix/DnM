@@ -269,6 +269,11 @@ public class GhostEntity extends Monster implements GeoEntity {
     }
 
     @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return true;
+    }
+
+    @Override
     public boolean hasLineOfSight(Entity pEntity) {
         return true;
     }

@@ -68,41 +68,49 @@ public class ModEntityType {
     //Mobs
     public static final RegistryObject<EntityType<UndeadSpiritEntity>> UNDEAD_SPIRIT =
             ENTITY_TYPES.register("undead_spirit", () -> EntityType.Builder.of(UndeadSpiritEntity::new, MobCategory.MONSTER)
+                    .clientTrackingRange(8)
                     .sized(1.0f, 1.6f)
                     .build("undead_spirit"));
     public static final RegistryObject<EntityType<GoblinShamanEntity>> GOBLIN_SHAMAN =
             ENTITY_TYPES.register("goblin_shaman", () ->
                     EntityType.Builder.of(GoblinShamanEntity::new, MobCategory.MONSTER)
+                            .clientTrackingRange(10)
                             .sized(0.6f, 0.8f)
                             .build("goblin_shaman"));
     public static final RegistryObject<EntityType<GoblinWariorEntity>> GOBLIN_WARRIOR =
             ENTITY_TYPES.register("goblin_warrior", () ->
                     EntityType.Builder.of(GoblinWariorEntity::new, MobCategory.MONSTER)
+                            .clientTrackingRange(8)
                             .sized(0.6f, 0.8f)
                             .build("goblin_warrior"));
     public static final RegistryObject<EntityType<GreenHagEntity>> GREEN_HAG =
             ENTITY_TYPES.register("green_hag", () ->
                     EntityType.Builder.of(GreenHagEntity::new, MobCategory.MONSTER)
+                            .clientTrackingRange(16)
                             .sized(1.0f, 2.3f)
                             .build("green_hag"));
     public static final RegistryObject<EntityType<RavenEntity>> RAVEN =
             ENTITY_TYPES.register("raven", () ->
                     EntityType.Builder.of(RavenEntity::new, MobCategory.CREATURE)
+                            .clientTrackingRange(8)
                             .sized(0.375f, 0.5f)
                             .build("raven"));
     public static final RegistryObject<EntityType<LeshyEntity>> LESHY =
             ENTITY_TYPES.register("leshy", () ->
                     EntityType.Builder.of(LeshyEntity::new, MobCategory.MONSTER)
+                            .clientTrackingRange(16)
                             .sized(1.2f, 4.7f)
                             .build("leshy"));
     public static final RegistryObject<EntityType<GhostEntity>> GHOST =
             ENTITY_TYPES.register("ghost", () ->
                     EntityType.Builder.of(GhostEntity::new, MobCategory.MONSTER)
+                            .clientTrackingRange(10)
                             .sized(0.8f, 2.2f)
                             .build("ghost"));
     public static final RegistryObject<EntityType<GreemonEntity>> GREEMON =
             ENTITY_TYPES.register("greemon", () ->
                     EntityType.Builder.of(GreemonEntity::new, MobCategory.MONSTER)
+                            .clientTrackingRange(10)
                             .sized(1.3f, 2.2f)
                             .build("greemon"));
 
@@ -111,11 +119,12 @@ public class ModEntityType {
             ENTITY_TYPES.register("summoned_undead_spirit", () ->
                     EntityType.Builder.<SummonedUndeadSpirit>of(SummonedUndeadSpirit::new, MobCategory.MONSTER)
                     .sized(1.0f, 1.6f)
-                    .clientTrackingRange(64)
+                    .clientTrackingRange(32)
                     .build("summoned_undead_spirit"));
     public static final RegistryObject<EntityType<SummonedRavenEntity>> SUMMON_RAVEN =
             ENTITY_TYPES.register("summon_raven", () ->
                     EntityType.Builder.<SummonedRavenEntity>of(SummonedRavenEntity::new, MobCategory.MONSTER)
+                            .clientTrackingRange(32)
                             .sized(0.375f, 0.5f)
                             .build("summon_raven"));
 

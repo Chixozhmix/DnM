@@ -144,4 +144,9 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
     protected @Nullable SoundEvent getAmbientSound() {
         return SoundsRegistry.UNDEAD_SPIRIT.get();
     }
+
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return true;
+    }
 }

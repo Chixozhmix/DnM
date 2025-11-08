@@ -117,4 +117,9 @@ public class GreemonEntity extends Monster implements GeoEntity {
     protected @Nullable SoundEvent getAmbientSound() {
         return SoundsRegistry.GREEMON_AMBIENT.get();
     }
+
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return true;
+    }
 }

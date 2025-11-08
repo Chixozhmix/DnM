@@ -35,12 +35,9 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -151,7 +148,8 @@ public class DnMmod
         public static void brewingRecipe(EntityRenderersEvent.RegisterLayerDefinitions event) {
             //BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModPotions.PHANTOM_POTION.get()));
 
-            AlchemistCauldronRecipeRegistry.registerRecipe(ResourceLocation.parse(DnMmod.MOD_ID), new AlchemistCauldronRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModItems.PHANTOM_POTION.get())).setBaseRequirement(2).setResultLimit(1);
+            AlchemistCauldronRecipeRegistry.registerRecipe(ResourceLocation.parse(DnMmod.MOD_ID),
+                    new AlchemistCauldronRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModItems.PHANTOM_POTION.get())).setBaseRequirement(2).setResultLimit(1);
         }
     }
 }

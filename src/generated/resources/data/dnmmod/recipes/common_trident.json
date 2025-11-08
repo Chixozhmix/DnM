@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "N": {
-      "item": "dnmmod:steel_nugget"
+      "item": "minecraft:iron_ingot"
     },
     "S": {
       "item": "minecraft:stick"

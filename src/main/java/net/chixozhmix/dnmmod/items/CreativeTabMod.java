@@ -54,11 +54,6 @@ public class CreativeTabMod {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.STEEL_INGOT.get()))
                     .title(Component.translatable("creativetab.dnmmod.items"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.STEEL_INGOT.get());
-                        output.accept(ModItems.RAW_STEEL.get());
-                        output.accept(ModItems.COKE_COAL.get());
-                        output.accept(ModItems.FLUX.get());
-                        output.accept(ModItems.STEEL_NUGGET.get());
                         output.accept(ModItems.ECTOPLASM.get());
                         output.accept(ModItems.PHANTOM_POTION.get());
                         output.accept(ModItems.RAVEN_FEATHER.get());
@@ -86,8 +81,6 @@ public class CreativeTabMod {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.CLAY_SHALE.get()))
                     .title(Component.translatable("creativetab.dnmmod.blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModBlocks.CLAY_SHALE.get());
-                        output.accept(ModBlocks.COKE_OVEN.get());
                         output.accept(ModBlocks.LESHY_ALTAR.get());
                     })
                     .build());

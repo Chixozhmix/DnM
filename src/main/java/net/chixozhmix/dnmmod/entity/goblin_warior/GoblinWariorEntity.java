@@ -136,7 +136,7 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
 
     @Override
     protected boolean shouldDespawnInPeaceful() {
-        return false;
+        return true;
     }
 
     @Override
