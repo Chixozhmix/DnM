@@ -77,8 +77,8 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
 
     maven {
-        name = 'forge'
-        url = 'https://maven.minecraftforge.net/'
+        name = "Forge"
+        url = "https://maven.minecraftforge.net/"
     }
 
     maven {
