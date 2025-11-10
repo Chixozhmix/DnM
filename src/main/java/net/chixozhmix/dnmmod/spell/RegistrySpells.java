@@ -27,6 +27,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> CHROMATIC_ORB = registerSpell(new ChromaticOrbSpell());
     public static final RegistryObject<AbstractSpell> SUMMON_UNDEAD_SPIRIT = registerSpell(new SummonUndeadSpiritSpell());
     public static final RegistryObject<AbstractSpell> SUMMON_RAVEN = registerSpell(new SummonRavenSpell());
+    public static final RegistryObject<AbstractSpell> SHRINKING = registerSpell(new ShrinkingSpell());
 
 
     public static void register(IEventBus eventBus) {

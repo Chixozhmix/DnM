@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-06T15:22:23.7906877	Item Models: dnmmod
+// 1.20.1	2025-11-10T17:49:54.494032	Item Models: dnmmod
 afcc952ce0db6e1184fb9a9347ff79b125ccef76 assets/dnmmod/models/item/blood_wand.json
 ba00481093cc18d9af0be8250395299563b9ae8d assets/dnmmod/models/item/blood_wand_core.json
 ce53e646f17f225f910a10c18eeec041a9e6ec85 assets/dnmmod/models/item/coke_coal.json
@@ -29,6 +29,8 @@ c17373fb6f5b039d59a309fa464d788c6a7daa80 assets/dnmmod/models/item/evoker_wand_c
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/green_hag_spawn_egg.json
 b1305a5b9f21ff7d150660da71f4064d036416c3 assets/dnmmod/models/item/hag_eye.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/leshy_spawn_egg.json
+db3aebb84646c5179e1ffdd450e447969e0b50fb assets/dnmmod/models/item/maid_cap.json
+51ba6441b6fb63dcaf9b2c0e8d28257d3226cb43 assets/dnmmod/models/item/maid_dress.json
 299b7d66545c0461ae8a20ab0cf1dd3878d54cad assets/dnmmod/models/item/phantom_potion.json
 076a49d47ab5abf4c058c95e7e54faa4c2fd1823 assets/dnmmod/models/item/pyromancer_wand.json
 bff4666c5792b6c45bc79e73ea5acae62da6fee9 assets/dnmmod/models/item/pyromancer_wand_core.json

@@ -11,6 +11,7 @@ import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
 import java.util.List;
@@ -237,6 +238,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('D', ItemRegistry.DIVINE_PEARL.get())
                 .define('G', Items.GOLD_INGOT)
                 .unlockedBy("has_wand_core", has(ModItems.WAND_CORE.get()))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAID_DRESS.get(), 1)
+                .pattern("W W")
+                .pattern("WWW")
+                .pattern("WWW")
+                .define('W', Items.WHITE_WOOL)
+                .unlockedBy("has_wool", has(Items.WHITE_WOOL))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAID_CAP.get(), 1)
+                .pattern("   ")
+                .pattern("WFW")
+                .pattern("   ")
+                .define('W', Items.WHITE_WOOL)
+                .define('F', Items.OXEYE_DAISY)
+                .unlockedBy("has_wool", has(Items.WHITE_WOOL))
                 .save(consumer);
     }
 

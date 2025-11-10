@@ -66,6 +66,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         spawnEggItem(ModItems.GREEN_HAG_SPAWN_EGG);
         spawnEggItem(ModItems.GOBLIN_SHAMAN_SPAWN_EGG);
         spawnEggItem(ModItems.GOBLIN_WARRIOR_SPAWN_EGG);
+        //Armor
+        simpleItem(ModItems.MAID_DRESS);
+        simpleItem(ModItems.MAID_CAP);
 
 
     }

@@ -5,6 +5,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.effect.custom.AcidEffect;
 import net.chixozhmix.dnmmod.effect.custom.MageArmorEffect;
 import net.chixozhmix.dnmmod.effect.custom.PhantomEffect;
+import net.chixozhmix.dnmmod.effect.custom.ShrinkEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,6 +27,7 @@ public class ModEffects {
             EFFECTS.register("summon_raven", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 12495141));
     public static final RegistryObject<MobEffect> PHANTOM_EFFECT =
             EFFECTS.register("phantom_effect", () -> new PhantomEffect(MobEffectCategory.BENEFICIAL, 0x78938c));
+    public static final RegistryObject<MobEffect> SHRINK_EFFECT = EFFECTS.register("shrink_effect", () -> new ShrinkEffect());
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

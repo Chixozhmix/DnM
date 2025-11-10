@@ -52,10 +52,9 @@
   "item.dnmmod.raven_feather": "Перо ворона",
 
   "item.dnmmod.ectoplasm": "Эктоплазма",
-  "effect.dnmmod.phantom_effect": "Фантом",
-  "item.minecraft.potion.effect.phantom_potion": "Зелье фантома",
-  "item.minecraft.splash_potion.effect.phantom_potion": "Взрывное зелье фантома",
-  "item.minecraft.lingering_potion.effect.phantom_potion": "Туманное зелье фантома",
+
+  "item.dnmmod.maid_dress": "Платье горничной",
+  "item.dnmmod.maid_cap": "Шапочка горничной",
 
   "block.dnmmod.clay_shale": "Глинистый сланец",
   "block.dnmmod.coke_oven": "Коксовая печь",
@@ -85,7 +84,7 @@
   "entity.dnmmod.goblin_warrior": "Гобилн воин",
   "entity.dnmmod.owlbear": "Совомед",
 
-  "tooltip.dnmmod.fire_staff.magic_damage": "10 магического урона",
+  "tooltip.dnmmod.maid": "Почему нет?",
 
   "tooltip.dnmmod.hag_eye": "Шабаш карг часто создает подобные безделушки из тех, кого когда-то они употребили в пищу. Простая магическая безделушка, скрывающая в себе приятные бонусы. Говорят, она помогает видеть в темноте, а еще с ее помощью можно заметить даже тех, кто находится за стенами!",
   "tooltip.dnmmod.wand_core": "Чтобы волшебная палочка обладала магическими свойствами, она должна быть заряжена энергией. Ядро палочки состоит из различных магических компонентов, которые придают волшебные свойства палочке, созданной заклинателем.",
@@ -107,6 +106,8 @@
   "effect.dnmmod.acid_effect": "Кислота",
   "effect.dnmmod.summon_undead_spirit": "Призыв Духа Нежити",
   "effect.dnmmod.summon_raven": "Призыв Воронов",
+  "effect.dnmmod.phantom_effect": "Фантом",
+  "effect.dnmmod.shrink_effect": "Уменьшение",
 
   "sounds.dnmmod.ghost_ambient": "Призрак",
   "sounds.dnmmod.undead_spirit": "Дух Нежити",
@@ -143,5 +144,8 @@
   "spell.dnmmod.summon_undead_spirit.guide": "Вы вызываете дух могущественной нежити, который защищает вас от врагов.",
 
   "spell.dnmmod.summon_ravens": "Вызов Воронов",
-  "spell.dnmmod.summon_ravens.guide": "Вы вызываете стаю воронов, которые защищают вас от врагов."
+  "spell.dnmmod.summon_ravens.guide": "Вы вызываете стаю воронов, которые защищают вас от врагов.",
+
+  "spell.dnmmod.shrinking": "Уменьшение",
+  "spell.dnmmod.shrinking.guide": "Вы уменьшаете свое тело."
 }

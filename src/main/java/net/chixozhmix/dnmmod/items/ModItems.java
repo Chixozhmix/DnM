@@ -280,6 +280,12 @@ public class ModItems {
             () -> new SimpleElixir(ItemPropertiesHelper.material(), () ->
                     new MobEffectInstance(ModEffects.PHANTOM_EFFECT.get(), 900, 0)));
 
+    //Armor
+    public static final RegistryObject<Item> MAID_DRESS = ITEMS.register("maid_dress",
+            () -> new MaidDress(ModArmorMaterials.MAIDDRESS, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> MAID_CAP = ITEMS.register("maid_cap",
+            () -> new MaidDress(ModArmorMaterials.MAIDDRESS, ArmorItem.Type.HELMET, new Item.Properties()));
+
     //Eggs
     public static final RegistryObject<ForgeSpawnEggItem> RAVEN_SPAWN_EGG = ITEMS.register("raven_spawn_egg", () ->
             new ForgeSpawnEggItem(ModEntityType.RAVEN, 0x111111, 0x262626, new Item.Properties().stacksTo(64)));

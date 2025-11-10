@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-06T14:58:32.2609724	Recipes
+// 1.20.1	2025-11-10T19:04:41.8331322	Recipes
 14e66b777e21bbd916eab64ca85801bc66f245cb data/dnmmod/advancements/recipes/combat/common_battleaxe.json
 2b9fef3ba2f81c3a84919a9491dab5cbff104065 data/dnmmod/advancements/recipes/combat/common_glaive.json
 d52c86becb4413fc2a93764efd71442d61c4d348 data/dnmmod/advancements/recipes/combat/common_greatsword.json
@@ -23,6 +23,8 @@ e2f06612ed3de558adb6f5bd85dcc21dbb4db4be data/dnmmod/advancements/recipes/misc/c
 42a52bb80daddc716c8ed6f308ed679aabd4b300 data/dnmmod/advancements/recipes/misc/ender_wand_core.json
 5789533753d94a481cdc7e6fc0e00c21e769f856 data/dnmmod/advancements/recipes/misc/evoker_wand.json
 06f18db6b9436f823cfa6ef5043156a92654128b data/dnmmod/advancements/recipes/misc/evoker_wand_core.json
+1421bd50a90e5bf57f4222bc42f602ef65cc7cd3 data/dnmmod/advancements/recipes/misc/maid_cap.json
+b23cdaabf24feeda2d78b117c650ad605f822baa data/dnmmod/advancements/recipes/misc/maid_dress.json
 e4d268e1247859fac7079fbf5c19088ec9f0b914 data/dnmmod/advancements/recipes/misc/pyromancer_wand.json
 a4155f67d0853afdd78d6cd9763dbf91594e931f data/dnmmod/advancements/recipes/misc/pyromancer_wand_core.json
 51222d78520b518735423645a3839ab3f14e3056 data/dnmmod/advancements/recipes/misc/sacred_symbol.json
@@ -52,6 +54,8 @@ a1edfb9c79b2581c418cdfd5d08724d548eac6b7 data/dnmmod/recipes/ender_wand.json
 fa8cfa6b6c2fb36d5269ec213b532f2ef050565f data/dnmmod/recipes/ender_wand_core.json
 ddbba40cc092b4db2fdcd83a56a26b9adaf83c5f data/dnmmod/recipes/evoker_wand.json
 005603180772fcc1418fe13fb0f430320f16114c data/dnmmod/recipes/evoker_wand_core.json
+8ecd2eaf702562f6ff76b8f2c09cbfbd21705c52 data/dnmmod/recipes/maid_cap.json
+3907b4ee204146ad1b679ca470fa60a3bc12ffc7 data/dnmmod/recipes/maid_dress.json
 18cd021d88edd95d619cc67fd7984ab8d30f917d data/dnmmod/recipes/pyromancer_wand.json
 2c3f15136b9de2b4a4d5b00b814dbe6aa4f0f217 data/dnmmod/recipes/pyromancer_wand_core.json
 81fbe9945c22eb7f3c1906e1b9a885ffd5e6e559 data/dnmmod/recipes/sacred_symbol.json

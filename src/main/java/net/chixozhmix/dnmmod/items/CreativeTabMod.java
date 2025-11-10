@@ -57,6 +57,8 @@ public class CreativeTabMod {
                         output.accept(ModItems.ECTOPLASM.get());
                         output.accept(ModItems.PHANTOM_POTION.get());
                         output.accept(ModItems.RAVEN_FEATHER.get());
+                        output.accept(ModItems.MAID_DRESS.get());
+                        output.accept(ModItems.MAID_CAP.get());
                     })
                     .build());
     //Magic Items
