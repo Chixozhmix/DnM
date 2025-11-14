@@ -1,15 +1,15 @@
-// 1.20.1	2025-11-10T17:49:54.494032	Item Models: dnmmod
+// 1.20.1	2025-11-14T17:53:49.3940148	Item Models: dnmmod
 afcc952ce0db6e1184fb9a9347ff79b125ccef76 assets/dnmmod/models/item/blood_wand.json
 ba00481093cc18d9af0be8250395299563b9ae8d assets/dnmmod/models/item/blood_wand_core.json
 ce53e646f17f225f910a10c18eeec041a9e6ec85 assets/dnmmod/models/item/coke_coal.json
-70877d9d1b4540eaa3e1a269389665301b3a783b assets/dnmmod/models/item/common_battleaxe.json
-d47ce670311d2eb9edd8da970aaf3dbfce74db19 assets/dnmmod/models/item/common_klevets.json
-070eadf0aa0a97c4884d7ec2a73e2ea540369893 assets/dnmmod/models/item/common_mace.json
-2386adb3574fc496bb6fd1a40d93c8fdd35b9bf2 assets/dnmmod/models/item/common_scimitar.json
-80c86dd042d40e981c9042b4ef95716179a46943 assets/dnmmod/models/item/common_sickle.json
 b8b985f080c11123b66420d9c4407f8df6ed8ce4 assets/dnmmod/models/item/cryomancer_wand.json
 1c6bcd6989fdb7d87f3bd9e8faff8949bf6c6a41 assets/dnmmod/models/item/cryomancer_wand_core.json
-6c612f6b81eb3762aa884a2f10c4d3b914510660 assets/dnmmod/models/item/cummon_dagger.json
+3d2db95f7c0f1496a9ef50733e1b65c5f7619937 assets/dnmmod/models/item/diamond_battleaxe.json
+5e8c0253b8b15f7e2c89e1dd4f041ccb5773d982 assets/dnmmod/models/item/diamond_dagger.json
+5c494f930a458bfc964a43297e697bbd71912979 assets/dnmmod/models/item/diamond_klevets.json
+f6c9f4b5ee8f57be04b0e0ef7fea195745b365d3 assets/dnmmod/models/item/diamond_mace.json
+c679d7de37dfd41202b76d1cded4762556e74c2e assets/dnmmod/models/item/diamond_scimitar.json
+fef8c3a5db423efa4cf3ad02adfba5799217a174 assets/dnmmod/models/item/diamond_sickle.json
 a841d0e50a7ce09d0e25f4e958ef1ba2577cdab7 assets/dnmmod/models/item/druid_wand.json
 fdcd70c1a6a9b92a38a3bb8c8336ebf8dd60008c assets/dnmmod/models/item/druid_wand_core.json
 83324c4acb05a2157f339e9122591581dabf26c5 assets/dnmmod/models/item/ectoplasm.json
@@ -28,6 +28,12 @@ c17373fb6f5b039d59a309fa464d788c6a7daa80 assets/dnmmod/models/item/evoker_wand_c
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/greemon_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/green_hag_spawn_egg.json
 b1305a5b9f21ff7d150660da71f4064d036416c3 assets/dnmmod/models/item/hag_eye.json
+80f6badbf194949546db729dea0e96c47ff7c4d3 assets/dnmmod/models/item/iron_battleaxe.json
+0ec0c7a2b29a22b73989b04abff82e2240fe7291 assets/dnmmod/models/item/iron_dagger.json
+cc732266c40ec5f6e06eb03b62af32640b806ff1 assets/dnmmod/models/item/iron_klevets.json
+09697377cef873fa19ef159ee16b747ba84a19e1 assets/dnmmod/models/item/iron_mace.json
+d5962e67dd51a6cd88327dc6f2183134c2fa3a71 assets/dnmmod/models/item/iron_scimitar.json
+20d9a85d1c3c98db6819142969686a46e264c26f assets/dnmmod/models/item/iron_sickle.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/leshy_spawn_egg.json
 db3aebb84646c5179e1ffdd450e447969e0b50fb assets/dnmmod/models/item/maid_cap.json
 51ba6441b6fb63dcaf9b2c0e8d28257d3226cb43 assets/dnmmod/models/item/maid_dress.json

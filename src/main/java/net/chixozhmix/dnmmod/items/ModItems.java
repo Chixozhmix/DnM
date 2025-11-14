@@ -1,7 +1,9 @@
 package net.chixozhmix.dnmmod.items;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.item.consumables.SimpleElixir;
+import io.redspace.ironsspellbooks.item.spell_books.SimpleAttributeSpellBook;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.chixozhmix.dnmmod.DnMmod;
@@ -26,90 +28,188 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID);
 
     //Weapons
-    public static final RegistryObject<Item> CUMMON_DAGGER = ITEMS.register("cummon_dagger", () ->
+    public static final RegistryObject<Item> IRON_DAGGER = ITEMS.register("iron_dagger", () ->
             new SwordItem(Tiers.IRON,
                     1,
                     -1.4f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(600)));
-    public static final RegistryObject<Item> COMMON_KLEVETS = ITEMS.register("common_klevets", () ->
+    public static final RegistryObject<Item> IRON_KLEVETS = ITEMS.register("iron_klevets", () ->
             new SwordItem(Tiers.IRON,
                     3,
                     -1.6f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(630)));
-    public static final RegistryObject<Item> COMMON_SICKLE = ITEMS.register("common_sickle", () ->
+    public static final RegistryObject<Item> IRON_SICKLE = ITEMS.register("iron_sickle", () ->
             new SwordItem(Tiers.IRON,
                     2,
                     -1.5f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(620)));
-    public static final RegistryObject<Item> COMMON_MACE = ITEMS.register("common_mace", () ->
+    public static final RegistryObject<Item> IRON_MACE = ITEMS.register("iron_mace", () ->
             new SwordItem(Tiers.IRON,
                     2,
                     -2.0f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(660)));
-    public static final RegistryObject<Item> COMMON_SCIMITAR = ITEMS.register("common_scimitar", () ->
+    public static final RegistryObject<Item> IRON_SCIMITAR = ITEMS.register("iron_scimitar", () ->
             new SwordItem(Tiers.IRON,
                     3,
                     -1.8f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(640)));
-    public static final RegistryObject<Item> COMMON_BATTLEAXE = ITEMS.register("common_battleaxe", () ->
+    public static final RegistryObject<Item> IRON_BATTLEAXE = ITEMS.register("iron_battleaxe", () ->
             new AxeItem(Tiers.IRON,
                     3.5F,
                     -2.5f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(560)));
-    public static final RegistryObject<Item> CUMMON_SPEAR = ITEMS.register("cummon_spear", () ->
+    public static final RegistryObject<Item> IRON_SPEAR = ITEMS.register("iron_spear", () ->
             new SwordItem(Tiers.IRON,
                     4,
                     -2.4f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(650)));
-    public static final RegistryObject<Item> COMMON_HALBERD = ITEMS.register("common_halberd", () ->
+    public static final RegistryObject<Item> IRON_HALBERD = ITEMS.register("iron_halberd", () ->
             new SwordItem(Tiers.IRON,
                     4,
                     -2.0f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(610)));
-    public static final RegistryObject<Item> CUMMON_GREATAXE = ITEMS.register("cummon_greataxe", () ->
-            new AxeItem(Tiers.DIAMOND,
-                    8,
+    public static final RegistryObject<Item> IRON_GREATAXE = ITEMS.register("iron_greataxe", () ->
+            new AxeItem(Tiers.IRON,
+                    9,
                     -3.4f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(700)));
-    public static final RegistryObject<Item> COMMON_GREATSWORD = ITEMS.register("common_greatsword", () ->
-            new SwordItem(Tiers.DIAMOND,
-                    7,
+    public static final RegistryObject<Item> IRON_GREATSWORD = ITEMS.register("iron_greatsword", () ->
+            new SwordItem(Tiers.IRON,
+                    8,
                     -2.8f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(760)));
-    public static final RegistryObject<Item> COMMON_GLAIVE = ITEMS.register("common_glaive", () ->
+    public static final RegistryObject<Item> IRON_GLAIVE = ITEMS.register("iron_glaive", () ->
             new SwordItem(Tiers.IRON,
                     4,
                     -2.4f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(760)));
-    public static final RegistryObject<Item> COMMON_TRIDENT = ITEMS.register("common_trident", () ->
+    public static final RegistryObject<Item> IRON_TRIDENT = ITEMS.register("iron_trident", () ->
             new SwordItem(Tiers.IRON,
                     4,
                     -2.6f,
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(730)));
+    public static final RegistryObject<Item> IRON_KATANA = ITEMS.register("iron_katana", () ->
+            new SwordItem(Tiers.IRON,
+                    4,
+                    -2.0f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(630)));
+    public static final RegistryObject<Item> DIAMOND_DAGGER = ITEMS.register("diamond_dagger", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    1,
+                    -1.4f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(600)));
+    public static final RegistryObject<Item> DIAMOND_KLEVETS = ITEMS.register("diamond_klevets", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    3,
+                    -1.6f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(630)));
+    public static final RegistryObject<Item> DIAMOND_SICKLE = ITEMS.register("diamond_sickle", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    2,
+                    -1.5f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(620)));
+    public static final RegistryObject<Item> DIAMOND_MACE = ITEMS.register("diamond_mace", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    2,
+                    -2.0f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(660)));
+    public static final RegistryObject<Item> DIAMOND_SCIMITAR = ITEMS.register("diamond_scimitar", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    3,
+                    -1.8f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(640)));
+    public static final RegistryObject<Item> DIAMOND_BATTLEAXE = ITEMS.register("diamond_battleaxe", () ->
+            new AxeItem(Tiers.DIAMOND,
+                    3.5F,
+                    -2.5f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(560)));
+    public static final RegistryObject<Item> DIAMOND_SPEAR = ITEMS.register("diamond_spear", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    4,
+                    -2.4f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(650)));
+    public static final RegistryObject<Item> DIAMOND_HALBERD = ITEMS.register("diamond_halberd", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    4,
+                    -2.0f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(610)));
+    public static final RegistryObject<Item> DIAMOND_GREATAXE = ITEMS.register("diamond_greataxe", () ->
+            new AxeItem(Tiers.DIAMOND,
+                    9,
+                    -3.4f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(700)));
+    public static final RegistryObject<Item> DIAMOND_GREATSWORD = ITEMS.register("diamond_greatsword", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    8,
+                    -2.8f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(760)));
+    public static final RegistryObject<Item> DIAMOND_GLAIVE = ITEMS.register("diamond_glaive", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    4,
+                    -2.4f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(760)));
+    public static final RegistryObject<Item> DIAMOND_TRIDENT = ITEMS.register("diamond_trident", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    4,
+                    -2.6f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(730)));
+    public static final RegistryObject<Item> DIAMOND_KATANA = ITEMS.register("diamond_katana", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    4,
+                    -2.0f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(630)));
     //Staffs and wands
     public static final RegistryObject<Item> WOODEN_WAND = ITEMS.register("wooden_wand",
             () -> new StaffItem(new Item.Properties().stacksTo(1),
@@ -285,6 +385,10 @@ public class ModItems {
             () -> new MaidDress(ModArmorMaterials.MAIDDRESS, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<Item> MAID_CAP = ITEMS.register("maid_cap",
             () -> new MaidDress(ModArmorMaterials.MAIDDRESS, ArmorItem.Type.HELMET, new Item.Properties()));
+
+    //Spellbooks
+    public static final RegistryObject<Item> MAGICAL_GRIMOIRE = ITEMS.register("magical_grimoire",
+            () -> new SimpleAttributeSpellBook(8, SpellRarity.RARE, AttributeRegistry.COOLDOWN_REDUCTION.get(), 0.10, (double)50.0F));
 
     //Eggs
     public static final RegistryObject<ForgeSpawnEggItem> RAVEN_SPAWN_EGG = ITEMS.register("raven_spawn_egg", () ->

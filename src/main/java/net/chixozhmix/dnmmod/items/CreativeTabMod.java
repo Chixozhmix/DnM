@@ -16,21 +16,35 @@ public class CreativeTabMod {
 
     //Weapons
     public static final RegistryObject<CreativeModeTab> WEAPONS_TAB = CREATIVE_MOD_TABS.register("weapons",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CUMMON_DAGGER.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.IRON_DAGGER.get()))
                     .title(Component.translatable("creativetab.dnmmod.weapons"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.CUMMON_DAGGER.get());
-                        output.accept(ModItems.CUMMON_SPEAR.get());
-                        output.accept(ModItems.CUMMON_GREATAXE.get());
-                        output.accept(ModItems.COMMON_HALBERD.get());
-                        output.accept(ModItems.COMMON_BATTLEAXE.get());
-                        output.accept(ModItems.COMMON_GREATSWORD.get());
-                        output.accept(ModItems.COMMON_MACE.get());
-                        output.accept(ModItems.COMMON_SCIMITAR.get());
-                        output.accept(ModItems.COMMON_GLAIVE.get());
-                        output.accept(ModItems.COMMON_SICKLE.get());
-                        output.accept(ModItems.COMMON_KLEVETS.get());
-                        output.accept(ModItems.COMMON_TRIDENT.get());
+                        output.accept(ModItems.IRON_DAGGER.get());
+                        output.accept(ModItems.IRON_SPEAR.get());
+                        output.accept(ModItems.IRON_GREATAXE.get());
+                        output.accept(ModItems.IRON_HALBERD.get());
+                        output.accept(ModItems.IRON_BATTLEAXE.get());
+                        output.accept(ModItems.IRON_GREATSWORD.get());
+                        output.accept(ModItems.IRON_MACE.get());
+                        output.accept(ModItems.IRON_SCIMITAR.get());
+                        output.accept(ModItems.IRON_GLAIVE.get());
+                        output.accept(ModItems.IRON_SICKLE.get());
+                        output.accept(ModItems.IRON_KLEVETS.get());
+                        output.accept(ModItems.IRON_TRIDENT.get());
+                        output.accept(ModItems.IRON_KATANA.get());
+                        output.accept(ModItems.DIAMOND_DAGGER.get());
+                        output.accept(ModItems.DIAMOND_SPEAR.get());
+                        output.accept(ModItems.DIAMOND_GREATAXE.get());
+                        output.accept(ModItems.DIAMOND_HALBERD.get());
+                        output.accept(ModItems.DIAMOND_BATTLEAXE.get());
+                        output.accept(ModItems.DIAMOND_GREATSWORD.get());
+                        output.accept(ModItems.DIAMOND_MACE.get());
+                        output.accept(ModItems.DIAMOND_SCIMITAR.get());
+                        output.accept(ModItems.DIAMOND_GLAIVE.get());
+                        output.accept(ModItems.DIAMOND_SICKLE.get());
+                        output.accept(ModItems.DIAMOND_KLEVETS.get());
+                        output.accept(ModItems.DIAMOND_TRIDENT.get());
+                        output.accept(ModItems.DIAMOND_KATANA.get());
                     })
                     .build());
     //Staffs
@@ -47,11 +61,12 @@ public class CreativeTabMod {
                         output.accept(ModItems.PYROMANCER_WAND.get());
                         output.accept(ModItems.ENDER_WAND.get());
                         output.accept(ModItems.SACRED_SYMBOL.get());
+                        output.accept(ModItems.MAGICAL_GRIMOIRE.get());
                     })
                     .build());
     //Items
     public static final RegistryObject<CreativeModeTab> ITEMS_TAB = CREATIVE_MOD_TABS.register("items",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.STEEL_INGOT.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.RAVEN_FEATHER.get()))
                     .title(Component.translatable("creativetab.dnmmod.items"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.ECTOPLASM.get());

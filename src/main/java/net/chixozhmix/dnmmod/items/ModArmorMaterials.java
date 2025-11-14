@@ -16,8 +16,8 @@ import java.util.EnumMap;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    MAIDDRESS("maid_dress", 37, (EnumMap)Util.make(new EnumMap(ArmorItem.Type.class), (map) -> {
-        map.put(ArmorItem.Type.CHESTPLATE, 3);
+    MAIDDRESS("maid_dress", 20, (EnumMap)Util.make(new EnumMap(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.CHESTPLATE, 2);
         map.put(ArmorItem.Type.HELMET, 1);
     }), 15, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F, 0.0F, () -> Ingredient.of(new ItemLike[]{Items.NETHERITE_INGOT}));
 

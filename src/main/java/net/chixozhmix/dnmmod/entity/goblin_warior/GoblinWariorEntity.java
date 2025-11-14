@@ -1,7 +1,6 @@
 package net.chixozhmix.dnmmod.entity.goblin_warior;
 
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.minecraft.nbt.CompoundTag;
@@ -120,7 +119,7 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource pRandom, DifficultyInstance pDifficulty) {
         if (pRandom.nextFloat() < 0.3F) {
-            this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.CUMMON_DAGGER.get()));
+            this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.IRON_DAGGER.get()));
         }
         if (pRandom.nextFloat() > 0.3F) {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
