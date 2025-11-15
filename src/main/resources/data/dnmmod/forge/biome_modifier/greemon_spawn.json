@@ -3,7 +3,7 @@
   "biomes": "#minecraft:is_overworld",
   "spawners": {
     "type": "dnmmod:greemon",
-    "weight": 6,
+    "weight": 7,
     "minCount": 1,
     "maxCount": 1
   }

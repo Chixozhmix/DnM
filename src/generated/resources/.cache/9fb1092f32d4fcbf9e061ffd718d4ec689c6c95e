@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-14T17:53:49.3970073	Recipes
+// 1.20.1	2025-11-15T17:25:12.9187287	Recipes
 66d9b096436d2f53c49785a5c55daa816a200934 data/dnmmod/advancements/recipes/combat/diamond_battleaxe.json
 98ae1d8dd16adc7d287c622589b5edc25b8bef65 data/dnmmod/advancements/recipes/combat/diamond_dagger.json
 bb5fddf76be48199b7479e9149d42d62d1f86d91 data/dnmmod/advancements/recipes/combat/diamond_glaive.json
@@ -83,7 +83,7 @@ d3604437ee3bd286a474cbcc6badde3bd81dab94 data/dnmmod/recipes/iron_klevets.json
 3f1bfd7044e20ba730857318451b3472ce123dff data/dnmmod/recipes/iron_sickle.json
 2d2649fd4ea4ec11d346d2ff34cabaa3d1fe633d data/dnmmod/recipes/iron_spear.json
 1b31c29537f9ae7a0791648fb291fa339bbed327 data/dnmmod/recipes/iron_trident.json
-767ad2ac4a6788cc235d06337eea5da6c3cf9df4 data/dnmmod/recipes/magical_grimoire.json
+5012ffd7d3711f563b36f737baf75ab52bb377dc data/dnmmod/recipes/magical_grimoire.json
 8ecd2eaf702562f6ff76b8f2c09cbfbd21705c52 data/dnmmod/recipes/maid_cap.json
 3907b4ee204146ad1b679ca470fa60a3bc12ffc7 data/dnmmod/recipes/maid_dress.json
 18cd021d88edd95d619cc67fd7984ab8d30f917d data/dnmmod/recipes/pyromancer_wand.json

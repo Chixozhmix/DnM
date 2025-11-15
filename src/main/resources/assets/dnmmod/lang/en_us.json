@@ -164,5 +164,8 @@
   "spell.dnmmod.summon_ravens.guide": "You summon a flock of crows that protect you from your enemies.",
 
   "spell.dnmmod.shrinking": "Shrinking",
-  "spell.dnmmod.shrinking.guide": "You are shrinking your body."
+  "spell.dnmmod.shrinking.guide": "You are shrinking your body.",
+
+  "spell.dnmmod.agathys_armor_spell": "Agathys Armor",
+  "spell.dnmmod.agathys_armor_spell.guide": "You surround yourself with cold armor that protects you and damages anyone who dares to touch you."
 }

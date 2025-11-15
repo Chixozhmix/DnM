@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.spell.blood.SummonUndeadSpiritSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
+import net.chixozhmix.dnmmod.spell.ice.AgathysArmorSpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
 import net.chixozhmix.dnmmod.spell.lightning.ThunderwaveSpell;
 import net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell;
@@ -28,6 +29,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> SUMMON_UNDEAD_SPIRIT = registerSpell(new SummonUndeadSpiritSpell());
     public static final RegistryObject<AbstractSpell> SUMMON_RAVEN = registerSpell(new SummonRavenSpell());
     public static final RegistryObject<AbstractSpell> SHRINKING = registerSpell(new ShrinkingSpell());
+    public static final RegistryObject<AbstractSpell> AGATHYS_ARMOR_SPELL = registerSpell(new AgathysArmorSpell());
 
 
     public static void register(IEventBus eventBus) {

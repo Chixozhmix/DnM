@@ -369,13 +369,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_wool", has(Items.WHITE_WOOL))
                 .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGICAL_GRIMOIRE.get(), 1)
+                .pattern("BCB")
                 .pattern("LEL")
                 .pattern("ASA")
-                .pattern("   ")
                 .define('S', ItemRegistry.IRON_SPELL_BOOK.get())
                 .define('A', ItemRegistry.ARCANE_ESSENCE.get())
                 .define('E', Items.AMETHYST_SHARD)
                 .define('L', Items.LEATHER)
+                .define('B', Items.BONE)
+                .define('C', Items.BLUE_DYE)
                 .unlockedBy("has_spell_book", has(ItemRegistry.IRON_SPELL_BOOK.get()))
                 .save(consumer);
     }

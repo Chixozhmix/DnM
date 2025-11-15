@@ -48,13 +48,11 @@ public class CloudDagger extends LivingEntity implements GeoEntity, AntiMagicSus
     private int lifetime = 100;
     private final AnimatableInstanceCache cache  = GeckoLibUtil.createInstanceCache(this);
 
-    // Основной конструктор для регистрации EntityType
     public CloudDagger(EntityType<? extends CloudDagger> entityType, Level level) {
         super(entityType, level);
         this.noCulling = true;
     }
 
-    // Удобный конструктор для создания кинжалов в коде
     public CloudDagger(Level level, LivingEntity owner, float damage) {
         this(ModEntityType.MAGIC_DAGGER.get(), level);
         this.setOwner(owner);
@@ -234,10 +232,11 @@ public class CloudDagger extends LivingEntity implements GeoEntity, AntiMagicSus
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<>(this, "controller", 0, this::animationPredicate)
-                .setAnimationSpeed(1.5f));
+                .setAnimationSpeed(2.0f));
     }
 
     private PlayState animationPredicate(AnimationState<CloudDagger> cloudDaggerAnimationState) {
+
 
         cloudDaggerAnimationState.setAnimation(RawAnimation.begin().thenLoop("idle"));
 

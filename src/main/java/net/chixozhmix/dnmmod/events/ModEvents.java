@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.events;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.ghost.GhostEntity;
@@ -13,13 +14,21 @@ import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 

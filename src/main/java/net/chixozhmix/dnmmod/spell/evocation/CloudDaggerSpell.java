@@ -15,6 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
@@ -63,7 +64,7 @@ public class CloudDaggerSpell extends AbstractSpell {
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.irons_spellbooks.distance", new Object[]{Utils.stringTruncation((double)this.getCylinderRadius(spellLevel, caster), 1)}),
+                Component.translatable("ui.irons_spellbooks.distance", new Object[]{Utils.stringTruncation((double)this.getCylinderRadius(), 1)}),
                 Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2)})
                 );
     }
@@ -72,61 +73,71 @@ public class CloudDaggerSpell extends AbstractSpell {
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
 
-        int daggerCount = this.getDaggerCount(spellLevel, entity);
-        float cylinderRadius = this.getCylinderRadius(spellLevel, entity);
-        float cylinderHeight = this.getCylinderHeight(spellLevel, entity);
         Vec3 center = null;
 
         ICastData castData = playerMagicData.getAdditionalCastData();
         if (castData instanceof TargetEntityCastData castTargetingData) {
             LivingEntity target = castTargetingData.getTarget((ServerLevel) level);
             if (target != null) {
-                // ИСПРАВЛЕНИЕ: Берем позицию глаз цели или центр bounding box
-                center = target.getEyePosition().subtract(0, 0.5, 0);
-                // Альтернативно: center = target.getBoundingBox().getCenter();
+                center = target.getEyePosition().subtract(0, 0, 0);
             }
         }
 
         if (center == null) {
-            center = Utils.raycastForEntity(level, entity, 32.0F, true, 0.15F).getLocation();
-            center = Utils.moveToRelativeGroundLevel(level, center, 6);
+            HitResult raycast = Utils.raycastForEntity(level, entity, 32.0F, true, 0.15F);
+            center = raycast.getLocation();
+
+            if(raycast.getType() == HitResult.Type.BLOCK)
+                center = center.add(0, 4, 0);
+
+            center = Utils.moveToRelativeGroundLevel(level, center, 2);
         }
 
         // Создаем кинжалы в цилиндрической форме по границе
-        createDoubleCylindricalDaggerCloud(level, spellLevel, entity, center, daggerCount, cylinderRadius, cylinderHeight);
+        createDoubleCylindricalDaggerCloud(level, spellLevel, entity, center, getDaggerCount(), getCylinderRadius(), getCylinderHeight(spellLevel, entity));
     }
 
     private void createDoubleCylindricalDaggerCloud(Level level, int spellLevel, LivingEntity entity, Vec3 center, int daggerCount, float radius, float height) {
+        int layers = Math.max(2, (int) Math.ceil(height / 1.5f)); // Количество слоев по высоте
+        int daggersPerLayer = daggerCount / layers; // Кинжалов на слой
+
+        // Если общее количество не делится равномерно, добавляем остаток к последнему слою
+        int remainingDaggers = daggerCount - (daggersPerLayer * layers);
+
         int createdDaggers = 0;
 
-        for (int i = 0; i < daggerCount; i++) {
-            // Случайный угол и высота в цилиндре
-            float angle = level.random.nextFloat() * 360.0F;
-            double yOffset = (level.random.nextDouble() - 0.5) * height;
+        for (int layer = 0; layer < layers; layer++) {
+            int daggersInThisLayer = daggersPerLayer + (layer == layers - 1 ? remainingDaggers : 0);
+            float layerHeight = (float)layer / (layers - 1); // От 0 до 1
 
-            // Позиция на цилиндре
-            double x = Math.cos(Math.toRadians(angle)) * radius;
-            double z = Math.sin(Math.toRadians(angle)) * radius;
+            // Высота текущего слоя (от нижней до верхней границы цилиндра)
+            double yOffset = (layerHeight - 0.5f) * height;
 
-            Vec3 spawnPos = center.add(x, yOffset, z);
+            for (int i = 0; i < daggersInThisLayer; i++) {
+                // Равномерное распределение по окружности
+                float angle = (float)i / daggersInThisLayer * 360.0F;
 
-            // ИСПРАВЛЕНИЕ: Упрощенная проверка позиции
-            if (isValidSpawnPosition(level, BlockPos.containing(spawnPos))) {
-                CloudDagger dagger = new CloudDagger(level, entity, this.getDamage(spellLevel, entity));
-                dagger.moveTo(spawnPos);
+                // Позиция на цилиндре
+                double x = Math.cos(Math.toRadians(angle)) * radius;
+                double z = Math.sin(Math.toRadians(angle)) * radius;
 
-                // Направляем кинжалы наружу от центра
-                dagger.setYRot(angle + 90.0F);
-                dagger.setLifetime(100 + level.random.nextInt(40));
+                Vec3 spawnPos = center.add(x, yOffset, z);
 
-                level.addFreshEntity(dagger);
-                createdDaggers++;
+                if (isValidSpawnPosition(level, BlockPos.containing(spawnPos))) {
+                    CloudDagger dagger = new CloudDagger(level, entity, this.getDamage(spellLevel, entity));
+                    dagger.moveTo(spawnPos);
+
+                    dagger.setYRot(angle + 90.0F);
+                    dagger.setLifetime(100 + level.random.nextInt(40));
+
+                    level.addFreshEntity(dagger);
+                    createdDaggers++;
+                }
             }
         }
     }
 
     private boolean isValidSpawnPosition(Level level, BlockPos pos) {
-        // ИСПРАВЛЕНИЕ: Разрешаем спавн в воздухе, но не внутри блоков
         return level.getBlockState(pos).isAir() &&
                 level.getBlockState(pos.above()).isAir();
     }
@@ -135,15 +146,15 @@ public class CloudDaggerSpell extends AbstractSpell {
         return this.getSpellPower(spellLevel, entity);
     }
 
-    private int getDaggerCount(int spellLevel, LivingEntity entity) {
+    private int getDaggerCount() {
         return 14;
     }
 
-    private float getCylinderRadius(int spellLevel, LivingEntity entity) {
-        return 3;
+    private float getCylinderRadius() {
+        return 2;
     }
 
     private float getCylinderHeight(int spellLevel, LivingEntity entity) {
-        return 2.5F + spellLevel * 0.5F;
+        return 0.5F + spellLevel * 0.5F;
     }
 }
