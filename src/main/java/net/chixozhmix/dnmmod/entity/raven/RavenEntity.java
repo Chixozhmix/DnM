@@ -73,14 +73,6 @@ public class RavenEntity extends PathfinderMob implements FlyingAnimal {
     }
 
     @Override
-    protected void dropCustomDeathLoot(DamageSource pSource, int pLooting, boolean pRecentlyHit) {
-        super.dropCustomDeathLoot(pSource, pLooting, pRecentlyHit);
-        RandomSource randomSource = this.random;
-
-        this.spawnAtLocation(new ItemStack(ModItems.RAVEN_FEATHER.get(), randomSource.nextInt(4)));
-    }
-
-    @Override
     protected @Nullable SoundEvent getAmbientSound() {
         return SoundsRegistry.RAVEN_AMBIENT.get();
     }

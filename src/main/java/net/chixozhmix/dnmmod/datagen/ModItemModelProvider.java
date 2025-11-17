@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.datagen;
 
+import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.minecraft.data.PackOutput;
@@ -33,6 +34,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.DIAMOND_SICKLE);
         handheldItem(ModItems.DIAMOND_KLEVETS);
         handheldItem(ModItems.PHANTOM_POTION);
+        curioItem(ModItems.PROTECTION_RING);
         //Items
         simpleItem(ModItems.COKE_COAL);
         simpleItem(ModItems.FLUX);
@@ -80,6 +82,12 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(DnMmod.MOD_ID, "item/" + item.getId().getPath()));
+    }
+
+    private ItemModelBuilder curioItem(RegistryObject<CurioBaseItem> item) {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(DnMmod.MOD_ID, "item/" + item.getId().getPath()));

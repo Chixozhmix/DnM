@@ -73,6 +73,8 @@
   "item.dnmmod.maid_dress": "Платье горничной",
   "item.dnmmod.maid_cap": "Шапочка горничной",
 
+  "item.dnmmod.protection_ring": "Кольцо защиты",
+
   "block.dnmmod.clay_shale": "Глинистый сланец",
   "block.dnmmod.coke_oven": "Коксовая печь",
   "block.dnmmod.leshy_altar": "Алтарь Лешего",
@@ -125,6 +127,7 @@
   "effect.dnmmod.summon_raven": "Призыв Воронов",
   "effect.dnmmod.phantom_effect": "Фантом",
   "effect.dnmmod.shrink_effect": "Уменьшение",
+  "effect.dnmmod.agathys_armor": "Доспех Агатиса",
 
   "sounds.dnmmod.ghost_ambient": "Призрак",
   "sounds.dnmmod.undead_spirit": "Дух Нежити",
@@ -164,5 +167,8 @@
   "spell.dnmmod.summon_ravens.guide": "Вы вызываете стаю воронов, которые защищают вас от врагов.",
 
   "spell.dnmmod.shrinking": "Уменьшение",
-  "spell.dnmmod.shrinking.guide": "Вы уменьшаете свое тело."
+  "spell.dnmmod.shrinking.guide": "Вы уменьшаете свое тело.",
+
+  "spell.dnmmod.agathys_armor_spell": "Доспех Агатиса",
+  "spell.dnmmod.agathys_armor_spell.guide": "Вы окружаете себя холодной броней, которая защищает вас и наносит урон любому, кто осмелится прикоснуться к вам."
 }

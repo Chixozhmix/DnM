@@ -13,8 +13,7 @@ public class ModPotions {
     public static final DeferredRegister<Potion> POTIONS =
             DeferredRegister.create(ForgeRegistries.POTIONS, DnMmod.MOD_ID);
 
-//    public static final RegistryObject<Potion> PHANTOM_POTION = POTIONS.register("phantom_potion",
-//            () -> new Potion(new MobEffectInstance(ModEffects.PHANTOM_EFFECT.get(), 1200, 0)));
+
 
 
     public static void reggister(IEventBus eventBus) {

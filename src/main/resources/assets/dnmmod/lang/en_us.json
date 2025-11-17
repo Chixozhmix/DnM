@@ -73,6 +73,8 @@
   "item.dnmmod.maid_dress": "Maid dress",
   "item.dnmmod.maid_cap": "Maid cap",
 
+  "item.dnmmod.protection_ring": "Protection ring",
+
   "block.dnmmod.clay_shale": "Clay shale",
   "block.dnmmod.coke_oven": "Coke oven",
   "block.dnmmod.leshy_altar": "Leshy Altar",
@@ -125,6 +127,7 @@
   "effect.dnmmod.summon_raven": "Summon Ravens",
   "effect.dnmmod.phantom_effect": "Phantom",
   "effect.dnmmod.shrink_effect": "Shrink",
+  "effect.dnmmod.agathys_armor": "Agathys Armor",
 
   "sounds.dnmmod.ghost_ambient": "Ghost",
   "sounds.dnmmod.undead_spirit": "Undead Spirit",

@@ -77,7 +77,7 @@ public class AgathysArmorSpell extends AbstractSpell {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
 
         entity.addEffect(new MobEffectInstance((MobEffect) ModEffects.AGATHYS_ARMOR.get(),
-                2400,
+                1300,
                 (int)this.getSpellPower(spellLevel, entity) - 1,
                 false,
                 false,

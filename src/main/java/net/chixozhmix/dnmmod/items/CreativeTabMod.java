@@ -91,6 +91,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.BLOOD_WAND_CORE.get());
                         output.accept(ModItems.EVOKER_WAND_CORE.get());
                         output.accept(ModItems.ENDER_WAND_CORE.get());
+                        output.accept(ModItems.PROTECTION_RING.get());
                     })
                     .build());
     //Blocks

@@ -36,40 +36,41 @@ public class AgathysArmor extends MobEffect {
     public static void onLivingHurt(LivingHurtEvent event) {
         LivingEntity target = event.getEntity();
 
-        // Проверяем, что у цели есть эффект
         if (target.hasEffect(ModEffects.AGATHYS_ARMOR.get()) &&
                 event.getSource().getEntity() instanceof LivingEntity attacker) {
 
-            // Проверяем, что это ближняя атака
+
             if (!isMeleeAttack(event.getSource())) {
                 return;
             }
 
-            // Получаем текущее количество сердец поглощения
             float absorptionHearts = target.getAbsorptionAmount();
 
             if (absorptionHearts > 0) {
-                // Наносим ответный урон атакующему
+
                 float retaliationDamage = absorptionHearts / 2;
 
                 attacker.hurt(target.damageSources().thorns(target), retaliationDamage);
 
-                // Визуальные эффекты
+
                 if (target.level() instanceof ServerLevel serverLevel) {
                     serverLevel.playSound(null, target.getX(), target.getY(), target.getZ(),
-                            SoundEvents.THORNS_HIT, target.getSoundSource(), 1.0F, 1.0F);
+                            SoundEvents.SNOW_HIT, target.getSoundSource(), 1.0F, 1.0F);
 
-                    // Спавним частицы
-                    serverLevel.sendParticles(ParticleTypes.DAMAGE_INDICATOR,
+
+                    serverLevel.sendParticles(ParticleTypes.SNOWFLAKE,
                             attacker.getX(), attacker.getY() + 1.0, attacker.getZ(),
                             8, 0.5, 0.5, 0.5, 0.1);
                 }
+            }
+
+            if (absorptionHearts <= 0) {
+                target.removeEffect(ModEffects.AGATHYS_ARMOR.get());
             }
         }
     }
 
     private static boolean isMeleeAttack(DamageSource source) {
-        // Проверяем основные типы ближних атак
         return source.is(DamageTypes.MOB_ATTACK) ||
                 source.is(DamageTypes.PLAYER_ATTACK) ||
                 source.is(DamageTypes.MOB_ATTACK_NO_AGGRO);

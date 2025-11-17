@@ -18,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.StructureManager;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -32,6 +33,10 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class GreemonEntity extends Monster implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
+    private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
+    private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
+
     public GreemonEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.xpReward = 10;
@@ -43,17 +48,19 @@ public class GreemonEntity extends Monster implements GeoEntity {
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
+        var controller = state.getController();
+
         if (this.swinging) {
-            state.getController().setAnimation(RawAnimation.begin().thenPlay("attack"));
+            controller.setAnimation(ATTACK_ANIM);
             return PlayState.CONTINUE;
         }
 
         if (state.isMoving()) {
-            state.getController().setAnimation(RawAnimation.begin().thenLoop("walk"));
+            state.getController().setAnimation(WALK_ANIM);
             return  PlayState.CONTINUE;
         }
 
-        state.getController().setAnimation(RawAnimation.begin().thenLoop("idle"));
+        state.getController().setAnimation(IDLE_ANIM);
         return PlayState.CONTINUE;
     }
 

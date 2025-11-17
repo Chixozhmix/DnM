@@ -43,6 +43,10 @@ import java.util.EnumSet;
 public class GhostEntity extends Monster implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
+    private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
+    private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
+
     private boolean isCharging = false;
 
     private int invisibilityCooldown = 0;
@@ -65,18 +69,19 @@ public class GhostEntity extends Monster implements GeoEntity {
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
-        // В первую очередь проверяем анимацию атаки
+        var controller = state.getController();
+
         if (this.attackAnimationTick > 0) {
-            state.getController().setAnimation(RawAnimation.begin().thenPlay("attack"));
+            controller.setAnimation(ATTACK_ANIM);
             return PlayState.CONTINUE;
         }
 
         if (state.isMoving()) {
-            state.getController().setAnimation(RawAnimation.begin().thenLoop("walk"));
+            state.getController().setAnimation(WALK_ANIM);
             return  PlayState.CONTINUE;
         }
 
-        state.getController().setAnimation(RawAnimation.begin().thenLoop("idle"));
+        state.getController().setAnimation(IDLE_ANIM);
         return PlayState.CONTINUE;
     }
 
@@ -126,9 +131,8 @@ public class GhostEntity extends Monster implements GeoEntity {
 
         if (this.swinging) {
             this.getNavigation().stop();
-            // Устанавливаем длительность анимации атаки (например, 10 тиков)
-            this.attackAnimationTick = 20;
-            this.swinging = false; // Сбрасываем флаг swinging
+            this.attackAnimationTick = 5;
+            this.swinging = false;
         }
     }
 

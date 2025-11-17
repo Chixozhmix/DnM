@@ -28,6 +28,7 @@ import net.chixozhmix.dnmmod.items.CreativeTabMod;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.potion.ModPotions;
 import net.chixozhmix.dnmmod.recipe.ModRecipes;
+import net.chixozhmix.dnmmod.renderer.ArmorEffectRenderer;
 import net.chixozhmix.dnmmod.screen.CokeOvenScreen;
 import net.chixozhmix.dnmmod.screen.ModMenuTypes;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
@@ -35,6 +36,7 @@ import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.api.distmarker.Dist;
@@ -94,6 +96,10 @@ public class DnMmod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        //BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModPotions.PHANTOM_POTION.get()));
+
+        AlchemistCauldronRecipeRegistry.registerRecipe(ResourceLocation.parse(DnMmod.MOD_ID),
+                new AlchemistCauldronRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModItems.PHANTOM_POTION.get())).setBaseRequirement(2).setResultLimit(1);
 
     }
 
@@ -139,6 +145,8 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.GOBLIN_WARRIOR.get(), GoblinWariorRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COKE_OVEN_MENU.get(), CokeOvenScreen::new);
+
+            MinecraftForge.EVENT_BUS.register(new ArmorEffectRenderer());
         }
 
         @SubscribeEvent
@@ -150,12 +158,12 @@ public class DnMmod
             event.registerLayerDefinition(SummonedRavenRenderer.MODEL_LAYER_LOCATION, SummonedRavenModel::createBodyLayer);
         }
 
-        @SubscribeEvent
-        public static void brewingRecipe(EntityRenderersEvent.RegisterLayerDefinitions event) {
-            //BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModPotions.PHANTOM_POTION.get()));
-
-            AlchemistCauldronRecipeRegistry.registerRecipe(ResourceLocation.parse(DnMmod.MOD_ID),
-                    new AlchemistCauldronRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModItems.PHANTOM_POTION.get())).setBaseRequirement(2).setResultLimit(1);
-        }
+//        @SubscribeEvent
+//        public static void brewingRecipe(EntityRenderersEvent.RegisterLayerDefinitions event) {
+//            //BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModPotions.PHANTOM_POTION.get()));
+//
+//            AlchemistCauldronRecipeRegistry.registerRecipe(ResourceLocation.parse(DnMmod.MOD_ID),
+//                    new AlchemistCauldronRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModItems.PHANTOM_POTION.get())).setBaseRequirement(2).setResultLimit(1);
+//        }
     }
 }
