@@ -166,9 +166,9 @@ public class ArmorEffectRenderer {
                 minecraft.getEntityModels().bakeLayer(ModelLayers.SHIELD)
         );
 
-        ResourceLocation shieldTexture = new ResourceLocation(DnMmod.MOD_ID, "textures/entity/ice_dagger.png");
+        ResourceLocation shieldTexture = new ResourceLocation(DnMmod.MOD_ID, "textures/entity/agahys_shield.png");
 
-        // Рендерим переднюю часть щита
+
         shieldModel.plate().render(poseStack,
                 bufferSource.getBuffer(shieldModel.renderType(shieldTexture)),
                 15728880, OverlayTexture.NO_OVERLAY,

@@ -50,6 +50,8 @@
 
   "item.dnmmod.magical_grimoire": "Магический гримуар",
 
+  "item.dnmmod.component_bag": "Сумка с компонентами",
+
   "item.dnmmod.raven_spawn_egg": "Яйцо призыва ворона",
   "item.dnmmod.undead_spirit_spawn_egg": "Яйцо призыва Духа Нежити",
   "item.dnmmod.ghost_spawn_egg": "Яйцо призыва g",
@@ -110,9 +112,12 @@
   "tooltip.dnmmod.forest_heart": "Убив лешего, что получается у очень малого количества смертных, убийца может получить по-настоящему ценную вещь - Сердце Лешего, обладающее удивительными свойствами управлять растениями и защищать жизнь тех, кто прикасается к земле.",
 
   "ui.dnmmod.bounces": "Отскакиваний: %d",
+  "ui.dnmmod.spell_component": "Компонент заклинания: ",
 
   "ui.dnmmod.green_hag_bossbar": "Зеленая Карга",
   "ui.dnmmod.leshy_bossbar": "Леший",
+
+  "ui.dnmmod.component_loss": "Нет компонентов",
 
   "creativetab.dnmmod.weapons": "Оружие",
   "creativetab.dnmmod.staffs": "Посохи и палочки",

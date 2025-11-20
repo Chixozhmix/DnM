@@ -49,6 +49,8 @@
 
   "item.dnmmod.magical_grimoire": "Magical grimoire",
 
+  "item.dnmmod.component_bag": "Component bag",
+
   "item.dnmmod.raven_spawn_egg": "Raven spawn egg",
   "item.dnmmod.undead_spirit_spawn_egg": "Undead Spirit spawn egg",
   "item.dnmmod.ghost_spawn_egg": "Ghost spawn egg",
@@ -110,9 +112,12 @@
   "tooltip.dnmmod.forest_heart": "By killing a Leshy, which happens to a very small number of mortals, the killer can get a truly valuable thing - the Forest Heart, which has amazing properties to control plants and protect the lives of those who touch the ground.",
 
   "ui.dnmmod.bounces": "Bounces: %d",
+  "ui.dnmmod.spell_component": "Spell component: %s",
 
   "ui.dnmmod.green_hag_bossbar": "Green Hag",
   "ui.dnmmod.leshy_bossbar": "Leshy",
+
+  "ui.dnmmod.component_loss": "No components",
 
   "creativetab.dnmmod.weapons": "Weapons",
   "creativetab.dnmmod.staffs": "Staffs and wands",

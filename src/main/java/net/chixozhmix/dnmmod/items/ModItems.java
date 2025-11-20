@@ -391,7 +391,11 @@ public class ModItems {
     public static final RegistryObject<Item> MAGICAL_GRIMOIRE = ITEMS.register("magical_grimoire",
             () -> new SimpleAttributeSpellBook(8, SpellRarity.RARE, AttributeRegistry.COOLDOWN_REDUCTION.get(), 0.05, (double)50.0F));
     //Curios
-    public static final RegistryObject<CurioBaseItem> PROTECTION_RING = ITEMS.register("protection_ring", () -> new SimpleAttributeCurio(new Item.Properties().stacksTo(1), Attributes.ARMOR, new AttributeModifier("ar", 2,AttributeModifier.Operation.ADDITION)));
+    public static final RegistryObject<CurioBaseItem> PROTECTION_RING = ITEMS.register("protection_ring",
+            () -> new SimpleAttributeCurio(new Item.Properties().stacksTo(1),
+                    Attributes.ARMOR, new AttributeModifier("ar", 2,AttributeModifier.Operation.ADDITION)));
+    public static final RegistryObject<Item> COMPONENT_BAG = ITEMS.register("component_bag",
+            () -> new ComponentBag(new Item.Properties()));
     //Eggs
     public static final RegistryObject<ForgeSpawnEggItem> RAVEN_SPAWN_EGG = ITEMS.register("raven_spawn_egg", () ->
             new ForgeSpawnEggItem(ModEntityType.RAVEN, 0x111111, 0x262626, new Item.Properties().stacksTo(64)));

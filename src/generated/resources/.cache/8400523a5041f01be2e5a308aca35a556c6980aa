@@ -1,7 +1,8 @@
-// 1.20.1	2025-11-16T13:08:20.8587968	Item Models: dnmmod
+// 1.20.1	2025-11-20T22:04:38.7726149	Item Models: dnmmod
 afcc952ce0db6e1184fb9a9347ff79b125ccef76 assets/dnmmod/models/item/blood_wand.json
 ba00481093cc18d9af0be8250395299563b9ae8d assets/dnmmod/models/item/blood_wand_core.json
 ce53e646f17f225f910a10c18eeec041a9e6ec85 assets/dnmmod/models/item/coke_coal.json
+f7ea7e3760956287e84645d481f974f2be54d33c assets/dnmmod/models/item/component_bag.json
 b8b985f080c11123b66420d9c4407f8df6ed8ce4 assets/dnmmod/models/item/cryomancer_wand.json
 1c6bcd6989fdb7d87f3bd9e8faff8949bf6c6a41 assets/dnmmod/models/item/cryomancer_wand_core.json
 3d2db95f7c0f1496a9ef50733e1b65c5f7619937 assets/dnmmod/models/item/diamond_battleaxe.json
