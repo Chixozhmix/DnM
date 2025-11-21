@@ -6,8 +6,10 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
+import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -70,7 +72,14 @@ public class SummonRavenSpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.summon_count", new Object[]{spellLevel}));
+        return List.of(Component.translatable("ui.irons_spellbooks.summon_count", new Object[]{spellLevel}),
+                Component.translatable("ui.dnmmod.spell_component", new Object[]{SpellUtils.getComponentName(ModItems.RAVEN_FEATHER.get())})
+        );
+    }
+
+    @Override
+    public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
+        return SpellUtils.ckeckSpellComponent(entity, ModItems.RAVEN_FEATHER.get());
     }
 
     @Override

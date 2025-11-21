@@ -5,7 +5,21 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "RaiseDeadMixin",
-    "AbstractSpellMixin"
+    "AbstractSpellMixin",
+    "ArrowVolleyMixin",
+    "AngelWingsMixin",
+    "BlackHoleMixin",
+    "ChainLightningMixin",
+    "EarthquakeMixin",
+    "GreaterHealMixin",
+    "GustMixin",
+    "InvisibilityMixin",
+    "WallOfFireMixin",
+    "SummonPolarBearMixin",
+    "LightningLanceMixin",
+    "LightningBoltMixin",
+    "BallLightningMixin",
+    "ChargeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -7,13 +7,16 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
+import net.chixozhmix.dnmmod.items.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -58,14 +61,15 @@ public class CloudDaggerSpell extends AbstractSpell {
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
         Utils.preCastTargetHelper(level, entity, playerMagicData, this, 32, 0.15F, false);
-        return true;
+        return SpellUtils.ckeckSpellComponent(entity, ModItems.IRON_DAGGER.get());
     }
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
                 Component.translatable("ui.irons_spellbooks.distance", new Object[]{Utils.stringTruncation((double)this.getCylinderRadius(), 1)}),
-                Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2)})
+                Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2)}),
+                Component.translatable("ui.dnmmod.spell_component", new Object[]{SpellUtils.getComponentName(ModItems.IRON_DAGGER.get())})
                 );
     }
 

@@ -73,12 +73,12 @@ public class SummonUndeadSpiritSpell extends AbstractSpell {
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(Component.translatable("ui.irons_spellbooks.summon_count", new Object[]{spellLevel}),
-                Component.translatable("ui.dnmmod.spell_component", new Object[]{SpellUtils.getComponentName(Items.WITHER_SKELETON_SKULL)}));
+                Component.translatable("ui.dnmmod.spell_component", new Object[]{SpellUtils.getComponentName(Items.SKELETON_SKULL)}));
     }
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
-        return SpellUtils.ckeckSpellComponent(entity, Items.WITHER_SKELETON_SKULL);
+        return SpellUtils.ckeckSpellComponent(entity, Items.SKELETON_SKULL);
     }
 
     @Override
