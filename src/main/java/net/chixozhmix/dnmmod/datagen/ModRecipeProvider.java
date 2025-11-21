@@ -380,6 +380,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('C', Items.BLUE_DYE)
                 .unlockedBy("has_spell_book", has(ItemRegistry.IRON_SPELL_BOOK.get()))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.COMPONENT_BAG.get(), 1)
+                .pattern(" S ")
+                .pattern("LAL")
+                .pattern(" L ")
+                .define('L', Items.LEATHER)
+                .define('S', Items.STRING)
+                .define('A', ItemRegistry.ARCANE_ESSENCE.get())
+                .unlockedBy("has_leather", has(Items.LEATHER))
+                .save(consumer);
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory,

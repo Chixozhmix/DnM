@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
@@ -22,6 +23,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
@@ -70,7 +72,13 @@ public class SummonUndeadSpiritSpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.summon_count", new Object[]{spellLevel}));
+        return List.of(Component.translatable("ui.irons_spellbooks.summon_count", new Object[]{spellLevel}),
+                Component.translatable("ui.dnmmod.spell_component", new Object[]{SpellUtils.getComponentName(Items.WITHER_SKELETON_SKULL)}));
+    }
+
+    @Override
+    public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
+        return SpellUtils.ckeckSpellComponent(entity, Items.WITHER_SKELETON_SKULL);
     }
 
     @Override

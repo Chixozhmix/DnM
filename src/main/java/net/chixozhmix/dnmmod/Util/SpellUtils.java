@@ -13,7 +13,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 public class SpellUtils {
     public static boolean ckeckSpellComponent(LivingEntity entity, Item item) {
         if(entity.getItemInHand(InteractionHand.MAIN_HAND).getItem() == item ||
-                entity.getItemInHand(InteractionHand.OFF_HAND).getItem() == item) {
+                entity.getItemInHand(InteractionHand.OFF_HAND).getItem() == item || !(entity instanceof Player)) {
             return true;
         }
         // Если предмет не в руках, проверяем сумку компонентов
