@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.screen.component_bag;
+package net.chixozhmix.dnmmod.screen.medium_bag;
 
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
 import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
@@ -6,7 +6,8 @@ import net.chixozhmix.dnmmod.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.*;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
@@ -15,13 +16,13 @@ import net.minecraftforge.items.SlotItemHandler;
 
 import java.util.Optional;
 
-public class ComponentBagMenu extends AbstractContainerMenu {
+public class MediumBagMenu extends AbstractContainerMenu {
     private final ItemStackHandler itemHandler;
     private final ItemStack bagItemStack;
     private final Player player;
 
     // Константы для слотов
-    private static final int BAG_SLOT_COUNT = 9; // Количество слотов в сумке
+    private static final int BAG_SLOT_COUNT = 15; // Количество слотов в сумке
     private static final int HOTBAR_SLOT_COUNT = 9;
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
     private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;
@@ -30,12 +31,12 @@ public class ComponentBagMenu extends AbstractContainerMenu {
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int BAG_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
-    public ComponentBagMenu(int containerId, Inventory playerInventory, FriendlyByteBuf extraData) {
+    public MediumBagMenu(int containerId, Inventory playerInventory, FriendlyByteBuf extraData) {
         this(containerId, playerInventory, playerInventory.player.getMainHandItem());
     }
 
-    public ComponentBagMenu(int containerId, Inventory playerInventory, ItemStack bagItemStack) {
-        super(ModMenuTypes.COMPONENT_BAG_MENU.get(), containerId);
+    public MediumBagMenu(int containerId, Inventory playerInventory, ItemStack bagItemStack) {
+        super(ModMenuTypes.MEDIUM_COMPONENT_BAG_MENU.get(), containerId);
 
         this.player = playerInventory.player;
         this.bagItemStack = bagItemStack;
@@ -55,12 +56,12 @@ public class ComponentBagMenu extends AbstractContainerMenu {
     }
 
     private void addBagSlots() {
-        // Добавляем слоты сумки в виде сетки 3x3
+        // Добавляем слоты сумки в виде сетки 5x3
         for (int row = 0; row < 3; ++row) {
-            for (int col = 0; col < 3; ++col) {
-                int x = 62 + col * 18;
+            for (int col = 0; col < 5; ++col) {
+                int x = 44 + col * 18;
                 int y = 17 + row * 18;
-                int slotIndex = col + row * 3;
+                int slotIndex = col + row * 5;
                 this.addSlot(new SlotItemHandler(itemHandler, slotIndex, x, y) {
                     @Override
                     public boolean mayPlace(ItemStack stack) {
@@ -91,6 +92,7 @@ public class ComponentBagMenu extends AbstractContainerMenu {
         }
     }
 
+    @Override
     public ItemStack quickMoveStack(Player player, int index) {
         Slot sourceSlot = slots.get(index);
         if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;
@@ -134,8 +136,8 @@ public class ComponentBagMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player player) {
         // Проверяем, держит ли игрок сумку в руке
-        return player.getMainHandItem().getItem() instanceof ComponentBag ||
-                player.getOffhandItem().getItem() instanceof ComponentBag;
+        return player.getMainHandItem().getItem() instanceof MediumComponentBag ||
+                player.getOffhandItem().getItem() instanceof MediumComponentBag;
     }
 
     // Дополнительные методы для работы с сумкой

@@ -32,6 +32,7 @@ import net.chixozhmix.dnmmod.renderer.ArmorEffectRenderer;
 import net.chixozhmix.dnmmod.screen.CokeOvenScreen;
 import net.chixozhmix.dnmmod.screen.ModMenuTypes;
 import net.chixozhmix.dnmmod.screen.component_bag.ComponentBagScreen;
+import net.chixozhmix.dnmmod.screen.medium_bag.MediumBagScreen;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -147,6 +148,7 @@ public class DnMmod
 
             MenuScreens.register(ModMenuTypes.COKE_OVEN_MENU.get(), CokeOvenScreen::new);
             MenuScreens.register(ModMenuTypes.COMPONENT_BAG_MENU.get(), ComponentBagScreen::new);
+            MenuScreens.register(ModMenuTypes.MEDIUM_COMPONENT_BAG_MENU.get(), MediumBagScreen::new);
 
             MinecraftForge.EVENT_BUS.register(new ArmorEffectRenderer());
         }

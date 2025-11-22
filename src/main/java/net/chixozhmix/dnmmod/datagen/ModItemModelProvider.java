@@ -36,6 +36,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.PHANTOM_POTION);
         curioItem(ModItems.PROTECTION_RING);
         simpleItem(ModItems.COMPONENT_BAG);
+        simpleItem(ModItems.MEDIUM_COMPONENT_BAG);
         //Items
         simpleItem(ModItems.COKE_COAL);
         simpleItem(ModItems.FLUX);

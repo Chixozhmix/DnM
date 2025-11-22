@@ -93,6 +93,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.ENDER_WAND_CORE.get());
                         output.accept(ModItems.PROTECTION_RING.get());
                         output.accept(ModItems.COMPONENT_BAG.get());
+                        output.accept(ModItems.MEDIUM_COMPONENT_BAG.get());
                     })
                     .build());
     //Blocks

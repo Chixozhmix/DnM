@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.Util;
 
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
+import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
@@ -37,7 +38,7 @@ public class SpellUtils {
         // Проверяем сумки в инвентаре (опционально)
         for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
             ItemStack stack = player.getInventory().getItem(i);
-            if (stack.getItem() instanceof ComponentBag) {
+            if (stack.getItem() instanceof ComponentBag || stack.getItem() instanceof MediumComponentBag) {
                 if (containsItemInBag(stack, item)) {
                     return true;
                 }

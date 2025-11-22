@@ -396,6 +396,8 @@ public class ModItems {
                     Attributes.ARMOR, new AttributeModifier("ar", 2,AttributeModifier.Operation.ADDITION)));
     public static final RegistryObject<Item> COMPONENT_BAG = ITEMS.register("component_bag",
             () -> new ComponentBag(new Item.Properties()));
+    public static final RegistryObject<Item> MEDIUM_COMPONENT_BAG = ITEMS.register("medium_component_bag",
+            () -> new MediumComponentBag(new Item.Properties()));
     //Eggs
     public static final RegistryObject<ForgeSpawnEggItem> RAVEN_SPAWN_EGG = ITEMS.register("raven_spawn_egg", () ->
             new ForgeSpawnEggItem(ModEntityType.RAVEN, 0x111111, 0x262626, new Item.Properties().stacksTo(64)));

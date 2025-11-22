@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.screen;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.screen.component_bag.ComponentBagMenu;
+import net.chixozhmix.dnmmod.screen.medium_bag.MediumBagMenu;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
@@ -20,6 +21,8 @@ public class ModMenuTypes {
 
     public static final RegistryObject<MenuType<ComponentBagMenu>> COMPONENT_BAG_MENU =
             registerMenuType("component_bag_menu", ComponentBagMenu::new);
+    public static final RegistryObject<MenuType<MediumBagMenu>> MEDIUM_COMPONENT_BAG_MENU =
+            registerMenuType("medium_component_bag_menu", MediumBagMenu::new);
 
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType (String name, IContainerFactory<T> factory) {
