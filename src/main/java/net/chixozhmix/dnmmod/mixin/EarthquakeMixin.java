@@ -20,7 +20,7 @@ public class EarthquakeMixin {
     @Inject(method = "checkPreCastConditions", at = @At("HEAD"), cancellable = true, remap = false)
     private void injectCheckPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData, CallbackInfoReturnable<Boolean> cir) {
         // Добавляем проверку на наличие стрел
-        if (!SpellUtils.ckeckSpellComponent(entity, Items.COARSE_DIRT)) {
+        if (!SpellUtils.checkSpellComponent(entity, Items.COARSE_DIRT)) {
             cir.setReturnValue(false);
             cir.cancel();
         }

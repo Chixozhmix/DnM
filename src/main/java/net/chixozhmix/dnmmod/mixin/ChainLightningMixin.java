@@ -19,7 +19,7 @@ import java.util.List;
 public class ChainLightningMixin {
     @Inject(method = "checkPreCastConditions", at = @At("HEAD"), cancellable = true, remap = false)
     private void injectCheckPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData, CallbackInfoReturnable<Boolean> cir) {
-        if (!SpellUtils.ckeckSpellComponent(entity, ItemRegistry.HEAVY_CHAIN.get())) {
+        if (!SpellUtils.checkSpellComponent(entity, ItemRegistry.HEAVY_CHAIN.get())) {
             cir.setReturnValue(false);
             cir.cancel();
         }

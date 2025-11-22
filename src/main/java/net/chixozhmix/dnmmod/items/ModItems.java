@@ -378,6 +378,10 @@ public class ModItems {
             new ForestHeart(new Item.Properties()
                     .stacksTo(1)
                     .rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> THUNDERSTORM_BOTTLE = ITEMS.register("thunderstorm_bottle", () ->
+            new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .rarity(Rarity.UNCOMMON)));
     //Potions
     public static final RegistryObject<Item> PHANTOM_POTION = ITEMS.register("phantom_potion",
             () -> new SimpleElixir(ItemPropertiesHelper.material(), () ->

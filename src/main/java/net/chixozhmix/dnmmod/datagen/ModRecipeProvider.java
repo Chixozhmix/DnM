@@ -5,11 +5,17 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.crafting.StrictNBTIngredient;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
 import java.util.List;
@@ -407,6 +413,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('G', Items.GOLD_INGOT)
                 .unlockedBy("has_arcane_salvage", has(ItemRegistry.ARCANE_SALVAGE.get()))
                 .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.THUNDERSTORM_BOTTLE.get(), 1)
+                .requires(ItemRegistry.LIGHTNING_BOTTLE.get())
+                .requires(createPotionIngredient(Potions.WATER))
+                .unlockedBy(getHasName(ItemRegistry.LIGHTNING_BOTTLE.get()), has(ItemRegistry.LIGHTNING_BOTTLE.get()))
+                .save(consumer);
+    }
+
+    private static Ingredient createPotionIngredient(Potion potions) {
+        ItemStack waterPotion = new ItemStack(Items.POTION);
+        PotionUtils.setPotion(waterPotion, potions);
+        return StrictNBTIngredient.of(waterPotion);
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory,

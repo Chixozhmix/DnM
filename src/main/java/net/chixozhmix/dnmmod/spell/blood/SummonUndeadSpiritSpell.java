@@ -5,7 +5,6 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.effect.ModEffects;
@@ -78,7 +77,7 @@ public class SummonUndeadSpiritSpell extends AbstractSpell {
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
-        return SpellUtils.ckeckSpellComponent(entity, Items.SKELETON_SKULL);
+        return SpellUtils.checkSpellComponent(entity, Items.SKELETON_SKULL);
     }
 
     @Override

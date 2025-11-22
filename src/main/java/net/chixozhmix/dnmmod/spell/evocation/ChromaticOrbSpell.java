@@ -11,9 +11,7 @@ import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -66,7 +64,7 @@ public class ChromaticOrbSpell extends AbstractSpell {
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
-        return SpellUtils.ckeckSpellComponent(entity, Items.DIAMOND);
+        return SpellUtils.checkSpellComponent(entity, Items.DIAMOND);
     }
 
     @Override

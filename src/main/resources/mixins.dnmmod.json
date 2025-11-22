@@ -19,7 +19,8 @@
     "LightningLanceMixin",
     "LightningBoltMixin",
     "BallLightningMixin",
-    "ChargeMixin"
+    "ChargeMixin",
+    "ThunderstormMixin"
   ],
   "injectors": {
     "defaultRequire": 1

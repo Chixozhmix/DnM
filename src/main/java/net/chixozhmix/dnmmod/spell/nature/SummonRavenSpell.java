@@ -79,7 +79,7 @@ public class SummonRavenSpell extends AbstractSpell {
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
-        return SpellUtils.ckeckSpellComponent(entity, ModItems.RAVEN_FEATHER.get());
+        return SpellUtils.checkSpellComponent(entity, ModItems.RAVEN_FEATHER.get());
     }
 
     @Override

@@ -37,6 +37,7 @@
   "item.dnmmod.pyromancer_wand_core": "Сердцевина палочки пироманта",
   "item.dnmmod.blood_wand_core": "Сердцевина кровавой палочки",
   "item.dnmmod.ender_wand_core": "Сердцевина палочки эндера",
+  "item.dnmmod.thunderstorm_bottle": "Гроза в бутылке",
 
   "item.dnmmod.wooden_wand": "Деревянная палочка",
   "item.dnmmod.cryomancer_wand": "Палочка криоманта",
@@ -55,7 +56,7 @@
 
   "item.dnmmod.raven_spawn_egg": "Яйцо призыва ворона",
   "item.dnmmod.undead_spirit_spawn_egg": "Яйцо призыва Духа Нежити",
-  "item.dnmmod.ghost_spawn_egg": "Яйцо призыва g",
+  "item.dnmmod.ghost_spawn_egg": "Яйцо призыва призрака",
   "item.dnmmod.goblin_shaman_spawn_egg": "Яйцо призыва гоблина шамана",
   "item.dnmmod.goblin_warrior_spawn_egg": "Яйцо призыва гоблина воина",
   "item.dnmmod.greemon_spawn_egg": "Яйцо призыва гримона",
@@ -113,7 +114,7 @@
   "tooltip.dnmmod.forest_heart": "Убив лешего, что получается у очень малого количества смертных, убийца может получить по-настоящему ценную вещь - Сердце Лешего, обладающее удивительными свойствами управлять растениями и защищать жизнь тех, кто прикасается к земле.",
 
   "ui.dnmmod.bounces": "Отскакиваний: %d",
-  "ui.dnmmod.spell_component": "Компонент заклинания: ",
+  "ui.dnmmod.spell_component": "Компонент заклинания: %s",
 
   "ui.dnmmod.green_hag_bossbar": "Зеленая Карга",
   "ui.dnmmod.leshy_bossbar": "Леший",

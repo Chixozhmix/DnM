@@ -6,20 +6,13 @@ import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.spells.blood.RaiseDeadSpell;
 import io.redspace.ironsspellbooks.spells.ender.BlackHoleSpell;
 import io.redspace.ironsspellbooks.spells.ender.SummonEnderChestSpell;
-import io.redspace.ironsspellbooks.spells.evocation.ArrowVolleySpell;
 import io.redspace.ironsspellbooks.spells.evocation.GustSpell;
 import io.redspace.ironsspellbooks.spells.evocation.InvisibilitySpell;
-import io.redspace.ironsspellbooks.spells.evocation.WololoSpell;
 import io.redspace.ironsspellbooks.spells.fire.*;
 import io.redspace.ironsspellbooks.spells.holy.AngelWingsSpell;
-import io.redspace.ironsspellbooks.spells.holy.FortifySpell;
 import io.redspace.ironsspellbooks.spells.holy.GreaterHealSpell;
-import io.redspace.ironsspellbooks.spells.ice.IceBlockSpell;
 import io.redspace.ironsspellbooks.spells.ice.SummonPolarBearSpell;
 import io.redspace.ironsspellbooks.spells.lightning.*;
-import io.redspace.ironsspellbooks.spells.nature.AcidOrbSpell;
-import io.redspace.ironsspellbooks.spells.nature.EarthquakeSpell;
-import io.redspace.ironsspellbooks.spells.nature.OakskinSpell;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.minecraft.network.chat.Component;
@@ -58,6 +51,7 @@ public class AbstractSpellMixin {
         SPELL_COMPONENTS.put(ChargeSpell.class, () -> ItemRegistry.ENERGIZED_CORE.get());
         SPELL_COMPONENTS.put(LightningBoltSpell.class, () -> Items.LIGHTNING_ROD);
         SPELL_COMPONENTS.put(LightningLanceSpell.class, () -> ModItems.IRON_TRIDENT.get());
+        SPELL_COMPONENTS.put(ThunderstormSpell.class, () -> ModItems.THUNDERSTORM_BOTTLE.get());
     }
 
     @Inject(method = "checkPreCastConditions", at = @At("HEAD"), cancellable = true, remap = false)
@@ -67,7 +61,7 @@ public class AbstractSpellMixin {
 
         if (componentSupplier != null) {
             Item requiredComponent = componentSupplier.get();
-            if (!SpellUtils.ckeckSpellComponent(entity, requiredComponent)) {
+            if (!SpellUtils.checkSpellComponent(entity, requiredComponent)) {
                 cir.setReturnValue(false);
                 cir.cancel();
             }

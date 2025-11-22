@@ -12,7 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 public class SpellUtils {
-    public static boolean ckeckSpellComponent(LivingEntity entity, Item item) {
+    public static boolean checkSpellComponent(LivingEntity entity, Item item) {
+
         if(entity.getItemInHand(InteractionHand.MAIN_HAND).getItem() == item ||
                 entity.getItemInHand(InteractionHand.OFF_HAND).getItem() == item || !(entity instanceof Player)) {
             return true;
@@ -35,7 +36,7 @@ public class SpellUtils {
             return false;
         }
 
-        // Проверяем сумки в инвентаре (опционально)
+        // Проверяем сумки в инвентаре
         for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
             ItemStack stack = player.getInventory().getItem(i);
             if (stack.getItem() instanceof ComponentBag || stack.getItem() instanceof MediumComponentBag) {
@@ -49,7 +50,6 @@ public class SpellUtils {
     }
 
     private static boolean containsItemInBag(ItemStack bagStack, Item item) {
-        // Получаем capability сумки
         return bagStack.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve()
                 .map(handler -> {
                     // Проверяем все слоты сумки
