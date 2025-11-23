@@ -59,6 +59,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.THUNDERSTORM_BOTTLE);
         simpleItem(ModItems.BURNT_SUGAR);
         simpleItem(ModItems.MIRROR);
+        simpleItem(ModItems.DICE20);
         //Staff and wands
         handheldItem(ModItems.WOODEN_WAND);
         handheldItem(ModItems.CRYOMANCER_WAND);

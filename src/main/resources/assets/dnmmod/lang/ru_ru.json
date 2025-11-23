@@ -74,6 +74,7 @@
   "item.dnmmod.raven_feather": "Перо ворона",
   "item.dnmmod.burnt_sugar": "Жженный сахар",
   "item.dnmmod.mirror": "Зеркало",
+  "item.dnmmod.d20": "D20",
 
   "item.dnmmod.ectoplasm": "Эктоплазма",
 
@@ -108,7 +109,6 @@
   "entity.dnmmod.ghost": "Призрак",
   "entity.dnmmod.greemon": "Гримон",
   "entity.dnmmod.goblin_warrior": "Гобилн воин",
-  "entity.dnmmod.owlbear": "Совомед",
 
   "tooltip.dnmmod.maid": "Почему нет?",
 

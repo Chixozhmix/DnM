@@ -346,6 +346,8 @@ public class ModItems {
                     .stacksTo(64)));
     public static final RegistryObject<Item> MIRROR = ITEMS.register("mirror", () ->
             new MirrorItem(new Item.Properties()));
+    public static final RegistryObject<Item> DICE20 = ITEMS.register("d20", () ->
+            new D20Item(new Item.Properties().rarity(Rarity.RARE)));
     //Magic Item
     public static final RegistryObject<Item> HAG_EYE = ITEMS.register("hag_eye", () ->
             new HagEye(new Item.Properties()

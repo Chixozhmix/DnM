@@ -78,6 +78,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.MAID_CAP.get());
                         output.accept(ModItems.MIRROR.get());
                         output.accept(ModItems.BURNT_SUGAR.get());
+                        output.accept(ModItems.DICE20.get());
                     })
                     .build());
     //Magic Items

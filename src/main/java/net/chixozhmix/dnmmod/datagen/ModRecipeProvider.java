@@ -5,7 +5,6 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
@@ -420,6 +419,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', Items.SHIELD)
                 .define('G', Items.GOLD_INGOT)
                 .unlockedBy("has_arcane_salvage", has(ItemRegistry.ARCANE_SALVAGE.get()))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MIRROR.get(), 1)
+                .pattern(" I ")
+                .pattern("IGI")
+                .pattern(" I ")
+                .define('I', Items.IRON_INGOT)
+                .define('G', Items.GLASS)
+                .unlockedBy("has_glass", has(Items.GLASS))
                 .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.THUNDERSTORM_BOTTLE.get(), 1)
                 .requires(ItemRegistry.LIGHTNING_BOTTLE.get())
