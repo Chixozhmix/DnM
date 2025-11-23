@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-22T15:14:44.3674516	Recipes
+// 1.20.1	2025-11-23T13:55:42.152544	Recipes
 66d9b096436d2f53c49785a5c55daa816a200934 data/dnmmod/advancements/recipes/combat/diamond_battleaxe.json
 98ae1d8dd16adc7d287c622589b5edc25b8bef65 data/dnmmod/advancements/recipes/combat/diamond_dagger.json
 bb5fddf76be48199b7479e9149d42d62d1f86d91 data/dnmmod/advancements/recipes/combat/diamond_glaive.json
@@ -25,8 +25,10 @@ a84f6aed19256287a7abe2f168c9d67af3286b16 data/dnmmod/advancements/recipes/combat
 70e16ae4f471f6d01a97399d24388a91a4812b6c data/dnmmod/advancements/recipes/combat/iron_sickle.json
 38502839d54c5ae1b9b8d018aa9ad0baf8a9b8a7 data/dnmmod/advancements/recipes/combat/iron_spear.json
 c5a7911d531ce4f586f3ad5dded37aea75eb291e data/dnmmod/advancements/recipes/combat/iron_trident.json
+30d6fb61b548e5fb49401f014830144be9db6f28 data/dnmmod/advancements/recipes/combat/ritual_dagger.json
 bf3afad1a6cd26ab5772cf5c11cff665b1a16b62 data/dnmmod/advancements/recipes/misc/blood_wand.json
 14a8d011b0badc7f18239e3ccfa5591cbc65177b data/dnmmod/advancements/recipes/misc/blood_wand_core.json
+3dc982d3219bf3d123b66735f5bce309dfd7345f data/dnmmod/advancements/recipes/misc/burnt_sugar_from_smelting_sugar.json
 1c573321aaa64ed01ba1b1e2f87e86347c652d9b data/dnmmod/advancements/recipes/misc/component_bag.json
 1fdbe1714889185765de07a974460653594a115d data/dnmmod/advancements/recipes/misc/cryomancer_wand.json
 e2f06612ed3de558adb6f5bd85dcc21dbb4db4be data/dnmmod/advancements/recipes/misc/cryomancer_wand_core.json
@@ -51,6 +53,7 @@ a4155f67d0853afdd78d6cd9763dbf91594e931f data/dnmmod/advancements/recipes/misc/p
 3b8807a67322df87eb2c02c7ba254f01937b3cfb data/dnmmod/advancements/recipes/misc/wooden_wand.json
 bee256f95ccb1d024d65f155337e5f3d03294267 data/dnmmod/recipes/blood_wand.json
 cdfcaf7a02f9a54da8796d00403c2ac9b548648e data/dnmmod/recipes/blood_wand_core.json
+fced04ad89ab0a435e8a7b4d73cc74e3262f9411 data/dnmmod/recipes/burnt_sugar_from_smelting_sugar.json
 4acc155c6bb21e68dd5a6b7b47d733e611b69310 data/dnmmod/recipes/component_bag.json
 0dc4ed9e77d6aa2395803132a3039a2e3bc612cb data/dnmmod/recipes/cryomancer_wand.json
 e00e080ae832379a5bfb21d6d26069df07ccafa2 data/dnmmod/recipes/cryomancer_wand_core.json
@@ -95,6 +98,7 @@ d3604437ee3bd286a474cbcc6badde3bd81dab94 data/dnmmod/recipes/iron_klevets.json
 88afa2951a9a8d2019fc1ce702bc7ac5a260010f data/dnmmod/recipes/protection_ring.json
 18cd021d88edd95d619cc67fd7984ab8d30f917d data/dnmmod/recipes/pyromancer_wand.json
 2c3f15136b9de2b4a4d5b00b814dbe6aa4f0f217 data/dnmmod/recipes/pyromancer_wand_core.json
+7be569fd8e238477e5342115a9fcf89b3981684a data/dnmmod/recipes/ritual_dagger.json
 81fbe9945c22eb7f3c1906e1b9a885ffd5e6e559 data/dnmmod/recipes/sacred_symbol.json
 9cb219d57f8f909d445d19359848570d37add5d5 data/dnmmod/recipes/thunderstorm_bottle.json
 e8c7db65d116ee34407d16777b6e6937d0d9b9ea data/dnmmod/recipes/wand_core.json

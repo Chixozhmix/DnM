@@ -213,6 +213,13 @@ public class ModItems {
                     new Item.Properties()
                             .stacksTo(1)
                             .durability(1030)));
+    public static final RegistryObject<Item> RITUAL_DAGGER = ITEMS.register("ritual_dagger", () ->
+            new SwordItem(Tiers.DIAMOND,
+                    1,
+                    -1.4f,
+                    new Item.Properties()
+                            .stacksTo(1)
+                            .durability(400)));
     //Staffs and wands
     public static final RegistryObject<Item> WOODEN_WAND = ITEMS.register("wooden_wand",
             () -> new StaffItem(new Item.Properties().stacksTo(1),
@@ -337,6 +344,8 @@ public class ModItems {
     public static final RegistryObject<Item> RAVEN_FEATHER = ITEMS.register("raven_feather", () ->
             new Item(new Item.Properties()
                     .stacksTo(64)));
+    public static final RegistryObject<Item> MIRROR = ITEMS.register("mirror", () ->
+            new MirrorItem(new Item.Properties()));
     //Magic Item
     public static final RegistryObject<Item> HAG_EYE = ITEMS.register("hag_eye", () ->
             new HagEye(new Item.Properties()
@@ -382,6 +391,9 @@ public class ModItems {
             new Item(new Item.Properties()
                     .stacksTo(64)
                     .rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> BURNT_SUGAR = ITEMS.register("burnt_sugar", () ->
+            new Item(new Item.Properties()
+                    .stacksTo(64)));
     //Potions
     public static final RegistryObject<Item> PHANTOM_POTION = ITEMS.register("phantom_potion",
             () -> new SimpleElixir(ItemPropertiesHelper.material(), () ->

@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.effect.custom;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -11,7 +12,9 @@ import virtuoel.pehkui.api.ScaleTypes;
 import java.util.UUID;
 
 public class ShrinkEffect extends MobEffect {
+
     private static final UUID SHRINK_MODIFIER_ID = UUID.fromString("12345678-1234-1234-1234-123456789abc");
+    private static final String ORIGINAL_SCALE_KEY = "OriginalScale";
 
     public ShrinkEffect() {
         super(MobEffectCategory.NEUTRAL, 0x88CCFF);
@@ -24,8 +27,14 @@ public class ShrinkEffect extends MobEffect {
         ScaleType scaleType = ScaleTypes.BASE;
         ScaleData scaleData = scaleType.getScaleData(pLivingEntity);
 
-        float targetScale = 1.0f / (pAmplifier + 2);
+        // Получаем или сохраняем исходный размер
+        CompoundTag persistentData = pLivingEntity.getPersistentData();
+        if (!persistentData.contains(ORIGINAL_SCALE_KEY)) {
+            float currentScale = scaleData.getBaseScale();
+            persistentData.putFloat(ORIGINAL_SCALE_KEY, currentScale);
+        }
 
+        float targetScale = 1.0f / (pAmplifier + 2);
         scaleData.setBaseScale(targetScale);
         scaleData.setScale(targetScale);
     }
@@ -33,6 +42,17 @@ public class ShrinkEffect extends MobEffect {
     @Override
     public void addAttributeModifiers(LivingEntity entity, AttributeMap attributes, int amplifier) {
         super.addAttributeModifiers(entity, attributes, amplifier);
+
+        // Сохраняем исходный размер при первом применении
+        ScaleType scaleType = ScaleTypes.BASE;
+        ScaleData scaleData = scaleType.getScaleData(entity);
+        CompoundTag persistentData = entity.getPersistentData();
+
+        if (!persistentData.contains(ORIGINAL_SCALE_KEY)) {
+            float currentScale = scaleData.getBaseScale();
+            persistentData.putFloat(ORIGINAL_SCALE_KEY, currentScale);
+        }
+
         applyEffectTick(entity, amplifier);
     }
 
@@ -40,12 +60,22 @@ public class ShrinkEffect extends MobEffect {
     public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributes, int amplifier) {
         super.removeAttributeModifiers(entity, attributes, amplifier);
 
-        // Восстанавливаем нормальный размер при окончании эффекта
+        // Восстанавливаем исходный размер
         ScaleType scaleType = ScaleTypes.BASE;
         ScaleData scaleData = scaleType.getScaleData(entity);
+        CompoundTag persistentData = entity.getPersistentData();
 
-        scaleData.setTargetScale(1.0F);
-        scaleData.setScale(1.0F);
+        if (persistentData.contains(ORIGINAL_SCALE_KEY)) {
+            float originalScale = persistentData.getFloat(ORIGINAL_SCALE_KEY);
+            scaleData.setBaseScale(originalScale);
+            scaleData.setScale(originalScale);
+            // Удаляем сохраненное значение, чтобы не занимать память
+            persistentData.remove(ORIGINAL_SCALE_KEY);
+        } else {
+            // На всякий случай, если по какой-то причине значение не было сохранено
+            scaleData.setBaseScale(1.0f);
+            scaleData.setScale(1.0f);
+        }
     }
 
     @Override

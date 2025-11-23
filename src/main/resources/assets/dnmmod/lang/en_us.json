@@ -25,6 +25,7 @@
   "item.dnmmod.diamond_sickle": "Diamond sikle",
   "item.dnmmod.diamond_trident": "Diamond trident",
   "item.dnmmod.diamond_katana": "Diamond katana",
+  "item.dnmmod.ritual_dagger": "Ritual dagger",
 
   "item.dnmmod.hag_eye": "Hag Eye",
   "item.dnmmod.forest_heart": "Forest Heart",
@@ -70,6 +71,8 @@
   "item.dnmmod.flux": "Flux",
   "item.dnmmod.steel_nugget": "Steel nugget",
   "item.dnmmod.raven_feather": "Raven Feather",
+  "item.dnmmod.burnt_sugar": "Burnt sugar",
+  "item.dnmmod.mirror": "Mirror",
 
   "item.dnmmod.ectoplasm": "Ectoplasm",
   "item.dnmmod.phantom_potion": "Phantom potion",
@@ -120,6 +123,10 @@
   "ui.dnmmod.leshy_bossbar": "Leshy",
 
   "ui.dnmmod.component_loss": "No components",
+
+  "ui.dnmmod.max_mirror_massage": "You look great.",
+  "ui.dnmmod.half_mirror_massage": "I've been better",
+  "ui.dnmmod.min_mirror_massage": "You look bad :(",
 
   "creativetab.dnmmod.weapons": "Weapons",
   "creativetab.dnmmod.staffs": "Staffs and wands",

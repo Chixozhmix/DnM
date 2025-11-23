@@ -20,7 +20,9 @@
     "LightningBoltMixin",
     "BallLightningMixin",
     "ChargeMixin",
-    "ThunderstormMixin"
+    "ThunderstormMixin",
+    "BurningDashMixin",
+    "SacrifyMixin"
   ],
   "injectors": {
     "defaultRequire": 1

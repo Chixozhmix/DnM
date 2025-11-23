@@ -37,6 +37,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         curioItem(ModItems.PROTECTION_RING);
         simpleItem(ModItems.COMPONENT_BAG);
         simpleItem(ModItems.MEDIUM_COMPONENT_BAG);
+        handheldItem(ModItems.RITUAL_DAGGER);
         //Items
         simpleItem(ModItems.COKE_COAL);
         simpleItem(ModItems.FLUX);
@@ -56,6 +57,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.FOREST_HEART);
         simpleItem(ModItems.RAVEN_FEATHER);
         simpleItem(ModItems.THUNDERSTORM_BOTTLE);
+        simpleItem(ModItems.BURNT_SUGAR);
+        simpleItem(ModItems.MIRROR);
         //Staff and wands
         handheldItem(ModItems.WOODEN_WAND);
         handheldItem(ModItems.CRYOMANCER_WAND);

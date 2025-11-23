@@ -102,12 +102,11 @@ public class MediumBagMenu extends AbstractContainerMenu {
 
         // Проверяем, является ли слот одним из слотов игрока
         if (index < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
-            // Слот игрока -> перемещаем в сумку
 
             // ПРОВЕРКА: запрещаем перемещение сумок в сумку через Shift+Click
             if (sourceStack.getItem() instanceof MediumComponentBag ||
                     sourceStack.getItem() instanceof ComponentBag) {
-                return ItemStack.EMPTY; // Запрещаем перемещение сумок
+                return ItemStack.EMPTY;
             }
 
             if (!moveItemStackTo(sourceStack, BAG_FIRST_SLOT_INDEX, BAG_FIRST_SLOT_INDEX + BAG_SLOT_COUNT, false)) {

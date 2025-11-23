@@ -4,7 +4,9 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.spells.blood.RaiseDeadSpell;
+import io.redspace.ironsspellbooks.spells.blood.SacrificeSpell;
 import io.redspace.ironsspellbooks.spells.ender.BlackHoleSpell;
+import io.redspace.ironsspellbooks.spells.ender.RecallSpell;
 import io.redspace.ironsspellbooks.spells.ender.SummonEnderChestSpell;
 import io.redspace.ironsspellbooks.spells.evocation.GustSpell;
 import io.redspace.ironsspellbooks.spells.evocation.InvisibilitySpell;
@@ -52,6 +54,8 @@ public class AbstractSpellMixin {
         SPELL_COMPONENTS.put(LightningBoltSpell.class, () -> Items.LIGHTNING_ROD);
         SPELL_COMPONENTS.put(LightningLanceSpell.class, () -> ModItems.IRON_TRIDENT.get());
         SPELL_COMPONENTS.put(ThunderstormSpell.class, () -> ModItems.THUNDERSTORM_BOTTLE.get());
+        SPELL_COMPONENTS.put(RecallSpell.class, () -> ModItems.MIRROR.get());
+        SPELL_COMPONENTS.put(BurningDashSpell.class, () -> ModItems.BURNT_SUGAR.get());
     }
 
     @Inject(method = "checkPreCastConditions", at = @At("HEAD"), cancellable = true, remap = false)

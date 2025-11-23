@@ -1,6 +1,7 @@
-// 1.20.1	2025-11-22T15:09:31.9143971	Item Models: dnmmod
+// 1.20.1	2025-11-23T13:55:42.1495521	Item Models: dnmmod
 afcc952ce0db6e1184fb9a9347ff79b125ccef76 assets/dnmmod/models/item/blood_wand.json
 ba00481093cc18d9af0be8250395299563b9ae8d assets/dnmmod/models/item/blood_wand_core.json
+e5b166c00c919f5a94a1c3d30adb5a05f8cfe418 assets/dnmmod/models/item/burnt_sugar.json
 ce53e646f17f225f910a10c18eeec041a9e6ec85 assets/dnmmod/models/item/coke_coal.json
 f7ea7e3760956287e84645d481f974f2be54d33c assets/dnmmod/models/item/component_bag.json
 b8b985f080c11123b66420d9c4407f8df6ed8ce4 assets/dnmmod/models/item/cryomancer_wand.json
@@ -39,6 +40,7 @@ d5962e67dd51a6cd88327dc6f2183134c2fa3a71 assets/dnmmod/models/item/iron_scimitar
 db3aebb84646c5179e1ffdd450e447969e0b50fb assets/dnmmod/models/item/maid_cap.json
 51ba6441b6fb63dcaf9b2c0e8d28257d3226cb43 assets/dnmmod/models/item/maid_dress.json
 8505f59ea445d2793ceca315a1498086ce8bc447 assets/dnmmod/models/item/medium_component_bag.json
+2d6410dbe22c164b4a6e01d4ccd16f72e6f21a54 assets/dnmmod/models/item/mirror.json
 299b7d66545c0461ae8a20ab0cf1dd3878d54cad assets/dnmmod/models/item/phantom_potion.json
 bb8ffd78305763235cd4b46cb12776df844a268e assets/dnmmod/models/item/protection_ring.json
 076a49d47ab5abf4c058c95e7e54faa4c2fd1823 assets/dnmmod/models/item/pyromancer_wand.json
@@ -46,6 +48,7 @@ bff4666c5792b6c45bc79e73ea5acae62da6fee9 assets/dnmmod/models/item/pyromancer_wa
 e956d3f901ac08687c6a9524afd8c6060cc114c5 assets/dnmmod/models/item/raven_feather.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/raven_spawn_egg.json
 ae80c53a8ff4092cb5ca35a6ca93897ad749e3a7 assets/dnmmod/models/item/raw_steel.json
+530182c3fe5bf11b786d95b29bc4059d74b1f8c9 assets/dnmmod/models/item/ritual_dagger.json
 3eb32a592747e97ec8bf62e5eb218b00a3a0017e assets/dnmmod/models/item/sacred_symbol.json
 234ea0350d7dd45a0a4e9389c269e9f0d4b1a75e assets/dnmmod/models/item/steel_ingot.json
 18a50a839ca18b5d2342462d7ed1555ada9cd2e0 assets/dnmmod/models/item/steel_nugget.json

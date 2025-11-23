@@ -244,6 +244,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('G', Items.STRING)
                 .unlockedBy("has_diamond", has(Items.DIAMOND))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.RITUAL_DAGGER.get())
+                .pattern("   ")
+                .pattern(" O ")
+                .pattern("B  ")
+                .define('B', Items.BONE)
+                .define('O', Items.OBSIDIAN)
+                .unlockedBy("has_obsidian", has(Items.OBSIDIAN))
+                .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WAND_CORE.get(), 1)
                 .pattern("  A")
                 .pattern(" M ")
@@ -418,6 +426,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(createPotionIngredient(Potions.WATER))
                 .unlockedBy(getHasName(ItemRegistry.LIGHTNING_BOTTLE.get()), has(ItemRegistry.LIGHTNING_BOTTLE.get()))
                 .save(consumer);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.SUGAR),
+                        RecipeCategory.MISC, ModItems.BURNT_SUGAR.get(), 0.7f, 40)
+                .unlockedBy("has_sugar", has(Items.SUGAR))
+                .save(consumer, DnMmod.MOD_ID + ":burnt_sugar_from_smelting_sugar");
     }
 
     private static Ingredient createPotionIngredient(Potion potions) {

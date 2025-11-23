@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.Util;
 
+import io.redspace.ironsspellbooks.api.spells.CastSource;
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
 import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
 import net.minecraft.network.chat.Component;
@@ -16,8 +17,9 @@ public class SpellUtils {
 
         if(entity.getItemInHand(InteractionHand.MAIN_HAND).getItem() == item ||
                 entity.getItemInHand(InteractionHand.OFF_HAND).getItem() == item || !(entity instanceof Player)) {
-            return true;
+                return true;
         }
+
         // Если предмет не в руках, проверяем сумку компонентов
         if(checkComponentBag(entity, item)) {
             return true;

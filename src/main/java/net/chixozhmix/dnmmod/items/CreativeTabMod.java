@@ -45,6 +45,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.DIAMOND_KLEVETS.get());
                         output.accept(ModItems.DIAMOND_TRIDENT.get());
                         output.accept(ModItems.DIAMOND_KATANA.get());
+                        output.accept(ModItems.RITUAL_DAGGER.get());
                     })
                     .build());
     //Staffs
@@ -75,6 +76,8 @@ public class CreativeTabMod {
                         output.accept(ModItems.RAVEN_FEATHER.get());
                         output.accept(ModItems.MAID_DRESS.get());
                         output.accept(ModItems.MAID_CAP.get());
+                        output.accept(ModItems.MIRROR.get());
+                        output.accept(ModItems.BURNT_SUGAR.get());
                     })
                     .build());
     //Magic Items

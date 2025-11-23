@@ -25,6 +25,7 @@
   "item.dnmmod.diamond_sickle": "Алмазный серп",
   "item.dnmmod.diamond_trident": "Алмазный трезубец",
   "item.dnmmod.diamond_katana": "Алмазная катана",
+  "item.dnmmod.ritual_dagger": "Ритуальный кинжал",
 
 
   "item.dnmmod.hag_eye": "Глаз Карги",
@@ -71,6 +72,8 @@
   "item.dnmmod.flux": "Флюс",
   "item.dnmmod.steel_nugget": "Кусочек стали",
   "item.dnmmod.raven_feather": "Перо ворона",
+  "item.dnmmod.burnt_sugar": "Жженный сахар",
+  "item.dnmmod.mirror": "Зеркало",
 
   "item.dnmmod.ectoplasm": "Эктоплазма",
 
@@ -120,6 +123,10 @@
   "ui.dnmmod.leshy_bossbar": "Леший",
 
   "ui.dnmmod.component_loss": "Нет компонентов",
+
+  "ui.dnmmod.max_mirror_massage": "Вы выглядите прекрасно.",
+  "ui.dnmmod.half_mirror_massage": "Вы выглядели и лучше.",
+  "ui.dnmmod.min_mirror_massage": "Вы выглядите плохо :(",
 
   "creativetab.dnmmod.weapons": "Оружие",
   "creativetab.dnmmod.staffs": "Посохи и палочки",
