@@ -405,6 +405,18 @@ public class ModItems {
             () -> new MaidDress(ModArmorMaterials.MAIDDRESS, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<Item> MAID_CAP = ITEMS.register("maid_cap",
             () -> new MaidDress(ModArmorMaterials.MAIDDRESS, ArmorItem.Type.HELMET, new Item.Properties()));
+
+    public static final RegistryObject<Item> ARCHER_ARMOR_HELMET = ITEMS.register("archer_armor_helmet",
+            () -> new ArcherArmor(ArmorItem.Type.HELMET, new Item.Properties()));
+
+    public static final RegistryObject<Item> ARCHER_ARMOR_CHESTPLATE = ITEMS.register("archer_armor_chestplate",
+            () -> new ArcherArmor(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+
+    public static final RegistryObject<Item> ARCHER_ARMOR_LEGGINGS = ITEMS.register("archer_armor_leggings",
+            () -> new ArcherArmor(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+
+    public static final RegistryObject<Item> ARCHER_ARMOR_BOOTS = ITEMS.register("archer_armor_boots",
+            () -> new ArcherArmor(ArmorItem.Type.BOOTS, new Item.Properties()));
     //Spellbooks
     public static final RegistryObject<Item> MAGICAL_GRIMOIRE = ITEMS.register("magical_grimoire",
             () -> new SimpleAttributeSpellBook(8, SpellRarity.RARE, AttributeRegistry.COOLDOWN_REDUCTION.get(), 0.05, (double)50.0F));

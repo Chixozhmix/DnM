@@ -84,6 +84,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         //Armor
         simpleItem(ModItems.MAID_DRESS);
         simpleItem(ModItems.MAID_CAP);
+        simpleItem(ModItems.ARCHER_ARMOR_BOOTS);
+        simpleItem(ModItems.ARCHER_ARMOR_CHESTPLATE);
+        simpleItem(ModItems.ARCHER_ARMOR_HELMET);
+        simpleItem(ModItems.ARCHER_ARMOR_LEGGINGS);
 
 
     }

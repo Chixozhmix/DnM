@@ -81,6 +81,11 @@
   "item.dnmmod.maid_dress": "Maid dress",
   "item.dnmmod.maid_cap": "Maid cap",
 
+  "item.dnmmod.archer_armor_helmet": "Archer helmet",
+  "item.dnmmod.archer_armor_chestplate": "Archer chestplate",
+  "item.dnmmod.archer_armor_leggings": "Archer leggings",
+  "item.dnmmod.archer_armor_boots": "Archer boots",
+
   "item.dnmmod.protection_ring": "Protection ring",
 
   "block.dnmmod.clay_shale": "Clay shale",

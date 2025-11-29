@@ -19,7 +19,8 @@ public enum ModArmorMaterials implements ArmorMaterial {
     MAIDDRESS("maid_dress", 20, (EnumMap)Util.make(new EnumMap(ArmorItem.Type.class), (map) -> {
         map.put(ArmorItem.Type.CHESTPLATE, 2);
         map.put(ArmorItem.Type.HELMET, 1);
-    }), 15, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F, 0.0F, () -> Ingredient.of(new ItemLike[]{Items.NETHERITE_INGOT}));
+    }), 15, SoundEvents.ARMOR_EQUIP_LEATHER, 3.0F, 0.0F, () -> Ingredient.of(new ItemLike[]{Items.WHITE_WOOL}));
+
 
     public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = (EnumMap)Util.make(new EnumMap(ArmorItem.Type.class), (map) -> {

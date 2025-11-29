@@ -79,6 +79,10 @@ public class CreativeTabMod {
                         output.accept(ModItems.MIRROR.get());
                         output.accept(ModItems.BURNT_SUGAR.get());
                         output.accept(ModItems.DICE20.get());
+                        output.accept(ModItems.ARCHER_ARMOR_BOOTS.get());
+                        output.accept(ModItems.ARCHER_ARMOR_LEGGINGS.get());
+                        output.accept(ModItems.ARCHER_ARMOR_CHESTPLATE.get());
+                        output.accept(ModItems.ARCHER_ARMOR_HELMET.get());
                     })
                     .build());
     //Magic Items

@@ -81,6 +81,11 @@
   "item.dnmmod.maid_dress": "Платье горничной",
   "item.dnmmod.maid_cap": "Шапочка горничной",
 
+  "item.dnmmod.archer_armor_helmet": "Капюшон лучника",
+  "item.dnmmod.archer_armor_chestplate": "Нагрудник лучника",
+  "item.dnmmod.archer_armor_leggings": "Поножи лучника",
+  "item.dnmmod.archer_armor_boots": "Ботинки лучника",
+
   "item.dnmmod.protection_ring": "Кольцо защиты",
 
   "block.dnmmod.clay_shale": "Глинистый сланец",
