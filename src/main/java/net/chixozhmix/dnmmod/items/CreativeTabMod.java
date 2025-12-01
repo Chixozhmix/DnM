@@ -83,6 +83,10 @@ public class CreativeTabMod {
                         output.accept(ModItems.ARCHER_ARMOR_LEGGINGS.get());
                         output.accept(ModItems.ARCHER_ARMOR_CHESTPLATE.get());
                         output.accept(ModItems.ARCHER_ARMOR_HELMET.get());
+                        output.accept(ModItems.IMPROVED_ARCHER_BOOTS.get());
+                        output.accept(ModItems.IMPROVED_ARCHER_LEGGINGS.get());
+                        output.accept(ModItems.IMPROVED_ARCHER_CHESTPLATE.get());
+                        output.accept(ModItems.IMPROVED_ARCHER_HELMET.get());
                     })
                     .build());
     //Magic Items

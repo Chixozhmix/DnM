@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-23T15:57:16.9426688	Recipes
+// 1.20.1	2025-11-30T18:03:45.2517063	Recipes
 66d9b096436d2f53c49785a5c55daa816a200934 data/dnmmod/advancements/recipes/combat/diamond_battleaxe.json
 98ae1d8dd16adc7d287c622589b5edc25b8bef65 data/dnmmod/advancements/recipes/combat/diamond_dagger.json
 bb5fddf76be48199b7479e9149d42d62d1f86d91 data/dnmmod/advancements/recipes/combat/diamond_glaive.json
@@ -40,6 +40,10 @@ e2f06612ed3de558adb6f5bd85dcc21dbb4db4be data/dnmmod/advancements/recipes/misc/c
 42a52bb80daddc716c8ed6f308ed679aabd4b300 data/dnmmod/advancements/recipes/misc/ender_wand_core.json
 5789533753d94a481cdc7e6fc0e00c21e769f856 data/dnmmod/advancements/recipes/misc/evoker_wand.json
 06f18db6b9436f823cfa6ef5043156a92654128b data/dnmmod/advancements/recipes/misc/evoker_wand_core.json
+24b642a6b8991b6967fdb4c7a36e9e0c91dd9364 data/dnmmod/advancements/recipes/misc/improved_archer_boots.json
+07f4d407676cc3a975dea9517c7fdbb31399b292 data/dnmmod/advancements/recipes/misc/improved_archer_chestplate.json
+2fd6917bee04137daa50fb88b00911b448a6374c data/dnmmod/advancements/recipes/misc/improved_archer_helmet.json
+53796af02369c338428ad20926f8d9f5d95dee7c data/dnmmod/advancements/recipes/misc/improved_archer_leggings.json
 99ab44f2156356a90e433a125f3f8437549067c0 data/dnmmod/advancements/recipes/misc/magical_grimoire.json
 1421bd50a90e5bf57f4222bc42f602ef65cc7cd3 data/dnmmod/advancements/recipes/misc/maid_cap.json
 b23cdaabf24feeda2d78b117c650ad605f822baa data/dnmmod/advancements/recipes/misc/maid_dress.json
@@ -79,6 +83,10 @@ a1edfb9c79b2581c418cdfd5d08724d548eac6b7 data/dnmmod/recipes/ender_wand.json
 fa8cfa6b6c2fb36d5269ec213b532f2ef050565f data/dnmmod/recipes/ender_wand_core.json
 ddbba40cc092b4db2fdcd83a56a26b9adaf83c5f data/dnmmod/recipes/evoker_wand.json
 005603180772fcc1418fe13fb0f430320f16114c data/dnmmod/recipes/evoker_wand_core.json
+8cb440344abfd9c7263f373dba8b2a43c37f4d75 data/dnmmod/recipes/improved_archer_boots.json
+a089d6dab0dbab2dbada62946be19c6e22f449ce data/dnmmod/recipes/improved_archer_chestplate.json
+45d451b3efba5a97e879e9f4de1216bfe3ad5924 data/dnmmod/recipes/improved_archer_helmet.json
+6918edda4b3a7f69ae8ae1a870ba8f36e622fb21 data/dnmmod/recipes/improved_archer_leggings.json
 3721491eb6601c7852ed1cd1bff2725ad311886c data/dnmmod/recipes/iron_battleaxe.json
 419d4dd25cc4b5db2d2c297adeae75960448ad79 data/dnmmod/recipes/iron_dagger.json
 27e0401f0dc048e2563bcff0e97792436fb3b166 data/dnmmod/recipes/iron_glaive.json

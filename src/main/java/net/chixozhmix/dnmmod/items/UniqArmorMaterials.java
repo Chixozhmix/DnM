@@ -26,8 +26,28 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
             Map.of((Attribute) Attributes.MOVEMENT_SPEED,
                     new AttributeModifier("Speed", (double)0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
                     (Attribute) ALObjects.Attributes.ARROW_DAMAGE.get(),
-                    new AttributeModifier("Arrow Power", 0.1F, AttributeModifier.Operation.MULTIPLY_BASE)
-                    ));
+                    new AttributeModifier("Arrow Power", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+                    )),
+    IMPROVED_ARCHER("improved_archer", 15, mediumArmorMap(), 15,
+            SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F,
+            () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.IRON_INGOT}),
+            Map.of((Attribute) Attributes.MOVEMENT_SPEED,
+                    new AttributeModifier("Speed", (double)0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute) ALObjects.Attributes.ARROW_DAMAGE.get(),
+                    new AttributeModifier("Arrow Power", 0.1F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute) ALObjects.Attributes.CRIT_CHANCE.get(),
+                    new AttributeModifier("Crit chance", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+            )),
+    SHADOW_ARCHER("shadow_archer", 37, heavyArmorMap(), 15,
+            SoundEvents.ARMOR_EQUIP_NETHERITE, 0.0F, 0.0F,
+            () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.NETHERITE_INGOT}),
+            Map.of((Attribute) Attributes.MOVEMENT_SPEED,
+                    new AttributeModifier("Speed", (double)0.1F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute) ALObjects.Attributes.ARROW_DAMAGE.get(),
+                    new AttributeModifier("Arrow Power", 0.15F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute) ALObjects.Attributes.CRIT_CHANCE.get(),
+                    new AttributeModifier("Crit chance", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+            ));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;

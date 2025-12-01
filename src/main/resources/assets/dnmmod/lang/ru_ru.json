@@ -86,6 +86,11 @@
   "item.dnmmod.archer_armor_leggings": "Поножи лучника",
   "item.dnmmod.archer_armor_boots": "Ботинки лучника",
 
+  "item.dnmmod.improved_archer_helmet": "Улучшенный капюшон лучника",
+  "item.dnmmod.improved_archer_chestplate": "Улучшенный нагрудник лучника",
+  "item.dnmmod.improved_archer_leggings": "Улучшенные поножи лучника",
+  "item.dnmmod.improved_archer_boots": "Улучшенные ботинки лучника",
+
   "item.dnmmod.protection_ring": "Кольцо защиты",
 
   "block.dnmmod.clay_shale": "Глинистый сланец",
