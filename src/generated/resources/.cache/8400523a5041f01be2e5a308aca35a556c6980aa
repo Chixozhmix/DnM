@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-01T18:55:01.9629724	Item Models: dnmmod
+// 1.20.1	2025-12-03T13:45:21.7253545	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
@@ -59,6 +59,10 @@ e956d3f901ac08687c6a9524afd8c6060cc114c5 assets/dnmmod/models/item/raven_feather
 ae80c53a8ff4092cb5ca35a6ca93897ad749e3a7 assets/dnmmod/models/item/raw_steel.json
 530182c3fe5bf11b786d95b29bc4059d74b1f8c9 assets/dnmmod/models/item/ritual_dagger.json
 3eb32a592747e97ec8bf62e5eb218b00a3a0017e assets/dnmmod/models/item/sacred_symbol.json
+e4bb21fa1050e08133c94fb6eea3d483d6dc8488 assets/dnmmod/models/item/shadow_archer_boots.json
+19c76bd8337ae147e659ad66f6f6370640f31284 assets/dnmmod/models/item/shadow_archer_chestplate.json
+4c651049aa086c4ec3ddae2e8eab0ac8b6dd23aa assets/dnmmod/models/item/shadow_archer_helmet.json
+a0aea36d4a44b2a0f495770187057b013811e21a assets/dnmmod/models/item/shadow_archer_leggings.json
 234ea0350d7dd45a0a4e9389c269e9f0d4b1a75e assets/dnmmod/models/item/steel_ingot.json
 18a50a839ca18b5d2342462d7ed1555ada9cd2e0 assets/dnmmod/models/item/steel_nugget.json
 abef2d36764d66279861838a5da0ae11a000dd8d assets/dnmmod/models/item/thunderstorm_bottle.json

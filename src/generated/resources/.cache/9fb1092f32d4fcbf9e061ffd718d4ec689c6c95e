@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-30T18:03:45.2517063	Recipes
+// 1.20.1	2025-12-03T13:25:42.2585896	Recipes
 66d9b096436d2f53c49785a5c55daa816a200934 data/dnmmod/advancements/recipes/combat/diamond_battleaxe.json
 98ae1d8dd16adc7d287c622589b5edc25b8bef65 data/dnmmod/advancements/recipes/combat/diamond_dagger.json
 bb5fddf76be48199b7479e9149d42d62d1f86d91 data/dnmmod/advancements/recipes/combat/diamond_glaive.json
@@ -53,6 +53,10 @@ c6934be37bba8d29193f6400207dfc71c4d27ef2 data/dnmmod/advancements/recipes/misc/p
 e4d268e1247859fac7079fbf5c19088ec9f0b914 data/dnmmod/advancements/recipes/misc/pyromancer_wand.json
 a4155f67d0853afdd78d6cd9763dbf91594e931f data/dnmmod/advancements/recipes/misc/pyromancer_wand_core.json
 51222d78520b518735423645a3839ab3f14e3056 data/dnmmod/advancements/recipes/misc/sacred_symbol.json
+70cb3edb1f0eaaec9957333fe843c54d93221e80 data/dnmmod/advancements/recipes/misc/shadow_archer_boots.json
+2191f4d33cefee8156facc824b1a42f1a315cdfc data/dnmmod/advancements/recipes/misc/shadow_archer_chestplate.json
+e2e417569487a3bd5f18894e5fd49504e89f25b0 data/dnmmod/advancements/recipes/misc/shadow_archer_helmet.json
+d6981e50f4f447b6ffa59ff54f814034a52c9595 data/dnmmod/advancements/recipes/misc/shadow_archer_leggings.json
 4de85a40c9578f1ce5f3c58df14c11190384282c data/dnmmod/advancements/recipes/misc/thunderstorm_bottle.json
 0654724ec5facd7be9660918d433d3984df72696 data/dnmmod/advancements/recipes/misc/wand_core.json
 3b8807a67322df87eb2c02c7ba254f01937b3cfb data/dnmmod/advancements/recipes/misc/wooden_wand.json
@@ -110,6 +114,10 @@ d3604437ee3bd286a474cbcc6badde3bd81dab94 data/dnmmod/recipes/iron_klevets.json
 2c3f15136b9de2b4a4d5b00b814dbe6aa4f0f217 data/dnmmod/recipes/pyromancer_wand_core.json
 7be569fd8e238477e5342115a9fcf89b3981684a data/dnmmod/recipes/ritual_dagger.json
 81fbe9945c22eb7f3c1906e1b9a885ffd5e6e559 data/dnmmod/recipes/sacred_symbol.json
+24d9f87a3aacc1e316bf579dccb931852acc880d data/dnmmod/recipes/shadow_archer_boots.json
+5a3197cc3aee97e602a3f32695faf8ed6cce98fb data/dnmmod/recipes/shadow_archer_chestplate.json
+7e613d4324dd279fad9dca07beb91c33ca14c92d data/dnmmod/recipes/shadow_archer_helmet.json
+871a55981ee9c6f483081ae9a0c2a87973c81317 data/dnmmod/recipes/shadow_archer_leggings.json
 9cb219d57f8f909d445d19359848570d37add5d5 data/dnmmod/recipes/thunderstorm_bottle.json
 e8c7db65d116ee34407d16777b6e6937d0d9b9ea data/dnmmod/recipes/wand_core.json
 e64d72fd65b029408b3b54a741d3b062754cd327 data/dnmmod/recipes/wooden_wand.json

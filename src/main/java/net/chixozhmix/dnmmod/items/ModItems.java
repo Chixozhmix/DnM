@@ -430,6 +430,18 @@ public class ModItems {
     public static final RegistryObject<Item> IMPROVED_ARCHER_BOOTS = ITEMS.register("improved_archer_boots",
             () -> new ImprovedArcher(ArmorItem.Type.BOOTS, new Item.Properties()));
 
+    public static final RegistryObject<Item> SHADOW_ARCHER_HELMET = ITEMS.register("shadow_archer_helmet",
+            () -> new ShadowArcher(ArmorItem.Type.HELMET, new Item.Properties()));
+
+    public static final RegistryObject<Item> SHADOW_ARCHER_CHESTPLATE = ITEMS.register("shadow_archer_chestplate",
+            () -> new ShadowArcher(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+
+    public static final RegistryObject<Item> SHADOW_ARCHER_LEGGINGS = ITEMS.register("shadow_archer_leggings",
+            () -> new ShadowArcher(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+
+    public static final RegistryObject<Item> SHADOW_ARCHER_BOOTS = ITEMS.register("shadow_archer_boots",
+            () -> new ShadowArcher(ArmorItem.Type.BOOTS, new Item.Properties()));
+
     //Spellbooks
     public static final RegistryObject<Item> MAGICAL_GRIMOIRE = ITEMS.register("magical_grimoire",
             () -> new SimpleAttributeSpellBook(8, SpellRarity.RARE, AttributeRegistry.COOLDOWN_REDUCTION.get(), 0.05, (double)50.0F));
