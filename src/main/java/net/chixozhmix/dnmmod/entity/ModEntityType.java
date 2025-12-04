@@ -8,7 +8,6 @@ import net.chixozhmix.dnmmod.entity.goblin_warior.GoblinWariorEntity;
 import net.chixozhmix.dnmmod.entity.greemon.GreemonEntity;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagEntity;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
-import net.chixozhmix.dnmmod.entity.projectiles.custom.FIrebolt;
 import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
@@ -26,14 +25,6 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModEntityType {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, DnMmod.MOD_ID);
-
-    public static final RegistryObject<EntityType<FIrebolt>> FIREBALT =
-            ENTITY_TYPES.register("fire_balt",
-                    () -> EntityType.Builder.<FIrebolt>of(FIrebolt::new, MobCategory.MISC)
-                            .sized(0.5F, 0.5F)
-                            .clientTrackingRange(4)
-                            .updateInterval(20)
-                            .build("fire_balt"));
 
     public static final RegistryObject<EntityType<CloudDagger>> MAGIC_DAGGER =
             ENTITY_TYPES.register("magic_dagger",
@@ -99,7 +90,7 @@ public class ModEntityType {
             ENTITY_TYPES.register("leshy", () ->
                     EntityType.Builder.of(LeshyEntity::new, MobCategory.MONSTER)
                             .clientTrackingRange(16)
-                            .sized(1.2f, 4.7f)
+                            .sized(1.2f, 2.7f)
                             .build("leshy"));
     public static final RegistryObject<EntityType<GhostEntity>> GHOST =
             ENTITY_TYPES.register("ghost", () ->

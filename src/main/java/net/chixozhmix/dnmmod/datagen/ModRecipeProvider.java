@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    private static final List<ItemLike> STEEL_SMELTABLES = List.of(ModItems.RAW_STEEL.get());
 
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);

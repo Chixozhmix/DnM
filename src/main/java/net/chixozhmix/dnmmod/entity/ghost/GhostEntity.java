@@ -1,6 +1,5 @@
 package net.chixozhmix.dnmmod.entity.ghost;
 
-import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.minecraft.core.BlockPos;
@@ -55,6 +54,16 @@ public class GhostEntity extends Monster implements GeoEntity {
     private static final int INVISIBILITY_DURATION = 60; // 3 секунды (20 тиков = 1 секунда)
     private static final int INVISIBILITY_COOLDOWN = 100; // 5 секунд кулдауна
 
+    private static final float INVISIBILITY_CHECK_THRESHOLD = 0.5f;
+
+    // Тайминги лучше хранить в тиках
+    private static final int ATTACK_ANIMATION_DURATION = 5; // В тиках
+    private static final int FIRE_DURATION_SECONDS = 8;
+
+    // Оптимизация проверок солнца
+    private int sunCheckCooldown = 0;
+    private static final int SUN_CHECK_INTERVAL = 10; // Проверяем солнце раз в 0.5 секунды
+
     private int attackAnimationTick = 0;
 
     public GhostEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
@@ -105,54 +114,71 @@ public class GhostEntity extends Monster implements GeoEntity {
     public void tick() {
         super.tick();
 
-        // Проверяем, горит ли моб на солнце
-        if (!this.level().isClientSide) {
+        // Оптимизация: проверяем солнце не каждый тик
+        if (!this.level().isClientSide && (sunCheckCooldown-- <= 0)) {
+            sunCheckCooldown = SUN_CHECK_INTERVAL;
             if (this.isSunBurnTick()) {
-                this.setSecondsOnFire(8); // Горит 8 секунд
+                this.setSecondsOnFire(FIRE_DURATION_SECONDS);
             }
         }
 
-        // Обновляем счетчик анимации атаки
+        // Обновляем счетчик анимации атаки (быстро)
         if (this.attackAnimationTick > 0) {
             this.attackAnimationTick--;
         }
 
-        // Обновляем кулдаун невидимости
+        // Оптимизация: обновляем невидимость раз в тик, но проверки быстрее
         if (this.invisibilityCooldown > 0) {
             this.invisibilityCooldown--;
+
+            // Проверяем снятие невидимости только когда нужно
+            if (this.isInvisibleFromAbility &&
+                    this.invisibilityCooldown <= (INVISIBILITY_COOLDOWN - INVISIBILITY_DURATION)) {
+                endInvisibility();
+            }
         }
 
-        // Проверяем, нужно ли снять эффект невидимости
-        if (this.isInvisibleFromAbility && this.invisibilityCooldown <= INVISIBILITY_COOLDOWN - INVISIBILITY_DURATION) {
-            spawnInvisibilityParticles();
-            this.isInvisibleFromAbility = false;
-            this.setInvisible(false);
-        }
-
+        // Быстрая проверка анимации атаки
         if (this.swinging) {
             this.getNavigation().stop();
-            this.attackAnimationTick = 5;
+            this.attackAnimationTick = ATTACK_ANIMATION_DURATION;
             this.swinging = false;
         }
     }
 
+    // Вынесите метод для чистоты
+    private void endInvisibility() {
+        spawnInvisibilityParticles();
+        this.isInvisibleFromAbility = false;
+        this.setInvisible(false);
+    }
+
     @Override
     protected boolean isSunBurnTick() {
-        if (this.level().isDay() && !this.level().isClientSide) {
-            // Проверяем, находится ли моб под открытым небом
-            BlockPos blockpos = this.blockPosition();
-            if (this.level().canSeeSky(blockpos)) {
-                // Проверяем уровень света (блокового и небесного)
-                float f = this.getLightLevelDependentMagicValue();
-                // Проверяем, что моб не находится в воде и не под дождем для охлаждения
-                boolean flag = this.isInWaterRainOrBubble() || this.isInPowderSnow || this.wasInPowderSnow;
-
-                // Уровень света должен быть достаточно высоким и моб не должен охлаждаться
-                if (f > 0.5F && this.random.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && !flag) {
-                    return true;
-                }
-            }
+        // Быстрая проверка - если не день, сразу возвращаем false
+        if (!this.level().isDay() || this.level().isClientSide) {
+            return false;
         }
+
+        BlockPos blockpos = this.blockPosition();
+
+        // Быстрая проверка неба
+        if (!this.level().canSeeSky(blockpos)) {
+            return false;
+        }
+
+        // Оптимизация: кешируем значения где возможно
+        float lightValue = this.getLightLevelDependentMagicValue();
+
+        // Быстрые проверки в одном if
+        if (lightValue > INVISIBILITY_CHECK_THRESHOLD &&
+                this.random.nextFloat() * 30.0F < (lightValue - 0.4F) * 2.0F &&
+                !this.isInWaterRainOrBubble() &&
+                !this.isInPowderSnow &&
+                !this.wasInPowderSnow) {
+            return true;
+        }
+
         return false;
     }
 

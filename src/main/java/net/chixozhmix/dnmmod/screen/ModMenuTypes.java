@@ -16,9 +16,6 @@ public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
     DeferredRegister.create(ForgeRegistries.MENU_TYPES, DnMmod.MOD_ID);
 
-    public static final RegistryObject<MenuType<CokeOvenMenu>> COKE_OVEN_MENU =
-            registerMenuType("coke_oven_menu", CokeOvenMenu::new);
-
     public static final RegistryObject<MenuType<ComponentBagMenu>> COMPONENT_BAG_MENU =
             registerMenuType("component_bag_menu", ComponentBagMenu::new);
     public static final RegistryObject<MenuType<MediumBagMenu>> MEDIUM_COMPONENT_BAG_MENU =

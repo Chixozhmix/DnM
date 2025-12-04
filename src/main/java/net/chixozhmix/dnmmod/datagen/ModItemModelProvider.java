@@ -39,11 +39,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.MEDIUM_COMPONENT_BAG);
         handheldItem(ModItems.RITUAL_DAGGER);
         //Items
-        simpleItem(ModItems.COKE_COAL);
-        simpleItem(ModItems.FLUX);
-        simpleItem(ModItems.RAW_STEEL);
-        simpleItem(ModItems.STEEL_INGOT);
-        simpleItem(ModItems.STEEL_NUGGET);
         simpleItem(ModItems.HAG_EYE);
         simpleItem(ModItems.WAND_CORE);
         simpleItem(ModItems.DRUID_WAND_CORE);
@@ -70,8 +65,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.EVOKER_WAND);
         handheldItem(ModItems.ENDER_WAND);
         handheldItem(ModItems.SACRED_SYMBOL);
-        //Projectiles
-        simpleItem(ModItems.FIREBALT);
         //eggs
         spawnEggItem(ModItems.GHOST_SPAWN_EGG);
         spawnEggItem(ModItems.UNDEAD_SPIRIT_SPAWN_EGG);

@@ -1,7 +1,6 @@
 package net.chixozhmix.dnmmod.blocks;
 
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.blocks.custom.CokeOvenBlock;
 import net.chixozhmix.dnmmod.blocks.custom.LeshyAltarBlock;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -29,10 +28,6 @@ public class ModBlocks {
                     .isRedstoneConductor((state, getter, pos) -> false)
                     .isSuffocating((state, getter, pos) -> false)
                     .isViewBlocking((state, getter, pos) -> false)));
-
-    //EntityBlocks
-    public static final RegistryObject<Block> COKE_OVEN = registerBlock("coke_oven", () ->
-            new CokeOvenBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

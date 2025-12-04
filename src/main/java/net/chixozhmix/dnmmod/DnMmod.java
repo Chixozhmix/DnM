@@ -5,7 +5,6 @@ import io.redspace.ironsspellbooks.block.alchemist_cauldron.AlchemistCauldronRec
 import io.redspace.ironsspellbooks.block.alchemist_cauldron.AlchemistCauldronRecipeRegistry;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.chixozhmix.dnmmod.blocks.ModBlocks;
-import net.chixozhmix.dnmmod.blocks.entity.ModBlockEntity;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
@@ -29,7 +28,6 @@ import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.potion.ModPotions;
 import net.chixozhmix.dnmmod.recipe.ModRecipes;
 import net.chixozhmix.dnmmod.renderer.ArmorEffectRenderer;
-import net.chixozhmix.dnmmod.screen.CokeOvenScreen;
 import net.chixozhmix.dnmmod.screen.ModMenuTypes;
 import net.chixozhmix.dnmmod.screen.component_bag.ComponentBagScreen;
 import net.chixozhmix.dnmmod.screen.medium_bag.MediumBagScreen;
@@ -37,7 +35,6 @@ import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.api.distmarker.Dist;
@@ -75,7 +72,6 @@ public class DnMmod
         SoundsRegistry.register(modEventBus);
         //Entity
         ModEntityType.register(modEventBus);
-        ModBlockEntity.register(modEventBus);
         //Items
         ModItems.register(modEventBus);
         ModPotions.reggister(modEventBus);
@@ -128,7 +124,6 @@ public class DnMmod
                 CuriosRendererRegistry.register(ModItems.MAGICAL_GRIMOIRE.get(), SpellBookCurioRenderer::new);
             });
 
-            EntityRenderers.register(ModEntityType.FIREBALT.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);
             EntityRenderers.register(ModEntityType.ICE_DAGGER.get(), IceDaggerRenderer::new);
             EntityRenderers.register(ModEntityType.ACID_PROJECTILE.get(), AcidProjectileRenderer::new);
@@ -145,7 +140,6 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.GREEMON.get(), GreemonRenderer::new);
             EntityRenderers.register(ModEntityType.GOBLIN_WARRIOR.get(), GoblinWariorRenderer::new);
 
-            MenuScreens.register(ModMenuTypes.COKE_OVEN_MENU.get(), CokeOvenScreen::new);
             MenuScreens.register(ModMenuTypes.COMPONENT_BAG_MENU.get(), ComponentBagScreen::new);
             MenuScreens.register(ModMenuTypes.MEDIUM_COMPONENT_BAG_MENU.get(), MediumBagScreen::new);
 

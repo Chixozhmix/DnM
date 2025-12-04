@@ -18,8 +18,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.CLAY_SHALE);
 
-        simpleBlockWithItem(ModBlocks.COKE_OVEN.get(),
-                new ModelFile.UncheckedModelFile(modLoc("block/coke_oven")));
         simpleBlockWithItem(ModBlocks.LESHY_ALTAR.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/leshy_altar")));
     }

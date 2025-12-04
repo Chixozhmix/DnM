@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-03T13:45:21.7253545	Item Models: dnmmod
+// 1.20.1	2025-12-04T20:52:09.8089576	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
@@ -6,7 +6,6 @@ a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_
 afcc952ce0db6e1184fb9a9347ff79b125ccef76 assets/dnmmod/models/item/blood_wand.json
 ba00481093cc18d9af0be8250395299563b9ae8d assets/dnmmod/models/item/blood_wand_core.json
 e5b166c00c919f5a94a1c3d30adb5a05f8cfe418 assets/dnmmod/models/item/burnt_sugar.json
-ce53e646f17f225f910a10c18eeec041a9e6ec85 assets/dnmmod/models/item/coke_coal.json
 f7ea7e3760956287e84645d481f974f2be54d33c assets/dnmmod/models/item/component_bag.json
 b8b985f080c11123b66420d9c4407f8df6ed8ce4 assets/dnmmod/models/item/cryomancer_wand.json
 1c6bcd6989fdb7d87f3bd9e8faff8949bf6c6a41 assets/dnmmod/models/item/cryomancer_wand_core.json
@@ -26,8 +25,6 @@ bad901a2e66acf730206fce5dee4272452dc4025 assets/dnmmod/models/item/ender_wand.js
 36caada17a6024eaf07be7a92cc4ed87fd797fb0 assets/dnmmod/models/item/ender_wand_core.json
 14250d1e40e96c6d26d9cc2985313202e10bed77 assets/dnmmod/models/item/evoker_wand.json
 c17373fb6f5b039d59a309fa464d788c6a7daa80 assets/dnmmod/models/item/evoker_wand_core.json
-91a5dd7d711cebf4b13a887d6b4b0ceee4c74574 assets/dnmmod/models/item/firebalt.json
-7aabdc6632ffe73b661aa8ed25fe741b406366f7 assets/dnmmod/models/item/flux.json
 54db09c13bd7cdc4522a86c93e05403b9e2116b7 assets/dnmmod/models/item/forest_heart.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/ghost_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/goblin_shaman_spawn_egg.json
@@ -56,15 +53,12 @@ bb8ffd78305763235cd4b46cb12776df844a268e assets/dnmmod/models/item/protection_ri
 bff4666c5792b6c45bc79e73ea5acae62da6fee9 assets/dnmmod/models/item/pyromancer_wand_core.json
 e956d3f901ac08687c6a9524afd8c6060cc114c5 assets/dnmmod/models/item/raven_feather.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/raven_spawn_egg.json
-ae80c53a8ff4092cb5ca35a6ca93897ad749e3a7 assets/dnmmod/models/item/raw_steel.json
 530182c3fe5bf11b786d95b29bc4059d74b1f8c9 assets/dnmmod/models/item/ritual_dagger.json
 3eb32a592747e97ec8bf62e5eb218b00a3a0017e assets/dnmmod/models/item/sacred_symbol.json
 e4bb21fa1050e08133c94fb6eea3d483d6dc8488 assets/dnmmod/models/item/shadow_archer_boots.json
 19c76bd8337ae147e659ad66f6f6370640f31284 assets/dnmmod/models/item/shadow_archer_chestplate.json
 4c651049aa086c4ec3ddae2e8eab0ac8b6dd23aa assets/dnmmod/models/item/shadow_archer_helmet.json
 a0aea36d4a44b2a0f495770187057b013811e21a assets/dnmmod/models/item/shadow_archer_leggings.json
-234ea0350d7dd45a0a4e9389c269e9f0d4b1a75e assets/dnmmod/models/item/steel_ingot.json
-18a50a839ca18b5d2342462d7ed1555ada9cd2e0 assets/dnmmod/models/item/steel_nugget.json
 abef2d36764d66279861838a5da0ae11a000dd8d assets/dnmmod/models/item/thunderstorm_bottle.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/undead_spirit_spawn_egg.json
 65bad3bcd9abdeccb9af0b76dab8c5763d4a0413 assets/dnmmod/models/item/wand_core.json
