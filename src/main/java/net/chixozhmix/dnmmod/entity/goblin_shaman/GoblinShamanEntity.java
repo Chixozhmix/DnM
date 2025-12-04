@@ -26,6 +26,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -35,6 +36,14 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class GoblinShamanEntity extends AbstractSpellCastingMob implements Enemy {
+
+    private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
+            .add(Attributes.ATTACK_DAMAGE, (double)3.0F)
+            .add(Attributes.ATTACK_KNOCKBACK, (double)0.0F)
+            .add(Attributes.MAX_HEALTH, (double)35.0F)
+            .add(Attributes.FOLLOW_RANGE, (double)25.0F)
+            .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)0.5F)
+            .add(Attributes.MOVEMENT_SPEED, (double)0.27F);
 
     public GoblinShamanEntity(EntityType<? extends AbstractSpellCastingMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -70,13 +79,7 @@ public class GoblinShamanEntity extends AbstractSpellCastingMob implements Enemy
     }
 
     public static AttributeSupplier.Builder prepareAttributes() {
-        return LivingEntity.createLivingAttributes()
-                .add(Attributes.ATTACK_DAMAGE, (double)3.0F)
-                .add(Attributes.ATTACK_KNOCKBACK, (double)0.0F)
-                .add(Attributes.MAX_HEALTH, (double)35.0F)
-                .add(Attributes.FOLLOW_RANGE, (double)25.0F)
-                .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)0.5F)
-                .add(Attributes.MOVEMENT_SPEED, (double)0.27F);
+        return ATTRIBUTES;
     }
 
     @Override

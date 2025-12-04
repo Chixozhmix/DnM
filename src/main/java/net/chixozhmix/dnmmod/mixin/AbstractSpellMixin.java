@@ -28,6 +28,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,45 +36,76 @@ import java.util.function.Supplier;
 
 @Mixin(AbstractSpell.class)
 public class AbstractSpellMixin {
-    // Карта соответствий заклинаний и требуемых компонентов
-    private static final Map<Class<?>, Supplier<Item>> SPELL_COMPONENTS = new HashMap<>();
+    private static final Map<Class<? extends AbstractSpell>, Supplier<Item>> SPELL_COMPONENTS;
+
+    // Кеш для преобразованных имен компонентов
+    private static final Map<Item, Component> COMPONENT_NAME_CACHE = new HashMap<>();
 
     static {
-        // Инициализация карты компонентов
-        SPELL_COMPONENTS.put(RaiseDeadSpell.class, () -> Items.ROTTEN_FLESH);
-        SPELL_COMPONENTS.put(AngelWingsSpell.class, () -> Items.PHANTOM_MEMBRANE);
-        SPELL_COMPONENTS.put(SummonEnderChestSpell.class, () -> Items.CHEST);
-        SPELL_COMPONENTS.put(BlackHoleSpell.class, () -> Items.LODESTONE);
-        SPELL_COMPONENTS.put(WallOfFireSpell.class, () -> Items.LAVA_BUCKET);
-        SPELL_COMPONENTS.put(GreaterHealSpell.class, () -> Items.GLISTERING_MELON_SLICE);
-        SPELL_COMPONENTS.put(GustSpell.class, () -> Items.FEATHER);
-        SPELL_COMPONENTS.put(InvisibilitySpell.class, () -> Items.GLASS_BOTTLE);
-        SPELL_COMPONENTS.put(SummonPolarBearSpell.class, () -> Items.COD);
-        SPELL_COMPONENTS.put(BallLightningSpell.class, () -> ItemRegistry.LIGHTNING_BOTTLE.get());
-        SPELL_COMPONENTS.put(ChargeSpell.class, () -> ItemRegistry.ENERGIZED_CORE.get());
-        SPELL_COMPONENTS.put(LightningBoltSpell.class, () -> Items.LIGHTNING_ROD);
-        SPELL_COMPONENTS.put(LightningLanceSpell.class, () -> ModItems.IRON_TRIDENT.get());
-        SPELL_COMPONENTS.put(ThunderstormSpell.class, () -> ModItems.THUNDERSTORM_BOTTLE.get());
-        SPELL_COMPONENTS.put(RecallSpell.class, () -> ModItems.MIRROR.get());
-        SPELL_COMPONENTS.put(BurningDashSpell.class, () -> ModItems.BURNT_SUGAR.get());
+        // Инициализация карты компонентов - используем HashMap для скорости
+        Map<Class<? extends AbstractSpell>, Supplier<Item>> map = new HashMap<>();
+
+        // Blood spells
+        map.put(RaiseDeadSpell.class, () -> Items.ROTTEN_FLESH);
+
+        // Holy spells
+        map.put(AngelWingsSpell.class, () -> Items.PHANTOM_MEMBRANE);
+        map.put(GreaterHealSpell.class, () -> Items.GLISTERING_MELON_SLICE);
+
+        // Ender spells
+        map.put(SummonEnderChestSpell.class, () -> Items.CHEST);
+        map.put(BlackHoleSpell.class, () -> Items.LODESTONE);
+        map.put(RecallSpell.class, () -> ModItems.MIRROR.get());
+
+        // Fire spells
+        map.put(WallOfFireSpell.class, () -> Items.LAVA_BUCKET);
+        map.put(BurningDashSpell.class, () -> ModItems.BURNT_SUGAR.get());
+
+        // Evocation spells
+        map.put(GustSpell.class, () -> Items.FEATHER);
+        map.put(InvisibilitySpell.class, () -> Items.GLASS_BOTTLE);
+
+        // Ice spells
+        map.put(SummonPolarBearSpell.class, () -> Items.COD);
+
+        // Lightning spells
+        map.put(BallLightningSpell.class, ItemRegistry.LIGHTNING_BOTTLE);
+        map.put(ChargeSpell.class, ItemRegistry.ENERGIZED_CORE);
+        map.put(LightningBoltSpell.class, () -> Items.LIGHTNING_ROD);
+        map.put(LightningLanceSpell.class, ModItems.IRON_TRIDENT);
+        map.put(ThunderstormSpell.class, ModItems.THUNDERSTORM_BOTTLE);
+
+        // Делаем карту неизменяемой для безопасности
+        SPELL_COMPONENTS = Collections.unmodifiableMap(map);
+    }
+
+    // Получаем реальный экземпляр заклинания
+    private AbstractSpell getThisSpell() {
+        return (AbstractSpell)(Object)this;
+    }
+
+    // Получаем класс заклинания
+    private Class<? extends AbstractSpell> getSpellClass() {
+        return getThisSpell().getClass();
     }
 
     @Inject(method = "checkPreCastConditions", at = @At("HEAD"), cancellable = true, remap = false)
     private void injectCheckPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData,
                                               CallbackInfoReturnable<Boolean> cir) {
-        Supplier<Item> componentSupplier = SPELL_COMPONENTS.get(this.getClass());
+        Supplier<Item> componentSupplier = SPELL_COMPONENTS.get(getSpellClass());
 
         if (componentSupplier != null) {
             Item requiredComponent = componentSupplier.get();
             if (!SpellUtils.checkSpellComponent(entity, requiredComponent)) {
+                // Отменяем каст заклинания
                 cir.setReturnValue(false);
-                cir.cancel();
+                // НЕ вызываем cir.cancel() - это может нарушить другие миксины
             }
         }
     }
     @Inject(method = "getUniqueInfo", at = @At("RETURN"), cancellable = true, remap = false)
     public void ingectedgetUniqueInfo(int spellLevel, LivingEntity caster, CallbackInfoReturnable<List<MutableComponent>> cir) {
-        Supplier<Item> componentSupplier = SPELL_COMPONENTS.get(this.getClass());
+        Supplier<Item> componentSupplier = SPELL_COMPONENTS.get(this.getSpellClass());
 
         if (componentSupplier != null) {
             Item requiredComponent = componentSupplier.get();

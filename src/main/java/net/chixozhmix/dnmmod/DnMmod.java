@@ -25,7 +25,6 @@ import net.chixozhmix.dnmmod.entity.summoned.client.SummonedRavenRenderer;
 import net.chixozhmix.dnmmod.entity.summoned.client.SummonedUndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.items.CreativeTabMod;
 import net.chixozhmix.dnmmod.items.ModItems;
-import net.chixozhmix.dnmmod.potion.ModPotions;
 import net.chixozhmix.dnmmod.recipe.ModRecipes;
 import net.chixozhmix.dnmmod.renderer.ArmorEffectRenderer;
 import net.chixozhmix.dnmmod.screen.ModMenuTypes;
@@ -74,7 +73,6 @@ public class DnMmod
         ModEntityType.register(modEventBus);
         //Items
         ModItems.register(modEventBus);
-        ModPotions.reggister(modEventBus);
         //Blocks
         ModBlocks.register(modEventBus);
         //Effects

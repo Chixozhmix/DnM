@@ -18,52 +18,106 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Mod.EventBusSubscriber
 public class ArmorEffectRenderer {
-    private static final Map<UUID, Float> armorAnimState = new HashMap<>();
-    private static final Map<UUID, Float> rotationStates = new HashMap<>();
+    private static final Map<UUID, PlayerEffectData> effectDataMap = new ConcurrentHashMap<>();
     private static MobEffect TRIGGER_EFFECT = null;
+
+    private static final float[] SIN_CACHE = new float[360];
+    private static final float[] COS_CACHE = new float[360];
+
+    static {
+        for (int i = 0; i < 360; i++) {
+            double rad = Math.toRadians(i);
+            SIN_CACHE[i] = (float) Math.sin(rad);
+            COS_CACHE[i] = (float) Math.cos(rad);
+        }
+    }
+
+    private static class PlayerEffectData {
+        float armorState = 0f;
+        float rotation = 0f;
+        long lastUpdateTick = 0;
+        boolean hasEffect = false;
+
+        void update(boolean hasEffectNow, float deltaTime) {
+            hasEffect = hasEffectNow;
+
+            // Обновляем вращение (константная скорость)
+            rotation += 2.0f * deltaTime * 20f; // 20 тиков в секунду
+            if (rotation >= 360f) rotation -= 360f;
+
+            // Обновляем состояние анимации
+            if (hasEffectNow) {
+                armorState = Math.min(armorState + 0.05f * deltaTime * 20f, 1.0f);
+            } else {
+                armorState = Math.max(armorState - 0.05f * deltaTime * 20f, 0f);
+            }
+        }
+
+        boolean shouldRemove() {
+            return !hasEffect && armorState <= 0f;
+        }
+    }
 
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) return;
+
         Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.level == null || minecraft.player == null) return;
 
-        if (event.phase == TickEvent.Phase.END  && minecraft.level != null) {
-            if (TRIGGER_EFFECT == null) {
-                TRIGGER_EFFECT = ModEffects.AGATHYS_ARMOR.get();
+        if (TRIGGER_EFFECT == null) {
+            TRIGGER_EFFECT = ModEffects.AGATHYS_ARMOR.get();
+        }
+
+        List<Player> playersToUpdate = new ArrayList<>();
+
+        playersToUpdate.add(minecraft.player);
+
+        for (Player player : minecraft.level.players()) {
+            if (player != minecraft.player &&
+                    player.distanceToSqr(minecraft.player) < 64 * 64) {
+                playersToUpdate.add(player);
             }
+        }
 
-            // Обновляем анимации для всех игроков с эффектом
-            for (Player player : minecraft.level.players()) {
-                UUID playerId = player.getUUID();
+        float deltaTime = minecraft.getDeltaFrameTime();
 
-                // Обновляем вращение щитов
-                float currentRotation = rotationStates.getOrDefault(playerId, 0f);
-                rotationStates.put(playerId, currentRotation + 2.0f); // Скорость вращения
+        for (Player player : playersToUpdate) {
+            UUID playerId = player.getUUID();
+            boolean hasEffectNow = player.hasEffect(TRIGGER_EFFECT);
 
-                if (player.hasEffect(TRIGGER_EFFECT)) {
-                    float currentState = armorAnimState.getOrDefault(playerId, 0f);
-
-                    // Плавное появление
-                    if (currentState < 1.0f) {
-                        armorAnimState.put(playerId, Math.min(currentState + 0.05f, 1.0f));
-                    }
-                } else {
-                    // Плавное исчезновение
-                    if (armorAnimState.containsKey(playerId)) {
-                        float currentState = armorAnimState.get(playerId);
-                        if (currentState > 0f) {
-                            armorAnimState.put(playerId, Math.max(currentState - 0.05f, 0f));
-                        } else {
-                            armorAnimState.remove(playerId);
-                            rotationStates.remove(playerId);
-                        }
-                    }
+            PlayerEffectData data = effectDataMap.get(playerId);
+            if (data == null) {
+                if (hasEffectNow) {
+                    data = new PlayerEffectData();
+                    effectDataMap.put(playerId, data);
+                    data.update(hasEffectNow, deltaTime);
                 }
+            } else {
+                data.update(hasEffectNow, deltaTime);
+
+                if (data.shouldRemove()) {
+                    effectDataMap.remove(playerId);
+                }
+            }
+        }
+
+        if (minecraft.level.getGameTime() % 20 == 0) {
+            cleanupOldEntries();
+        }
+    }
+
+    private static void cleanupOldEntries() {
+        Iterator<Map.Entry<UUID, PlayerEffectData>> iterator = effectDataMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<UUID, PlayerEffectData> entry = iterator.next();
+            if (entry.getValue().shouldRemove()) {
+                iterator.remove();
             }
         }
     }
@@ -72,35 +126,24 @@ public class ArmorEffectRenderer {
     public static void onRenderPlayer(RenderLivingEvent.Post<Player, HumanoidModel<Player>> event) {
         if (!(event.getEntity() instanceof Player player)) return;
 
-        if (TRIGGER_EFFECT == null) {
-            TRIGGER_EFFECT = ModEffects.AGATHYS_ARMOR.get();
-        }
-
-        if (!player.hasEffect(TRIGGER_EFFECT) && !armorAnimState.containsKey(player.getUUID())) {
-            return;
-        }
-
-        float animationState = armorAnimState.getOrDefault(player.getUUID(), 0f);
-        if (animationState <= 0f) return;
+        // Быстрая проверка: есть ли данные для этого игрока
+        PlayerEffectData data = effectDataMap.get(player.getUUID());
+        if (data == null || data.armorState <= 0.001f) return;
 
         renderRotatingShields(player, event.getPoseStack(), event.getMultiBufferSource(),
-                event.getPartialTick(), animationState);
+                event.getPartialTick(), data);
     }
 
     private static void renderRotatingShields(Player player, PoseStack poseStack,
                                               MultiBufferSource bufferSource, float partialTicks,
-                                              float alpha) {
+                                              PlayerEffectData data) {
         poseStack.pushPose();
 
-        // Получаем текущее вращение для игрока
-        float rotation = rotationStates.getOrDefault(player.getUUID(), 0f);
+        float prevRotation = data.rotation - 2.0f * Minecraft.getInstance().getDeltaFrameTime() * 20f;
+        float interpolatedRotation = prevRotation + (data.rotation - prevRotation) * partialTicks;
 
-        // Интерполируем вращение для плавности
-        float prevRotation = rotation - 2.0f;
-        float interpolatedRotation = prevRotation + (rotation - prevRotation) * partialTicks;
-
-        // Рендерим два вращающихся щита
-        renderShieldPair(player, poseStack, bufferSource, partialTicks, alpha, interpolatedRotation);
+        renderShieldPair(player, poseStack, bufferSource, partialTicks,
+                data.armorState, interpolatedRotation);
 
         poseStack.popPose();
     }
@@ -108,69 +151,69 @@ public class ArmorEffectRenderer {
     private static void renderShieldPair(Player player, PoseStack poseStack,
                                          MultiBufferSource bufferSource, float partialTicks,
                                          float alpha, float rotation) {
+        final float radius = 1.2f;
+        final float yOffset = 1.2f;
 
-        // Радиус вращения вокруг игрока
-        float radius = 1.2f;
+        int angle1 = ((int) rotation) % 360;
+        if (angle1 < 0) angle1 += 360;
 
-        // Высота щитов относительно игрока
-        float yOffset = 1.2f;
+        int angle2 = (angle1 + 180) % 360;
 
-        // Рендерим первый щит
-        renderSingleShield(player, poseStack, bufferSource, partialTicks, alpha,
-                rotation, radius, yOffset, 0);
+        renderSingleShield(poseStack, bufferSource, partialTicks, alpha,
+                angle1, radius, yOffset, player.tickCount);
 
-        // Рендерим второй щит
-        renderSingleShield(player, poseStack, bufferSource, partialTicks, alpha,
-                rotation + 180f, radius, yOffset, 1);
+        renderSingleShield(poseStack, bufferSource, partialTicks, alpha,
+                angle2, radius, yOffset, player.tickCount);
     }
 
-    private static void renderSingleShield(Player player, PoseStack poseStack,
+    private static void renderSingleShield(PoseStack poseStack,
                                            MultiBufferSource bufferSource, float partialTicks,
-                                           float alpha, float angle, float radius,
-                                           float yOffset, int shieldIndex) {
+                                           float alpha, int angle, float radius,
+                                           float yOffset, int tickCount) {
         poseStack.pushPose();
 
-        // Позиционируем щит по кругу вокруг игрока
-        float radAngle = (float) Math.toRadians(angle);
-        float x = (float) Math.cos(radAngle) * radius;
-        float z = (float) Math.sin(radAngle) * radius;
+        float x = COS_CACHE[angle] * radius;
+        float z = SIN_CACHE[angle] * radius;
 
         poseStack.translate(x, yOffset, z);
 
-        // Ориентируем щит лицом наружу от игрока
         poseStack.mulPose(Axis.YP.rotationDegrees(-angle + 45));
-
-        // Наклон щита для лучшего обзора
         poseStack.mulPose(Axis.XP.rotationDegrees(15));
 
-        // Масштабируем щит
-        float scale = 0.8f;
+        final float scale = 0.8f;
         poseStack.scale(scale, scale, scale);
 
-        // Легкая пульсация
-        float pulse = (float) (Math.sin(player.tickCount * 0.2f) * 0.1f + 1.0f);
+        int sinIndex = (tickCount * 2) % 360; // Более дешевая операция
+        if (sinIndex < 0) sinIndex += 360;
+        float pulse = SIN_CACHE[sinIndex] * 0.1f + 1.0f;
         poseStack.scale(pulse, pulse, pulse);
 
-        // Рендерим модель щита
         renderShieldModel(poseStack, bufferSource, alpha);
 
         poseStack.popPose();
     }
 
+    private static ShieldModel cachedShieldModel = null;
+    private static ResourceLocation cachedShieldTexture = null;
+
     private static void renderShieldModel(PoseStack poseStack, MultiBufferSource bufferSource,
                                           float alpha) {
         Minecraft minecraft = Minecraft.getInstance();
 
-        // Загружаем модель щита
-        ShieldModel shieldModel = new ShieldModel(
-                minecraft.getEntityModels().bakeLayer(ModelLayers.SHIELD)
-        );
+        if (cachedShieldModel == null) {
+            cachedShieldModel = new ShieldModel(
+                    minecraft.getEntityModels().bakeLayer(ModelLayers.SHIELD)
+            );
+        }
 
-        ResourceLocation shieldTexture = new ResourceLocation(DnMmod.MOD_ID, "textures/entity/agahys_shield.png");
+        if (cachedShieldTexture == null) {
+            cachedShieldTexture = ResourceLocation.fromNamespaceAndPath(
+                    DnMmod.MOD_ID, "textures/entity/agahys_shield.png"
+            );
+        }
 
-
-        shieldModel.plate().render(poseStack,
-                bufferSource.getBuffer(shieldModel.renderType(shieldTexture)),
+        cachedShieldModel.plate().render(poseStack,
+                bufferSource.getBuffer(cachedShieldModel.renderType(cachedShieldTexture)),
                 15728880, OverlayTexture.NO_OVERLAY,
                 1.0f, 1.0f, 1.0f, alpha * 0.9f);
     }

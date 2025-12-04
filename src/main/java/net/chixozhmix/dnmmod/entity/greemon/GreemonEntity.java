@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.entity.greemon;
 
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
@@ -9,6 +10,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -36,6 +39,14 @@ public class GreemonEntity extends Monster implements GeoEntity {
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
     private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
+
+    private static final AttributeSupplier ATTRIBUTES = Monster.createMobAttributes()
+            .add(Attributes.MAX_HEALTH, 40.0D)
+            .add(Attributes.ARMOR, 6.0D)
+            .add(Attributes.MOVEMENT_SPEED, 0.30D)
+            .add(Attributes.ATTACK_DAMAGE, 4.0D)
+            .add(Attributes.FOLLOW_RANGE, 40.0D)
+            .add(Attributes.KNOCKBACK_RESISTANCE, 0.2D).build();
 
     public GreemonEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -70,13 +81,7 @@ public class GreemonEntity extends Monster implements GeoEntity {
     }
 
     public static AttributeSupplier createAttributes () {
-        return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 40.0D)
-                .add(Attributes.ARMOR, 6.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.30D)
-                .add(Attributes.ATTACK_DAMAGE, 4.0D)
-                .add(Attributes.FOLLOW_RANGE, 40.0D)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 0.2D).build();
+        return ATTRIBUTES;
     }
 
     @Override

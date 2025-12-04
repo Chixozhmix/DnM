@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.entity.raven;
 
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
@@ -7,7 +8,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
@@ -23,7 +26,13 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import org.jetbrains.annotations.Nullable;
 
 public class RavenEntity extends PathfinderMob implements FlyingAnimal {
-
+    private static final AttributeSupplier ATTRIBUTES = Monster.createMonsterAttributes()
+            .add(Attributes.MAX_HEALTH, 10.0D)
+            .add(Attributes.FLYING_SPEED, 0.6F)
+            .add(Attributes.MOVEMENT_SPEED, 0.3F)
+            .add(Attributes.ARMOR, 0.0D)
+            .add(Attributes.ATTACK_DAMAGE, 4.0D)
+            .build();
 
     public RavenEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -58,13 +67,7 @@ public class RavenEntity extends PathfinderMob implements FlyingAnimal {
     }
 
     public static AttributeSupplier createAttributes() {
-        return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 10.0D)
-                .add(Attributes.FLYING_SPEED, 0.6F)
-                .add(Attributes.MOVEMENT_SPEED, 0.3F)
-                .add(Attributes.ARMOR, 0.0D)
-                .add(Attributes.ATTACK_DAMAGE, 4.0D)
-                .build();
+        return ATTRIBUTES;
     }
 
     @Override

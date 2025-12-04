@@ -22,6 +22,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -41,6 +42,17 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
+    private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
+            .add(Attributes.ATTACK_DAMAGE, (double)10.0F)
+            .add(Attributes.ATTACK_KNOCKBACK, (double)0.2F)
+            .add(Attributes.MAX_HEALTH, (double)300.0F)
+            .add(Attributes.FOLLOW_RANGE, (double)40.0F)
+            .add(AttributeRegistry.SPELL_POWER.get(), (double)1.25F)
+            .add(Attributes.MOVEMENT_SPEED, (double)0.22F)
+            .add(Attributes.KNOCKBACK_RESISTANCE, (double)0.1F)
+            .add(Attributes.ARMOR, (double)15.0F)
+            .add(AttributeRegistry.SPELL_RESIST.get(), 0.5f)
+            .add(AttributeRegistry.SUMMON_DAMAGE.get(), 0.4f);
 
     private int attackAnimationTick = 0;
 
@@ -81,17 +93,7 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
     }
 
     public static AttributeSupplier.Builder prepareAttributes() {
-        return LivingEntity.createLivingAttributes()
-                .add(Attributes.ATTACK_DAMAGE, (double)10.0F)
-                .add(Attributes.ATTACK_KNOCKBACK, (double)0.2F)
-                .add(Attributes.MAX_HEALTH, (double)300.0F)
-                .add(Attributes.FOLLOW_RANGE, (double)40.0F)
-                .add(AttributeRegistry.SPELL_POWER.get(), (double)1.25F)
-                .add(Attributes.MOVEMENT_SPEED, (double)0.22F)
-                .add(Attributes.KNOCKBACK_RESISTANCE, (double)0.1F)
-                .add(Attributes.ARMOR, (double)15.0F)
-                .add(AttributeRegistry.SPELL_RESIST.get(), 0.5f)
-                .add(AttributeRegistry.SUMMON_DAMAGE.get(), 0.4f);
+        return ATTRIBUTES;
     }
 
     @Override

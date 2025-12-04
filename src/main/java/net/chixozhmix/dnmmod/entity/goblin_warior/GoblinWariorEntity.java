@@ -34,6 +34,25 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class GoblinWariorEntity extends Monster implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
+    private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
+    private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
+
+    private static final EntityDimensions DIMENSIONS = EntityDimensions.fixed(0.6f, 0.7f);
+
+    private static final float DAGGER_CHANCE = 0.3F;
+    private static final float LEATHER_HELMET_CHANCE = 0.3F;
+    private static final float EQUIPMENT_DROP_CHANCE = 0.1F;
+
+    private static final AttributeSupplier ATTRIBUTES = Monster.createMobAttributes()
+            .add(Attributes.MAX_HEALTH, 16.0D)
+            .add(Attributes.ARMOR, 4.0D)
+            .add(Attributes.MOVEMENT_SPEED, 0.26D)
+            .add(Attributes.ATTACK_SPEED, 1.2F)
+            .add(Attributes.ATTACK_DAMAGE, 2.0D)
+            .add(Attributes.FOLLOW_RANGE, 25.0D)
+            .build();
+
     public GoblinWariorEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.xpReward = 5;
@@ -46,7 +65,7 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
 
     @Override
     public EntityDimensions getDimensions(Pose pPose) {
-        return EntityDimensions.fixed(0.6f, 0.7f);
+        return DIMENSIONS;
     }
 
     @Override
@@ -55,20 +74,22 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
+        var controller = state.getController();
+
         if (this.swinging) {
             state.getController().setAnimationSpeed(1.0);
-            state.getController().setAnimation(RawAnimation.begin().thenPlay("attack"));
+            controller.setAnimation(ATTACK_ANIM);
             return PlayState.CONTINUE;
         }
 
         if (state.isMoving()) {
             state.getController().setAnimationSpeed(1.5);
-            state.getController().setAnimation(RawAnimation.begin().thenLoop("walk"));
+            state.getController().setAnimation(WALK_ANIM);
             return  PlayState.CONTINUE;
         }
 
         state.getController().setAnimationSpeed(1.0);
-        state.getController().setAnimation(RawAnimation.begin().thenLoop("idle"));
+        state.getController().setAnimation(IDLE_ANIM);
         return PlayState.CONTINUE;
     }
 
@@ -78,18 +99,7 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
     }
 
     public static AttributeSupplier createAttributes () {
-        return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 16.0D)
-                .add(Attributes.ARMOR, 4.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.26D)
-                .add(Attributes.ATTACK_SPEED, 1.2F)
-                .add(Attributes.ATTACK_DAMAGE, 2.0D)
-                .add(Attributes.FOLLOW_RANGE, 25.0D).build();
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
+        return ATTRIBUTES;
     }
 
     @Override
@@ -118,19 +128,19 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
 
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource pRandom, DifficultyInstance pDifficulty) {
-        if (pRandom.nextFloat() < 0.3F) {
+        float randomValue = pRandom.nextFloat();
+
+        if (randomValue < DAGGER_CHANCE) {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.IRON_DAGGER.get()));
-        }
-        if (pRandom.nextFloat() > 0.3F) {
+        } else {
             this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
         }
 
-        if (pRandom.nextFloat() == 0.3F) {
+        if (pRandom.nextFloat() < LEATHER_HELMET_CHANCE) {
             this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.LEATHER_HELMET));
         }
 
-
-        this.setDropChance(EquipmentSlot.MAINHAND, 0.1F);
+        this.setDropChance(EquipmentSlot.MAINHAND, EQUIPMENT_DROP_CHANCE);
     }
 
     @Override

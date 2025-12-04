@@ -36,6 +36,14 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
 
     private int attackAnimationTick = 0;
 
+    private static final AttributeSupplier ATTRIBUTES = Monster.createMobAttributes()
+            .add(Attributes.MAX_HEALTH, 30.0D)
+            .add(Attributes.ARMOR, 4.0D)
+            .add(Attributes.MOVEMENT_SPEED, 0.20D)
+            .add(Attributes.ATTACK_DAMAGE, 2.0D)
+            .add(Attributes.FOLLOW_RANGE, 40.0D)
+            .add(Attributes.KNOCKBACK_RESISTANCE, 0.2D).build();
+
     public UndeadSpiritEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
@@ -69,13 +77,7 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
     }
 
     public static AttributeSupplier createAttributes () {
-        return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 30.0D)
-                .add(Attributes.ARMOR, 4.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.20D)
-                .add(Attributes.ATTACK_DAMAGE, 2.0D)
-                .add(Attributes.FOLLOW_RANGE, 40.0D)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 0.2D).build();
+        return ATTRIBUTES;
     }
 
     @Override

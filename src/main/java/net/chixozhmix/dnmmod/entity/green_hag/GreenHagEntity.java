@@ -19,6 +19,7 @@ import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -38,6 +39,16 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy {
+    private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
+            .add(Attributes.ATTACK_DAMAGE, (double)6.0F)
+            .add(Attributes.ATTACK_KNOCKBACK, (double)0.2F)
+            .add(Attributes.MAX_HEALTH, (double)220.0F)
+            .add(Attributes.FOLLOW_RANGE, (double)30.0F)
+            .add(AttributeRegistry.SPELL_POWER.get(), (double)1.15F)
+            .add(Attributes.MOVEMENT_SPEED, (double)0.24F)
+            .add(AttributeRegistry.SPELL_RESIST.get(), 0.5f)
+            .add(AttributeRegistry.SUMMON_DAMAGE.get(), 0.4f);
+
     public GreenHagEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.xpReward = 40;
@@ -75,15 +86,7 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy {
     }
 
     public static AttributeSupplier.Builder prepareAttributes() {
-        return LivingEntity.createLivingAttributes()
-                .add(Attributes.ATTACK_DAMAGE, (double)6.0F)
-                .add(Attributes.ATTACK_KNOCKBACK, (double)0.2F)
-                .add(Attributes.MAX_HEALTH, (double)220.0F)
-                .add(Attributes.FOLLOW_RANGE, (double)30.0F)
-                .add(AttributeRegistry.SPELL_POWER.get(), (double)1.15F)
-                .add(Attributes.MOVEMENT_SPEED, (double)0.24F)
-                .add(AttributeRegistry.SPELL_RESIST.get(), 0.5f)
-                .add(AttributeRegistry.SUMMON_DAMAGE.get(), 0.4f);
+        return ATTRIBUTES;
     }
 
     @Override
