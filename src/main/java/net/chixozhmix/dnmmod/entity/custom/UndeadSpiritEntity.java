@@ -36,21 +36,13 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
 
     private int attackAnimationTick = 0;
 
-    private static final AttributeSupplier ATTRIBUTES = Monster.createMobAttributes()
-            .add(Attributes.MAX_HEALTH, 30.0D)
-            .add(Attributes.ARMOR, 4.0D)
-            .add(Attributes.MOVEMENT_SPEED, 0.20D)
-            .add(Attributes.ATTACK_DAMAGE, 2.0D)
-            .add(Attributes.FOLLOW_RANGE, 40.0D)
-            .add(Attributes.KNOCKBACK_RESISTANCE, 0.2D).build();
-
     public UndeadSpiritEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController<>(this, "controller", 0, this::predicate));
+        controllerRegistrar.add(new AnimationController<>(this, "controller", 5, this::predicate));
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
@@ -61,7 +53,7 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
             return PlayState.CONTINUE;
         }
 
-        if (state.isMoving()) {
+        else if (state.isMoving()) {
             controller.setAnimation(WALK_ANIM);
             return  PlayState.CONTINUE;
         }
@@ -77,7 +69,13 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
     }
 
     public static AttributeSupplier createAttributes () {
-        return ATTRIBUTES;
+        return Monster.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 30.0D)
+                .add(Attributes.ARMOR, 4.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.20D)
+                .add(Attributes.ATTACK_DAMAGE, 2.0D)
+                .add(Attributes.FOLLOW_RANGE, 40.0D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.2D).build();
     }
 
     @Override
@@ -89,11 +87,11 @@ public class UndeadSpiritEntity extends Monster implements GeoEntity {
             if (this.isSunBurnTick()) {
                 this.setSecondsOnFire(8); // Горит 8 секунд
             }
-        }
 
-        // Обновляем счетчик анимации атаки
-        if (this.attackAnimationTick > 0) {
-            this.attackAnimationTick--;
+            // Обновляем счетчик анимации атаки
+            if (this.attackAnimationTick > 0) {
+                this.attackAnimationTick--;
+            }
         }
 
         if (this.swinging) {

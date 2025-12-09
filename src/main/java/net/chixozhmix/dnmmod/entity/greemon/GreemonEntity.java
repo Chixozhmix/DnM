@@ -1,6 +1,5 @@
 package net.chixozhmix.dnmmod.entity.greemon;
 
-import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
@@ -10,8 +9,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -21,7 +18,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.StructureManager;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -40,13 +36,7 @@ public class GreemonEntity extends Monster implements GeoEntity {
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
     private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
 
-    private static final AttributeSupplier ATTRIBUTES = Monster.createMobAttributes()
-            .add(Attributes.MAX_HEALTH, 40.0D)
-            .add(Attributes.ARMOR, 6.0D)
-            .add(Attributes.MOVEMENT_SPEED, 0.30D)
-            .add(Attributes.ATTACK_DAMAGE, 4.0D)
-            .add(Attributes.FOLLOW_RANGE, 40.0D)
-            .add(Attributes.KNOCKBACK_RESISTANCE, 0.2D).build();
+    private int attackAnimationTick = 0;
 
     public GreemonEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -55,24 +45,20 @@ public class GreemonEntity extends Monster implements GeoEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController<>(this, "controller", 0, this::predicate));
+        controllerRegistrar.add(new AnimationController<>(this, "controller", 5, this::predicate));
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
-        var controller = state.getController();
 
-        if (this.swinging) {
-            controller.setAnimation(ATTACK_ANIM);
-            return PlayState.CONTINUE;
+        if (this.attackAnimationTick > 0) {
+            return state.setAndContinue(ATTACK_ANIM);
         }
 
-        if (state.isMoving()) {
-            state.getController().setAnimation(WALK_ANIM);
-            return  PlayState.CONTINUE;
+        else if (state.isMoving()) {
+            return state.setAndContinue(WALK_ANIM);
         }
 
-        state.getController().setAnimation(IDLE_ANIM);
-        return PlayState.CONTINUE;
+        return state.setAndContinue(IDLE_ANIM);
     }
 
     @Override
@@ -81,12 +67,31 @@ public class GreemonEntity extends Monster implements GeoEntity {
     }
 
     public static AttributeSupplier createAttributes () {
-        return ATTRIBUTES;
+        return Monster.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 40.0D)
+                .add(Attributes.ARMOR, 6.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.30D)
+                .add(Attributes.ATTACK_DAMAGE, 4.0D)
+                .add(Attributes.FOLLOW_RANGE, 40.0D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.2D).build();
     }
 
     @Override
     public void tick() {
         super.tick();
+
+        if (this.level().isClientSide()) {
+            // Только на клиенте обновляем анимации
+            if (this.attackAnimationTick > 0) {
+                this.attackAnimationTick--;
+            }
+        }
+
+        // Синхронизация анимации атаки с анимацией взмаха оружия
+        if (this.swinging && this.attackAnimationTick <= 0) {
+            this.attackAnimationTick = 10; // Увеличьте длительность для лучшей синхронизации
+            this.swingTime = 0;
+        }
     }
 
     @Override

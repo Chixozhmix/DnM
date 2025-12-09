@@ -49,6 +49,10 @@ import java.util.UUID;
 public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSummon, GeoAnimatable {
     private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(SummonedUndeadSpirit.class, EntityDataSerializers.BOOLEAN);
 
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
+    private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
+    private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
+
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
     private int riseAnimTime;
@@ -104,18 +108,18 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
         // Анимация атаки
         if (this.swinging) {
-            state.getController().setAnimation(RawAnimation.begin().thenPlay("attack"));
+            state.getController().setAnimation(ATTACK_ANIM);
             return PlayState.CONTINUE;
         }
 
         // Анимация движения
         if (state.isMoving()) {
-            state.getController().setAnimation(RawAnimation.begin().thenLoop("walk"));
+            state.getController().setAnimation(WALK_ANIM);
             return PlayState.CONTINUE;
         }
 
         // Анимация покоя
-        state.getController().setAnimation(RawAnimation.begin().thenLoop("idle"));
+        state.getController().setAnimation(IDLE_ANIM);
         return PlayState.CONTINUE;
     }
 

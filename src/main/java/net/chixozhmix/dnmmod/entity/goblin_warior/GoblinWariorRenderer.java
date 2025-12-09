@@ -19,6 +19,7 @@ public class GoblinWariorRenderer extends GeoEntityRenderer<GoblinWariorEntity> 
 
     @Override
     public void scaleModelForRender(float widthScale, float heightScale, PoseStack poseStack, GoblinWariorEntity animatable, BakedGeoModel model, boolean isReRender, float partialTick, int packedLight, int packedOverlay) {
+        // Вместо фиксированного масштаба, используйте более стабильный подход
         float scale = 0.6F;
         poseStack.scale(scale, scale, scale);
     }

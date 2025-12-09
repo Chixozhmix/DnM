@@ -71,8 +71,8 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<GoblinWariorEntity>> GOBLIN_WARRIOR =
             ENTITY_TYPES.register("goblin_warrior", () ->
                     EntityType.Builder.of(GoblinWariorEntity::new, MobCategory.MONSTER)
-                            .clientTrackingRange(8)
-                            .sized(0.6f, 0.8f)
+                            .clientTrackingRange(16)
+                            .sized(0.6f, 0.6f)
                             .build("goblin_warrior"));
     public static final RegistryObject<EntityType<GreenHagEntity>> GREEN_HAG =
             ENTITY_TYPES.register("green_hag", () ->

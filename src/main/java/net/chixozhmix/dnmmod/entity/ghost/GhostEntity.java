@@ -43,9 +43,9 @@ import java.util.EnumSet;
 public class GhostEntity extends Monster implements GeoEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
-    private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
-    private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
+    private final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
+    private final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
+    private final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
 
     private boolean isCharging = false;
 
@@ -74,7 +74,7 @@ public class GhostEntity extends Monster implements GeoEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController<>(this, "controller", 0, this::predicate));
+        controllerRegistrar.add(new AnimationController<>(this, "controller", 5, this::predicate));
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {

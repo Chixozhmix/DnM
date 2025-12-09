@@ -38,20 +38,13 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
     private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
 
-    private static final EntityDimensions DIMENSIONS = EntityDimensions.fixed(0.6f, 0.7f);
+    private int attackAnimationTick = 0;
+
+    private static final EntityDimensions DIMENSIONS = EntityDimensions.fixed(0.6f, 0.6f);
 
     private static final float DAGGER_CHANCE = 0.3F;
     private static final float LEATHER_HELMET_CHANCE = 0.3F;
     private static final float EQUIPMENT_DROP_CHANCE = 0.1F;
-
-    private static final AttributeSupplier ATTRIBUTES = Monster.createMobAttributes()
-            .add(Attributes.MAX_HEALTH, 16.0D)
-            .add(Attributes.ARMOR, 4.0D)
-            .add(Attributes.MOVEMENT_SPEED, 0.26D)
-            .add(Attributes.ATTACK_SPEED, 1.2F)
-            .add(Attributes.ATTACK_DAMAGE, 2.0D)
-            .add(Attributes.FOLLOW_RANGE, 25.0D)
-            .build();
 
     public GoblinWariorEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -70,19 +63,19 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController<>(this, "controller", 0, this::predicate));
+        controllerRegistrar.add(new AnimationController<>(this, "controller", 5, this::predicate));
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
         var controller = state.getController();
 
-        if (this.swinging) {
+        if (this.attackAnimationTick > 0) {
             state.getController().setAnimationSpeed(1.0);
             controller.setAnimation(ATTACK_ANIM);
             return PlayState.CONTINUE;
         }
 
-        if (state.isMoving()) {
+        else if (state.isMoving()) {
             state.getController().setAnimationSpeed(1.5);
             state.getController().setAnimation(WALK_ANIM);
             return  PlayState.CONTINUE;
@@ -99,13 +92,38 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
     }
 
     public static AttributeSupplier createAttributes () {
-        return ATTRIBUTES;
+        return Monster.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 16.0D)
+                .add(Attributes.ARMOR, 4.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.26D)
+                .add(Attributes.ATTACK_SPEED, 1.2F)
+                .add(Attributes.ATTACK_DAMAGE, 2.0D)
+                .add(Attributes.FOLLOW_RANGE, 25.0D)
+                .build();
     }
 
     @Override
     public boolean doHurtTarget(Entity pEntity) {
         this.swing(InteractionHand.MAIN_HAND);
         return super.doHurtTarget(pEntity);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        if (this.level().isClientSide()) {
+            // Только на клиенте обновляем анимации
+            if (this.attackAnimationTick > 0) {
+                this.attackAnimationTick--;
+            }
+        }
+
+        // Синхронизация анимации атаки с анимацией взмаха оружия
+        if (this.swinging && this.attackAnimationTick <= 0) {
+            this.attackAnimationTick = 10; // Увеличьте длительность для лучшей синхронизации
+            this.swingTime = 0;
+        }
     }
 
     @Override
