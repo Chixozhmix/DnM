@@ -1,20 +1,20 @@
 package net.chixozhmix.dnmmod.mixin;
 
+import com.github.alexmodguy.alexscaves.server.item.ACItemRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.spells.blood.RaiseDeadSpell;
-import io.redspace.ironsspellbooks.spells.blood.SacrificeSpell;
 import io.redspace.ironsspellbooks.spells.ender.BlackHoleSpell;
 import io.redspace.ironsspellbooks.spells.ender.RecallSpell;
 import io.redspace.ironsspellbooks.spells.ender.SummonEnderChestSpell;
 import io.redspace.ironsspellbooks.spells.evocation.GustSpell;
 import io.redspace.ironsspellbooks.spells.evocation.InvisibilitySpell;
 import io.redspace.ironsspellbooks.spells.fire.*;
-import io.redspace.ironsspellbooks.spells.holy.AngelWingsSpell;
 import io.redspace.ironsspellbooks.spells.holy.GreaterHealSpell;
 import io.redspace.ironsspellbooks.spells.ice.SummonPolarBearSpell;
 import io.redspace.ironsspellbooks.spells.lightning.*;
+import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.minecraft.network.chat.Component;
@@ -24,6 +24,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -38,7 +39,6 @@ import java.util.function.Supplier;
 public class AbstractSpellMixin {
     private static final Map<Class<? extends AbstractSpell>, Supplier<Item>> SPELL_COMPONENTS;
 
-    // Кеш для преобразованных имен компонентов
     private static final Map<Item, Component> COMPONENT_NAME_CACHE = new HashMap<>();
 
     static {
@@ -48,8 +48,33 @@ public class AbstractSpellMixin {
         // Blood spells
         map.put(RaiseDeadSpell.class, () -> Items.ROTTEN_FLESH);
 
+        try {
+            Class<?> vigorSiphonClass = Class.forName("com.gametechbc.traveloptics.spells.blood.VigorSiphonSpell");
+            Class<?> serpentideClass = Class.forName("com.gametechbc.traveloptics.spells.aqua.SerpentideSpell");
+            Class<?> nocturnalSwarm = Class.forName("com.gametechbc.traveloptics.spells.blood.NocturnalSwarmSpell");
+            Class<?> annihilation = Class.forName("com.gametechbc.traveloptics.spells.fire.AnnihilationSpell");
+            Class<?> lavaBomb = Class.forName("com.gametechbc.traveloptics.spells.fire.LavaBombSpell");
+            Class<?> cursedRevenants = Class.forName("com.gametechbc.traveloptics.spells.ice.CursedRevenantsSpell");
+
+            map.put((Class<? extends AbstractSpell>) vigorSiphonClass, () -> Items.CHAIN);
+            map.put((Class<? extends AbstractSpell>) serpentideClass, getSafeAlexsCavesItem("BIOLUMINESSCENCE"));
+            map.put((Class<? extends AbstractSpell>) nocturnalSwarm, getSafeAlexsCavesItem("VESPER_WING"));
+            map.put((Class<? extends AbstractSpell>) annihilation, getSafeAlexsCavesItem("URANIUM_SHARD"));
+            map.put((Class<? extends AbstractSpell>) lavaBomb, () -> Items.MAGMA_BLOCK);
+            map.put((Class<? extends AbstractSpell>) cursedRevenants, () -> ItemRegistry.FROZEN_BONE_SHARD.get());
+        } catch (ClassNotFoundException e) {
+            DnMmod.LOGGER.debug("T.O. Magic not loaded");
+        }
+
+        try {
+            Class<?> lullaby = Class.forName("net.alshanex.alshanex_familiars.spells.LullabySpell");
+
+            map.put((Class<? extends AbstractSpell>) lullaby, () -> Items.LILY_OF_THE_VALLEY);
+        } catch (ClassNotFoundException e) {
+            DnMmod.LOGGER.debug("Alshanex's Familiars not loaded");
+        }
+
         // Holy spells
-        map.put(AngelWingsSpell.class, () -> Items.PHANTOM_MEMBRANE);
         map.put(GreaterHealSpell.class, () -> Items.GLISTERING_MELON_SLICE);
 
         // Ender spells
@@ -75,16 +100,13 @@ public class AbstractSpellMixin {
         map.put(LightningLanceSpell.class, ModItems.IRON_TRIDENT);
         map.put(ThunderstormSpell.class, ModItems.THUNDERSTORM_BOTTLE);
 
-        // Делаем карту неизменяемой для безопасности
         SPELL_COMPONENTS = Collections.unmodifiableMap(map);
     }
 
-    // Получаем реальный экземпляр заклинания
     private AbstractSpell getThisSpell() {
         return (AbstractSpell)(Object)this;
     }
 
-    // Получаем класс заклинания
     private Class<? extends AbstractSpell> getSpellClass() {
         return getThisSpell().getClass();
     }
@@ -97,9 +119,7 @@ public class AbstractSpellMixin {
         if (componentSupplier != null) {
             Item requiredComponent = componentSupplier.get();
             if (!SpellUtils.checkSpellComponent(entity, requiredComponent)) {
-                // Отменяем каст заклинания
                 cir.setReturnValue(false);
-                // НЕ вызываем cir.cancel() - это может нарушить другие миксины
             }
         }
     }
@@ -111,12 +131,30 @@ public class AbstractSpellMixin {
             Item requiredComponent = componentSupplier.get();
             List<MutableComponent> original = cir.getReturnValue();
 
-            // Создаем новый список с дополнительной информацией о компоненте
             List<MutableComponent> modified = new java.util.ArrayList<>(original);
             modified.add(Component.translatable("ui.dnmmod.spell_component",
                     SpellUtils.getComponentName(requiredComponent)));
 
             cir.setReturnValue(modified);
         }
+    }
+
+    @Unique
+    private static Supplier<Item> getSafeAlexsCavesItem(String itemName) {
+        return () -> {
+            try {
+                // Динамическая загрузка класса
+                Class<?> acRegistry = Class.forName("com.github.alexmodguy.alexscaves.server.item.ACItemRegistry");
+                java.lang.reflect.Field field = acRegistry.getField(itemName);
+                Object registryObject = field.get(null);
+                if (registryObject instanceof net.minecraftforge.registries.RegistryObject) {
+                    return ((net.minecraftforge.registries.RegistryObject<Item>) registryObject).get();
+                }
+            } catch (Exception e) {
+                // Если что-то пошло не так, возвращаем AIR
+                return Items.AIR;
+            }
+            return Items.AIR;
+        };
     }
 }

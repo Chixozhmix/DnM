@@ -27,7 +27,6 @@ public class ShrinkEffect extends MobEffect {
         ScaleType scaleType = ScaleTypes.BASE;
         ScaleData scaleData = scaleType.getScaleData(pLivingEntity);
 
-        // Получаем или сохраняем исходный размер
         CompoundTag persistentData = pLivingEntity.getPersistentData();
         if (!persistentData.contains(ORIGINAL_SCALE_KEY)) {
             float currentScale = scaleData.getBaseScale();
@@ -43,7 +42,6 @@ public class ShrinkEffect extends MobEffect {
     public void addAttributeModifiers(LivingEntity entity, AttributeMap attributes, int amplifier) {
         super.addAttributeModifiers(entity, attributes, amplifier);
 
-        // Сохраняем исходный размер при первом применении
         ScaleType scaleType = ScaleTypes.BASE;
         ScaleData scaleData = scaleType.getScaleData(entity);
         CompoundTag persistentData = entity.getPersistentData();
@@ -60,7 +58,6 @@ public class ShrinkEffect extends MobEffect {
     public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributes, int amplifier) {
         super.removeAttributeModifiers(entity, attributes, amplifier);
 
-        // Восстанавливаем исходный размер
         ScaleType scaleType = ScaleTypes.BASE;
         ScaleData scaleData = scaleType.getScaleData(entity);
         CompoundTag persistentData = entity.getPersistentData();
@@ -69,10 +66,8 @@ public class ShrinkEffect extends MobEffect {
             float originalScale = persistentData.getFloat(ORIGINAL_SCALE_KEY);
             scaleData.setBaseScale(originalScale);
             scaleData.setScale(originalScale);
-            // Удаляем сохраненное значение, чтобы не занимать память
             persistentData.remove(ORIGINAL_SCALE_KEY);
         } else {
-            // На всякий случай, если по какой-то причине значение не было сохранено
             scaleData.setBaseScale(1.0f);
             scaleData.setScale(1.0f);
         }
@@ -80,7 +75,6 @@ public class ShrinkEffect extends MobEffect {
 
     @Override
     public boolean isDurationEffectTick(int duration, int amplifier) {
-        // Обновляем эффект каждые 10 тиков для плавности
         return duration % 10 == 0;
     }
 }

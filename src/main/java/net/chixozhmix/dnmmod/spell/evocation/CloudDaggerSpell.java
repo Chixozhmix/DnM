@@ -96,15 +96,13 @@ public class CloudDaggerSpell extends AbstractSpell {
             center = Utils.moveToRelativeGroundLevel(level, center, 2);
         }
 
-        // Создаем кинжалы в цилиндрической форме по границе
         createDoubleCylindricalDaggerCloud(level, spellLevel, entity, center, getDaggerCount(), getCylinderRadius(), getCylinderHeight(spellLevel, entity));
     }
 
     private void createDoubleCylindricalDaggerCloud(Level level, int spellLevel, LivingEntity entity, Vec3 center, int daggerCount, float radius, float height) {
-        int layers = Math.max(2, (int) Math.ceil(height / 1.5f)); // Количество слоев по высоте
-        int daggersPerLayer = daggerCount / layers; // Кинжалов на слой
+        int layers = Math.max(2, (int) Math.ceil(height / 1.5f));
+        int daggersPerLayer = daggerCount / layers;
 
-        // Если общее количество не делится равномерно, добавляем остаток к последнему слою
         int remainingDaggers = daggerCount - (daggersPerLayer * layers);
 
         int createdDaggers = 0;
@@ -113,14 +111,11 @@ public class CloudDaggerSpell extends AbstractSpell {
             int daggersInThisLayer = daggersPerLayer + (layer == layers - 1 ? remainingDaggers : 0);
             float layerHeight = (float)layer / (layers - 1); // От 0 до 1
 
-            // Высота текущего слоя (от нижней до верхней границы цилиндра)
             double yOffset = (layerHeight - 0.5f) * height;
 
             for (int i = 0; i < daggersInThisLayer; i++) {
-                // Равномерное распределение по окружности
                 float angle = (float)i / daggersInThisLayer * 360.0F;
 
-                // Позиция на цилиндре
                 double x = Math.cos(Math.toRadians(angle)) * radius;
                 double z = Math.sin(Math.toRadians(angle)) * radius;
 

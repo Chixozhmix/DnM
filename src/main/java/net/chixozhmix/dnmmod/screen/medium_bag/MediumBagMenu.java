@@ -21,7 +21,6 @@ public class MediumBagMenu extends AbstractContainerMenu {
     private final ItemStack bagItemStack;
     private final Player player;
 
-    // Константы для слотов
     private static final int BAG_SLOT_COUNT = 15; // Количество слотов в сумке
     private static final int HOTBAR_SLOT_COUNT = 9;
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
@@ -41,12 +40,10 @@ public class MediumBagMenu extends AbstractContainerMenu {
         this.player = playerInventory.player;
         this.bagItemStack = bagItemStack;
 
-        // Получаем или создаем обработчик предметов для сумки
         Optional<IItemHandler> handlerOptional = bagItemStack.getCapability(ForgeCapabilities.ITEM_HANDLER).resolve();
         if (handlerOptional.isPresent()) {
             this.itemHandler = (ItemStackHandler) handlerOptional.get();
         } else {
-            // Fallback - создаем пустой обработчик
             this.itemHandler = new net.minecraftforge.items.ItemStackHandler(BAG_SLOT_COUNT);
         }
 
@@ -56,7 +53,7 @@ public class MediumBagMenu extends AbstractContainerMenu {
     }
 
     private void addBagSlots() {
-        // Добавляем слоты сумки в виде сетки 5x3
+        // Добавляем слоты сумки
         for (int row = 0; row < 3; ++row) {
             for (int col = 0; col < 5; ++col) {
                 int x = 44 + col * 18;
@@ -139,7 +136,6 @@ public class MediumBagMenu extends AbstractContainerMenu {
                 player.getOffhandItem().getItem() instanceof MediumComponentBag;
     }
 
-    // Дополнительные методы для работы с сумкой
     public ItemStackHandler getItemHandler() {
         return itemHandler;
     }

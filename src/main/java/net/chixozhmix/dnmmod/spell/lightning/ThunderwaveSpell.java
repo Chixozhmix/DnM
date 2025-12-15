@@ -96,19 +96,15 @@ public class ThunderwaveSpell extends AbstractSpell {
     }
 
     private void knockbackEntity(LivingEntity caster, LivingEntity target) {
-        // Вычисляем направление от кастера к цели
         Vec3 direction = target.position().subtract(caster.position()).normalize();
 
         float knockbackStrength = 1.2F;
 
-        // Применяем отталкивание
         target.setDeltaMovement(target.getDeltaMovement().add(
                 direction.x * knockbackStrength,
                 Math.min(0.5, knockbackStrength * 0.3), // Небольшой подъем
                 direction.z * knockbackStrength
         ));
-
-        // Сбрасываем время неуязвимости, чтобы отталкивание работало сразу
         target.hurtMarked = true;
     }
 

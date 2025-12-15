@@ -1,6 +1,6 @@
 package net.chixozhmix.dnmmod.mixin;
 
-import io.redspace.ironsspellbooks.spells.blood.RaiseDeadSpell;
+import com.gametechbc.traveloptics.spells.blood.VigorSiphonSpell;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -13,16 +13,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-@Mixin(RaiseDeadSpell.class)
-public class RaiseDeadMixin {
-
+@Mixin(VigorSiphonSpell.class)
+public class VigorSiphonMixin {
     @Inject(method = "getUniqueInfo", at = @At("RETURN"), cancellable = true, remap = false)
     private void modifyGetUniqueInfo(int spellLevel, LivingEntity caster, CallbackInfoReturnable<List<MutableComponent>> cir) {
         List<MutableComponent> original = cir.getReturnValue();
-        // Создаем новый список с дополнительной информацией
         List<MutableComponent> modified = new java.util.ArrayList<>(original);
-        modified.add(Component.translatable("ui.dnmmod.spell_component", SpellUtils.getComponentName(Items.ROTTEN_FLESH)));
+        modified.add(Component.translatable("ui.dnmmod.spell_component", SpellUtils.getComponentName(Items.CHAIN)));
         cir.setReturnValue(modified);
     }
-
 }

@@ -30,6 +30,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> SUMMON_RAVEN = registerSpell(new SummonRavenSpell());
     public static final RegistryObject<AbstractSpell> SHRINKING = registerSpell(new ShrinkingSpell());
     public static final RegistryObject<AbstractSpell> AGATHYS_ARMOR_SPELL = registerSpell(new AgathysArmorSpell());
+    public static final RegistryObject<AbstractSpell> THICK_OF_FIGHT = registerSpell(new ThickOfFightSpell());
 
 
     public static void register(IEventBus eventBus) {

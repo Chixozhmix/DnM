@@ -26,6 +26,7 @@ public class ModEffects {
             EFFECTS.register("phantom_effect", () -> new PhantomEffect(MobEffectCategory.BENEFICIAL, 0x78938c));
     public static final RegistryObject<MobEffect> SHRINK_EFFECT = EFFECTS.register("shrink_effect", () -> new ShrinkEffect());
     public static final RegistryObject<MobEffect> AGATHYS_ARMOR = EFFECTS.register("agathys_armor", AgathysArmor::new);
+    public static final RegistryObject<MobEffect> THICK_OF_FIGHT = EFFECTS.register("thick_of_fight", ThickOfFight::new);
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

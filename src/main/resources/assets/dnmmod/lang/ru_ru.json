@@ -153,6 +153,7 @@
   "effect.dnmmod.phantom_effect": "Фантом",
   "effect.dnmmod.shrink_effect": "Уменьшение",
   "effect.dnmmod.agathys_armor": "Доспех Агатиса",
+  "effect.dnmmod.thick_of_fight": "Гуща битвы",
 
   "sounds.dnmmod.ghost_ambient": "Призрак",
   "sounds.dnmmod.undead_spirit": "Дух Нежити",
@@ -195,5 +196,8 @@
   "spell.dnmmod.shrinking.guide": "Вы уменьшаете свое тело.",
 
   "spell.dnmmod.agathys_armor_spell": "Доспех Агатиса",
-  "spell.dnmmod.agathys_armor_spell.guide": "Вы окружаете себя холодной броней, которая защищает вас и наносит урон любому, кто осмелится прикоснуться к вам."
+  "spell.dnmmod.agathys_armor_spell.guide": "Вы окружаете себя холодной броней, которая защищает вас и наносит урон любому, кто осмелится прикоснуться к вам.",
+
+  "spell.dnmmod.thick_of_fight": "Гуща Битвы",
+  "spell.dnmmod.thick_of_fight.guide": "Вы наполняетесь яростью битвы, усиливая свое тело."
 }

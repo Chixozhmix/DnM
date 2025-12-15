@@ -4,25 +4,23 @@
   "refmap": "dnmmod.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "RaiseDeadMixin",
+    "InfoSpellMixin",
     "AbstractSpellMixin",
     "ArrowVolleyMixin",
-    "AngelWingsMixin",
-    "BlackHoleMixin",
     "ChainLightningMixin",
     "EarthquakeMixin",
-    "GreaterHealMixin",
-    "GustMixin",
-    "InvisibilityMixin",
-    "WallOfFireMixin",
-    "SummonPolarBearMixin",
-    "LightningLanceMixin",
-    "LightningBoltMixin",
-    "BallLightningMixin",
-    "ChargeMixin",
-    "ThunderstormMixin",
-    "BurningDashMixin",
-    "SacrifyMixin"
+    "SacrifyMixin",
+
+    "PrimalPackMixin",
+    "VigorSiphonMixin",
+    "AxeOfTheDoomedMixin",
+    "ExplosionMelodyMixin",
+    "HeraldOfAcropolisMixin",
+    "IgnitedOnslaughtMixin",
+    "RainfallMixin",
+    "SummonDesertDwellersMixin",
+    "TidalGraspMixin",
+    "VortexOfTheDeepMixin"
   ],
   "injectors": {
     "defaultRequire": 1

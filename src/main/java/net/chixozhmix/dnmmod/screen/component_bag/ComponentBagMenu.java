@@ -20,7 +20,6 @@ public class ComponentBagMenu extends AbstractContainerMenu {
     private final ItemStack bagItemStack;
     private final Player player;
 
-    // Константы для слотов
     private static final int BAG_SLOT_COUNT = 9; // Количество слотов в сумке
     private static final int HOTBAR_SLOT_COUNT = 9;
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
@@ -55,7 +54,7 @@ public class ComponentBagMenu extends AbstractContainerMenu {
     }
 
     private void addBagSlots() {
-        // Добавляем слоты сумки в виде сетки 3x3
+        // Добавляем слоты сумки
         for (int row = 0; row < 3; ++row) {
             for (int col = 0; col < 3; ++col) {
                 int x = 62 + col * 18;
@@ -137,7 +136,6 @@ public class ComponentBagMenu extends AbstractContainerMenu {
                 player.getOffhandItem().getItem() instanceof ComponentBag;
     }
 
-    // Дополнительные методы для работы с сумкой
     public ItemStackHandler getItemHandler() {
         return itemHandler;
     }

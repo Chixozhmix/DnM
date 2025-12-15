@@ -22,7 +22,6 @@ public class ComponentBagScreen extends AbstractContainerScreen<ComponentBagMenu
     @Override
     protected void init() {
         super.init();
-        // Скрываем стандартные заголовки
         this.inventoryLabelY = 10000;
         this.titleLabelY = 10000;
     }

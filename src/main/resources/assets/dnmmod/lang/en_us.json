@@ -153,6 +153,7 @@
   "effect.dnmmod.phantom_effect": "Phantom",
   "effect.dnmmod.shrink_effect": "Shrink",
   "effect.dnmmod.agathys_armor": "Agathys Armor",
+  "effect.dnmmod.thick_of_fight": "Thick of fight",
 
   "sounds.dnmmod.ghost_ambient": "Ghost",
   "sounds.dnmmod.undead_spirit": "Undead Spirit",
@@ -195,5 +196,8 @@
   "spell.dnmmod.shrinking.guide": "You are shrinking your body.",
 
   "spell.dnmmod.agathys_armor_spell": "Agathys Armor",
-  "spell.dnmmod.agathys_armor_spell.guide": "You surround yourself with cold armor that protects you and damages anyone who dares to touch you."
+  "spell.dnmmod.agathys_armor_spell.guide": "You surround yourself with cold armor that protects you and damages anyone who dares to touch you.",
+
+  "spell.dnmmod.thick_of_fight": "Thick of Fight",
+  "spell.dnmmod.thick_of_fight.guide": "You are filled with the fury of battle, strengthening your body."
 }

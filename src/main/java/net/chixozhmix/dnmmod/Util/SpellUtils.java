@@ -1,6 +1,5 @@
 package net.chixozhmix.dnmmod.Util;
 
-import io.redspace.ironsspellbooks.api.spells.CastSource;
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
 import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
 import net.minecraft.network.chat.Component;

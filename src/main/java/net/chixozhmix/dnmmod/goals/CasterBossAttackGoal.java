@@ -43,7 +43,6 @@ public class CasterBossAttackGoal extends WizardAttackGoal {
             return false;
         }
 
-        // Леший продолжает преследовать, даже если цель скрылась
         double distance = this.mob.distanceToSqr(target.getX(), target.getY(), target.getZ());
         return distance <= this.getFollowDistance() * this.getFollowDistance() * 2.0;
     }
@@ -60,7 +59,6 @@ public class CasterBossAttackGoal extends WizardAttackGoal {
                     (double)this.attackIntervalMin, (double)this.attackIntervalMax));
         }
 
-        // Отменяем каст только если цель мертва
         if (this.spellCastingMob.isCasting()) {
             if (this.target.isDeadOrDying()) {
                 this.spellCastingMob.cancelCast();
@@ -77,7 +75,6 @@ public class CasterBossAttackGoal extends WizardAttackGoal {
         if (this.allowFleeing && !this.spellCastingMob.isCasting() && this.attackTime > 10 &&
                 --this.fleeCooldown <= 0 && distanceSquared < (double)(this.attackRadiusSqr * fleeDist * fleeDist)) {
 
-            // Логика отступления остается прежней
             super.doMovement(distanceSquared);
         } else if (distanceSquared < (double)this.attackRadiusSqr * 2.0 && this.seeTime >= -20) {
             this.mob.getNavigation().stop();
@@ -95,7 +92,6 @@ public class CasterBossAttackGoal extends WizardAttackGoal {
                 this.tryJump();
             }
         } else if (this.mob.tickCount % 5 == 0) {
-            // Всегда двигаемся к цели, даже если не видим её
             if (this.isFlying) {
                 this.mob.getMoveControl().setWantedPosition(this.target.getX(), this.target.getY() + (double)2.0F, this.target.getZ(), this.speedModifier);
             } else {
@@ -113,7 +109,6 @@ public class CasterBossAttackGoal extends WizardAttackGoal {
             double distanceSquared = this.mob.distanceToSqr(this.target.getX(), this.target.getY(), this.target.getZ());
             int distanceWeight = (int)((double)1.0F - distanceSquared / (double)this.attackRadiusSqr * (double)-60.0F);
 
-            // Леший может атаковать даже без прямой видимости, но с меньшим весом
             int losWeight = this.hasLineOfSight ? 0 : -30;
 
             return Math.max(10, baseWeight + targetHealthWeight + distanceWeight + losWeight);
@@ -131,8 +126,7 @@ public class CasterBossAttackGoal extends WizardAttackGoal {
             double distancePercent = Mth.clamp(distanceSquared / (double)this.attackRadiusSqr, (double)0.0F, (double)1.0F);
             int distanceWeight = (int)(distancePercent * (double)50.0F);
 
-            // Леший активно преследует даже без видимости
-            int losWeight = this.hasLineOfSight ? 0 : 60; // Положительный вес для движения без видимости
+            int losWeight = this.hasLineOfSight ? 0 : 60;
 
             float healthInverted = 1.0F - this.mob.getHealth() / this.mob.getMaxHealth();
             float distanceInverted = (float)((double)1.0F - distancePercent);

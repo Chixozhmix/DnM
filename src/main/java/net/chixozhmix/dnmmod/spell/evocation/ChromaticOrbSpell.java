@@ -71,13 +71,9 @@ public class ChromaticOrbSpell extends AbstractSpell {
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
 
-        // Создаем снаряд
         ChromaticOrb orb = new ChromaticOrb(level, entity);
-
-        // Устанавливаем позицию запуска
         Vec3 spawn = entity.getEyePosition().add(entity.getForward().normalize());
         orb.setPos(spawn);
-
         Vec3 direction = entity.getLookAngle().normalize();
         orb.setDeltaMovement(direction.multiply(orb.getSpeed(), orb.getSpeed(), orb.getSpeed()));
         orb.setDamage(getDamage(spellLevel, entity));
@@ -90,7 +86,6 @@ public class ChromaticOrbSpell extends AbstractSpell {
     }
 
     private int getBounces(int spellLevel) {
-        // Количество перескакиваний увеличивается с уровнем заклинания
-        return 2 + (spellLevel / 3); // 2 на 1 уровне, до 5 на 10 уровне
+        return 2 + (spellLevel / 3);
     }
 }
