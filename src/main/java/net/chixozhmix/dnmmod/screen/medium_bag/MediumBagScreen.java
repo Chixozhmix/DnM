@@ -22,9 +22,6 @@ public class MediumBagScreen extends AbstractContainerScreen<MediumBagMenu> {
     @Override
     protected void init() {
         super.init();
-        // Скрываем стандартные заголовки
-        this.inventoryLabelY = 10000;
-        this.titleLabelY = 10000;
     }
 
     @Override

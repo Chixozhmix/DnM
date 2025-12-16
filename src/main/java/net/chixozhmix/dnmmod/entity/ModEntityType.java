@@ -66,13 +66,13 @@ public class ModEntityType {
             ENTITY_TYPES.register("goblin_shaman", () ->
                     EntityType.Builder.of(GoblinShamanEntity::new, MobCategory.MONSTER)
                             .clientTrackingRange(10)
-                            .sized(0.6f, 0.8f)
+                            .sized(0.8f, 1.0f)
                             .build("goblin_shaman"));
     public static final RegistryObject<EntityType<GoblinWariorEntity>> GOBLIN_WARRIOR =
             ENTITY_TYPES.register("goblin_warrior", () ->
                     EntityType.Builder.of(GoblinWariorEntity::new, MobCategory.MONSTER)
                             .clientTrackingRange(16)
-                            .sized(0.6f, 0.6f)
+                            .sized(0.8f, 1.0f)
                             .build("goblin_warrior"));
     public static final RegistryObject<EntityType<GreenHagEntity>> GREEN_HAG =
             ENTITY_TYPES.register("green_hag", () ->

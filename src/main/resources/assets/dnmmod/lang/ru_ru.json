@@ -38,6 +38,8 @@
   "item.dnmmod.pyromancer_wand_core": "Сердцевина палочки пироманта",
   "item.dnmmod.blood_wand_core": "Сердцевина кровавой палочки",
   "item.dnmmod.ender_wand_core": "Сердцевина палочки эндера",
+  "item.dnmmod.aqua_wand_core": "Сердцевина палочки воды",
+  "item.dnmmod.kapellmeister_wand_core": "Сердцевина палочки капельмейстера",
   "item.dnmmod.thunderstorm_bottle": "Гроза в бутылке",
 
   "item.dnmmod.wooden_wand": "Деревянная палочка",
@@ -49,6 +51,8 @@
   "item.dnmmod.blood_wand": "Кровавая палочка",
   "item.dnmmod.ender_wand": "Палочка эндера",
   "item.dnmmod.sacred_symbol": "Священный символ",
+  "item.dnmmod.aqua_wand": "Палочка воды",
+  "item.dnmmod.kapellmeister_wand": "Палочка капельмейстера",
 
   "item.dnmmod.magical_grimoire": "Магический гримуар",
 
@@ -61,7 +65,7 @@
   "item.dnmmod.goblin_shaman_spawn_egg": "Яйцо призыва гоблина шамана",
   "item.dnmmod.goblin_warrior_spawn_egg": "Яйцо призыва гоблина воина",
   "item.dnmmod.greemon_spawn_egg": "Яйцо призыва гримона",
-  "item.dnmmod.green_hag_spawn_egg": "GЯйцо призыва зеленой карги",
+  "item.dnmmod.green_hag_spawn_egg": "Яйцо призыва зеленой карги",
   "item.dnmmod.leshy_spawn_egg": "Яйцо призыва Лешего",
 
   "item.dnmmod.firebalt": "Огненная стрела",

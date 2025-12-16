@@ -53,6 +53,11 @@ public class CloudDagger extends LivingEntity implements GeoEntity, AntiMagicSus
         this.noCulling = true;
     }
 
+    @Override
+    public EntityDimensions getDimensions(Pose pPose) {
+        return EntityDimensions.fixed(0.5f, 0.5f);
+    }
+
     public CloudDagger(Level level, LivingEntity owner, float damage) {
         this(ModEntityType.MAGIC_DAGGER.get(), level);
         this.setOwner(owner);

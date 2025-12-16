@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.items;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.PropertiesHelper;
 import net.chixozhmix.dnmmod.blocks.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -62,6 +63,10 @@ public class CreativeTabMod {
                         output.accept(ModItems.PYROMANCER_WAND.get());
                         output.accept(ModItems.ENDER_WAND.get());
                         output.accept(ModItems.SACRED_SYMBOL.get());
+
+                        PropertiesHelper.addOptionalItem(output, ModItems.AQUA_WAND);
+                        PropertiesHelper.addOptionalItem(output, ModItems.KAPELLMEISTER_WAND);
+
                         output.accept(ModItems.MAGICAL_GRIMOIRE.get());
                     })
                     .build());
@@ -109,6 +114,10 @@ public class CreativeTabMod {
                         output.accept(ModItems.EVOKER_WAND_CORE.get());
                         output.accept(ModItems.ENDER_WAND_CORE.get());
                         output.accept(ModItems.PROTECTION_RING.get());
+
+                        PropertiesHelper.addOptionalItem(output, ModItems.AQUA_WAND_CORE);
+                        PropertiesHelper.addOptionalItem(output, ModItems.KAPELLMEISTER_WAND_CORE);
+
                         output.accept(ModItems.COMPONENT_BAG.get());
                         output.accept(ModItems.MEDIUM_COMPONENT_BAG.get());
                     })

@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.items;
 
+import com.gametechbc.traveloptics.api.init.TravelopticsAttributes;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.item.consumables.SimpleElixir;
@@ -21,18 +22,22 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.SwordItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.MULTIPLY_BASE;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID);
+
+    private static Optional<DeferredRegister<Item>> TRAVELOPTIC_ITEMS = Optional.empty();
+    private static Optional<DeferredRegister<Item>> ALSHANEX_ITEMS = Optional.empty();
 
     private static final UUID WAND_UUID = UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3");
     private static final String ATTRIBUTE_NAME = "Weapon modifier";
@@ -323,7 +328,61 @@ public class ModItems {
     public static final RegistryObject<ForgeSpawnEggItem> LESHY_SPAWN_EGG = ITEMS.register("leshy_spawn_egg", () ->
             new ForgeSpawnEggItem(ModEntityType.LESHY, 0x295423, 0x37240d, PropertiesHelper.stackItemProperties(64)));
 
+    // Опциональные предметы
+    public static Optional<RegistryObject<Item>> AQUA_WAND = Optional.empty();
+    public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND = Optional.empty();
+    public static Optional<RegistryObject<Item>> AQUA_WAND_CORE = Optional.empty();
+    public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND_CORE = Optional.empty();
+
+
+    public static void registerOptionalItems(IEventBus eventBus) {
+        // TravelOptics
+        if (ModList.get().isLoaded("traveloptics")) {
+            TRAVELOPTIC_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));
+
+            AQUA_WAND = Optional.of(TRAVELOPTIC_ITEMS.get().register("aqua_wand",
+                    () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
+                            (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
+                                    AttributeModifier.Operation.MULTIPLY_BASE),
+                            (Attribute)AttributeRegistry.SPELL_POWER.get(),
+                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.05,
+                                    AttributeModifier.Operation.MULTIPLY_BASE),
+                            (Attribute) TravelopticsAttributes.AQUA_SPELL_POWER.get(),
+                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
+                                    AttributeModifier.Operation.MULTIPLY_BASE)))));
+            AQUA_WAND_CORE = Optional.of(TRAVELOPTIC_ITEMS.get().register("aqua_wand_core",
+                    () -> new WandCore(PropertiesHelper.stackItemProperties(16)
+                            .rarity(Rarity.UNCOMMON))));
+
+            TRAVELOPTIC_ITEMS.get().register(eventBus);
+        }
+
+        // Alshanex's Items
+        if (ModList.get().isLoaded("alshanex_familiars")) {
+            ALSHANEX_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));
+
+            KAPELLMEISTER_WAND = Optional.of(ALSHANEX_ITEMS.get().register("kapellmeister_wand",
+                    () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
+                            (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
+                                    AttributeModifier.Operation.MULTIPLY_BASE),
+                            (Attribute)AttributeRegistry.SPELL_POWER.get(),
+                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.05,
+                                    AttributeModifier.Operation.MULTIPLY_BASE),
+                            (Attribute) net.alshanex.alshanex_familiars.registry.AttributeRegistry.SOUND_SPELL_POWER.get(),
+                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
+                                    AttributeModifier.Operation.MULTIPLY_BASE)))));
+            KAPELLMEISTER_WAND_CORE = Optional.of(ALSHANEX_ITEMS.get().register("kapellmeister_wand_core",
+                    () -> new WandCore(PropertiesHelper.stackItemProperties(16)
+                            .rarity(Rarity.UNCOMMON))));
+
+            ALSHANEX_ITEMS.get().register(eventBus);
+        }
+    }
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
+        registerOptionalItems(eventBus);
     }
 }

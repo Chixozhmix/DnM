@@ -1,6 +1,5 @@
 package net.chixozhmix.dnmmod.items.custom;
 
-import net.chixozhmix.dnmmod.screen.component_bag.ComponentBagMenu;
 import net.chixozhmix.dnmmod.screen.medium_bag.MediumBagMenu;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;

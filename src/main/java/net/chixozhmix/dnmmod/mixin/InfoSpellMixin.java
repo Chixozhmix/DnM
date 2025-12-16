@@ -38,7 +38,6 @@ public abstract class InfoSpellMixin {
     private static final Map<Class<?>, Supplier<Item>> SPELL_COMPONENTS = new HashMap<>();
 
     static {
-
         SPELL_COMPONENTS.put(LightningBoltSpell.class, () -> Items.LIGHTNING_ROD);
         SPELL_COMPONENTS.put(LightningLanceSpell.class, () -> ModItems.IRON_TRIDENT.get());
         SPELL_COMPONENTS.put(BallLightningSpell.class, () -> ItemRegistry.LIGHTNING_BOTTLE.get());
@@ -55,16 +54,10 @@ public abstract class InfoSpellMixin {
 
         try {
             Class<?> vigorSiphonClass = Class.forName("com.gametechbc.traveloptics.spells.blood.VigorSiphonSpell");
-            Class<?> serpentideClass = Class.forName("com.gametechbc.traveloptics.spells.aqua.SerpentideSpell");
-            Class<?> nocturnalSwarm = Class.forName("com.gametechbc.traveloptics.spells.blood.NocturnalSwarmSpell");
-            Class<?> annihilation = Class.forName("com.gametechbc.traveloptics.spells.fire.AnnihilationSpell");
             Class<?> lavaBomb = Class.forName("com.gametechbc.traveloptics.spells.fire.LavaBombSpell");
             Class<?> cursedRevenants = Class.forName("com.gametechbc.traveloptics.spells.ice.CursedRevenantsSpell");
 
             SPELL_COMPONENTS.put((Class<? extends AbstractSpell>) vigorSiphonClass, () -> Items.CHAIN);
-            SPELL_COMPONENTS.put((Class<? extends AbstractSpell>) serpentideClass, getSafeAlexsCavesItem("BIOLUMINESSCENCE"));
-            SPELL_COMPONENTS.put((Class<? extends AbstractSpell>) nocturnalSwarm, getSafeAlexsCavesItem("VESPER_WING"));
-            SPELL_COMPONENTS.put((Class<? extends AbstractSpell>) annihilation, getSafeAlexsCavesItem("URANIUM_SHARD"));
             SPELL_COMPONENTS.put((Class<? extends AbstractSpell>) lavaBomb, () -> Items.MAGMA_BLOCK);
             SPELL_COMPONENTS.put((Class<? extends AbstractSpell>) cursedRevenants, () -> ItemRegistry.FROZEN_BONE_SHARD.get());
         } catch (ClassNotFoundException e) {
@@ -90,7 +83,7 @@ public abstract class InfoSpellMixin {
 
     @Inject(method = "getUniqueInfo", at = @At("RETURN"), cancellable = true, remap = false)
     private void modifyGetUniqueInfo(int spellLevel, LivingEntity caster, CallbackInfoReturnable<List<MutableComponent>> cir) {
-        Supplier<Item> componentSupplier = SPELL_COMPONENTS.get(getSpellClass());
+        Supplier<Item> componentSupplier = SPELL_COMPONENTS.get(this.getSpellClass());
         if (componentSupplier != null) {
             Item component = componentSupplier.get();
             if (component != null) {
@@ -101,24 +94,5 @@ public abstract class InfoSpellMixin {
                 cir.setReturnValue(modified);
             }
         }
-    }
-
-    @Unique
-    private static Supplier<Item> getSafeAlexsCavesItem(String itemName) {
-        return () -> {
-            try {
-                // Динамическая загрузка класса
-                Class<?> acRegistry = Class.forName("com.github.alexmodguy.alexscaves.server.item.ACItemRegistry");
-                java.lang.reflect.Field field = acRegistry.getField(itemName);
-                Object registryObject = field.get(null);
-                if (registryObject instanceof net.minecraftforge.registries.RegistryObject) {
-                    return ((net.minecraftforge.registries.RegistryObject<Item>) registryObject).get();
-                }
-            } catch (Exception e) {
-                // Если что-то пошло не так, возвращаем AIR
-                return Items.AIR;
-            }
-            return Items.AIR;
-        };
     }
 }

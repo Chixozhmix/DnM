@@ -1,6 +1,5 @@
 package net.chixozhmix.dnmmod.mixin;
 
-import com.github.alexmodguy.alexscaves.server.item.ACItemRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
@@ -24,7 +23,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -50,16 +48,10 @@ public class AbstractSpellMixin {
 
         try {
             Class<?> vigorSiphonClass = Class.forName("com.gametechbc.traveloptics.spells.blood.VigorSiphonSpell");
-            Class<?> serpentideClass = Class.forName("com.gametechbc.traveloptics.spells.aqua.SerpentideSpell");
-            Class<?> nocturnalSwarm = Class.forName("com.gametechbc.traveloptics.spells.blood.NocturnalSwarmSpell");
-            Class<?> annihilation = Class.forName("com.gametechbc.traveloptics.spells.fire.AnnihilationSpell");
             Class<?> lavaBomb = Class.forName("com.gametechbc.traveloptics.spells.fire.LavaBombSpell");
             Class<?> cursedRevenants = Class.forName("com.gametechbc.traveloptics.spells.ice.CursedRevenantsSpell");
 
             map.put((Class<? extends AbstractSpell>) vigorSiphonClass, () -> Items.CHAIN);
-            map.put((Class<? extends AbstractSpell>) serpentideClass, getSafeAlexsCavesItem("BIOLUMINESSCENCE"));
-            map.put((Class<? extends AbstractSpell>) nocturnalSwarm, getSafeAlexsCavesItem("VESPER_WING"));
-            map.put((Class<? extends AbstractSpell>) annihilation, getSafeAlexsCavesItem("URANIUM_SHARD"));
             map.put((Class<? extends AbstractSpell>) lavaBomb, () -> Items.MAGMA_BLOCK);
             map.put((Class<? extends AbstractSpell>) cursedRevenants, () -> ItemRegistry.FROZEN_BONE_SHARD.get());
         } catch (ClassNotFoundException e) {
@@ -137,24 +129,5 @@ public class AbstractSpellMixin {
 
             cir.setReturnValue(modified);
         }
-    }
-
-    @Unique
-    private static Supplier<Item> getSafeAlexsCavesItem(String itemName) {
-        return () -> {
-            try {
-                // Динамическая загрузка класса
-                Class<?> acRegistry = Class.forName("com.github.alexmodguy.alexscaves.server.item.ACItemRegistry");
-                java.lang.reflect.Field field = acRegistry.getField(itemName);
-                Object registryObject = field.get(null);
-                if (registryObject instanceof net.minecraftforge.registries.RegistryObject) {
-                    return ((net.minecraftforge.registries.RegistryObject<Item>) registryObject).get();
-                }
-            } catch (Exception e) {
-                // Если что-то пошло не так, возвращаем AIR
-                return Items.AIR;
-            }
-            return Items.AIR;
-        };
     }
 }
