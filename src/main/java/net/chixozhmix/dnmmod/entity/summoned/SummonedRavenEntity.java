@@ -102,12 +102,10 @@ public class SummonedRavenEntity extends RavenEntity implements MagicSummon {
 
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
-        // Исправленная логика получения урона
         if (pSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             return super.hurt(pSource, pAmount);
         }
 
-        // Проверяем, должен ли призванный моб игнорировать этот урон
         if (this.shouldIgnoreDamage(pSource)) {
             return false;
         }
@@ -117,8 +115,6 @@ public class SummonedRavenEntity extends RavenEntity implements MagicSummon {
 
     @Override
     public boolean shouldIgnoreDamage(DamageSource damageSource) {
-        // Логика определения, когда призванный моб должен игнорировать урон
-        // Например, урон от владельца или союзников
         return damageSource.getEntity() instanceof LivingEntity livingEntity &&
                 this.isAlliedTo(livingEntity);
     }

@@ -2,6 +2,8 @@ package net.chixozhmix.dnmmod.items;
 
 import com.gametechbc.traveloptics.api.init.TravelopticsAttributes;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.item.consumables.SimpleElixir;
 import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
@@ -14,6 +16,7 @@ import net.chixozhmix.dnmmod.Util.PropertiesHelper;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.items.custom.*;
+import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -108,6 +111,9 @@ public class ModItems {
             4, -2.0f, 1030);
     public static final RegistryObject<Item> RITUAL_DAGGER = registerSword("ritual_dagger", Tiers.DIAMOND,
             1, -1.4f, 400);
+    public static final RegistryObject<Item> BLADESINGER_SWORD = ITEMS.register("bladesinger_sword", () ->
+            new BladesingerSword(SpellDataRegistryHolder.of(new SpellDataRegistryHolder[]{
+                    new SpellDataRegistryHolder(RegistrySpells.THICK_OF_FIGHT, 1)})));
     //Staffs and wands
     public static final RegistryObject<Item> WOODEN_WAND = ITEMS.register("wooden_wand",
             () -> new StaffItem(PropertiesHelper.stackItemProperties(1),

@@ -1,19 +1,24 @@
 package net.chixozhmix.dnmmod.entity.greemon;
 
+import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -77,19 +82,25 @@ public class GreemonEntity extends Monster implements GeoEntity {
     }
 
     @Override
+    public boolean addEffect(MobEffectInstance pEffectInstance, @Nullable Entity pEntity) {
+        if(pEffectInstance.getEffect() == MobEffects.POISON || pEffectInstance.getEffect() == ModEffects.CORPSE_POISON.get())
+            return false;
+
+        return super.addEffect(pEffectInstance, pEntity);
+    }
+
+    @Override
     public void tick() {
         super.tick();
 
         if (this.level().isClientSide()) {
-            // Только на клиенте обновляем анимации
             if (this.attackAnimationTick > 0) {
                 this.attackAnimationTick--;
             }
         }
 
-        // Синхронизация анимации атаки с анимацией взмаха оружия
         if (this.swinging && this.attackAnimationTick <= 0) {
-            this.attackAnimationTick = 10; // Увеличьте длительность для лучшей синхронизации
+            this.attackAnimationTick = 10;
             this.swingTime = 0;
         }
     }
@@ -98,14 +109,12 @@ public class GreemonEntity extends Monster implements GeoEntity {
     public boolean doHurtTarget(Entity pEntity) {
         this.swing(InteractionHand.MAIN_HAND);
 
-        if(pEntity instanceof Player player) {
-            ((Player) pEntity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
-                    60,
-                    0,
-                    false,
-                    true,
-                    true));
-        }
+        ((LivingEntity) pEntity).addEffect(new MobEffectInstance(ModEffects.CORPSE_POISON.get(),
+                100,
+                0,
+                false,
+                true,
+                   true));
 
         return super.doHurtTarget(pEntity);
     }
@@ -119,6 +128,8 @@ public class GreemonEntity extends Monster implements GeoEntity {
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AbstractGolem.class, true));
     }
 
     @Override

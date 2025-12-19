@@ -114,7 +114,6 @@ public class GhostEntity extends Monster implements GeoEntity {
             }
         }
 
-        // Обновляем счетчик анимации атаки
         if (this.attackAnimationTick > 0) {
             this.attackAnimationTick--;
         }
@@ -141,15 +140,11 @@ public class GhostEntity extends Monster implements GeoEntity {
     @Override
     protected boolean isSunBurnTick() {
         if (this.level().isDay() && !this.level().isClientSide) {
-            // Проверяем, находится ли моб под открытым небом
             BlockPos blockpos = this.blockPosition();
             if (this.level().canSeeSky(blockpos)) {
-                // Проверяем уровень света (блокового и небесного)
                 float f = this.getLightLevelDependentMagicValue();
-                // Проверяем, что моб не находится в воде и не под дождем для охлаждения
                 boolean flag = this.isInWaterRainOrBubble() || this.isInPowderSnow || this.wasInPowderSnow;
 
-                // Уровень света должен быть достаточно высоким и моб не должен охлаждаться
                 if (f > 0.5F && this.random.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && !flag) {
                     return true;
                 }
@@ -208,7 +203,6 @@ public class GhostEntity extends Monster implements GeoEntity {
                     0.1 // скорость
             );
         } else {
-            // Клиентская сторона (на всякий случай)
             for (int i = 0; i < 40; i++) {
                 this.level().addParticle(ParticleTypes.SMOKE,
                         this.getX() + (this.random.nextDouble() - 0.5) * this.getBbWidth(),

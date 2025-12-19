@@ -47,6 +47,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.DIAMOND_TRIDENT.get());
                         output.accept(ModItems.DIAMOND_KATANA.get());
                         output.accept(ModItems.RITUAL_DAGGER.get());
+                        output.accept(ModItems.BLADESINGER_SWORD.get());
                     })
                     .build());
     //Staffs

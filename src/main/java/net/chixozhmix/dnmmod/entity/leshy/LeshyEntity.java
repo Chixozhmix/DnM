@@ -116,7 +116,6 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
 
     @Override
     public boolean canAttack(LivingEntity target) {
-        // Леший может атаковать цели, даже если они временно не видимы
         return true;
     }
 

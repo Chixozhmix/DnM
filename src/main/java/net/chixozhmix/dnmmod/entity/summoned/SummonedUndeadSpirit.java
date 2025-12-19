@@ -58,7 +58,6 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
     private int riseAnimTime;
     private final AnimatableInstanceCache cache;
 
-    // Основной конструктор для регистрации EntityType
     public SummonedUndeadSpirit(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.riseAnimTime = 40;
@@ -66,10 +65,8 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
         this.xpReward = 0;
     }
 
-
-    // Упрощенный конструктор для прямого создания
     public SummonedUndeadSpirit(Level level, LivingEntity owner, boolean playRiseAnimation) {
-        this(ModEntityType.SUMMONED_UNDEAD_SPIRIT.get(), level); // Используем зарегистрированный EntityType
+        this(ModEntityType.SUMMONED_UNDEAD_SPIRIT.get(), level);
         this.setSummoner(owner);
         if (playRiseAnimation) {
             this.triggerRiseAnimation();
@@ -106,19 +103,14 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
-        // Анимация атаки
         if (this.swinging) {
             state.getController().setAnimation(ATTACK_ANIM);
             return PlayState.CONTINUE;
         }
-
-        // Анимация движения
         if (state.isMoving()) {
             state.getController().setAnimation(WALK_ANIM);
             return PlayState.CONTINUE;
         }
-
-        // Анимация покоя
         state.getController().setAnimation(IDLE_ANIM);
         return PlayState.CONTINUE;
     }

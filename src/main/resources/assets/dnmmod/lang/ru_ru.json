@@ -26,6 +26,7 @@
   "item.dnmmod.diamond_trident": "Алмазный трезубец",
   "item.dnmmod.diamond_katana": "Алмазная катана",
   "item.dnmmod.ritual_dagger": "Ритуальный кинжал",
+  "item.dnmmod.bladesinger_sword": "Меч Певца Клинков",
 
 
   "item.dnmmod.hag_eye": "Глаз Карги",
@@ -158,6 +159,7 @@
   "effect.dnmmod.shrink_effect": "Уменьшение",
   "effect.dnmmod.agathys_armor": "Доспех Агатиса",
   "effect.dnmmod.thick_of_fight": "Гуща битвы",
+  "effect.dnmmod.corpse_poison": "Трупный яд",
 
   "sounds.dnmmod.ghost_ambient": "Призрак",
   "sounds.dnmmod.undead_spirit": "Дух Нежити",

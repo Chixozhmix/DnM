@@ -113,15 +113,13 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
         super.tick();
 
         if (this.level().isClientSide()) {
-            // Только на клиенте обновляем анимации
             if (this.attackAnimationTick > 0) {
                 this.attackAnimationTick--;
             }
         }
 
-        // Синхронизация анимации атаки с анимацией взмаха оружия
         if (this.swinging && this.attackAnimationTick <= 0) {
-            this.attackAnimationTick = 10; // Увеличьте длительность для лучшей синхронизации
+            this.attackAnimationTick = 10;
             this.swingTime = 0;
         }
     }

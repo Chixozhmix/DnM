@@ -26,6 +26,7 @@
   "item.dnmmod.diamond_trident": "Diamond trident",
   "item.dnmmod.diamond_katana": "Diamond katana",
   "item.dnmmod.ritual_dagger": "Ritual dagger",
+  "item.dnmmod.bladesinger_sword": "Bladesinger sword",
 
   "item.dnmmod.hag_eye": "Hag Eye",
   "item.dnmmod.forest_heart": "Forest Heart",
@@ -158,6 +159,7 @@
   "effect.dnmmod.shrink_effect": "Shrink",
   "effect.dnmmod.agathys_armor": "Agathys Armor",
   "effect.dnmmod.thick_of_fight": "Thick of fight",
+  "effect.dnmmod.corpse_poison": "Corpse poison",
 
   "sounds.dnmmod.ghost_ambient": "Ghost",
   "sounds.dnmmod.undead_spirit": "Undead Spirit",
