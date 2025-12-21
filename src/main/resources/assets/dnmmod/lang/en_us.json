@@ -74,6 +74,7 @@
   "item.dnmmod.burnt_sugar": "Burnt sugar",
   "item.dnmmod.mirror": "Mirror",
   "item.dnmmod.d20": "D20",
+  "item.dnmmod.blade_rune": "Blade rune",
 
   "item.dnmmod.ectoplasm": "Ectoplasm",
   "item.dnmmod.phantom_potion": "Phantom potion",
@@ -95,6 +96,11 @@
   "item.dnmmod.shadow_archer_chestplate": "Shadow archer chestplate",
   "item.dnmmod.shadow_archer_leggings": "Shadow archer leggings",
   "item.dnmmod.shadow_archer_boots": "Shadow archer boots",
+
+  "item.dnmmod.bladesinger_helmet": "Bladesinger helmet",
+  "item.dnmmod.bladesinger_chestplate": "Bladesinger chestplate",
+  "item.dnmmod.bladesinger_leggings": "Bladesinger leggings",
+  "item.dnmmod.bladesinger_boots": "Bladesinger boots",
 
   "item.dnmmod.protection_ring": "Protection ring",
 
@@ -167,6 +173,11 @@
   "sounds.dnmmod.goblin": "Goblin",
   "sounds.dnmmod.greemon": "Greemon",
   "sounds.dnmmod.leshy": "Leshy",
+
+  "school.dnmmod.necro": "Necromancy",
+
+  "attribute.dnmmod.necro_magic_resist": "Necromancy resist",
+  "attribute.dnmmod.necro_spell_power": "Necromancy spell power",
 
   "spell.dnmmod.mage_armor": "Mage Armor",
   "spell.dnmmod.mage_armor.guide": "You surround yourself with a web of magic, forming a shield. Your armor rating increases.",

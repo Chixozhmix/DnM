@@ -21,6 +21,7 @@ public class SoundsRegistry{
     public static final RegistryObject<SoundEvent> GOBLIN_HURT = registerSoundEvent("goblin_hurt");
     public static final RegistryObject<SoundEvent> LESHY_AMBIENT = registerSoundEvent("leshy_ambient");
     public static final RegistryObject<SoundEvent> GREEMON_AMBIENT = registerSoundEvent("greemon_ambient");
+    public static final RegistryObject<SoundEvent> NECRO_MAGIC = registerSoundEvent("necro_magic");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENT.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(DnMmod.MOD_ID, name)));

@@ -223,6 +223,8 @@ public class ModItems {
             new MirrorItem(new Item.Properties()));
     public static final RegistryObject<Item> DICE20 = ITEMS.register("d20", () ->
             new D20Item(new Item.Properties().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> BLADE_RUNE = ITEMS.register("blade_rune", () ->
+            new Item(PropertiesHelper.stackItemProperties(64)));
     //Magic Item
     public static final RegistryObject<Item> HAG_EYE = ITEMS.register("hag_eye", () ->
             new HagEye(PropertiesHelper.stackItemProperties(1)
@@ -304,6 +306,18 @@ public class ModItems {
 
     public static final RegistryObject<Item> SHADOW_ARCHER_BOOTS = ITEMS.register("shadow_archer_boots",
             () -> new ShadowArcher(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
+
+    public static final RegistryObject<Item> BLADESINGER_HELMET = ITEMS.register("bladesinger_helmet",
+            () -> new BladesingerArmor(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties()));
+
+    public static final RegistryObject<Item> BLADESINGER_CHESTPLATE = ITEMS.register("bladesinger_chestplate",
+            () -> new BladesingerArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties()));
+
+    public static final RegistryObject<Item> BLADESINGER_LEGGINGS = ITEMS.register("bladesinger_leggings",
+            () -> new BladesingerArmor(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties()));
+
+    public static final RegistryObject<Item> BLADESINGER_BOOTS = ITEMS.register("bladesinger_boots",
+            () -> new BladesingerArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
 
     //Spellbooks
     public static final RegistryObject<Item> MAGICAL_GRIMOIRE = ITEMS.register("magical_grimoire",

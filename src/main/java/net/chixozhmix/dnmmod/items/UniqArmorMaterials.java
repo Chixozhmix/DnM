@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.items;
 
 import dev.shadowsoffire.attributeslib.api.ALObjects;
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.item.armor.IronsExtendedArmorMaterial;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
@@ -47,6 +48,16 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
                     new AttributeModifier("Arrow Power", 0.15F, AttributeModifier.Operation.MULTIPLY_BASE),
                     (Attribute) ALObjects.Attributes.CRIT_CHANCE.get(),
                     new AttributeModifier("Crit chance", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+            )),
+    BLADESINGER_ARMOR("bladesinger_armor", 37, heavyArmorMap(), 15,
+            SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F,
+            () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.NETHERITE_INGOT}),
+            Map.of((Attribute) Attributes.ATTACK_DAMAGE,
+                    new AttributeModifier("Attack Damage", (double)0.1F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute) AttributeRegistry.SPELL_POWER.get(),
+                    new AttributeModifier("Spell Power", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    (Attribute) AttributeRegistry.MAX_MANA.get(),
+                    new AttributeModifier("Max Mana", 100.0F, AttributeModifier.Operation.ADDITION)
             ));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};

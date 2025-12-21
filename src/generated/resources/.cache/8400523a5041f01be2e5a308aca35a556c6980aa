@@ -1,8 +1,13 @@
-// 1.20.1	2025-12-04T20:52:09.8089576	Item Models: dnmmod
+// 1.20.1	2025-12-21T12:33:56.5254378	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
 81473fd2241bac11d2379c3fa0c73d0226ad8fa8 assets/dnmmod/models/item/archer_armor_leggings.json
+f3c19b41f7920b3724b4272007022db2918377b2 assets/dnmmod/models/item/bladesinger_boots.json
+cceaf709844848be1e8517cc47c96ade556d77b4 assets/dnmmod/models/item/bladesinger_chestplate.json
+cde6e1631cd39a837bc3634fcadf5c1dda74c606 assets/dnmmod/models/item/bladesinger_helmet.json
+f2304e0ee6bead0bf2df5d366caac4acc97a24e6 assets/dnmmod/models/item/bladesinger_leggings.json
+8846b5e5b0fbad5e194c7a3056c71450e06cdd47 assets/dnmmod/models/item/blade_rune.json
 afcc952ce0db6e1184fb9a9347ff79b125ccef76 assets/dnmmod/models/item/blood_wand.json
 ba00481093cc18d9af0be8250395299563b9ae8d assets/dnmmod/models/item/blood_wand_core.json
 e5b166c00c919f5a94a1c3d30adb5a05f8cfe418 assets/dnmmod/models/item/burnt_sugar.json

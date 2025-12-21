@@ -55,6 +55,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.BURNT_SUGAR);
         simpleItem(ModItems.MIRROR);
         simpleItem(ModItems.DICE20);
+        simpleItem(ModItems.BLADE_RUNE);
         //Staff and wands
         handheldItem(ModItems.WOODEN_WAND);
         handheldItem(ModItems.CRYOMANCER_WAND);
@@ -89,6 +90,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.SHADOW_ARCHER_CHESTPLATE);
         simpleItem(ModItems.SHADOW_ARCHER_HELMET);
         simpleItem(ModItems.SHADOW_ARCHER_LEGGINGS);
+        simpleItem(ModItems.BLADESINGER_BOOTS);
+        simpleItem(ModItems.BLADESINGER_LEGGINGS);
+        simpleItem(ModItems.BLADESINGER_CHESTPLATE);
+        simpleItem(ModItems.BLADESINGER_HELMET);
 
 
     }

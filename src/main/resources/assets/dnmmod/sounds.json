@@ -49,5 +49,11 @@
     "sounds": [
       "dnmmod:leshy_ambient"
     ]
+  },
+  "necro_magic": {
+    "subtitles": "sounds.dnmmod.necro_sound",
+    "sounds": [
+      "dnmmod:necro_magic"
+    ]
   }
 }

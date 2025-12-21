@@ -94,9 +94,13 @@ public class CreativeTabMod {
                         output.accept(ModItems.IMPROVED_ARCHER_CHESTPLATE.get());
                         output.accept(ModItems.IMPROVED_ARCHER_HELMET.get());
                         output.accept(ModItems.SHADOW_ARCHER_BOOTS.get());
+                        output.accept(ModItems.SHADOW_ARCHER_LEGGINGS.get());
                         output.accept(ModItems.SHADOW_ARCHER_CHESTPLATE.get());
                         output.accept(ModItems.SHADOW_ARCHER_HELMET.get());
-                        output.accept(ModItems.SHADOW_ARCHER_LEGGINGS.get());
+                        output.accept(ModItems.BLADESINGER_BOOTS.get());
+                        output.accept(ModItems.BLADESINGER_LEGGINGS.get());
+                        output.accept(ModItems.BLADESINGER_CHESTPLATE.get());
+                        output.accept(ModItems.BLADESINGER_HELMET.get());
                     })
                     .build());
     //Magic Items
@@ -114,6 +118,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.BLOOD_WAND_CORE.get());
                         output.accept(ModItems.EVOKER_WAND_CORE.get());
                         output.accept(ModItems.ENDER_WAND_CORE.get());
+                        output.accept(ModItems.BLADE_RUNE.get());
                         output.accept(ModItems.PROTECTION_RING.get());
 
                         PropertiesHelper.addOptionalItem(output, ModItems.AQUA_WAND_CORE);

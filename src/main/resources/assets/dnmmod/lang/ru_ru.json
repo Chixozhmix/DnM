@@ -76,6 +76,7 @@
   "item.dnmmod.burnt_sugar": "Жженный сахар",
   "item.dnmmod.mirror": "Зеркало",
   "item.dnmmod.d20": "D20",
+  "item.dnmmod.blade_rune": "Руна клинка",
 
   "item.dnmmod.ectoplasm": "Эктоплазма",
 
@@ -96,6 +97,11 @@
   "item.dnmmod.shadow_archer_chestplate": "Нагрудник теневого лучника",
   "item.dnmmod.shadow_archer_leggings": "Поножи теневого лучника",
   "item.dnmmod.shadow_archer_boots": "Ботинки теневого лучника",
+
+  "item.dnmmod.bladesinger_helmet": "Шлем Певца клинков",
+  "item.dnmmod.bladesinger_chestplate": "Нагрудник Певца клинков",
+  "item.dnmmod.bladesinger_leggings": "Поножи Певца клинков",
+  "item.dnmmod.bladesinger_boots": "Ботинки Певца клинков",
 
   "item.dnmmod.protection_ring": "Кольцо защиты",
 
@@ -167,6 +173,11 @@
   "sounds.dnmmod.goblin": "Гоблин",
   "sounds.dnmmod.greemon": "Гримон",
   "sounds.dnmmod.leshy": "Леший",
+
+  "school.dnmmod.necro": "Некромантия",
+
+  "attribute.dnmmod.necro_magic_resist": "Сопротивление магии некромантии",
+  "attribute.dnmmod.necro_spell_power": "Сила заклинаний некромантии",
 
   "spell.dnmmod.mage_armor": "Доспехи Мага",
   "spell.dnmmod.mage_armor.guide": "Вы окружаете себя плетением магии, образуя защиту. Ваш показатель брони увеличивается.",

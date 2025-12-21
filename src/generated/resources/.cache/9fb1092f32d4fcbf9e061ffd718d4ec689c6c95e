@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-03T13:25:42.2585896	Recipes
+// 1.20.1	2025-12-21T12:33:56.5304247	Recipes
 66d9b096436d2f53c49785a5c55daa816a200934 data/dnmmod/advancements/recipes/combat/diamond_battleaxe.json
 98ae1d8dd16adc7d287c622589b5edc25b8bef65 data/dnmmod/advancements/recipes/combat/diamond_dagger.json
 bb5fddf76be48199b7479e9149d42d62d1f86d91 data/dnmmod/advancements/recipes/combat/diamond_glaive.json
@@ -26,6 +26,11 @@ a84f6aed19256287a7abe2f168c9d67af3286b16 data/dnmmod/advancements/recipes/combat
 38502839d54c5ae1b9b8d018aa9ad0baf8a9b8a7 data/dnmmod/advancements/recipes/combat/iron_spear.json
 c5a7911d531ce4f586f3ad5dded37aea75eb291e data/dnmmod/advancements/recipes/combat/iron_trident.json
 30d6fb61b548e5fb49401f014830144be9db6f28 data/dnmmod/advancements/recipes/combat/ritual_dagger.json
+3bd32b250f5024bf8a8b62462331b0a55bcd3f73 data/dnmmod/advancements/recipes/misc/bladesinger_boots.json
+2c37723ba3f20d75d79c600a7697331d2c287050 data/dnmmod/advancements/recipes/misc/bladesinger_chestplate.json
+2ef61b42b071e9e3a46200f17a44baac545e122c data/dnmmod/advancements/recipes/misc/bladesinger_helmet.json
+a7ca89cd5e6335ffacdef484199a0f4d8a38d2b0 data/dnmmod/advancements/recipes/misc/bladesinger_leggings.json
+067914f3de0126bab46cf235f70568cea9d2aeaa data/dnmmod/advancements/recipes/misc/blade_rune.json
 bf3afad1a6cd26ab5772cf5c11cff665b1a16b62 data/dnmmod/advancements/recipes/misc/blood_wand.json
 14a8d011b0badc7f18239e3ccfa5591cbc65177b data/dnmmod/advancements/recipes/misc/blood_wand_core.json
 3dc982d3219bf3d123b66735f5bce309dfd7345f data/dnmmod/advancements/recipes/misc/burnt_sugar_from_smelting_sugar.json
@@ -60,6 +65,11 @@ d6981e50f4f447b6ffa59ff54f814034a52c9595 data/dnmmod/advancements/recipes/misc/s
 4de85a40c9578f1ce5f3c58df14c11190384282c data/dnmmod/advancements/recipes/misc/thunderstorm_bottle.json
 0654724ec5facd7be9660918d433d3984df72696 data/dnmmod/advancements/recipes/misc/wand_core.json
 3b8807a67322df87eb2c02c7ba254f01937b3cfb data/dnmmod/advancements/recipes/misc/wooden_wand.json
+e53a7080260d97f836f80a407548d285cc7ddd80 data/dnmmod/recipes/bladesinger_boots.json
+ac2ad56e3f3041e07ea72274c5b41d0a551f2694 data/dnmmod/recipes/bladesinger_chestplate.json
+859a6901994c2fb50d1c5bb5fd124de6b29c8609 data/dnmmod/recipes/bladesinger_helmet.json
+f267b98c12ea7c2fd9408d8fa23a6458d41f9334 data/dnmmod/recipes/bladesinger_leggings.json
+d184bc553621288f11e13ed4094df3577f3d8fe7 data/dnmmod/recipes/blade_rune.json
 bee256f95ccb1d024d65f155337e5f3d03294267 data/dnmmod/recipes/blood_wand.json
 cdfcaf7a02f9a54da8796d00403c2ac9b548648e data/dnmmod/recipes/blood_wand_core.json
 fced04ad89ab0a435e8a7b4d73cc74e3262f9411 data/dnmmod/recipes/burnt_sugar_from_smelting_sugar.json
