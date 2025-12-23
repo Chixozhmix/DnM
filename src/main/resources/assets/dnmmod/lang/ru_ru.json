@@ -150,6 +150,10 @@
   "ui.dnmmod.half_mirror_massage": "Вы выглядели и лучше.",
   "ui.dnmmod.min_mirror_massage": "Вы выглядите плохо :(",
 
+  "ui.dnmmod.knock.all_blocked": "§4Все замки защищены!",
+  "ui.dnmmod.knock.complexity_blocked": "§c%d замка(ов) защищено!",
+  "ui.dnmmod.knock.opened": "§aУспешно открыто %d замка(ов)",
+
   "creativetab.dnmmod.weapons": "Оружие",
   "creativetab.dnmmod.staffs": "Посохи и палочки",
   "creativetab.dnmmod.items": "Предметы",
@@ -216,5 +220,8 @@
   "spell.dnmmod.agathys_armor_spell.guide": "Вы окружаете себя холодной броней, которая защищает вас и наносит урон любому, кто осмелится прикоснуться к вам.",
 
   "spell.dnmmod.thick_of_fight": "Гуща Битвы",
-  "spell.dnmmod.thick_of_fight.guide": "Вы наполняетесь яростью битвы, усиливая свое тело."
+  "spell.dnmmod.thick_of_fight.guide": "Вы наполняетесь яростью битвы, усиливая свое тело.",
+
+  "spell.dnmmod.knock": "Стук",
+  "spell.dnmmod.knock.guide": "Открывает замки"
 }

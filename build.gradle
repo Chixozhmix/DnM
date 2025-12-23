@@ -129,6 +129,7 @@ dependencies {
     compileOnly fg.deobf('maven.modrinth:l_enders-cataclysm:NvvXful4')
     compileOnly fg.deobf('maven.modrinth:lionfish-api:2.4')
     compileOnly fg.deobf('maven.modrinth:alexs-caves:2.0.2')
+    compileOnly fg.deobf("curse.maven:locks-unofficial-1128357:6115787")
 
     //Iron's Spellbooks
     implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:6488484")

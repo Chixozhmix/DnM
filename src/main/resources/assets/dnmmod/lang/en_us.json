@@ -150,6 +150,10 @@
   "ui.dnmmod.half_mirror_massage": "I've been better",
   "ui.dnmmod.min_mirror_massage": "You look bad :(",
 
+  "ui.dnmmod.knock.all_blocked": "§4All locks are magically protected!",
+  "ui.dnmmod.knock.complexity_blocked": "§c%d lock(s) protected by magical enchantments!",
+  "ui.dnmmod.knock.opened": "§aSuccessfully opened %d lock(s)",
+
   "creativetab.dnmmod.weapons": "Weapons",
   "creativetab.dnmmod.staffs": "Staffs and wands",
   "creativetab.dnmmod.items": "Items",
@@ -216,5 +220,8 @@
   "spell.dnmmod.agathys_armor_spell.guide": "You surround yourself with cold armor that protects you and damages anyone who dares to touch you.",
 
   "spell.dnmmod.thick_of_fight": "Thick of Fight",
-  "spell.dnmmod.thick_of_fight.guide": "You are filled with the fury of battle, strengthening your body."
+  "spell.dnmmod.thick_of_fight.guide": "You are filled with the fury of battle, strengthening your body.",
+
+  "spell.dnmmod.knock": "Knock",
+  "spell.dnmmod.knock.guide": "Opens locks."
 }

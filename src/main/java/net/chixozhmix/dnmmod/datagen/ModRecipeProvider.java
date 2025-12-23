@@ -543,6 +543,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('C', ItemRegistry.MAGIC_CLOTH.get())
                 .unlockedBy("has_blade_rune", has(ModItems.BLADE_RUNE.get()))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BLADESINGER_SWORD.get(), 1)
+                .pattern("  I")
+                .pattern("RS ")
+                .pattern("I  ")
+                .define('R', ModItems.BLADE_RUNE.get())
+                .define('I', Items.IRON_SWORD)
+                .define('S', Items.STICK)
+                .unlockedBy("has_blade_rune", has(ModItems.BLADE_RUNE.get()))
+                .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.THUNDERSTORM_BOTTLE.get(), 1)
                 .requires(ItemRegistry.LIGHTNING_BOTTLE.get())
                 .requires(createPotionIngredient(Potions.WATER))
