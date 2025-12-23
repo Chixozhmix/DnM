@@ -1,10 +1,12 @@
 package net.chixozhmix.dnmmod.effect.custom;
 
+import dev.shadowsoffire.attributeslib.api.ALObjects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -24,17 +26,21 @@ public class PhantomEffect extends MobEffect {
         super.applyEffectTick(pLivingEntity, pAmplifier);
 
         if(pLivingEntity instanceof Player player) {
-            // Применяем эффект призрака
+            Level level = player.level();
+
+            AttributeInstance creativeFlightAttr = player.getAttribute(ALObjects.Attributes.CREATIVE_FLIGHT.get());
+            if (creativeFlightAttr != null) {
+                creativeFlightAttr.setBaseValue(1.0);
+            }
+
+            player.getAbilities().mayfly = true;
+            player.getAbilities().flying = true;
+            player.onUpdateAbilities();
+
             player.noPhysics = true;
-            player.setNoGravity(true);
             player.fallDistance = 0.0f;
 
             preventBedrockPassing(player);
-
-            // Движение вниз при нажатии Shift
-            if (player.isShiftKeyDown()) {
-                player.setDeltaMovement(player.getDeltaMovement().add(0, -0.2, 0));
-            }
         }
     }
 
@@ -42,16 +48,13 @@ public class PhantomEffect extends MobEffect {
         Level level = player.level();
         AABB playerBounds = player.getBoundingBox();
 
-        // Проверяем все блоки, с которыми пересекается игрок
         BlockPos.betweenClosed(
                 BlockPos.containing(playerBounds.minX, playerBounds.minY, playerBounds.minZ),
                 BlockPos.containing(playerBounds.maxX, playerBounds.maxY, playerBounds.maxZ)
         ).forEach(pos -> {
             BlockState blockState = level.getBlockState(pos);
 
-            // Если блок - бедрок или другие запрещенные блоки
             if (isForbiddenBlock(blockState)) {
-                // Выталкиваем игрока из блока
                 pushPlayerOutOfBlock(player, pos, blockState);
             }
         });
@@ -61,14 +64,11 @@ public class PhantomEffect extends MobEffect {
         AABB blockBounds = blockState.getShape(player.level(), blockPos).bounds().move(blockPos);
         AABB playerBounds = player.getBoundingBox();
 
-        // Вычисляем направление для выталкивания
         double pushX = 0;
         double pushY = 0;
         double pushZ = 0;
 
-        // Определяем, с какой стороны игрок вошел в блок
         if (playerBounds.intersects(blockBounds)) {
-            // Выталкиваем в направлении, противоположном центру блока
             double blockCenterX = blockPos.getX() + 0.5;
             double blockCenterY = blockPos.getY() + 0.5;
             double blockCenterZ = blockPos.getZ() + 0.5;
@@ -81,10 +81,9 @@ public class PhantomEffect extends MobEffect {
             pushY = playerCenterY - blockCenterY;
             pushZ = playerCenterZ - blockCenterZ;
 
-            // Нормализуем вектор и устанавливаем скорость выталкивания
             double length = Math.sqrt(pushX * pushX + pushY * pushY + pushZ * pushZ);
             if (length > 0) {
-                double speed = 0.3; // Скорость выталкивания
+                double speed = 0.3;
                 pushX = pushX / length * speed;
                 pushY = pushY / length * speed;
                 pushZ = pushZ / length * speed;
@@ -131,8 +130,17 @@ public class PhantomEffect extends MobEffect {
         }
 
         private static void resetPlayerPhysics(Player player) {
+            AttributeInstance creativeFlightAttr = player.getAttribute(ALObjects.Attributes.CREATIVE_FLIGHT.get());
+            if (creativeFlightAttr != null) {
+                creativeFlightAttr.setBaseValue(0.0);
+            }
+            if (!player.isCreative() && !player.isSpectator()) {
+                player.getAbilities().mayfly = false;
+                player.getAbilities().flying = false;
+                player.onUpdateAbilities();
+            }
+
             player.noPhysics = false;
-            player.setNoGravity(false);
             player.fallDistance = 0.0f;
 
             player.setDeltaMovement(player.getDeltaMovement().multiply(1, 0.5, 1));

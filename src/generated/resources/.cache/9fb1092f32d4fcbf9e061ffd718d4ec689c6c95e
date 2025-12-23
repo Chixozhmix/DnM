@@ -1,4 +1,5 @@
-// 1.20.1	2025-12-21T12:33:56.5304247	Recipes
+// 1.20.1	2025-12-23T15:33:27.7373735	Recipes
+a238538041db1f523cd37b7af5ddc9a14ccf21c5 data/dnmmod/advancements/recipes/combat/bladesinger_sword.json
 66d9b096436d2f53c49785a5c55daa816a200934 data/dnmmod/advancements/recipes/combat/diamond_battleaxe.json
 98ae1d8dd16adc7d287c622589b5edc25b8bef65 data/dnmmod/advancements/recipes/combat/diamond_dagger.json
 bb5fddf76be48199b7479e9149d42d62d1f86d91 data/dnmmod/advancements/recipes/combat/diamond_glaive.json
@@ -69,6 +70,7 @@ e53a7080260d97f836f80a407548d285cc7ddd80 data/dnmmod/recipes/bladesinger_boots.j
 ac2ad56e3f3041e07ea72274c5b41d0a551f2694 data/dnmmod/recipes/bladesinger_chestplate.json
 859a6901994c2fb50d1c5bb5fd124de6b29c8609 data/dnmmod/recipes/bladesinger_helmet.json
 f267b98c12ea7c2fd9408d8fa23a6458d41f9334 data/dnmmod/recipes/bladesinger_leggings.json
+b4b3c1bc2e1ed60111bafa3f57bc48f44ca4831d data/dnmmod/recipes/bladesinger_sword.json
 d184bc553621288f11e13ed4094df3577f3d8fe7 data/dnmmod/recipes/blade_rune.json
 bee256f95ccb1d024d65f155337e5f3d03294267 data/dnmmod/recipes/blood_wand.json
 cdfcaf7a02f9a54da8796d00403c2ac9b548648e data/dnmmod/recipes/blood_wand_core.json

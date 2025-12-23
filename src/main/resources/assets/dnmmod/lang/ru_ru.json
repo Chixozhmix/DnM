@@ -69,9 +69,6 @@
   "item.dnmmod.green_hag_spawn_egg": "Яйцо призыва зеленой карги",
   "item.dnmmod.leshy_spawn_egg": "Яйцо призыва Лешего",
 
-  "item.dnmmod.firebalt": "Огненная стрела",
-
-
   "item.dnmmod.raven_feather": "Перо ворона",
   "item.dnmmod.burnt_sugar": "Жженный сахар",
   "item.dnmmod.mirror": "Зеркало",
@@ -79,6 +76,7 @@
   "item.dnmmod.blade_rune": "Руна клинка",
 
   "item.dnmmod.ectoplasm": "Эктоплазма",
+  "item.dnmmod.phantom_potion": "Зелье фантома",
 
   "item.dnmmod.maid_dress": "Платье горничной",
   "item.dnmmod.maid_cap": "Шапочка горничной",

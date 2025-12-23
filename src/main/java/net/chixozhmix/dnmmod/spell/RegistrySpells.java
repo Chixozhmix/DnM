@@ -1,29 +1,18 @@
 package net.chixozhmix.dnmmod.spell;
 
-import com.gametechbc.traveloptics.api.init.TravelopticsAttributes;
-import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
-import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.Util.PropertiesHelper;
-import net.chixozhmix.dnmmod.items.custom.WandCore;
 import net.chixozhmix.dnmmod.spell.blood.SummonUndeadSpiritSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
 import net.chixozhmix.dnmmod.spell.ice.AgathysArmorSpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
 import net.chixozhmix.dnmmod.spell.lightning.ThunderwaveSpell;
 import net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.Map;
 import java.util.Optional;
 
 public class RegistrySpells {
@@ -54,7 +43,6 @@ public class RegistrySpells {
             KNOCK = Optional.of(registerSpell(new Knock()));
         }
     }
-
 
     public static void register(IEventBus eventBus) {
         SPELLS.register(eventBus);

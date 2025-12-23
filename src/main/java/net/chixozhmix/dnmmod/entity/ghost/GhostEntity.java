@@ -58,10 +58,10 @@ public class GhostEntity extends Monster implements GeoEntity {
     private int attackAnimationTick = 0;
 
     private static final AttributeSupplier ATTRIBUTES = Monster.createMobAttributes()
-            .add(Attributes.MAX_HEALTH, 25.0D)
+            .add(Attributes.MAX_HEALTH, 15.0D)
             .add(Attributes.ARMOR, 2.0D)
             .add(Attributes.MOVEMENT_SPEED, 0.29D)
-            .add(Attributes.ATTACK_DAMAGE, 4.0D)
+            .add(Attributes.ATTACK_DAMAGE, 2.0D)
             .add(Attributes.FOLLOW_RANGE, 35.0D)
             .add(Attributes.KNOCKBACK_RESISTANCE, 0.7D)
             .add(Attributes.FLYING_SPEED, 0.29D).build();
