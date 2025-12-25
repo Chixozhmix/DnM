@@ -4,8 +4,6 @@ import com.mojang.logging.LogUtils;
 import io.redspace.ironsspellbooks.block.alchemist_cauldron.AlchemistCauldronRecipe;
 import io.redspace.ironsspellbooks.block.alchemist_cauldron.AlchemistCauldronRecipeRegistry;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
-import net.chixozhmix.dnmmod.api.registers.DnMAttributes;
-import net.chixozhmix.dnmmod.api.registers.DnMSchools;
 import net.chixozhmix.dnmmod.blocks.ModBlocks;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
@@ -88,8 +86,8 @@ public class DnMmod
         //Recipes
         ModRecipes.register(modEventBus);
         //Necromancy
-        DnMAttributes.ATTRIBUTES.register(modEventBus);
-        DnMSchools.DNM_SCHOOLS.register(modEventBus);
+//        DnMAttributes.ATTRIBUTES.register(modEventBus);
+//        DnMSchools.DNM_SCHOOLS.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
     }

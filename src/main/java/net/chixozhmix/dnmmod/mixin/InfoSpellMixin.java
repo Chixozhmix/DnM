@@ -11,7 +11,6 @@ import io.redspace.ironsspellbooks.spells.fire.WallOfFireSpell;
 import io.redspace.ironsspellbooks.spells.holy.GreaterHealSpell;
 import io.redspace.ironsspellbooks.spells.ice.SummonPolarBearSpell;
 import io.redspace.ironsspellbooks.spells.lightning.*;
-import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.minecraft.network.chat.Component;
@@ -51,26 +50,6 @@ public abstract class InfoSpellMixin {
         SPELL_COMPONENTS.put(SummonPolarBearSpell.class, () -> Items.COD);
         SPELL_COMPONENTS.put(ThunderstormSpell.class, () -> ModItems.THUNDERSTORM_BOTTLE.get());
         SPELL_COMPONENTS.put(WallOfFireSpell.class, () -> Items.LAVA_BUCKET);
-
-        try {
-            Class<?> vigorSiphonClass = Class.forName("com.gametechbc.traveloptics.spells.blood.VigorSiphonSpell");
-            Class<?> lavaBomb = Class.forName("com.gametechbc.traveloptics.spells.fire.LavaBombSpell");
-            Class<?> cursedRevenants = Class.forName("com.gametechbc.traveloptics.spells.ice.CursedRevenantsSpell");
-
-            SPELL_COMPONENTS.put((Class<? extends AbstractSpell>) vigorSiphonClass, () -> Items.CHAIN);
-            SPELL_COMPONENTS.put((Class<? extends AbstractSpell>) lavaBomb, () -> Items.MAGMA_BLOCK);
-            SPELL_COMPONENTS.put((Class<? extends AbstractSpell>) cursedRevenants, () -> ItemRegistry.FROZEN_BONE_SHARD.get());
-        } catch (ClassNotFoundException e) {
-            DnMmod.LOGGER.debug("T.O. Magic not loaded");
-        }
-
-        try {
-            Class<?> lullaby = Class.forName("net.alshanex.alshanex_familiars.spells.LullabySpell");
-
-            SPELL_COMPONENTS.put((Class<? extends AbstractSpell>) lullaby, () -> Items.LILY_OF_THE_VALLEY);
-        } catch (ClassNotFoundException e) {
-            DnMmod.LOGGER.debug("Alshanex's Familiars not loaded");
-        }
     }
 
     private AbstractSpell getThisSpell() {

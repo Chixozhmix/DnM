@@ -11,6 +11,8 @@
     "EarthquakeMixin",
     "SacrifyMixin",
 
+    "TOSpellInfoMixin",
+    "GPSpellInfoMixin",
     "PrimalPackMixin",
     "VigorSiphonMixin",
     "AxeOfTheDoomedMixin",
@@ -21,8 +23,7 @@
     "SummonDesertDwellersMixin",
     "TidalGraspMixin",
     "VortexOfTheDeepMixin",
-    "LavaBombMixin",
-    "CursedRevenantsMixin"
+    "LullablyMixin"
   ],
   "injectors": {
     "defaultRequire": 1

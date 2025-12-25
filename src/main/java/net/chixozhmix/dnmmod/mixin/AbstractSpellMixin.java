@@ -22,7 +22,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -50,10 +52,12 @@ public class AbstractSpellMixin {
             Class<?> vigorSiphonClass = Class.forName("com.gametechbc.traveloptics.spells.blood.VigorSiphonSpell");
             Class<?> lavaBomb = Class.forName("com.gametechbc.traveloptics.spells.fire.LavaBombSpell");
             Class<?> cursedRevenants = Class.forName("com.gametechbc.traveloptics.spells.ice.CursedRevenantsSpell");
+            Class<?> annihilation = Class.forName("com.gametechbc.traveloptics.spells.fire.AnnihilationSpell");
 
             map.put((Class<? extends AbstractSpell>) vigorSiphonClass, () -> Items.CHAIN);
             map.put((Class<? extends AbstractSpell>) lavaBomb, () -> Items.MAGMA_BLOCK);
             map.put((Class<? extends AbstractSpell>) cursedRevenants, () -> ItemRegistry.FROZEN_BONE_SHARD.get());
+            map.put((Class<? extends AbstractSpell>) annihilation, () -> getSafeAlexsCavesItem("URANIUM_SHARD").get());
         } catch (ClassNotFoundException e) {
             DnMmod.LOGGER.debug("T.O. Magic not loaded");
         }
@@ -64,6 +68,18 @@ public class AbstractSpellMixin {
             map.put((Class<? extends AbstractSpell>) lullaby, () -> Items.LILY_OF_THE_VALLEY);
         } catch (ClassNotFoundException e) {
             DnMmod.LOGGER.debug("Alshanex's Familiars not loaded");
+        }
+
+        try {
+            Class<?> tremorSpike = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorSpikeSpell");
+            Class<?> tremorStep = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorStepSpell");
+            Class<?> chunker = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.ChunkerSpell");
+
+            map.put((Class<? extends AbstractSpell>) tremorSpike, () -> Items.POINTED_DRIPSTONE);
+            map.put((Class<? extends AbstractSpell>) tremorStep, () -> Items.RAW_IRON_BLOCK);
+            map.put((Class<? extends AbstractSpell>) chunker, () -> Items.DIRT);
+        } catch (ClassNotFoundException e) {
+            DnMmod.LOGGER.debug("Geomancy Plus not loaded");
         }
 
         // Holy spells
@@ -129,5 +145,42 @@ public class AbstractSpellMixin {
 
             cir.setReturnValue(modified);
         }
+    }
+
+    @Unique
+    private static Supplier<Item> getSafeAlexsCavesItem(String itemName) {
+        return () -> {
+            try {
+                // Динамическая загрузка класса
+                Class<?> acRegistry = Class.forName("com.github.alexmodguy.alexscaves.server.item.ACItemRegistry");
+                java.lang.reflect.Field field = acRegistry.getField(itemName);
+                Object registryObject = field.get(null);
+                if (registryObject instanceof net.minecraftforge.registries.RegistryObject) {
+                    return ((net.minecraftforge.registries.RegistryObject<Item>) registryObject).get();
+                }
+            } catch (Exception e) {
+                // Если что-то пошло не так, возвращаем AIR
+                return Items.AIR;
+            }
+            return Items.AIR;
+        };
+    }
+    @Unique
+    private static Supplier<Item> getSafeAlexsCavesBlocks(String blockName) {
+        return () -> {
+            try {
+                // Динамическая загрузка класса
+                Class<?> acRegistry = Class.forName("com.github.alexmodguy.alexscaves.server.block.ACBlockRegistry");
+                java.lang.reflect.Field field = acRegistry.getField(blockName);
+                Object registryObject = field.get(null);
+                if (registryObject instanceof net.minecraftforge.registries.RegistryObject) {
+                    return Item.byBlock(((net.minecraftforge.registries.RegistryObject<Block>) registryObject).get());
+                }
+            } catch (Exception e) {
+                // Если что-то пошло не так, возвращаем AIR
+                return Items.AIR;
+            }
+            return Items.AIR;
+        };
     }
 }

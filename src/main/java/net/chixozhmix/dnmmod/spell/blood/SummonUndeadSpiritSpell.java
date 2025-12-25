@@ -7,7 +7,6 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
-import net.chixozhmix.dnmmod.api.registers.DnMSchools;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
