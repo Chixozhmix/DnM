@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "dnmmod:item/aqua_wand"
+    "layer0": "dnmmod:item/geomancy_wand"
   }
 }

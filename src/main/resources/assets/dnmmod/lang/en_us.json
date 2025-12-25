@@ -39,6 +39,7 @@
   "item.dnmmod.blood_wand_core": "Blood wand core",
   "item.dnmmod.ender_wand_core": "Ender wand core",
   "item.dnmmod.aqua_wand_core": "Aqua wand core",
+  "item.dnmmod.geomancy_wand_core": "Geomancy wand core",
   "item.dnmmod.kapellmeister_wand_core": "Kapellmeister wand core",
   "item.dnmmod.thunderstorm_bottle": "Thunderstorm bottle",
 
@@ -53,6 +54,7 @@
   "item.dnmmod.sacred_symbol": "Sacred wand",
   "item.dnmmod.aqua_wand": "Aqua wand",
   "item.dnmmod.kapellmeister_wand": "Kapellmeister wand",
+  "item.dnmmod.geomancy_wand": "Geomancy wand",
 
   "item.dnmmod.magical_grimoire": "Magical grimoire",
 

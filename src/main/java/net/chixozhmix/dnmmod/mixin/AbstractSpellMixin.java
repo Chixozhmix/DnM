@@ -151,7 +151,6 @@ public class AbstractSpellMixin {
     private static Supplier<Item> getSafeAlexsCavesItem(String itemName) {
         return () -> {
             try {
-                // Динамическая загрузка класса
                 Class<?> acRegistry = Class.forName("com.github.alexmodguy.alexscaves.server.item.ACItemRegistry");
                 java.lang.reflect.Field field = acRegistry.getField(itemName);
                 Object registryObject = field.get(null);
@@ -159,7 +158,6 @@ public class AbstractSpellMixin {
                     return ((net.minecraftforge.registries.RegistryObject<Item>) registryObject).get();
                 }
             } catch (Exception e) {
-                // Если что-то пошло не так, возвращаем AIR
                 return Items.AIR;
             }
             return Items.AIR;
@@ -169,7 +167,6 @@ public class AbstractSpellMixin {
     private static Supplier<Item> getSafeAlexsCavesBlocks(String blockName) {
         return () -> {
             try {
-                // Динамическая загрузка класса
                 Class<?> acRegistry = Class.forName("com.github.alexmodguy.alexscaves.server.block.ACBlockRegistry");
                 java.lang.reflect.Field field = acRegistry.getField(blockName);
                 Object registryObject = field.get(null);
@@ -177,7 +174,6 @@ public class AbstractSpellMixin {
                     return Item.byBlock(((net.minecraftforge.registries.RegistryObject<Block>) registryObject).get());
                 }
             } catch (Exception e) {
-                // Если что-то пошло не так, возвращаем AIR
                 return Items.AIR;
             }
             return Items.AIR;

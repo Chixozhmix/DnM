@@ -40,6 +40,7 @@
   "item.dnmmod.blood_wand_core": "Сердцевина кровавой палочки",
   "item.dnmmod.ender_wand_core": "Сердцевина палочки эндера",
   "item.dnmmod.aqua_wand_core": "Сердцевина палочки воды",
+  "item.dnmmod.geomancy_wand_core": "Сердце палочки геоманта",
   "item.dnmmod.kapellmeister_wand_core": "Сердцевина палочки капельмейстера",
   "item.dnmmod.thunderstorm_bottle": "Гроза в бутылке",
 
@@ -54,6 +55,7 @@
   "item.dnmmod.sacred_symbol": "Священный символ",
   "item.dnmmod.aqua_wand": "Палочка воды",
   "item.dnmmod.kapellmeister_wand": "Палочка капельмейстера",
+  "item.dnmmod.geomancy_wand": "Палочка геоманта",
 
   "item.dnmmod.magical_grimoire": "Магический гримуар",
 
