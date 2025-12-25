@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.Util;
 
+
 import net.chixozhmix.dnmmod.DnMmod;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -8,9 +9,10 @@ import net.minecraft.world.item.Item;
 
 public class ModTags {
 //    public static final TagKey<Item> NECRO_FOCUS;
-//
-//
-//    static {
+    public static final TagKey<Item> COMPONENT;
+
+    static {
 //        NECRO_FOCUS = TagKey.create(Registries.ITEM, new ResourceLocation(DnMmod.MOD_ID, "necro_focus"));
-//    }
+        COMPONENT = TagKey.create(Registries.ITEM, new ResourceLocation(DnMmod.MOD_ID, "component"));
+    }
 }

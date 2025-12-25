@@ -119,13 +119,13 @@ public class CreativeTabMod {
                         output.accept(ModItems.BLOOD_WAND_CORE.get());
                         output.accept(ModItems.EVOKER_WAND_CORE.get());
                         output.accept(ModItems.ENDER_WAND_CORE.get());
-                        output.accept(ModItems.BLADE_RUNE.get());
-                        output.accept(ModItems.PROTECTION_RING.get());
 
                         PropertiesHelper.addOptionalItem(output, ModItems.AQUA_WAND_CORE);
                         PropertiesHelper.addOptionalItem(output, ModItems.KAPELLMEISTER_WAND_CORE);
                         PropertiesHelper.addOptionalItem(output, ModItems.GEOMANCY_WAND_CORE);
 
+                        output.accept(ModItems.BLADE_RUNE.get());
+                        output.accept(ModItems.PROTECTION_RING.get());
                         output.accept(ModItems.COMPONENT_BAG.get());
                         output.accept(ModItems.MEDIUM_COMPONENT_BAG.get());
                     })

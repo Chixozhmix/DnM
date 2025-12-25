@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.screen.component_bag;
 
+import net.chixozhmix.dnmmod.Util.ModTags;
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
 import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
 import net.chixozhmix.dnmmod.screen.ModMenuTypes;
@@ -63,7 +64,7 @@ public class ComponentBagMenu extends AbstractContainerMenu {
                 this.addSlot(new SlotItemHandler(itemHandler, slotIndex, x, y) {
                     @Override
                     public boolean mayPlace(ItemStack stack) {
-                        return !(stack.getItem() instanceof MediumComponentBag) ||
+                        return stack.is(ModTags.COMPONENT) && !(stack.getItem() instanceof MediumComponentBag) &&
                                 !(stack.getItem() instanceof ComponentBag);
                     }
                 });
@@ -100,7 +101,10 @@ public class ComponentBagMenu extends AbstractContainerMenu {
         // Проверяем, является ли слот одним из слотов игрока
         if (index < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
 
-            // ПРОВЕРКА: запрещаем перемещение сумок в сумку через Shift+Click
+            if (!sourceStack.is(ModTags.COMPONENT)) {
+                return ItemStack.EMPTY;
+            }
+
             if (sourceStack.getItem() instanceof MediumComponentBag ||
                     sourceStack.getItem() instanceof ComponentBag) {
                 return ItemStack.EMPTY;

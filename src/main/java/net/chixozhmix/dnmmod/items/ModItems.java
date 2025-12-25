@@ -42,6 +42,7 @@ public class ModItems {
     private static Optional<DeferredRegister<Item>> TRAVELOPTIC_ITEMS = Optional.empty();
     private static Optional<DeferredRegister<Item>> ALSHANEX_ITEMS = Optional.empty();
     private static Optional<DeferredRegister<Item>> GEOMANCY_ITEMS = Optional.empty();
+    private static Optional<DeferredRegister<Item>> LOCKS_ITEMS = Optional.empty();
 
     private static final UUID WAND_UUID = UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3");
     private static final String ATTRIBUTE_NAME = "Weapon modifier";
@@ -332,6 +333,7 @@ public class ModItems {
     public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND_CORE = Optional.empty();
     public static Optional<RegistryObject<Item>> GEOMANCY_WAND = Optional.empty();
     public static Optional<RegistryObject<Item>> GEOMANCY_WAND_CORE = Optional.empty();
+    public static Optional<RegistryObject<Item>> KEY = Optional.empty();
 
 
     public static void registerOptionalItems(IEventBus eventBus) {
@@ -389,6 +391,16 @@ public class ModItems {
                             .rarity(Rarity.UNCOMMON))));
 
             GEOMANCY_ITEMS.get().register(eventBus);
+        }
+
+        // Locks Items
+        if (ModList.get().isLoaded("locks")) {
+            LOCKS_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));
+
+            KEY = Optional.of(LOCKS_ITEMS.get().register("key",
+                    () -> new Key(PropertiesHelper.durabilityItemProperties(50))));
+
+            LOCKS_ITEMS.get().register(eventBus);
         }
     }
 
