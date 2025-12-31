@@ -22,15 +22,15 @@ public class ThickOfFight extends MobEffect {
                 AttributeModifier.Operation.MULTIPLY_BASE);
         this.addAttributeModifier(Attributes.ATTACK_SPEED,
                 "1d21a4a1-5b1f-13ee-4c90-1200ac120002",
-                0.10F,
+                0.15F,
                 AttributeModifier.Operation.MULTIPLY_BASE);
         this.addAttributeModifier(AttributeRegistry.SPELL_POWER.get(),
                 "1d20a4a0-5b1f-13ee-4c90-1201ac120013",
-                0.05F,
+                0.10F,
                 AttributeModifier.Operation.MULTIPLY_BASE);
         this.addAttributeModifier(Attributes.MOVEMENT_SPEED,
                 "1d27a0a1-5b1f-10ee-4c00-1204ac126013",
-                0.10F,
+                0.15F,
                 AttributeModifier.Operation.MULTIPLY_BASE);
     }
 

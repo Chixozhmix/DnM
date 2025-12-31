@@ -113,6 +113,7 @@
   "entity.dnmmod.ice_dagger": "Ice dagger",
   "entity.dnmmod.chromatic_orb": "Chromatic orb",
   "entity.dnmmod.acid_projectile": "Acid projectile",
+  "entity.dnmmod.ray_of_enfeeblement": "Ray of enfeeblement",
 
   "death.attack.dnmmod.ice_dagger": "%1$s was pierced by ice",
   "death.attack.dnmmod.cloud_dagger": "%1$s was cut to pieces",
@@ -120,6 +121,7 @@
   "death.attack.dnmmod.acid_projectile": "%1$s was dissolved alive",
   "death.attack.dnmmod.caustic_brew": "%1$s has been corroded",
   "death.attack.dnmmod.summon_ravens": "%1$s had their eyes pecked out",
+  "death.attack.dnmmod.ray_of_enfeeblement": "%1$s was too weak",
 
   "entity.dnmmod.undead_spirit": "Undead Spirit",
   "entity.dnmmod.summoned_undead_spirit": "Undead Spirit",
@@ -131,7 +133,7 @@
   "entity.dnmmod.ghost": "Ghost",
   "entity.dnmmod.greemon": "Greemon",
   "entity.dnmmod.goblin_warrior": "Goblin warrior",
-  "entity.dnmmod.owlbear": "Owlbear",
+  "entity.dnmmod.flame_atronach": "Flame atronach",
 
   "tooltip.dnmmod.maid": "Why not?",
 
@@ -224,5 +226,11 @@
   "spell.dnmmod.thick_of_fight.guide": "You are filled with the fury of battle, strengthening your body.",
 
   "spell.dnmmod.knock": "Knock",
-  "spell.dnmmod.knock.guide": "Opens locks."
+  "spell.dnmmod.knock.guide": "Opens locks.",
+
+  "spell.dnmmod.ray_of_enfeeblement": "Ray of enfeeblement",
+  "spell.dnmmod.ray_of_enfeeblement.guide": "A beam of exhausting energy flies from you to the creature, causing it to lose its strength.",
+
+  "spell.dnmmod.summon_flame_atronach": "Summon flame atronach",
+  "spell.dnmmod.summon_flame_atronach.guide": "From the depths of Nether, you summon the spirit of fire to protect you"
 }

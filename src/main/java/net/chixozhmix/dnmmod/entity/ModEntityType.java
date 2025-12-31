@@ -1,7 +1,9 @@
 package net.chixozhmix.dnmmod.entity;
 
+import io.redspace.ironsspellbooks.entity.spells.ray_of_frost.RayOfFrostVisualEntity;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
+import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
 import net.chixozhmix.dnmmod.entity.ghost.GhostEntity;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
 import net.chixozhmix.dnmmod.entity.goblin_warior.GoblinWariorEntity;
@@ -13,6 +15,7 @@ import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
+import net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement.RayOfEnfeeblement;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
 import net.minecraft.world.entity.EntityType;
@@ -55,6 +58,12 @@ public class ModEntityType {
                             .clientTrackingRange(32)
                             .build("chromatic_orb")
             );
+    public static final RegistryObject<EntityType<RayOfEnfeeblement>> RAY_OF_ENFEEBLEMENT =
+            ENTITY_TYPES.register("ray_of_enfeeblement",
+            () -> EntityType.Builder.<RayOfEnfeeblement>of(RayOfEnfeeblement::new, MobCategory.MISC)
+                    .sized(1.0F, 1.0F)
+                    .clientTrackingRange(64)
+                    .build("ray_of_enfeeblement"));
 
     //Mobs
     public static final RegistryObject<EntityType<UndeadSpiritEntity>> UNDEAD_SPIRIT =
@@ -109,7 +118,7 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =
             ENTITY_TYPES.register("summoned_undead_spirit", () ->
                     EntityType.Builder.<SummonedUndeadSpirit>of(SummonedUndeadSpirit::new, MobCategory.MONSTER)
-                    .sized(1.0f, 1.6f)
+                    .sized(0.9f, 1.8f)
                     .clientTrackingRange(32)
                     .build("summoned_undead_spirit"));
     public static final RegistryObject<EntityType<SummonedRavenEntity>> SUMMON_RAVEN =
@@ -118,6 +127,12 @@ public class ModEntityType {
                             .clientTrackingRange(32)
                             .sized(0.375f, 0.5f)
                             .build("summon_raven"));
+    public static final RegistryObject<EntityType<FlameAtronachEntity>> FLAME_ATRONACH =
+            ENTITY_TYPES.register("flame_atronach", () ->
+                    EntityType.Builder.<FlameAtronachEntity>of(FlameAtronachEntity::new, MobCategory.MONSTER)
+                            .sized(0.9f, 1.8f)
+                            .clientTrackingRange(32)
+                            .build("flame_atronach"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

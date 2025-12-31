@@ -4,6 +4,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
+import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
 import net.chixozhmix.dnmmod.entity.ghost.GhostEntity;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
 import net.chixozhmix.dnmmod.entity.goblin_warior.GoblinWariorEntity;
@@ -47,6 +48,7 @@ public class ModEvents {
         event.put(ModEntityType.GHOST.get(), GhostEntity.createAttributes());
         event.put(ModEntityType.GREEMON.get(), GreemonEntity.createAttributes());
         event.put(ModEntityType.GOBLIN_WARRIOR.get(), GoblinWariorEntity.createAttributes());
+        event.put(ModEntityType.FLAME_ATRONACH.get(), FlameAtronachEntity.prepareAttributes().build());
     }
 
     @SubscribeEvent

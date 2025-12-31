@@ -24,9 +24,9 @@ public class ChromaticOrbSpell extends AbstractSpell {
     private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "chromatic_orb");
 
     public ChromaticOrbSpell() {
-        this.baseManaCost = 70;
+        this.baseManaCost = 50;
         this.baseSpellPower = 6;
-        this.castTime = 35;
+        this.castTime = 15;
         this.manaCostPerLevel = 10;
         this.spellPowerPerLevel = 1;
     }

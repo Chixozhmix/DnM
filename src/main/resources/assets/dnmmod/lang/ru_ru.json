@@ -114,6 +114,7 @@
   "entity.dnmmod.ice_dagger": "Ледяной кинжал",
   "entity.dnmmod.chromatic_orb": "Хроматический шар",
   "entity.dnmmod.acid_projectile": "Кислотный снаряд",
+  "entity.dnmmod.ray_of_enfeeblement": "Луч слабости",
 
   "death.attack.dnmmod.ice_dagger": "%1$s был проткнут льдом",
   "death.attack.dnmmod.cloud_dagger": "%1$s был изрезан на куски",
@@ -121,6 +122,7 @@
   "death.attack.dnmmod.acid_projectile": "%1$s был растворен заживо",
   "death.attack.dnmmod.caustic_brew": "%1$s был разъеден",
   "death.attack.dnmmod.summon_ravens": "%1$s были выклеваны глаза",
+  "death.attack.dnmmod.ray_of_enfeeblement": "%1$s оказался слишком слаб",
 
   "entity.dnmmod.undead_spirit": "Дух Нежити",
   "entity.dnmmod.summoned_undead_spirit": "Дух Нежити",
@@ -132,6 +134,7 @@
   "entity.dnmmod.ghost": "Призрак",
   "entity.dnmmod.greemon": "Гримон",
   "entity.dnmmod.goblin_warrior": "Гобилн воин",
+  "entity.dnmmod.flame_atronach": "Огненный атронах",
 
   "tooltip.dnmmod.maid": "Почему нет?",
 
@@ -224,5 +227,11 @@
   "spell.dnmmod.thick_of_fight.guide": "Вы наполняетесь яростью битвы, усиливая свое тело.",
 
   "spell.dnmmod.knock": "Стук",
-  "spell.dnmmod.knock.guide": "Открывает замки"
+  "spell.dnmmod.knock.guide": "Открывает замки",
+
+  "spell.dnmmod.ray_of_enfeeblement": "Луч слабости",
+  "spell.dnmmod.ray_of_enfeeblement.guide": "Луч изнуряющей энергии летит от вас к существу, заставляя его потерять силы.",
+
+  "spell.dnmmod.summon_flame_atronach": "Вызов огненного атронаха",
+  "spell.dnmmod.summon_flame_atronach.guide": "Из глубин Преисподней вы вызываете дух огня для своей защиты"
 }

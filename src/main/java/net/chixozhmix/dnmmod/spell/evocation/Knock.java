@@ -31,7 +31,7 @@ public class Knock extends AbstractSpell {
         this.manaCostPerLevel = 10;
         this.baseSpellPower = 1;
         this.spellPowerPerLevel = 1;
-        this.castTime = 120;
+        this.castTime = 80;
         this.baseManaCost = 70;
     }
 
@@ -39,7 +39,7 @@ public class Knock extends AbstractSpell {
             .setMinRarity(SpellRarity.RARE)
             .setSchoolResource(SchoolRegistry.EVOCATION_RESOURCE)
             .setMaxLevel(1)
-            .setCooldownSeconds(120)
+            .setCooldownSeconds(60)
             .build();
 
     @Override

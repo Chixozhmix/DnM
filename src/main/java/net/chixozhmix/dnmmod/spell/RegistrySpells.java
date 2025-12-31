@@ -2,8 +2,10 @@ package net.chixozhmix.dnmmod.spell;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.spell.blood.RayOfEnfeeblementSpell;
 import net.chixozhmix.dnmmod.spell.blood.SummonUndeadSpiritSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
+import net.chixozhmix.dnmmod.spell.fire.SummonFlameAtronach;
 import net.chixozhmix.dnmmod.spell.ice.AgathysArmorSpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
 import net.chixozhmix.dnmmod.spell.lightning.ThunderwaveSpell;
@@ -34,6 +36,8 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> SHRINKING = registerSpell(new ShrinkingSpell());
     public static final RegistryObject<AbstractSpell> AGATHYS_ARMOR_SPELL = registerSpell(new AgathysArmorSpell());
     public static final RegistryObject<AbstractSpell> THICK_OF_FIGHT = registerSpell(new ThickOfFightSpell());
+    public static final RegistryObject<AbstractSpell> RAY_OF_ENFEEBLEMENT = registerSpell(new RayOfEnfeeblementSpell());
+    public static final RegistryObject<AbstractSpell> SUMMON_FLAME_ATRONACH = registerSpell(new SummonFlameAtronach());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

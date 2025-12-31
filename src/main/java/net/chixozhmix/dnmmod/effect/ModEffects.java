@@ -20,6 +20,8 @@ public class ModEffects {
             EFFECTS.register("acid_effect", () -> new AcidEffect(MobEffectCategory.HARMFUL, 0x4CAF50, 1.0f));
     public static final RegistryObject<MobEffect> SUMMON_UNDEAD_SPIRIT =
             EFFECTS.register("summon_undead_spirit", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 12495141));
+    public static final RegistryObject<MobEffect> SUMMON_FLAME_ATRONACH =
+            EFFECTS.register("summon_flame_atronach", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 12495141));
     public static final RegistryObject<MobEffect> SUMMON_RAVEN =
             EFFECTS.register("summon_raven", () -> new SummonTimer(MobEffectCategory.BENEFICIAL, 12495141));
     public static final RegistryObject<MobEffect> PHANTOM_EFFECT =
