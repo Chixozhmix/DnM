@@ -2,7 +2,6 @@ package net.chixozhmix.dnmmod.entity.flame_atronach;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
-import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.effect.SummonTimer;
 import io.redspace.ironsspellbooks.entity.mobs.MagicSummon;
@@ -11,15 +10,12 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
-import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
-import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -28,7 +24,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -95,6 +90,8 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        super.registerControllers(controllerRegistrar);
+
         controllerRegistrar.add(new AnimationController<>(this, "controller_0", 0, this::predicate));
         controllerRegistrar.add(new AnimationController<>(this, "rise", 0, this::predicateRise));
     }
@@ -109,7 +106,6 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
             state.getController().setAnimation(WALK_ANIM);
             return PlayState.CONTINUE;
         }
-
         state.getController().setAnimation(IDLE_ANIM);
         return PlayState.CONTINUE;
     }
@@ -132,65 +128,10 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.25F, 20, 40) {
-            @Override
-            public WizardAttackGoal setDrinksPotions() {
-                this.drinksPotions = false;
-                return this;
-            }
-            @Override
-            protected void doSpellAction() {
-                if (!this.spellCastingMob.getHasUsedSingleAttack() && this.singleUseSpell != SpellRegistry.none() && this.singleUseDelay <= 0) {
-                    this.spellCastingMob.setHasUsedSingleAttack(true);
-                    this.spellCastingMob.initiateCastSpell(this.singleUseSpell, this.singleUseLevel);
-                    this.fleeCooldown = 7 + this.singleUseSpell.getCastTime(this.singleUseLevel);
-                } else {
-                    AbstractSpell spell = this.getNextSpellType();
-                    int spellLevel = (int)((float)spell.getMaxLevel() * Mth.lerp(this.mob.getRandom().nextFloat(), this.minSpellQuality, this.maxSpellQuality));
-                    spellLevel = Math.max(spellLevel, 1);
-                    if (!spell.shouldAIStopCasting(spellLevel, this.mob, this.target)) {
-                        this.spellCastingMob.initiateCastSpell(spell, spellLevel);
-                        this.fleeCooldown = 7 + spell.getCastTime(spellLevel);
-                    } else {
-                        this.attackTime = 5;
-                    }
-                }
-            }
-            @Override
-            protected AbstractSpell getNextSpellType() {
-                NavigableMap<Integer, ArrayList<AbstractSpell>> weightedSpells = new TreeMap();
-                int attackWeight = this.getAttackWeight();
-                int defenseWeight = this.getDefenseWeight() - (this.lastSpellCategory == this.defenseSpells ? 100 : 0);
-                int movementWeight = this.getMovementWeight() - (this.lastSpellCategory == this.movementSpells ? 50 : 0);
-                int supportWeight = this.getSupportWeight() - (this.lastSpellCategory == this.supportSpells ? 100 : 0);
-                int total = 0;
-
-                if (!this.attackSpells.isEmpty() && attackWeight > 0) {
-                    total += attackWeight;
-                    weightedSpells.put(total, this.attackSpells);
-                }
-
-                if (!this.defenseSpells.isEmpty() && defenseWeight > 0) {
-                    total += defenseWeight;
-                    weightedSpells.put(total, this.defenseSpells);
-                }
-
-                if (!this.movementSpells.isEmpty() && movementWeight > 0) {
-                    total += movementWeight;
-                    weightedSpells.put(total, this.movementSpells);
-                }
-
-                if (total <= 0) {
-                    return SpellRegistry.none();
-                } else {
-                    int seed = this.mob.getRandom().nextInt(total);
-                    ArrayList<AbstractSpell> spellList = weightedSpells.higherEntry(seed).getValue();
-                    this.lastSpellCategory = spellList;
-                    return spellList.get(this.mob.getRandom().nextInt(spellList.size()));
-                }
-            }
-        }).setSpells(List.of( (AbstractSpell) SpellRegistry.FIREBOLT_SPELL.get(),(AbstractSpell)SpellRegistry.SCORCH_SPELL.get()),
-                List.of(SpellRegistry.FIREBOLT_SPELL.get()),
+        this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.25F, 20, 40))
+                .setSpells(
+                        List.of(SpellRegistry.FIREBOLT_SPELL.get()),
+                List.of(SpellRegistry.FIRE_BREATH_SPELL.get()),
                 List.of(),
                 List.of()));
         this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, (double)1.0F, 9.0F, 4.0F, false, 25.0F));

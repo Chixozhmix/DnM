@@ -51,7 +51,9 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
-    private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
+    //private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
+
+    //private int attackAnimationTick = 0;
 
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
@@ -103,10 +105,10 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
-        if (this.swinging) {
-            state.getController().setAnimation(ATTACK_ANIM);
-            return PlayState.CONTINUE;
-        }
+//        if (this.attackAnimationTick > 0) {
+//            state.setAnimation(ATTACK_ANIM);
+//            return PlayState.CONTINUE;
+//        }
         if (state.isMoving()) {
             state.getController().setAnimation(WALK_ANIM);
             return PlayState.CONTINUE;
@@ -145,7 +147,16 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
                 this.setXRot(0.0F);
                 this.setOldPosAndRot();
             }
-            return;
+
+//            if (this.attackAnimationTick > 0) {
+//                this.attackAnimationTick--;
+//            }
+//
+//            if (!this.level().isClientSide && this.swinging) {
+//                this.getNavigation().stop();
+//                this.attackAnimationTick = 5;
+//                this.swinging = false;
+//            }
         }
     }
 
@@ -157,7 +168,23 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, (double)1.2F, true));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, (double)1.2F, true) {
+            @Override
+            protected void checkAndPerformAttack(LivingEntity pEnemy, double pDistToEnemySqr) {
+                double d0 = this.getAttackReachSqr(pEnemy);
+                if (pDistToEnemySqr <= d0 && this.isTimeToAttack()) {
+                    this.resetAttackCooldown();
+                    this.mob.swing(InteractionHand.MAIN_HAND);
+                    this.mob.doHurtTarget(pEnemy);
+                } else if (this.getTicksUntilNextAttack() <= 0) {
+                    // Подготовка к атаке - начинает отсчет
+                }
+            }
+            @Override
+            protected double getAttackReachSqr(LivingEntity pAttackTarget) {
+                return (double)(this.mob.getBbWidth() * 2.0F * this.mob.getBbWidth() * 2.0F + pAttackTarget.getBbWidth());
+            }
+        });
         this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, (double)0.9F, 15.0F, 5.0F, false, 25.0F));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.8));
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));

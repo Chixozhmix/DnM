@@ -76,11 +76,11 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
                         List.of(SpellRegistry.ACID_ORB_SPELL.get(),
                                 RegistrySpells.CAUSTIC_BREW.get(),
                                 SpellRegistry.STOMP_SPELL.get(),
-                                SpellRegistry.BLOOD_STEP_SPELL.get()),
-                        List.of(SpellRegistry.FIREFLY_SWARM_SPELL.get()),
-                        List.of(),
+                                SpellRegistry.FIREFLY_SWARM_SPELL.get()),
                         List.of(SpellRegistry.BLIGHT_SPELL.get(),
-                                SpellRegistry.ROOT_SPELL.get()))
+                                SpellRegistry.ROOT_SPELL.get()),
+                        List.of(SpellRegistry.BLOOD_STEP_SPELL.get()),
+                        List.of())
                 .setSingleUseSpell(RegistrySpells.SUMMON_RAVEN.get(), 80, 350, 10, 10));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, (double)1.0F));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
