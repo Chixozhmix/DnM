@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod;
 
 import com.mojang.logging.LogUtils;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import net.chixozhmix.dnmmod.api.registers.Fluids;
 import net.chixozhmix.dnmmod.blocks.ModBlocks;
 import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
@@ -34,6 +35,8 @@ import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -45,6 +48,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
@@ -86,6 +90,8 @@ public class DnMmod
         //Necromancy
 //        DnMAttributes.ATTRIBUTES.register(modEventBus);
 //        DnMSchools.DNM_SCHOOLS.register(modEventBus);
+        //Fluid
+        Fluids.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
     }
@@ -156,5 +162,9 @@ public class DnMmod
             event.registerLayerDefinition(SummonedRavenRenderer.MODEL_LAYER_LOCATION, SummonedRavenModel::createBodyLayer);
             event.registerLayerDefinition(RayOfEnfeeblementRenderer.MODEL_LAYER_LOCATION, RayOfEnfeeblementRenderer::createBodyLayer);
         }
+    }
+
+    public static ResourceLocation id(@NotNull String path) {
+        return ResourceLocation.fromNamespaceAndPath("dnmmod", path);
     }
 }

@@ -41,7 +41,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID);
 
     private static Optional<DeferredRegister<Item>> TRAVELOPTIC_ITEMS = Optional.empty();
-//    private static Optional<DeferredRegister<Item>> ALSHANEX_ITEMS = Optional.empty();
+    private static Optional<DeferredRegister<Item>> ALSHANEX_ITEMS = Optional.empty();
 //    private static Optional<DeferredRegister<Item>> GEOMANCY_ITEMS = Optional.empty();
     private static Optional<DeferredRegister<Item>> LOCKS_ITEMS = Optional.empty();
 
@@ -331,9 +331,9 @@ public class ModItems {
 
     // Опциональные предметы
     public static Optional<RegistryObject<Item>> AQUA_WAND = Optional.empty();
-    //public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND = Optional.empty();
+    public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND = Optional.empty();
     public static Optional<RegistryObject<Item>> AQUA_WAND_CORE = Optional.empty();
-    //public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND_CORE = Optional.empty();
+    public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND_CORE = Optional.empty();
 //    public static Optional<RegistryObject<Item>> GEOMANCY_WAND = Optional.empty();
 //    public static Optional<RegistryObject<Item>> GEOMANCY_WAND_CORE = Optional.empty();
     public static Optional<RegistryObject<Item>> KEY = Optional.empty();
@@ -360,23 +360,23 @@ public class ModItems {
         }
 
         // Alshanex's Items
-//        if (ModList.get().isLoaded("alshanex_familiars")) {
-//            ALSHANEX_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));
-//
-//            KAPELLMEISTER_WAND = Optional.of(ALSHANEX_ITEMS.get().register("kapellmeister_wand",
-//                    () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-//                            (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-//                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-//                                    AttributeModifier.Operation.MULTIPLY_BASE),
-//                            (Attribute) net.alshanex.alshanex_familiars.registry.AttributeRegistry.SOUND_SPELL_POWER.get(),
-//                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-//                                    AttributeModifier.Operation.MULTIPLY_BASE)))));
-//            KAPELLMEISTER_WAND_CORE = Optional.of(ALSHANEX_ITEMS.get().register("kapellmeister_wand_core",
-//                    () -> new WandCore(PropertiesHelper.stackItemProperties(16)
-//                            .rarity(Rarity.UNCOMMON))));
-//
-//            ALSHANEX_ITEMS.get().register(eventBus);
-//        }
+        if (ModList.get().isLoaded("alshanex_familiars")) {
+            ALSHANEX_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));
+
+            KAPELLMEISTER_WAND = Optional.of(ALSHANEX_ITEMS.get().register("kapellmeister_wand",
+                    () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
+                            (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
+                                    AttributeModifier.Operation.MULTIPLY_BASE),
+                            (Attribute) net.alshanex.alshanex_familiars.registry.AttributeRegistry.SOUND_SPELL_POWER.get(),
+                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
+                                    AttributeModifier.Operation.MULTIPLY_BASE)))));
+            KAPELLMEISTER_WAND_CORE = Optional.of(ALSHANEX_ITEMS.get().register("kapellmeister_wand_core",
+                    () -> new WandCore(PropertiesHelper.stackItemProperties(16)
+                            .rarity(Rarity.UNCOMMON))));
+
+            ALSHANEX_ITEMS.get().register(eventBus);
+        }
         // Geomancy Items
 //        if (ModList.get().isLoaded("gtbcs_geomancy_plus")) {
 //            GEOMANCY_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));

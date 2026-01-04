@@ -3,12 +3,10 @@ package net.chixozhmix.dnmmod.entity.flame_atronach;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
-import io.redspace.ironsspellbooks.effect.SummonTimer;
 import io.redspace.ironsspellbooks.entity.mobs.MagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
-import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -36,7 +34,6 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import javax.annotation.Nullable;
 import java.util.*;
 
 public class FlameAtronachEntity extends AbstractSpellCastingMob implements MagicSummon, GeoAnimatable {
@@ -67,7 +64,6 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
 
     public FlameAtronachEntity(Level level, LivingEntity owner, boolean playRiseAnimation) {
         this(ModEntityType.FLAME_ATRONACH.get(), level);
-        this.setSummoner(owner);
         if (playRiseAnimation) {
             this.triggerRiseAnimation();
         }
@@ -166,18 +162,6 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
     @Override
     public double getTick(Object entity) {
         return (double) this.tickCount;
-    }
-
-    @Override
-    public LivingEntity getSummoner() {
-        return OwnerHelper.getAndCacheOwner(this.level(), this.cachedSummoner, this.summonerUUID);
-    }
-
-    public void setSummoner(@Nullable LivingEntity owner) {
-        if (owner != null) {
-            this.summonerUUID = owner.getUUID();
-            this.cachedSummoner = owner;
-        }
     }
 
     @Override

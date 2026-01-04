@@ -69,7 +69,6 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
 
     public SummonedUndeadSpirit(Level level, LivingEntity owner, boolean playRiseAnimation) {
         this(ModEntityType.SUMMONED_UNDEAD_SPIRIT.get(), level);
-        this.setSummoner(owner);
         if (playRiseAnimation) {
             this.triggerRiseAnimation();
         }
@@ -193,18 +192,6 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
         this.targetSelector.addGoal(2, new GenericOwnerHurtTargetGoal(this, this::getSummoner));
         this.targetSelector.addGoal(3, new GenericCopyOwnerTargetGoal(this, this::getSummoner));
         this.targetSelector.addGoal(4, (new GenericHurtByTargetGoal(this, (entity) -> entity == this.getSummoner())).setAlertOthers(new Class[0]));
-    }
-
-    @Override
-    public LivingEntity getSummoner() {
-        return OwnerHelper.getAndCacheOwner(this.level(), this.cachedSummoner, this.summonerUUID);
-    }
-
-    public void setSummoner(@Nullable LivingEntity owner) {
-        if (owner != null) {
-            this.summonerUUID = owner.getUUID();
-            this.cachedSummoner = owner;
-        }
     }
 
     @Override

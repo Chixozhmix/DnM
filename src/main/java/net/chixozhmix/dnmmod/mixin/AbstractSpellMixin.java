@@ -62,14 +62,14 @@ public class AbstractSpellMixin {
             DnMmod.LOGGER.debug("T.O. Magic not loaded");
         }
 
-//        try {
-//            Class<?> lullaby = Class.forName("net.alshanex.alshanex_familiars.spells.LullabySpell");
-//
-//            map.put((Class<? extends AbstractSpell>) lullaby, () -> Items.LILY_OF_THE_VALLEY);
-//        } catch (ClassNotFoundException e) {
-//            DnMmod.LOGGER.debug("Alshanex's Familiars not loaded");
-//        }
-//
+        try {
+            Class<?> lullaby = Class.forName("net.alshanex.alshanex_familiars.spells.LullabySpell");
+
+            map.put((Class<? extends AbstractSpell>) lullaby, () -> Items.LILY_OF_THE_VALLEY);
+        } catch (ClassNotFoundException e) {
+            DnMmod.LOGGER.debug("Alshanex's Familiars not loaded");
+        }
+
 //        try {
 //            Class<?> tremorSpike = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorSpikeSpell");
 //            Class<?> tremorStep = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorStepSpell");

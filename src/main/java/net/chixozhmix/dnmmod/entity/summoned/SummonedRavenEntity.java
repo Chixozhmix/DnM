@@ -2,11 +2,9 @@ package net.chixozhmix.dnmmod.entity.summoned;
 
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
-import io.redspace.ironsspellbooks.effect.SummonTimer;
 import io.redspace.ironsspellbooks.entity.mobs.MagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
-import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
 import net.chixozhmix.dnmmod.spell.RegistrySpells;
@@ -41,8 +39,7 @@ public class SummonedRavenEntity extends RavenEntity implements MagicSummon {
     }
 
     public SummonedRavenEntity(Level level, LivingEntity owner, boolean playRiseAnimation) {
-        this(ModEntityType.SUMMON_RAVEN.get(), level); // Используем зарегистрированный EntityType
-        this.setSummoner(owner);
+        this(ModEntityType.SUMMON_RAVEN.get(), level);
     }
 
     @Override
@@ -63,18 +60,6 @@ public class SummonedRavenEntity extends RavenEntity implements MagicSummon {
         this.targetSelector.addGoal(2, new GenericOwnerHurtTargetGoal(this, this::getSummoner));
         this.targetSelector.addGoal(3, new GenericCopyOwnerTargetGoal(this, this::getSummoner));
         this.targetSelector.addGoal(4, (new GenericHurtByTargetGoal(this, (entity) -> entity == this.getSummoner())).setAlertOthers(new Class[0]));
-    }
-
-    @Override
-    public LivingEntity getSummoner() {
-        return OwnerHelper.getAndCacheOwner(this.level(), this.cachedSummoner, this.summonerUUID);
-    }
-
-    public void setSummoner(@Nullable LivingEntity owner) {
-        if (owner != null) {
-            this.summonerUUID = owner.getUUID();
-            this.cachedSummoner = owner;
-        }
     }
 
     @Override

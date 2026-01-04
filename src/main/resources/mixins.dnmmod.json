@@ -20,9 +20,10 @@
     "RainfallMixin",
     "SummonDesertDwellersMixin",
     "TidalGraspMixin",
-    "VortexOfTheDeepMixin"
+    "VortexOfTheDeepMixin",
 
-
+    "ExplosionMelodyMixin",
+    "LullablyMixin"
   ],
   "injectors": {
     "defaultRequire": 1
