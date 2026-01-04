@@ -12,18 +12,17 @@
     "SacrifyMixin",
 
     "TOSpellInfoMixin",
-    "GPSpellInfoMixin",
     "PrimalPackMixin",
     "VigorSiphonMixin",
     "AxeOfTheDoomedMixin",
-    "ExplosionMelodyMixin",
     "HeraldOfAcropolisMixin",
     "IgnitedOnslaughtMixin",
     "RainfallMixin",
     "SummonDesertDwellersMixin",
     "TidalGraspMixin",
-    "VortexOfTheDeepMixin",
-    "LullablyMixin"
+    "VortexOfTheDeepMixin"
+
+
   ],
   "injectors": {
     "defaultRequire": 1

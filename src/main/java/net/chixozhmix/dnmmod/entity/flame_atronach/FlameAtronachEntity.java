@@ -188,7 +188,7 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
 
     @Override
     public void onRemovedFromWorld() {
-        this.onRemovedHelper(this, (SummonTimer) ModEffects.SUMMON_UNDEAD_SPIRIT.get());
+        this.onRemovedHelper(this);
         super.onRemovedFromWorld();
     }
 

@@ -215,7 +215,7 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
 
     @Override
     public void onRemovedFromWorld() {
-        this.onRemovedHelper(this, (SummonTimer) ModEffects.SUMMON_UNDEAD_SPIRIT.get());
+        this.onRemovedHelper(this);
         super.onRemovedFromWorld();
     }
 

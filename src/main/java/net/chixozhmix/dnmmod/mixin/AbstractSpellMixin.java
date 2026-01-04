@@ -62,25 +62,25 @@ public class AbstractSpellMixin {
             DnMmod.LOGGER.debug("T.O. Magic not loaded");
         }
 
-        try {
-            Class<?> lullaby = Class.forName("net.alshanex.alshanex_familiars.spells.LullabySpell");
-
-            map.put((Class<? extends AbstractSpell>) lullaby, () -> Items.LILY_OF_THE_VALLEY);
-        } catch (ClassNotFoundException e) {
-            DnMmod.LOGGER.debug("Alshanex's Familiars not loaded");
-        }
-
-        try {
-            Class<?> tremorSpike = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorSpikeSpell");
-            Class<?> tremorStep = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorStepSpell");
-            Class<?> chunker = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.ChunkerSpell");
-
-            map.put((Class<? extends AbstractSpell>) tremorSpike, () -> Items.POINTED_DRIPSTONE);
-            map.put((Class<? extends AbstractSpell>) tremorStep, () -> Items.RAW_IRON_BLOCK);
-            map.put((Class<? extends AbstractSpell>) chunker, () -> Items.DIRT);
-        } catch (ClassNotFoundException e) {
-            DnMmod.LOGGER.debug("Geomancy Plus not loaded");
-        }
+//        try {
+//            Class<?> lullaby = Class.forName("net.alshanex.alshanex_familiars.spells.LullabySpell");
+//
+//            map.put((Class<? extends AbstractSpell>) lullaby, () -> Items.LILY_OF_THE_VALLEY);
+//        } catch (ClassNotFoundException e) {
+//            DnMmod.LOGGER.debug("Alshanex's Familiars not loaded");
+//        }
+//
+//        try {
+//            Class<?> tremorSpike = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorSpikeSpell");
+//            Class<?> tremorStep = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorStepSpell");
+//            Class<?> chunker = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.ChunkerSpell");
+//
+//            map.put((Class<? extends AbstractSpell>) tremorSpike, () -> Items.POINTED_DRIPSTONE);
+//            map.put((Class<? extends AbstractSpell>) tremorStep, () -> Items.RAW_IRON_BLOCK);
+//            map.put((Class<? extends AbstractSpell>) chunker, () -> Items.DIRT);
+//        } catch (ClassNotFoundException e) {
+//            DnMmod.LOGGER.debug("Geomancy Plus not loaded");
+//        }
 
         // Holy spells
         map.put(GreaterHealSpell.class, () -> Items.GLISTERING_MELON_SLICE);

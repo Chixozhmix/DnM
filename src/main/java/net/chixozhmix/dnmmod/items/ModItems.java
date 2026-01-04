@@ -1,14 +1,15 @@
 package net.chixozhmix.dnmmod.items;
 
-import com.gametechbc.gtbcs_geomancy_plus.api.init.GGAttributes;
+//import com.gametechbc.gtbcs_geomancy_plus.api.init.GGAttributes;
 import com.gametechbc.traveloptics.api.init.TravelopticsAttributes;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import io.redspace.ironsspellbooks.compat.Curios;
 import io.redspace.ironsspellbooks.item.consumables.SimpleElixir;
 import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
-import io.redspace.ironsspellbooks.item.curios.SimpleAttributeCurio;
 import io.redspace.ironsspellbooks.item.spell_books.SimpleAttributeSpellBook;
+import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.chixozhmix.dnmmod.DnMmod;
@@ -40,8 +41,8 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID);
 
     private static Optional<DeferredRegister<Item>> TRAVELOPTIC_ITEMS = Optional.empty();
-    private static Optional<DeferredRegister<Item>> ALSHANEX_ITEMS = Optional.empty();
-    private static Optional<DeferredRegister<Item>> GEOMANCY_ITEMS = Optional.empty();
+//    private static Optional<DeferredRegister<Item>> ALSHANEX_ITEMS = Optional.empty();
+//    private static Optional<DeferredRegister<Item>> GEOMANCY_ITEMS = Optional.empty();
     private static Optional<DeferredRegister<Item>> LOCKS_ITEMS = Optional.empty();
 
     private static final UUID WAND_UUID = UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3");
@@ -302,8 +303,10 @@ public class ModItems {
             () -> new SimpleAttributeSpellBook(8, SpellRarity.RARE, AttributeRegistry.COOLDOWN_REDUCTION.get(), 0.05, (double)50.0F));
     //Curios
     public static final RegistryObject<CurioBaseItem> PROTECTION_RING = ITEMS.register("protection_ring",
-            () -> new SimpleAttributeCurio(PropertiesHelper.stackItemProperties(1),
-                    Attributes.ARMOR, new AttributeModifier("ar", 2, AttributeModifier.Operation.ADDITION)));
+            () -> (new CurioBaseItem(PropertiesHelper.stackItemProperties(1))
+                    .withAttributes(Curios.RING_SLOT, new AttributeContainer[]{
+                            new AttributeContainer(() -> Attributes.ARMOR, 2.0D, AttributeModifier.Operation.ADDITION)
+                    })));
     public static final RegistryObject<Item> COMPONENT_BAG = ITEMS.register("component_bag",
             () -> new ComponentBag(PropertiesHelper.itemProperties()));
     public static final RegistryObject<Item> MEDIUM_COMPONENT_BAG = ITEMS.register("medium_component_bag",
@@ -328,11 +331,11 @@ public class ModItems {
 
     // Опциональные предметы
     public static Optional<RegistryObject<Item>> AQUA_WAND = Optional.empty();
-    public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND = Optional.empty();
+    //public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND = Optional.empty();
     public static Optional<RegistryObject<Item>> AQUA_WAND_CORE = Optional.empty();
-    public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND_CORE = Optional.empty();
-    public static Optional<RegistryObject<Item>> GEOMANCY_WAND = Optional.empty();
-    public static Optional<RegistryObject<Item>> GEOMANCY_WAND_CORE = Optional.empty();
+    //public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND_CORE = Optional.empty();
+//    public static Optional<RegistryObject<Item>> GEOMANCY_WAND = Optional.empty();
+//    public static Optional<RegistryObject<Item>> GEOMANCY_WAND_CORE = Optional.empty();
     public static Optional<RegistryObject<Item>> KEY = Optional.empty();
 
 
@@ -357,41 +360,41 @@ public class ModItems {
         }
 
         // Alshanex's Items
-        if (ModList.get().isLoaded("alshanex_familiars")) {
-            ALSHANEX_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));
-
-            KAPELLMEISTER_WAND = Optional.of(ALSHANEX_ITEMS.get().register("kapellmeister_wand",
-                    () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-                            (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-                                    AttributeModifier.Operation.MULTIPLY_BASE),
-                            (Attribute) net.alshanex.alshanex_familiars.registry.AttributeRegistry.SOUND_SPELL_POWER.get(),
-                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-                                    AttributeModifier.Operation.MULTIPLY_BASE)))));
-            KAPELLMEISTER_WAND_CORE = Optional.of(ALSHANEX_ITEMS.get().register("kapellmeister_wand_core",
-                    () -> new WandCore(PropertiesHelper.stackItemProperties(16)
-                            .rarity(Rarity.UNCOMMON))));
-
-            ALSHANEX_ITEMS.get().register(eventBus);
-        }
+//        if (ModList.get().isLoaded("alshanex_familiars")) {
+//            ALSHANEX_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));
+//
+//            KAPELLMEISTER_WAND = Optional.of(ALSHANEX_ITEMS.get().register("kapellmeister_wand",
+//                    () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
+//                            (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+//                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
+//                                    AttributeModifier.Operation.MULTIPLY_BASE),
+//                            (Attribute) net.alshanex.alshanex_familiars.registry.AttributeRegistry.SOUND_SPELL_POWER.get(),
+//                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
+//                                    AttributeModifier.Operation.MULTIPLY_BASE)))));
+//            KAPELLMEISTER_WAND_CORE = Optional.of(ALSHANEX_ITEMS.get().register("kapellmeister_wand_core",
+//                    () -> new WandCore(PropertiesHelper.stackItemProperties(16)
+//                            .rarity(Rarity.UNCOMMON))));
+//
+//            ALSHANEX_ITEMS.get().register(eventBus);
+//        }
         // Geomancy Items
-        if (ModList.get().isLoaded("gtbcs_geomancy_plus")) {
-            GEOMANCY_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));
-
-            GEOMANCY_WAND = Optional.of(GEOMANCY_ITEMS.get().register("geomancy_wand",
-                    () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-                            (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-                                    AttributeModifier.Operation.MULTIPLY_BASE),
-                            (Attribute) GGAttributes.GEO_SPELL_POWER.get(),
-                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-                                    AttributeModifier.Operation.MULTIPLY_BASE)))));
-            GEOMANCY_WAND_CORE = Optional.of(GEOMANCY_ITEMS.get().register("geomancy_wand_core",
-                    () -> new WandCore(PropertiesHelper.stackItemProperties(16)
-                            .rarity(Rarity.UNCOMMON))));
-
-            GEOMANCY_ITEMS.get().register(eventBus);
-        }
+//        if (ModList.get().isLoaded("gtbcs_geomancy_plus")) {
+//            GEOMANCY_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));
+//
+//            GEOMANCY_WAND = Optional.of(GEOMANCY_ITEMS.get().register("geomancy_wand",
+//                    () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
+//                            (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+//                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
+//                                    AttributeModifier.Operation.MULTIPLY_BASE),
+//                            (Attribute) GGAttributes.GEO_SPELL_POWER.get(),
+//                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
+//                                    AttributeModifier.Operation.MULTIPLY_BASE)))));
+//            GEOMANCY_WAND_CORE = Optional.of(GEOMANCY_ITEMS.get().register("geomancy_wand_core",
+//                    () -> new WandCore(PropertiesHelper.stackItemProperties(16)
+//                            .rarity(Rarity.UNCOMMON))));
+//
+//            GEOMANCY_ITEMS.get().register(eventBus);
+//        }
 
         // Locks Items
         if (ModList.get().isLoaded("locks")) {

@@ -23,6 +23,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public class IceDagger extends AbstractMagicProjectile {
 
@@ -63,8 +64,8 @@ public class IceDagger extends AbstractMagicProjectile {
     }
 
     @Override
-    public Optional<SoundEvent> getImpactSound() {
-        return Optional.empty();
+    public Optional<Supplier<SoundEvent>> getImpactSound() {
+        return null;
     }
 
     @Override

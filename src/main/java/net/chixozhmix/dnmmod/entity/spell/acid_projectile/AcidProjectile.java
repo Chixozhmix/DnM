@@ -20,6 +20,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public class AcidProjectile extends AbstractMagicProjectile {
     public AcidProjectile(EntityType<? extends AcidProjectile> entityType, Level level) {
@@ -59,8 +60,8 @@ public class AcidProjectile extends AbstractMagicProjectile {
     }
 
     @Override
-    public Optional<SoundEvent> getImpactSound() {
-        return Optional.empty();
+    public Optional<Supplier<SoundEvent>> getImpactSound() {
+        return null;
     }
 
     @Override

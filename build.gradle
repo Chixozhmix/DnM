@@ -124,29 +124,32 @@ dependencies {
 
     //Optional
     compileOnly fg.deobf('maven.modrinth:citadel:2.6.1')
-    compileOnly fg.deobf("curse.maven:to-tweaks-irons-spells-1046916:7185948")
-    compileOnly fg.deobf('maven.modrinth:alshanexs-familiars:1.20.1_v1.1.2_HotFix')
+    //compileOnly fg.deobf("curse.maven:to-tweaks-irons-spells-1046916:7185948")
+    implementation fg.deobf("curse.maven:to-tweaks-irons-spells-1046916:7413341")
+    //compileOnly fg.deobf('maven.modrinth:alshanexs-familiars:1.20.1_v1.1.2_HotFix')
     compileOnly fg.deobf('maven.modrinth:l_enders-cataclysm:NvvXful4')
     compileOnly fg.deobf('maven.modrinth:lionfish-api:2.4')
     compileOnly fg.deobf('maven.modrinth:alexs-caves:2.0.2')
     compileOnly fg.deobf("curse.maven:locks-unofficial-1128357:6115787")
-    compileOnly fg.deobf("curse.maven:gtbcs-spelllib-1194714:6973032")
-    compileOnly fg.deobf("curse.maven:mowzies-mobs-250498:6586086")
-    compileOnly fg.deobf("curse.maven:gtbcs-geomancy-plus-1352485:7041547")
+//    compileOnly fg.deobf("curse.maven:gtbcs-spelllib-1194714:6973032")
+//    compileOnly fg.deobf("curse.maven:mowzies-mobs-250498:6586086")
+//    compileOnly fg.deobf("curse.maven:gtbcs-geomancy-plus-1352485:7041547")
 
     runtimeOnly fg.deobf('maven.modrinth:citadel:2.6.1')
-    runtimeOnly fg.deobf("curse.maven:to-tweaks-irons-spells-1046916:7185948")
-    runtimeOnly fg.deobf('maven.modrinth:alshanexs-familiars:1.20.1_v1.1.2_HotFix')
+    //runtimeOnly fg.deobf("curse.maven:to-tweaks-irons-spells-1046916:7185948")
+    implementation fg.deobf("curse.maven:to-tweaks-irons-spells-1046916:7413341")
+    //runtimeOnly fg.deobf('maven.modrinth:alshanexs-familiars:1.20.1_v1.1.2_HotFix')
     runtimeOnly fg.deobf('maven.modrinth:l_enders-cataclysm:NvvXful4')
     runtimeOnly fg.deobf('maven.modrinth:lionfish-api:2.4')
     runtimeOnly fg.deobf('maven.modrinth:alexs-caves:2.0.2')
     runtimeOnly fg.deobf("curse.maven:locks-unofficial-1128357:6115787")
-    runtimeOnly fg.deobf("curse.maven:gtbcs-spelllib-1194714:6973032")
-    runtimeOnly fg.deobf("curse.maven:mowzies-mobs-250498:6586086")
-    runtimeOnly fg.deobf("curse.maven:gtbcs-geomancy-plus-1352485:7041547")
+    //runtimeOnly fg.deobf("curse.maven:gtbcs-spelllib-1194714:6973032")
+    //runtimeOnly fg.deobf("curse.maven:mowzies-mobs-250498:6586086")
+    //runtimeOnly fg.deobf("curse.maven:gtbcs-geomancy-plus-1352485:7041547")
 
     //Iron's Spellbooks
-    implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:6488484")
+    //implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:6488484")
+    implementation fg.deobf("curse.maven:irons-spells-n-spellbooks-855414:7402504")
 
     //JEI
     implementation fg.deobf("curse.maven:jei-238222:6600311")

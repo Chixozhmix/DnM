@@ -55,8 +55,8 @@ public class CasterBossAttackGoal extends WizardAttackGoal {
                 this.doSpellAction();
             }
         } else if (this.attackTime < 0) {
-            this.attackTime = Mth.floor(Mth.lerp(Math.sqrt(distanceSquared) / (double)this.attackRadius,
-                    (double)this.attackIntervalMin, (double)this.attackIntervalMax));
+            this.attackTime = Mth.floor(Mth.lerp(Math.sqrt(distanceSquared) / (double)this.spellcastingRange,
+                    (double)this.spellAttackIntervalMin, (double)this.spellAttackIntervalMax));
         }
 
         if (this.spellCastingMob.isCasting()) {
@@ -73,10 +73,10 @@ public class CasterBossAttackGoal extends WizardAttackGoal {
 
         float fleeDist = 0.275F;
         if (this.allowFleeing && !this.spellCastingMob.isCasting() && this.attackTime > 10 &&
-                --this.fleeCooldown <= 0 && distanceSquared < (double)(this.attackRadiusSqr * fleeDist * fleeDist)) {
+                --this.fleeCooldown <= 0 && distanceSquared < (double)(this.spellcastingRangeSqr * fleeDist * fleeDist)) {
 
             super.doMovement(distanceSquared);
-        } else if (distanceSquared < (double)this.attackRadiusSqr * 2.0 && this.seeTime >= -20) {
+        } else if (distanceSquared < (double)this.spellcastingRangeSqr * 2.0 && this.seeTime >= -20) {
             this.mob.getNavigation().stop();
 
             if (++this.strafeTime > 25 && this.mob.getRandom().nextDouble() < 0.1) {
@@ -84,7 +84,7 @@ public class CasterBossAttackGoal extends WizardAttackGoal {
                 this.strafeTime = 0;
             }
 
-            float strafeForward = (distanceSquared * (double)6.0F < (double)this.attackRadiusSqr ? -1.0F : 0.5F) * 0.2F * (float)this.speedModifier;
+            float strafeForward = (distanceSquared * (double)6.0F < (double)this.spellcastingRangeSqr ? -1.0F : 0.5F) * 0.2F * (float)this.speedModifier;
             int strafeDir = this.strafingClockwise ? 1 : -1;
             this.mob.getMoveControl().strafe(strafeForward, (float)speed * (float)strafeDir);
 
@@ -107,7 +107,7 @@ public class CasterBossAttackGoal extends WizardAttackGoal {
             float targetHealth = this.target.getHealth() / this.target.getMaxHealth();
             int targetHealthWeight = (int)((1.0F - targetHealth) * (float)baseWeight * 0.75F);
             double distanceSquared = this.mob.distanceToSqr(this.target.getX(), this.target.getY(), this.target.getZ());
-            int distanceWeight = (int)((double)1.0F - distanceSquared / (double)this.attackRadiusSqr * (double)-60.0F);
+            int distanceWeight = (int)((double)1.0F - distanceSquared / (double)this.spellcastingRangeSqr * (double)-60.0F);
 
             int losWeight = this.hasLineOfSight ? 0 : -30;
 
@@ -123,7 +123,7 @@ public class CasterBossAttackGoal extends WizardAttackGoal {
             return 0;
         } else {
             double distanceSquared = this.mob.distanceToSqr(this.target.getX(), this.target.getY(), this.target.getZ());
-            double distancePercent = Mth.clamp(distanceSquared / (double)this.attackRadiusSqr, (double)0.0F, (double)1.0F);
+            double distancePercent = Mth.clamp(distanceSquared / (double)this.spellcastingRangeSqr, (double)0.0F, (double)1.0F);
             int distanceWeight = (int)(distancePercent * (double)50.0F);
 
             int losWeight = this.hasLineOfSight ? 0 : 60;

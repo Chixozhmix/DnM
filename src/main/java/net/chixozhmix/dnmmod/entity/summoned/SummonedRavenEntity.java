@@ -85,7 +85,7 @@ public class SummonedRavenEntity extends RavenEntity implements MagicSummon {
 
     @Override
     public void onRemovedFromWorld() {
-        this.onRemovedHelper(this, (SummonTimer) ModEffects.SUMMON_RAVEN.get());
+        this.onRemovedHelper(this);
         super.onRemovedFromWorld();
     }
 
