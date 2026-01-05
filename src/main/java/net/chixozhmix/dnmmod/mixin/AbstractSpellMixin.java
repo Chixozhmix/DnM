@@ -48,39 +48,24 @@ public class AbstractSpellMixin {
         // Blood spells
         map.put(RaiseDeadSpell.class, () -> Items.ROTTEN_FLESH);
 
-        try {
-            Class<?> vigorSiphonClass = Class.forName("com.gametechbc.traveloptics.spells.blood.VigorSiphonSpell");
-            Class<?> lavaBomb = Class.forName("com.gametechbc.traveloptics.spells.fire.LavaBombSpell");
-            Class<?> cursedRevenants = Class.forName("com.gametechbc.traveloptics.spells.ice.CursedRevenantsSpell");
-            Class<?> annihilation = Class.forName("com.gametechbc.traveloptics.spells.fire.AnnihilationSpell");
+        addClassIfExists(map, "com.gametechbc.traveloptics.spells.blood.VigorSiphonSpell",
+                () -> Items.CHAIN);
+        addClassIfExists(map, "com.gametechbc.traveloptics.spells.fire.LavaBombSpell",
+                () -> Items.MAGMA_BLOCK);
+        addClassIfExists(map, "com.gametechbc.traveloptics.spells.ice.CursedRevenantsSpell",
+                () -> ItemRegistry.FROZEN_BONE_SHARD.get());
+        addClassIfExists(map, "com.gametechbc.traveloptics.spells.fire.AnnihilationSpell",
+                () -> getSafeAlexsCavesItem("URANIUM_SHARD").get());
 
-            map.put((Class<? extends AbstractSpell>) vigorSiphonClass, () -> Items.CHAIN);
-            map.put((Class<? extends AbstractSpell>) lavaBomb, () -> Items.MAGMA_BLOCK);
-            map.put((Class<? extends AbstractSpell>) cursedRevenants, () -> ItemRegistry.FROZEN_BONE_SHARD.get());
-            map.put((Class<? extends AbstractSpell>) annihilation, () -> getSafeAlexsCavesItem("URANIUM_SHARD").get());
-        } catch (ClassNotFoundException e) {
-            DnMmod.LOGGER.debug("T.O. Magic not loaded");
-        }
+        addClassIfExists(map, "net.alshanex.alshanex_familiars.spells.LullabySpell",
+                () -> Items.LILY_OF_THE_VALLEY);
 
-        try {
-            Class<?> lullaby = Class.forName("net.alshanex.alshanex_familiars.spells.LullabySpell");
-
-            map.put((Class<? extends AbstractSpell>) lullaby, () -> Items.LILY_OF_THE_VALLEY);
-        } catch (ClassNotFoundException e) {
-            DnMmod.LOGGER.debug("Alshanex's Familiars not loaded");
-        }
-
-//        try {
-//            Class<?> tremorSpike = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorSpikeSpell");
-//            Class<?> tremorStep = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorStepSpell");
-//            Class<?> chunker = Class.forName("com.gametechbc.gtbcs_geomancy_plus.spells.geo.ChunkerSpell");
-//
-//            map.put((Class<? extends AbstractSpell>) tremorSpike, () -> Items.POINTED_DRIPSTONE);
-//            map.put((Class<? extends AbstractSpell>) tremorStep, () -> Items.RAW_IRON_BLOCK);
-//            map.put((Class<? extends AbstractSpell>) chunker, () -> Items.DIRT);
-//        } catch (ClassNotFoundException e) {
-//            DnMmod.LOGGER.debug("Geomancy Plus not loaded");
-//        }
+        addClassIfExists(map, "com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorSpikeSpell",
+                () -> Items.POINTED_DRIPSTONE);
+        addClassIfExists(map, "com.gametechbc.gtbcs_geomancy_plus.spells.geo.TremorStepSpell",
+                () -> Items.RAW_IRON_BLOCK);
+        addClassIfExists(map, "com.gametechbc.gtbcs_geomancy_plus.spells.geo.ChunkerSpell",
+                () -> Items.DIRT);
 
         // Holy spells
         map.put(GreaterHealSpell.class, () -> Items.GLISTERING_MELON_SLICE);
@@ -178,5 +163,20 @@ public class AbstractSpellMixin {
             }
             return Items.AIR;
         };
+    }
+
+    @Unique
+    private static void addClassIfExists(
+            Map<Class<? extends AbstractSpell>, Supplier<Item>> map,
+            String className,
+            Supplier<Item> componentSupplier
+    ) {
+        try {
+            Class<?> clazz = Class.forName(className);
+            map.put((Class<? extends AbstractSpell>) clazz, componentSupplier);
+        } catch (ClassNotFoundException e) {
+            // Класс не найден - пропускаем
+            DnMmod.LOGGER.debug("Class not found: {}", className);
+        }
     }
 }

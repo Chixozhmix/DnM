@@ -13,7 +13,7 @@
 
     "TOSpellInfoMixin",
     "PrimalPackMixin",
-    "VigorSiphonMixin",
+
     "AxeOfTheDoomedMixin",
     "HeraldOfAcropolisMixin",
     "IgnitedOnslaughtMixin",
@@ -23,7 +23,9 @@
     "VortexOfTheDeepMixin",
 
     "ExplosionMelodyMixin",
-    "LullablyMixin"
+    "LullablyMixin",
+
+    "GPSpellInfoMixin"
   ],
   "injectors": {
     "defaultRequire": 1

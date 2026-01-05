@@ -67,7 +67,7 @@ public class CreativeTabMod {
 
                         PropertiesHelper.addOptionalItem(output, ModItems.AQUA_WAND);
                         PropertiesHelper.addOptionalItem(output, ModItems.KAPELLMEISTER_WAND);
-//                        PropertiesHelper.addOptionalItem(output, ModItems.GEOMANCY_WAND);
+                        PropertiesHelper.addOptionalItem(output, ModItems.GEOMANCY_WAND);
 
                         output.accept(ModItems.MAGICAL_GRIMOIRE.get());
                     })
@@ -122,7 +122,7 @@ public class CreativeTabMod {
 
                         PropertiesHelper.addOptionalItem(output, ModItems.AQUA_WAND_CORE);
                         PropertiesHelper.addOptionalItem(output, ModItems.KAPELLMEISTER_WAND_CORE);
-//                        PropertiesHelper.addOptionalItem(output, ModItems.GEOMANCY_WAND_CORE);
+                        PropertiesHelper.addOptionalItem(output, ModItems.GEOMANCY_WAND_CORE);
 
                         output.accept(ModItems.BLADE_RUNE.get());
                         output.accept(ModItems.PROTECTION_RING.get());

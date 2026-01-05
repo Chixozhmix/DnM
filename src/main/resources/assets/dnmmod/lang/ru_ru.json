@@ -167,14 +167,11 @@
 
   "effect.dnmmod.mage_armor": "Доспехи Мага",
   "effect.dnmmod.acid_effect": "Кислота",
-  "effect.dnmmod.summon_undead_spirit": "Призыв Духа Нежити",
-  "effect.dnmmod.summon_raven": "Призыв Воронов",
   "effect.dnmmod.phantom_effect": "Фантом",
   "effect.dnmmod.shrink_effect": "Уменьшение",
   "effect.dnmmod.agathys_armor": "Доспех Агатиса",
   "effect.dnmmod.thick_of_fight": "Гуща битвы",
   "effect.dnmmod.corpse_poison": "Трупный яд",
-  "effect.dnmmod.summon_flame_atronach": "Призыв огненного атронаха",
 
   "sounds.dnmmod.ghost_ambient": "Призрак",
   "sounds.dnmmod.undead_spirit": "Дух Нежити",

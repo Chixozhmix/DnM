@@ -1,6 +1,5 @@
 package net.chixozhmix.dnmmod.items;
 
-//import com.gametechbc.gtbcs_geomancy_plus.api.init.GGAttributes;
 import com.gametechbc.traveloptics.api.init.TravelopticsAttributes;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
@@ -42,7 +41,7 @@ public class ModItems {
 
     private static Optional<DeferredRegister<Item>> TRAVELOPTIC_ITEMS = Optional.empty();
     private static Optional<DeferredRegister<Item>> ALSHANEX_ITEMS = Optional.empty();
-//    private static Optional<DeferredRegister<Item>> GEOMANCY_ITEMS = Optional.empty();
+    private static Optional<DeferredRegister<Item>> GEOMANCY_ITEMS = Optional.empty();
     private static Optional<DeferredRegister<Item>> LOCKS_ITEMS = Optional.empty();
 
     private static final UUID WAND_UUID = UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3");
@@ -334,8 +333,8 @@ public class ModItems {
     public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND = Optional.empty();
     public static Optional<RegistryObject<Item>> AQUA_WAND_CORE = Optional.empty();
     public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND_CORE = Optional.empty();
-//    public static Optional<RegistryObject<Item>> GEOMANCY_WAND = Optional.empty();
-//    public static Optional<RegistryObject<Item>> GEOMANCY_WAND_CORE = Optional.empty();
+    public static Optional<RegistryObject<Item>> GEOMANCY_WAND = Optional.empty();
+    public static Optional<RegistryObject<Item>> GEOMANCY_WAND_CORE = Optional.empty();
     public static Optional<RegistryObject<Item>> KEY = Optional.empty();
 
 
@@ -378,23 +377,23 @@ public class ModItems {
             ALSHANEX_ITEMS.get().register(eventBus);
         }
         // Geomancy Items
-//        if (ModList.get().isLoaded("gtbcs_geomancy_plus")) {
-//            GEOMANCY_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));
-//
-//            GEOMANCY_WAND = Optional.of(GEOMANCY_ITEMS.get().register("geomancy_wand",
-//                    () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-//                            (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-//                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-//                                    AttributeModifier.Operation.MULTIPLY_BASE),
-//                            (Attribute) GGAttributes.GEO_SPELL_POWER.get(),
-//                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-//                                    AttributeModifier.Operation.MULTIPLY_BASE)))));
-//            GEOMANCY_WAND_CORE = Optional.of(GEOMANCY_ITEMS.get().register("geomancy_wand_core",
-//                    () -> new WandCore(PropertiesHelper.stackItemProperties(16)
-//                            .rarity(Rarity.UNCOMMON))));
-//
-//            GEOMANCY_ITEMS.get().register(eventBus);
-//        }
+        if (ModList.get().isLoaded("gtbcs_geomancy_plus")) {
+            GEOMANCY_ITEMS = Optional.of(DeferredRegister.create(ForgeRegistries.ITEMS, DnMmod.MOD_ID));
+
+            GEOMANCY_WAND = Optional.of(GEOMANCY_ITEMS.get().register("geomancy_wand",
+                    () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
+                            (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
+                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
+                                    AttributeModifier.Operation.MULTIPLY_BASE),
+                            (Attribute) com.gametechbc.gtbcs_geomancy_plus.api.init.GGAttributes.GEO_SPELL_POWER.get(),
+                            new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
+                                    AttributeModifier.Operation.MULTIPLY_BASE)))));
+            GEOMANCY_WAND_CORE = Optional.of(GEOMANCY_ITEMS.get().register("geomancy_wand_core",
+                    () -> new WandCore(PropertiesHelper.stackItemProperties(16)
+                            .rarity(Rarity.UNCOMMON))));
+
+            GEOMANCY_ITEMS.get().register(eventBus);
+        }
 
         // Locks Items
         if (ModList.get().isLoaded("locks")) {

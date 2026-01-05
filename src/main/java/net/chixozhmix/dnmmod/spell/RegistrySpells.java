@@ -37,7 +37,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> AGATHYS_ARMOR_SPELL = registerSpell(new AgathysArmorSpell());
     public static final RegistryObject<AbstractSpell> THICK_OF_FIGHT = registerSpell(new ThickOfFightSpell());
     public static final RegistryObject<AbstractSpell> RAY_OF_ENFEEBLEMENT = registerSpell(new RayOfEnfeeblementSpell());
-    public static final RegistryObject<AbstractSpell> SUMMON_FLAME_ATRONACH = registerSpell(new SummonFlameAtronach());
+    //public static final RegistryObject<AbstractSpell> SUMMON_FLAME_ATRONACH = registerSpell(new SummonFlameAtronach());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

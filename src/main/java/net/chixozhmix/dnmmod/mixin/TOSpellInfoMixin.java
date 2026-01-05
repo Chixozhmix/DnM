@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.mixin;
 
+import com.gametechbc.traveloptics.spells.blood.VigorSiphonSpell;
 import com.gametechbc.traveloptics.spells.fire.AnnihilationSpell;
 import com.gametechbc.traveloptics.spells.fire.LavaBombSpell;
 import com.gametechbc.traveloptics.spells.ice.CursedRevenantsSpell;
@@ -23,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-@Mixin(value = {LavaBombSpell.class, AnnihilationSpell.class, CursedRevenantsSpell.class})
+@Mixin(value = {LavaBombSpell.class, AnnihilationSpell.class, CursedRevenantsSpell.class, VigorSiphonSpell.class})
 public abstract class TOSpellInfoMixin {
     private static final Map<Class<?>, Supplier<Item>> SPELL_COMPONENTS = new HashMap<>();
 
@@ -31,6 +32,7 @@ public abstract class TOSpellInfoMixin {
         SPELL_COMPONENTS.put(LavaBombSpell.class, () -> Items.MAGMA_BLOCK);
         SPELL_COMPONENTS.put(AnnihilationSpell.class, () -> ACItemRegistry.URANIUM_SHARD.get());
         SPELL_COMPONENTS.put(CursedRevenantsSpell.class, () -> ItemRegistry.FROZEN_BONE_SHARD.get());
+        SPELL_COMPONENTS.put(VigorSiphonSpell.class, () -> Items.CHAIN);
     }
 
     private AbstractSpell getThisSpell() {
