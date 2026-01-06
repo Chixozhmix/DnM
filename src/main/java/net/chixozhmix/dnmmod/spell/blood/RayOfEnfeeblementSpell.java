@@ -100,6 +100,6 @@ public class RayOfEnfeeblementSpell extends AbstractSpell {
     }
 
     private float getDamage(int spellLevel, LivingEntity caster) {
-        return 2.0F + this.getSpellPower(spellLevel, caster) * 1.5F;
+        return 1.6F + this.getSpellPower(spellLevel, caster) * 1.5F;
     }
 }

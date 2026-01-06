@@ -43,6 +43,7 @@
   "item.dnmmod.geomancy_wand_core": "Сердце палочки геоманта",
   "item.dnmmod.kapellmeister_wand_core": "Сердцевина палочки капельмейстера",
   "item.dnmmod.thunderstorm_bottle": "Гроза в бутылке",
+  "item.dnmmod.greemon_fang": "Клык гримона",
 
   "item.dnmmod.wooden_wand": "Деревянная палочка",
   "item.dnmmod.cryomancer_wand": "Палочка криоманта",
@@ -105,6 +106,10 @@
   "item.dnmmod.bladesinger_boots": "Ботинки Певца клинков",
 
   "item.dnmmod.protection_ring": "Кольцо защиты",
+
+  "item.minecraft.potion.effect.corpse_poison": "Трупный яд",
+  "item.minecraft.splash_potion.effect.corpse_poison": "Взрывной трупный яд",
+  "item.minecraft.lingering_potion.effect.corpse_poison": "Оседающий трупный яд",
 
   "block.dnmmod.clay_shale": "Глинистый сланец",
   "block.dnmmod.coke_oven": "Коксовая печь",
@@ -231,5 +236,8 @@
   "spell.dnmmod.ray_of_enfeeblement.guide": "Луч изнуряющей энергии летит от вас к существу, заставляя его потерять силы.",
 
   "spell.dnmmod.summon_flame_atronach": "Вызов огненного атронаха",
-  "spell.dnmmod.summon_flame_atronach.guide": "Из глубин Преисподней вы вызываете дух огня для своей защиты"
+  "spell.dnmmod.summon_flame_atronach.guide": "Из глубин Преисподней вы вызываете дух огня для своей защиты",
+
+  "spell.dnmmod.contagion": "Заражение",
+  "spell.dnmmod.contagion.guide": "Вы выбираете существо, поражая его и всех вокруг него смертельной болезнью."
 }

@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod;
 
 import com.mojang.logging.LogUtils;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import net.chixozhmix.dnmmod.Util.BrewingRecipe;
 import net.chixozhmix.dnmmod.api.registers.Fluids;
 import net.chixozhmix.dnmmod.blocks.ModBlocks;
 import net.chixozhmix.dnmmod.effect.ModEffects;
@@ -19,6 +20,7 @@ import net.chixozhmix.dnmmod.entity.raven.RavenRenderer;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectileRenderer;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrbRenderer;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDaggerRenderer;
+import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRayRenderer;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDaggerRenderer;
 import net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement.RayOfEnfeeblementRenderer;
 import net.chixozhmix.dnmmod.entity.summoned.client.SummonedRavenModel;
@@ -26,6 +28,7 @@ import net.chixozhmix.dnmmod.entity.summoned.client.SummonedRavenRenderer;
 import net.chixozhmix.dnmmod.entity.summoned.client.SummonedUndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.items.CreativeTabMod;
 import net.chixozhmix.dnmmod.items.ModItems;
+import net.chixozhmix.dnmmod.potion.ModPotions;
 import net.chixozhmix.dnmmod.recipe.ModRecipes;
 import net.chixozhmix.dnmmod.renderer.ArmorEffectRenderer;
 import net.chixozhmix.dnmmod.screen.ModMenuTypes;
@@ -36,9 +39,11 @@ import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -91,13 +96,16 @@ public class DnMmod
 //        DnMSchools.DNM_SCHOOLS.register(modEventBus);
         //Fluid
         Fluids.register(modEventBus);
+        //Potions
+        ModPotions.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        //BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.AWKWARD, ModItems.ECTOPLASM.get(), ModPotions.PHANTOM_POTION.get()));
+
+        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.POISON, ModItems.GREEMON_FANG.get(), ModPotions.CORPSE_POISON.get()));
     }
 
     // Add the example block item to the building blocks tab
@@ -141,6 +149,7 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.GREEMON.get(), GreemonRenderer::new);
             EntityRenderers.register(ModEntityType.GOBLIN_WARRIOR.get(), GoblinWariorRenderer::new);
             EntityRenderers.register(ModEntityType.FLAME_ATRONACH.get(), FlameAtronachrenderer::new);
+            EntityRenderers.register(ModEntityType.CONTAGION_RAY.get(), ContagionRayRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COMPONENT_BAG_MENU.get(), ComponentBagScreen::new);
             MenuScreens.register(ModMenuTypes.MEDIUM_COMPONENT_BAG_MENU.get(), MediumBagScreen::new);

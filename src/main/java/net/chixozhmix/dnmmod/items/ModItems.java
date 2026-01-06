@@ -203,6 +203,8 @@ public class ModItems {
             new D20Item(new Item.Properties().rarity(Rarity.RARE)));
     public static final RegistryObject<Item> BLADE_RUNE = ITEMS.register("blade_rune", () ->
             new Item(PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<Item> GREEMON_FANG = ITEMS.register("greemon_fang", () ->
+            new Item(PropertiesHelper.stackItemProperties(64)));
     //Magic Item
     public static final RegistryObject<Item> HAG_EYE = ITEMS.register("hag_eye", () ->
             new HagEye(PropertiesHelper.stackItemProperties(1)

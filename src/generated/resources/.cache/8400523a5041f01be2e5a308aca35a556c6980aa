@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-21T12:33:56.5254378	Item Models: dnmmod
+// 1.20.1	2026-01-06T15:30:28.1022997	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
@@ -34,6 +34,7 @@ c17373fb6f5b039d59a309fa464d788c6a7daa80 assets/dnmmod/models/item/evoker_wand_c
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/ghost_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/goblin_shaman_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/goblin_warrior_spawn_egg.json
+1987979a18a5b24f3351af2197d9db899b08f2e1 assets/dnmmod/models/item/greemon_fang.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/greemon_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/green_hag_spawn_egg.json
 b1305a5b9f21ff7d150660da71f4064d036416c3 assets/dnmmod/models/item/hag_eye.json

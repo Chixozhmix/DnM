@@ -42,6 +42,7 @@
   "item.dnmmod.geomancy_wand_core": "Geomancy wand core",
   "item.dnmmod.kapellmeister_wand_core": "Kapellmeister wand core",
   "item.dnmmod.thunderstorm_bottle": "Thunderstorm bottle",
+  "item.dnmmod.greemon_fang": "Greemon fang",
 
   "item.dnmmod.wooden_wand": "Wooden wand",
   "item.dnmmod.cryomancer_wand": "Cryomancer wand",
@@ -104,6 +105,10 @@
   "item.dnmmod.bladesinger_boots": "Bladesinger boots",
 
   "item.dnmmod.protection_ring": "Protection ring",
+
+  "item.minecraft.potion.effect.corpse_poison": "Corpse poison",
+  "item.minecraft.splash_potion.effect.corpse_poison": "Splash corpse poison",
+  "item.minecraft.lingering_potion.effect.corpse_poison": "Lingering corpse poison",
 
   "block.dnmmod.clay_shale": "Clay shale",
   "block.dnmmod.coke_oven": "Coke oven",
@@ -230,5 +235,8 @@
   "spell.dnmmod.ray_of_enfeeblement.guide": "A beam of exhausting energy flies from you to the creature, causing it to lose its strength.",
 
   "spell.dnmmod.summon_flame_atronach": "Summon flame atronach",
-  "spell.dnmmod.summon_flame_atronach.guide": "From the depths of Nether, you summon the spirit of fire to protect you"
+  "spell.dnmmod.summon_flame_atronach.guide": "From the depths of Nether, you summon the spirit of fire to protect you",
+
+  "spell.dnmmod.contagion": "Contagion",
+  "spell.dnmmod.contagion.guide": "You choose a creature, infecting it and everyone around it with a deadly disease."
 }

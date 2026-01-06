@@ -14,6 +14,7 @@ import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
+import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRay;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
 import net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement.RayOfEnfeeblement;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
@@ -64,6 +65,12 @@ public class ModEntityType {
                     .sized(1.0F, 1.0F)
                     .clientTrackingRange(64)
                     .build("ray_of_enfeeblement"));
+    public static final RegistryObject<EntityType<ContagionRay>> CONTAGION_RAY =
+            ENTITY_TYPES.register("contagion_ray",
+                    () -> EntityType.Builder.<ContagionRay>of(ContagionRay::new, MobCategory.MISC)
+                            .sized(1.0F, 1.0F)
+                            .clientTrackingRange(64)
+                            .build("contagion_ray"));
 
     //Mobs
     public static final RegistryObject<EntityType<UndeadSpiritEntity>> UNDEAD_SPIRIT =

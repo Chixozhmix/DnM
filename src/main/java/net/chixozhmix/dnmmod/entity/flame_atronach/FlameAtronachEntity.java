@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.entity.mobs.MagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
+import net.chixozhmix.dnmmod.effect.ModEffects;
 import net.chixozhmix.dnmmod.entity.ModEntityType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -15,6 +16,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,6 +28,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -227,25 +231,29 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
 
     @Override
     public boolean shouldAlwaysAnimateHead() {
-        // Отключаем автоматическую анимацию головы, если есть файл анимации
         return false;
     }
 
     @Override
     public boolean shouldAlwaysAnimateLegs() {
-        // Отключаем автоматическую анимацию ног, так как есть файл анимации
         return false;
     }
 
     @Override
     public boolean bobBodyWhileWalking() {
-        // Отключаем автоматическое качание тела при ходьбе
         return false;
     }
 
     @Override
     public boolean shouldBeExtraAnimated() {
-        // Включаем дополнительные анимации только когда нужно (например, каст)
         return this.isCasting() || this.isDrinkingPotion() || this.isPassenger();
+    }
+
+    @Override
+    public boolean addEffect(MobEffectInstance pEffectInstance, @Nullable Entity pEntity) {
+        if(pEffectInstance.getEffect() == MobEffects.POISON || pEffectInstance.getEffect() == ModEffects.CORPSE_POISON.get())
+            return false;
+
+        return super.addEffect(pEffectInstance, pEntity);
     }
 }

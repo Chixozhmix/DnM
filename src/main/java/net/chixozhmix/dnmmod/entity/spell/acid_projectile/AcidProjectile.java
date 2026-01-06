@@ -61,7 +61,7 @@ public class AcidProjectile extends AbstractMagicProjectile {
 
     @Override
     public Optional<Supplier<SoundEvent>> getImpactSound() {
-        return null;
+        return Optional.empty();
     }
 
     @Override
