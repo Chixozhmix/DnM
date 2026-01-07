@@ -29,7 +29,7 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -40,16 +40,20 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.*;
 
-public class FlameAtronachEntity extends AbstractSpellCastingMob implements MagicSummon, GeoAnimatable {
+public class FlameAtronachEntity extends AbstractSpellCastingMob implements MagicSummon, GeoEntity {
     private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(FlameAtronachEntity.class, EntityDataSerializers.BOOLEAN);
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
+    private static final RawAnimation RISE_ANIM = RawAnimation.begin().thenPlay("rise");
 
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
     private int riseAnimTime;
     private final AnimatableInstanceCache cache;
+
+    private final AnimationController<FlameAtronachEntity> movementController;
+    private final AnimationController<FlameAtronachEntity> riseController;
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)4.0F)
@@ -64,6 +68,9 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
         this.riseAnimTime = 40;
         this.cache = GeckoLibUtil.createInstanceCache(this);
         this.xpReward = 0;
+
+        this.movementController = new AnimationController<>(this, "movement", 0, this::movementPredicate);
+        this.riseController = new AnimationController<>(this, "rise", 0, this::risePredicate);
     }
 
     public FlameAtronachEntity(Level level, LivingEntity owner, boolean playRiseAnimation) {
@@ -90,10 +97,8 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        super.registerControllers(controllerRegistrar);
-
-        controllerRegistrar.add(new AnimationController<>(this, "controller_0", 0, this::predicate));
-        controllerRegistrar.add(new AnimationController<>(this, "rise", 0, this::predicateRise));
+        controllerRegistrar.add(movementController);
+        controllerRegistrar.add(riseController);
     }
 
     @Override
@@ -101,24 +106,30 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
         return cache;
     }
 
-    private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
+    private PlayState movementPredicate(AnimationState<FlameAtronachEntity> state) {
+        if (this.isAnimatingRise() || this.isCasting())
+            return PlayState.STOP;
+
+
         if (state.isMoving()) {
             state.getController().setAnimation(WALK_ANIM);
             return PlayState.CONTINUE;
         }
+
         state.getController().setAnimation(IDLE_ANIM);
         return PlayState.CONTINUE;
     }
 
-    private <T extends GeoAnimatable> PlayState predicateRise(AnimationState<T> state) {
+    private PlayState risePredicate(AnimationState<FlameAtronachEntity> state) {
         if (!this.isAnimatingRise()) {
             return PlayState.STOP;
-        } else {
-            if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
-                state.getController().setAnimation(RawAnimation.begin().thenPlay("rise"));
-            }
-            return PlayState.CONTINUE;
         }
+
+        if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
+            state.getController().setAnimation(RISE_ANIM);
+        }
+
+        return PlayState.CONTINUE;
     }
 
     @Override
@@ -230,23 +241,8 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
     }
 
     @Override
-    public boolean shouldAlwaysAnimateHead() {
-        return false;
-    }
-
-    @Override
-    public boolean shouldAlwaysAnimateLegs() {
-        return false;
-    }
-
-    @Override
-    public boolean bobBodyWhileWalking() {
-        return false;
-    }
-
-    @Override
     public boolean shouldBeExtraAnimated() {
-        return this.isCasting() || this.isDrinkingPotion() || this.isPassenger();
+        return this.isCasting();
     }
 
     @Override

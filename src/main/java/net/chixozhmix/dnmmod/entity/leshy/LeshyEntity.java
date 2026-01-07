@@ -2,10 +2,14 @@ package net.chixozhmix.dnmmod.entity.leshy;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.entity.mobs.MagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import net.chixozhmix.dnmmod.effect.ModEffects;
+import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
 import net.chixozhmix.dnmmod.goals.CasterBossAttackGoal;
+import net.chixozhmix.dnmmod.goals.MeleeCasterAtackGoal;
 import net.chixozhmix.dnmmod.items.ModItems;
 import net.chixozhmix.dnmmod.sound.SoundsRegistry;
 import net.chixozhmix.dnmmod.spell.RegistrySpells;
@@ -14,6 +18,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
@@ -30,6 +35,7 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.monster.Enemy;
@@ -38,12 +44,18 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 
 import java.util.List;
 
 public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
-            .add(Attributes.ATTACK_DAMAGE, (double)10.0F)
+            .add(Attributes.ATTACK_DAMAGE, (double)6.0F)
             .add(Attributes.ATTACK_KNOCKBACK, (double)0.2F)
             .add(Attributes.MAX_HEALTH, (double)300.0F)
             .add(Attributes.FOLLOW_RANGE, (double)40.0F)
@@ -53,8 +65,6 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
             .add(Attributes.ARMOR, (double)15.0F)
             .add(AttributeRegistry.SPELL_RESIST.get(), 0.5f)
             .add(AttributeRegistry.SUMMON_DAMAGE.get(), 0.4f);
-
-    private int attackAnimationTick = 0;
 
     public LeshyEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -71,7 +81,7 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(4, (new CasterBossAttackGoal(this, 1.25F, 35, 80))
+        this.goalSelector.addGoal(4, new MeleeCasterAtackGoal(this, 1.25F, 35, 80)
                 .setSpells(
                         List.of(SpellRegistry.ACID_ORB_SPELL.get(),
                                 RegistrySpells.CAUSTIC_BREW.get(),
@@ -86,11 +96,9 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, (double)1.0F));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(10, new WizardRecoverGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this, new Class[0]));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, IronGolem.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Turtle.class, 10, true, false, Turtle.BABY_ON_LAND_SELECTOR));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractGolem.class, true));
     }
 
     public static AttributeSupplier.Builder prepareAttributes() {
@@ -141,16 +149,6 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
     @Override
     public void tick() {
         super.tick();
-
-        if (this.attackAnimationTick > 0) {
-            this.attackAnimationTick--;
-        }
-
-        if (this.swinging) {
-            this.getNavigation().stop();
-            this.attackAnimationTick = 20;
-            this.swinging = false;
-        }
     }
 
     @Override
@@ -184,5 +182,13 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
         super.aiStep();
 
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+    }
+
+    @Override
+    public boolean addEffect(MobEffectInstance pEffectInstance, @Nullable Entity pEntity) {
+        if(pEffectInstance.getEffect() == MobEffects.POISON || pEffectInstance.getEffect() == ModEffects.CORPSE_POISON.get())
+            return false;
+
+        return super.addEffect(pEffectInstance, pEntity);
     }
 }

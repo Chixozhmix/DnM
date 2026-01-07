@@ -104,7 +104,6 @@ public class DnMmod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.POISON, ModItems.GREEMON_FANG.get(), ModPotions.CORPSE_POISON.get()));
     }
 

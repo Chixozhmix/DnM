@@ -490,10 +490,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("SG ")
                 .pattern("GAG")
                 .pattern(" G ")
-                .define('A', ItemRegistry.ARCANE_SALVAGE.get())
+                .define('A', ItemRegistry.MITHRIL_SCRAP.get())
                 .define('S', Items.SHIELD)
                 .define('G', Items.GOLD_INGOT)
-                .unlockedBy("has_arcane_salvage", has(ItemRegistry.ARCANE_SALVAGE.get()))
+                .unlockedBy("has_mithril_scrap", has(ItemRegistry.MITHRIL_SCRAP.get()))
                 .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MIRROR.get(), 1)
                 .pattern(" I ")

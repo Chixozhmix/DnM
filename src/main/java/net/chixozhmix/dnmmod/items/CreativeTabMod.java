@@ -81,6 +81,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.PHANTOM_POTION.get());
                         output.accept(ModItems.THUNDERSTORM_BOTTLE.get());
                         output.accept(ModItems.RAVEN_FEATHER.get());
+                        output.accept(ModItems.GREEMON_FANG.get());
                         output.accept(ModItems.MAID_DRESS.get());
                         output.accept(ModItems.MAID_CAP.get());
                         output.accept(ModItems.MIRROR.get());
