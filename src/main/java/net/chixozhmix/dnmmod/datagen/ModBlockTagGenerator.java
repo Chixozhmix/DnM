@@ -1,7 +1,7 @@
 package net.chixozhmix.dnmmod.datagen;
 
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.blocks.ModBlocks;
+import net.chixozhmix.dnmmod.registers.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;

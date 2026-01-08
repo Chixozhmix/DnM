@@ -5,9 +5,9 @@ import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.MagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
-import net.chixozhmix.dnmmod.entity.ModEntityType;
+import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
-import net.chixozhmix.dnmmod.spell.RegistrySpells;
+import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.DamageTypeTags;
@@ -23,7 +23,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 
-import javax.annotation.Nullable;
 import java.util.UUID;
 
 public class SummonedRavenEntity extends RavenEntity implements MagicSummon {

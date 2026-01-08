@@ -5,7 +5,7 @@ import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.spells.AoeEntity;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
-import net.chixozhmix.dnmmod.entity.ModEntityType;
+import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;

@@ -13,7 +13,7 @@ import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.effect.ModEffects;
+import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRay;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;

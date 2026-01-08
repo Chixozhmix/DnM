@@ -2,14 +2,12 @@ package net.chixozhmix.dnmmod.entity.summoned;
 
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
-import io.redspace.ironsspellbooks.effect.SummonTimer;
 import io.redspace.ironsspellbooks.entity.mobs.MagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
-import net.chixozhmix.dnmmod.effect.ModEffects;
-import net.chixozhmix.dnmmod.entity.ModEntityType;
+import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
-import net.chixozhmix.dnmmod.spell.RegistrySpells;
+import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -43,7 +41,6 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import javax.annotation.Nullable;
 import java.util.UUID;
 
 public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSummon, GeoAnimatable {

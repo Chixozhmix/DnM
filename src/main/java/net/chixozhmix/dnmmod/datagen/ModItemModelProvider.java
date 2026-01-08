@@ -2,7 +2,7 @@ package net.chixozhmix.dnmmod.datagen;
 
 import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.items.ModItems;
+import net.chixozhmix.dnmmod.registers.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;

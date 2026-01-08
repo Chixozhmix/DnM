@@ -10,7 +10,7 @@ import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement.RayOfEnfeeblement;
-import net.chixozhmix.dnmmod.sound.SoundsRegistry;
+import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;

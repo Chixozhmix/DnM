@@ -1,8 +1,7 @@
 package net.chixozhmix.dnmmod.entity.ghost;
 
-import io.redspace.ironsspellbooks.registries.ItemRegistry;
-import net.chixozhmix.dnmmod.items.ModItems;
-import net.chixozhmix.dnmmod.sound.SoundsRegistry;
+import net.chixozhmix.dnmmod.registers.ModItems;
+import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;

@@ -2,7 +2,8 @@ package net.chixozhmix.dnmmod.items;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.PropertiesHelper;
-import net.chixozhmix.dnmmod.blocks.ModBlocks;
+import net.chixozhmix.dnmmod.registers.ModBlocks;
+import net.chixozhmix.dnmmod.registers.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

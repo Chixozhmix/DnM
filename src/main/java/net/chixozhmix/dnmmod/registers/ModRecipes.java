@@ -1,6 +1,7 @@
-package net.chixozhmix.dnmmod.recipe;
+package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.recipe.CokeOvenRecipes;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

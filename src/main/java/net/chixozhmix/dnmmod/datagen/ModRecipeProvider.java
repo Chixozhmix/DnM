@@ -2,7 +2,7 @@ package net.chixozhmix.dnmmod.datagen;
 
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.items.ModItems;
+import net.chixozhmix.dnmmod.registers.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.ItemStack;

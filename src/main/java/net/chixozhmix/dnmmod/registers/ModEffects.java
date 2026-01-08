@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.effect;
+package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.effect.custom.*;

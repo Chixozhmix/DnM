@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.spell;
+package net.chixozhmix.dnmmod.registers;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.chixozhmix.dnmmod.DnMmod;
@@ -9,6 +9,7 @@ import net.chixozhmix.dnmmod.spell.evocation.*;
 import net.chixozhmix.dnmmod.spell.fire.SummonFlameAtronach;
 import net.chixozhmix.dnmmod.spell.ice.AgathysArmorSpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
+import net.chixozhmix.dnmmod.spell.lightning.SummonStormAtronach;
 import net.chixozhmix.dnmmod.spell.lightning.ThunderwaveSpell;
 import net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -40,6 +41,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> RAY_OF_ENFEEBLEMENT = registerSpell(new RayOfEnfeeblementSpell());
     public static final RegistryObject<AbstractSpell> SUMMON_FLAME_ATRONACH = registerSpell(new SummonFlameAtronach());
     public static final RegistryObject<AbstractSpell> CONTAGION_SPELL = registerSpell(new ContagionSpell());
+    public static final RegistryObject<AbstractSpell> SUMMON_STORM_ATRONACH = registerSpell(new SummonStormAtronach());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

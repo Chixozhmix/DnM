@@ -1,6 +1,5 @@
-package net.chixozhmix.dnmmod.api.registers;
+package net.chixozhmix.dnmmod.registers;
 
-import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.fluids.NoopFluid;
 import io.redspace.ironsspellbooks.fluids.SimpleTintedClientFluidType;
 import net.chixozhmix.dnmmod.DnMmod;

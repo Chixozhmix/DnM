@@ -5,7 +5,7 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.effect.ModEffects;
+import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;

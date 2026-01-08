@@ -139,6 +139,7 @@
   "entity.dnmmod.greemon": "Greemon",
   "entity.dnmmod.goblin_warrior": "Goblin warrior",
   "entity.dnmmod.flame_atronach": "Flame atronach",
+  "entity.dnmmod.storm_atronach": "Storm atronach",
 
   "tooltip.dnmmod.maid": "Why not?",
 
@@ -238,5 +239,8 @@
   "spell.dnmmod.summon_flame_atronach.guide": "From the depths of Nether, you summon the spirit of fire to protect you",
 
   "spell.dnmmod.contagion": "Contagion",
-  "spell.dnmmod.contagion.guide": "You choose a creature, infecting it and everyone around it with a deadly disease."
+  "spell.dnmmod.contagion.guide": "You choose a creature, infecting it and everyone around it with a deadly disease.",
+
+  "spell.dnmmod.summon_storm_atronach": "Summon storm atronach",
+  "spell.dnmmod.summon_storm_atronach.guide": "You call upon the forces of thunder to create a powerful Atronach."
 }

@@ -1,7 +1,7 @@
 package net.chixozhmix.dnmmod.effect.custom;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import net.chixozhmix.dnmmod.effect.ModEffects;
+import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;

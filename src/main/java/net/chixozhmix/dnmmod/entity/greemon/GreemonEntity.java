@@ -1,12 +1,9 @@
 package net.chixozhmix.dnmmod.entity.greemon;
 
-import net.chixozhmix.dnmmod.effect.ModEffects;
-import net.chixozhmix.dnmmod.sound.SoundsRegistry;
+import net.chixozhmix.dnmmod.registers.ModEffects;
+import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;

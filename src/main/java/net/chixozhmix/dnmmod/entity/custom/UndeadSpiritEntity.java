@@ -1,11 +1,9 @@
 package net.chixozhmix.dnmmod.entity.custom;
 
-import net.chixozhmix.dnmmod.sound.SoundsRegistry;
+import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;

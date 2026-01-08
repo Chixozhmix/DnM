@@ -140,6 +140,7 @@
   "entity.dnmmod.greemon": "Гримон",
   "entity.dnmmod.goblin_warrior": "Гобилн воин",
   "entity.dnmmod.flame_atronach": "Огненный атронах",
+  "entity.dnmmod.storm_atronach": "Грозовой атронах",
 
   "tooltip.dnmmod.maid": "Почему нет?",
 
@@ -239,5 +240,8 @@
   "spell.dnmmod.summon_flame_atronach.guide": "Из глубин Преисподней вы вызываете дух огня для своей защиты",
 
   "spell.dnmmod.contagion": "Заражение",
-  "spell.dnmmod.contagion.guide": "Вы выбираете существо, поражая его и всех вокруг него смертельной болезнью."
+  "spell.dnmmod.contagion.guide": "Вы выбираете существо, поражая его и всех вокруг него смертельной болезнью.",
+
+  "spell.dnmmod.summon_storm_atronach": "Призыв грозового атронаха",
+  "spell.dnmmod.summon_storm_atronach.guide": "Вы взываете к силам грома, чтобы создать могущетсвенного атронаха."
 }

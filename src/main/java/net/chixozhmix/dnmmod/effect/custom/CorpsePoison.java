@@ -1,8 +1,7 @@
 package net.chixozhmix.dnmmod.effect.custom;
 
 import io.redspace.ironsspellbooks.util.ParticleHelper;
-import net.chixozhmix.dnmmod.effect.ModEffects;
-import net.minecraft.core.particles.ParticleTypes;
+import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;

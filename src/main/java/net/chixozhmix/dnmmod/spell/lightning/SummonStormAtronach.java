@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.spell.blood;
+package net.chixozhmix.dnmmod.spell.lightning;
 
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
@@ -7,34 +7,28 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.*;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.Util.SpellUtils;
-import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
-import net.chixozhmix.dnmmod.registers.SoundsRegistry;
+import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Optional;
 
 @AutoSpellConfig
-public class SummonUndeadSpiritSpell extends AbstractSpell {
+public class SummonStormAtronach extends AbstractSpell {
+    private static ResourceLocation spellId = new ResourceLocation(DnMmod.MOD_ID, "summon_storm_atronach");
 
-    private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "summon_undead_spirit");
-
-    public SummonUndeadSpiritSpell() {
+    public SummonStormAtronach() {
         this.manaCostPerLevel = 10;
         this.baseSpellPower = 10;
         this.spellPowerPerLevel = 3;
@@ -43,9 +37,9 @@ public class SummonUndeadSpiritSpell extends AbstractSpell {
     }
 
     private DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.RARE)
-            .setMaxLevel(3)
-            .setSchoolResource(SchoolRegistry.BLOOD_RESOURCE)
+            .setMinRarity(SpellRarity.EPIC)
+            .setMaxLevel(1)
+            .setSchoolResource(SchoolRegistry.LIGHTNING_RESOURCE)
             .setCooldownSeconds(120)
             .build();
 
@@ -65,14 +59,8 @@ public class SummonUndeadSpiritSpell extends AbstractSpell {
     }
 
     @Override
-    public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(SoundsRegistry.SUMMON_UNDEAD_SPIRIT.get());
-    }
-
-    @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.summon_count", new Object[]{this.getSummonCount(spellLevel, caster)}),
-                Component.translatable("ui.dnmmod.spell_component", new Object[]{SpellUtils.getComponentName(Items.SKELETON_SKULL)}));
+        return List.of(Component.translatable("ui.irons_spellbooks.summon_count", new Object[]{this.getSummonCount(caster)}));
     }
 
     @Override
@@ -93,11 +81,6 @@ public class SummonUndeadSpiritSpell extends AbstractSpell {
     }
 
     @Override
-    public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
-        return SpellUtils.checkSpellComponent(entity, Items.SKELETON_SKULL);
-    }
-
-    @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
 
@@ -106,26 +89,25 @@ public class SummonUndeadSpiritSpell extends AbstractSpell {
             SummonedEntitiesCastData summonedEntitiesCastData = new SummonedEntitiesCastData();
             int summonTime = 12000;
             float radius = 1.5F + 0.185F * (float)spellLevel;
-            int count = this.getSummonCount(spellLevel, entity);
+            int count = this.getSummonCount(entity);
 
-            for (int i = 0; i < count; ++i) {
-                SummonedUndeadSpirit undead = new SummonedUndeadSpirit(level, entity, true);
-                undead.finalizeSpawn((ServerLevel)level, level.getCurrentDifficultyAt(undead.getOnPos()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData)null, (CompoundTag)null);
+            for (int i = 0; i < count; i++) {
+                StormAtronach atronach = new StormAtronach(level, entity, true);
+                atronach.finalizeSpawn((ServerLevel)level, level.getCurrentDifficultyAt(atronach.getOnPos()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData)null, (CompoundTag)null);
                 float yrot = 6.281F / (float)spellLevel * (float)i + entity.getYRot() * ((float)Math.PI / 180F);
                 Vec3 spawn = Utils.moveToRelativeGroundLevel(level, entity.getEyePosition().add(new Vec3((double)(radius * Mth.cos(yrot)), (double)0.0F, (double)(radius * Mth.sin(yrot)))), 10);
-                undead.setPos(spawn.x, spawn.y, spawn.z);
-                undead.setYRot(entity.getYRot());
-                undead.setOldPosAndRot();
-                level.addFreshEntity(undead);
-                SummonManager.initSummon(entity, undead, summonTime, summonedEntitiesCastData);
+                atronach.setPos(spawn.x, spawn.y, spawn.z);
+                atronach.setYRot(entity.getYRot());
+                atronach.setOldPosAndRot();
+                level.addFreshEntity(atronach);
+                SummonManager.initSummon(entity, atronach, summonTime, summonedEntitiesCastData);
             }
-
             RecastInstance recastInstance = new RecastInstance(this.getSpellId(), spellLevel, getRecastCount(spellLevel, entity), summonTime, castSource, summonedEntitiesCastData);
             recasts.addRecast(recastInstance, playerMagicData);
         }
     }
 
-    public int getSummonCount(int spellLevel, LivingEntity caster) {
-        return spellLevel + 2;
+    public int getSummonCount(LivingEntity caster) {
+        return 1;
     }
 }

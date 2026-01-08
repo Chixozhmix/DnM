@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.screen;
+package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.screen.component_bag.ComponentBagMenu;

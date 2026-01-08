@@ -1,6 +1,6 @@
 package net.chixozhmix.dnmmod.blocks.custom;
 
-import net.chixozhmix.dnmmod.entity.ModEntityType;
+import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

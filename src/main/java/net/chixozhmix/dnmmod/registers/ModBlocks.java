@@ -1,8 +1,7 @@
-package net.chixozhmix.dnmmod.blocks;
+package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.blocks.custom.LeshyAltarBlock;
-import net.chixozhmix.dnmmod.items.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;

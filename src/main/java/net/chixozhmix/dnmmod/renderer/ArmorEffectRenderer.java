@@ -3,7 +3,7 @@ package net.chixozhmix.dnmmod.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.effect.ModEffects;
+import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.ShieldModel;

@@ -1,6 +1,5 @@
-package net.chixozhmix.dnmmod.entity;
+package net.chixozhmix.dnmmod.registers;
 
-import io.redspace.ironsspellbooks.entity.spells.ray_of_frost.RayOfFrostVisualEntity;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
@@ -17,6 +16,7 @@ import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRay;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
 import net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement.RayOfEnfeeblement;
+import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
 import net.minecraft.world.entity.EntityType;
@@ -140,6 +140,12 @@ public class ModEntityType {
                             .sized(0.9f, 1.8f)
                             .clientTrackingRange(32)
                             .build("flame_atronach"));
+    public static final RegistryObject<EntityType<StormAtronach>> STORM_ATRONACH =
+            ENTITY_TYPES.register("storm_atronach", () ->
+                    EntityType.Builder.<StormAtronach>of(StormAtronach::new, MobCategory.MONSTER)
+                            .sized(0.9f, 1.8f)
+                            .clientTrackingRange(32)
+                            .build("storm_atronach"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

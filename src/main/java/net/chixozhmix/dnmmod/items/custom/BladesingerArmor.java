@@ -1,13 +1,12 @@
 package net.chixozhmix.dnmmod.items.custom;
 
-import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
 import io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem;
 import net.chixozhmix.dnmmod.items.UniqArmorMaterials;
 import net.chixozhmix.dnmmod.items.client.BladesingerArmorModel;
-import net.chixozhmix.dnmmod.spell.RegistrySpells;
+import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

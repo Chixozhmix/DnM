@@ -8,7 +8,7 @@ import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.effect.ModEffects;
+import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;

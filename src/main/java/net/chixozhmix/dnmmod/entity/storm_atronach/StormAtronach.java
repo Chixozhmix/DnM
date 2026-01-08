@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.entity.flame_atronach;
+package net.chixozhmix.dnmmod.entity.storm_atronach;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
@@ -21,6 +21,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -38,10 +39,11 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.*;
+import java.util.List;
+import java.util.UUID;
 
-public class FlameAtronachEntity extends AbstractSpellCastingMob implements MagicSummon, GeoEntity {
-    private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(FlameAtronachEntity.class, EntityDataSerializers.BOOLEAN);
+public class StormAtronach extends AbstractSpellCastingMob implements MagicSummon, GeoEntity {
+    private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(StormAtronach.class, EntityDataSerializers.BOOLEAN);
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
@@ -52,19 +54,20 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
     private int riseAnimTime;
     private final AnimatableInstanceCache cache;
 
-    private final AnimationController<FlameAtronachEntity> movementController;
-    private final AnimationController<FlameAtronachEntity> riseController;
+    private final AnimationController<StormAtronach> movementController;
+    private final AnimationController<StormAtronach> riseController;
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)4.0F)
             .add(Attributes.ATTACK_KNOCKBACK, (double)0.0F)
-            .add(Attributes.MAX_HEALTH, (double)40.0F)
+            .add(Attributes.MAX_HEALTH, (double)50.0F)
             .add(Attributes.FOLLOW_RANGE, (double)25.0F)
-            .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)0.3F)
+            .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)0.5F)
             .add(Attributes.MOVEMENT_SPEED, (double)0.25F);
 
-    public FlameAtronachEntity(EntityType<? extends AbstractSpellCastingMob> pEntityType, Level pLevel) {
+    public StormAtronach(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+
         this.riseAnimTime = 40;
         this.cache = GeckoLibUtil.createInstanceCache(this);
         this.xpReward = 0;
@@ -73,8 +76,8 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
         this.riseController = new AnimationController<>(this, "rise", 0, this::risePredicate);
     }
 
-    public FlameAtronachEntity(Level level, LivingEntity owner, boolean playRiseAnimation) {
-        this(ModEntityType.FLAME_ATRONACH.get(), level);
+    public StormAtronach(Level level, LivingEntity owner, boolean playRiseAnimation) {
+        this(ModEntityType.STORM_ATRONACH.get(), level);
         if (playRiseAnimation) {
             this.triggerRiseAnimation();
         }
@@ -106,7 +109,7 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
         return cache;
     }
 
-    private PlayState movementPredicate(AnimationState<FlameAtronachEntity> state) {
+    private PlayState movementPredicate(AnimationState<StormAtronach> state) {
         if (this.isAnimatingRise() || this.isCasting())
             return PlayState.STOP;
 
@@ -120,7 +123,7 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
         return PlayState.CONTINUE;
     }
 
-    private PlayState risePredicate(AnimationState<FlameAtronachEntity> state) {
+    private PlayState risePredicate(AnimationState<StormAtronach> state) {
         if (!this.isAnimatingRise()) {
             return PlayState.STOP;
         }
@@ -141,10 +144,10 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
     protected void registerGoals() {
         this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.25F, 20, 40))
                 .setSpells(
-                        List.of(SpellRegistry.FIREBOLT_SPELL.get()),
-                List.of(SpellRegistry.FIRE_BREATH_SPELL.get()),
-                List.of(),
-                List.of()));
+                        List.of(SpellRegistry.LIGHTNING_LANCE_SPELL.get()),
+                        List.of(SpellRegistry.LIGHTNING_BOLT_SPELL.get()),
+                        List.of(SpellRegistry.SHOCKWAVE_SPELL.get()),
+                        List.of()));
         this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, (double)1.0F, 9.0F, 4.0F, false, 25.0F));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, (double)1.0F));
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -199,7 +202,7 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
     @Override
     public void onUnSummon() {
         if (!this.level().isClientSide) {
-            MagicManager.spawnParticles(this.level(), ParticleTypes.POOF, this.getX(), this.getY(), this.getZ(),
+            MagicManager.spawnParticles(this.level(), ParticleTypes.ELECTRIC_SPARK, this.getX(), this.getY(), this.getZ(),
                     25, 0.4, 0.8, 0.4, 0.03, false);
             this.discard();
         }

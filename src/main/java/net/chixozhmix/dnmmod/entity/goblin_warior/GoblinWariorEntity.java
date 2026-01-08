@@ -1,8 +1,8 @@
 package net.chixozhmix.dnmmod.entity.goblin_warior;
 
 import io.redspace.ironsspellbooks.api.util.Utils;
-import net.chixozhmix.dnmmod.items.ModItems;
-import net.chixozhmix.dnmmod.sound.SoundsRegistry;
+import net.chixozhmix.dnmmod.registers.ModItems;
+import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;

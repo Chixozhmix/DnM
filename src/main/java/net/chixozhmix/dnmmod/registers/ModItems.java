@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.items;
+package net.chixozhmix.dnmmod.registers;
 
 import com.gametechbc.traveloptics.api.init.TravelopticsAttributes;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
@@ -13,10 +13,8 @@ import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.PropertiesHelper;
-import net.chixozhmix.dnmmod.effect.ModEffects;
-import net.chixozhmix.dnmmod.entity.ModEntityType;
+import net.chixozhmix.dnmmod.items.ModArmorMaterials;
 import net.chixozhmix.dnmmod.items.custom.*;
-import net.chixozhmix.dnmmod.spell.RegistrySpells;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;

@@ -3,7 +3,7 @@ package net.chixozhmix.dnmmod.mixin;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.spells.blood.SacrificeSpell;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
-import net.chixozhmix.dnmmod.items.ModItems;
+import net.chixozhmix.dnmmod.registers.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.LivingEntity;

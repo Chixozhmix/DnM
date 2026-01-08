@@ -3,7 +3,7 @@ package net.chixozhmix.dnmmod.screen.component_bag;
 import net.chixozhmix.dnmmod.Util.ModTags;
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
 import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
-import net.chixozhmix.dnmmod.screen.ModMenuTypes;
+import net.chixozhmix.dnmmod.registers.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

@@ -1,6 +1,6 @@
 package net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement;
 
-import net.chixozhmix.dnmmod.entity.ModEntityType;
+import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;

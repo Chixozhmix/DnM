@@ -9,7 +9,7 @@ import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
-import net.chixozhmix.dnmmod.items.ModItems;
+import net.chixozhmix.dnmmod.registers.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;

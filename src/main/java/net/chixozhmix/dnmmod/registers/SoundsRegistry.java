@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.sound;
+package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.minecraft.resources.ResourceLocation;

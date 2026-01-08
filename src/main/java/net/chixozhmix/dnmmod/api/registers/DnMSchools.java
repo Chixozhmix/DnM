@@ -7,7 +7,7 @@
 //import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 //import io.redspace.ironsspellbooks.api.spells.SchoolType;
 //import net.chixozhmix.dnmmod.Util.ModTags;
-//import net.chixozhmix.dnmmod.sound.SoundsRegistry;
+//import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 //import net.minecraft.network.chat.Component;
 //import net.minecraft.network.chat.MutableComponent;
 //import net.minecraft.resources.ResourceLocation;

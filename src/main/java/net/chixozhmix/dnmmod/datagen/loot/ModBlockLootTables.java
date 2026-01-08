@@ -1,7 +1,7 @@
 package net.chixozhmix.dnmmod.datagen.loot;
 
 
-import net.chixozhmix.dnmmod.blocks.ModBlocks;
+import net.chixozhmix.dnmmod.registers.ModBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
