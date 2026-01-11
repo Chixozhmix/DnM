@@ -144,9 +144,10 @@ public class StormAtronach extends AbstractSpellCastingMob implements MagicSummo
     protected void registerGoals() {
         this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.25F, 20, 40))
                 .setSpells(
-                        List.of(SpellRegistry.LIGHTNING_LANCE_SPELL.get()),
-                        List.of(SpellRegistry.LIGHTNING_BOLT_SPELL.get()),
+                        List.of(SpellRegistry.LIGHTNING_BOLT_SPELL.get(),
+                                SpellRegistry.ELECTROCUTE_SPELL.get()),
                         List.of(SpellRegistry.SHOCKWAVE_SPELL.get()),
+                        List.of(),
                         List.of()));
         this.goalSelector.addGoal(7, new GenericFollowOwnerGoal(this, this::getSummoner, (double)1.0F, 9.0F, 4.0F, false, 25.0F));
         this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, (double)1.0F));
@@ -203,7 +204,7 @@ public class StormAtronach extends AbstractSpellCastingMob implements MagicSummo
     public void onUnSummon() {
         if (!this.level().isClientSide) {
             MagicManager.spawnParticles(this.level(), ParticleTypes.ELECTRIC_SPARK, this.getX(), this.getY(), this.getZ(),
-                    25, 0.4, 0.8, 0.4, 0.03, false);
+                    50, 0.4, 0.8, 0.4, 0.03, true);
             this.discard();
         }
     }

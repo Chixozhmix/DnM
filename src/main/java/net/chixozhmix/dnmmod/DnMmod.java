@@ -33,6 +33,7 @@ import net.chixozhmix.dnmmod.registers.ModPotions;
 import net.chixozhmix.dnmmod.registers.ModRecipes;
 import net.chixozhmix.dnmmod.renderer.ArmorEffectRenderer;
 import net.chixozhmix.dnmmod.registers.ModMenuTypes;
+import net.chixozhmix.dnmmod.renderer.MaskCurioRenderer;
 import net.chixozhmix.dnmmod.screen.component_bag.ComponentBagScreen;
 import net.chixozhmix.dnmmod.screen.medium_bag.MediumBagScreen;
 import net.chixozhmix.dnmmod.registers.SoundsRegistry;
@@ -49,12 +50,16 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
+import top.theillusivec4.curios.api.SlotTypeMessage;
+import top.theillusivec4.curios.api.SlotTypePreset;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -71,6 +76,7 @@ public class DnMmod
         IEventBus modEventBus = context.getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::enqueueIMC);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -103,6 +109,11 @@ public class DnMmod
         modEventBus.addListener(this::addCreative);
     }
 
+    private void enqueueIMC(InterModEnqueueEvent event) {
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
+                () -> SlotTypePreset.HEAD.getMessageBuilder().build());
+    }
+
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.POISON, ModItems.GREEMON_FANG.get(), ModPotions.CORPSE_POISON.get()));
@@ -130,6 +141,7 @@ public class DnMmod
         {
             event.enqueueWork(() -> {
                 CuriosRendererRegistry.register(ModItems.MAGICAL_GRIMOIRE.get(), SpellBookCurioRenderer::new);
+                CuriosRendererRegistry.register(ModItems.MOROKEI_MASK.get(), MaskCurioRenderer::new);
             });
 
             EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);
@@ -137,6 +149,7 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.ACID_PROJECTILE.get(), AcidProjectileRenderer::new);
             EntityRenderers.register(ModEntityType.CHROMATIC_ORB.get(), ChromaticOrbRenderer::new);
             EntityRenderers.register(ModEntityType.RAY_OF_ENFEEBLEMENT.get(), RayOfEnfeeblementRenderer::new);
+            EntityRenderers.register(ModEntityType.CONTAGION_RAY.get(), ContagionRayRenderer::new);
 
             EntityRenderers.register(ModEntityType.UNDEAD_SPIRIT.get(), UndeadSpiritRenderer::new);
             EntityRenderers.register(ModEntityType.SUMMONED_UNDEAD_SPIRIT.get(), SummonedUndeadSpiritRenderer::new);
@@ -150,7 +163,6 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.GOBLIN_WARRIOR.get(), GoblinWariorRenderer::new);
             EntityRenderers.register(ModEntityType.FLAME_ATRONACH.get(), FlameAtronachrenderer::new);
             EntityRenderers.register(ModEntityType.STORM_ATRONACH.get(), StormAtronachRenderer::new);
-            EntityRenderers.register(ModEntityType.CONTAGION_RAY.get(), ContagionRayRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COMPONENT_BAG_MENU.get(), ComponentBagScreen::new);
             MenuScreens.register(ModMenuTypes.MEDIUM_COMPONENT_BAG_MENU.get(), MediumBagScreen::new);

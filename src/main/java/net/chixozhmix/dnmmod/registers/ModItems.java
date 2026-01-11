@@ -14,6 +14,7 @@ import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.PropertiesHelper;
 import net.chixozhmix.dnmmod.items.ModArmorMaterials;
+import net.chixozhmix.dnmmod.items.curio.DragonPriestMask;
 import net.chixozhmix.dnmmod.items.custom.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -306,6 +307,15 @@ public class ModItems {
                     .withAttributes(Curios.RING_SLOT, new AttributeContainer[]{
                             new AttributeContainer(() -> Attributes.ARMOR, 2.0D, AttributeModifier.Operation.ADDITION)
                     })));
+    public static final RegistryObject<CurioBaseItem> MOROKEI_MASK = ITEMS.register("morokei_mask",
+            () -> (new DragonPriestMask(PropertiesHelper.stackItemProperties(1))
+                    .withAttributes("head", new AttributeContainer[]{
+                            new AttributeContainer(() -> Attributes.ARMOR, 4.0D, AttributeModifier.Operation.ADDITION),
+                            new AttributeContainer(() -> AttributeRegistry.LIGHTNING_SPELL_POWER.get(), 0.1F, MULTIPLY_BASE),
+                            new AttributeContainer(() -> AttributeRegistry.LIGHTNING_MAGIC_RESIST.get(), 0.1F, MULTIPLY_BASE),
+                            new AttributeContainer(() -> AttributeRegistry.SPELL_RESIST.get(), 0.05F, MULTIPLY_BASE)
+                    })));
+
     public static final RegistryObject<Item> COMPONENT_BAG = ITEMS.register("component_bag",
             () -> new ComponentBag(PropertiesHelper.itemProperties()));
     public static final RegistryObject<Item> MEDIUM_COMPONENT_BAG = ITEMS.register("medium_component_bag",

@@ -43,6 +43,7 @@
   "item.dnmmod.kapellmeister_wand_core": "Kapellmeister wand core",
   "item.dnmmod.thunderstorm_bottle": "Thunderstorm bottle",
   "item.dnmmod.greemon_fang": "Greemon fang",
+  "item.dnmmod.morokei_mask": "Morokei Mask",
 
   "item.dnmmod.wooden_wand": "Wooden wand",
   "item.dnmmod.cryomancer_wand": "Cryomancer wand",
@@ -142,6 +143,7 @@
   "entity.dnmmod.storm_atronach": "Storm atronach",
 
   "tooltip.dnmmod.maid": "Why not?",
+  "tooltip.dnmmod.dragon_priest_mask": "From this mask comes an ancient power and a whisper in an unknown language.",
 
   "tooltip.dnmmod.hag_eye": "The Hag Coven often creates similar trinkets from those they once ate. A simple magical trinket that hides pleasant bonuses. They say it helps you see in the dark, and you can also use it to spot even those who are outside the walls!",
   "tooltip.dnmmod.wand_core": "In order for the wand to have magical properties, it needs to be powered. The core of the wand is made from various magical components that grant magical properties to the wand created by the caster.",

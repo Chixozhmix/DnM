@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.*;
+import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
 import net.minecraft.nbt.CompoundTag;
@@ -14,6 +15,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
@@ -23,6 +25,7 @@ import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Optional;
 
 @AutoSpellConfig
 public class SummonStormAtronach extends AbstractSpell {
@@ -81,13 +84,18 @@ public class SummonStormAtronach extends AbstractSpell {
     }
 
     @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of((SoundEvent)SoundRegistry.SHOCKWAVE_CAST.get());
+    }
+
+    @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
 
         PlayerRecasts recasts = playerMagicData.getPlayerRecasts();
         if (!recasts.hasRecastForSpell(this)) {
             SummonedEntitiesCastData summonedEntitiesCastData = new SummonedEntitiesCastData();
-            int summonTime = 12000;
+            int summonTime = 3600;
             float radius = 1.5F + 0.185F * (float)spellLevel;
             int count = this.getSummonCount(entity);
 
