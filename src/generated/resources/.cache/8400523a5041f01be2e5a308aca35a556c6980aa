@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-06T15:30:28.1022997	Item Models: dnmmod
+// 1.20.1	2026-01-24T14:23:01.8713264	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
@@ -46,6 +46,7 @@ bc484072c5143712f46c45496a181389bb38b500 assets/dnmmod/models/item/improved_arch
 0ec0c7a2b29a22b73989b04abff82e2240fe7291 assets/dnmmod/models/item/iron_dagger.json
 cc732266c40ec5f6e06eb03b62af32640b806ff1 assets/dnmmod/models/item/iron_klevets.json
 09697377cef873fa19ef159ee16b747ba84a19e1 assets/dnmmod/models/item/iron_mace.json
+541aaef04c2350bbd25700192c288fc9994ae5de assets/dnmmod/models/item/iron_ring.json
 d5962e67dd51a6cd88327dc6f2183134c2fa3a71 assets/dnmmod/models/item/iron_scimitar.json
 20d9a85d1c3c98db6819142969686a46e264c26f assets/dnmmod/models/item/iron_sickle.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/leshy_spawn_egg.json

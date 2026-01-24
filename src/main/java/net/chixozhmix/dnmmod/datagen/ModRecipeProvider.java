@@ -553,6 +553,41 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         RecipeCategory.MISC, ModItems.BURNT_SUGAR.get(), 0.7f, 40)
                 .unlockedBy("has_sugar", has(Items.SUGAR))
                 .save(consumer, DnMmod.MOD_ID + ":burnt_sugar_from_smelting_sugar");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.IRON_RING.get(), 8)
+                .pattern(" I ")
+                .pattern("I I")
+                .pattern(" I ")
+                .define('I', Items.IRON_INGOT)
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.CHAINMAIL_HELMET, 1)
+                .pattern("   ")
+                .pattern("III")
+                .pattern("I I")
+                .define('I', ModItems.IRON_RING.get())
+                .unlockedBy("has_iron_ring", has(Items.IRON_INGOT))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.CHAINMAIL_CHESTPLATE, 1)
+                .pattern("I I")
+                .pattern("III")
+                .pattern("III")
+                .define('I', ModItems.IRON_RING.get())
+                .unlockedBy("has_iron_ring", has(Items.IRON_INGOT))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.CHAINMAIL_LEGGINGS, 1)
+                .pattern("III")
+                .pattern("I I")
+                .pattern("I I")
+                .define('I', ModItems.IRON_RING.get())
+                .unlockedBy("has_iron_ring", has(Items.IRON_INGOT))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, Items.CHAINMAIL_BOOTS, 1)
+                .pattern("   ")
+                .pattern("I I")
+                .pattern("I I")
+                .define('I', ModItems.IRON_RING.get())
+                .unlockedBy("has_iron_ring", has(Items.IRON_INGOT))
+                .save(consumer);
     }
 
     private static Ingredient createPotionIngredient(Potion potions) {

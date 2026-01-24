@@ -204,6 +204,8 @@ public class ModItems {
             new Item(PropertiesHelper.stackItemProperties(64)));
     public static final RegistryObject<Item> GREEMON_FANG = ITEMS.register("greemon_fang", () ->
             new Item(PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<Item> IRON_RING = ITEMS.register("iron_ring", () ->
+            new Item(PropertiesHelper.stackItemProperties(64)));
     //Magic Item
     public static final RegistryObject<Item> HAG_EYE = ITEMS.register("hag_eye", () ->
             new HagEye(PropertiesHelper.stackItemProperties(1)

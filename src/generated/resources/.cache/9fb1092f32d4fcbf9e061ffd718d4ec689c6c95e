@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-06T21:23:51.3049317	Recipes
+// 1.20.1	2026-01-24T14:23:01.8783079	Recipes
 a238538041db1f523cd37b7af5ddc9a14ccf21c5 data/dnmmod/advancements/recipes/combat/bladesinger_sword.json
 66d9b096436d2f53c49785a5c55daa816a200934 data/dnmmod/advancements/recipes/combat/diamond_battleaxe.json
 98ae1d8dd16adc7d287c622589b5edc25b8bef65 data/dnmmod/advancements/recipes/combat/diamond_dagger.json
@@ -50,6 +50,7 @@ e2f06612ed3de558adb6f5bd85dcc21dbb4db4be data/dnmmod/advancements/recipes/misc/c
 07f4d407676cc3a975dea9517c7fdbb31399b292 data/dnmmod/advancements/recipes/misc/improved_archer_chestplate.json
 2fd6917bee04137daa50fb88b00911b448a6374c data/dnmmod/advancements/recipes/misc/improved_archer_helmet.json
 53796af02369c338428ad20926f8d9f5d95dee7c data/dnmmod/advancements/recipes/misc/improved_archer_leggings.json
+8e05a4bde069e449bbe067b9de69f5004c9976d2 data/dnmmod/advancements/recipes/misc/iron_ring.json
 99ab44f2156356a90e433a125f3f8437549067c0 data/dnmmod/advancements/recipes/misc/magical_grimoire.json
 1421bd50a90e5bf57f4222bc42f602ef65cc7cd3 data/dnmmod/advancements/recipes/misc/maid_cap.json
 b23cdaabf24feeda2d78b117c650ad605f822baa data/dnmmod/advancements/recipes/misc/maid_dress.json
@@ -112,6 +113,7 @@ a089d6dab0dbab2dbada62946be19c6e22f449ce data/dnmmod/recipes/improved_archer_che
 3759b1e7f63c0e854497ebc2f9ccf3e9a04cbada data/dnmmod/recipes/iron_katana.json
 d3604437ee3bd286a474cbcc6badde3bd81dab94 data/dnmmod/recipes/iron_klevets.json
 017dc2a5b05d32cfda3e20849412860b9b057560 data/dnmmod/recipes/iron_mace.json
+979e2ff05c18ec00316a1d2d0ed78575f7d25231 data/dnmmod/recipes/iron_ring.json
 1666dd89422d02269195ba71631c376941822729 data/dnmmod/recipes/iron_scimitar.json
 3f1bfd7044e20ba730857318451b3472ce123dff data/dnmmod/recipes/iron_sickle.json
 2d2649fd4ea4ec11d346d2ff34cabaa3d1fe633d data/dnmmod/recipes/iron_spear.json
@@ -133,3 +135,11 @@ a6e2cf4ff4b70b0ce71b0bc821cdb995bfb35aac data/dnmmod/recipes/shadow_archer_leggi
 9cb219d57f8f909d445d19359848570d37add5d5 data/dnmmod/recipes/thunderstorm_bottle.json
 e8c7db65d116ee34407d16777b6e6937d0d9b9ea data/dnmmod/recipes/wand_core.json
 e64d72fd65b029408b3b54a741d3b062754cd327 data/dnmmod/recipes/wooden_wand.json
+505115e4b1f4996bcd8c08e65a0323777777cc27 data/minecraft/advancements/recipes/combat/chainmail_boots.json
+87a3d2415366534af4fae4a6ffe4b17db0702f35 data/minecraft/advancements/recipes/combat/chainmail_chestplate.json
+97934454313c5d670fd80c4f28b29c0986d8e3cc data/minecraft/advancements/recipes/combat/chainmail_helmet.json
+69c3610adfb03f9b19ae39107f9415e8080898e4 data/minecraft/advancements/recipes/combat/chainmail_leggings.json
+c1fb1ddbeb9cc00f13188c6af1999dca67fc0aa9 data/minecraft/recipes/chainmail_boots.json
+597f6a2cba25f01b756feb95ffdc5294a231b990 data/minecraft/recipes/chainmail_chestplate.json
+78af853b9fb13b1b8e70231827ea526f163351af data/minecraft/recipes/chainmail_helmet.json
+6abc744153845892c3b57ead80c1e44e6b2cb945 data/minecraft/recipes/chainmail_leggings.json

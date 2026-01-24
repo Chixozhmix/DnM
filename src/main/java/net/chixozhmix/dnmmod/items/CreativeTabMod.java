@@ -88,6 +88,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.MIRROR.get());
                         output.accept(ModItems.BURNT_SUGAR.get());
                         output.accept(ModItems.DICE20.get());
+                        output.accept(ModItems.IRON_RING.get());
                         output.accept(ModItems.ARCHER_ARMOR_BOOTS.get());
                         output.accept(ModItems.ARCHER_ARMOR_LEGGINGS.get());
                         output.accept(ModItems.ARCHER_ARMOR_CHESTPLATE.get());
@@ -129,7 +130,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.BLADE_RUNE.get());
                         output.accept(ModItems.PROTECTION_RING.get());
 
-                        output.accept(ModItems.MOROKEI_MASK.get());
+                        //output.accept(ModItems.MOROKEI_MASK.get());
 
                         output.accept(ModItems.COMPONENT_BAG.get());
                         output.accept(ModItems.MEDIUM_COMPONENT_BAG.get());

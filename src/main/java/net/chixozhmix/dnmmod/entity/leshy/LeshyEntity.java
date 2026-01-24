@@ -30,7 +30,9 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.AbstractGolem;
+import net.minecraft.world.entity.monster.AbstractIllager;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -82,7 +84,7 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, (double)1.0F));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this, new Class[0]));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractGolem.class, true));
     }
@@ -176,5 +178,28 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
             return false;
 
         return super.addEffect(pEffectInstance, pEntity);
+    }
+
+    @Override
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        // Вызываем супер метод для получения урона
+        boolean hurt = super.hurt(pSource, pAmount);
+
+        if (hurt && !this.level().isClientSide()) {
+            if (pSource.getEntity() instanceof LivingEntity attacker &&
+                    attacker != this && this.canAttack(attacker)) {
+
+                // Проверяем, что это не креативный игрок
+                if (attacker instanceof Player player) {
+                    if (!player.isCreative()) {
+                        this.setTarget((LivingEntity) attacker);
+                    }
+                } else {
+                    this.setTarget((LivingEntity) attacker);
+                }
+            }
+        }
+
+        return hurt;
     }
 }
