@@ -96,6 +96,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.BLADESINGER_LEGGINGS);
         simpleItem(ModItems.BLADESINGER_CHESTPLATE);
         simpleItem(ModItems.BLADESINGER_HELMET);
+        simpleItem(ModItems.MITHRILL_HELMET);
+        simpleItem(ModItems.MITHRILL_CHESTPLATE);
+        simpleItem(ModItems.MITHRILL_LEGGINGS);
+        simpleItem(ModItems.MITHRILL_BOOTS);
 
 
     }

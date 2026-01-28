@@ -105,6 +105,10 @@ public class CreativeTabMod {
                         output.accept(ModItems.BLADESINGER_LEGGINGS.get());
                         output.accept(ModItems.BLADESINGER_CHESTPLATE.get());
                         output.accept(ModItems.BLADESINGER_HELMET.get());
+                        output.accept(ModItems.MITHRILL_HELMET.get());
+                        output.accept(ModItems.MITHRILL_CHESTPLATE.get());
+                        output.accept(ModItems.MITHRILL_LEGGINGS.get());
+                        output.accept(ModItems.MITHRILL_BOOTS.get());
                     })
                     .build());
     //Magic Items

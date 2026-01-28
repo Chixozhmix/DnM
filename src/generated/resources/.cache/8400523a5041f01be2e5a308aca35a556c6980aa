@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-24T14:23:01.8713264	Item Models: dnmmod
+// 1.20.1	2026-01-28T10:31:27.7880092	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
@@ -54,6 +54,10 @@ db3aebb84646c5179e1ffdd450e447969e0b50fb assets/dnmmod/models/item/maid_cap.json
 51ba6441b6fb63dcaf9b2c0e8d28257d3226cb43 assets/dnmmod/models/item/maid_dress.json
 8505f59ea445d2793ceca315a1498086ce8bc447 assets/dnmmod/models/item/medium_component_bag.json
 2d6410dbe22c164b4a6e01d4ccd16f72e6f21a54 assets/dnmmod/models/item/mirror.json
+41006912050995155c8ed9ea7955190ad550b009 assets/dnmmod/models/item/mithril_boots.json
+450027de7e1113dbd5f33943d32cb7a16c9bd8d3 assets/dnmmod/models/item/mithril_chestplate.json
+0e6078febe70cdca79b420ed7eadad7c7923bfaa assets/dnmmod/models/item/mithril_helmet.json
+bd79495f6d712c3e566a253bdc27ea6981a4603f assets/dnmmod/models/item/mithril_leggings.json
 299b7d66545c0461ae8a20ab0cf1dd3878d54cad assets/dnmmod/models/item/phantom_potion.json
 bb8ffd78305763235cd4b46cb12776df844a268e assets/dnmmod/models/item/protection_ring.json
 076a49d47ab5abf4c058c95e7e54faa4c2fd1823 assets/dnmmod/models/item/pyromancer_wand.json

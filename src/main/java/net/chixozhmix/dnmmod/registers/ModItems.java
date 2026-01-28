@@ -254,51 +254,48 @@ public class ModItems {
 
     public static final RegistryObject<Item> ARCHER_ARMOR_HELMET = ITEMS.register("archer_armor_helmet",
             () -> new ArcherArmor(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> ARCHER_ARMOR_CHESTPLATE = ITEMS.register("archer_armor_chestplate",
             () -> new ArcherArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> ARCHER_ARMOR_LEGGINGS = ITEMS.register("archer_armor_leggings",
             () -> new ArcherArmor(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> ARCHER_ARMOR_BOOTS = ITEMS.register("archer_armor_boots",
             () -> new ArcherArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
 
     public static final RegistryObject<Item> IMPROVED_ARCHER_HELMET = ITEMS.register("improved_archer_helmet",
             () -> new ImprovedArcher(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> IMPROVED_ARCHER_CHESTPLATE = ITEMS.register("improved_archer_chestplate",
             () -> new ImprovedArcher(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> IMPROVED_ARCHER_LEGGINGS = ITEMS.register("improved_archer_leggings",
             () -> new ImprovedArcher(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> IMPROVED_ARCHER_BOOTS = ITEMS.register("improved_archer_boots",
             () -> new ImprovedArcher(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
 
     public static final RegistryObject<Item> SHADOW_ARCHER_HELMET = ITEMS.register("shadow_archer_helmet",
             () -> new ShadowArcher(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> SHADOW_ARCHER_CHESTPLATE = ITEMS.register("shadow_archer_chestplate",
             () -> new ShadowArcher(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> SHADOW_ARCHER_LEGGINGS = ITEMS.register("shadow_archer_leggings",
             () -> new ShadowArcher(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> SHADOW_ARCHER_BOOTS = ITEMS.register("shadow_archer_boots",
             () -> new ShadowArcher(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
 
     public static final RegistryObject<Item> BLADESINGER_HELMET = ITEMS.register("bladesinger_helmet",
             () -> new BladesingerArmor(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> BLADESINGER_CHESTPLATE = ITEMS.register("bladesinger_chestplate",
             () -> new BladesingerArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> BLADESINGER_LEGGINGS = ITEMS.register("bladesinger_leggings",
             () -> new BladesingerArmor(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties()));
-
     public static final RegistryObject<Item> BLADESINGER_BOOTS = ITEMS.register("bladesinger_boots",
             () -> new BladesingerArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
+
+    public static final RegistryObject<Item> MITHRILL_HELMET = ITEMS.register("mithril_helmet", () ->
+            new MithrillArmor(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties()));
+    public static final RegistryObject<Item> MITHRILL_CHESTPLATE = ITEMS.register("mithril_chestplate", () ->
+            new MithrillArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties()));
+    public static final RegistryObject<Item> MITHRILL_LEGGINGS = ITEMS.register("mithril_leggings", () ->
+            new MithrillArmor(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties()));
+    public static final RegistryObject<Item> MITHRILL_BOOTS = ITEMS.register("mithril_boots", () ->
+            new MithrillArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
 
     //Spellbooks
     public static final RegistryObject<Item> MAGICAL_GRIMOIRE = ITEMS.register("magical_grimoire",
