@@ -5,7 +5,7 @@ import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.Abstra
 import net.minecraft.resources.ResourceLocation;
 
 public class FlameAtronachModel extends AbstractSpellCastingMobModel {
-    private static final ResourceLocation TEXTURE = new ResourceLocation("dnmmod", "textures/entity/flame_atronach.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation("dnmmod", "textures/entity/flame_atronach/flame_atronach.png");
     private static final ResourceLocation MODEL = new ResourceLocation("dnmmod", "geo/flame_atronach_geo.json");
     private static final ResourceLocation ANIM = new ResourceLocation("dnmmod", "animations/flame_atronach_animation.json");
 

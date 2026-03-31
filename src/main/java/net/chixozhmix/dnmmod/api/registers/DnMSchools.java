@@ -1,9 +1,5 @@
 //package net.chixozhmix.dnmmod.api.registers;
 //
-//import com.gametechbc.traveloptics.api.init.TravelopticsAttributes;
-//import com.gametechbc.traveloptics.util.TravelopticsDamageTypes;
-//import com.gametechbc.traveloptics.util.TravelopticsTags;
-//import com.github.alexmodguy.alexscaves.server.misc.ACSoundRegistry;
 //import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 //import io.redspace.ironsspellbooks.api.spells.SchoolType;
 //import net.chixozhmix.dnmmod.Util.ModTags;

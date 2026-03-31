@@ -51,6 +51,33 @@ public class CreativeTabMod {
                         output.accept(ModItems.BLADESINGER_SWORD.get());
                     })
                     .build());
+    public static final RegistryObject<CreativeModeTab> ARMOR_TAB = CREATIVE_MOD_TABS.register("armor",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SHADOW_ARCHER_HELMET.get()))
+                    .title(Component.translatable("creativetab.dnmmod.armor"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.ARCHER_ARMOR_BOOTS.get());
+                        output.accept(ModItems.ARCHER_ARMOR_LEGGINGS.get());
+                        output.accept(ModItems.ARCHER_ARMOR_CHESTPLATE.get());
+                        output.accept(ModItems.ARCHER_ARMOR_HELMET.get());
+                        output.accept(ModItems.IMPROVED_ARCHER_BOOTS.get());
+                        output.accept(ModItems.IMPROVED_ARCHER_LEGGINGS.get());
+                        output.accept(ModItems.IMPROVED_ARCHER_CHESTPLATE.get());
+                        output.accept(ModItems.IMPROVED_ARCHER_HELMET.get());
+                        output.accept(ModItems.SHADOW_ARCHER_BOOTS.get());
+                        output.accept(ModItems.SHADOW_ARCHER_LEGGINGS.get());
+                        output.accept(ModItems.SHADOW_ARCHER_CHESTPLATE.get());
+                        output.accept(ModItems.SHADOW_ARCHER_HELMET.get());
+                        output.accept(ModItems.BLADESINGER_BOOTS.get());
+                        output.accept(ModItems.BLADESINGER_LEGGINGS.get());
+                        output.accept(ModItems.BLADESINGER_CHESTPLATE.get());
+                        output.accept(ModItems.BLADESINGER_HELMET.get());
+                        output.accept(ModItems.MITHRILL_HELMET.get());
+                        output.accept(ModItems.MITHRILL_CHESTPLATE.get());
+                        output.accept(ModItems.MITHRILL_LEGGINGS.get());
+                        output.accept(ModItems.MITHRILL_BOOTS.get());
+                    })
+                    .build());
+
     //Staffs
     public static final RegistryObject<CreativeModeTab> STAFFS_TAB = CREATIVE_MOD_TABS.register("staffs_and_wand",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.WOODEN_WAND.get()))
@@ -89,26 +116,6 @@ public class CreativeTabMod {
                         output.accept(ModItems.BURNT_SUGAR.get());
                         output.accept(ModItems.DICE20.get());
                         output.accept(ModItems.IRON_RING.get());
-                        output.accept(ModItems.ARCHER_ARMOR_BOOTS.get());
-                        output.accept(ModItems.ARCHER_ARMOR_LEGGINGS.get());
-                        output.accept(ModItems.ARCHER_ARMOR_CHESTPLATE.get());
-                        output.accept(ModItems.ARCHER_ARMOR_HELMET.get());
-                        output.accept(ModItems.IMPROVED_ARCHER_BOOTS.get());
-                        output.accept(ModItems.IMPROVED_ARCHER_LEGGINGS.get());
-                        output.accept(ModItems.IMPROVED_ARCHER_CHESTPLATE.get());
-                        output.accept(ModItems.IMPROVED_ARCHER_HELMET.get());
-                        output.accept(ModItems.SHADOW_ARCHER_BOOTS.get());
-                        output.accept(ModItems.SHADOW_ARCHER_LEGGINGS.get());
-                        output.accept(ModItems.SHADOW_ARCHER_CHESTPLATE.get());
-                        output.accept(ModItems.SHADOW_ARCHER_HELMET.get());
-                        output.accept(ModItems.BLADESINGER_BOOTS.get());
-                        output.accept(ModItems.BLADESINGER_LEGGINGS.get());
-                        output.accept(ModItems.BLADESINGER_CHESTPLATE.get());
-                        output.accept(ModItems.BLADESINGER_HELMET.get());
-                        output.accept(ModItems.MITHRILL_HELMET.get());
-                        output.accept(ModItems.MITHRILL_CHESTPLATE.get());
-                        output.accept(ModItems.MITHRILL_LEGGINGS.get());
-                        output.accept(ModItems.MITHRILL_BOOTS.get());
                     })
                     .build());
     //Magic Items

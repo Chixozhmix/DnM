@@ -82,27 +82,22 @@ public class CloudDagger extends LivingEntity implements GeoEntity, AntiMagicSus
         super.tick();
 
         if (!this.level().isClientSide) {
-            // Check for expiration
             if (this.age > this.lifetime) {
                 this.discard();
                 return;
             }
 
-            // Damage nearby entities every 10 ticks
             if (this.age % 10 == 0) {
                 this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(1.5))
                         .forEach(this::dealDamage);
             }
 
-            // Occasional sound effects
             if (this.age % 40 == 0 && Utils.random.nextFloat() < 0.2F) {
                 this.playSound(SoundRegistry.VOID_TENTACLES_AMBIENT.get(), 1.0F, 1.2F + Utils.random.nextFloat() * 0.3F);
             }
 
         } else {
-            // Client-side particle effects
             if (Utils.random.nextFloat() < 0.3F) {
-                // Sparkle particles
                 this.level().addParticle(ParticleHelper.UNSTABLE_ENDER,
                         this.getX() + Utils.getRandomScaled(0.3),
                         this.getY() + Utils.getRandomScaled(0.3),

@@ -14,11 +14,14 @@ import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRay;
+import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadar;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
 import net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement.RayOfEnfeeblement;
+import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.tallTheDead;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -71,6 +74,17 @@ public class ModEntityType {
                             .sized(1.0F, 1.0F)
                             .clientTrackingRange(64)
                             .build("contagion_ray"));
+    public static final RegistryObject<EntityType<tallTheDead>> TALL_THE_DEAD =
+            ENTITY_TYPES.register("tall_the_dead",
+                    () -> EntityType.Builder.<tallTheDead>of(tallTheDead::new, MobCategory.MISC)
+                            .sized(1.0F, 1.0F)
+                            .clientTrackingRange(64)
+                            .build("tall_the_dead"));
+
+    public static final RegistryObject<EntityType<HungerOfHadar>> HUNGER_OF_HADADR = ENTITY_TYPES.register("hunger_of_hadar",
+            () -> EntityType.Builder.<HungerOfHadar>of(HungerOfHadar::new, MobCategory.MISC)
+                    .sized(11.0F, 11.0F).clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath("dnmmod", "hunger_of_hadar").toString()));
 
     //Mobs
     public static final RegistryObject<EntityType<UndeadSpiritEntity>> UNDEAD_SPIRIT =

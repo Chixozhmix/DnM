@@ -2,9 +2,7 @@ package net.chixozhmix.dnmmod.registers;
 
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.spell.blood.ContagionSpell;
-import net.chixozhmix.dnmmod.spell.blood.RayOfEnfeeblementSpell;
-import net.chixozhmix.dnmmod.spell.blood.SummonUndeadSpiritSpell;
+import net.chixozhmix.dnmmod.spell.blood.*;
 import net.chixozhmix.dnmmod.spell.evocation.*;
 import net.chixozhmix.dnmmod.spell.fire.SummonFlameAtronach;
 import net.chixozhmix.dnmmod.spell.ice.AgathysArmorSpell;
@@ -42,6 +40,8 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> SUMMON_FLAME_ATRONACH = registerSpell(new SummonFlameAtronach());
     public static final RegistryObject<AbstractSpell> CONTAGION_SPELL = registerSpell(new ContagionSpell());
     public static final RegistryObject<AbstractSpell> SUMMON_STORM_ATRONACH = registerSpell(new SummonStormAtronach());
+    public static final RegistryObject<AbstractSpell> TALL_THE_DEAD = registerSpell(new TallTheDead());
+    public static final RegistryObject<AbstractSpell> HUNGER_OF_HADAR = registerSpell(new HungerOfHadarSpell());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

@@ -16,7 +16,7 @@ public class GhostRenderer extends GeoEntityRenderer<GhostEntity> {
     }
 
     private static final ResourceLocation EMISSIVE_TEXTURE =
-            new ResourceLocation(DnMmod.MOD_ID, "textures/entity/ghost_glow.png");
+            new ResourceLocation(DnMmod.MOD_ID, "textures/entity/ghost/ghost_glow.png");
 
     @Override
     public void preRender(PoseStack poseStack, GhostEntity animatable,

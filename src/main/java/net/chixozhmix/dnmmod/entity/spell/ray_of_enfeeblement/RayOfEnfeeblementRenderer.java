@@ -3,7 +3,6 @@ package net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import io.redspace.ironsspellbooks.IronsSpellbooks;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;

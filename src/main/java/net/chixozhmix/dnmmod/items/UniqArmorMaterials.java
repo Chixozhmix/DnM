@@ -69,18 +69,6 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
                     new AttributeModifier("Speed", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
                     (Attribute) ALObjects.Attributes.CRIT_CHANCE.get(),
                     new AttributeModifier("Crit chance", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
-            )),
-    HALFPLATE_ARMOR("halfplate_armor", 35, makeArmorMap(3,7,5,2), 15,
-            SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F,
-            () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.IRON_INGOT}),
-            Map.of((Attribute) ALObjects.Attributes.DODGE_CHANCE.get(),
-                    new AttributeModifier("Dodge", (double)0.02F, AttributeModifier.Operation.MULTIPLY_BASE)
-            )),
-    PLATE_ARMOR("plate_armor", 37, heavyArmorMap(), 15,
-            SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.1F,
-            () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.IRON_INGOT}),
-            Map.of((Attribute) ALObjects.Attributes.DODGE_CHANCE.get(),
-                    new AttributeModifier("Dodge", (double)0.04F, AttributeModifier.Operation.MULTIPLY_BASE)
             ));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};

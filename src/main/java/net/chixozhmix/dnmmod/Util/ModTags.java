@@ -8,11 +8,11 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 public class ModTags {
-//    public static final TagKey<Item> NECRO_FOCUS;
+    public static final TagKey<Item> NECRO_FOCUS;
     public static final TagKey<Item> COMPONENT;
 
     static {
-//        NECRO_FOCUS = TagKey.create(Registries.ITEM, new ResourceLocation(DnMmod.MOD_ID, "necro_focus"));
+        NECRO_FOCUS = TagKey.create(Registries.ITEM, new ResourceLocation(DnMmod.MOD_ID, "necro_focus"));
         COMPONENT = TagKey.create(Registries.ITEM, new ResourceLocation(DnMmod.MOD_ID, "component"));
     }
 }

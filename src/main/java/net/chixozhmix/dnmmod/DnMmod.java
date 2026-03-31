@@ -3,6 +3,9 @@ package net.chixozhmix.dnmmod;
 import com.mojang.logging.LogUtils;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.chixozhmix.dnmmod.Util.BrewingRecipe;
+import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadar;
+import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadarRenderer;
+import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.TallTheDeadRenderer;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronachRenderer;
 import net.chixozhmix.dnmmod.registers.Fluids;
 import net.chixozhmix.dnmmod.registers.ModBlocks;
@@ -150,6 +153,8 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.CHROMATIC_ORB.get(), ChromaticOrbRenderer::new);
             EntityRenderers.register(ModEntityType.RAY_OF_ENFEEBLEMENT.get(), RayOfEnfeeblementRenderer::new);
             EntityRenderers.register(ModEntityType.CONTAGION_RAY.get(), ContagionRayRenderer::new);
+            EntityRenderers.register(ModEntityType.TALL_THE_DEAD.get(), TallTheDeadRenderer::new);
+            EntityRenderers.register(ModEntityType.HUNGER_OF_HADADR.get(), HungerOfHadarRenderer::new);
 
             EntityRenderers.register(ModEntityType.UNDEAD_SPIRIT.get(), UndeadSpiritRenderer::new);
             EntityRenderers.register(ModEntityType.SUMMONED_UNDEAD_SPIRIT.get(), SummonedUndeadSpiritRenderer::new);
@@ -179,6 +184,14 @@ public class DnMmod
             event.registerLayerDefinition(SummonedRavenRenderer.MODEL_LAYER_LOCATION, SummonedRavenModel::createBodyLayer);
             event.registerLayerDefinition(RayOfEnfeeblementRenderer.MODEL_LAYER_LOCATION, RayOfEnfeeblementRenderer::createBodyLayer);
         }
+
+//        @SubscribeEvent
+//        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+//            event.registerEntityRenderer(
+//                    ModEntityType.HUNGER_OF_HADADR.get(),
+//                    HungerOfHadarRenderer::new
+//            );
+//        }
     }
 
     public static ResourceLocation id(@NotNull String path) {

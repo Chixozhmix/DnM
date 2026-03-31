@@ -111,6 +111,11 @@
   "item.dnmmod.mithril_leggings": "Mithril leggings",
   "item.dnmmod.mithril_boots": "Mithril boots",
 
+  "item.dnmmod.plate_helmet": "Plate helmet",
+  "item.dnmmod.plate_chestplate": "Plate chestplate",
+  "item.dnmmod.plate_leggings": "Plate leggings",
+  "item.dnmmod.plate_boots": "Plate boots",
+
   "item.dnmmod.protection_ring": "Protection ring",
 
   "item.minecraft.potion.effect.corpse_poison": "Corpse poison",
@@ -157,6 +162,7 @@
 
   "ui.dnmmod.bounces": "Bounces: %d",
   "ui.dnmmod.spell_component": "Spell component: %s",
+  "ui.dnmmod.damage_min_health": "Damage to a creature with less than maximum health: %s",
 
   "ui.dnmmod.green_hag_bossbar": "Green Hag",
   "ui.dnmmod.leshy_bossbar": "Leshy",
@@ -172,6 +178,7 @@
   "ui.dnmmod.knock.opened": "§aSuccessfully opened %d lock(s)",
 
   "creativetab.dnmmod.weapons": "Weapons",
+  "creativetab.dnmmod.armor": "Armor",
   "creativetab.dnmmod.staffs": "Staffs and wands",
   "creativetab.dnmmod.items": "Items",
   "creativetab.dnmmod.blocks": "Blocks",
@@ -194,6 +201,8 @@
   "sounds.dnmmod.leshy": "Leshy",
 
   "school.dnmmod.necro": "Necromancy",
+
+  "fluid_type.dnmmod.phantom_potion": "Phantom potion",
 
   "attribute.dnmmod.necro_magic_resist": "Necromancy resist",
   "attribute.dnmmod.necro_spell_power": "Necromancy spell power",
@@ -250,5 +259,8 @@
   "spell.dnmmod.contagion.guide": "You choose a creature, infecting it and everyone around it with a deadly disease.",
 
   "spell.dnmmod.summon_storm_atronach": "Summon storm atronach",
-  "spell.dnmmod.summon_storm_atronach.guide": "You call upon the forces of thunder to create a powerful Atronach."
+  "spell.dnmmod.summon_storm_atronach.guide": "You call upon the forces of thunder to create a powerful Atronach.",
+
+  "spell.dnmmod.tall_the_dead": "Tall the dead",
+  "spell.dnmmod.tall_the_dead.guide": "Choose a target that will hear the funeral bells ringing in their souls."
 }

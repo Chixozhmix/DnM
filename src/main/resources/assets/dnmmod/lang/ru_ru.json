@@ -112,6 +112,11 @@
   "item.dnmmod.mithrill_leggings": "Мифриловые поножи",
   "item.dnmmod.mithrill_boots": "Мифриловые ботинки",
 
+  "item.dnmmod.plate_helmet": "Латный шлем",
+  "item.dnmmod.plate_chestplate": "Латный нагрудник",
+  "item.dnmmod.plate_leggings": "Латные поножи",
+  "item.dnmmod.plate_boots": "Латные ботинки",
+
   "item.dnmmod.protection_ring": "Кольцо защиты",
 
   "item.minecraft.potion.effect.corpse_poison": "Трупный яд",
@@ -158,6 +163,7 @@
 
   "ui.dnmmod.bounces": "Отскакиваний: %d",
   "ui.dnmmod.spell_component": "Компонент заклинания: %s",
+  "ui.dnmmod.damage_min_health": "Урон по существам, чье здоровье меньше максимума: %s",
 
   "ui.dnmmod.green_hag_bossbar": "Зеленая Карга",
   "ui.dnmmod.leshy_bossbar": "Леший",
@@ -173,6 +179,7 @@
   "ui.dnmmod.knock.opened": "§aУспешно открыто %d замка(ов)",
 
   "creativetab.dnmmod.weapons": "Оружие",
+  "creativetab.dnmmod.armor": "Броня",
   "creativetab.dnmmod.staffs": "Посохи и палочки",
   "creativetab.dnmmod.items": "Предметы",
   "creativetab.dnmmod.blocks": "Блоки",
@@ -195,6 +202,8 @@
   "sounds.dnmmod.leshy": "Леший",
 
   "school.dnmmod.necro": "Некромантия",
+
+  "fluid_type.dnmmod.phantom_potion": "Зелье фантома",
 
   "attribute.dnmmod.necro_magic_resist": "Сопротивление магии некромантии",
   "attribute.dnmmod.necro_spell_power": "Сила заклинаний некромантии",
@@ -251,5 +260,8 @@
   "spell.dnmmod.contagion.guide": "Вы выбираете существо, поражая его и всех вокруг него смертельной болезнью.",
 
   "spell.dnmmod.summon_storm_atronach": "Призыв грозового атронаха",
-  "spell.dnmmod.summon_storm_atronach.guide": "Вы взываете к силам грома, чтобы создать могущетсвенного атронаха."
+  "spell.dnmmod.summon_storm_atronach.guide": "Вы взываете к силам грома, чтобы создать могущетсвенного атронаха.",
+
+  "spell.dnmmod.tall_the_dead": "Погребальный звон",
+  "spell.dnmmod.tall_the_dead.guide": "Выберите цель, которая услышит погребальный звон, пробирающий до самой души."
 }

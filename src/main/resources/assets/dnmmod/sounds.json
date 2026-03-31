@@ -51,9 +51,13 @@
     ]
   },
   "necro_magic": {
-    "subtitles": "sounds.dnmmod.necro_sound",
     "sounds": [
       "dnmmod:necro_magic"
+    ]
+  },
+  "tall_the_dead": {
+    "sounds": [
+      "dnmmod:tall_the_dead"
     ]
   }
 }

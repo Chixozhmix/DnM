@@ -18,7 +18,7 @@ public class GhostModel extends GeoModel<GhostEntity> {
 
     @Override
     public ResourceLocation getTextureResource(GhostEntity ghostEntity) {
-        return new ResourceLocation(DnMmod.MOD_ID, "textures/entity/ghost.png");
+        return new ResourceLocation(DnMmod.MOD_ID, "textures/entity/ghost/ghost.png");
     }
 
     @Override
