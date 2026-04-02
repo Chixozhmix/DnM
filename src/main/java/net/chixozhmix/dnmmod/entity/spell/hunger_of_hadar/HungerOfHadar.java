@@ -5,16 +5,15 @@ import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
-import io.redspace.ironsspellbooks.entity.spells.black_hole.BlackHole;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.registers.RegistrySpells;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -48,7 +47,8 @@ public class HungerOfHadar extends Projectile implements AntiMagicSusceptible {
     public HungerOfHadar(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.trackingEntities = new ArrayList();
-        this.noCulling = true; // Важно для больших объектов
+        this.noCulling = true;
+        ticksSinceLastSound = 0;
     }
 
     public HungerOfHadar(Level pLevel, LivingEntity owner, Vec3 center) {
@@ -69,120 +69,63 @@ public class HungerOfHadar extends Projectile implements AntiMagicSusceptible {
                 ticksSinceLastDamage = 0;
             }
 
-            handleSound();
+            ticksSinceLastSound++;
+            if ((this.tickCount - 1) % soundInterval == 0 &&
+                    (getDuration() < soundInterval || this.tickCount + soundInterval < getDuration())) {
+
+                this.playSound(
+                        SoundEvents.SCULK_SHRIEKER_SHRIEK,
+                        getRadius() / 3.0F,
+                        0.9F + random.nextFloat() * 0.2F
+                );
+                ticksSinceLastSound = 0;
+            }
 
             if (this.tickCount >= getDuration()) {
-                playEndSound();
+                this.playSound(
+                        SoundRegistry.BLACK_HOLE_CAST.get(),
+                        getRadius() / 2.0F,
+                        1.0F
+                );
                 this.discard();
             }
         }
 
         this.level().addParticle(ParticleHelper.VOID_TENTACLE_FOG, this.getX() + Utils.getRandomScaled((double)0.5F), this.getY() + Utils.getRandomScaled((double)0.5F) + (double)0.2F, this.getZ() + Utils.getRandomScaled((double)0.5F), Utils.getRandomScaled((double)2.0F), (double)(-this.random.nextFloat() * 0.5F), Utils.getRandomScaled((double)2.0F));
+        spawnAreaParticles();
     }
 
-    private void handleSound() {
-        ticksSinceLastSound++;
+    private void spawnAreaParticles() {
+        float radius = getRadius();
+        Vec3 centerPos = center != null ? center : this.position();
 
-        if (!hasPlayedStartSound && tickCount > 0) {
-            playStartSound();
-            hasPlayedStartSound = true;
-        }
+        int particleCount = Math.max(1, (int) (radius * 1.5));
 
-        if (ticksSinceLastSound >= soundInterval) {
-            playLoopSound();
-            ticksSinceLastSound = 0;
-        }
-    }
+        for (int i = 0; i < particleCount; i++) {
+            Vec3 particlePos = getRandomPointInSphere(centerPos, radius);
 
-    private void playStartSound() {
-        if (this.level().isClientSide) return;
-
-        this.level().playSound(
-                null,
-                this.getX(), this.getY(), this.getZ(),
-                SoundRegistry.BLACK_HOLE_CAST.get(),
-                SoundSource.HOSTILE,
-                1.5F,
-                0.7F + random.nextFloat() * 0.3F
-        );
-    }
-
-    private void playLoopSound() {
-        if (this.level().isClientSide) return;
-
-        this.level().playSound(
-                null,
-                this.getX(), this.getY(), this.getZ(),
-                SoundEvents.SCULK_SHRIEKER_SHRIEK,
-                SoundSource.HOSTILE,
-                0.8F + (float) Math.sin(tickCount * 0.1) * 0.2F,
-                0.8F + (float) Math.sin(tickCount * 0.15) * 0.2F
-        );
-
-        if (tickCount % 80 == 0) { // Каждые 4 секунды
-            this.level().playSound(
-                    null,
-                    this.getX(), this.getY(), this.getZ(),
-                    SoundRegistry.BLACK_HOLE_LOOP.get(),
-                    SoundSource.HOSTILE,
-                    1.0F,
-                    0.5F + random.nextFloat() * 0.5F
-            );
-        }
-
-        if (random.nextInt(3) == 0) { // Случайный звук
-            this.level().playSound(
-                    null,
-                    this.getX() + (random.nextDouble() - 0.5) * getRadius(),
-                    this.getY() + random.nextDouble() * getRadius(),
-                    this.getZ() + (random.nextDouble() - 0.5) * getRadius(),
-                    SoundEvents.SCULK_BLOCK_SPREAD,
-                    SoundSource.HOSTILE,
-                    1.2F,
-                    0.6F + random.nextFloat() * 0.6F
+            this.level().addParticle(
+                    ParticleTypes.SCULK_SOUL,
+                    particlePos.x, particlePos.y, particlePos.z,
+                    0.0F, 0.05F, 0.0F
             );
         }
     }
 
-    private void playEndSound() {
-        if (this.level().isClientSide) return;
+    private Vec3 getRandomPointInSphere(Vec3 center, float radius) {
+        // Метод с равномерным распределением внутри сферы
+        // Используем кубический корень для равномерного распределения по объему
+        double x = (random.nextDouble() - 0.5) * 2 * radius;
+        double y = (random.nextDouble() - 0.5) * 2 * radius;
+        double z = (random.nextDouble() - 0.5) * 2 * radius;
 
-        // Звук исчезновения
-        this.level().playSound(
-                null,
-                this.getX(), this.getY(), this.getZ(),
-                SoundEvents.SCULK_SHRIEKER_SHRIEK,
-                SoundSource.HOSTILE,
-                1.2F,
-                1.2F
-        );
+        Vec3 point = new Vec3(x, y, z);
 
-        // Звук схлопывания
-        this.level().playSound(
-                null,
-                this.getX(), this.getY(), this.getZ(),
-                SoundRegistry.BLACK_HOLE_CAST.get(),
-                SoundSource.HOSTILE,
-                1.2F,
-                0.4F
-        );
-    }
-    public void setSoundInterval(int interval) {
-        this.soundInterval = interval;
-    }
+        if (point.length() > radius) {
+            point = point.normalize().scale(radius);
+        }
 
-    // Метод для принудительного проигрывания звука
-    public void playCustomSound(SoundEvent sound, float volume, float pitch) {
-        if (this.level().isClientSide) return;
-
-        this.level().playSound(
-                null,
-                this.getX(), this.getY(), this.getZ(),
-                sound,
-                SoundSource.HOSTILE,
-                volume,
-                pitch
-        );
+        return center.add(point);
     }
 
     private void applyAreaDamage() {
@@ -251,7 +194,6 @@ public class HungerOfHadar extends Projectile implements AntiMagicSusceptible {
     @Override
     public void onAntiMagic(MagicData magicData) {
         if (!this.level().isClientSide) {
-            playEndSound();
         }
         this.discard();
     }
@@ -399,8 +341,8 @@ public class HungerOfHadar extends Projectile implements AntiMagicSusceptible {
     }
 
     static {
-        DATA_RADIUS = SynchedEntityData.defineId(BlackHole.class, EntityDataSerializers.FLOAT);
-        DATA_DAMAGE = SynchedEntityData.defineId(BlackHole.class, EntityDataSerializers.FLOAT);
-        DATA_DURATION = SynchedEntityData.defineId(BlackHole.class, EntityDataSerializers.INT);
+        DATA_RADIUS = SynchedEntityData.defineId(HungerOfHadar.class, EntityDataSerializers.FLOAT);
+        DATA_DAMAGE = SynchedEntityData.defineId(HungerOfHadar.class, EntityDataSerializers.FLOAT);
+        DATA_DURATION = SynchedEntityData.defineId(HungerOfHadar.class, EntityDataSerializers.INT);
     }
 }
