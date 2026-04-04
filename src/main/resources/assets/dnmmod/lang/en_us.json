@@ -123,8 +123,8 @@
   "item.minecraft.lingering_potion.effect.corpse_poison": "Lingering corpse poison",
 
   "block.dnmmod.clay_shale": "Clay shale",
-  "block.dnmmod.coke_oven": "Coke oven",
   "block.dnmmod.leshy_altar": "Leshy Altar",
+  "block.dnmmod.scroll_table": "Scroll table",
 
   "entity.dnmmod.cloud_dagger": "Magic Dagger",
   "entity.dnmmod.ice_dagger": "Ice dagger",
@@ -265,5 +265,5 @@
   "spell.dnmmod.tall_the_dead.guide": "Choose a target that will hear the funeral bells ringing in their souls.",
 
   "spell.dnmmod.hunger_of_hadar": "Hunger of Hadar",
-  "spell.dnmmod.hunger_of_hadar.guide": "You summon a sphere filled with darkness and cold, blinding enemies and dealing damage to them. You healing for 10% of damage done."
+  "spell.dnmmod.hunger_of_hadar.guide": "You summon a sphere filled with darkness and cold, blinding enemies and dealing damage to them."
 }

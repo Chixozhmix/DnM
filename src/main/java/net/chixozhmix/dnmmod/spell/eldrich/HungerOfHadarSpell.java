@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.spell.blood;
+package net.chixozhmix.dnmmod.spell.eldrich;
 
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
@@ -30,12 +30,12 @@ public class HungerOfHadarSpell extends AbstractSpell {
         this.baseSpellPower = 6;
         this.spellPowerPerLevel = 1;
         this.castTime = 25;
-        this.baseManaCost = 60;
+        this.baseManaCost = 100;
     }
 
     private DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.RARE)
-            .setSchoolResource(SchoolRegistry.BLOOD_RESOURCE)
+            .setMinRarity(SpellRarity.LEGENDARY)
+            .setSchoolResource(SchoolRegistry.ELDRITCH_RESOURCE)
             .setMaxLevel(5)
             .setCooldownSeconds(120)
             .build();
@@ -120,11 +120,6 @@ public class HungerOfHadarSpell extends AbstractSpell {
     }
 
     private float getDamage(int spellLevel, LivingEntity entity) {
-        return this.getSpellPower(spellLevel, entity) * 2F;
-    }
-
-    @Override
-    public SpellDamageSource getDamageSource(Entity projectile, Entity attacker) {
-        return super.getDamageSource(projectile, attacker).setLifestealPercent(0.10F);
+        return this.getSpellPower(spellLevel, entity) * 2.5F;
     }
 }

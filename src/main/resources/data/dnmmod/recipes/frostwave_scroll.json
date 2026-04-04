@@ -1,0 +1,29 @@
+{
+  "type": "dnmmod:scroll_table",
+  "ingredients": [
+    {"item": "irons_spellbooks:blood_vial"},
+    {"item": "minecraft:blaze_powder"},
+    {"item": "minecraft:fire_charge"},
+    {"item": "minecraft:gunpowder"},
+    {"item": "irons_spellbooks:blood_vial"},
+    {"item": "irons_spellbooks:blood_vial"}
+  ],
+  "output": {
+    "item": "irons_spellbooks:scroll"
+  },
+  "nbt": {
+    "irons_spellbooks:spell_container": {
+      "maxSpells": 1,
+      "mustEquip": 0,
+      "spellWheel": 0,
+      "data": [
+        {
+          "index": 0,
+          "id": "irons_spellbooks:fireball",
+          "locked": 1,
+          "level": 1
+        }
+      ]
+    }
+  }
+}

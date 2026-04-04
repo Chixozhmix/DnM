@@ -124,8 +124,8 @@
   "item.minecraft.lingering_potion.effect.corpse_poison": "Оседающий трупный яд",
 
   "block.dnmmod.clay_shale": "Глинистый сланец",
-  "block.dnmmod.coke_oven": "Коксовая печь",
   "block.dnmmod.leshy_altar": "Алтарь Лешего",
+  "block.dnmmod.scroll_table": "Стол для свитков",
 
   "entity.dnmmod.cloud_dagger": "Магический кинжал",
   "entity.dnmmod.ice_dagger": "Ледяной кинжал",
@@ -266,5 +266,5 @@
   "spell.dnmmod.tall_the_dead.guide": "Выберите цель, которая услышит погребальный звон, пробирающий до самой души.",
 
   "spell.dnmmod.hunger_of_hadar": "Голод Хадара",
-  "spell.dnmmod.hunger_of_hadar.guide": "Вы призываете сферу, заполненную тьмой и холодом, ослепляющую врагов и наносящую им урон. Вы восстанавливаете 10% от нанесенного урона."
+  "spell.dnmmod.hunger_of_hadar.guide": "Вы призываете сферу, заполненную тьмой и холодом, ослепляющую врагов и наносящую им урон."
 }

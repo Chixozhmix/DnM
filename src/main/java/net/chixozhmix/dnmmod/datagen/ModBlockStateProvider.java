@@ -20,6 +20,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.LESHY_ALTAR.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/leshy_altar")));
+
+        simpleBlockWithItem(ModBlocks.SCROLL_TABLE.get(), new ModelFile.UncheckedModelFile(modLoc("block/scroll_table")));
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

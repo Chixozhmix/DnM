@@ -25,6 +25,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     @Override
     protected void generate() {
         this.dropSelf(ModBlocks.CLAY_SHALE.get());
+        this.dropSelf(ModBlocks.SCROLL_TABLE.get());
 
         this.add(ModBlocks.LESHY_ALTAR.get(),
                 block -> createBlockDrop(ModBlocks.LESHY_ALTAR.get(), Items.BONE));

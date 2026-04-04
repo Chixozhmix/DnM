@@ -3,6 +3,7 @@ package net.chixozhmix.dnmmod.registers;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.spell.blood.*;
+import net.chixozhmix.dnmmod.spell.eldrich.HungerOfHadarSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
 import net.chixozhmix.dnmmod.spell.fire.SummonFlameAtronach;
 import net.chixozhmix.dnmmod.spell.ice.AgathysArmorSpell;

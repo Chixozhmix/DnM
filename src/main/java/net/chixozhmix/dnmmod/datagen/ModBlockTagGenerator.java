@@ -20,7 +20,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.CLAY_SHALE.get());
+                .add(ModBlocks.CLAY_SHALE.get())
+                .add(ModBlocks.SCROLL_TABLE.get());
 
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL);
 

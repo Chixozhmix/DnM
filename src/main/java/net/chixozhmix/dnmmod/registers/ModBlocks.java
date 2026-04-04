@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.blocks.custom.LeshyAltarBlock;
+import net.chixozhmix.dnmmod.blocks.custom.ScrollTableBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -27,6 +28,10 @@ public class ModBlocks {
                     .isRedstoneConductor((state, getter, pos) -> false)
                     .isSuffocating((state, getter, pos) -> false)
                     .isViewBlocking((state, getter, pos) -> false)));
+
+    public static final RegistryObject<Block> SCROLL_TABLE = registerBlock("scroll_table", () ->
+            new ScrollTableBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE)));
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

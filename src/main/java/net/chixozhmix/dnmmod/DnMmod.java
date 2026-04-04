@@ -3,14 +3,10 @@ package net.chixozhmix.dnmmod;
 import com.mojang.logging.LogUtils;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.chixozhmix.dnmmod.Util.BrewingRecipe;
-import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadar;
 import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadarRenderer;
 import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.TallTheDeadRenderer;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronachRenderer;
-import net.chixozhmix.dnmmod.registers.Fluids;
-import net.chixozhmix.dnmmod.registers.ModBlocks;
-import net.chixozhmix.dnmmod.registers.ModEffects;
-import net.chixozhmix.dnmmod.registers.ModEntityType;
+import net.chixozhmix.dnmmod.registers.*;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachrenderer;
 import net.chixozhmix.dnmmod.entity.ghost.GhostRenderer;
@@ -31,16 +27,11 @@ import net.chixozhmix.dnmmod.entity.summoned.client.SummonedRavenModel;
 import net.chixozhmix.dnmmod.entity.summoned.client.SummonedRavenRenderer;
 import net.chixozhmix.dnmmod.entity.summoned.client.SummonedUndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.items.CreativeTabMod;
-import net.chixozhmix.dnmmod.registers.ModItems;
-import net.chixozhmix.dnmmod.registers.ModPotions;
-import net.chixozhmix.dnmmod.registers.ModRecipes;
 import net.chixozhmix.dnmmod.renderer.ArmorEffectRenderer;
-import net.chixozhmix.dnmmod.registers.ModMenuTypes;
 import net.chixozhmix.dnmmod.renderer.MaskCurioRenderer;
 import net.chixozhmix.dnmmod.screen.component_bag.ComponentBagScreen;
 import net.chixozhmix.dnmmod.screen.medium_bag.MediumBagScreen;
-import net.chixozhmix.dnmmod.registers.SoundsRegistry;
-import net.chixozhmix.dnmmod.registers.RegistrySpells;
+import net.chixozhmix.dnmmod.screen.scroll_table.ScrollTableScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
@@ -91,6 +82,7 @@ public class DnMmod
         ModItems.register(modEventBus);
         //Blocks
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         //Effects
         ModEffects.register(modEventBus);
         //Spells
@@ -171,6 +163,7 @@ public class DnMmod
 
             MenuScreens.register(ModMenuTypes.COMPONENT_BAG_MENU.get(), ComponentBagScreen::new);
             MenuScreens.register(ModMenuTypes.MEDIUM_COMPONENT_BAG_MENU.get(), MediumBagScreen::new);
+            MenuScreens.register(ModMenuTypes.SCROLL_TABLE_MENU.get(), ScrollTableScreen::new);
 
             MinecraftForge.EVENT_BUS.register(new ArmorEffectRenderer());
         }

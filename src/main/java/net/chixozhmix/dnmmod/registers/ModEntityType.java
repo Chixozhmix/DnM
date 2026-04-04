@@ -80,7 +80,6 @@ public class ModEntityType {
                             .sized(1.0F, 1.0F)
                             .clientTrackingRange(64)
                             .build("tall_the_dead"));
-
     public static final RegistryObject<EntityType<HungerOfHadar>> HUNGER_OF_HADADR = ENTITY_TYPES.register("hunger_of_hadar",
             () -> EntityType.Builder.<HungerOfHadar>of(HungerOfHadar::new, MobCategory.MISC)
                     .sized(11.0F, 11.0F).clientTrackingRange(64)
