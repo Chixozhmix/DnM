@@ -83,7 +83,7 @@ public class HungerOfHadarSpell extends AbstractSpell {
         center = raycast.getLocation();
 
         if(raycast.getType() == HitResult.Type.BLOCK)
-            center = center.add(0, 1, 0); // Поднимаем над землей
+            center = center.add(0, 1, 0);
 
         center = Utils.moveToRelativeGroundLevel(level, center, 2);
 

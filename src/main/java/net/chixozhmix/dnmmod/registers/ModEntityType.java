@@ -18,6 +18,7 @@ import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadar;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
 import net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement.RayOfEnfeeblement;
 import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.tallTheDead;
+import net.chixozhmix.dnmmod.entity.spell.tombstone.Tombstone;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
@@ -84,6 +85,13 @@ public class ModEntityType {
             () -> EntityType.Builder.<HungerOfHadar>of(HungerOfHadar::new, MobCategory.MISC)
                     .sized(11.0F, 11.0F).clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath("dnmmod", "hunger_of_hadar").toString()));
+    public static final RegistryObject<EntityType<Tombstone>> TOMBSTONE =
+            ENTITY_TYPES.register("tombstone",
+                    () -> EntityType.Builder.<Tombstone>of(Tombstone::new, MobCategory.MISC)
+                            .sized(1.0F, 1.0F)
+                            .clientTrackingRange(64)
+                            .build("tombstone"));
+
 
     //Mobs
     public static final RegistryObject<EntityType<UndeadSpiritEntity>> UNDEAD_SPIRIT =

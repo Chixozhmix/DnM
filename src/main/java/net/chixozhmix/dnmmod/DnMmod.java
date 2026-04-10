@@ -5,6 +5,7 @@ import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.chixozhmix.dnmmod.Util.BrewingRecipe;
 import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadarRenderer;
 import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.TallTheDeadRenderer;
+import net.chixozhmix.dnmmod.entity.spell.tombstone.TombstoneRenderer;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronachRenderer;
 import net.chixozhmix.dnmmod.registers.*;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
@@ -147,6 +148,7 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.CONTAGION_RAY.get(), ContagionRayRenderer::new);
             EntityRenderers.register(ModEntityType.TALL_THE_DEAD.get(), TallTheDeadRenderer::new);
             EntityRenderers.register(ModEntityType.HUNGER_OF_HADADR.get(), HungerOfHadarRenderer::new);
+            EntityRenderers.register(ModEntityType.TOMBSTONE.get(), TombstoneRenderer::new);
 
             EntityRenderers.register(ModEntityType.UNDEAD_SPIRIT.get(), UndeadSpiritRenderer::new);
             EntityRenderers.register(ModEntityType.SUMMONED_UNDEAD_SPIRIT.get(), SummonedUndeadSpiritRenderer::new);

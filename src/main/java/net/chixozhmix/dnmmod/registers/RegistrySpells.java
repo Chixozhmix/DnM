@@ -43,6 +43,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> SUMMON_STORM_ATRONACH = registerSpell(new SummonStormAtronach());
     public static final RegistryObject<AbstractSpell> TALL_THE_DEAD = registerSpell(new TallTheDead());
     public static final RegistryObject<AbstractSpell> HUNGER_OF_HADAR = registerSpell(new HungerOfHadarSpell());
+    public static final RegistryObject<AbstractSpell> BURIAL_GROUND = registerSpell(new BurialGroundSpell());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

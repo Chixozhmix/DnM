@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.events;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.entity.spell.tombstone.Tombstone;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
@@ -28,6 +29,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
         event.put(ModEntityType.MAGIC_DAGGER.get(), CloudDagger.createLivingAttributes().build());
+        event.put(ModEntityType.TOMBSTONE.get(), Tombstone.createLivingAttributes().build());
         event.put(ModEntityType.UNDEAD_SPIRIT.get(), UndeadSpiritEntity.createAttributes());
         event.put(ModEntityType.SUMMONED_UNDEAD_SPIRIT.get(), SummonedUndeadSpirit.createAttributes());
         event.put(ModEntityType.GOBLIN_SHAMAN.get(), GoblinShamanEntity.prepareAttributes().build());
