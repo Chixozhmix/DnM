@@ -260,11 +260,14 @@
   "spell.dnmmod.contagion.guide": "Вы выбираете существо, поражая его и всех вокруг него смертельной болезнью.",
 
   "spell.dnmmod.summon_storm_atronach": "Призыв грозового атронаха",
-  "spell.dnmmod.summon_storm_atronach.guide": "Вы взываете к силам грома, чтобы создать могущетсвенного атронаха.",
+  "spell.dnmmod.summon_storm_atronach.guide": "Вы взываете к силам грома, чтобы создать могущественного атронаха.",
 
   "spell.dnmmod.tall_the_dead": "Погребальный звон",
   "spell.dnmmod.tall_the_dead.guide": "Выберите цель, которая услышит погребальный звон, пробирающий до самой души.",
 
   "spell.dnmmod.hunger_of_hadar": "Голод Хадара",
-  "spell.dnmmod.hunger_of_hadar.guide": "Вы призываете сферу, заполненную тьмой и холодом, ослепляющую врагов и наносящую им урон."
+  "spell.dnmmod.hunger_of_hadar.guide": "Вы призываете сферу, заполненную тьмой и холодом, ослепляющую врагов и наносящую им урон.",
+
+  "spell.dnmmod.burial_ground": "Могильник",
+  "spell.dnmmod.burial_ground.guide": "Вы оскверняете землю в области негативной энергией, разрывающей саму душу. Вы исцеляетесь на 10% от нанесенного урона."
 }

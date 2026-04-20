@@ -179,14 +179,6 @@ public class DnMmod
             event.registerLayerDefinition(SummonedRavenRenderer.MODEL_LAYER_LOCATION, SummonedRavenModel::createBodyLayer);
             event.registerLayerDefinition(RayOfEnfeeblementRenderer.MODEL_LAYER_LOCATION, RayOfEnfeeblementRenderer::createBodyLayer);
         }
-
-//        @SubscribeEvent
-//        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-//            event.registerEntityRenderer(
-//                    ModEntityType.HUNGER_OF_HADADR.get(),
-//                    HungerOfHadarRenderer::new
-//            );
-//        }
     }
 
     public static ResourceLocation id(@NotNull String path) {

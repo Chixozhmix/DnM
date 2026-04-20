@@ -265,5 +265,8 @@
   "spell.dnmmod.tall_the_dead.guide": "Choose a target that will hear the funeral bells ringing in their souls.",
 
   "spell.dnmmod.hunger_of_hadar": "Hunger of Hadar",
-  "spell.dnmmod.hunger_of_hadar.guide": "You summon a sphere filled with darkness and cold, blinding enemies and dealing damage to them."
+  "spell.dnmmod.hunger_of_hadar.guide": "You summon a sphere filled with darkness and cold, blinding enemies and dealing damage to them.",
+
+  "spell.dnmmod.burial_ground": "Burial Ground",
+  "spell.dnmmod.burial_ground.guide": "You desecrate the land with negative energy that tears apart the soul itself. You healing for 10% of damage done."
 }

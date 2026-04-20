@@ -1,6 +1,5 @@
 package net.chixozhmix.dnmmod.effect.custom;
 
-import dev.shadowsoffire.attributeslib.api.ALObjects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -25,16 +24,19 @@ public class PhantomEffect extends MobEffect {
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         super.applyEffectTick(pLivingEntity, pAmplifier);
 
-        if(pLivingEntity instanceof Player player) {
+        if (pLivingEntity instanceof Player player) {
             Level level = player.level();
 
-            AttributeInstance creativeFlightAttr = player.getAttribute(ALObjects.Attributes.CREATIVE_FLIGHT.get());
-            if (creativeFlightAttr != null) {
-                creativeFlightAttr.setBaseValue(1.0);
+            // Включаем полет без атрибута
+            if (!player.getAbilities().mayfly) {
+                player.getAbilities().mayfly = true;
             }
 
-            player.getAbilities().mayfly = true;
-            player.getAbilities().flying = true;
+            // Автоматически активируем полет
+            if (!player.getAbilities().flying) {
+                player.getAbilities().flying = true;
+            }
+
             player.onUpdateAbilities();
 
             player.noPhysics = true;
@@ -130,10 +132,7 @@ public class PhantomEffect extends MobEffect {
         }
 
         private static void resetPlayerPhysics(Player player) {
-            AttributeInstance creativeFlightAttr = player.getAttribute(ALObjects.Attributes.CREATIVE_FLIGHT.get());
-            if (creativeFlightAttr != null) {
-                creativeFlightAttr.setBaseValue(0.0);
-            }
+            // Отключаем полет только если игрок не в креативе и не в режиме наблюдателя
             if (!player.isCreative() && !player.isSpectator()) {
                 player.getAbilities().mayfly = false;
                 player.getAbilities().flying = false;

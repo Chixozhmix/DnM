@@ -1,6 +1,5 @@
 package net.chixozhmix.dnmmod.items;
 
-import dev.shadowsoffire.attributeslib.api.ALObjects;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.item.armor.IronsExtendedArmorMaterial;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
@@ -16,6 +15,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.puffish.attributesmod.AttributesMod;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -27,7 +27,7 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
             () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.LEATHER}),
             Map.of((Attribute) Attributes.MOVEMENT_SPEED,
                     new AttributeModifier("Speed", (double)0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) ALObjects.Attributes.ARROW_DAMAGE.get(),
+                    (Attribute) AttributesMod.RANGED_DAMAGE,
                     new AttributeModifier("Arrow Power", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
                     )),
     IMPROVED_ARCHER("improved_archer", 15, mediumArmorMap(), 15,
@@ -35,20 +35,20 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
             () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.IRON_INGOT}),
             Map.of((Attribute) Attributes.MOVEMENT_SPEED,
                     new AttributeModifier("Speed", (double)0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) ALObjects.Attributes.ARROW_DAMAGE.get(),
+                    (Attribute) AttributesMod.RANGED_DAMAGE,
                     new AttributeModifier("Arrow Power", 0.1F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) ALObjects.Attributes.CRIT_CHANCE.get(),
-                    new AttributeModifier("Crit chance", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+                    (Attribute) AttributesMod.BOW_PROJECTILE_SPEED,
+                    new AttributeModifier("Bow Speed", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
             )),
     SHADOW_ARCHER("shadow_archer", 37, heavyArmorMap(), 15,
             SoundEvents.ARMOR_EQUIP_NETHERITE, 0.0F, 0.0F,
             () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.NETHERITE_INGOT}),
             Map.of((Attribute) Attributes.MOVEMENT_SPEED,
                     new AttributeModifier("Speed", (double)0.1F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) ALObjects.Attributes.ARROW_DAMAGE.get(),
+                    AttributesMod.RANGED_DAMAGE,
                     new AttributeModifier("Arrow Power", 0.15F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) ALObjects.Attributes.CRIT_CHANCE.get(),
-                    new AttributeModifier("Crit chance", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+                    (Attribute) AttributesMod.BOW_PROJECTILE_SPEED,
+                    new AttributeModifier("Bow Speed", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
             )),
     BLADESINGER_ARMOR("bladesinger_armor", 37, heavyArmorMap(), 15,
             SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F,
@@ -67,8 +67,8 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
                     new AttributeModifier("Spell resist", (double)0.1F, AttributeModifier.Operation.MULTIPLY_BASE),
                     (Attribute) Attributes.MOVEMENT_SPEED,
                     new AttributeModifier("Speed", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) ALObjects.Attributes.CRIT_CHANCE.get(),
-                    new AttributeModifier("Crit chance", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+                    (Attribute) AttributesMod.MELEE_RESISTANCE,
+                    new AttributeModifier("Meele resist", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
             ));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
