@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.recipe;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.minecraft.core.NonNullList;
@@ -35,13 +36,22 @@ public class ScrollTableRecipe implements Recipe<SimpleContainer> {
 
         // Проверяем все 7 входных слотов (индексы 0-6)
         for (int i = 0; i < 7; i++) {
-            // Если в рецепте есть ингредиент для этого слота и он не совпадает
-            if (i < inputItems.size() && !inputItems.get(i).test(simpleContainer.getItem(i))) {
-                return false;
+            ItemStack slotItem = simpleContainer.getItem(i);
+
+            // Получаем ингредиент для этого слота (если индекс выходит за пределы - Ingredient.EMPTY)
+            Ingredient ingredient = i < inputItems.size() ? inputItems.get(i) : Ingredient.EMPTY;
+
+            // Если ингредиент пустой (Ingredient.EMPTY), то слот должен быть пустым
+            if (ingredient == Ingredient.EMPTY || ingredient.getItems().length == 0) {
+                if (!slotItem.isEmpty()) {
+                    return false;
+                }
             }
-            // Если в рецепте нет ингредиента для этого слота, но предмет есть
-            else if (i >= inputItems.size() && !simpleContainer.getItem(i).isEmpty()) {
-                return false;
+            // Если ингредиент не пустой, проверяем совпадение
+            else {
+                if (!ingredient.test(slotItem)) {
+                    return false;
+                }
             }
         }
 
@@ -108,7 +118,6 @@ public class ScrollTableRecipe implements Recipe<SimpleContainer> {
             CompoundTag outputNbt = null;
             if (pSerializedRecipe.has("nbt")) {
                 JsonObject nbtObject = GsonHelper.getAsJsonObject(pSerializedRecipe, "nbt");
-                // Преобразуем JsonObject в CompoundTag
                 outputNbt = jsonToNbt(nbtObject);
             }
 
@@ -116,7 +125,18 @@ public class ScrollTableRecipe implements Recipe<SimpleContainer> {
             NonNullList<Ingredient> inputs = NonNullList.withSize(7, Ingredient.EMPTY);
 
             for (int i = 0; i < ingredients.size() && i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+                JsonElement element = ingredients.get(i);
+                if (element.isJsonObject()) {
+                    JsonObject obj = element.getAsJsonObject();
+                    // Проверяем, не является ли это пустым ингредиентом (air)
+                    if (obj.has("item") && obj.get("item").getAsString().equals("minecraft:air")) {
+                        inputs.set(i, Ingredient.EMPTY);
+                    } else {
+                        inputs.set(i, Ingredient.fromJson(element));
+                    }
+                } else {
+                    inputs.set(i, Ingredient.EMPTY);
+                }
             }
 
             return new ScrollTableRecipe(inputs, output, recipeId, outputNbt);

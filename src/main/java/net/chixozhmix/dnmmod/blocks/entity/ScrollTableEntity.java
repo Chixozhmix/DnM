@@ -29,7 +29,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ScrollTableEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(8);
+    private final ItemStackHandler itemHandler = new ItemStackHandler(8) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged(); // ВАЖНО
+        }
+    };
 
     private static final int OUTPUT_SLOT = 7;
 
@@ -142,6 +147,7 @@ public class ScrollTableEntity extends BlockEntity implements MenuProvider {
             itemHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
             craftedItemWaiting = false;
             resetProgress();
+            //setChanged();
         }
 
         // Если игрок забрал результат — тратим ингредиенты
@@ -222,6 +228,8 @@ public class ScrollTableEntity extends BlockEntity implements MenuProvider {
             currentOutput.grow(result.getCount());
             itemHandler.setStackInSlot(OUTPUT_SLOT, currentOutput);
         }
+
+        setChanged();
     }
 
     // Удаляем ингредиенты ТОЛЬКО после забора результата
@@ -244,6 +252,8 @@ public class ScrollTableEntity extends BlockEntity implements MenuProvider {
                 itemHandler.extractItem(i, 1, false);
             }
         }
+
+        setChanged();
     }
 
     private boolean canInsertItemIntoOutputSlot(net.minecraft.world.item.Item item) {

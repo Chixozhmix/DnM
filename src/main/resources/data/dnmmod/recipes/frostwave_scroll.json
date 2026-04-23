@@ -6,7 +6,7 @@
     {"item": "minecraft:ice"},
     {"item": "minecraft:ice"},
     {"item": "irons_spellbooks:frosted_helve"},
-    {"item": "irons_spellbooks:frozen_bone"},
+    {"item":  "minecraft:air"},
     {"item":  "minecraft:paper"}
   ],
   "output": {

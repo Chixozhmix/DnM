@@ -12,6 +12,7 @@ import io.redspace.ironsspellbooks.spells.holy.GreaterHealSpell;
 import io.redspace.ironsspellbooks.spells.ice.SummonPolarBearSpell;
 import io.redspace.ironsspellbooks.spells.lightning.*;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
+import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
 import net.chixozhmix.dnmmod.registers.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -33,43 +34,41 @@ import java.util.function.Supplier;
         ChargeSpell.class, GreaterHealSpell.class, GustSpell.class, InvisibilitySpell.class, RaiseDeadSpell.class, SummonPolarBearSpell.class,
         ThunderstormSpell.class, WallOfFireSpell.class})
 public abstract class InfoSpellMixin {
-    @Unique
-    private static final Map<Class<?>, Supplier<Item>> SPELL_COMPONENTS = new HashMap<>();
-
-    static {
-        SPELL_COMPONENTS.put(LightningBoltSpell.class, () -> Items.LIGHTNING_ROD);
-        SPELL_COMPONENTS.put(LightningLanceSpell.class, () -> ModItems.IRON_TRIDENT.get());
-        SPELL_COMPONENTS.put(BallLightningSpell.class, () -> ItemRegistry.LIGHTNING_BOTTLE.get());
-        SPELL_COMPONENTS.put(BlackHoleSpell.class, () -> Items.LODESTONE);
-        SPELL_COMPONENTS.put(BurningDashSpell.class, () -> ModItems.BURNT_SUGAR.get());
-        SPELL_COMPONENTS.put(ChargeSpell.class, () -> ItemRegistry.ENERGIZED_CORE.get());
-        SPELL_COMPONENTS.put(GreaterHealSpell.class, () -> Items.GLISTERING_MELON_SLICE);
-        SPELL_COMPONENTS.put(GustSpell.class, () -> Items.FEATHER);
-        SPELL_COMPONENTS.put(InvisibilitySpell.class, () -> Items.GLASS_BOTTLE);
-        SPELL_COMPONENTS.put(RaiseDeadSpell.class, () -> Items.ROTTEN_FLESH);
-        SPELL_COMPONENTS.put(SummonPolarBearSpell.class, () -> Items.COD);
-        SPELL_COMPONENTS.put(ThunderstormSpell.class, () -> ModItems.THUNDERSTORM_BOTTLE.get());
-        SPELL_COMPONENTS.put(WallOfFireSpell.class, () -> Items.LAVA_BUCKET);
-    }
-
     private AbstractSpell getThisSpell() {
         return (AbstractSpell)(Object)this;
     }
 
-    private Class<? extends AbstractSpell> getSpellClass() {
-        return getThisSpell().getClass();
+    private String getSpellClassName() {
+        return getThisSpell().getClass().getName();
     }
 
     @Inject(method = "getUniqueInfo", at = @At("RETURN"), cancellable = true, remap = false)
     private void modifyGetUniqueInfo(int spellLevel, LivingEntity caster, CallbackInfoReturnable<List<MutableComponent>> cir) {
-        Supplier<Item> componentSupplier = SPELL_COMPONENTS.get(this.getSpellClass());
+        String spellClassName = getSpellClassName();
+
+        // Получаем компонент из конфига
+        Supplier<Item> componentSupplier = SpellComponentConfig.getSpellComponents().get(spellClassName);
+
         if (componentSupplier != null) {
-            Item component = componentSupplier.get();
-            if (component != null) {
+            Item requiredComponent = componentSupplier.get();
+            if (requiredComponent != null && requiredComponent != Items.AIR) {
                 List<MutableComponent> original = cir.getReturnValue();
-                List<MutableComponent> modified = new java.util.ArrayList<>(original);
+                List<MutableComponent> modified = new java.util.ArrayList<>();
+
+                // Копируем только НЕ компонентные строки (на случай, если уже был добавлен компонент)
+                for (MutableComponent comp : original) {
+                    String str = comp.getString();
+                    if (!str.contains("ui.dnmmod.spell_component") &&
+                            !str.contains("Component:") &&
+                            !str.contains(SpellUtils.getComponentName(Items.AIR).getString())) {
+                        modified.add(comp);
+                    }
+                }
+
+                // Добавляем актуальный компонент из конфига
                 modified.add(Component.translatable("ui.dnmmod.spell_component",
-                        SpellUtils.getComponentName(component)));
+                        SpellUtils.getComponentName(requiredComponent)));
+
                 cir.setReturnValue(modified);
             }
         }

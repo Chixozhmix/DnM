@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "tag": "minecraft:planks"
+    },
+    "L": {
+      "tag": "minecraft:logs"
+    },
+    "C": {
+      "item": "irons_spellbooks:common_ink"
+    }
+  },
+  "pattern": [
+    "  C",
+    "PPP",
+    " L "
+  ],
+  "result": {
+    "item": "dnmmod:scroll_table"
+  },
+  "show_notification": true
+}

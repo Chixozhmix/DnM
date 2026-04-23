@@ -3,6 +3,8 @@ package net.chixozhmix.dnmmod;
 import com.mojang.logging.LogUtils;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.chixozhmix.dnmmod.Util.BrewingRecipe;
+import net.chixozhmix.dnmmod.Util.ModCapabilities;
+import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
 import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadarRenderer;
 import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.TallTheDeadRenderer;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.TombstoneRenderer;
@@ -46,7 +48,9 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
@@ -74,6 +78,13 @@ public class DnMmod
         modEventBus.addListener(this::enqueueIMC);
 
         MinecraftForge.EVENT_BUS.register(this);
+
+        SpellComponentConfig.register();
+
+        ModCapabilities.isTravelOpticsLoaded();
+        ModCapabilities.isGeomancyPlusLoaded();
+        ModCapabilities.isAlshanexFamiliarsLoaded();
+        ModCapabilities.isAlexsCavesLoaded();
 
         //Sounds
         SoundsRegistry.register(modEventBus);

@@ -30,7 +30,10 @@ public class ModBlocks {
                     .isViewBlocking((state, getter, pos) -> false)));
 
     public static final RegistryObject<Block> SCROLL_TABLE = registerBlock("scroll_table", () ->
-            new ScrollTableBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE)));
+            new ScrollTableBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).noOcclusion()
+                    .isRedstoneConductor((state, getter, pos) -> false)
+                    .isSuffocating((state, getter, pos) -> false)
+                    .isViewBlocking((state, getter, pos) -> false)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
