@@ -52,13 +52,18 @@ public class ScrollTableCategory implements IRecipeCategory<ScrollTableRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder iRecipeLayoutBuilder, ScrollTableRecipe scrollTableRecipe, IFocusGroup iFocusGroup) {
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 56, 11).addIngredients(scrollTableRecipe.getIngredients().get(0));
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 104, 11).addIngredients(scrollTableRecipe.getIngredients().get(1));
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 50, 35).addIngredients(scrollTableRecipe.getIngredients().get(2));
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 56, 59).addIngredients(scrollTableRecipe.getIngredients().get(3));
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 104, 59).addIngredients(scrollTableRecipe.getIngredients().get(4));
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 110, 35).addIngredients(scrollTableRecipe.getIngredients().get(5));
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 30, 12).addIngredients(scrollTableRecipe.getIngredients().get(0));
 
-        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 80, 35).addItemStack(scrollTableRecipe.getResultItem(null));
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 130, 12).addIngredients(scrollTableRecipe.getIngredients().get(1));
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 21, 37).addIngredients(scrollTableRecipe.getIngredients().get(2));
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 138, 37).addIngredients(scrollTableRecipe.getIngredients().get(3));
+
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 30, 59).addIngredients(scrollTableRecipe.getIngredients().get(4));
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 130, 59).addIngredients(scrollTableRecipe.getIngredients().get(5));
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 80, 17).addIngredients(scrollTableRecipe.getIngredients().get(6));
+
+// OUTPUT
+        iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 80, 54)
+                .addItemStack(scrollTableRecipe.getResultItem(null));
     }
 }

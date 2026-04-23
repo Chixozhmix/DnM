@@ -22,7 +22,7 @@ public class ScrolltableMenu extends AbstractContainerMenu {
     private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
-    private static final int TE_INVENTORY_SLOT_COUNT = 7; // 7 слотов всего
+    private static final int TE_INVENTORY_SLOT_COUNT = 8; // 8 слотов всего
 
     public final ScrollTableEntity blockEntity;
     private final Level level;
@@ -35,7 +35,7 @@ public class ScrolltableMenu extends AbstractContainerMenu {
     public ScrolltableMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.SCROLL_TABLE_MENU.get(), pContainerId);
 
-        checkContainerSize(inv, 7);
+        checkContainerSize(inv, 8);
         blockEntity = ((ScrollTableEntity) entity);
         this.level = inv.player.level();
         this.data = data;
@@ -44,17 +44,28 @@ public class ScrolltableMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            // 6 входных слотов (ряды по 3 слота)
-            // Верхний ряд (слоты 0,1,2)
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 56, 11));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 104, 11));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 50, 35));
-            // Нижний ряд (слоты 3,4,5)
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 56, 59));
-            this.addSlot(new SlotItemHandler(iItemHandler, 4, 104, 59));
-            this.addSlot(new SlotItemHandler(iItemHandler, 5, 110, 35));
-            // Выходной слот посередине (слот 6)
-            this.addSlot(new SlotItemHandler(iItemHandler, 6, 80, 35));
+            // ВХОДНЫЕ СЛОТЫ (0–6)
+            // 1
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 29, 11));
+            // 2
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 129, 11));
+            // 3
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 20, 36));
+            // 4
+            this.addSlot(new SlotItemHandler(iItemHandler, 3, 137, 36));
+            // 5
+            this.addSlot(new SlotItemHandler(iItemHandler, 4, 29, 58));
+            // 6
+            this.addSlot(new SlotItemHandler(iItemHandler, 5, 129, 58));
+            // 7
+            this.addSlot(new SlotItemHandler(iItemHandler, 6, 79, 17));
+            // OUTPUT
+            this.addSlot(new SlotItemHandler(iItemHandler, 7, 79, 53) {
+                @Override
+                public boolean mayPlace(ItemStack stack) {
+                    return false;
+                }
+            });
         });
 
         addDataSlots(data);
@@ -71,7 +82,7 @@ public class ScrolltableMenu extends AbstractContainerMenu {
         if (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
             // Перемещаем из инвентаря игрока в TE (только во входные слоты, не в выходной)
             if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX,
-                    TE_INVENTORY_FIRST_SLOT_INDEX + 6, false)) {
+                    TE_INVENTORY_FIRST_SLOT_INDEX + 7, false)) {
                 return ItemStack.EMPTY;
             }
         } else if (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {

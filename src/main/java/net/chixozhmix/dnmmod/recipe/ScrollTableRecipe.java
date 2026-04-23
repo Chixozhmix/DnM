@@ -33,8 +33,8 @@ public class ScrollTableRecipe implements Recipe<SimpleContainer> {
         if(level.isClientSide)
             return false;
 
-        // Проверяем все 6 входных слотов (индексы 0-5)
-        for (int i = 0; i < 6; i++) {
+        // Проверяем все 7 входных слотов (индексы 0-6)
+        for (int i = 0; i < 7; i++) {
             // Если в рецепте есть ингредиент для этого слота и он не совпадает
             if (i < inputItems.size() && !inputItems.get(i).test(simpleContainer.getItem(i))) {
                 return false;
@@ -113,7 +113,7 @@ public class ScrollTableRecipe implements Recipe<SimpleContainer> {
             }
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(6, Ingredient.EMPTY);
+            NonNullList<Ingredient> inputs = NonNullList.withSize(7, Ingredient.EMPTY);
 
             for (int i = 0; i < ingredients.size() && i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));

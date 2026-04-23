@@ -1,12 +1,12 @@
 {
   "type": "dnmmod:scroll_table",
   "ingredients": [
-    {"item": "irons_spellbooks:common_ink"},
+    {"item": "irons_spellbooks:rare_ink"},
+    {"item": "minecraft:blaze_powder"},
+    {"item": "minecraft:fire_charge"},
+    {"item": "minecraft:gunpowder"},
     {"item": "irons_spellbooks:blood_vial"},
-    {"item": "minecraft:ice"},
-    {"item": "minecraft:ice"},
-    {"item": "irons_spellbooks:frosted_helve"},
-    {"item": "irons_spellbooks:frozen_bone"},
+    {"item": "irons_spellbooks:blood_vial"},
     {"item":  "minecraft:paper"}
   ],
   "output": {
@@ -20,7 +20,7 @@
       "data": [
         {
           "index": 0,
-          "id": "irons_spellbooks:frostwave",
+          "id": "irons_spellbooks:fireball",
           "locked": 1,
           "level": 1
         }

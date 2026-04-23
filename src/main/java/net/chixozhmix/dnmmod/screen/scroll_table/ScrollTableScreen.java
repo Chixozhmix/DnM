@@ -17,6 +17,23 @@ public class ScrollTableScreen extends AbstractContainerScreen<ScrolltableMenu> 
     }
 
     @Override
+    protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
+        pGuiGraphics.pose().pushPose();
+        float scale = 0.7f;
+
+        pGuiGraphics.pose().scale(scale, scale, 1f);
+
+        int x = (int)(this.titleLabelX / scale);
+        int y = (int)(this.titleLabelY / scale);
+
+        pGuiGraphics.drawString(this.font, this.title, x, y, 4210752, false);
+        pGuiGraphics.drawString(this.font, this.playerInventoryTitle,
+                this.inventoryLabelX, this.inventoryLabelY, 4210752, false);
+
+        pGuiGraphics.pose().popPose();
+    }
+
+    @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);

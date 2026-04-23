@@ -1,6 +1,5 @@
 package net.chixozhmix.dnmmod.blocks.entity;
 
-import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.chixozhmix.dnmmod.recipe.ScrollTableRecipe;
 import net.chixozhmix.dnmmod.registers.ModBlockEntities;
 import net.chixozhmix.dnmmod.screen.scroll_table.ScrolltableMenu;
@@ -8,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
@@ -31,15 +29,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ScrollTableEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(7);
+    private final ItemStackHandler itemHandler = new ItemStackHandler(8);
 
-    private static final int INPUT_SLOT_1 = 0;
-    private static final int INPUT_SLOT_2 = 1;
-    private static final int INPUT_SLOT_3 = 2;
-    private static final int INPUT_SLOT_4 = 3;
-    private static final int INPUT_SLOT_5 = 4;
-    private static final int INPUT_SLOT_6 = 5;
-    private static final int OUTPUT_SLOT = 6;
+    private static final int OUTPUT_SLOT = 7;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
@@ -47,26 +39,25 @@ public class ScrollTableEntity extends BlockEntity implements MenuProvider {
     private int progress = 0;
     private int maxProgress = 1;
 
-    // Флаг, указывающий, что крафт завершен и предмет ожидает забора
     private boolean craftedItemWaiting = false;
 
-    public ScrollTableEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.SCROLL_TABLE_BE.get(), pPos, pBlockState);
+    public ScrollTableEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.SCROLL_TABLE_BE.get(), pos, state);
         this.data = new ContainerData() {
             @Override
             public int get(int i) {
                 return switch (i) {
-                    case 0 -> ScrollTableEntity.this.progress;
-                    case 1 -> ScrollTableEntity.this.maxProgress;
+                    case 0 -> progress;
+                    case 1 -> maxProgress;
                     default -> 0;
                 };
             }
 
             @Override
-            public void set(int i, int i1) {
+            public void set(int i, int value) {
                 switch (i) {
-                    case 0 -> ScrollTableEntity.this.progress = i1;
-                    case 1 -> ScrollTableEntity.this.maxProgress = i1;
+                    case 0 -> progress = value;
+                    case 1 -> maxProgress = value;
                 }
             }
 
@@ -79,7 +70,7 @@ public class ScrollTableEntity extends BlockEntity implements MenuProvider {
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == ForgeCapabilities.ITEM_HANDLER) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return lazyItemHandler.cast();
         }
         return super.getCapability(cap, side);
@@ -99,12 +90,9 @@ public class ScrollTableEntity extends BlockEntity implements MenuProvider {
 
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-
-        for(int i = 0; i < itemHandler.getSlots(); i++)
-        {
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
-
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
@@ -114,44 +102,68 @@ public class ScrollTableEntity extends BlockEntity implements MenuProvider {
     }
 
     @Override
-    public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return new ScrolltableMenu(i, inventory, this, this.data);
+    public @Nullable AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+        return new ScrolltableMenu(id, inventory, this, this.data);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        pTag.put("inventory", itemHandler.serializeNBT());
-        pTag.putInt("scroll_table.progress", progress);
-        pTag.putBoolean("scroll_table.crafted_waiting", craftedItemWaiting);
-        super.saveAdditional(pTag);
+    protected void saveAdditional(CompoundTag tag) {
+        tag.put("inventory", itemHandler.serializeNBT());
+        tag.putInt("progress", progress);
+        tag.putBoolean("crafted_waiting", craftedItemWaiting);
+        super.saveAdditional(tag);
     }
 
     @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
-        itemHandler.deserializeNBT(pTag.getCompound("inventory"));
-        progress = pTag.getInt("scroll_table.progress");
-        craftedItemWaiting = pTag.getBoolean("scroll_table.crafted_waiting");
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        itemHandler.deserializeNBT(tag.getCompound("inventory"));
+        progress = tag.getInt("progress");
+        craftedItemWaiting = tag.getBoolean("crafted_waiting");
     }
 
-    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
-        // Проверяем, был ли забран готовый предмет
-        if (craftedItemWaiting && this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty()) {
+    private boolean stillHasValidRecipe() {
+        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
+
+        for (int i = 0; i < 7; i++) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i));
+        }
+
+        if (level == null) return false;
+
+        return level.getRecipeManager()
+                .getRecipeFor(ScrollTableRecipe.Type.INSTANCE, inventory, level)
+                .isPresent();
+    }
+
+    public void tick(Level level, BlockPos pos, BlockState state) {
+
+        if (craftedItemWaiting && !stillHasValidRecipe()) {
+            itemHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
             craftedItemWaiting = false;
             resetProgress();
         }
 
-        // Начинаем новый крафт только если нет ожидающего предмета
-        if (!craftedItemWaiting && hasRecipe()) {
-            increaseCraftingProgress();
-            setChanged(pLevel, pPos, pState);
+        // Если игрок забрал результат — тратим ингредиенты
+        if (craftedItemWaiting && itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty()) {
+            consumeIngredients();
+            craftedItemWaiting = false;
+            resetProgress();
+        }
 
-            if (hasProgressFinished()) {
+        // Пока результат не забрали — новый крафт НЕ запускаем
+        if (craftedItemWaiting) return;
+
+        if (hasRecipe()) {
+            progress++;
+            setChanged(level, pos, state);
+
+            if (progress >= maxProgress) {
                 craftItem();
-                craftedItemWaiting = true; // Отмечаем, что предмет готов и ждет забора
+                craftedItemWaiting = true;
                 resetProgress();
             }
-        } else if (!craftedItemWaiting) {
+        } else {
             resetProgress();
         }
     }
@@ -162,11 +174,11 @@ public class ScrollTableEntity extends BlockEntity implements MenuProvider {
 
     private boolean hasRecipe() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for (int i = 0; i < 6; i++) {
+
+        for (int i = 0; i < 7; i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
 
-        Level level = this.level;
         if (level == null) return false;
 
         var recipe = level.getRecipeManager()
@@ -183,70 +195,64 @@ public class ScrollTableEntity extends BlockEntity implements MenuProvider {
 
     private ItemStack getCraftingResult() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for (int i = 0; i < 6; i++) {
+
+        for (int i = 0; i < 7; i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
 
-        Level level = this.level;
         if (level == null) return ItemStack.EMPTY;
 
         var recipe = level.getRecipeManager()
                 .getRecipeFor(ScrollTableRecipe.Type.INSTANCE, inventory, level);
 
-        if (recipe.isEmpty()) return ItemStack.EMPTY;
-
-        return recipe.get().assemble(inventory, level.registryAccess());
+        return recipe.map(r -> r.assemble(inventory, level.registryAccess()))
+                .orElse(ItemStack.EMPTY);
     }
 
+    // Только создаём результат — БЕЗ удаления ингредиентов
     private void craftItem() {
         ItemStack result = getCraftingResult();
         if (result.isEmpty()) return;
 
+        ItemStack currentOutput = itemHandler.getStackInSlot(OUTPUT_SLOT);
+
+        if (currentOutput.isEmpty()) {
+            itemHandler.setStackInSlot(OUTPUT_SLOT, result.copy());
+        } else if (currentOutput.is(result.getItem())) {
+            currentOutput.grow(result.getCount());
+            itemHandler.setStackInSlot(OUTPUT_SLOT, currentOutput);
+        }
+    }
+
+    // Удаляем ингредиенты ТОЛЬКО после забора результата
+    private void consumeIngredients() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for (int i = 0; i < 6; i++) {
+
+        for (int i = 0; i < 7; i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
 
-        // Получаем рецепт, чтобы узнать, какие предметы потреблять
         var recipe = level.getRecipeManager()
                 .getRecipeFor(ScrollTableRecipe.Type.INSTANCE, inventory, level);
 
         if (recipe.isEmpty()) return;
 
-        // Потребляем предметы согласно ингредиентам рецепта
         NonNullList<Ingredient> ingredients = recipe.get().getIngredients();
-        for (int i = 0; i < ingredients.size() && i < 6; i++) {
+
+        for (int i = 0; i < ingredients.size() && i < 7; i++) {
             if (!ingredients.get(i).isEmpty()) {
-                this.itemHandler.extractItem(i, 1, false);
+                itemHandler.extractItem(i, 1, false);
             }
-        }
-
-        // Добавляем результат в выходной слот
-        ItemStack currentOutput = this.itemHandler.getStackInSlot(OUTPUT_SLOT);
-
-        if (currentOutput.isEmpty()) {
-            this.itemHandler.setStackInSlot(OUTPUT_SLOT, result.copy());
-        } else if (currentOutput.is(result.getItem())) {
-            currentOutput.grow(result.getCount());
-            this.itemHandler.setStackInSlot(OUTPUT_SLOT, currentOutput);
         }
     }
 
     private boolean canInsertItemIntoOutputSlot(net.minecraft.world.item.Item item) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
+        ItemStack output = itemHandler.getStackInSlot(OUTPUT_SLOT);
+        return output.isEmpty() || output.is(item);
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <=
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
-    }
-
-    private boolean hasProgressFinished() {
-        return progress >= maxProgress;
-    }
-
-    private void increaseCraftingProgress() {
-        progress++;
+        ItemStack output = itemHandler.getStackInSlot(OUTPUT_SLOT);
+        return output.getCount() + count <= output.getMaxStackSize();
     }
 }
