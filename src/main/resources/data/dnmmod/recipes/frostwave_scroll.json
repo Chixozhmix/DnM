@@ -7,7 +7,7 @@
     {"item": "minecraft:ice"},
     {"item": "irons_spellbooks:frosted_helve"},
     {"item":  "minecraft:air"},
-    {"item":  "minecraft:paper"}
+    {"item":  "dnmmod:parchment"}
   ],
   "output": {
     "item": "irons_spellbooks:scroll"

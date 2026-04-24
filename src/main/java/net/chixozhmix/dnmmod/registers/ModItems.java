@@ -242,6 +242,8 @@ public class ModItems {
                     .rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> BURNT_SUGAR = ITEMS.register("burnt_sugar", () ->
             new Item(PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<Item> PARCHMENT = ITEMS.register("parchment", () ->
+            new Item(PropertiesHelper.stackItemProperties(64)));
     //Potions
     public static final RegistryObject<Item> PHANTOM_POTION = ITEMS.register("phantom_potion",
             () -> new SimpleElixir(ItemPropertiesHelper.material(), () ->

@@ -92,7 +92,7 @@ public class ScrollTableBlock extends BaseEntityBlock {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
         }
-        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+        return InteractionResult.sidedSuccess(pLevel.isClientSide());
     }
 
     @Override

@@ -58,6 +58,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.BLADE_RUNE);
         simpleItem(ModItems.GREEMON_FANG);
         simpleItem(ModItems.IRON_RING);
+        simpleItem(ModItems.PARCHMENT);
         //Staff and wands
         handheldItem(ModItems.WOODEN_WAND);
         handheldItem(ModItems.CRYOMANCER_WAND);

@@ -588,6 +588,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('I', ModItems.IRON_RING.get())
                 .unlockedBy("has_iron_ring", has(Items.IRON_INGOT))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PARCHMENT.get(), 1)
+                .pattern(" E ")
+                .pattern("EPE")
+                .pattern(" E ")
+                .define('P', Items.PAPER)
+                .define('E', ItemRegistry.ARCANE_ESSENCE.get())
+                .unlockedBy("has_paper", has(Items.PAPER))
+                .save(consumer);
     }
 
     private static Ingredient createPotionIngredient(Potion potions) {

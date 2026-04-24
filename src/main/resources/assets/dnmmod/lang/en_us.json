@@ -79,6 +79,7 @@
   "item.dnmmod.blade_rune": "Blade rune",
   "item.dnmmod.key": "Key",
   "item.dnmmod.iron_ring": "Iron ring",
+  "item.dnmmod.parchment": "Parchment",
 
   "item.dnmmod.ectoplasm": "Ectoplasm",
   "item.dnmmod.phantom_potion": "Phantom potion",
@@ -206,6 +207,10 @@
 
   "attribute.dnmmod.necro_magic_resist": "Necromancy resist",
   "attribute.dnmmod.necro_spell_power": "Necromancy spell power",
+
+  "book.dnmmod.title": "About Hag",
+  "book.dnmmod.page1": "Hags are creatures that are naturally repulsive and malicious. They are said to have come from the Land of the Fairies and feed on human emotions.\nThey are powerful magical creatures, and not everyone can defeat a hag. It takes great strength to resist their magic",
+  "book.dnmmod.page2": "and the forces they summon from the forest.",
 
   "spell.dnmmod.mage_armor": "Mage Armor",
   "spell.dnmmod.mage_armor.guide": "You surround yourself with a web of magic, forming a shield. Your armor rating increases.",

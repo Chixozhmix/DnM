@@ -116,6 +116,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.BURNT_SUGAR.get());
                         output.accept(ModItems.DICE20.get());
                         output.accept(ModItems.IRON_RING.get());
+                        output.accept(ModItems.PARCHMENT.get());
                     })
                     .build());
     //Magic Items
