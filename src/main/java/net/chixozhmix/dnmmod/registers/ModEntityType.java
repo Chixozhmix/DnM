@@ -2,6 +2,8 @@ package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
+import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronach;
+import net.chixozhmix.dnmmod.entity.evil_storm_atronach.EvilStormAtronach;
 import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
 import net.chixozhmix.dnmmod.entity.ghost.GhostEntity;
 import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
@@ -141,6 +143,18 @@ public class ModEntityType {
                             .clientTrackingRange(10)
                             .sized(1.3f, 2.2f)
                             .build("greemon"));
+    public static final RegistryObject<EntityType<EvilStormAtronach>> EVIL_STORM_ATRONACH =
+            ENTITY_TYPES.register("evil_storm_atronach", () ->
+                    EntityType.Builder.of(EvilStormAtronach::new, MobCategory.MONSTER)
+                            .sized(0.9f, 1.8f)
+                            .clientTrackingRange(32)
+                            .build("evil_storm_atronach"));
+    public static final RegistryObject<EntityType<EvilFlameAtronach>> EVIL_FLAME_ATRONACH =
+            ENTITY_TYPES.register("evil_flame_atronach", () ->
+                    EntityType.Builder.of(EvilFlameAtronach::new, MobCategory.MONSTER)
+                            .sized(0.9f, 1.8f)
+                            .clientTrackingRange(32)
+                            .build("evil_flame_atronach"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =

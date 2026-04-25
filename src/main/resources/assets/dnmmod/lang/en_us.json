@@ -153,6 +153,8 @@
   "entity.dnmmod.goblin_warrior": "Goblin warrior",
   "entity.dnmmod.flame_atronach": "Flame atronach",
   "entity.dnmmod.storm_atronach": "Storm atronach",
+  "entity.dnmmod.evil_storm_atronach": "Evil storm atronach",
+  "entity.dnmmod.evil_flame_atronach": "Evil storm atronach",
 
   "tooltip.dnmmod.maid": "Why not?",
   "tooltip.dnmmod.dragon_priest_mask": "From this mask comes an ancient power and a whisper in an unknown language.",

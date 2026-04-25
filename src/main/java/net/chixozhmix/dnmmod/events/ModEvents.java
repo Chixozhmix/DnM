@@ -1,6 +1,9 @@
 package net.chixozhmix.dnmmod.events;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.spawnrules.ThunderSpawnRule;
+import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronach;
+import net.chixozhmix.dnmmod.entity.evil_storm_atronach.EvilStormAtronach;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.Tombstone;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
@@ -16,6 +19,7 @@ import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -42,6 +46,8 @@ public class ModEvents {
         event.put(ModEntityType.GOBLIN_WARRIOR.get(), GoblinWariorEntity.createAttributes());
         event.put(ModEntityType.FLAME_ATRONACH.get(), FlameAtronachEntity.prepareAttributes().build());
         event.put(ModEntityType.STORM_ATRONACH.get(), StormAtronach.prepareAttributes().build());
+        event.put(ModEntityType.EVIL_STORM_ATRONACH.get(), EvilStormAtronach.prepareAttributes().build());
+        event.put(ModEntityType.EVIL_FLAME_ATRONACH.get(), EvilFlameAtronach.prepareAttributes().build());
     }
 
     @SubscribeEvent
@@ -54,5 +60,9 @@ public class ModEvents {
                 Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(ModEntityType.GHOST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(ModEntityType.EVIL_STORM_ATRONACH.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                ThunderSpawnRule::ThunderSpawnRule, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(ModEntityType.EVIL_FLAME_ATRONACH.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 }

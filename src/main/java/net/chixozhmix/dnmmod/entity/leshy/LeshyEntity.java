@@ -182,14 +182,12 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
 
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
-        // Вызываем супер метод для получения урона
         boolean hurt = super.hurt(pSource, pAmount);
 
         if (hurt && !this.level().isClientSide()) {
             if (pSource.getEntity() instanceof LivingEntity attacker &&
                     attacker != this && this.canAttack(attacker)) {
 
-                // Проверяем, что это не креативный игрок
                 if (attacker instanceof Player player) {
                     if (!player.isCreative()) {
                         this.setTarget((LivingEntity) attacker);

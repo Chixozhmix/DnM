@@ -154,6 +154,8 @@
   "entity.dnmmod.goblin_warrior": "Гобилн воин",
   "entity.dnmmod.flame_atronach": "Огненный атронах",
   "entity.dnmmod.storm_atronach": "Грозовой атронах",
+  "entity.dnmmod.evil_storm_atronach": "Дикий грозовой атронах",
+  "entity.dnmmod.evil_flame_atronach": "Дикий огненный атронах",
 
   "tooltip.dnmmod.maid": "Почему нет?",
   "tooltip.dnmmod.dragon_priest_mask": "От этой маски исходит древняя сила и шепет на неизвестном языке.",
