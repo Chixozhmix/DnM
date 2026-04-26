@@ -91,6 +91,7 @@ public class EvilFlameAtronach extends AbstractSpellCastingMob implements Enemy,
         return PlayState.CONTINUE;
     }
 
+
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.25F, 20, 40))

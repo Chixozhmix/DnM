@@ -23,6 +23,7 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> AGATHYS_ARMOR = EFFECTS.register("agathys_armor", AgathysArmor::new);
     public static final RegistryObject<MobEffect> THICK_OF_FIGHT = EFFECTS.register("thick_of_fight", ThickOfFight::new);
     public static final RegistryObject<MobEffect> CORPSE_POISON = EFFECTS.register("corpse_poison", () -> new CorpsePoison(1));
+    public static final RegistryObject<MobEffect> REAPER_EFFECT = EFFECTS.register("reaper_effect", () -> new ReaperEffect());
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);

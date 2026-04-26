@@ -5,7 +5,6 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
-import io.redspace.ironsspellbooks.entity.mobs.goals.WizardRecoverGoal;
 import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.minecraft.sounds.SoundEvent;
