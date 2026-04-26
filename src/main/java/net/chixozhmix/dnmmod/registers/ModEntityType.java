@@ -12,6 +12,7 @@ import net.chixozhmix.dnmmod.entity.greemon.GreemonEntity;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagEntity;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
 import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
+import net.chixozhmix.dnmmod.entity.reaper.ReaperEntity;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
@@ -155,6 +156,12 @@ public class ModEntityType {
                             .sized(0.9f, 1.8f)
                             .clientTrackingRange(32)
                             .build("evil_flame_atronach"));
+    public static final RegistryObject<EntityType<ReaperEntity>> REAPER =
+            ENTITY_TYPES.register("reaper", () ->
+                    EntityType.Builder.of(ReaperEntity::new, MobCategory.MONSTER)
+                            .sized(0.8f, 2.1f)
+                            .clientTrackingRange(32)
+                            .build("reaper"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =

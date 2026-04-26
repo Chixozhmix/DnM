@@ -98,24 +98,6 @@ public class HungerOfHadarSpell extends AbstractSpell {
             hungerOfHadar.setDuration(280);
 
             level.addFreshEntity(hungerOfHadar);
-
-            for(int r = 0; r < count; ++r) {
-                float tentacles = (float)(count);
-
-                for(int i = 0; (float)i < tentacles; ++i) {
-                    Vec3 random = new Vec3(Utils.getRandomScaled((double)0.5F), Utils.getRandomScaled((double)0.5F), Utils.getRandomScaled((double)0.5F));
-                    Vec3 spawn = center.add((new Vec3((double)0.0F, (double)0.0F, 1.2F + (double)(r * 0.05F))).yRot(6.281F / tentacles * (float)i)).add(random);
-                    spawn = Utils.moveToRelativeGroundLevel(level, spawn, 4);
-                    if (!level.getBlockState(BlockPos.containing(spawn).below()).isAir()) {
-                        VoidTentacle tentacle = new VoidTentacle(level, entity, this.getDamage(spellLevel, entity));
-                        tentacle.setDamage(0);
-                        tentacle.moveTo(spawn);
-                        tentacle.setYRot((float)Utils.random.nextInt(360));
-                        tentacle.setBoundingBox(tentacle.getBoundingBox().inflate(-0.3F));
-                        level.addFreshEntity(tentacle);
-                    }
-                }
-            }
         }
     }
 

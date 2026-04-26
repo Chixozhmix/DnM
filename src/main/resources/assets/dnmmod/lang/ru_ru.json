@@ -72,6 +72,9 @@
   "item.dnmmod.greemon_spawn_egg": "Яйцо призыва гримона",
   "item.dnmmod.green_hag_spawn_egg": "Яйцо призыва зеленой карги",
   "item.dnmmod.leshy_spawn_egg": "Яйцо призыва Лешего",
+  "item.dnmmod.reaper_spawn_egg": "Яйцо призыва Образа Смерти",
+  "item.dnmmod.evil_flame_atronach_spawn_egg": "Яйцо призыва Дикого Огненного Атронаха",
+  "item.dnmmod.evil_storm_atronach_spawn_egg": "Яйцо призыва Дикого Грозового Атронаха",
 
   "item.dnmmod.raven_feather": "Перо ворона",
   "item.dnmmod.burnt_sugar": "Жженный сахар",
@@ -140,7 +143,14 @@
   "death.attack.dnmmod.acid_projectile": "%1$s был растворен заживо",
   "death.attack.dnmmod.caustic_brew": "%1$s был разъеден",
   "death.attack.dnmmod.summon_ravens": "%1$s были выклеваны глаза",
+  "death.attack.dnmmod.summon_undead_spirit": "%1$s был убит духами",
+  "death.attack.dnmmod.summon_flame_atronach": "%1$s был убит гневным пламенем",
+  "death.attack.dnmmod.summon_storm_atronach": "%1$s был убит разгневанным громом",
   "death.attack.dnmmod.ray_of_enfeeblement": "%1$s оказался слишком слаб",
+  "death.attack.dnmmod.burial_ground": "%1$s был замучен мертвыми",
+  "death.attack.dnmmod.tall_the_dead": "%1$s услышал предсмертный бой колоколов",
+  "death.attack.dnmmod.hunger_of_hadar": "%1$s был пожран Хадаром",
+  "death.attack.dnmmod.thunderwave": "%1$s был разорван раскатом грома",
 
   "entity.dnmmod.undead_spirit": "Дух Нежити",
   "entity.dnmmod.summoned_undead_spirit": "Дух Нежити",
@@ -156,6 +166,7 @@
   "entity.dnmmod.storm_atronach": "Грозовой атронах",
   "entity.dnmmod.evil_storm_atronach": "Дикий грозовой атронах",
   "entity.dnmmod.evil_flame_atronach": "Дикий огненный атронах",
+  "entity.dnmmod.reaper": "Образ Смерти",
 
   "tooltip.dnmmod.maid": "Почему нет?",
   "tooltip.dnmmod.dragon_priest_mask": "От этой маски исходит древняя сила и шепет на неизвестном языке.",

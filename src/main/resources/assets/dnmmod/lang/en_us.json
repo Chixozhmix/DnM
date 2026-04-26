@@ -71,6 +71,9 @@
   "item.dnmmod.greemon_spawn_egg": "Greemon spawn egg",
   "item.dnmmod.green_hag_spawn_egg": "Green hag spawn egg",
   "item.dnmmod.leshy_spawn_egg": "Leshy spawn egg",
+  "item.dnmmod.reaper_spawn_egg": "Avatar of Death spawn egg",
+  "item.dnmmod.evil_flame_atronach_spawn_egg": "Evil Flame Atronach spawn egg",
+  "item.dnmmod.evil_storm_atronach_spawn_egg": "Evil Storm Atronach spawn egg",
 
   "item.dnmmod.raven_feather": "Raven Feather",
   "item.dnmmod.burnt_sugar": "Burnt sugar",
@@ -139,7 +142,14 @@
   "death.attack.dnmmod.acid_projectile": "%1$s was dissolved alive",
   "death.attack.dnmmod.caustic_brew": "%1$s has been corroded",
   "death.attack.dnmmod.summon_ravens": "%1$s had their eyes pecked out",
+  "death.attack.dnmmod.summon_undead_spirit": "%1$s was killed by spirits",
+  "death.attack.dnmmod.summon_flame_atronach": "%1$s was killed by an angry flame",
+  "death.attack.dnmmod.summon_storm_atronach": "%1$s  was killed by an angry thunder",
   "death.attack.dnmmod.ray_of_enfeeblement": "%1$s was too weak",
+  "death.attack.dnmmod.burial_ground": "%1$s was tortured by the dead",
+  "death.attack.dnmmod.tall_the_dead": "%1$s heard the funeral bells",
+  "death.attack.dnmmod.hunger_of_hadar": "%1$s was devoured by Hadar",
+  "death.attack.dnmmod.thunderwave": "%1$s was torn apart by a thunderclap",
 
   "entity.dnmmod.undead_spirit": "Undead Spirit",
   "entity.dnmmod.summoned_undead_spirit": "Undead Spirit",
@@ -155,6 +165,7 @@
   "entity.dnmmod.storm_atronach": "Storm atronach",
   "entity.dnmmod.evil_storm_atronach": "Evil storm atronach",
   "entity.dnmmod.evil_flame_atronach": "Evil storm atronach",
+  "entity.dnmmod.reaper": "Avatar of Death",
 
   "tooltip.dnmmod.maid": "Why not?",
   "tooltip.dnmmod.dragon_priest_mask": "From this mask comes an ancient power and a whisper in an unknown language.",

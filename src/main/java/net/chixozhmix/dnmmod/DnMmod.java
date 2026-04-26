@@ -7,6 +7,7 @@ import net.chixozhmix.dnmmod.Util.ModCapabilities;
 import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
 import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronachRenderer;
 import net.chixozhmix.dnmmod.entity.evil_storm_atronach.EvilStormAtronachRenderer;
+import net.chixozhmix.dnmmod.entity.reaper.ReaperRenderer;
 import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadarRenderer;
 import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.TallTheDeadRenderer;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.TombstoneRenderer;
@@ -175,6 +176,7 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.STORM_ATRONACH.get(), StormAtronachRenderer::new);
             EntityRenderers.register(ModEntityType.EVIL_STORM_ATRONACH.get(), EvilStormAtronachRenderer::new);
             EntityRenderers.register(ModEntityType.EVIL_FLAME_ATRONACH.get(), EvilFlameAtronachRenderer::new);
+            EntityRenderers.register(ModEntityType.REAPER.get(), ReaperRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COMPONENT_BAG_MENU.get(), ComponentBagScreen::new);
             MenuScreens.register(ModMenuTypes.MEDIUM_COMPONENT_BAG_MENU.get(), MediumBagScreen::new);

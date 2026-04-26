@@ -338,6 +338,12 @@ public class ModItems {
             new ForgeSpawnEggItem(ModEntityType.GREEN_HAG, 0x1c4316, 0x25631c, PropertiesHelper.stackItemProperties(64)));
     public static final RegistryObject<ForgeSpawnEggItem> LESHY_SPAWN_EGG = ITEMS.register("leshy_spawn_egg", () ->
             new ForgeSpawnEggItem(ModEntityType.LESHY, 0x295423, 0x37240d, PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<ForgeSpawnEggItem> REAPER_SPAWN_EGG = ITEMS.register("reaper_spawn_egg", () ->
+            new ForgeSpawnEggItem(ModEntityType.REAPER, 0x000000, 0x13001A, PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<ForgeSpawnEggItem> EVIL_STORM_ATRONACH_SPAWN_EGG = ITEMS.register("evil_storm_atronach_spawn_egg", () ->
+            new ForgeSpawnEggItem(ModEntityType.EVIL_STORM_ATRONACH, 0x000030, 0x190645, PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<ForgeSpawnEggItem> EVIL_FLAME_ATRONACH_SPAWN_EGG = ITEMS.register("evil_flame_atronach_spawn_egg", () ->
+            new ForgeSpawnEggItem(ModEntityType.EVIL_FLAME_ATRONACH, 0x8A4C03, 0x451506, PropertiesHelper.stackItemProperties(64)));
 
     // Опциональные предметы
     public static Optional<RegistryObject<Item>> AQUA_WAND = Optional.empty();

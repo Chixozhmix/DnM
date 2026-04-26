@@ -46,7 +46,7 @@ public class GoblinShamanEntity extends AbstractSpellCastingMob implements Enemy
 
     public GoblinShamanEntity(EntityType<? extends AbstractSpellCastingMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.xpReward = 20;
+        this.xpReward = 10;
     }
 
     @Override

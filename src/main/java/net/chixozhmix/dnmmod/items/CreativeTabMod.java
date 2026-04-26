@@ -169,6 +169,9 @@ public class CreativeTabMod {
                         output.accept(ModItems.LESHY_SPAWN_EGG.get());
                         output.accept(ModItems.GREEMON_SPAWN_EGG.get());
                         output.accept(ModItems.GREEN_HAG_SPAWN_EGG.get());
+                        output.accept(ModItems.REAPER_SPAWN_EGG.get());
+                        output.accept(ModItems.EVIL_FLAME_ATRONACH_SPAWN_EGG.get());
+                        output.accept(ModItems.EVIL_STORM_ATRONACH_SPAWN_EGG.get());
                     })
                     .build());
 
