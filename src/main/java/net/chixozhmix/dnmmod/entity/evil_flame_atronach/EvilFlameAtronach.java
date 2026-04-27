@@ -38,8 +38,8 @@ import java.util.List;
 
 
 public class EvilFlameAtronach extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker {
-    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
-    private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("fly_idle");
+    private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("fly_walk");
 
     private RawAnimation customAnimationToPlay;
 
