@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.entity.evil_flame_atronach;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import net.chixozhmix.dnmmod.registers.ModEffects;
@@ -25,7 +26,6 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -37,9 +37,11 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.List;
 
 
-public class EvilFlameAtronach extends AbstractSpellCastingMob implements Enemy, GeoEntity {
+public class EvilFlameAtronach extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker {
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
+
+    private RawAnimation customAnimationToPlay;
 
     private final AnimatableInstanceCache cache;
 
@@ -74,6 +76,8 @@ public class EvilFlameAtronach extends AbstractSpellCastingMob implements Enemy,
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(movementController);
+
+        super.registerControllers(controllerRegistrar);
     }
 
     @Override
@@ -90,7 +94,6 @@ public class EvilFlameAtronach extends AbstractSpellCastingMob implements Enemy,
         state.getController().setAnimation(IDLE_ANIM);
         return PlayState.CONTINUE;
     }
-
 
     @Override
     protected void registerGoals() {
@@ -129,10 +132,26 @@ public class EvilFlameAtronach extends AbstractSpellCastingMob implements Enemy,
     }
 
     @Override
+    public boolean shouldAlwaysAnimateHead() {
+        return customAnimationToPlay == null;
+    }
+
+    @Override
+    public boolean shouldPointArmsWhileCasting() {
+        return customAnimationToPlay == null;
+    }
+
+    @Override
     public boolean addEffect(MobEffectInstance pEffectInstance, @Nullable Entity pEntity) {
         if(pEffectInstance.getEffect() == MobEffects.POISON || pEffectInstance.getEffect() == ModEffects.CORPSE_POISON.get())
             return false;
 
         return super.addEffect(pEffectInstance, pEntity);
+    }
+
+    @Override
+    public void playAnimation(String animationName) {
+        this.customAnimationToPlay = RawAnimation.begin().thenPlay(animationName);
+        this.setDeltaMovement(0, this.getDeltaMovement().y, 0);
     }
 }

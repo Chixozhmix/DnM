@@ -3,6 +3,7 @@ package net.chixozhmix.dnmmod.entity.flame_atronach;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.MagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
@@ -40,12 +41,14 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.*;
 
-public class FlameAtronachEntity extends AbstractSpellCastingMob implements MagicSummon, GeoEntity {
+public class FlameAtronachEntity extends AbstractSpellCastingMob implements MagicSummon {
     private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(FlameAtronachEntity.class, EntityDataSerializers.BOOLEAN);
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
     private static final RawAnimation RISE_ANIM = RawAnimation.begin().thenPlay("rise");
+
+    //private RawAnimation customAnimationToPlay;
 
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
@@ -99,6 +102,8 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(movementController);
         controllerRegistrar.add(riseController);
+
+        super.registerControllers(controllerRegistrar);
     }
 
     @Override
@@ -252,4 +257,10 @@ public class FlameAtronachEntity extends AbstractSpellCastingMob implements Magi
 
         return super.addEffect(pEffectInstance, pEntity);
     }
+
+//    @Override
+//    public void playAnimation(String animationName) {
+//        this.customAnimationToPlay = RawAnimation.begin().thenPlay(animationName);
+//        this.setDeltaMovement(0, this.getDeltaMovement().y, 0);
+//    }
 }
