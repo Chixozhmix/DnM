@@ -141,7 +141,7 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<GreemonEntity>> GREEMON =
             ENTITY_TYPES.register("greemon", () ->
                     EntityType.Builder.of(GreemonEntity::new, MobCategory.MONSTER)
-                            .clientTrackingRange(10)
+                            .clientTrackingRange(16)
                             .sized(1.3f, 2.2f)
                             .build("greemon"));
     public static final RegistryObject<EntityType<EvilStormAtronach>> EVIL_STORM_ATRONACH =
