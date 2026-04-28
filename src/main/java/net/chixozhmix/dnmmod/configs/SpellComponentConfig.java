@@ -62,6 +62,13 @@ public class SpellComponentConfig {
             entries.add("io.redspace.ironsspellbooks.spells.nature.EarthquakeSpell|minecraft:coarse_dirt");
             entries.add("io.redspace.ironsspellbooks.spells.blood.SacrificeSpell|dnmmod:ritual_dagger");
 
+            //DnM
+            entries.add("net.chixozhmix.dnmmod.spell.blood.BurialGroundSpell|minecraft:soul_sand");
+            entries.add("net.chixozhmix.dnmmod.spell.blood.SummonUndeadSpiritSpell|minecraft:skeleton_skull");
+            entries.add("net.chixozhmix.dnmmod.spell.evocation.CloudDaggerSpell|dnmmod:iron_dagger");
+            entries.add("net.chixozhmix.dnmmod.spell.evocation.ChromaticOrbSpell|minecraft:diamond");
+            entries.add("net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell|dnmmod:raven_feather");
+
 
             // TravelOptics
             if (ModCapabilities.isTravelOpticsLoaded()) {

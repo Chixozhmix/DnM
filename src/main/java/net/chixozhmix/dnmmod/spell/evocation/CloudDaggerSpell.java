@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.SpellConfigHandler;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.registers.ModItems;
@@ -59,17 +60,23 @@ public class CloudDaggerSpell extends AbstractSpell {
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
+        if(!SpellConfigHandler.checkPreCastConditions(level, spellLevel, entity, playerMagicData,
+                "net.chixozhmix.dnmmod.spell.evocation.CloudDaggerSpell"))
+            return false;
+
         Utils.preCastTargetHelper(level, entity, playerMagicData, this, 32, 0.15F, false);
-        return SpellUtils.checkSpellComponent(entity, ModItems.IRON_DAGGER.get());
+
+        return true;
     }
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(
+        List<MutableComponent> baseInfo = List.of(
                 Component.translatable("ui.irons_spellbooks.distance", new Object[]{Utils.stringTruncation((double)this.getCylinderRadius(), 1)}),
-                Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2)}),
-                Component.translatable("ui.dnmmod.spell_component", new Object[]{SpellUtils.getComponentName(ModItems.IRON_DAGGER.get())})
-                );
+                Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2)}));
+
+        return SpellConfigHandler.modifyGetUniqueInfo(spellLevel, caster, baseInfo,
+                "net.chixozhmix.dnmmod.spell.evocation.CloudDaggerSpell");
     }
 
     @Override

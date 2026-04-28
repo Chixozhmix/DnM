@@ -7,6 +7,8 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.SpellConfigHandler;
+import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.Tombstone;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -14,6 +16,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -56,8 +59,23 @@ public class BurialGroundSpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation
-                ((double)this.getDamage(spellLevel, caster), 2)}));
+        List<MutableComponent> baseInfo = List.of(
+                Component.translatable("ui.irons_spellbooks.damage",
+                        Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2))
+        );
+        // Передаем полное имя класса
+        return SpellConfigHandler.modifyGetUniqueInfo(spellLevel, caster, baseInfo,
+                "net.chixozhmix.dnmmod.spell.blood.BurialGroundSpell");
+    }
+
+    @Override
+    public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
+        // Проверяем компонент через конфиг
+        if (!SpellConfigHandler.checkPreCastConditions(level, spellLevel, entity, playerMagicData,
+                "net.chixozhmix.dnmmod.spell.blood.BurialGroundSpell")) {
+            return false;
+        }
+        return true;
     }
 
     @Override

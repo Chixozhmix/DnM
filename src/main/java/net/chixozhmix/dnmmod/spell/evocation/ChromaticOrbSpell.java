@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.SpellConfigHandler;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
 import net.minecraft.network.chat.Component;
@@ -55,16 +56,21 @@ public class ChromaticOrbSpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(
+        List<MutableComponent> baseInfo = List.of(
                 Component.translatable("ui.dnmmod.bounces", new Object[]{Utils.stringTruncation((double)this.getBounces(spellLevel), 1)}),
-                Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2)}),
-                Component.translatable("ui.dnmmod.spell_component", new Object[]{SpellUtils.getComponentName(Items.DIAMOND)})
-        );
+                Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2)}));
+
+        return SpellConfigHandler.modifyGetUniqueInfo(spellLevel, caster, baseInfo,
+                "net.chixozhmix.dnmmod.spell.evocation.ChromaticOrbSpell");
     }
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
-        return SpellUtils.checkSpellComponent(entity, Items.DIAMOND);
+        if(!SpellConfigHandler.checkPreCastConditions(level, spellLevel, entity, playerMagicData,
+                "net.chixozhmix.dnmmod.spell.evocation.ChromaticOrbSpell"))
+            return false;
+
+        return true;
     }
 
     @Override

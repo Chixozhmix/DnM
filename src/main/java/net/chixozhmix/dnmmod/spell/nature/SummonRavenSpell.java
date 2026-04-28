@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.*;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.SpellConfigHandler;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
 import net.chixozhmix.dnmmod.registers.ModItems;
@@ -72,14 +73,19 @@ public class SummonRavenSpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.summon_count", new Object[]{this.getSummonCount(spellLevel, caster)}),
-                Component.translatable("ui.dnmmod.spell_component", new Object[]{SpellUtils.getComponentName(ModItems.RAVEN_FEATHER.get())})
-        );
+        List<MutableComponent> baseInfo = List.of(Component.translatable("ui.irons_spellbooks.summon_count", new Object[]{this.getSummonCount(spellLevel, caster)}));
+
+        return SpellConfigHandler.modifyGetUniqueInfo(spellLevel, caster, baseInfo,
+                "net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell");
     }
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
-        return SpellUtils.checkSpellComponent(entity, ModItems.RAVEN_FEATHER.get());
+        if(!SpellConfigHandler.checkPreCastConditions(level, spellLevel, entity, playerMagicData,
+                "net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell"))
+            return false;
+
+        return true;
     }
 
     @Override
