@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.events;
 
+import net.chixozhmix.dnmmod.entity.reaper.ReaperEntity;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -19,7 +20,7 @@ public class PlayerEvent {
 
         if(!(target instanceof Player)) return;
         if(attacker == null) return;
-        if(attacker.getMobType() == MobType.UNDEAD) {
+        if(attacker.getMobType() == MobType.UNDEAD && attacker.getClass() != ReaperEntity.class) {
             RandomSource random = target.getRandom();
 
             if(random.nextFloat() <= 0.10F) {

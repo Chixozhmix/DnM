@@ -2,11 +2,11 @@
   "type": "dnmmod:scroll_table",
   "ingredients": [
     {"item": "irons_spellbooks:rare_ink"},
-    {"item": "minecraft:blaze_powder"},
-    {"item": "minecraft:fire_charge"},
+    {"item": "minecraft:blaze_rod"},
     {"item": "minecraft:gunpowder"},
-    {"item": "irons_spellbooks:blood_vial"},
-    {"item": "irons_spellbooks:blood_vial"},
+    {"item": "minecraft:gunpowder"},
+    {"item": "minecraft:air"},
+    {"item": "minecraft:air"},
     {"item":  "dnmmod:parchment"}
   ],
   "output": {

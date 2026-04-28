@@ -12,6 +12,7 @@ import software.bernie.geckolib.model.data.EntityModelData;
 public class ReaperModel extends AbstractSpellCastingMobModel {
     private static final ResourceLocation TEXTURE = new ResourceLocation("dnmmod", "textures/entity/reaper.png");
     private static final ResourceLocation MODEL = new ResourceLocation("dnmmod", "geo/reaper_geo.json");
+    public static final ResourceLocation ANIM = new ResourceLocation("dnmmod", "animations/casting_animations.json");
 
     public ReaperModel(){
     }
@@ -24,6 +25,11 @@ public class ReaperModel extends AbstractSpellCastingMobModel {
     @Override
     public ResourceLocation getTextureResource(AbstractSpellCastingMob abstractSpellCastingMob) {
         return TEXTURE;
+    }
+
+    @Override
+    public ResourceLocation getAnimationResource(AbstractSpellCastingMob animatable) {
+        return ANIM;
     }
 
     @Override

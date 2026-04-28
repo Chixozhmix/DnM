@@ -3,15 +3,17 @@ package net.chixozhmix.dnmmod.entity.reaper;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
+import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
+import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronach;
+import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -24,10 +26,26 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
 
-public class ReaperEntity extends AbstractSpellCastingMob implements Enemy {
+public class ReaperEntity extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker {
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("fly_idle");
+    private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("fly_walk");
+
+    private RawAnimation customAnimationToPlay;
+
+    private final AnimatableInstanceCache cache;
+
+    private final AnimationController<ReaperEntity> movementController;
+
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)5.0F)
             .add(Attributes.ATTACK_KNOCKBACK, (double)0.1F)
@@ -39,7 +57,49 @@ public class ReaperEntity extends AbstractSpellCastingMob implements Enemy {
 
     public ReaperEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+
+        this.cache = GeckoLibUtil.createInstanceCache(this);
+
+        this.movementController = new AnimationController<>(this, "movement", 0, this::movementPredicate);
+
         this.xpReward = 35;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        controllerRegistrar.add(movementController);
+
+        super.registerControllers(controllerRegistrar);
+    }
+
+    private PlayState movementPredicate(AnimationState<ReaperEntity> state) {
+        if (state.isMoving()) {
+            state.getController().setAnimation(WALK_ANIM);
+            return PlayState.CONTINUE;
+        }
+
+        state.getController().setAnimation(IDLE_ANIM);
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public boolean shouldBeExtraAnimated() {
+        return this.isCasting();
+    }
+
+    @Override
+    public boolean shouldAlwaysAnimateHead() {
+        return customAnimationToPlay == null;
+    }
+
+    @Override
+    public boolean shouldPointArmsWhileCasting() {
+        return customAnimationToPlay == null;
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
     }
 
     @Override
@@ -71,5 +131,19 @@ public class ReaperEntity extends AbstractSpellCastingMob implements Enemy {
     @Override
     protected @Nullable SoundEvent getAmbientSound() {
         return SoundsRegistry.GHOST_AMBIENT.get();
+    }
+
+    @Override
+    public void playAnimation(String animationName) {
+        this.customAnimationToPlay = RawAnimation.begin().thenPlay(animationName);
+        this.setDeltaMovement(0, this.getDeltaMovement().y, 0);
+    }
+
+    @Override
+    public boolean addEffect(MobEffectInstance pEffectInstance, @Nullable Entity pEntity) {
+        if(pEffectInstance.getEffect() == MobEffects.POISON || pEffectInstance.getEffect() == ModEffects.CORPSE_POISON.get())
+            return false;
+
+        return super.addEffect(pEffectInstance, pEntity);
     }
 }

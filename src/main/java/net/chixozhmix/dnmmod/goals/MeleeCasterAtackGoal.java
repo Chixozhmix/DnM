@@ -161,7 +161,7 @@ public class MeleeCasterAtackGoal extends WizardAttackGoal {
             // Наносим урон
             this.mob.doHurtTarget(this.target);
 
-            // Эффект отбрасывания (также можно использовать атрибут ATTACK_KNOCKBACK)
+            // Эффект отбрасывания
             float knockback = (float)this.mob.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK);
             double dx = this.target.getX() - this.mob.getX();
             double dz = this.target.getZ() - this.mob.getZ();

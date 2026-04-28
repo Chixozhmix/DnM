@@ -91,7 +91,7 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<Tombstone>> TOMBSTONE =
             ENTITY_TYPES.register("tombstone",
                     () -> EntityType.Builder.<Tombstone>of(Tombstone::new, MobCategory.MISC)
-                            .sized(1.0F, 1.0F)
+                            .sized(2.0F, 2.0F)
                             .clientTrackingRange(64)
                             .build("tombstone"));
 

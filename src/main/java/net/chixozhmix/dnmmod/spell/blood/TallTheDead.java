@@ -116,7 +116,7 @@ public class TallTheDead extends AbstractSpell {
                                 4.0f
                         ), target.getX(), target.getBoundingBox().getCenter().y + 0.4, target.getZ(), 1, (double) 0.0F, (double) 0.0F, (double) 0.0F, (double) 0.0F, true);
 
-                if(entity.getHealth() < entity.getMaxHealth())
+                if(target.getHealth() < target.getMaxHealth())
                 {
                     SpellDamageSource source = this.getDamageSource(entity);
                     DamageSources.applyDamage(target, this.getDamageHealth(spellLevel, entity), source);
