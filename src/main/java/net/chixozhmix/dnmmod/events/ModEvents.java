@@ -5,6 +5,7 @@ import net.chixozhmix.dnmmod.Util.spawnrules.ThunderSpawnRule;
 import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronach;
 import net.chixozhmix.dnmmod.entity.evil_storm_atronach.EvilStormAtronach;
 import net.chixozhmix.dnmmod.entity.reaper.ReaperEntity;
+import net.chixozhmix.dnmmod.entity.small_ice_spider.SmallIceSpiderEntity;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.Tombstone;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
@@ -50,6 +51,7 @@ public class ModEvents {
         event.put(ModEntityType.EVIL_STORM_ATRONACH.get(), EvilStormAtronach.prepareAttributes().build());
         event.put(ModEntityType.EVIL_FLAME_ATRONACH.get(), EvilFlameAtronach.prepareAttributes().build());
         event.put(ModEntityType.REAPER.get(), ReaperEntity.prepareAttributes().build());
+        event.put(ModEntityType.SMALL_ICE_SPIDER.get(), SmallIceSpiderEntity.prepareAttributes().build());
     }
 
     @SubscribeEvent

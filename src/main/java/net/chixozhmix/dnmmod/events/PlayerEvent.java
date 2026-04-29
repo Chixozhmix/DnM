@@ -23,7 +23,7 @@ public class PlayerEvent {
         if(attacker.getMobType() == MobType.UNDEAD && attacker.getClass() != ReaperEntity.class) {
             RandomSource random = target.getRandom();
 
-            if(random.nextFloat() <= 0.10F) {
+            if(random.nextFloat() <= 0.03F) {
                 target.addEffect(new MobEffectInstance(
                         ModEffects.REAPER_EFFECT.get(),
                         600,

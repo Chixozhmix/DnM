@@ -3,7 +3,6 @@ package net.chixozhmix.dnmmod.goals;
 import io.redspace.ironsspellbooks.api.entity.IMagicEntity;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
-import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
