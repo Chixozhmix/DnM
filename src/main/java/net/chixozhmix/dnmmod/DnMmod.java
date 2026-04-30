@@ -8,7 +8,6 @@ import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
 import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronachRenderer;
 import net.chixozhmix.dnmmod.entity.evil_storm_atronach.EvilStormAtronachRenderer;
 import net.chixozhmix.dnmmod.entity.reaper.ReaperRenderer;
-import net.chixozhmix.dnmmod.entity.small_ice_spider.SmallIceSpiderEntity;
 import net.chixozhmix.dnmmod.entity.small_ice_spider.SmallIceSpiderRenderer;
 import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadarRenderer;
 import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.TallTheDeadRenderer;

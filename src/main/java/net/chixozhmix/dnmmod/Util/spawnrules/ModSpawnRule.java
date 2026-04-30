@@ -8,7 +8,7 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.ServerLevelAccessor;
 
-public class ThunderSpawnRule {
+public class ModSpawnRule {
     public static boolean ThunderSpawnRule(
             EntityType<? extends Mob> entityType,
             ServerLevelAccessor level,
@@ -30,5 +30,20 @@ public class ThunderSpawnRule {
         boolean isThundering = level.getLevel().isThundering();
 
         return isThundering;
+    }
+
+    public static boolean CastingMonsterSpawnRule(
+            EntityType<? extends Mob> entityType,
+            ServerLevelAccessor level,
+            MobSpawnType spawnType,
+            BlockPos pos,
+            RandomSource random) {
+
+        return Monster.checkMonsterSpawnRules(
+                (EntityType<? extends Monster>) entityType,
+                level,
+                spawnType,
+                pos,
+                random);
     }
 }

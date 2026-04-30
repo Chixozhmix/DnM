@@ -1,7 +1,7 @@
 package net.chixozhmix.dnmmod.events;
 
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.Util.spawnrules.ThunderSpawnRule;
+import net.chixozhmix.dnmmod.Util.spawnrules.ModSpawnRule;
 import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronach;
 import net.chixozhmix.dnmmod.entity.evil_storm_atronach.EvilStormAtronach;
 import net.chixozhmix.dnmmod.entity.reaper.ReaperEntity;
@@ -65,8 +65,10 @@ public class ModEvents {
         event.register(ModEntityType.GHOST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Monster::checkMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(ModEntityType.EVIL_STORM_ATRONACH.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                ThunderSpawnRule::ThunderSpawnRule, SpawnPlacementRegisterEvent.Operation.REPLACE);
+                ModSpawnRule::ThunderSpawnRule, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(ModEntityType.EVIL_FLAME_ATRONACH.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(ModEntityType.SMALL_ICE_SPIDER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                ModSpawnRule::CastingMonsterSpawnRule, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 }
