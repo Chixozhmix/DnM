@@ -2,9 +2,11 @@ package net.chixozhmix.dnmmod.entity.summoned;
 
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.MagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.util.OwnerHelper;
+import net.chixozhmix.dnmmod.entity.small_ice_spider.SmallIceSpiderEntity;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.registers.RegistrySpells;
@@ -43,12 +45,14 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.UUID;
 
-public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSummon, GeoAnimatable {
+public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSummon, GeoAnimatable, IAnimatedAttacker {
     private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(SummonedUndeadSpirit.class, EntityDataSerializers.BOOLEAN);
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
     //private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
+
+    private RawAnimation customAnimationToPlay;
 
     //private int attackAnimationTick = 0;
 
@@ -92,6 +96,7 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<>(this, "controller", 0, this::predicate));
+        controllerRegistrar.add(new AnimationController<>(this, "attack", 0, this::attackPredicate));
         controllerRegistrar.add(new AnimationController<>(this, "rise", 0, this::predicateRise));
     }
 
@@ -111,6 +116,22 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
         }
         state.getController().setAnimation(IDLE_ANIM);
         return PlayState.CONTINUE;
+    }
+
+    private PlayState attackPredicate(AnimationState<SummonedUndeadSpirit> state) {
+        if (customAnimationToPlay != null) {
+            state.getController().setAnimation(customAnimationToPlay);
+
+            if (state.getController().hasAnimationFinished()) {
+                customAnimationToPlay = null;
+                state.getController().forceAnimationReset();
+            }
+
+            return PlayState.CONTINUE;
+        }
+
+        state.getController().forceAnimationReset();
+        return PlayState.STOP;
     }
 
     private <T extends GeoAnimatable> PlayState predicateRise(AnimationState<T> state) {
@@ -274,5 +295,16 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
     @Override
     protected boolean isImmobile() {
         return super.isImmobile() || this.isAnimatingRise();
+    }
+
+    @Override
+    public void playAnimation(String animationName) {
+        this.customAnimationToPlay = RawAnimation.begin().thenPlay(animationName);
+    }
+
+    @Override
+    public void swing(InteractionHand pHand) {
+        this.playAnimation("attack");
+        super.swing(pHand);
     }
 }
