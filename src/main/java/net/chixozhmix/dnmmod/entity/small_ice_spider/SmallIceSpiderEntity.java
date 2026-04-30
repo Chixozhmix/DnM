@@ -144,4 +144,9 @@ public class SmallIceSpiderEntity extends AbstractSpellCastingMob implements Ene
         this.playAnimation("attack_fang_basic");
         super.swing(pHand);
     }
+
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return true;
+    }
 }

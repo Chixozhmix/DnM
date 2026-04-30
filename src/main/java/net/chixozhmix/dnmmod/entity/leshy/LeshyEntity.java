@@ -141,7 +141,7 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
 
     @Override
     protected boolean shouldDespawnInPeaceful() {
-        return false;
+        return true;
     }
 
     @Override

@@ -1,4 +1,4 @@
-// 1.20.1	2026-04-26T16:44:49.4227152	Item Models: dnmmod
+// 1.20.1	2026-04-30T14:56:53.040456	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
@@ -74,6 +74,7 @@ e4bb21fa1050e08133c94fb6eea3d483d6dc8488 assets/dnmmod/models/item/shadow_archer
 19c76bd8337ae147e659ad66f6f6370640f31284 assets/dnmmod/models/item/shadow_archer_chestplate.json
 4c651049aa086c4ec3ddae2e8eab0ac8b6dd23aa assets/dnmmod/models/item/shadow_archer_helmet.json
 a0aea36d4a44b2a0f495770187057b013811e21a assets/dnmmod/models/item/shadow_archer_leggings.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/small_ice_spider_spawn_egg.json
 abef2d36764d66279861838a5da0ae11a000dd8d assets/dnmmod/models/item/thunderstorm_bottle.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/undead_spirit_spawn_egg.json
 65bad3bcd9abdeccb9af0b76dab8c5763d4a0413 assets/dnmmod/models/item/wand_core.json

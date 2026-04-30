@@ -154,4 +154,9 @@ public class EvilFlameAtronach extends AbstractSpellCastingMob implements Enemy,
         this.customAnimationToPlay = RawAnimation.begin().thenPlay(animationName);
         this.setDeltaMovement(0, this.getDeltaMovement().y, 0);
     }
+
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return true;
+    }
 }

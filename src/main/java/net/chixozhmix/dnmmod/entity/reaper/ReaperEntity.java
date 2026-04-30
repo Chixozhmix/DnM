@@ -145,4 +145,9 @@ public class ReaperEntity extends AbstractSpellCastingMob implements Enemy, IAni
 
         return super.addEffect(pEffectInstance, pEntity);
     }
+
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return true;
+    }
 }

@@ -172,6 +172,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.REAPER_SPAWN_EGG.get());
                         output.accept(ModItems.EVIL_FLAME_ATRONACH_SPAWN_EGG.get());
                         output.accept(ModItems.EVIL_STORM_ATRONACH_SPAWN_EGG.get());
+                        output.accept(ModItems.SMALL_ICE_SPIDER_SPAWN_EGG.get());
                     })
                     .build());
 

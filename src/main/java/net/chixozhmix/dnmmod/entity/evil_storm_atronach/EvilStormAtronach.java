@@ -135,4 +135,9 @@ public class EvilStormAtronach extends AbstractSpellCastingMob implements Enemy,
 
         return super.addEffect(pEffectInstance, pEntity);
     }
+
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return true;
+    }
 }
