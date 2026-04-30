@@ -344,6 +344,8 @@ public class ModItems {
             new ForgeSpawnEggItem(ModEntityType.EVIL_STORM_ATRONACH, 0x000030, 0x190645, PropertiesHelper.stackItemProperties(64)));
     public static final RegistryObject<ForgeSpawnEggItem> EVIL_FLAME_ATRONACH_SPAWN_EGG = ITEMS.register("evil_flame_atronach_spawn_egg", () ->
             new ForgeSpawnEggItem(ModEntityType.EVIL_FLAME_ATRONACH, 0x8A4C03, 0x451506, PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<ForgeSpawnEggItem> SMALL_ICE_SPIDER_SPAWN_EGG = ITEMS.register("small_ice_spider_spawn_egg", () ->
+            new ForgeSpawnEggItem(ModEntityType.SMALL_ICE_SPIDER, 0xA1EBF7, 0x609FC4, PropertiesHelper.stackItemProperties(64)));
 
     // Опциональные предметы
     public static Optional<RegistryObject<Item>> AQUA_WAND = Optional.empty();

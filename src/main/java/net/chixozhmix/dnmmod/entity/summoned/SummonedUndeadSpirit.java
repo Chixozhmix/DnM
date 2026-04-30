@@ -50,11 +50,8 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
-    //private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().thenPlay("attack");
 
     private RawAnimation customAnimationToPlay;
-
-    //private int attackAnimationTick = 0;
 
     protected LivingEntity cachedSummoner;
     protected UUID summonerUUID;
@@ -80,8 +77,6 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
         return !this.isAlliedTo(pPlayer);
     }
 
-
-
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
@@ -106,10 +101,6 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
     }
 
     private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
-//        if (this.attackAnimationTick > 0) {
-//            state.setAnimation(ATTACK_ANIM);
-//            return PlayState.CONTINUE;
-//        }
         if (state.isMoving()) {
             state.getController().setAnimation(WALK_ANIM);
             return PlayState.CONTINUE;
@@ -164,16 +155,6 @@ public class SummonedUndeadSpirit extends UndeadSpiritEntity implements MagicSum
                 this.setXRot(0.0F);
                 this.setOldPosAndRot();
             }
-
-//            if (this.attackAnimationTick > 0) {
-//                this.attackAnimationTick--;
-//            }
-//
-//            if (!this.level().isClientSide && this.swinging) {
-//                this.getNavigation().stop();
-//                this.attackAnimationTick = 5;
-//                this.swinging = false;
-//            }
         }
     }
 
