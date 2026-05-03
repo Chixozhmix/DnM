@@ -44,7 +44,6 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -117,6 +116,8 @@ public class DnMmod
         Fluids.register(modEventBus);
         //Potions
         ModPotions.register(modEventBus);
+        //Particles
+        ParticleRegistry.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
     }

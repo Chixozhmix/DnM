@@ -4,7 +4,7 @@
     "Amount": 500,
     "Tag": {
       "irons_spellbooks:bottle_type": "REGULAR",
-      "Potion": "minecraft:awkward"
+      "Potion": "minecraft:slow_falling"
     },
     "FluidName": "irons_spellbooks:potion"
   },

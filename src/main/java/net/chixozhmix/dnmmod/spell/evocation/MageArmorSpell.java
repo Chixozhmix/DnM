@@ -4,14 +4,19 @@ import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.AnimationHolder;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.registers.ModEffects;
+import net.chixozhmix.dnmmod.registers.ParticleRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
@@ -58,8 +63,14 @@ public class MageArmorSpell extends AbstractSpell {
     }
 
     @Override
+    public AnimationHolder getCastFinishAnimation() {
+        return SpellAnimations.SELF_CAST_ANIMATION;
+    }
+
+    @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
+
         entity.addEffect(
                 new MobEffectInstance(
                         ModEffects.MAGE_ARMOR.get(),
@@ -69,5 +80,25 @@ public class MageArmorSpell extends AbstractSpell {
                         false,
                         true
         ));
+
+        if (!level.isClientSide) {
+            for (int i = 0; i < 4; i++) {
+                double angle = 2 * Math.PI * i / 4;
+                double radius = 1.0;
+                double x = entity.getX() + Math.cos(angle) * radius;
+                double z = entity.getZ() + Math.sin(angle) * radius;
+
+                MagicManager.spawnParticles(
+                        level,
+                        ParticleRegistry.SHIELD_PARTICLES.get(),
+                        x,
+                        entity.getBoundingBox().getCenter().y + 0.2f,
+                        z,
+                        1,
+                        0.0, 0.1, 0.0, 0.0,
+                        true
+                );
+            }
+        }
     }
 }
