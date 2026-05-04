@@ -3,7 +3,7 @@
   "biomes": "#minecraft:is_nether",
   "spawners": {
     "type": "dnmmod:evil_flame_atronach",
-    "weight": 3,
+    "weight": 2,
     "minCount": 1,
     "maxCount": 1
   }

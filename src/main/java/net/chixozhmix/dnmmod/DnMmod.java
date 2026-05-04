@@ -165,7 +165,6 @@ public class DnMmod
         {
             event.enqueueWork(() -> {
                 CuriosRendererRegistry.register(ModItems.MAGICAL_GRIMOIRE.get(), SpellBookCurioRenderer::new);
-                CuriosRendererRegistry.register(ModItems.MOROKEI_MASK.get(), MaskCurioRenderer::new);
             });
 
             EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);

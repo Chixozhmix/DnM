@@ -544,11 +544,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', Items.STICK)
                 .unlockedBy("has_blade_rune", has(ModItems.BLADE_RUNE.get()))
                 .save(consumer);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.THUNDERSTORM_BOTTLE.get(), 1)
-                .requires(ItemRegistry.LIGHTNING_BOTTLE.get())
-                .requires(createPotionIngredient(Potions.WATER))
-                .unlockedBy(getHasName(ItemRegistry.LIGHTNING_BOTTLE.get()), has(ItemRegistry.LIGHTNING_BOTTLE.get()))
-                .save(consumer);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.SUGAR),
                         RecipeCategory.MISC, ModItems.BURNT_SUGAR.get(), 0.7f, 40)
                 .unlockedBy("has_sugar", has(Items.SUGAR))

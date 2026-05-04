@@ -51,7 +51,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ECTOPLASM);
         simpleItem(ModItems.FOREST_HEART);
         simpleItem(ModItems.RAVEN_FEATHER);
-        simpleItem(ModItems.THUNDERSTORM_BOTTLE);
+        simpleItem(ModItems.CRYSTALLIZED_LIGHTNING);
         simpleItem(ModItems.BURNT_SUGAR);
         simpleItem(ModItems.MIRROR);
         simpleItem(ModItems.DICE20);

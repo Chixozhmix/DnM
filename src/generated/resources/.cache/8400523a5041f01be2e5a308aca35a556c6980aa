@@ -1,4 +1,4 @@
-// 1.20.1	2026-04-30T14:56:53.040456	Item Models: dnmmod
+// 1.20.1	2026-05-04T17:52:57.7568985	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
@@ -14,6 +14,7 @@ e5b166c00c919f5a94a1c3d30adb5a05f8cfe418 assets/dnmmod/models/item/burnt_sugar.j
 f7ea7e3760956287e84645d481f974f2be54d33c assets/dnmmod/models/item/component_bag.json
 b8b985f080c11123b66420d9c4407f8df6ed8ce4 assets/dnmmod/models/item/cryomancer_wand.json
 1c6bcd6989fdb7d87f3bd9e8faff8949bf6c6a41 assets/dnmmod/models/item/cryomancer_wand_core.json
+284ced1cf237a7446fffeb3e3aa5d4fc81cabd24 assets/dnmmod/models/item/crystallized_lightning.json
 85a245616184bf00cce3e3c9e1b50312fe0718c9 assets/dnmmod/models/item/d20.json
 3d2db95f7c0f1496a9ef50733e1b65c5f7619937 assets/dnmmod/models/item/diamond_battleaxe.json
 5e8c0253b8b15f7e2c89e1dd4f041ccb5773d982 assets/dnmmod/models/item/diamond_dagger.json
@@ -75,7 +76,6 @@ e4bb21fa1050e08133c94fb6eea3d483d6dc8488 assets/dnmmod/models/item/shadow_archer
 4c651049aa086c4ec3ddae2e8eab0ac8b6dd23aa assets/dnmmod/models/item/shadow_archer_helmet.json
 a0aea36d4a44b2a0f495770187057b013811e21a assets/dnmmod/models/item/shadow_archer_leggings.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/small_ice_spider_spawn_egg.json
-abef2d36764d66279861838a5da0ae11a000dd8d assets/dnmmod/models/item/thunderstorm_bottle.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/undead_spirit_spawn_egg.json
 65bad3bcd9abdeccb9af0b76dab8c5763d4a0413 assets/dnmmod/models/item/wand_core.json
 32aebf44ccf517da61fcdce5c85d1f9e7ecb3a1d assets/dnmmod/models/item/wooden_wand.json

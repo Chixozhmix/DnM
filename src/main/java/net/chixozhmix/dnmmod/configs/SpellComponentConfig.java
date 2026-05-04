@@ -57,7 +57,7 @@ public class SpellComponentConfig {
             entries.add("io.redspace.ironsspellbooks.spells.lightning.ChargeSpell|irons_spellbooks:energized_core");
             entries.add("io.redspace.ironsspellbooks.spells.lightning.LightningBoltSpell|minecraft:lightning_rod");
             entries.add("io.redspace.ironsspellbooks.spells.lightning.LightningLanceSpell|dnmmod:iron_trident");
-            entries.add("io.redspace.ironsspellbooks.spells.lightning.ThunderstormSpell|dnmmod:thunderstorm_bottle");
+            entries.add("io.redspace.ironsspellbooks.spells.lightning.ThunderstormSpell|dnmmod:crystallized_lightning");
             entries.add("io.redspace.ironsspellbooks.spells.lightning.ChainLightningSpell|irons_spellbooks:heavy_chain");
             entries.add("io.redspace.ironsspellbooks.spells.nature.EarthquakeSpell|minecraft:coarse_dirt");
             entries.add("io.redspace.ironsspellbooks.spells.blood.SacrificeSpell|dnmmod:ritual_dagger");

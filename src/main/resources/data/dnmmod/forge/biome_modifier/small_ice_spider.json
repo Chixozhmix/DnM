@@ -4,7 +4,7 @@
   "spawners": {
     "type": "dnmmod:small_ice_spider",
     "weight": 30,
-    "minCount": 1,
-    "maxCount": 3
+    "minCount": 3,
+    "maxCount": 6
   }
 }

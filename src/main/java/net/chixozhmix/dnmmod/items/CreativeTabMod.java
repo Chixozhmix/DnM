@@ -107,7 +107,7 @@ public class CreativeTabMod {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.ECTOPLASM.get());
                         output.accept(ModItems.PHANTOM_POTION.get());
-                        output.accept(ModItems.THUNDERSTORM_BOTTLE.get());
+                        output.accept(ModItems.CRYSTALLIZED_LIGHTNING.get());
                         output.accept(ModItems.RAVEN_FEATHER.get());
                         output.accept(ModItems.GREEMON_FANG.get());
                         output.accept(ModItems.MAID_DRESS.get());
