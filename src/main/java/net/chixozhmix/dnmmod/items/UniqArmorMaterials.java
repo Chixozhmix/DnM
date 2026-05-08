@@ -69,6 +69,14 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
                     new AttributeModifier("Speed", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
                     (Attribute) AttributesMod.MELEE_RESISTANCE,
                     new AttributeModifier("Meele resist", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+            )),
+    VOILE_OF_DEATH("voile_of_death", 35, lightArmorMap(), 15,
+    SoundEvents.ARMOR_EQUIP_NETHERITE, 0.0F, 0.0F,
+            () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.NETHERITE_INGOT}),
+            Map.of((Attribute) AttributeRegistry.BLOOD_SPELL_POWER.get(),
+            new AttributeModifier("Blood magic", (double)0.15F, AttributeModifier.Operation.MULTIPLY_BASE),
+            (Attribute) AttributeRegistry.BLOOD_MAGIC_RESIST.get(),
+            new AttributeModifier("Blood resist", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
             ));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};

@@ -75,6 +75,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.MITHRILL_CHESTPLATE.get());
                         output.accept(ModItems.MITHRILL_LEGGINGS.get());
                         output.accept(ModItems.MITHRILL_BOOTS.get());
+                        output.accept(ModItems.VOILE_OF_DEATH.get());
                     })
                     .build());
 

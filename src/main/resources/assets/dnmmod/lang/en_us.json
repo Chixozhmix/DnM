@@ -116,10 +116,7 @@
   "item.dnmmod.mithril_leggings": "Mithril leggings",
   "item.dnmmod.mithril_boots": "Mithril boots",
 
-  "item.dnmmod.plate_helmet": "Plate helmet",
-  "item.dnmmod.plate_chestplate": "Plate chestplate",
-  "item.dnmmod.plate_leggings": "Plate leggings",
-  "item.dnmmod.plate_boots": "Plate boots",
+  "item.dnmmod.voile_of_death": "Voile of death",
 
   "item.dnmmod.protection_ring": "Protection ring",
 
@@ -201,8 +198,9 @@
   "entity.dnmmod.small_ice_spider": "Small ice spider",
 
   "tooltip.dnmmod.maid": "Why not?",
-  "tooltip.dnmmod.crystallized_lightning": "When the elements meet with wild currents of magic, those who are called Atronach are born. The Storm Atronach is the product of two chaotic elements, intertwined in a mad dance, and it brings destruction because that is its nature. And it knows nothing else.",
+  "tooltip.dnmmod.voile_of_death": "When your life is in danger, the spirits of death protect you from inevitable death.",
 
+  "tooltip.dnmmod.crystallized_lightning": "When the elements meet with wild currents of magic, those who are called Atronach are born. The Storm Atronach is the product of two chaotic elements, intertwined in a mad dance, and it brings destruction because that is its nature. And it knows nothing else.",
   "tooltip.dnmmod.hag_eye": "The Hag Coven often creates similar trinkets from those they once ate. A simple magical trinket that hides pleasant bonuses. They say it helps you see in the dark, and you can also use it to spot even those who are outside the walls!",
   "tooltip.dnmmod.wand_core": "In order for the wand to have magical properties, it needs to be powered. The core of the wand is made from various magical components that grant magical properties to the wand created by the caster.",
   "tooltip.dnmmod.forest_heart": "By killing a Leshy, which happens to a very small number of mortals, the killer can get a truly valuable thing - the Forest Heart, which has amazing properties to control plants and protect the lives of those who touch the ground.",

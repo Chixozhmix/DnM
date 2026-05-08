@@ -103,7 +103,7 @@ public class ReaperEntity extends AbstractSpellCastingMob implements Enemy, IAni
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(4, (new WizardAttackGoal(this, (double)1.25F, 35, 80))
+        this.goalSelector.addGoal(4, (new WizardAttackGoal(this, (double)1.25F, 45, 85))
                 .setSpells(List.of((AbstractSpell) SpellRegistry.ACUPUNCTURE_SPELL.get(),
                         (AbstractSpell)SpellRegistry.BLOOD_SLASH_SPELL.get(),
                         (AbstractSpell) RegistrySpells.TALL_THE_DEAD.get()),

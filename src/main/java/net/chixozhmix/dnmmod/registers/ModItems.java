@@ -298,6 +298,9 @@ public class ModItems {
     public static final RegistryObject<Item> MITHRILL_BOOTS = ITEMS.register("mithril_boots", () ->
             new MithrillArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
 
+    public static final RegistryObject<Item> VOILE_OF_DEATH = ITEMS.register("voile_of_death", () ->
+            new VoileOfDeathArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties().rarity(Rarity.RARE)));
+
     //Spellbooks
     public static final RegistryObject<Item> MAGICAL_GRIMOIRE = ITEMS.register("magical_grimoire",
             () -> new SimpleAttributeSpellBook(8, SpellRarity.RARE, AttributeRegistry.COOLDOWN_REDUCTION.get(), 0.05, (double)50.0F));
