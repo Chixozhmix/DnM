@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
+import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronach;
 import net.chixozhmix.dnmmod.entity.evil_storm_atronach.EvilStormAtronach;
 import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
@@ -169,6 +170,12 @@ public class ModEntityType {
                             .sized(0.9f, 1.1f)
                             .clientTrackingRange(32)
                             .build("small_ice_spider"));
+    public static final RegistryObject<EntityType<DefiledWizard>> DEFILED_WIZARD =
+            ENTITY_TYPES.register("defiled_wizard", () ->
+                    EntityType.Builder.of(DefiledWizard::new, MobCategory.MONSTER)
+                            .sized(0.8f, 1.9f)
+                            .clientTrackingRange(32)
+                            .build("defiled_wizard"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =
