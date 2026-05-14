@@ -14,9 +14,6 @@ public class ReaperModel extends AbstractSpellCastingMobModel {
     private static final ResourceLocation MODEL = new ResourceLocation("dnmmod", "geo/reaper_geo.json");
     public static final ResourceLocation ANIM = new ResourceLocation("dnmmod", "animations/casting_animations.json");
 
-    public ReaperModel(){
-    }
-
     @Override
     public ResourceLocation getModelResource(AbstractSpellCastingMob object) {
         return MODEL;

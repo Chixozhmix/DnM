@@ -8,10 +8,13 @@ import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.chixozhmix.dnmmod.goals.CasterBossAttackGoal;
 import net.chixozhmix.dnmmod.registers.ModItems;
 import net.chixozhmix.dnmmod.registers.RegistrySpells;
+import net.chixozhmix.dnmmod.registers.SoundsRegistry;
+import net.chixozhmix.dnmmod.sounds.IBossMusic;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
@@ -35,16 +38,17 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy {
+public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy, IBossMusic {
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)6.0F)
             .add(Attributes.ATTACK_KNOCKBACK, (double)0.2F)
             .add(Attributes.MAX_HEALTH, (double)220.0F)
             .add(Attributes.FOLLOW_RANGE, (double)30.0F)
             .add(AttributeRegistry.SPELL_POWER.get(), (double)1.15F)
-            .add(Attributes.MOVEMENT_SPEED, (double)0.24F)
+            .add(Attributes.MOVEMENT_SPEED, (double)0.25F)
             .add(AttributeRegistry.SPELL_RESIST.get(), 0.5f)
-            .add(AttributeRegistry.SUMMON_DAMAGE.get(), 0.4f);
+            .add(AttributeRegistry.SUMMON_DAMAGE.get(), 0.4f)
+            .add(Attributes.KNOCKBACK_RESISTANCE, 0.15f);
 
     public GreenHagEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -135,5 +139,15 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy {
         super.aiStep();
 
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+    }
+
+    @Override
+    public SoundEvent getBossMusic() {
+        return SoundsRegistry.THE_HAG.get();
+    }
+
+    @Override
+    public float getMusicRange() {
+        return 24;
     }
 }

@@ -9,6 +9,7 @@ import net.chixozhmix.dnmmod.goals.MeleeCasterAtackGoal;
 import net.chixozhmix.dnmmod.registers.ModItems;
 import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.chixozhmix.dnmmod.registers.RegistrySpells;
+import net.chixozhmix.dnmmod.sounds.IBossMusic;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;

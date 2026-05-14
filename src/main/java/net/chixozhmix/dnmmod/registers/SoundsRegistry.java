@@ -23,6 +23,7 @@ public class SoundsRegistry{
     public static final RegistryObject<SoundEvent> GREEMON_AMBIENT = registerSoundEvent("greemon_ambient");
     public static final RegistryObject<SoundEvent> NECRO_MAGIC = registerSoundEvent("necro_magic");
     public static final RegistryObject<SoundEvent> TALL_THE_DEAD = registerSoundEvent("tall_the_dead");
+    public static final RegistryObject<SoundEvent> THE_HAG = registerSoundEvent("the_hag");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENT.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(DnMmod.MOD_ID, name)));

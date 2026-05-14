@@ -59,5 +59,10 @@
     "sounds": [
       "dnmmod:tall_the_dead"
     ]
+  },
+  "the_hag": {
+    "sounds": [
+      "dnmmod:the_hag"
+    ]
   }
 }

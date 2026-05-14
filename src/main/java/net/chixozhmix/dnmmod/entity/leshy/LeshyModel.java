@@ -15,10 +15,6 @@ public class LeshyModel extends AbstractSpellCastingMobModel {
     private static final ResourceLocation TEXTURE = new ResourceLocation("dnmmod", "textures/entity/leshy.png");
     private static final ResourceLocation MODEL = new ResourceLocation("dnmmod", "geo/leshy_geo.json");
 
-    public LeshyModel() {
-
-    }
-
     @Override
     public ResourceLocation getModelResource(AbstractSpellCastingMob object) {
         return MODEL;
