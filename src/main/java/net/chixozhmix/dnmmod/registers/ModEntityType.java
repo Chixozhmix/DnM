@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
+import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriest;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronach;
 import net.chixozhmix.dnmmod.entity.evil_storm_atronach.EvilStormAtronach;
@@ -101,37 +102,37 @@ public class ModEntityType {
     //Mobs
     public static final RegistryObject<EntityType<UndeadSpiritEntity>> UNDEAD_SPIRIT =
             ENTITY_TYPES.register("undead_spirit", () -> EntityType.Builder.of(UndeadSpiritEntity::new, MobCategory.MONSTER)
-                    .clientTrackingRange(8)
+                    .clientTrackingRange(32)
                     .sized(1.0f, 1.6f)
                     .build("undead_spirit"));
     public static final RegistryObject<EntityType<GoblinShamanEntity>> GOBLIN_SHAMAN =
             ENTITY_TYPES.register("goblin_shaman", () ->
                     EntityType.Builder.of(GoblinShamanEntity::new, MobCategory.MONSTER)
-                            .clientTrackingRange(10)
+                            .clientTrackingRange(32)
                             .sized(0.8f, 1.0f)
                             .build("goblin_shaman"));
     public static final RegistryObject<EntityType<GoblinWariorEntity>> GOBLIN_WARRIOR =
             ENTITY_TYPES.register("goblin_warrior", () ->
                     EntityType.Builder.of(GoblinWariorEntity::new, MobCategory.MONSTER)
-                            .clientTrackingRange(16)
+                            .clientTrackingRange(24)
                             .sized(0.8f, 1.0f)
                             .build("goblin_warrior"));
     public static final RegistryObject<EntityType<GreenHagEntity>> GREEN_HAG =
             ENTITY_TYPES.register("green_hag", () ->
                     EntityType.Builder.of(GreenHagEntity::new, MobCategory.MONSTER)
-                            .clientTrackingRange(16)
+                            .clientTrackingRange(24)
                             .sized(1.0f, 2.3f)
                             .build("green_hag"));
     public static final RegistryObject<EntityType<RavenEntity>> RAVEN =
             ENTITY_TYPES.register("raven", () ->
                     EntityType.Builder.of(RavenEntity::new, MobCategory.CREATURE)
-                            .clientTrackingRange(8)
+                            .clientTrackingRange(16)
                             .sized(0.375f, 0.5f)
                             .build("raven"));
     public static final RegistryObject<EntityType<LeshyEntity>> LESHY =
             ENTITY_TYPES.register("leshy", () ->
                     EntityType.Builder.of(LeshyEntity::new, MobCategory.MONSTER)
-                            .clientTrackingRange(16)
+                            .clientTrackingRange(32)
                             .sized(1.2f, 2.7f)
                             .build("leshy"));
     public static final RegistryObject<EntityType<GhostEntity>> GHOST =
@@ -176,6 +177,12 @@ public class ModEntityType {
                             .sized(0.8f, 1.9f)
                             .clientTrackingRange(32)
                             .build("defiled_wizard"));
+    public static final RegistryObject<EntityType<DefiledPriest>> DEFILED_PRIEST =
+            ENTITY_TYPES.register("defiled_priest", () ->
+                    EntityType.Builder.of(DefiledPriest::new, MobCategory.MONSTER)
+                            .sized(0.9f, 2.5f)
+                            .clientTrackingRange(32)
+                            .build("defiled_priest"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =

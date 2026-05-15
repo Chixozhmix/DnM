@@ -64,5 +64,13 @@
     "sounds": [
       "dnmmod:the_hag"
     ]
+  },
+  "the_hag_disc": {
+    "sounds": [
+      {
+        "name": "dnmmod:the_hag_disc",
+        "stream": true
+      }
+    ]
   }
 }

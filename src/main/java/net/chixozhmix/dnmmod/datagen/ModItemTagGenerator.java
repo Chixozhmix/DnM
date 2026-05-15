@@ -24,5 +24,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
         this.tag(Tags.Items.FEATHERS)
                 .add(ModItems.RAVEN_FEATHER.get());
+
+        this.tag(ItemTags.MUSIC_DISCS)
+                .add(ModItems.THE_HAG_MUSIC_DISC.get());
     }
 }

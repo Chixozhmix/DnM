@@ -53,6 +53,8 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy, IB
     public GreenHagEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.xpReward = 40;
+
+        this.setPersistenceRequired();
     }
 
     private final ServerBossEvent bossEvent = new ServerBossEvent(Component.translatable("ui.dnmmod.green_hag_bossbar"),
@@ -97,7 +99,12 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy, IB
 
     @Override
     protected boolean shouldDespawnInPeaceful() {
-        return true;
+        return false;
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double pDistanceToClosestPlayer) {
+        return false;
     }
 
     @Override
@@ -150,4 +157,6 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy, IB
     public float getMusicRange() {
         return 24;
     }
+
+
 }

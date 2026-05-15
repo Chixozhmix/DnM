@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "dnmmod:evoker_wand"
+    },
+    "title": "DnM",
+    "description": {
+      "translate": "advancements.dnmmod.root"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:player_killed_entity"
+    }
+  }
+}

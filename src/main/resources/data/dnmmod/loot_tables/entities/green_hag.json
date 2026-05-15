@@ -26,6 +26,16 @@
             }
           ],
           "name": "irons_spellbooks:arcane_essence"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "dnmmod:the_hag_disc",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.2
+            }
+          ]
         }
       ],
       "rolls": 1.0

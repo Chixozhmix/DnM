@@ -156,6 +156,9 @@
   "item.minecraft.splash_potion.effect.resistance_potion": "Взрывное зелье сопротивления",
   "item.minecraft.lingering_potion.effect.resistance_potion": "Оседающее зелье сопротивления",
 
+  "item.dnmmod.the_hag_disc": "Пластинка Карги",
+  "item.dnmmod.the_hag_disc.desc": "Gonich - The Hag",
+
   "block.dnmmod.clay_shale": "Глинистый сланец",
   "block.dnmmod.leshy_altar": "Алтарь Лешего",
   "block.dnmmod.scroll_table": "Стол для свитков",
@@ -198,6 +201,7 @@
   "entity.dnmmod.reaper": "Образ Смерти",
   "entity.dnmmod.small_ice_spider": "Маленький ледяной паук",
   "entity.dnmmod.defiled_wizard": "Оскверненный волшебник",
+  "entity.dnmmod.defiled_priest": "Оскверненный жрец",
 
   "tooltip.dnmmod.maid": "Почему нет?",
   "tooltip.dnmmod.voile_of_death": "Когда ваша жизнь в опасности, духи смерти укрывают вас от неизбежной смерти.",
@@ -231,6 +235,11 @@
   "creativetab.dnmmod.blocks": "Блоки",
   "creativetab.dnmmod.magic_items": "Магические предметы",
   "creativetab.dnmmod.eggs": "Яйца",
+
+  "advancements.dnmmod.root": "Приключение начинается!",
+
+  "advancements.dnmmod.kill_leshy": "Убей Лешего",
+  "advancements.dnmmod.kill_lesy_descript": "Никто не осмеливается приблизится к его алтарям",
 
   "effect.dnmmod.mage_armor": "Доспехи Мага",
   "effect.dnmmod.acid_effect": "Кислота",

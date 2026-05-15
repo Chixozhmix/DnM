@@ -341,6 +341,11 @@ public class ModItems {
     public static final RegistryObject<ForgeSpawnEggItem> SMALL_ICE_SPIDER_SPAWN_EGG = ITEMS.register("small_ice_spider_spawn_egg", () ->
             new ForgeSpawnEggItem(ModEntityType.SMALL_ICE_SPIDER, 0xA1EBF7, 0x609FC4, PropertiesHelper.stackItemProperties(64)));
 
+    //Music Discs
+    public static final RegistryObject<Item> THE_HAG_MUSIC_DISC = ITEMS.register("the_hag_disc", () ->
+            new RecordItem(6, SoundsRegistry.THE_HAG_DISC, PropertiesHelper.stackItemProperties(1), 3260));
+
+
     // Опциональные предметы
     public static Optional<RegistryObject<Item>> AQUA_WAND = Optional.empty();
     public static Optional<RegistryObject<Item>> KAPELLMEISTER_WAND = Optional.empty();

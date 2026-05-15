@@ -154,6 +154,8 @@
   "item.minecraft.splash_potion.effect.resistance_potion": "Splash resistance resist potion",
   "item.minecraft.lingering_potion.effect.resistance_potion": "Lingering resistance resist potion",
 
+  "item.dnmmod.the_hag_disc": "The Hag Music Disc",
+  "item.dnmmod.the_hag_disc.desc": "Gonich - The Hag",
 
   "block.dnmmod.clay_shale": "Clay shale",
   "block.dnmmod.leshy_altar": "Leshy Altar",
@@ -197,6 +199,7 @@
   "entity.dnmmod.reaper": "Avatar of Death",
   "entity.dnmmod.small_ice_spider": "Small ice spider",
   "entity.dnmmod.defiled_wizard": "Defiled Wizard",
+  "entity.dnmmod.defiled_priest": "Defiled Priest",
 
   "tooltip.dnmmod.maid": "Why not?",
   "tooltip.dnmmod.voile_of_death": "When your life is in danger, the spirits of death protect you from inevitable death.",
@@ -230,6 +233,11 @@
   "creativetab.dnmmod.blocks": "Blocks",
   "creativetab.dnmmod.magic_items": "Magic items",
   "creativetab.dnmmod.eggs": "Eggs",
+
+  "advancements.dnmmod.root": "The adventure begins!",
+
+  "advancements.dnmmod.kill_leshy": "Kill the Leshy",
+  "advancements.dnmmod.kill_lesy_descript": "No one dares to approach his altars.",
 
   "effect.dnmmod.mage_armor": "Mage Armor",
   "effect.dnmmod.acid_effect": "Acid",

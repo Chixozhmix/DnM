@@ -25,6 +25,8 @@ public class SoundsRegistry{
     public static final RegistryObject<SoundEvent> TALL_THE_DEAD = registerSoundEvent("tall_the_dead");
     public static final RegistryObject<SoundEvent> THE_HAG = registerSoundEvent("the_hag");
 
+    public static final RegistryObject<SoundEvent> THE_HAG_DISC = registerSoundEvent("the_hag_disc");
+
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENT.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(DnMmod.MOD_ID, name)));
     }

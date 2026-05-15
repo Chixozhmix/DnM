@@ -58,6 +58,8 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
     public LeshyEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.xpReward = 60;
+
+        this.setPersistenceRequired();
     }
 
     public final ServerBossEvent bossEvent = new ServerBossEvent(Component.translatable("ui.dnmmod.leshy_bossbar"),
@@ -75,8 +77,7 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
                         List.of(SpellRegistry.ACID_ORB_SPELL.get(),
                                 RegistrySpells.CAUSTIC_BREW.get(),
                                 SpellRegistry.STOMP_SPELL.get(),
-                                SpellRegistry.FIREFLY_SWARM_SPELL.get(),
-                                SpellRegistry.BLOOD_STEP_SPELL.get()),
+                                SpellRegistry.FIREFLY_SWARM_SPELL.get()),
                         List.of(SpellRegistry.BLIGHT_SPELL.get(),
                                 SpellRegistry.ROOT_SPELL.get()),
                         List.of(SpellRegistry.BLOOD_STEP_SPELL.get()),
@@ -200,5 +201,10 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
         }
 
         return hurt;
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double pDistanceToClosestPlayer) {
+        return false;
     }
 }

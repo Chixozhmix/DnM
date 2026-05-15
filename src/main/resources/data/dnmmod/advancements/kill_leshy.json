@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "dnmmod:forest_heart"
+    },
+    "title": {
+      "translate": "advancements.dnmmod.kill_leshy"
+    },
+    "description": {
+      "translate": "advancements.dnmmod.kill_lesy_descript"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "dnmmod:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dnmmod:forest_heart"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

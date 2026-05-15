@@ -118,6 +118,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.DICE20.get());
                         output.accept(ModItems.IRON_RING.get());
                         output.accept(ModItems.PARCHMENT.get());
+                        output.accept(ModItems.THE_HAG_MUSIC_DISC.get());
                     })
                     .build());
     //Magic Items
