@@ -29,7 +29,7 @@ public class HungerOfHadarSpell extends AbstractSpell {
         this.manaCostPerLevel = 10;
         this.baseSpellPower = 6;
         this.spellPowerPerLevel = 1;
-        this.castTime = 25;
+        this.castTime = 75;
         this.baseManaCost = 100;
     }
 

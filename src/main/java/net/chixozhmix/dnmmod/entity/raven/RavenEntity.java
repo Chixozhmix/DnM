@@ -20,8 +20,8 @@ import org.jetbrains.annotations.Nullable;
 public class RavenEntity extends PathfinderMob implements FlyingAnimal {
     private static final AttributeSupplier ATTRIBUTES = Monster.createMonsterAttributes()
             .add(Attributes.MAX_HEALTH, 10.0D)
-            .add(Attributes.FLYING_SPEED, 0.6F)
-            .add(Attributes.MOVEMENT_SPEED, 0.3F)
+            .add(Attributes.FLYING_SPEED, 0.9F)
+            .add(Attributes.MOVEMENT_SPEED, 0.4F)
             .add(Attributes.ARMOR, 0.0D)
             .add(Attributes.ATTACK_DAMAGE, 4.0D)
             .build();

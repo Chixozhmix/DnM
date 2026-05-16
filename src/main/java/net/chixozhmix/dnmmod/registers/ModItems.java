@@ -343,7 +343,7 @@ public class ModItems {
 
     //Music Discs
     public static final RegistryObject<Item> THE_HAG_MUSIC_DISC = ITEMS.register("the_hag_disc", () ->
-            new RecordItem(6, SoundsRegistry.THE_HAG_DISC, PropertiesHelper.stackItemProperties(1), 3260));
+            new RecordItem(6, SoundsRegistry.THE_HAG_DISC, PropertiesHelper.stackItemProperties(1).rarity(Rarity.RARE), 3260));
 
 
     // Опциональные предметы

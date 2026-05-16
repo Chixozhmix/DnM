@@ -96,7 +96,7 @@ public class DefiledPriest extends AbstractSpellCastingMob implements Enemy, IAn
     protected void registerGoals() {
         this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.25F, 30, 50))
                 .setSpells(
-                        List.of(SpellRegistry.BLOOD_SLASH_SPELL.get(), SpellRegistry.WISP_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
+                        List.of(SpellRegistry.BLOOD_SLASH_SPELL.get(), SpellRegistry.MAGIC_MISSILE_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
                         List.of(SpellRegistry.SHADOW_SLASH.get()),
                         List.of(SpellRegistry.TELEPORT_SPELL.get()),
                         List.of(SpellRegistry.HEAL_SPELL.get(), RegistrySpells.AGATHYS_ARMOR_SPELL.get()))
