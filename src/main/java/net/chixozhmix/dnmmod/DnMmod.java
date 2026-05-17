@@ -5,6 +5,8 @@ import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.chixozhmix.dnmmod.Util.BrewingRecipe;
 import net.chixozhmix.dnmmod.Util.ModCapabilities;
+import net.chixozhmix.dnmmod.blocks.client.SealedDoorModel;
+import net.chixozhmix.dnmmod.blocks.client.SealedDoorRenderer;
 import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
 import net.chixozhmix.dnmmod.entity.corypheus.CorypheusRenderer;
 import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriestrenderer;
@@ -43,6 +45,7 @@ import net.chixozhmix.dnmmod.screen.component_bag.ComponentBagScreen;
 import net.chixozhmix.dnmmod.screen.medium_bag.MediumBagScreen;
 import net.chixozhmix.dnmmod.screen.scroll_table.ScrollTableScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -167,6 +170,8 @@ public class DnMmod
         {
             event.enqueueWork(() -> {
                 CuriosRendererRegistry.register(ModItems.MAGICAL_GRIMOIRE.get(), SpellBookCurioRenderer::new);
+
+                BlockEntityRenderers.register(ModBlockEntities.DOOR_OF_SEAL.get(), SealedDoorRenderer::new);
             });
 
             EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);
@@ -214,6 +219,8 @@ public class DnMmod
             event.registerLayerDefinition(RavenRenderer.MODEL_LAYER_LOCATION, RavenModel::createBodyLayer);
             event.registerLayerDefinition(SummonedRavenRenderer.MODEL_LAYER_LOCATION, SummonedRavenModel::createBodyLayer);
             event.registerLayerDefinition(RayOfEnfeeblementRenderer.MODEL_LAYER_LOCATION, RayOfEnfeeblementRenderer::createBodyLayer);
+
+            event.registerLayerDefinition(SealedDoorModel.LAYER_LOCATION, SealedDoorModel::createBodyLayer);
         }
     }
 

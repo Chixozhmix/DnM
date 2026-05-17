@@ -2,13 +2,10 @@ package net.chixozhmix.dnmmod.entity.corypheus;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
-import io.redspace.ironsspellbooks.entity.mobs.goals.MomentHurtByTargetGoal;
-import io.redspace.ironsspellbooks.entity.mobs.goals.PatrolNearLocationGoal;
-import io.redspace.ironsspellbooks.entity.mobs.goals.WarlockAttackGoal;
-import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
-import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriest;
+import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
@@ -92,15 +89,6 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.setPersistenceRequired();
     }
 
-    @Override
-    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
-        if (!pLevel.isClientSide()) {
-            this.triggerRiseAnimation();
-        }
-
-        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
-    }
-
     public CorypheusBoss(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
 
@@ -111,6 +99,10 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.movementController = new AnimationController<>(this, "movement", 0, this::movementPredicate);
         this.riseController = new AnimationController<>(this, "rise", 0, this::risePredicate);
         this.attackController = new AnimationController<>(this, "attack", 0, this::attackPredicate);
+
+        if (this.isPhase(Phases.FirstPhase)) {
+            this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.0F);
+        }
     }
 
     public static AttributeSupplier.Builder prepareAttributes() {
@@ -122,6 +114,16 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         super.defineSynchedData();
         this.entityData.define(DATA_IS_ANIMATING_RISE, false);
         this.entityData.define(PHASE, 0);
+    }
+
+    @Override
+    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+        if (!pLevel.isClientSide()) {
+            this.triggerRiseAnimation();
+            this.updateMovementSpeed();
+        }
+
+        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
 
     @Override
@@ -192,8 +194,6 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         }
 
         return super.hurt(pSource, pAmount);
-
-        //return pSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) || !this.isAnimatingRise() ? super.hurt(pSource, pAmount) : false;
     }
 
     @Override
@@ -236,6 +236,16 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.playSound(SoundEvents.WITHER_SPAWN, 1.0F, 1.0F);
 
         this.setFinalPhaseGoals();
+
+        this.updateMovementSpeed();
+    }
+
+    private void updateMovementSpeed() {
+        if (this.isPhase(Phases.FirstPhase)) {
+            this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.0F);
+        } else {
+            this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.26F);
+        }
     }
 
     @Override
@@ -271,14 +281,22 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
         this.goalSelector.removeAllGoals((x) -> true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.25F, 30, 50))
-                .setSpells(
-                        List.of(SpellRegistry.BLOOD_SLASH_SPELL.get(), SpellRegistry.MAGIC_MISSILE_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
-                        List.of(SpellRegistry.SHADOW_SLASH.get()),
-                        List.of(SpellRegistry.TELEPORT_SPELL.get()),
-                        List.of(SpellRegistry.HEAL_SPELL.get(), RegistrySpells.AGATHYS_ARMOR_SPELL.get()))
-                .setSingleUseSpell(SpellRegistry.SCULK_TENTACLES_SPELL.get(), 60, 220, 4, 5));
-        this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)SpellRegistry.RAISE_DEAD_SPELL.get(), 2, 2, 120, 240, 1));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)RegistrySpells.THUNDERWAVE.get(), 10, 10, 40, 60, 1)
+        {
+            @Override
+            public void tick() {
+                if (this.target != null) {
+                    double distanceSquared = this.mob.distanceToSqr(this.target.getX(), this.target.getY(), this.target.getZ());
+                    if (distanceSquared < 5) {
+                        this.mob.getLookControl().setLookAt(this.target, 45.0F, 45.0F);
+                        this.spellCastingMob.initiateCastSpell(this.spell, this.mob.getRandom().nextIntBetweenInclusive(this.minSpellLevel, this.maxSpellLevel));
+                        this.stop();
+                    }
+
+                }
+            }
+        });
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
 
@@ -292,7 +310,7 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
                         List.of(SpellRegistry.SHADOW_SLASH.get()),
                         List.of(SpellRegistry.TELEPORT_SPELL.get()),
                         List.of(SpellRegistry.HEAL_SPELL.get(), RegistrySpells.AGATHYS_ARMOR_SPELL.get()))
-                .setSingleUseSpell(SpellRegistry.BLACK_HOLE_SPELL.get(), 60, 220, 4, 5));
+                .setSingleUseSpell(SpellRegistry.BLACK_HOLE_SPELL.get(), 60, 220, 2, 3));
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }

@@ -3,8 +3,10 @@ package net.chixozhmix.dnmmod.registers;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.blocks.custom.LeshyAltarBlock;
 import net.chixozhmix.dnmmod.blocks.custom.ScrollTableBlock;
+import net.chixozhmix.dnmmod.blocks.custom.SealedDoorBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -34,6 +36,9 @@ public class ModBlocks {
                     .isRedstoneConductor((state, getter, pos) -> false)
                     .isSuffocating((state, getter, pos) -> false)
                     .isViewBlocking((state, getter, pos) -> false)));
+
+    public static final RegistryObject<Block> DOOR_OF_SEAL = registerBlock("door_of_seal",
+            () -> new SealedDoorBlock());
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
