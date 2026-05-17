@@ -2,18 +2,17 @@ package net.chixozhmix.dnmmod.entity.corypheus;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
-import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
-import io.redspace.ironsspellbooks.entity.mobs.dead_king_boss.DeadKingAnimatedWarlockAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.MomentHurtByTargetGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.PatrolNearLocationGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WarlockAttackGoal;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WizardAttackGoal;
+import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriest;
+import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.registers.RegistrySpells;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -23,11 +22,10 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -41,7 +39,9 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraftforge.common.ForgeMod;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -77,17 +77,28 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)10.0F)
             .add(Attributes.ATTACK_KNOCKBACK, (double)0.4F)
+            .add(Attributes.KNOCKBACK_RESISTANCE, (double)0.8F)
             .add(Attributes.MAX_HEALTH, (double)950.0F)
             .add(Attributes.FOLLOW_RANGE, (double)35.0F)
             .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)1.5F)
             .add(Attributes.MOVEMENT_SPEED, (double)0.26F)
-            .add(ForgeMod.ENTITY_REACH.get(), 7.0F);
+            .add(ForgeMod.ENTITY_REACH.get(), 7.0F)
+            .add(Attributes.ARMOR, 10.0F)
+            .add(AttributeRegistry.SPELL_RESIST.get(), 1.2F);
 
 
     public CorypheusBoss(Level pLevel) {
         this((EntityType) ModEntityType.CORYPHEUS.get(), pLevel);
-        this.triggerRiseAnimation();
         this.setPersistenceRequired();
+    }
+
+    @Override
+    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+        if (!pLevel.isClientSide()) {
+            this.triggerRiseAnimation();
+        }
+
+        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
 
     public CorypheusBoss(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
@@ -190,7 +201,6 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         super.tick();
 
         if (this.level().isClientSide) {
-            // Клиентская логика (частицы и т.д.)
             return;
         }
 
@@ -249,7 +259,8 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
     @Override
     protected void registerGoals() {
         this.setFirstPhaseGoals();
-        this.targetSelector.addGoal(1, new MomentHurtByTargetGoal(this, new Class[0]));
+        this.targetSelector.addGoal(1, new MomentHurtByTargetGoal(this,
+                DefiledWizard.class));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, IronGolem.class, true));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal(this, Villager.class, true));

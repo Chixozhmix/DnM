@@ -16,6 +16,21 @@
           ]
         }
       ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{pages:['{\"translate\":\"book.dnmmod.priest.page1\"}','{\"translate\":\"book.dnmmod.priest.page2\"}','{\"translate\":\"book.dnmmod.priest.page3\"}','{\"translate\":\"book.dnmmod.priest.page4\"}'],title:\"The Priest's Diary\",author:\"unknown\"}"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
