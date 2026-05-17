@@ -10,6 +10,7 @@ import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import io.redspace.ironsspellbooks.item.spell_books.SimpleAttributeSpellBook;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
+import io.redspace.ironsspellbooks.item.weapons.StaffTier;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.PropertiesHelper;
@@ -118,78 +119,66 @@ public class ModItems {
     public static final RegistryObject<Item> WOODEN_WAND = ITEMS.register("wooden_wand",
             () -> new StaffItem(PropertiesHelper.stackItemProperties(1),
                     (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-                            MULTIPLY_BASE),
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
                     (Attribute)AttributeRegistry.SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.1,
-                            MULTIPLY_BASE))));
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.1, MULTIPLY_BASE))));
     public static final RegistryObject<Item> DRUID_WAND = ITEMS.register("druid_wand",
             () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
                     (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
                     (Attribute)AttributeRegistry.NATURE_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-                            AttributeModifier.Operation.MULTIPLY_BASE))));
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
     public static final RegistryObject<Item> ELECTROMANCER_WAND = ITEMS.register("electromancer_wand",
             () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
                     (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
                     (Attribute)AttributeRegistry.LIGHTNING_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-                            AttributeModifier.Operation.MULTIPLY_BASE))));
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
     public static final RegistryObject<Item> CRYOMANCER_WAND = ITEMS.register("cryomancer_wand",
             () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
                     (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
                     (Attribute)AttributeRegistry.ICE_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-                            AttributeModifier.Operation.MULTIPLY_BASE))));
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
     public static final RegistryObject<Item> PYROMANCER_WAND = ITEMS.register("pyromancer_wand",
             () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
                     (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
                     (Attribute)AttributeRegistry.FIRE_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-                            AttributeModifier.Operation.MULTIPLY_BASE))));
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
     public static final RegistryObject<Item> BLOOD_WAND = ITEMS.register("blood_wand",
             () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
                     (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
                     (Attribute)AttributeRegistry.BLOOD_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-                            AttributeModifier.Operation.MULTIPLY_BASE))));
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
     public static final RegistryObject<Item> ENDER_WAND = ITEMS.register("ender_wand",
             () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
                     (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
                     (Attribute)AttributeRegistry.ENDER_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-                            AttributeModifier.Operation.MULTIPLY_BASE))));
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
     public static final RegistryObject<Item> SACRED_SYMBOL = ITEMS.register("sacred_symbol",
             () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
                     (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
                     (Attribute)AttributeRegistry.HOLY_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-                            AttributeModifier.Operation.MULTIPLY_BASE))));
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
     public static final RegistryObject<Item> EVOKER_WAND = ITEMS.register("evoker_wand",
             () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
                     (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
-                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
                     (Attribute)AttributeRegistry.EVOCATION_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
-                            AttributeModifier.Operation.MULTIPLY_BASE),
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE),
                     (Attribute)AttributeRegistry.SUMMON_DAMAGE.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.10,
-                            AttributeModifier.Operation.MULTIPLY_BASE))));
+                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.10, MULTIPLY_BASE))));
+    public static final RegistryObject<Item> TAINTED_STAFF = ITEMS.register("tainted_staff",
+            () -> new TaintedStaff(PropertiesHelper.stackItemProperties(1).rarity(Rarity.EPIC),
+                    new StaffTier(2.0F, -3.0F, new AttributeContainer[]
+                            {new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.30F, MULTIPLY_BASE),
+                                    new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.15F, MULTIPLY_BASE),
+                                    new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, 0.15F, MULTIPLY_BASE),
+                                    new AttributeContainer(AttributeRegistry.SPELL_POWER, 0.1F, MULTIPLY_BASE)})));
     //Items
     public static final RegistryObject<Item> ECTOPLASM = ITEMS.register("ectoplasm", () ->
             new Item(PropertiesHelper.stackItemProperties(64)));

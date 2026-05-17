@@ -43,7 +43,6 @@
   "item.dnmmod.kapellmeister_wand_core": "Kapellmeister wand core",
   "item.dnmmod.crystallized_lightning": "Crystallized lightning",
   "item.dnmmod.greemon_fang": "Greemon fang",
-  "item.dnmmod.morokei_mask": "Morokei Mask",
 
   "item.dnmmod.wooden_wand": "Wooden wand",
   "item.dnmmod.cryomancer_wand": "Cryomancer wand",
@@ -53,7 +52,9 @@
   "item.dnmmod.pyromancer_wand": "Pyromancer wand",
   "item.dnmmod.blood_wand": "Blood wand",
   "item.dnmmod.ender_wand": "Ender wand",
-  "item.dnmmod.sacred_symbol": "Sacred wand",
+  "item.dnmmod.sacred_symbol": "Sacred symbol",
+  "item.dnmmod.tainted_staff": "The Tainted Staff",
+
   "item.dnmmod.aqua_wand": "Aqua wand",
   "item.dnmmod.kapellmeister_wand": "Kapellmeister wand",
   "item.dnmmod.geomancy_wand": "Geomancy wand",
@@ -200,6 +201,7 @@
   "entity.dnmmod.small_ice_spider": "Small ice spider",
   "entity.dnmmod.defiled_wizard": "Defiled Wizard",
   "entity.dnmmod.defiled_priest": "Defiled Priest",
+  "entity.dnmmod.corypheus": "Corypheus, the Kapellmeister of Silence",
 
   "tooltip.dnmmod.maid": "Why not?",
   "tooltip.dnmmod.voile_of_death": "When your life is in danger, the spirits of death protect you from inevitable death.",

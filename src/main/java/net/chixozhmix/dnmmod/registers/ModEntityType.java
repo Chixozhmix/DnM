@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.entity.corypheus.CorypheusBoss;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriest;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
@@ -183,6 +184,12 @@ public class ModEntityType {
                             .sized(0.9f, 2.5f)
                             .clientTrackingRange(32)
                             .build("defiled_priest"));
+    public static final RegistryObject<EntityType<CorypheusBoss>> CORYPHEUS =
+            ENTITY_TYPES.register("corypheus", () ->
+                    EntityType.Builder.<CorypheusBoss>of(CorypheusBoss::new, MobCategory.MONSTER)
+                            .sized(0.9f, 2.5f)
+                            .clientTrackingRange(32)
+                            .build("corypheus"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =

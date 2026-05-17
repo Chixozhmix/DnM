@@ -93,6 +93,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.PYROMANCER_WAND.get());
                         output.accept(ModItems.ENDER_WAND.get());
                         output.accept(ModItems.SACRED_SYMBOL.get());
+                        output.accept(ModItems.TAINTED_STAFF.get());
 
                         PropertiesHelper.addOptionalItem(output, ModItems.AQUA_WAND);
                         PropertiesHelper.addOptionalItem(output, ModItems.KAPELLMEISTER_WAND);

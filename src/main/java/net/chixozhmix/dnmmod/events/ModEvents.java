@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.events;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.spawnrules.ModSpawnRule;
+import net.chixozhmix.dnmmod.entity.corypheus.CorypheusBoss;
 import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriest;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronach;
@@ -59,6 +60,7 @@ public class ModEvents {
         event.put(ModEntityType.SMALL_ICE_SPIDER.get(), SmallIceSpiderEntity.prepareAttributes().build());
         event.put(ModEntityType.DEFILED_WIZARD.get(), DefiledWizard.prepareAttributes().build());
         event.put(ModEntityType.DEFILED_PRIEST.get(), DefiledPriest.prepareAttributes().build());
+        event.put(ModEntityType.CORYPHEUS.get(), CorypheusBoss.prepareAttributes().build());
     }
 
     @SubscribeEvent

@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.chixozhmix.dnmmod.Util.BrewingRecipe;
 import net.chixozhmix.dnmmod.Util.ModCapabilities;
 import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
+import net.chixozhmix.dnmmod.entity.corypheus.CorypheusRenderer;
 import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriestrenderer;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizardRenderer;
 import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronachRenderer;
@@ -196,6 +197,7 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.SMALL_ICE_SPIDER.get(), SmallIceSpiderRenderer::new);
             EntityRenderers.register(ModEntityType.DEFILED_WIZARD.get(), DefiledWizardRenderer::new);
             EntityRenderers.register(ModEntityType.DEFILED_PRIEST.get(), DefiledPriestrenderer::new);
+            EntityRenderers.register(ModEntityType.CORYPHEUS.get(), CorypheusRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COMPONENT_BAG_MENU.get(), ComponentBagScreen::new);
             MenuScreens.register(ModMenuTypes.MEDIUM_COMPONENT_BAG_MENU.get(), MediumBagScreen::new);

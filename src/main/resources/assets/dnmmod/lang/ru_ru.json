@@ -55,6 +55,8 @@
   "item.dnmmod.blood_wand": "Кровавая палочка",
   "item.dnmmod.ender_wand": "Палочка эндера",
   "item.dnmmod.sacred_symbol": "Священный символ",
+  "item.dnmmod.tainted_staff": "Оскверненный Посох",
+
   "item.dnmmod.aqua_wand": "Палочка воды",
   "item.dnmmod.kapellmeister_wand": "Палочка капельмейстера",
   "item.dnmmod.geomancy_wand": "Палочка геоманта",
@@ -202,6 +204,7 @@
   "entity.dnmmod.small_ice_spider": "Маленький ледяной паук",
   "entity.dnmmod.defiled_wizard": "Оскверненный волшебник",
   "entity.dnmmod.defiled_priest": "Оскверненный жрец",
+  "entity.dnmmod.corypheus": "Корифей, Капельмейстер Тишины",
 
   "tooltip.dnmmod.maid": "Почему нет?",
   "tooltip.dnmmod.voile_of_death": "Когда ваша жизнь в опасности, духи смерти укрывают вас от неизбежной смерти.",
