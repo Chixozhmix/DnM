@@ -155,7 +155,7 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy, IB
 
     @Override
     public float getMusicRange() {
-        return 24;
+        return 32;
     }
 
 

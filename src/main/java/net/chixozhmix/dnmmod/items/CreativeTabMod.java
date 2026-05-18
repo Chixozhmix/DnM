@@ -145,15 +145,13 @@ public class CreativeTabMod {
                         output.accept(ModItems.BLADE_RUNE.get());
                         output.accept(ModItems.PROTECTION_RING.get());
 
-                        //output.accept(ModItems.MOROKEI_MASK.get());
-
                         output.accept(ModItems.COMPONENT_BAG.get());
                         output.accept(ModItems.MEDIUM_COMPONENT_BAG.get());
                     })
                     .build());
     //Blocks
     public static final RegistryObject<CreativeModeTab> BLOCKS_TAB = CREATIVE_MOD_TABS.register("blocks",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.CLAY_SHALE.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.DOOR_OF_SEAL.get()))
                     .title(Component.translatable("creativetab.dnmmod.blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.LESHY_ALTAR.get());

@@ -229,7 +229,7 @@ public class ModItems {
             new CrystallizedLightning(PropertiesHelper.stackItemProperties(64)
                     .rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> BURNT_SUGAR = ITEMS.register("burnt_sugar", () ->
-            new Item(PropertiesHelper.stackItemProperties(64)));
+            new Item(PropertiesHelper.stackItemProperties(64).food(ModFood.BURNED_SUGAR)));
     public static final RegistryObject<Item> PARCHMENT = ITEMS.register("parchment", () ->
             new Item(PropertiesHelper.stackItemProperties(64)));
     //Potions

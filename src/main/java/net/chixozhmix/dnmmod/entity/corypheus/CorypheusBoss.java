@@ -9,7 +9,6 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
-import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -53,7 +52,9 @@ import java.util.List;
 public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker {
     private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(FlameAtronachEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(CorypheusBoss.class, EntityDataSerializers.INT);
+
     private boolean phaseTransitionTriggered = false;
+    private boolean finalPhaseTransitionTriggered = false;
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
@@ -92,7 +93,7 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
     public CorypheusBoss(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
 
-        this.riseAnimTime = 15;
+        this.riseAnimTime = 70;
         this.xpReward = 60;
         this.cache = GeckoLibUtil.createInstanceCache(this);
 
@@ -102,6 +103,7 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
 
         if (this.isPhase(Phases.FirstPhase)) {
             this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.0F);
+            this.getAttribute(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0F);
         }
     }
 
@@ -184,12 +186,18 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
 
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
-        // Не даем упасть ниже половины HP в первой фазе
         if (this.isPhase(Phases.FirstPhase) && !phaseTransitionTriggered) {
-            float halfHealth = this.getMaxHealth() / 2.0F;
+            float halfHealth = this.getMaxHealth() / 1.5F;
             float newHealth = this.getHealth() - pAmount;
             if (newHealth < halfHealth) {
                 pAmount = this.getHealth() - halfHealth;
+            }
+        }
+        else if(this.isPhase(Phases.SecondPhase) && !finalPhaseTransitionTriggered) {
+            float finalHealth = this.getMaxHealth() / 3.0F;
+            float newHealth = this.getHealth() - pAmount;
+            if (newHealth < finalHealth) {
+                pAmount = this.getHealth() - finalHealth;
             }
         }
 
@@ -214,9 +222,14 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
             return;
         }
 
-        float halfHealth = this.getMaxHealth() / 2.0F;
+        float halfHealth = this.getMaxHealth() / 1.5F;
+        float finalHealth = this.getMaxHealth() / 3.0F;
 
         if (this.isPhase(Phases.FirstPhase) && !phaseTransitionTriggered && this.getHealth() <= halfHealth) {
+            switchToSecondPhase();
+        }
+
+        if (this.isPhase(Phases.SecondPhase) && !finalPhaseTransitionTriggered && this.getHealth() <= finalHealth) {
             switchToFinalPhase();
         }
     }
@@ -227,8 +240,21 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         super.swing(pHand);
     }
 
-    private void switchToFinalPhase() {
+    private void switchToSecondPhase() {
         this.phaseTransitionTriggered = true;
+        this.setPhase(Phases.SecondPhase);
+
+        this.setHasUsedSingleAttack(false);
+
+        this.playSound(SoundEvents.WITHER_SPAWN, 1.0F, 1.0F);
+
+        this.setSecondPhaseGoal();
+
+        this.updateMovementSpeed();
+    }
+
+    private void switchToFinalPhase() {
+        this.finalPhaseTransitionTriggered = true;
         this.setPhase(Phases.FinalPhase);
 
         this.setHasUsedSingleAttack(false);
@@ -243,19 +269,34 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
     private void updateMovementSpeed() {
         if (this.isPhase(Phases.FirstPhase)) {
             this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.0F);
+            this.getAttribute(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0F);
         } else {
             this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.26F);
+            this.getAttribute(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(0.8F);
         }
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
+        if (pCompound.contains("BossPhase")) {
+            this.setPhaseValue(pCompound.getInt("BossPhase"));
+        }
+        phaseTransitionTriggered = pCompound.getBoolean("PhaseTransitionTriggered");
+
+        if (this.getPhase() == 1) {
+            setSecondPhaseGoal();
+        } else if (this.getPhase() == 2) {
+            setFinalPhaseGoals();
+        }
+        updateMovementSpeed();
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
+        pCompound.putInt("BossPhase", this.getPhase());
+        pCompound.putBoolean("PhaseTransitionTriggered", phaseTransitionTriggered);
     }
 
     public boolean isAnimatingRise() {
@@ -281,22 +322,24 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
         this.goalSelector.removeAllGoals((x) -> true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)SpellRegistry.RAISE_DEAD_SPELL.get(), 2, 2, 60, 160, 1));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)RegistrySpells.THUNDERWAVE.get(), 10, 10, 20, 40, 1)
-        {
-            @Override
-            public void tick() {
-                if (this.target != null) {
-                    double distanceSquared = this.mob.distanceToSqr(this.target.getX(), this.target.getY(), this.target.getZ());
-                    if (distanceSquared < 5) {
-                        this.mob.getLookControl().setLookAt(this.target, 45.0F, 45.0F);
-                        this.spellCastingMob.initiateCastSpell(this.spell, this.mob.getRandom().nextIntBetweenInclusive(this.minSpellLevel, this.maxSpellLevel));
-                        this.stop();
-                    }
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)SpellRegistry.RAISE_DEAD_SPELL.get(), 2, 2, 80, 160, 1));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)SpellRegistry.TELEKINESIS_SPELL.get(), 3, 5, 30, 90, 1));
+        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+    }
 
-                }
-            }
-        });
+    protected void setSecondPhaseGoal(){
+        this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
+        this.goalSelector.removeAllGoals((x) -> true);
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)SpellRegistry.RAISE_DEAD_SPELL.get(), 2, 2, 60, 140, 1));
+        this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.25F, 30, 55))
+                .setSpells(
+                        List.of(SpellRegistry.STARFALL_SPELL.get(), SpellRegistry.SONIC_BOOM_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
+                        List.of(SpellRegistry.SHADOW_SLASH.get()),
+                        List.of(SpellRegistry.TELEPORT_SPELL.get()),
+                        List.of())
+                .setSingleUseSpell(SpellRegistry.SCULK_TENTACLES_SPELL.get(), 60, 220, 3, 4));
+        this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
 
@@ -304,12 +347,12 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
         this.goalSelector.removeAllGoals((x) -> true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.25F, 35, 55))
+        this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.25F, 35, 55))
                 .setSpells(
-                        List.of(SpellRegistry.ACUPUNCTURE_SPELL.get(), SpellRegistry.SONIC_BOOM_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
+                        List.of(SpellRegistry.TELEKINESIS_SPELL.get(), SpellRegistry.SONIC_BOOM_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
                         List.of(SpellRegistry.SHADOW_SLASH.get()),
                         List.of(SpellRegistry.TELEPORT_SPELL.get()),
-                        List.of(SpellRegistry.HEAL_SPELL.get(), RegistrySpells.AGATHYS_ARMOR_SPELL.get()))
+                        List.of())
                 .setSingleUseSpell(SpellRegistry.BLACK_HOLE_SPELL.get(), 60, 220, 2, 3));
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -364,9 +407,14 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         return this.entityData.get(PHASE);
     }
 
+    private void setPhaseValue(int phaseValue) {
+        this.entityData.set(PHASE, phaseValue);
+    }
+
     public static enum Phases {
         FirstPhase(0),
-        FinalPhase(1);
+        SecondPhase(1),
+        FinalPhase(2);
 
         final int value;
 
