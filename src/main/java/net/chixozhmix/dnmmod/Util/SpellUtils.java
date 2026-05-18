@@ -15,7 +15,7 @@ public class SpellUtils {
     public static boolean checkSpellComponent(LivingEntity entity, Item item) {
 
         if(entity.getItemInHand(InteractionHand.MAIN_HAND).getItem() == item ||
-                entity.getItemInHand(InteractionHand.OFF_HAND).getItem() == item || !(entity instanceof Player)) {
+                entity.getItemInHand(InteractionHand.OFF_HAND).getItem() == item || !(entity instanceof Player) || ((Player) entity).isCreative()) {
                 return true;
         }
 

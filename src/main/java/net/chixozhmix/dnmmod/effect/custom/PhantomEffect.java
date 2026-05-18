@@ -1,14 +1,13 @@
 package net.chixozhmix.dnmmod.effect.custom;
 
+import net.chixozhmix.dnmmod.Util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
@@ -96,13 +95,7 @@ public class PhantomEffect extends MobEffect {
     }
 
     private boolean isForbiddenBlock(BlockState blockState) {
-        return blockState.getBlock() == Blocks.BEDROCK ||
-                blockState.getBlock() == Blocks.BARRIER ||
-                blockState.getBlock() == Blocks.COMMAND_BLOCK ||
-                blockState.getBlock() == Blocks.STRUCTURE_BLOCK ||
-                blockState.getBlock() == Blocks.JIGSAW ||
-                blockState.getBlock() == Blocks.OBSIDIAN ||
-                blockState.getBlock() == Blocks.CRYING_OBSIDIAN;
+        return blockState.is(ModTags.NOT_PASSABLE);
     }
 
     @Override

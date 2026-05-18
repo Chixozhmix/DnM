@@ -18,6 +18,8 @@ public class SealedDoorRenderer implements BlockEntityRenderer<SealedDoorBlockEn
 
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(DnMmod.MOD_ID, "textures/block/sealed_door.png");
+    private static final ResourceLocation GLOWING =
+            new ResourceLocation(DnMmod.MOD_ID, "textures/block/sealed_door_glowing.png");
 
     private final SealedDoorModel model;
 
@@ -44,7 +46,7 @@ public class SealedDoorRenderer implements BlockEntityRenderer<SealedDoorBlockEn
             default    -> {} // NORTH
         }
 
-        // Анимация (без изменений)
+        // Анимация
         this.model.left_door.yRot = 0.0F;
         this.model.right_door.yRot = 0.0F;
 
@@ -60,8 +62,10 @@ public class SealedDoorRenderer implements BlockEntityRenderer<SealedDoorBlockEn
             }
         }
 
-        VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entitySolid(TEXTURE));
-        this.model.renderToBuffer(poseStack, vertexConsumer, packedLight, packedOverlay, 1, 1, 1, 1);
+        VertexConsumer normalConsumer = bufferSource.getBuffer(RenderType.entitySolid(TEXTURE));
+        this.model.renderToBuffer(poseStack, normalConsumer, packedLight, packedOverlay, 1, 1, 1, 1);
+        VertexConsumer emissiveConsumer = bufferSource.getBuffer(RenderType.entityTranslucentEmissive(GLOWING));
+        this.model.renderToBuffer(poseStack, emissiveConsumer, packedLight, packedOverlay, 1, 1, 1, 1);
 
         poseStack.popPose();
     }

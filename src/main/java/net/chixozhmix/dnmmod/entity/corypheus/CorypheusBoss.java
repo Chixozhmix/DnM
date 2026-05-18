@@ -281,8 +281,8 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
         this.goalSelector.removeAllGoals((x) -> true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)SpellRegistry.RAISE_DEAD_SPELL.get(), 2, 2, 120, 240, 1));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)RegistrySpells.THUNDERWAVE.get(), 10, 10, 40, 60, 1)
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)SpellRegistry.RAISE_DEAD_SPELL.get(), 2, 2, 60, 160, 1));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)RegistrySpells.THUNDERWAVE.get(), 10, 10, 20, 40, 1)
         {
             @Override
             public void tick() {
@@ -313,6 +313,12 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
                 .setSingleUseSpell(SpellRegistry.BLACK_HOLE_SPELL.get(), 60, 220, 2, 3));
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+    }
+
+
+    @Override
+    public boolean isPushable() {
+        return false;
     }
 
     @Override
