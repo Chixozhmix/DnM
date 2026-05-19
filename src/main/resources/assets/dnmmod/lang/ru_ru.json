@@ -186,6 +186,7 @@
   "death.attack.dnmmod.tall_the_dead": "%1$s услышал предсмертный бой колоколов",
   "death.attack.dnmmod.hunger_of_hadar": "%1$s был пожран Хадаром",
   "death.attack.dnmmod.thunderwave": "%1$s был разорван раскатом грома",
+  "death.attack.dnmmod.summon_darkspawn_larva": "%1$s был убит порождением мора",
 
   "entity.dnmmod.undead_spirit": "Дух Нежити",
   "entity.dnmmod.summoned_undead_spirit": "Дух Нежити",
@@ -206,6 +207,8 @@
   "entity.dnmmod.defiled_wizard": "Оскверненный волшебник",
   "entity.dnmmod.defiled_priest": "Оскверненный жрец",
   "entity.dnmmod.corypheus": "Корифей, Капельмейстер Тишины",
+  "entity.dnmmod.darkspawn_larva": "Личинка порождения тьмы",
+  "entity.dnmmod.summon_darkspawn_larva": "Призванная личинка порождения тьмы",
 
   "tooltip.dnmmod.maid": "Почему нет?",
   "tooltip.dnmmod.voile_of_death": "Когда ваша жизнь в опасности, духи смерти укрывают вас от неизбежной смерти.",
@@ -339,5 +342,8 @@
   "spell.dnmmod.hunger_of_hadar.guide": "Вы призываете сферу, заполненную тьмой и холодом, ослепляющую врагов и наносящую им урон.",
 
   "spell.dnmmod.burial_ground": "Могильник",
-  "spell.dnmmod.burial_ground.guide": "Вы оскверняете землю в области негативной энергией, разрывающей саму душу. Вы исцеляетесь на 10% от нанесенного урона."
+  "spell.dnmmod.burial_ground.guide": "Вы оскверняете землю в области негативной энергией, разрывающей саму душу. Вы исцеляетесь на 10% от нанесенного урона.",
+
+  "spell.dnmmod.summon_darkspawn_larva": "Призыв личинки порождений тьмы",
+  "spell.dnmmod.summon_darkspawn_larva.guide": "Вы взываете к силам скверны, призывая на помощь ее воинов."
 }

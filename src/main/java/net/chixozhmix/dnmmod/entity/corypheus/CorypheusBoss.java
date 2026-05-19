@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
+import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -73,14 +74,14 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
             BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
-            .add(Attributes.ATTACK_DAMAGE, (double)10.0F)
+            .add(Attributes.ATTACK_DAMAGE, (double)8.0F)
             .add(Attributes.ATTACK_KNOCKBACK, (double)0.4F)
-            .add(Attributes.KNOCKBACK_RESISTANCE, (double)0.8F)
+            .add(Attributes.KNOCKBACK_RESISTANCE, (double)0.5F)
             .add(Attributes.MAX_HEALTH, (double)950.0F)
             .add(Attributes.FOLLOW_RANGE, (double)35.0F)
-            .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)1.5F)
-            .add(Attributes.MOVEMENT_SPEED, (double)0.26F)
-            .add(ForgeMod.ENTITY_REACH.get(), 7.0F)
+            .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)1.3F)
+            .add(Attributes.MOVEMENT_SPEED, (double)0.25F)
+            .add(ForgeMod.ENTITY_REACH.get(), 5.0F)
             .add(Attributes.ARMOR, 10.0F)
             .add(AttributeRegistry.SPELL_RESIST.get(), 1.2F);
 
@@ -271,8 +272,8 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
             this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.0F);
             this.getAttribute(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0F);
         } else {
-            this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.26F);
-            this.getAttribute(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(0.8F);
+            this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.25F);
+            this.getAttribute(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5F);
         }
     }
 
@@ -322,8 +323,33 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
         this.goalSelector.removeAllGoals((x) -> true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)SpellRegistry.RAISE_DEAD_SPELL.get(), 2, 2, 80, 160, 1));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)SpellRegistry.TELEKINESIS_SPELL.get(), 3, 5, 30, 90, 1));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell) RegistrySpells.SUMMON_DARKSPAWN_LARVA.get(), 2, 2, 100, 160, 1)
+        {
+            @Override
+            public void tick() {
+                if (this.target != null) {
+                    double distanceSquared = this.mob.distanceToSqr(this.target.getX(), this.target.getY(), this.target.getZ());
+                    if (distanceSquared < (double) 12.0F) {
+                        this.mob.getLookControl().setLookAt(this.target, 45.0F, 45.0F);
+                        this.spellCastingMob.initiateCastSpell(this.spell, this.mob.getRandom().nextIntBetweenInclusive(this.minSpellLevel, this.maxSpellLevel));
+                        this.stop();
+                    }
+                }
+            }
+        });
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)SpellRegistry.TELEKINESIS_SPELL.get(), 3, 5, 35, 60, 1) {
+            @Override
+            public void tick() {
+                if (this.target != null) {
+                    double distanceSquared = this.mob.distanceToSqr(this.target.getX(), this.target.getY(), this.target.getZ());
+                    if (distanceSquared < (double) 8.0F) {
+                        this.mob.getLookControl().setLookAt(this.target, 45.0F, 45.0F);
+                        this.spellCastingMob.initiateCastSpell(this.spell, this.mob.getRandom().nextIntBetweenInclusive(this.minSpellLevel, this.maxSpellLevel));
+                        this.stop();
+                    }
+                }
+            }
+        });
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
 
@@ -331,12 +357,11 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
         this.goalSelector.removeAllGoals((x) -> true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)SpellRegistry.RAISE_DEAD_SPELL.get(), 2, 2, 60, 140, 1));
         this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.25F, 30, 55))
                 .setSpells(
-                        List.of(SpellRegistry.STARFALL_SPELL.get(), SpellRegistry.SONIC_BOOM_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
+                        List.of(SpellRegistry.STARFALL_SPELL.get(), SpellRegistry.DRAGON_BREATH_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
                         List.of(SpellRegistry.SHADOW_SLASH.get()),
-                        List.of(SpellRegistry.TELEPORT_SPELL.get()),
+                        List.of(),
                         List.of())
                 .setSingleUseSpell(SpellRegistry.SCULK_TENTACLES_SPELL.get(), 60, 220, 3, 4));
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
@@ -347,13 +372,14 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
         this.goalSelector.removeAllGoals((x) -> true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.25F, 35, 55))
+        this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.15F, 35, 55))
                 .setSpells(
                         List.of(SpellRegistry.TELEKINESIS_SPELL.get(), SpellRegistry.SONIC_BOOM_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
                         List.of(SpellRegistry.SHADOW_SLASH.get()),
                         List.of(SpellRegistry.TELEPORT_SPELL.get()),
                         List.of())
-                .setSingleUseSpell(SpellRegistry.BLACK_HOLE_SPELL.get(), 60, 220, 2, 3));
+                .setSingleUseSpell(SpellRegistry.BLACK_HOLE_SPELL.get(), 70, 220, 2, 3));
+        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)RegistrySpells.SUMMON_DARKSPAWN_LARVA.get(), 1, 1, 80, 140, 1));
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }

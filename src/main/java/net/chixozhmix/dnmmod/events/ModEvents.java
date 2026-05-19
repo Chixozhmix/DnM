@@ -3,6 +3,8 @@ package net.chixozhmix.dnmmod.events;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.spawnrules.ModSpawnRule;
 import net.chixozhmix.dnmmod.entity.corypheus.CorypheusBoss;
+import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
+import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriest;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronach;
@@ -61,6 +63,8 @@ public class ModEvents {
         event.put(ModEntityType.DEFILED_WIZARD.get(), DefiledWizard.prepareAttributes().build());
         event.put(ModEntityType.DEFILED_PRIEST.get(), DefiledPriest.prepareAttributes().build());
         event.put(ModEntityType.CORYPHEUS.get(), CorypheusBoss.prepareAttributes().build());
+        event.put(ModEntityType.DARKSPAWN_LARVA.get(), DarkspawnLarva.prepareAttributes().build());
+        event.put(ModEntityType.SUMMON_DARKSPAWN_LARVA.get(), SummonDarkspawnLarva.prepareAttributes().build());
     }
 
     @SubscribeEvent

@@ -56,6 +56,10 @@ public class VoileOfDeathArmor extends ExtendedArmorItem {
                         false,
                         false
                 ));
+
+                stack.hurtAndBreak(1, player, (e) -> {
+                    e.broadcastBreakEvent(EquipmentSlot.CHEST);
+                });
             }
         }
     }

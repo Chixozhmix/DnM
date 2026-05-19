@@ -3,6 +3,8 @@ package net.chixozhmix.dnmmod.registers;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.corypheus.CorypheusBoss;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
+import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
+import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriest;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronach;
@@ -187,9 +189,15 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<CorypheusBoss>> CORYPHEUS =
             ENTITY_TYPES.register("corypheus", () ->
                     EntityType.Builder.<CorypheusBoss>of(CorypheusBoss::new, MobCategory.MONSTER)
-                            .sized(0.9f, 2.5f)
+                            .sized(0.9f, 2.7f)
                             .clientTrackingRange(32)
                             .build("corypheus"));
+    public static final RegistryObject<EntityType<DarkspawnLarva>> DARKSPAWN_LARVA =
+            ENTITY_TYPES.register("darkspawn_larva", () ->
+                    EntityType.Builder.of(DarkspawnLarva::new, MobCategory.MONSTER)
+                            .sized(0.9f, 2.2f)
+                            .clientTrackingRange(32)
+                            .build("darkspawn_larva"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =
@@ -216,6 +224,12 @@ public class ModEntityType {
                             .sized(0.9f, 1.8f)
                             .clientTrackingRange(32)
                             .build("storm_atronach"));
+    public static final RegistryObject<EntityType<SummonDarkspawnLarva>> SUMMON_DARKSPAWN_LARVA =
+            ENTITY_TYPES.register("summon_darkspawn_larva", () ->
+                    EntityType.Builder.<SummonDarkspawnLarva>of(SummonDarkspawnLarva::new, MobCategory.MONSTER)
+                            .sized(0.9f, 2.2f)
+                            .clientTrackingRange(32)
+                            .build("summon_darkspawn_larva"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

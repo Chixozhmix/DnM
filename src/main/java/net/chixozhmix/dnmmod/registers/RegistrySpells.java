@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.spell.blood.*;
 import net.chixozhmix.dnmmod.spell.eldrich.HungerOfHadarSpell;
+import net.chixozhmix.dnmmod.spell.eldrich.SummonDarkspawnLarvaSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
 import net.chixozhmix.dnmmod.spell.fire.SummonFlameAtronach;
 import net.chixozhmix.dnmmod.spell.ice.AgathysArmorSpell;
@@ -44,6 +45,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> TALL_THE_DEAD = registerSpell(new TallTheDead());
     public static final RegistryObject<AbstractSpell> HUNGER_OF_HADAR = registerSpell(new HungerOfHadarSpell());
     public static final RegistryObject<AbstractSpell> BURIAL_GROUND = registerSpell(new BurialGroundSpell());
+    public static final RegistryObject<AbstractSpell> SUMMON_DARKSPAWN_LARVA = registerSpell(new SummonDarkspawnLarvaSpell());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

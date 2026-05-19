@@ -41,6 +41,8 @@ public class SealedDoorBlock extends BaseEntityBlock {
 
     private static final VoxelShape CLOSED_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
+    private static final int LIGHT_LEVEL = 4;
+
 
     public SealedDoorBlock() {
         super(Properties.of().mapColor(MapColor.METAL)
@@ -49,8 +51,14 @@ public class SealedDoorBlock extends BaseEntityBlock {
                 .strength(-1.0F, 3600000.0F)
                 .noLootTable()
                 .requiresCorrectToolForDrops()
-                .sound(SoundType.METAL));
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, Boolean.valueOf(false)).setValue(OPEN, Boolean.valueOf(false)).setValue(PART, SealedDoorPart.CENTER).setValue(Y_OFFSET, 0));
+                .sound(SoundType.METAL)
+                .lightLevel(state -> state.getValue(LIT) ? LIGHT_LEVEL : 0));
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(LIT, Boolean.valueOf(false))
+                .setValue(OPEN, Boolean.valueOf(false))
+                .setValue(PART, SealedDoorPart.CENTER)
+                .setValue(Y_OFFSET, 0));
     }
 
 
@@ -64,8 +72,8 @@ public class SealedDoorBlock extends BaseEntityBlock {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_49751_) {
-        p_49751_.add(FACING,OPEN,LIT,PART,Y_OFFSET);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateBuilder) {
+        stateBuilder.add(FACING,OPEN,LIT,PART,Y_OFFSET);
     }
 
     @Nullable
@@ -164,17 +172,17 @@ public class SealedDoorBlock extends BaseEntityBlock {
         return CLOSED_SHAPE;
     }
 
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter p_53397_, BlockPos p_53398_, CollisionContext p_53399_) {
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext collisionContext) {
         if (state.getValue(OPEN)) return Shapes.empty();
         return CLOSED_SHAPE;
     }
 
-    public VoxelShape getOcclusionShape(BlockState p_53401_, BlockGetter p_53402_, BlockPos p_53403_) {
+    public VoxelShape getOcclusionShape(BlockState blockState, BlockGetter level, BlockPos pos) {
         return Shapes.empty();
     }
 
 
-    public boolean isPathfindable(BlockState p_49717_, BlockGetter p_49718_, BlockPos p_49719_, PathComputationType p_49720_) {
+    public boolean isPathfindable(BlockState blockState, BlockGetter level, BlockPos pos, PathComputationType pathComputationType) {
         return false;
     }
 

@@ -64,8 +64,9 @@ public class SealedDoorRenderer implements BlockEntityRenderer<SealedDoorBlockEn
 
         VertexConsumer normalConsumer = bufferSource.getBuffer(RenderType.entitySolid(TEXTURE));
         this.model.renderToBuffer(poseStack, normalConsumer, packedLight, packedOverlay, 1, 1, 1, 1);
+
         VertexConsumer emissiveConsumer = bufferSource.getBuffer(RenderType.entityTranslucentEmissive(GLOWING));
-        this.model.renderToBuffer(poseStack, emissiveConsumer, packedLight, packedOverlay, 1, 1, 1, 1);
+        this.model.renderToBuffer(poseStack, emissiveConsumer, 15728880, packedOverlay, 1, 1, 1, 1);
 
         poseStack.popPose();
     }

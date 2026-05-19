@@ -177,12 +177,13 @@
   "death.attack.dnmmod.summon_ravens": "%1$s had their eyes pecked out",
   "death.attack.dnmmod.summon_undead_spirit": "%1$s was killed by spirits",
   "death.attack.dnmmod.summon_flame_atronach": "%1$s was killed by an angry flame",
-  "death.attack.dnmmod.summon_storm_atronach": "%1$s  was killed by an angry thunder",
+  "death.attack.dnmmod.summon_storm_atronach": "%1$s was killed by an angry thunder",
   "death.attack.dnmmod.ray_of_enfeeblement": "%1$s was too weak",
   "death.attack.dnmmod.burial_ground": "%1$s was tortured by the dead",
   "death.attack.dnmmod.tall_the_dead": "%1$s heard the funeral bells",
   "death.attack.dnmmod.hunger_of_hadar": "%1$s was devoured by Hadar",
   "death.attack.dnmmod.thunderwave": "%1$s was torn apart by a thunderclap",
+  "death.attack.dnmmod.summon_darkspawn_larva": "%1$s was killed by blight",
 
   "entity.dnmmod.undead_spirit": "Undead Spirit",
   "entity.dnmmod.summoned_undead_spirit": "Undead Spirit",
@@ -203,6 +204,8 @@
   "entity.dnmmod.defiled_wizard": "Defiled Wizard",
   "entity.dnmmod.defiled_priest": "Defiled Priest",
   "entity.dnmmod.corypheus": "Corypheus, the Kapellmeister of Silence",
+  "entity.dnmmod.darkspawn_larva": "Darkspawn larva",
+  "entity.dnmmod.summon_darkspawn_larva": "Summon darkspawn larva",
 
   "tooltip.dnmmod.maid": "Why not?",
   "tooltip.dnmmod.voile_of_death": "When your life is in danger, the spirits of death protect you from inevitable death.",
@@ -344,5 +347,8 @@
   "spell.dnmmod.hunger_of_hadar.guide": "You summon a sphere filled with darkness and cold, blinding enemies and dealing damage to them.",
 
   "spell.dnmmod.burial_ground": "Burial Ground",
-  "spell.dnmmod.burial_ground.guide": "You desecrate the land with negative energy that tears apart the soul itself. You healing for 10% of damage done."
+  "spell.dnmmod.burial_ground.guide": "You desecrate the land with negative energy that tears apart the soul itself. You healing for 10% of damage done.",
+
+  "spell.dnmmod.summon_darkspawn_larva": "Summon darkspawn larva",
+  "spell.dnmmod.summon_darkspawn_larva.guide": "You call upon the forces of blight, summoning its warriors to your aid."
 }

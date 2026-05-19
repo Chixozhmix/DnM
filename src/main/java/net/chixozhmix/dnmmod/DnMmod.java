@@ -9,6 +9,8 @@ import net.chixozhmix.dnmmod.blocks.client.SealedDoorModel;
 import net.chixozhmix.dnmmod.blocks.client.SealedDoorRenderer;
 import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
 import net.chixozhmix.dnmmod.entity.corypheus.CorypheusRenderer;
+import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarvaRenderer;
+import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarvaRenderer;
 import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriestrenderer;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizardRenderer;
 import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronachRenderer;
@@ -203,6 +205,8 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.DEFILED_WIZARD.get(), DefiledWizardRenderer::new);
             EntityRenderers.register(ModEntityType.DEFILED_PRIEST.get(), DefiledPriestrenderer::new);
             EntityRenderers.register(ModEntityType.CORYPHEUS.get(), CorypheusRenderer::new);
+            EntityRenderers.register(ModEntityType.DARKSPAWN_LARVA.get(), DarkspawnLarvaRenderer::new);
+            EntityRenderers.register(ModEntityType.SUMMON_DARKSPAWN_LARVA.get(), SummonDarkspawnLarvaRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COMPONENT_BAG_MENU.get(), ComponentBagScreen::new);
             MenuScreens.register(ModMenuTypes.MEDIUM_COMPONENT_BAG_MENU.get(), MediumBagScreen::new);
