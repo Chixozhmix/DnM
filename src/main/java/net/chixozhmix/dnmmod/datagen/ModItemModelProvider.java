@@ -59,6 +59,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.GREEMON_FANG);
         simpleItem(ModItems.IRON_RING);
         simpleItem(ModItems.PARCHMENT);
+        simpleItem(ModItems.TAINTED_KEY);
         simpleItem(ModItems.THE_HAG_MUSIC_DISC);
         //Staff and wands
         handheldItem(ModItems.WOODEN_WAND);
@@ -83,6 +84,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         spawnEggItem(ModItems.EVIL_FLAME_ATRONACH_SPAWN_EGG);
         spawnEggItem(ModItems.EVIL_STORM_ATRONACH_SPAWN_EGG);
         spawnEggItem(ModItems.SMALL_ICE_SPIDER_SPAWN_EGG);
+        spawnEggItem(ModItems.DEFILED_PRIEST_SPAWN_EGG);
+        spawnEggItem(ModItems.DEFILED_WIZARD_SPAWN_EGG);
         //Armor
         simpleItem(ModItems.MAID_DRESS);
         simpleItem(ModItems.MAID_CAP);

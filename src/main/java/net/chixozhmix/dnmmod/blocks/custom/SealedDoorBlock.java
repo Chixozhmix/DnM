@@ -89,7 +89,7 @@ public class SealedDoorBlock extends BaseEntityBlock {
 
         ItemStack item = player.getItemInHand(hand);
 
-        if (item.is(ModItems.BURNT_SUGAR.get())) {
+        if (item.is(ModItems.TAINTED_KEY.get())) {
             if(!player.isCreative())
                 item.shrink(1);
 
@@ -120,7 +120,7 @@ public class SealedDoorBlock extends BaseEntityBlock {
         if (!level.isClientSide && blockentity instanceof SealedDoorBlockEntity && !blockState.getValue(LIT)) {
             ((SealedDoorBlockEntity)blockentity).onHit(level);
             level.setBlock(pos, blockState.setValue(LIT, Boolean.valueOf(true)), 3);
-            //  p_152190_.playSound((Player)null, p_152191_, ModSounds.MALEDICTUS_SHORT_ROAR.get(), SoundSource.BLOCKS, 2.0F, 1.0F);
+            //  p_152190_.playSound((Player)null, p_152191_, ModSounds.OPEN_SEALED_DOOR.get(), SoundSource.BLOCKS, 2.0F, 1.0F);
             level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
             return true;
         } else {

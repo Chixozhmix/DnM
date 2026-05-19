@@ -109,7 +109,6 @@ public class CreativeTabMod {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.ECTOPLASM.get());
                         output.accept(ModItems.PHANTOM_POTION.get());
-                        output.accept(ModItems.CRYSTALLIZED_LIGHTNING.get());
                         output.accept(ModItems.RAVEN_FEATHER.get());
                         output.accept(ModItems.GREEMON_FANG.get());
                         output.accept(ModItems.MAID_DRESS.get());
@@ -120,15 +119,11 @@ public class CreativeTabMod {
                         output.accept(ModItems.IRON_RING.get());
                         output.accept(ModItems.PARCHMENT.get());
                         output.accept(ModItems.THE_HAG_MUSIC_DISC.get());
-                    })
-                    .build());
-    //Magic Items
-    public static final RegistryObject<CreativeModeTab> MAGIC_ITEMS_TAB = CREATIVE_MOD_TABS.register("magic_items",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.HAG_EYE.get()))
-                    .title(Component.translatable("creativetab.dnmmod.magic_items"))
-                    .displayItems((itemDisplayParameters, output) -> {
+
                         output.accept(ModItems.HAG_EYE.get());
                         output.accept(ModItems.FOREST_HEART.get());
+                        output.accept(ModItems.CRYSTALLIZED_LIGHTNING.get());
+                        output.accept(ModItems.TAINTED_KEY.get());
                         output.accept(ModItems.WAND_CORE.get());
                         output.accept(ModItems.CRYOMANCER_WAND_CORE.get());
                         output.accept(ModItems.PYROMANCER_WAND_CORE.get());
@@ -147,22 +142,7 @@ public class CreativeTabMod {
 
                         output.accept(ModItems.COMPONENT_BAG.get());
                         output.accept(ModItems.MEDIUM_COMPONENT_BAG.get());
-                    })
-                    .build());
-    //Blocks
-    public static final RegistryObject<CreativeModeTab> BLOCKS_TAB = CREATIVE_MOD_TABS.register("blocks",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.DOOR_OF_SEAL.get()))
-                    .title(Component.translatable("creativetab.dnmmod.blocks"))
-                    .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModBlocks.LESHY_ALTAR.get());
-                        output.accept(ModBlocks.DOOR_OF_SEAL.get());
-                    })
-                    .build());
-    //Eggs
-    public static final RegistryObject<CreativeModeTab> EGGS = CREATIVE_MOD_TABS.register("eggs",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.GHOST_SPAWN_EGG.get()))
-                    .title(Component.translatable("creativetab.dnmmod.eggs"))
-                    .displayItems((itemDisplayParameters, output) -> {
+
                         output.accept(ModItems.GHOST_SPAWN_EGG.get());
                         output.accept(ModItems.UNDEAD_SPIRIT_SPAWN_EGG.get());
                         output.accept(ModItems.RAVEN_SPAWN_EGG.get());
@@ -175,6 +155,17 @@ public class CreativeTabMod {
                         output.accept(ModItems.EVIL_FLAME_ATRONACH_SPAWN_EGG.get());
                         output.accept(ModItems.EVIL_STORM_ATRONACH_SPAWN_EGG.get());
                         output.accept(ModItems.SMALL_ICE_SPIDER_SPAWN_EGG.get());
+                        output.accept(ModItems.DEFILED_PRIEST_SPAWN_EGG.get());
+                        output.accept(ModItems.DEFILED_WIZARD_SPAWN_EGG.get());
+                    })
+                    .build());
+    //Blocks
+    public static final RegistryObject<CreativeModeTab> BLOCKS_TAB = CREATIVE_MOD_TABS.register("blocks",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.DOOR_OF_SEAL.get()))
+                    .title(Component.translatable("creativetab.dnmmod.blocks"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModBlocks.LESHY_ALTAR.get());
+                        output.accept(ModBlocks.DOOR_OF_SEAL.get());
                     })
                     .build());
 

@@ -85,6 +85,7 @@
   "item.dnmmod.key": "Key",
   "item.dnmmod.iron_ring": "Iron ring",
   "item.dnmmod.parchment": "Parchment",
+  "item.dnmmod.tainted_key": "Tainted Key",
 
   "item.dnmmod.ectoplasm": "Ectoplasm",
   "item.dnmmod.phantom_potion": "Phantom potion",
@@ -237,8 +238,6 @@
   "creativetab.dnmmod.staffs": "Staffs and wands",
   "creativetab.dnmmod.items": "Items",
   "creativetab.dnmmod.blocks": "Blocks",
-  "creativetab.dnmmod.magic_items": "Magic items",
-  "creativetab.dnmmod.eggs": "Eggs",
 
   "advancements.dnmmod.root": "The adventure begins!",
 

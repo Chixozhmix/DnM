@@ -1,4 +1,4 @@
-// 1.20.1	2026-05-15T15:55:40.2091535	Item Models: dnmmod
+// 1.20.1	2026-05-19T16:37:34.3143802	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
@@ -16,6 +16,8 @@ b8b985f080c11123b66420d9c4407f8df6ed8ce4 assets/dnmmod/models/item/cryomancer_wa
 1c6bcd6989fdb7d87f3bd9e8faff8949bf6c6a41 assets/dnmmod/models/item/cryomancer_wand_core.json
 284ced1cf237a7446fffeb3e3aa5d4fc81cabd24 assets/dnmmod/models/item/crystallized_lightning.json
 85a245616184bf00cce3e3c9e1b50312fe0718c9 assets/dnmmod/models/item/d20.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/defiled_priest_spawn_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/defiled_wizard_spawn_egg.json
 3d2db95f7c0f1496a9ef50733e1b65c5f7619937 assets/dnmmod/models/item/diamond_battleaxe.json
 5e8c0253b8b15f7e2c89e1dd4f041ccb5773d982 assets/dnmmod/models/item/diamond_dagger.json
 5c494f930a458bfc964a43297e697bbd71912979 assets/dnmmod/models/item/diamond_klevets.json
@@ -76,6 +78,7 @@ e4bb21fa1050e08133c94fb6eea3d483d6dc8488 assets/dnmmod/models/item/shadow_archer
 4c651049aa086c4ec3ddae2e8eab0ac8b6dd23aa assets/dnmmod/models/item/shadow_archer_helmet.json
 a0aea36d4a44b2a0f495770187057b013811e21a assets/dnmmod/models/item/shadow_archer_leggings.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/small_ice_spider_spawn_egg.json
+0d301f200f81369275d81929ff6a599f1fa3cbe4 assets/dnmmod/models/item/tainted_key.json
 918a4739a6f4bdfb71ddd3395fdbbf69f2c380bf assets/dnmmod/models/item/the_hag_disc.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/undead_spirit_spawn_egg.json
 b46d37cf243327909c4bee607bf1004c02306d83 assets/dnmmod/models/item/voile_of_death.json

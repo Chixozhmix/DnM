@@ -1,4 +1,4 @@
-// 1.20.1	2026-05-04T17:52:57.7588931	Recipes
+// 1.20.1	2026-05-19T16:37:34.3203683	Recipes
 a238538041db1f523cd37b7af5ddc9a14ccf21c5 data/dnmmod/advancements/recipes/combat/bladesinger_sword.json
 66d9b096436d2f53c49785a5c55daa816a200934 data/dnmmod/advancements/recipes/combat/diamond_battleaxe.json
 98ae1d8dd16adc7d287c622589b5edc25b8bef65 data/dnmmod/advancements/recipes/combat/diamond_dagger.json
@@ -75,7 +75,7 @@ b4b3c1bc2e1ed60111bafa3f57bc48f44ca4831d data/dnmmod/recipes/bladesinger_sword.j
 d184bc553621288f11e13ed4094df3577f3d8fe7 data/dnmmod/recipes/blade_rune.json
 bee256f95ccb1d024d65f155337e5f3d03294267 data/dnmmod/recipes/blood_wand.json
 cdfcaf7a02f9a54da8796d00403c2ac9b548648e data/dnmmod/recipes/blood_wand_core.json
-fced04ad89ab0a435e8a7b4d73cc74e3262f9411 data/dnmmod/recipes/burnt_sugar_from_smelting_sugar.json
+4c7abed49c881634a6461f31efce9c3e19ed63bd data/dnmmod/recipes/burnt_sugar_from_smelting_sugar.json
 4acc155c6bb21e68dd5a6b7b47d733e611b69310 data/dnmmod/recipes/component_bag.json
 0dc4ed9e77d6aa2395803132a3039a2e3bc612cb data/dnmmod/recipes/cryomancer_wand.json
 e00e080ae832379a5bfb21d6d26069df07ccafa2 data/dnmmod/recipes/cryomancer_wand_core.json

@@ -194,7 +194,6 @@ public class ModItems {
             new Item(PropertiesHelper.stackItemProperties(64)));
     public static final RegistryObject<Item> IRON_RING = ITEMS.register("iron_ring", () ->
             new Item(PropertiesHelper.stackItemProperties(64)));
-    //Magic Item
     public static final RegistryObject<Item> HAG_EYE = ITEMS.register("hag_eye", () ->
             new HagEye(PropertiesHelper.stackItemProperties(1)
                     .rarity(Rarity.RARE)));
@@ -232,6 +231,8 @@ public class ModItems {
             new Item(PropertiesHelper.stackItemProperties(64).food(ModFood.BURNED_SUGAR)));
     public static final RegistryObject<Item> PARCHMENT = ITEMS.register("parchment", () ->
             new Item(PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<Item> TAINTED_KEY = ITEMS.register("tainted_key", () ->
+            new Item(PropertiesHelper.stackItemProperties(1).rarity(Rarity.RARE)));
     //Potions
     public static final RegistryObject<Item> PHANTOM_POTION = ITEMS.register("phantom_potion",
             () -> new SimpleElixir(ItemPropertiesHelper.material(), () ->
@@ -329,6 +330,10 @@ public class ModItems {
             new ForgeSpawnEggItem(ModEntityType.EVIL_FLAME_ATRONACH, 0x8A4C03, 0x451506, PropertiesHelper.stackItemProperties(64)));
     public static final RegistryObject<ForgeSpawnEggItem> SMALL_ICE_SPIDER_SPAWN_EGG = ITEMS.register("small_ice_spider_spawn_egg", () ->
             new ForgeSpawnEggItem(ModEntityType.SMALL_ICE_SPIDER, 0xA1EBF7, 0x609FC4, PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<ForgeSpawnEggItem> DEFILED_WIZARD_SPAWN_EGG = ITEMS.register("defiled_wizard_spawn_egg", () ->
+            new ForgeSpawnEggItem(ModEntityType.DEFILED_WIZARD, 0x044554, 0x032026, PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<ForgeSpawnEggItem> DEFILED_PRIEST_SPAWN_EGG = ITEMS.register("defiled_priest_spawn_egg", () ->
+            new ForgeSpawnEggItem(ModEntityType.DEFILED_WIZARD, 0x020B0D, 0x09313B, PropertiesHelper.stackItemProperties(64)));
 
     //Music Discs
     public static final RegistryObject<Item> THE_HAG_MUSIC_DISC = ITEMS.register("the_hag_disc", () ->
