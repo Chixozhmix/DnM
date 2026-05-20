@@ -86,6 +86,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         spawnEggItem(ModItems.SMALL_ICE_SPIDER_SPAWN_EGG);
         spawnEggItem(ModItems.DEFILED_PRIEST_SPAWN_EGG);
         spawnEggItem(ModItems.DEFILED_WIZARD_SPAWN_EGG);
+        spawnEggItem(ModItems.DARKSPAWN_LARVA_SPAWN_EGG);
         //Armor
         simpleItem(ModItems.MAID_DRESS);
         simpleItem(ModItems.MAID_CAP);

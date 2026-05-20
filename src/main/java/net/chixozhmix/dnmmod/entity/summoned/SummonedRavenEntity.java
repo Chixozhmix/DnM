@@ -86,14 +86,8 @@ public class SummonedRavenEntity extends RavenEntity implements MagicSummon {
 
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
-        return pSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY)  && !this.shouldIgnoreDamage(pSource) ? super.hurt(pSource, pAmount) : false;
+        return pSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) || !this.shouldIgnoreDamage(pSource) ? super.hurt(pSource, pAmount) : false;
 
-    }
-
-    @Override
-    public boolean shouldIgnoreDamage(DamageSource damageSource) {
-        return damageSource.getEntity() instanceof LivingEntity livingEntity &&
-                this.isAlliedTo(livingEntity);
     }
 
     @Override

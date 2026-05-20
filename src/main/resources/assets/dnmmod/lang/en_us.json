@@ -76,6 +76,9 @@
   "item.dnmmod.evil_flame_atronach_spawn_egg": "Evil Flame Atronach spawn egg",
   "item.dnmmod.evil_storm_atronach_spawn_egg": "Evil Storm Atronach spawn egg",
   "item.dnmmod.small_ice_spider_spawn_egg": "Small ice spider spawn egg",
+  "item.dnmmod.defiled_wizard_spawn_egg": "Defiled wizard spawn egg",
+  "item.dnmmod.defiled_priest_spawn_egg": "Defiled priest spawn egg",
+  "item.dnmmod.darkspawn_larva_spawn_egg": "Darkspawn larva spawn egg",
 
   "item.dnmmod.raven_feather": "Raven Feather",
   "item.dnmmod.burnt_sugar": "Burnt sugar",
@@ -349,5 +352,8 @@
   "spell.dnmmod.burial_ground.guide": "You desecrate the land with negative energy that tears apart the soul itself. You healing for 10% of damage done.",
 
   "spell.dnmmod.summon_darkspawn_larva": "Summon darkspawn larva",
-  "spell.dnmmod.summon_darkspawn_larva.guide": "You call upon the forces of blight, summoning its warriors to your aid."
+  "spell.dnmmod.summon_darkspawn_larva.guide": "You call upon the forces of blight, summoning its warriors to your aid.",
+
+  "spell.dnmmod.raven_step": "Raven Step",
+  "spell.dnmmod.raven_step.guide": "The spirits of the Raven Mother pull you in the direction you're looking."
 }

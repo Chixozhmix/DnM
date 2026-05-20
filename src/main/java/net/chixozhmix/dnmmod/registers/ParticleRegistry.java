@@ -13,6 +13,8 @@ public class ParticleRegistry {
 
     public static final RegistryObject<SimpleParticleType> SHIELD_PARTICLES = PARTICLE_TYPE.register("shield_particles",
             () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> RAVEN_PARTICLES = PARTICLE_TYPE.register("raven_particles",
+            () -> new SimpleParticleType(true));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPE.register(eventBus);

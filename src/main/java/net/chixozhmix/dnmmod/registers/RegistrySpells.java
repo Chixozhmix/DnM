@@ -11,6 +11,7 @@ import net.chixozhmix.dnmmod.spell.ice.AgathysArmorSpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
 import net.chixozhmix.dnmmod.spell.lightning.SummonStormAtronach;
 import net.chixozhmix.dnmmod.spell.lightning.ThunderwaveSpell;
+import net.chixozhmix.dnmmod.spell.nature.RavenStepSpell;
 import net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
@@ -46,6 +47,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> HUNGER_OF_HADAR = registerSpell(new HungerOfHadarSpell());
     public static final RegistryObject<AbstractSpell> BURIAL_GROUND = registerSpell(new BurialGroundSpell());
     public static final RegistryObject<AbstractSpell> SUMMON_DARKSPAWN_LARVA = registerSpell(new SummonDarkspawnLarvaSpell());
+    public static final RegistryObject<AbstractSpell> RAVEN_STEP_SPELL = registerSpell(new RavenStepSpell());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

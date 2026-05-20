@@ -49,7 +49,6 @@ public class SealedDoorBlockEntity extends BlockEntity {
         }
     }
 
-
     public static void tick(Level level, BlockPos pos, BlockState blockState, SealedDoorBlockEntity entity) {
         if (!entity.isBaseBlock()) return;
 
@@ -61,14 +60,15 @@ public class SealedDoorBlockEntity extends BlockEntity {
                 if (!blockState.getValue(SealedDoorBlock.OPEN)) {
 
                     if (entity.Animaitonticks == 28) {
+                        if (level.isClientSide) {
+                            spawnPortalParticles(level, pos, blockState);
+                        }
+
                         level.playSound((Player)null, pos, SoundsRegistry.NECRO_MAGIC.get(), SoundSource.BLOCKS, 4F, level.random.nextFloat() * 0.2F + 1.0F);
 
                         float x = pos.getX() + 0.5F;
                         float y = pos.getY();
                         float z = pos.getZ() + 0.5F;
-                        if (!level.isClientSide) {
-                            level.explode(null, x, y + 1, z, 2.0F, Level.ExplosionInteraction.NONE);
-                        }
                     }
                     if (entity.Animaitonticks >= 145) {
                         if (!level.isClientSide) {
@@ -102,6 +102,38 @@ public class SealedDoorBlockEntity extends BlockEntity {
                 }
 
             }
+        }
+    }
+
+    private static void spawnPortalParticles(Level level, BlockPos pos, BlockState state) {
+        Direction facing = state.getValue(SealedDoorBlock.FACING);
+        for (int y = 0; y <= 7; y++) {
+            BlockPos centerPos = pos.above(y);
+
+            spawnParticleAtBlock(level, centerPos);
+
+            spawnParticleAtBlock(level, centerPos.relative(facing.getClockWise()));
+            spawnParticleAtBlock(level, centerPos.relative(facing.getCounterClockWise()));
+            spawnParticleAtBlock(level, centerPos.relative(facing.getClockWise(), 2));
+            spawnParticleAtBlock(level, centerPos.relative(facing.getCounterClockWise(), 2));
+        }
+    }
+
+    private static void spawnParticleAtBlock(Level level, BlockPos pos) {
+        for (int i = 0; i < 3; i++) {
+            double x = pos.getX() + level.random.nextDouble();
+            double y = pos.getY() + level.random.nextDouble();
+            double z = pos.getZ() + level.random.nextDouble();
+
+            double speedX = (level.random.nextDouble() - 0.5) * 0.2;
+            double speedY = level.random.nextDouble() * 0.2;
+            double speedZ = (level.random.nextDouble() - 0.5) * 0.2;
+
+            level.addParticle(
+                    net.minecraft.core.particles.ParticleTypes.PORTAL,
+                    x, y, z,
+                    speedX, speedY, speedZ
+            );
         }
     }
 

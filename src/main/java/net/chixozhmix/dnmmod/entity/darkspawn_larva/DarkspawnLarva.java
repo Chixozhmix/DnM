@@ -6,10 +6,19 @@ import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WarlockAttackGoal;
 import net.chixozhmix.dnmmod.entity.corypheus.CorypheusBoss;
+import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriest;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
+import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
@@ -25,6 +34,7 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -36,20 +46,26 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.List;
 
 public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker {
+    private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(DarkspawnLarva.class, EntityDataSerializers.BOOLEAN);
+
+    private static final RawAnimation RISE_ANIM = RawAnimation.begin().thenPlay("raise");
+
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
 
     private RawAnimation customAnimationToPlay;
+    private int riseAnimTime;
 
     private final AnimatableInstanceCache cache;
 
     private final AnimationController<DarkspawnLarva> movementController;
     private final AnimationController<DarkspawnLarva> attackController;
+    private final AnimationController<DarkspawnLarva> riseController;
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
-            .add(Attributes.ATTACK_DAMAGE, (double)2.0F)
-            .add(Attributes.ATTACK_KNOCKBACK, (double)0.00F)
-            .add(Attributes.MAX_HEALTH, (double)15.0F)
+            .add(Attributes.ATTACK_DAMAGE, (double)5.0F)
+            .add(Attributes.ATTACK_KNOCKBACK, (double)0.1F)
+            .add(Attributes.MAX_HEALTH, (double)20.0F)
             .add(Attributes.FOLLOW_RANGE, (double)25.0F)
             .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)0.4F)
             .add(Attributes.MOVEMENT_SPEED, (double)0.27F)
@@ -60,9 +76,13 @@ public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IA
 
         this.cache = GeckoLibUtil.createInstanceCache(this);
         this.xpReward = 5;
+        this.riseAnimTime = 40;
 
         this.movementController = new AnimationController<>(this, "movement", 0, this::movementPredicate);
         this.attackController = new AnimationController<>(this, "attack", 0, this::attackPredicate);
+        this.riseController = new AnimationController<>(this, "rise", 0, this::risePredicate);
+
+        this.triggerRiseAnimation();
     }
 
     public static AttributeSupplier.Builder prepareAttributes() {
@@ -72,6 +92,7 @@ public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IA
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
+        this.entityData.define(DATA_IS_ANIMATING_RISE, false);
     }
 
     @Override
@@ -93,6 +114,7 @@ public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IA
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(movementController);
         controllerRegistrar.add(attackController);
+        controllerRegistrar.add(riseController);
 
         super.registerControllers(controllerRegistrar);
     }
@@ -123,11 +145,23 @@ public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IA
         return PlayState.STOP;
     }
 
+    private PlayState risePredicate(AnimationState<DarkspawnLarva> state) {
+        if (!this.isAnimatingRise()) {
+            return PlayState.STOP;
+        }
+
+        if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
+            state.getController().setAnimation(RISE_ANIM);
+        }
+
+        return PlayState.CONTINUE;
+    }
+
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.25F, 35, 60))
+        this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.25F, 45, 60))
                 .setSpells(
-                        List.of(SpellRegistry.POISON_BREATH_SPELL.get()),
+                        List.of(SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
                         List.of(),
                         List.of(),
                         List.of()));
@@ -137,7 +171,8 @@ public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IA
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this,
                 DefiledWizard.class,
                 DefiledPriest.class,
-                CorypheusBoss.class));
+                CorypheusBoss.class,
+                DarkspawnLarva.class));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true));
     }
 
@@ -169,7 +204,46 @@ public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IA
     }
 
     @Override
+    public void tick() {
+        super.tick();
+
+        if (this.isAnimatingRise()) {
+
+            if (--this.riseAnimTime < 0) {
+                this.entityData.set(DATA_IS_ANIMATING_RISE, false);
+                this.setXRot(0.0F);
+                this.setOldPosAndRot();
+            }
+            return;
+        }
+    }
+
+    public boolean isAnimatingRise() {
+        return this.entityData.get(DATA_IS_ANIMATING_RISE);
+    }
+
+    public void triggerRiseAnimation() {
+        this.entityData.set(DATA_IS_ANIMATING_RISE, true);
+    }
+
+    @Override
     protected boolean shouldDespawnInPeaceful() {
         return true;
+    }
+
+    @Override
+    public boolean addEffect(MobEffectInstance pEffectInstance, @Nullable Entity pEntity) {
+        if(pEffectInstance.getEffect() == MobEffects.POISON || pEffectInstance.getEffect() == ModEffects.CORPSE_POISON.get())
+            return false;
+
+        return super.addEffect(pEffectInstance, pEntity);
+    }
+
+    @Override
+    public boolean hurt(DamageSource pSource, float pAmount) {
+        if(pSource.getEntity() instanceof DarkspawnLarva || pSource.getEntity() instanceof CorypheusBoss)
+            return false;
+
+        return super.hurt(pSource, pAmount);
     }
 }

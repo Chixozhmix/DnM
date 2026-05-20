@@ -119,8 +119,6 @@ dependencies {
     implementation fg.deobf("curse.maven:geckolib-388172:6658942")
     implementation fg.deobf("curse.maven:curios-309927:6418456")
     implementation fg.deobf("curse.maven:pehkui-319596:5208247")
-//    implementation fg.deobf("dev.shadowsoffire:Placebo:1.20.1-8.6.3")
-//    implementation fg.deobf("dev.shadowsoffire:ApothicAttributes:1.20.1-1.3.7")
     implementation fg.deobf("curse.maven:puffish-attributes-991341:7437975")
 
     //Optional
@@ -153,8 +151,11 @@ dependencies {
     implementation fg.deobf("curse.maven:jei-238222:6600311")
 
     //Better Combat
-    implementation fg.deobf('maven.modrinth:better-combat:1.8.6+1.20.1-forge')
-    implementation fg.deobf('maven.modrinth:cloth-config:11.1.136+forge')
+    compileOnly fg.deobf('maven.modrinth:better-combat:1.8.6+1.20.1-forge')
+    compileOnly fg.deobf('maven.modrinth:cloth-config:11.1.136+forge')
+
+    runtimeOnly fg.deobf('maven.modrinth:better-combat:1.8.6+1.20.1-forge')
+    runtimeOnly fg.deobf('maven.modrinth:cloth-config:11.1.136+forge')
 
 }
 

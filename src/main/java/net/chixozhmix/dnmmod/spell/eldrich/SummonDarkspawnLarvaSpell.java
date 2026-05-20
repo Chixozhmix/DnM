@@ -24,6 +24,7 @@ import net.minecraft.world.phys.Vec3;
 import javax.annotation.Nullable;
 import java.util.List;
 
+@AutoSpellConfig
 public class SummonDarkspawnLarvaSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "summon_darkspawn_larva");
 
@@ -55,6 +56,16 @@ public class SummonDarkspawnLarvaSpell extends AbstractSpell {
     @Override
     public CastType getCastType() {
         return CastType.LONG;
+    }
+
+    @Override
+    public boolean allowLooting() {
+        return false;
+    }
+
+    @Override
+    public boolean allowCrafting() {
+        return false;
     }
 
     @Override

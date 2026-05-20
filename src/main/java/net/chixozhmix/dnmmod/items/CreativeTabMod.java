@@ -157,6 +157,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.SMALL_ICE_SPIDER_SPAWN_EGG.get());
                         output.accept(ModItems.DEFILED_PRIEST_SPAWN_EGG.get());
                         output.accept(ModItems.DEFILED_WIZARD_SPAWN_EGG.get());
+                        output.accept(ModItems.DARKSPAWN_LARVA_SPAWN_EGG.get());
                     })
                     .build());
     //Blocks

@@ -22,6 +22,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
+@AutoSpellConfig
 public class HungerOfHadarSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "hunger_of_hadar");
 

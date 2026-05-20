@@ -78,6 +78,9 @@
   "item.dnmmod.evil_flame_atronach_spawn_egg": "Яйцо призыва Дикого Огненного Атронаха",
   "item.dnmmod.evil_storm_atronach_spawn_egg": "Яйцо призыва Дикого Грозового Атронаха",
   "item.dnmmod.small_ice_spider_spawn_egg": "Яйцо призыва маленького морозного паука",
+  "item.dnmmod.defiled_wizard_spawn_egg": "Яйцо призыва оскверненного волшебника",
+  "item.dnmmod.defiled_priest_spawn_egg": "Яйцо призыва оскверненного жреца",
+  "item.dnmmod.darkspawn_larva_spawn_egg": "Яйцо призыва личинки порождений тьмы",
 
   "item.dnmmod.raven_feather": "Перо ворона",
   "item.dnmmod.burnt_sugar": "Жженный сахар",
@@ -344,5 +347,8 @@
   "spell.dnmmod.burial_ground.guide": "Вы оскверняете землю в области негативной энергией, разрывающей саму душу. Вы исцеляетесь на 10% от нанесенного урона.",
 
   "spell.dnmmod.summon_darkspawn_larva": "Призыв личинки порождений тьмы",
-  "spell.dnmmod.summon_darkspawn_larva.guide": "Вы взываете к силам скверны, призывая на помощь ее воинов."
+  "spell.dnmmod.summon_darkspawn_larva.guide": "Вы взываете к силам скверны, призывая на помощь ее воинов.",
+
+  "spell.dnmmod.raven_step": "Вороний Шаг",
+  "spell.dnmmod.raven_step.guide": "Духи Матери Воронов утягивают вас за собой туда, куда вы смотрите."
 }

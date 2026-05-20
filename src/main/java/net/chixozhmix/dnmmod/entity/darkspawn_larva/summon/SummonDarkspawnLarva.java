@@ -44,7 +44,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class SummonDarkspawnLarva extends DarkspawnLarva implements IMagicSummon {
-    private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(FlameAtronachEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(SummonDarkspawnLarva.class, EntityDataSerializers.BOOLEAN);
 
     private static final RawAnimation RISE_ANIM = RawAnimation.begin().thenPlay("raise");
 
@@ -55,9 +55,9 @@ public class SummonDarkspawnLarva extends DarkspawnLarva implements IMagicSummon
     private final AnimationController<SummonDarkspawnLarva> riseController;
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
-            .add(Attributes.ATTACK_DAMAGE, (double)2.0F)
-            .add(Attributes.ATTACK_KNOCKBACK, (double)0.03F)
-            .add(Attributes.MAX_HEALTH, (double)20.0F)
+            .add(Attributes.ATTACK_DAMAGE, (double)5.0F)
+            .add(Attributes.ATTACK_KNOCKBACK, (double)0.1F)
+            .add(Attributes.MAX_HEALTH, (double)30.0F)
             .add(Attributes.FOLLOW_RANGE, (double)25.0F)
             .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)0.5F)
             .add(Attributes.MOVEMENT_SPEED, (double)0.27F)
@@ -127,7 +127,7 @@ public class SummonDarkspawnLarva extends DarkspawnLarva implements IMagicSummon
     protected void registerGoals() {
         this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.15F, 25, 45))
                 .setSpells(
-                        List.of(SpellRegistry.POISON_BREATH_SPELL.get()),
+                        List.of(SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
                         List.of(),
                         List.of(),
                         List.of()));

@@ -102,10 +102,8 @@ public class IceDagger extends AbstractMagicProjectile {
 
         // Наносим урон всем сущностям в радиусе
         for (LivingEntity entity : entitiesInRange) {
-            // Можно добавить затухание урона в зависимости от расстояния
             double distance = entity.distanceToSqr(position);
-            if (distance <= 16.0) { // 3 блока в квадрате
-                // Базовый урон (можно настроить затухание)
+            if (distance <= 16.0) {
                 float finalDamage = this.damage * (float)(1.0 - (Math.sqrt(distance) / 3.0) * 0.5);
 
                 DamageSources.applyDamage(entity, finalDamage, damageSource);
