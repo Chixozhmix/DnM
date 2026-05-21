@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "item": "dnmmod:iron_ring"
+    }
+  },
+  "pattern": [
+    "   ",
+    "I I",
+    "I I"
+  ],
+  "result": {
+    "item": "minecraft:chainmail_boots"
+  },
+  "show_notification": true
+}

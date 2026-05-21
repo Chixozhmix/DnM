@@ -166,6 +166,7 @@
   "block.dnmmod.leshy_altar": "Leshy Altar",
   "block.dnmmod.scroll_table": "Scroll table",
   "block.dnmmod.door_of_seal": "Sealed Door",
+  "block.dnmmod.unbreaking_bricks": "Unbreaking bricks",
 
   "entity.dnmmod.cloud_dagger": "Magic Dagger",
   "entity.dnmmod.ice_dagger": "Ice dagger",
@@ -264,6 +265,7 @@
   "effect.dnmmod.nature_resistance": "Nature resist",
   "effect.dnmmod.lightning_resistance": "Lightning resist",
   "effect.dnmmod.eldritch_resistance": "Eldritch resist",
+  "effect.dnmmod.disorientation": "Disorientation",
 
   "sounds.dnmmod.ghost_ambient": "Ghost",
   "sounds.dnmmod.undead_spirit": "Undead Spirit",

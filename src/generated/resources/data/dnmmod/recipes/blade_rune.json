@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "dnmmod:diamond_dagger"
+    },
+    "R": {
+      "item": "irons_spellbooks:blank_rune"
+    }
+  },
+  "pattern": [
+    "DDD",
+    "DRD",
+    "DDD"
+  ],
+  "result": {
+    "item": "dnmmod:blade_rune"
+  },
+  "show_notification": true
+}

@@ -67,7 +67,8 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
     private boolean finalPhaseTransitionTriggered = false;
 
     private int spawnTimer;
-    private int timer = 200;
+    private final int timer = 200;
+    private final float spawnDistanceSqr = 144.0F;
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
@@ -86,8 +87,8 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
             BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
-            .add(Attributes.ATTACK_DAMAGE, (double)8.0F)
-            .add(Attributes.ATTACK_KNOCKBACK, (double)0.4F)
+            .add(Attributes.ATTACK_DAMAGE, (double)10.0F)
+            .add(Attributes.ATTACK_KNOCKBACK, (double)1.0F)
             .add(Attributes.KNOCKBACK_RESISTANCE, (double)0.8F)
             .add(Attributes.MAX_HEALTH, (double)950.0F)
             .add(Attributes.FOLLOW_RANGE, (double)35.0F)
@@ -169,8 +170,10 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
             return PlayState.CONTINUE;
         }
 
-        if(isUsingKnockback()) {
-            state.getController().setAnimation(RawAnimation.begin().thenPlay("cast_t_pose"));
+        if (isUsingKnockback()) {
+            if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
+                state.getController().setAnimation(RawAnimation.begin().thenPlay("cast_t_pose"));
+            }
             return PlayState.CONTINUE;
         }
 
@@ -256,15 +259,16 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
             return;
         }
 
-        if(isPhase(Phases.FirstPhase) || isPhase(Phases.FinalPhase)) {
-            if(this.isSpawning() && this.getTarget() != null) {
+        if(this.getTarget() != null && (isPhase(Phases.FirstPhase) || isPhase(Phases.FinalPhase))) {
+            double distanceSquared = this.distanceToSqr(this.getTarget());
+            if(distanceSquared <= this.spawnDistanceSqr && this.isSpawning())
+            {
                 --this.spawnTimer;
                 if(spawnTimer == 0 && !this.level().isClientSide) {
                     this.spawnDarkspawn(true);
                     this.spawnDarkspawn(false);
-
                     setSpawnTimer(timer);
-                }
+                    }
             }
         }
 
@@ -467,7 +471,7 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
             larva.setYRot(this.getYRot());
             larva.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(this.blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData)null, (CompoundTag)null);
             this.level().addFreshEntity(larva);
-            //this.level().playSound((Player)null, spawn.x, spawn.y, spawn.z, (SoundEvent) SoundRegistry.FIRE_BOSS_ACCENT.get(), this.getSoundSource(), 2.0F, 0.9F);
+            this.level().playSound((Player)null, spawn.x, spawn.y, spawn.z, SoundEvents.WARDEN_EMERGE, this.getSoundSource(), 2.0F, 0.9F);
         }
     }
 

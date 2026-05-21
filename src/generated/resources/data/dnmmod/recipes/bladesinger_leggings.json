@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "dnmmod:blade_rune"
+    },
+    {
+      "item": "irons_spellbooks:wizard_leggings"
+    },
+    {
+      "item": "irons_spellbooks:arcane_essence"
+    }
+  ],
+  "result": {
+    "item": "dnmmod:bladesinger_leggings"
+  }
+}

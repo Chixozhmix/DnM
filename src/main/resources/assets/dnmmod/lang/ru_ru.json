@@ -169,6 +169,7 @@
   "block.dnmmod.leshy_altar": "Алтарь Лешего",
   "block.dnmmod.scroll_table": "Стол для свитков",
   "block.dnmmod.door_of_seal": "Запечатанная Дверь",
+  "block.dnmmod.unbreaking_bricks": "Неразрушимые кирпичи",
 
   "entity.dnmmod.cloud_dagger": "Магический кинжал",
   "entity.dnmmod.ice_dagger": "Ледяной кинжал",
@@ -258,7 +259,8 @@
   "effect.dnmmod.thick_of_fight": "Гуща битвы",
   "effect.dnmmod.corpse_poison": "Трупный яд",
   "effect.dnmmod.reaper_effect": "Шепот Смерти",
-  "effect.dnmmod.ender_resistance": "Сопротивление ендеру",
+  "effect.dnmmod.ender_resistance": "Сопротивление эндеру",
+  "effect.dnmmod.disorientation": "Дизориентация",
 
   "sounds.dnmmod.ghost_ambient": "Призрак",
   "sounds.dnmmod.undead_spirit": "Дух Нежити",

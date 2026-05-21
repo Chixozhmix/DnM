@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": {
+      "item": "minecraft:string"
+    },
+    "N": {
+      "item": "minecraft:diamond"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " N ",
+    " N ",
+    "GSG"
+  ],
+  "result": {
+    "item": "dnmmod:diamond_katana"
+  },
+  "show_notification": true
+}

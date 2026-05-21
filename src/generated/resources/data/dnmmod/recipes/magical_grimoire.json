@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "irons_spellbooks:arcane_essence"
+    },
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "C": {
+      "item": "minecraft:blue_dye"
+    },
+    "E": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "S": {
+      "item": "irons_spellbooks:iron_spell_book"
+    }
+  },
+  "pattern": [
+    "BCB",
+    "LEL",
+    "ASA"
+  ],
+  "result": {
+    "item": "dnmmod:magical_grimoire"
+  },
+  "show_notification": true
+}

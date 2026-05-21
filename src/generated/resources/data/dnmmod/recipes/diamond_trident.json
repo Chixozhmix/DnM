@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "N": {
+      "item": "minecraft:diamond"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " NN",
+    " SN",
+    "S  "
+  ],
+  "result": {
+    "item": "dnmmod:diamond_trident"
+  },
+  "show_notification": true
+}

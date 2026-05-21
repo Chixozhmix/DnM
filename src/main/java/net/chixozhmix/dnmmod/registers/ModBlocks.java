@@ -6,7 +6,6 @@ import net.chixozhmix.dnmmod.blocks.custom.ScrollTableBlock;
 import net.chixozhmix.dnmmod.blocks.custom.SealedDoorBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -39,6 +38,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> DOOR_OF_SEAL = registerBlock("door_of_seal",
             () -> new SealedDoorBlock());
+    public static final RegistryObject<Block> UNBREAKING_BRICKS = registerBlock("unbreaking_bricks", () ->
+            new Block(BlockBehaviour.Properties.copy(Blocks.BEDROCK).sound(SoundType.DEEPSLATE).noLootTable()));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

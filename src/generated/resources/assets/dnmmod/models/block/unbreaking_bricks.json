@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "dnmmod:block/unbreaking_bricks"
+  }
+}

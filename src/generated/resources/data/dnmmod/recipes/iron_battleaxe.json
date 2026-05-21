@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "ISI",
+    " SI",
+    " S "
+  ],
+  "result": {
+    "item": "dnmmod:iron_battleaxe"
+  },
+  "show_notification": true
+}

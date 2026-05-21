@@ -8,6 +8,7 @@
     "minecraft:jigsaw",
     "minecraft:obsidian",
     "minecraft:crying_obsidian",
-    "dnmmod:door_of_seal"
+    "dnmmod:door_of_seal",
+    "dnmmod:unbreaking_bricks"
   ]
 }

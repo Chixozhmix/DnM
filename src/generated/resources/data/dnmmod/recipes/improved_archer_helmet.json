@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "dnmmod:archer_armor_helmet"
+    },
+    "B": {
+      "item": "minecraft:black_dye"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "III",
+    "IAI",
+    " B "
+  ],
+  "result": {
+    "item": "dnmmod:improved_archer_helmet"
+  },
+  "show_notification": true
+}

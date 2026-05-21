@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "dnmmod:archer_armor_chestplate"
+    },
+    "B": {
+      "item": "minecraft:black_dye"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "IAI",
+    "IBI",
+    "III"
+  ],
+  "result": {
+    "item": "dnmmod:improved_archer_chestplate"
+  },
+  "show_notification": true
+}

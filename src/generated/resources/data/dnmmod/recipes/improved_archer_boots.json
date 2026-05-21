@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "dnmmod:archer_armor_boots"
+    },
+    "B": {
+      "item": "minecraft:black_dye"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "   ",
+    "IBI",
+    "IAI"
+  ],
+  "result": {
+    "item": "dnmmod:improved_archer_boots"
+  },
+  "show_notification": true
+}

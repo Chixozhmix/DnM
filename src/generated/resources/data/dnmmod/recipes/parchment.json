@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "irons_spellbooks:arcane_essence"
+    },
+    "P": {
+      "item": "minecraft:paper"
+    }
+  },
+  "pattern": [
+    " E ",
+    "EPE",
+    " E "
+  ],
+  "result": {
+    "item": "dnmmod:parchment"
+  },
+  "show_notification": true
+}

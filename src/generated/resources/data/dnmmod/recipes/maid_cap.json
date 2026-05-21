@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "minecraft:oxeye_daisy"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "   ",
+    "WFW",
+    "   "
+  ],
+  "result": {
+    "item": "dnmmod:maid_cap"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": {
+      "item": "minecraft:string"
+    },
+    "N": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " N ",
+    " N ",
+    "GSG"
+  ],
+  "result": {
+    "item": "dnmmod:iron_katana"
+  },
+  "show_notification": true
+}

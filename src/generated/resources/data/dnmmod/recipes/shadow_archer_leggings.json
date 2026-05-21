@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "dnmmod:improved_archer_leggings"
+    },
+    "B": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "I": {
+      "item": "minecraft:diamond"
+    },
+    "R": {
+      "item": "dnmmod:raven_feather"
+    }
+  },
+  "pattern": [
+    "IRI",
+    "IBI",
+    "IAI"
+  ],
+  "result": {
+    "item": "dnmmod:shadow_archer_leggings"
+  },
+  "show_notification": true
+}

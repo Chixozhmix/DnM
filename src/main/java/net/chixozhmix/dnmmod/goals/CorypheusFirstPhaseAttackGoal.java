@@ -2,6 +2,9 @@ package net.chixozhmix.dnmmod.goals;
 
 import io.redspace.ironsspellbooks.api.entity.IMagicEntity;
 import net.chixozhmix.dnmmod.entity.corypheus.CorypheusBoss;
+import net.chixozhmix.dnmmod.registers.ModEffects;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -23,7 +26,7 @@ public class CorypheusFirstPhaseAttackGoal extends Goal {
         this.setFlags(EnumSet.of(Flag.LOOK, Flag.TARGET));
         if (abstractSpellCastingMob instanceof PathfinderMob m) {
             this.mob = m;
-            this.attackRadius = 6.0F;
+            this.attackRadius = 5.0F;
             this.attackRadiusSqr = this.attackRadius * this.attackRadius;
         } else {
             throw new IllegalStateException("Unable to add " + this.getClass().getSimpleName() + "to entity, must extend PathfinderMob.");
@@ -52,10 +55,6 @@ public class CorypheusFirstPhaseAttackGoal extends Goal {
     public void start() {
         this.animationTick = ANIMATION_DURATION;
         this.hasUsedAbility = false;
-
-        if (this.mob instanceof CorypheusBoss boss) {
-            boss.setUsingKnockback(true);
-        }
     }
 
     @Override
@@ -72,6 +71,9 @@ public class CorypheusFirstPhaseAttackGoal extends Goal {
 
             double distanceSquared = this.mob.distanceToSqr(this.target);
             if (distanceSquared < (double) this.attackRadiusSqr) {
+                if (this.mob instanceof CorypheusBoss boss) {
+                    boss.setUsingKnockback(true);
+                }
                 if (!this.hasUsedAbility) {
                     knockbackEntity(this.mob, this.target);
                     this.hasUsedAbility = true;
@@ -97,11 +99,22 @@ public class CorypheusFirstPhaseAttackGoal extends Goal {
     }
 
     private void knockbackEntity(LivingEntity mob, LivingEntity target) {
+        target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 160, 0));
+        target.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 160, 1));
+        target.addEffect(new MobEffectInstance(ModEffects.DISORIENTATION.get(), 160, 0));
+
         Vec3 direction = target.position().subtract(mob.position()).normalize();
 
-        float knockbackStrength = 3.0F;
+        if (direction.lengthSqr() < 0.0001) return;
 
-        target.knockback(knockbackStrength, direction.x, direction.z);
+        float horizontalStrength = 4.0F;
+        float verticalStrength = 0.4F;
+
+        target.setDeltaMovement(
+                direction.x * horizontalStrength,
+                verticalStrength,
+                direction.z * horizontalStrength
+        );
         target.hurtMarked = true;
     }
 }

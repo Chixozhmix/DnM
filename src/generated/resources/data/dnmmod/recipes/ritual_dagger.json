@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    "   ",
+    " O ",
+    "B  "
+  ],
+  "result": {
+    "item": "dnmmod:ritual_dagger"
+  },
+  "show_notification": true
+}

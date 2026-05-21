@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "dnmmod:improved_archer_chestplate"
+    },
+    "B": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "I": {
+      "item": "minecraft:diamond"
+    },
+    "R": {
+      "item": "dnmmod:raven_feather"
+    }
+  },
+  "pattern": [
+    "RAR",
+    "IBI",
+    "III"
+  ],
+  "result": {
+    "item": "dnmmod:shadow_archer_chestplate"
+  },
+  "show_notification": true
+}

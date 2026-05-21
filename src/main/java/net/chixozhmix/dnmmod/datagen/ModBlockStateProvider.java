@@ -19,6 +19,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.CLAY_SHALE);
+        blockWithItem(ModBlocks.UNBREAKING_BRICKS);
 
         simpleBlockWithItem(ModBlocks.LESHY_ALTAR.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/leshy_altar")));

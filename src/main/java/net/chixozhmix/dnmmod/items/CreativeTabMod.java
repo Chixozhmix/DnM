@@ -166,6 +166,7 @@ public class CreativeTabMod {
                     .title(Component.translatable("creativetab.dnmmod.blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.LESHY_ALTAR.get());
+                        output.accept(ModBlocks.UNBREAKING_BRICKS.get());
                         output.accept(ModBlocks.DOOR_OF_SEAL.get());
                     })
                     .build());

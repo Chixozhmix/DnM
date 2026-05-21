@@ -85,12 +85,12 @@ public class RavenStepSpell extends AbstractSpell {
         super.onClientPreCast(level, spellLevel, entity, hand, playerMagicData);
 
         for(int i = 0; i < 35; ++i) {
-            double speed = 0.13 + Utils.random.nextDouble() * 0.2;
+            double speed = 0.15 + Utils.random.nextDouble() * 0.2;
             double angle = Utils.random.nextDouble() * Math.PI * 2;
 
-            double motionX = Math.cos(angle) * speed * 1.2;
-            double motionZ = Math.sin(angle) * speed * 1.2;
-            double motionY = Utils.random.nextDouble() * speed * 0.6;
+            double motionX = Math.cos(angle) * speed * 0.3;
+            double motionZ = Math.sin(angle) * speed * 0.3;
+            double motionY = Utils.random.nextDouble() * speed * 0.3;
 
             level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE,
                     entity.getRandomX(0.4F),
@@ -103,9 +103,9 @@ public class RavenStepSpell extends AbstractSpell {
             double speed = 0.15 + Utils.random.nextDouble() * 0.2;
             double angle = Utils.random.nextDouble() * Math.PI * 2;
 
-            double motionX = Math.cos(angle) * speed * 1.5;
-            double motionZ = Math.sin(angle) * speed * 1.5;
-            double motionY = Utils.random.nextDouble() * speed * 0.8;
+            double motionX = Math.cos(angle) * speed * 2.5;
+            double motionZ = Math.sin(angle) * speed * 2.5;
+            double motionY = Utils.random.nextDouble() * speed * 2.3;
 
             level.addParticle(ParticleRegistry.RAVEN_PARTICLES.get(),
                     entity.getRandomX(0.4F),
