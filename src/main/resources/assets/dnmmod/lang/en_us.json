@@ -208,8 +208,9 @@
   "entity.dnmmod.small_ice_spider": "Small ice spider",
   "entity.dnmmod.defiled_wizard": "Defiled Wizard",
   "entity.dnmmod.defiled_priest": "Defiled Priest",
-  "entity.dnmmod.corypheus": "Corypheus, the Kapellmeister of Silence",
+  "entity.dnmmod.modeus": "Modeus, the Architect of Elegance",
   "entity.dnmmod.darkspawn_larva": "Darkspawn larva",
+  "entity.dnmmod.darkspawn_observer": "Darkspawn observer",
   "entity.dnmmod.summon_darkspawn_larva": "Summon darkspawn larva",
 
   "tooltip.dnmmod.maid": "Why not?",
@@ -227,7 +228,7 @@
   "ui.dnmmod.green_hag_bossbar": "Green Hag",
   "ui.dnmmod.leshy_bossbar": "Leshy",
 
-  "ui.dnmmod.component_loss": "No components",
+  "ui.dnmmod.component_loss": "No components: %s",
 
   "ui.dnmmod.max_mirror_massage": "You look great.",
   "ui.dnmmod.half_mirror_massage": "I've been better",

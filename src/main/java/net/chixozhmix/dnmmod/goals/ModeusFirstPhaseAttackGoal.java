@@ -1,7 +1,7 @@
 package net.chixozhmix.dnmmod.goals;
 
 import io.redspace.ironsspellbooks.api.entity.IMagicEntity;
-import net.chixozhmix.dnmmod.entity.corypheus.CorypheusBoss;
+import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -12,7 +12,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.EnumSet;
 
-public class CorypheusFirstPhaseAttackGoal extends Goal {
+public class ModeusFirstPhaseAttackGoal extends Goal {
     protected PathfinderMob mob;
     protected LivingEntity target;
     protected int attackTime;
@@ -22,7 +22,7 @@ public class CorypheusFirstPhaseAttackGoal extends Goal {
     private boolean hasUsedAbility = false;
     private int animationTick = 0;
 
-    public CorypheusFirstPhaseAttackGoal(IMagicEntity abstractSpellCastingMob) {
+    public ModeusFirstPhaseAttackGoal(IMagicEntity abstractSpellCastingMob) {
         this.setFlags(EnumSet.of(Flag.LOOK, Flag.TARGET));
         if (abstractSpellCastingMob instanceof PathfinderMob m) {
             this.mob = m;
@@ -71,7 +71,7 @@ public class CorypheusFirstPhaseAttackGoal extends Goal {
 
             double distanceSquared = this.mob.distanceToSqr(this.target);
             if (distanceSquared < (double) this.attackRadiusSqr) {
-                if (this.mob instanceof CorypheusBoss boss) {
+                if (this.mob instanceof ModeusBoss boss) {
                     boss.setUsingKnockback(true);
                 }
                 if (!this.hasUsedAbility) {
@@ -87,7 +87,7 @@ public class CorypheusFirstPhaseAttackGoal extends Goal {
         this.animationTick = 0;
         this.hasUsedAbility = false;
 
-        if (this.mob instanceof CorypheusBoss boss) {
+        if (this.mob instanceof ModeusBoss boss) {
             boss.setUsingKnockback(false);
         }
 

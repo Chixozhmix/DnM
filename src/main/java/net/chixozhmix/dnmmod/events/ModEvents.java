@@ -2,7 +2,7 @@ package net.chixozhmix.dnmmod.events;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.spawnrules.ModSpawnRule;
-import net.chixozhmix.dnmmod.entity.corypheus.CorypheusBoss;
+import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriest;
@@ -13,6 +13,7 @@ import net.chixozhmix.dnmmod.entity.reaper.ReaperEntity;
 import net.chixozhmix.dnmmod.entity.small_ice_spider.SmallIceSpiderEntity;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.Tombstone;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
+import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserver;
 import net.chixozhmix.dnmmod.particle.RavenParticle;
 import net.chixozhmix.dnmmod.particle.ShieldParticle;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
@@ -63,8 +64,9 @@ public class ModEvents {
         event.put(ModEntityType.SMALL_ICE_SPIDER.get(), SmallIceSpiderEntity.prepareAttributes().build());
         event.put(ModEntityType.DEFILED_WIZARD.get(), DefiledWizard.prepareAttributes().build());
         event.put(ModEntityType.DEFILED_PRIEST.get(), DefiledPriest.prepareAttributes().build());
-        event.put(ModEntityType.CORYPHEUS.get(), CorypheusBoss.prepareAttributes().build());
+        event.put(ModEntityType.MODEUS.get(), ModeusBoss.prepareAttributes().build());
         event.put(ModEntityType.DARKSPAWN_LARVA.get(), DarkspawnLarva.prepareAttributes().build());
+        event.put(ModEntityType.DARKSPAWN_OBSERVER.get(), DarkspawnObserver.createAttributes());
         event.put(ModEntityType.SUMMON_DARKSPAWN_LARVA.get(), SummonDarkspawnLarva.prepareAttributes().build());
     }
 

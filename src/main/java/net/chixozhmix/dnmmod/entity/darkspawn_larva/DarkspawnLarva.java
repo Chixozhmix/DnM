@@ -5,10 +5,10 @@ import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WarlockAttackGoal;
-import net.chixozhmix.dnmmod.entity.corypheus.CorypheusBoss;
-import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarva;
+import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriest;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
+import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserver;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -159,9 +159,9 @@ public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IA
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.25F, 45, 60))
+        this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.25F, 30, 40))
                 .setSpells(
-                        List.of(SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
+                        List.of(SpellRegistry.ACID_ORB_SPELL.get()),
                         List.of(),
                         List.of(),
                         List.of()));
@@ -171,7 +171,7 @@ public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IA
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this,
                 DefiledWizard.class,
                 DefiledPriest.class,
-                CorypheusBoss.class,
+                ModeusBoss.class,
                 DarkspawnLarva.class));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true));
     }
@@ -241,7 +241,8 @@ public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IA
 
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
-        if(pSource.getEntity() instanceof DarkspawnLarva || pSource.getEntity() instanceof CorypheusBoss)
+        if(pSource.getEntity() instanceof DarkspawnLarva || pSource.getEntity() instanceof ModeusBoss
+                || pSource.getEntity() instanceof DarkspawnObserver)
             return false;
 
         return super.hurt(pSource, pAmount);

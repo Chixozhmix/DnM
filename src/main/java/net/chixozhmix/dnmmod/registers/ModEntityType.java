@@ -1,7 +1,7 @@
 package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.entity.corypheus.CorypheusBoss;
+import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarva;
@@ -31,6 +31,7 @@ import net.chixozhmix.dnmmod.entity.spell.tombstone.Tombstone;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
+import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserver;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -186,18 +187,24 @@ public class ModEntityType {
                             .sized(0.9f, 2.5f)
                             .clientTrackingRange(32)
                             .build("defiled_priest"));
-    public static final RegistryObject<EntityType<CorypheusBoss>> CORYPHEUS =
-            ENTITY_TYPES.register("corypheus", () ->
-                    EntityType.Builder.<CorypheusBoss>of(CorypheusBoss::new, MobCategory.MONSTER)
+    public static final RegistryObject<EntityType<ModeusBoss>> MODEUS =
+            ENTITY_TYPES.register("modeus", () ->
+                    EntityType.Builder.<ModeusBoss>of(ModeusBoss::new, MobCategory.MONSTER)
                             .sized(0.9f, 2.7f)
                             .clientTrackingRange(32)
-                            .build("corypheus"));
+                            .build("modeus"));
     public static final RegistryObject<EntityType<DarkspawnLarva>> DARKSPAWN_LARVA =
             ENTITY_TYPES.register("darkspawn_larva", () ->
                     EntityType.Builder.of(DarkspawnLarva::new, MobCategory.MONSTER)
                             .sized(0.9f, 2.2f)
                             .clientTrackingRange(32)
                             .build("darkspawn_larva"));
+    public static final RegistryObject<EntityType<DarkspawnObserver>> DARKSPAWN_OBSERVER =
+            ENTITY_TYPES.register("darkspawn_observer", () ->
+                    EntityType.Builder.of(DarkspawnObserver::new, MobCategory.MONSTER)
+                            .sized(1.0f, 1.5f)
+                            .clientTrackingRange(32)
+                            .build("darkspawn_observer"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =

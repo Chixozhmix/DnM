@@ -50,9 +50,9 @@ public class GhostEntity extends Monster implements GeoEntity {
 
     private int invisibilityCooldown = 0;
     private boolean isInvisibleFromAbility = false;
-    private static final double INVISIBILITY_CHANCE = 0.3; // 30% шанс
-    private static final int INVISIBILITY_DURATION = 60; // 3 секунды (20 тиков = 1 секунда)
-    private static final int INVISIBILITY_COOLDOWN = 100; // 5 секунд кулдауна
+    private static final double INVISIBILITY_CHANCE = 0.3;
+    private static final int INVISIBILITY_DURATION = 60;
+    private static final int INVISIBILITY_COOLDOWN = 100;
 
     private int attackAnimationTick = 0;
 

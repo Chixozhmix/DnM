@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.entity.darkspawn_larva.summon;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.IMagicSummon;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
@@ -40,7 +41,9 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class SummonDarkspawnLarva extends DarkspawnLarva implements IMagicSummon {
@@ -127,7 +130,7 @@ public class SummonDarkspawnLarva extends DarkspawnLarva implements IMagicSummon
     protected void registerGoals() {
         this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.15F, 25, 45))
                 .setSpells(
-                        List.of(SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
+                        List.of(SpellRegistry.ACID_ORB_SPELL.get()),
                         List.of(),
                         List.of(),
                         List.of()));

@@ -211,8 +211,9 @@
   "entity.dnmmod.small_ice_spider": "Маленький ледяной паук",
   "entity.dnmmod.defiled_wizard": "Оскверненный волшебник",
   "entity.dnmmod.defiled_priest": "Оскверненный жрец",
-  "entity.dnmmod.corypheus": "Корифей, Капельмейстер Тишины",
+  "entity.dnmmod.modeus": "Модеус, Архитектор Изяществ",
   "entity.dnmmod.darkspawn_larva": "Личинка порождения тьмы",
+  "entity.dnmmod.darkspawn_observer": "Наблюдатель порождений тьмы",
   "entity.dnmmod.summon_darkspawn_larva": "Призванная личинка порождения тьмы",
 
   "tooltip.dnmmod.maid": "Почему нет?",
@@ -230,7 +231,7 @@
   "ui.dnmmod.green_hag_bossbar": "Зеленая Карга",
   "ui.dnmmod.leshy_bossbar": "Леший",
 
-  "ui.dnmmod.component_loss": "Нет компонентов",
+  "ui.dnmmod.component_loss": "Нет компонентов: %s",
 
   "ui.dnmmod.max_mirror_massage": "Вы выглядите прекрасно.",
   "ui.dnmmod.half_mirror_massage": "Вы выглядели и лучше.",

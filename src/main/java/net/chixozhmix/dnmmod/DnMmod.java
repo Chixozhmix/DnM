@@ -8,7 +8,7 @@ import net.chixozhmix.dnmmod.Util.ModCapabilities;
 import net.chixozhmix.dnmmod.blocks.client.SealedDoorModel;
 import net.chixozhmix.dnmmod.blocks.client.SealedDoorRenderer;
 import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
-import net.chixozhmix.dnmmod.entity.corypheus.CorypheusRenderer;
+import net.chixozhmix.dnmmod.entity.modeus.ModeusRenderer;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarvaRenderer;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarvaRenderer;
 import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriestrenderer;
@@ -21,6 +21,7 @@ import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadarRenderer;
 import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.TallTheDeadRenderer;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.TombstoneRenderer;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronachRenderer;
+import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserverRenderer;
 import net.chixozhmix.dnmmod.registers.*;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachrenderer;
@@ -204,9 +205,10 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.SMALL_ICE_SPIDER.get(), SmallIceSpiderRenderer::new);
             EntityRenderers.register(ModEntityType.DEFILED_WIZARD.get(), DefiledWizardRenderer::new);
             EntityRenderers.register(ModEntityType.DEFILED_PRIEST.get(), DefiledPriestrenderer::new);
-            EntityRenderers.register(ModEntityType.CORYPHEUS.get(), CorypheusRenderer::new);
+            EntityRenderers.register(ModEntityType.MODEUS.get(), ModeusRenderer::new);
             EntityRenderers.register(ModEntityType.DARKSPAWN_LARVA.get(), DarkspawnLarvaRenderer::new);
             EntityRenderers.register(ModEntityType.SUMMON_DARKSPAWN_LARVA.get(), SummonDarkspawnLarvaRenderer::new);
+            EntityRenderers.register(ModEntityType.DARKSPAWN_OBSERVER.get(), DarkspawnObserverRenderer::new);
 
             MenuScreens.register(ModMenuTypes.COMPONENT_BAG_MENU.get(), ComponentBagScreen::new);
             MenuScreens.register(ModMenuTypes.MEDIUM_COMPONENT_BAG_MENU.get(), MediumBagScreen::new);

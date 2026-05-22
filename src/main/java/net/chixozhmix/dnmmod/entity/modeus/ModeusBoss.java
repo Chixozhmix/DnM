@@ -1,15 +1,17 @@
-package net.chixozhmix.dnmmod.entity.corypheus;
+package net.chixozhmix.dnmmod.entity.modeus;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
-import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
-import net.chixozhmix.dnmmod.goals.CorypheusFirstPhaseAttackGoal;
+import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserver;
+import net.chixozhmix.dnmmod.goals.CapturingTargetAttackGoal;
+import net.chixozhmix.dnmmod.goals.IBeamAttackMob;
+import net.chixozhmix.dnmmod.goals.ModeusFirstPhaseAttackGoal;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.nbt.CompoundTag;
@@ -57,18 +59,23 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.List;
 
 
-public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker, IEntityAdditionalSpawnData {
-    private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(CorypheusBoss.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(CorypheusBoss.class, EntityDataSerializers.INT);
+public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker, IEntityAdditionalSpawnData, IBeamAttackMob {
+    private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_IS_USING_KNOCKBACK =
-            SynchedEntityData.defineId(CorypheusBoss.class, EntityDataSerializers.BOOLEAN);
+            SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> DATA_ATTACK_TARGET_ID =
+            SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.INT);
 
     private boolean phaseTransitionTriggered = false;
     private boolean finalPhaseTransitionTriggered = false;
 
     private int spawnTimer;
-    private final int timer = 200;
+    private final int timer = 220;
     private final float spawnDistanceSqr = 144.0F;
+
+    private int attackDuration = 80;
+    public int clientSideAttackTime;
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
@@ -79,11 +86,11 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
     private final AnimatableInstanceCache cache;
     private RawAnimation customAnimationToPlay;
 
-    private final AnimationController<CorypheusBoss> movementController;
-    private final AnimationController<CorypheusBoss> riseController;
-    private final AnimationController<CorypheusBoss> attackController;
+    private final AnimationController<ModeusBoss> movementController;
+    private final AnimationController<ModeusBoss> riseController;
+    private final AnimationController<ModeusBoss> attackController;
 
-    private final ServerBossEvent bossEvent = new ServerBossEvent(Component.translatable("entity.dnmmod.corypheus"),
+    private final ServerBossEvent bossEvent = new ServerBossEvent(Component.translatable("entity.dnmmod.modeus"),
             BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
@@ -99,21 +106,21 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
             .add(AttributeRegistry.SPELL_RESIST.get(), 1.3F);
 
 
-    public CorypheusBoss(Level pLevel) {
-        this((EntityType) ModEntityType.CORYPHEUS.get(), pLevel);
+    public ModeusBoss(Level pLevel) {
+        this((EntityType) ModEntityType.MODEUS.get(), pLevel);
         this.setPersistenceRequired();
     }
 
-    public CorypheusBoss(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
+    public ModeusBoss(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
 
         this.riseAnimTime = 70;
         this.xpReward = 60;
         this.cache = GeckoLibUtil.createInstanceCache(this);
 
-        this.movementController = new AnimationController<>(this, "movement", 0, this::movementPredicate);
-        this.riseController = new AnimationController<>(this, "rise", 0, this::risePredicate);
-        this.attackController = new AnimationController<>(this, "attack", 0, this::attackPredicate);
+        this.movementController = new AnimationController<>(this, "movement", 2, this::movementPredicate);
+        this.riseController = new AnimationController<>(this, "rise", 2, this::risePredicate);
+        this.attackController = new AnimationController<>(this, "attack", 2, this::attackPredicate);
 
         setSpawnTimer(timer);
 
@@ -133,6 +140,7 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.entityData.define(DATA_IS_ANIMATING_RISE, false);
         this.entityData.define(PHASE, 0);
         this.entityData.define(DATA_IS_USING_KNOCKBACK, false);
+        this.entityData.define(DATA_ATTACK_TARGET_ID, 0);
     }
 
     @Override
@@ -159,7 +167,7 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         return cache;
     }
 
-    private PlayState attackPredicate(AnimationState<CorypheusBoss> state) {
+    private PlayState attackPredicate(AnimationState<ModeusBoss> state) {
         if (customAnimationToPlay != null) {
             state.getController().setAnimation(customAnimationToPlay);
 
@@ -181,7 +189,7 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         return PlayState.STOP;
     }
 
-    private PlayState movementPredicate(AnimationState<CorypheusBoss> state) {
+    private PlayState movementPredicate(AnimationState<ModeusBoss> state) {
         if (this.isAnimatingRise())
             return PlayState.STOP;
 
@@ -195,7 +203,7 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         return PlayState.CONTINUE;
     }
 
-    private PlayState risePredicate(AnimationState<CorypheusBoss> state) {
+    private PlayState risePredicate(AnimationState<ModeusBoss> state) {
         if (!this.isAnimatingRise()) {
             return PlayState.STOP;
         }
@@ -256,7 +264,13 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         super.tick();
 
         if (this.level().isClientSide) {
-            return;
+            if (this.hasActiveAttackTarget()) {
+                if (this.clientSideAttackTime < this.attackDuration) {
+                    ++this.clientSideAttackTime;
+                }
+            } else {
+                this.clientSideAttackTime = 0;
+            }
         }
 
         if(this.getTarget() != null && (isPhase(Phases.FirstPhase) || isPhase(Phases.FinalPhase))) {
@@ -384,8 +398,9 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
         this.goalSelector.removeAllGoals((x) -> true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new CorypheusFirstPhaseAttackGoal(this));
+        this.goalSelector.addGoal(1, new ModeusFirstPhaseAttackGoal(this));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(2, new CapturingTargetAttackGoal(this, 60, false, null, 5.0F));
     }
 
     protected void setSecondPhaseGoal(){
@@ -414,7 +429,6 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
                         List.of(SpellRegistry.TELEPORT_SPELL.get()),
                         List.of())
                 .setSingleUseSpell(RegistrySpells.HUNGER_OF_HADAR.get(), 70, 220, 2, 3));
-        this.goalSelector.addGoal(2, new SpellBarrageGoal(this, (AbstractSpell)RegistrySpells.SUMMON_DARKSPAWN_LARVA.get(), 1, 1, 80, 140, 1));
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
@@ -464,14 +478,44 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
         Level level = this.level();
         if (level instanceof ServerLevel serverLevel) {
             DarkspawnLarva larva = new DarkspawnLarva(ModEntityType.DARKSPAWN_LARVA.get(), level);
+            DarkspawnObserver observers = new DarkspawnObserver(ModEntityType.DARKSPAWN_OBSERVER.get(), level);
+
             float angle = (float)(left ? -90 : 90) * ((float)Math.PI / 180F);
-            Vec3 offset = this.getForward().multiply((double)3.0F, (double)0.0F, (double)3.0F).scale((double)this.getScale()).yRot(angle);
-            Vec3 spawn = Utils.moveToRelativeGroundLevel(this.level(), Utils.raycastForBlock(this.level(), this.getEyePosition(), this.position().add(offset), ClipContext.Fluid.NONE).getLocation(), 4);
-            larva.moveTo(spawn.add((double)0.0F, 0.1, (double)0.0F));
+
+            Vec3 offset = this.getForward()
+                    .multiply(3.0F, 0.0F, 3.0F)
+                    .scale(this.getScale())
+                    .yRot(angle);
+            Vec3 offset_y = this.getForward()
+                    .multiply(0.0F, 0.0F, 0.0F)
+                    .add(0.0D, 2.0D, 0.0D)
+                    .scale(this.getScale())
+                    .yRot(angle);
+
+            Vec3 spawnGround = Utils.moveToRelativeGroundLevel(
+                    this.level(),
+                    Utils.raycastForBlock(this.level(), this.getEyePosition(),
+                            this.position().add(offset), ClipContext.Fluid.NONE).getLocation(),
+                    4
+            );
+
+            larva.moveTo(spawnGround.add(0.0F, 0.1, 0.0F));
             larva.setYRot(this.getYRot());
-            larva.finalizeSpawn(serverLevel, this.level().getCurrentDifficultyAt(this.blockPosition()), MobSpawnType.MOB_SUMMONED, (SpawnGroupData)null, (CompoundTag)null);
+            larva.finalizeSpawn(serverLevel,
+                    this.level().getCurrentDifficultyAt(this.blockPosition()),
+                    MobSpawnType.MOB_SUMMONED, null, null);
             this.level().addFreshEntity(larva);
-            this.level().playSound((Player)null, spawn.x, spawn.y, spawn.z, SoundEvents.WARDEN_EMERGE, this.getSoundSource(), 2.0F, 0.9F);
+
+            Vec3 spawnAir = this.position().add(offset_y);
+            observers.moveTo(spawnAir.x, spawnAir.y, spawnAir.z);
+            observers.setYRot(this.getYRot());
+            observers.finalizeSpawn(serverLevel,
+                    this.level().getCurrentDifficultyAt(this.blockPosition()),
+                    MobSpawnType.MOB_SUMMONED, null, null);
+            this.level().addFreshEntity(observers);
+
+            this.level().playSound(null, spawnGround.x, spawnGround.y, spawnGround.z,
+                    SoundEvents.WARDEN_EMERGE, this.getSoundSource(), 2.0F, 0.9F);
         }
     }
 
@@ -489,6 +533,36 @@ public class CorypheusBoss extends AbstractSpellCastingMob implements Enemy, IAn
 
     private void setPhaseValue(int phaseValue) {
         this.entityData.set(PHASE, phaseValue);
+    }
+
+    @Override
+    public void setActiveAttackTarget(int entityId) {
+        this.entityData.set(DATA_ATTACK_TARGET_ID, entityId);
+    }
+
+    @Override
+    public boolean hasActiveAttackTarget() {
+        return this.entityData.get(DATA_ATTACK_TARGET_ID) != 0;
+    }
+
+    @Override
+    public @Nullable LivingEntity getActiveAttackTarget() {
+        if (!this.hasActiveAttackTarget()) return null;
+        if (this.level().isClientSide) {
+            Entity entity = this.level().getEntity(this.entityData.get(DATA_ATTACK_TARGET_ID));
+            return entity instanceof LivingEntity ? (LivingEntity) entity : null;
+        }
+        return this.getTarget();
+    }
+
+    @Override
+    public int getAttackDuration() {
+        return this.attackDuration;
+    }
+
+    @Override
+    public float getAttackAnimationScale(float partialTicks) {
+        return ((float)this.clientSideAttackTime + partialTicks) / (float)this.attackDuration;
     }
 
     public static enum Phases {
