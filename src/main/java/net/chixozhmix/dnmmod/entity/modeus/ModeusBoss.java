@@ -8,7 +8,9 @@ import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.Abstra
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
+import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
 import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserver;
+import net.chixozhmix.dnmmod.goals.AOEModeusAttackGoal;
 import net.chixozhmix.dnmmod.goals.CapturingTargetAttackGoal;
 import net.chixozhmix.dnmmod.goals.IBeamAttackMob;
 import net.chixozhmix.dnmmod.goals.ModeusFirstPhaseAttackGoal;
@@ -37,6 +39,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.animal.axolotl.Axolotl;
 import net.minecraft.world.entity.monster.AbstractIllager;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.npc.Villager;
@@ -64,15 +67,20 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     private static final EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_IS_USING_KNOCKBACK =
             SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_IS_USING_AOE =
+            SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> DATA_ATTACK_TARGET_ID =
             SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.INT);
 
     private boolean phaseTransitionTriggered = false;
     private boolean finalPhaseTransitionTriggered = false;
 
+    private AOEModeusAttackGoal aoeAttackGoal;
+
     private int spawnTimer;
     private final int timer = 220;
     private final float spawnDistanceSqr = 144.0F;
+    private boolean isInvulnerable = false;
 
     private int attackDuration = 80;
     public int clientSideAttackTime;
@@ -117,10 +125,14 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.riseAnimTime = 70;
         this.xpReward = 60;
         this.cache = GeckoLibUtil.createInstanceCache(this);
+        this.customAnimationToPlay = null;
 
         this.movementController = new AnimationController<>(this, "movement", 2, this::movementPredicate);
         this.riseController = new AnimationController<>(this, "rise", 2, this::risePredicate);
         this.attackController = new AnimationController<>(this, "attack", 2, this::attackPredicate);
+
+        this.aoeAttackGoal = new AOEModeusAttackGoal(this, 60, 80, 200,
+                8, 12.0F, 20.0F, 2.2, 0xFF0000);
 
         setSpawnTimer(timer);
 
@@ -140,6 +152,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.entityData.define(DATA_IS_ANIMATING_RISE, false);
         this.entityData.define(PHASE, 0);
         this.entityData.define(DATA_IS_USING_KNOCKBACK, false);
+        this.entityData.define(DATA_IS_USING_AOE, false);
         this.entityData.define(DATA_ATTACK_TARGET_ID, 0);
     }
 
@@ -175,12 +188,27 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
                 customAnimationToPlay = null;
                 state.getController().forceAnimationReset();
             }
+
             return PlayState.CONTINUE;
         }
 
         if (isUsingKnockback()) {
             if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
                 state.getController().setAnimation(RawAnimation.begin().thenPlay("cast_t_pose"));
+            }
+            return PlayState.CONTINUE;
+        }
+
+        if(hasActiveAttackTarget()) {
+            if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
+                state.getController().setAnimation(RawAnimation.begin().thenPlay("charge_spit"));
+            }
+            return PlayState.CONTINUE;
+        }
+
+        if(isUsingAOE()) {
+            if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
+                state.getController().setAnimation(RawAnimation.begin().thenPlay("radial_beam_charge"));
             }
             return PlayState.CONTINUE;
         }
@@ -253,6 +281,10 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
             }
         }
 
+        if (isInvulnerable) {
+            return false;
+        }
+
         if(isAnimatingRise() || pSource.getEntity() instanceof DarkspawnLarva)
             return false;
 
@@ -262,6 +294,10 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     @Override
     public void tick() {
         super.tick();
+
+        if (this.aoeAttackGoal != null && !this.level().isClientSide) {
+            this.aoeAttackGoal.updateCooldown();
+        }
 
         if (this.level().isClientSide) {
             if (this.hasActiveAttackTarget()) {
@@ -389,9 +425,8 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
                 DefiledWizard.class,
                 DarkspawnLarva.class));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, IronGolem.class, true));
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal(this, Villager.class, true));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, AbstractIllager.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Axolotl.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, LeshyEntity.class, true));
     }
 
     protected void setFirstPhaseGoals() {
@@ -400,7 +435,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new ModeusFirstPhaseAttackGoal(this));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(2, new CapturingTargetAttackGoal(this, 60, false, null, 5.0F));
+        this.goalSelector.addGoal(2, new CapturingTargetAttackGoal(this, 60, false, null, 5.0F, 1.2F));
     }
 
     protected void setSecondPhaseGoal(){
@@ -422,13 +457,14 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
         this.goalSelector.removeAllGoals((x) -> true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.15F, 35, 55))
+        this.goalSelector.addGoal(2, (new WizardAttackGoal(this, (double)1.15F, 35, 55))
                 .setSpells(
-                        List.of(SpellRegistry.TELEKINESIS_SPELL.get(), SpellRegistry.SONIC_BOOM_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
+                        List.of(SpellRegistry.SONIC_BOOM_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
                         List.of(SpellRegistry.SHADOW_SLASH.get()),
                         List.of(SpellRegistry.TELEPORT_SPELL.get()),
                         List.of())
                 .setSingleUseSpell(RegistrySpells.HUNGER_OF_HADAR.get(), 70, 220, 2, 3));
+        this.goalSelector.addGoal(1, this.aoeAttackGoal);
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
@@ -439,6 +475,14 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
 
     public boolean isUsingKnockback() {
         return this.entityData.get(DATA_IS_USING_KNOCKBACK);
+    }
+
+    public void setUsingAOE(boolean value) {
+        this.entityData.set(DATA_IS_USING_AOE, value);
+    }
+
+    public boolean isUsingAOE() {
+        return this.entityData.get(DATA_IS_USING_AOE);
     }
 
     @Override
@@ -563,6 +607,14 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     @Override
     public float getAttackAnimationScale(float partialTicks) {
         return ((float)this.clientSideAttackTime + partialTicks) / (float)this.attackDuration;
+    }
+
+    public boolean isInvulnerable() {
+        return isInvulnerable;
+    }
+
+    public void setInvulnerable(boolean invulnerable) {
+        this.isInvulnerable = invulnerable;
     }
 
     public static enum Phases {

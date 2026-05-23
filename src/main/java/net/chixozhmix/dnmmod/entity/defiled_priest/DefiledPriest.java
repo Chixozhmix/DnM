@@ -57,6 +57,7 @@ public class DefiledPriest extends AbstractSpellCastingMob implements Enemy, IAn
 
         this.cache = GeckoLibUtil.createInstanceCache(this);
         this.xpReward = 15;
+        this.customAnimationToPlay = null;
 
         this.setPersistenceRequired();
 

@@ -5,6 +5,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
@@ -22,13 +23,15 @@ public class CapturingTargetAttackGoal extends Goal {
 
     private final MobEffect mobEffect;
     private final float damage;
+    private final float knockback;
 
-    public CapturingTargetAttackGoal(Mob mob, int attackDuration, boolean addEffect, @Nullable MobEffect effect, float damage) {
+    public CapturingTargetAttackGoal(Mob mob, int attackDuration, boolean addEffect, @Nullable MobEffect effect, float damage, float knockback) {
         this.mob = mob;
         this.addEffect = addEffect;
         this.attackDuration = attackDuration;
         this.mobEffect = effect;
         this.damage = damage;
+        this.knockback = knockback;
         this.attackCooldown = 200;
         this.cooldownTime = 0;
         this.attackRange = 20.0D;
@@ -107,6 +110,7 @@ public class CapturingTargetAttackGoal extends Goal {
                     effectAttack(target);
                 else {
                     target.hurt(this.mob.damageSources().indirectMagic(this.mob, this.mob), this.damage);
+                    knockbackEntity(this.mob, target, knockback);
                 }
                 this.stop();
             }
@@ -117,5 +121,19 @@ public class CapturingTargetAttackGoal extends Goal {
 
     private void effectAttack(LivingEntity target) {
         target.addEffect(new MobEffectInstance(this.mobEffect, 200, 0));
+    }
+
+    private void knockbackEntity(LivingEntity mob, LivingEntity target, float strength) {
+        Vec3 direction = target.position().subtract(mob.position()).normalize();
+
+        if (direction.lengthSqr() < 0.0001) return;
+        float verticalStrength = 0.4F;
+
+        target.setDeltaMovement(
+                direction.x * strength,
+                verticalStrength,
+                direction.z * strength
+        );
+        target.hurtMarked = true;
     }
 }

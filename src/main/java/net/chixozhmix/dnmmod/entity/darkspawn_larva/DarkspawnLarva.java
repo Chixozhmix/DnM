@@ -77,6 +77,7 @@ public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IA
         this.cache = GeckoLibUtil.createInstanceCache(this);
         this.xpReward = 5;
         this.riseAnimTime = 40;
+        this.customAnimationToPlay = null;
 
         this.movementController = new AnimationController<>(this, "movement", 0, this::movementPredicate);
         this.attackController = new AnimationController<>(this, "attack", 0, this::attackPredicate);
@@ -159,9 +160,9 @@ public class DarkspawnLarva extends AbstractSpellCastingMob implements Enemy, IA
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.25F, 30, 40))
+        this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.25F, 45, 55))
                 .setSpells(
-                        List.of(SpellRegistry.ACID_ORB_SPELL.get()),
+                        List.of(SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
                         List.of(),
                         List.of(),
                         List.of()));

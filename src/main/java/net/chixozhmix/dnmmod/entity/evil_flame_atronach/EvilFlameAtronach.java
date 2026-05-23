@@ -60,6 +60,7 @@ public class EvilFlameAtronach extends AbstractSpellCastingMob implements Enemy,
 
         this.cache = GeckoLibUtil.createInstanceCache(this);
         this.xpReward = 8;
+        this.customAnimationToPlay = null;
 
         this.movementController = new AnimationController<>(this, "movement", 0, this::movementPredicate);
     }

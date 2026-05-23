@@ -204,6 +204,11 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
     }
 
     @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
     public boolean removeWhenFarAway(double pDistanceToClosestPlayer) {
         return false;
     }

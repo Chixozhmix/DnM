@@ -51,6 +51,7 @@ public class SmallIceSpiderEntity extends AbstractSpellCastingMob implements Ene
         super(pEntityType, pLevel);
 
         this.cache = GeckoLibUtil.createInstanceCache(this);
+        this.customAnimationToPlay = null;
 
         this.movementController = new AnimationController<>(this, "movement", 0, this::movementPredicate);
         this.attackController = new AnimationController<>(this, "attack", 0, this::attackPredicate);

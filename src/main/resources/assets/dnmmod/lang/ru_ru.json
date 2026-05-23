@@ -215,6 +215,8 @@
   "entity.dnmmod.darkspawn_larva": "Личинка порождения тьмы",
   "entity.dnmmod.darkspawn_observer": "Наблюдатель порождений тьмы",
   "entity.dnmmod.summon_darkspawn_larva": "Призванная личинка порождения тьмы",
+  "entity.dnmmod.red_crystal": "Краный кристалл",
+  "entity.dnmmod.trident_strike_area": "Луч Силы",
 
   "tooltip.dnmmod.maid": "Почему нет?",
   "tooltip.dnmmod.voile_of_death": "Когда ваша жизнь в опасности, духи смерти укрывают вас от неизбежной смерти.",

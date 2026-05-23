@@ -158,5 +158,9 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy, IB
         return 32;
     }
 
+    @Override
+    public boolean isPushable() {
+        return false;
+    }
 
 }

@@ -26,8 +26,10 @@ import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRay;
 import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadar;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
 import net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement.RayOfEnfeeblement;
+import net.chixozhmix.dnmmod.entity.spell.red_cristall.RedCristallEntity;
 import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.tallTheDead;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.Tombstone;
+import net.chixozhmix.dnmmod.entity.spell.trident_strike_area.TridentStrikeAreaEntity;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
@@ -50,29 +52,24 @@ public class ModEntityType {
                             .sized(2f, 2f)
                             .clientTrackingRange(32)
                             .build("magic_dagger"));
-
     public static final RegistryObject<EntityType<IceDagger>> ICE_DAGGER =
             ENTITY_TYPES.register("ice_dagger",
                     () -> EntityType.Builder.<IceDagger>of(IceDagger::new, MobCategory.MISC)
                             .sized(2.0f, 2.0f)
                             .clientTrackingRange(64)
                             .build("ice_dagger"));
-
     public static final RegistryObject<EntityType<AcidProjectile>> ACID_PROJECTILE =
             ENTITY_TYPES.register("acid_projectile",
                     () -> EntityType.Builder.<AcidProjectile>of(AcidProjectile::new, MobCategory.MISC)
                             .sized(1.0f, 1.0f)
                             .clientTrackingRange(32)
-                            .build("acid_projectile")
-                    );
-
+                            .build("acid_projectile"));
     public static final RegistryObject<EntityType<ChromaticOrb>> CHROMATIC_ORB =
             ENTITY_TYPES.register("chromatic_orb",
                     () -> EntityType.Builder.<ChromaticOrb>of(ChromaticOrb::new, MobCategory.MISC)
                             .sized(1.0f, 1.0f)
                             .clientTrackingRange(32)
-                            .build("chromatic_orb")
-            );
+                            .build("chromatic_orb"));
     public static final RegistryObject<EntityType<RayOfEnfeeblement>> RAY_OF_ENFEEBLEMENT =
             ENTITY_TYPES.register("ray_of_enfeeblement",
             () -> EntityType.Builder.<RayOfEnfeeblement>of(RayOfEnfeeblement::new, MobCategory.MISC)
@@ -91,6 +88,18 @@ public class ModEntityType {
                             .sized(1.0F, 1.0F)
                             .clientTrackingRange(64)
                             .build("tall_the_dead"));
+    public static final RegistryObject<EntityType<RedCristallEntity>> RED_CRYSTAL =
+            ENTITY_TYPES.register("red_crystal",
+                    () -> EntityType.Builder.<RedCristallEntity>of(RedCristallEntity::new, MobCategory.MISC)
+                            .sized(1.0F, 2.0F)
+                            .clientTrackingRange(32)
+                            .build("red_crystal"));
+    public static final RegistryObject<EntityType<TridentStrikeAreaEntity>> TRIDENT_STRIKE_AREA =
+            ENTITY_TYPES.register("trident_strike_area",
+                    () -> EntityType.Builder.<TridentStrikeAreaEntity>of(TridentStrikeAreaEntity::new, MobCategory.MISC)
+                            .sized(1.0F, 1.0F)
+                            .clientTrackingRange(64)
+                            .build("trident_strike_area"));
     public static final RegistryObject<EntityType<HungerOfHadar>> HUNGER_OF_HADADR = ENTITY_TYPES.register("hunger_of_hadar",
             () -> EntityType.Builder.<HungerOfHadar>of(HungerOfHadar::new, MobCategory.MISC)
                     .sized(11.0F, 11.0F).clientTrackingRange(64)

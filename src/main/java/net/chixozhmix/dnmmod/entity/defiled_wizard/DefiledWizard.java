@@ -56,6 +56,7 @@ public class DefiledWizard extends AbstractSpellCastingMob implements Enemy, IAn
 
         this.cache = GeckoLibUtil.createInstanceCache(this);
         this.xpReward = 10;
+        this.customAnimationToPlay = null;
 
         this.movementController = new AnimationController<>(this, "movement", 0, this::movementPredicate);
     }

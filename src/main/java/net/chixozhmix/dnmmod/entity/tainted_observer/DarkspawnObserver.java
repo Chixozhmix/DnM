@@ -49,7 +49,7 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
     private int attackDuration = 80;
     public int clientSideAttackTime;
 
-    private static final int MAX_FLY_HEIGHT = 50;
+    private static final int MAX_FLY_HEIGHT = 40;
     Vec3 moveTargetPoint;
     BlockPos anchorPoint;
     DarkspawnObserver.AttackPhase attackPhase;
@@ -154,8 +154,8 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new CapturingTargetAttackGoal(this, 80, true,
-                MobEffects.MOVEMENT_SLOWDOWN, 0.0F));
+        this.goalSelector.addGoal(0, new CapturingTargetAttackGoal(this, 40, true,
+                MobEffects.MOVEMENT_SLOWDOWN, 0.0F, 0.0F));
         this.goalSelector.addGoal(1, new DarkspawnObserverAttackStrategyGoal());
         this.goalSelector.addGoal(2, new DarkspawnObserverSweepAttackGoal());
         this.goalSelector.addGoal(3, new DarkspawnObserverCircleAroundAnchorGoal());

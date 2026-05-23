@@ -128,9 +128,9 @@ public class SummonDarkspawnLarva extends DarkspawnLarva implements IMagicSummon
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.15F, 25, 45))
+        this.goalSelector.addGoal(1, (new WarlockAttackGoal(this, (double)1.15F, 35, 45))
                 .setSpells(
-                        List.of(SpellRegistry.ACID_ORB_SPELL.get()),
+                        List.of(SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
                         List.of(),
                         List.of(),
                         List.of()));

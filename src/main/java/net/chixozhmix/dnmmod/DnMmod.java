@@ -18,8 +18,11 @@ import net.chixozhmix.dnmmod.entity.evil_storm_atronach.EvilStormAtronachRendere
 import net.chixozhmix.dnmmod.entity.reaper.ReaperRenderer;
 import net.chixozhmix.dnmmod.entity.small_ice_spider.SmallIceSpiderRenderer;
 import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadarRenderer;
+import net.chixozhmix.dnmmod.entity.spell.red_cristall.RedCristallModel;
+import net.chixozhmix.dnmmod.entity.spell.red_cristall.RedCristallRenderer;
 import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.TallTheDeadRenderer;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.TombstoneRenderer;
+import net.chixozhmix.dnmmod.entity.spell.trident_strike_area.TridentStrikeAreaRenderer;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronachRenderer;
 import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserverRenderer;
 import net.chixozhmix.dnmmod.registers.*;
@@ -186,6 +189,8 @@ public class DnMmod
             EntityRenderers.register(ModEntityType.TALL_THE_DEAD.get(), TallTheDeadRenderer::new);
             EntityRenderers.register(ModEntityType.HUNGER_OF_HADADR.get(), HungerOfHadarRenderer::new);
             EntityRenderers.register(ModEntityType.TOMBSTONE.get(), TombstoneRenderer::new);
+            EntityRenderers.register(ModEntityType.RED_CRYSTAL.get(), RedCristallRenderer::new);
+            EntityRenderers.register(ModEntityType.TRIDENT_STRIKE_AREA.get(), TridentStrikeAreaRenderer::new);
 
             EntityRenderers.register(ModEntityType.UNDEAD_SPIRIT.get(), UndeadSpiritRenderer::new);
             EntityRenderers.register(ModEntityType.SUMMONED_UNDEAD_SPIRIT.get(), SummonedUndeadSpiritRenderer::new);
@@ -225,6 +230,7 @@ public class DnMmod
             event.registerLayerDefinition(RavenRenderer.MODEL_LAYER_LOCATION, RavenModel::createBodyLayer);
             event.registerLayerDefinition(SummonedRavenRenderer.MODEL_LAYER_LOCATION, SummonedRavenModel::createBodyLayer);
             event.registerLayerDefinition(RayOfEnfeeblementRenderer.MODEL_LAYER_LOCATION, RayOfEnfeeblementRenderer::createBodyLayer);
+            event.registerLayerDefinition(RedCristallModel.LAYER_LOCATION, RedCristallModel::createBodyLayer);
 
             event.registerLayerDefinition(SealedDoorModel.LAYER_LOCATION, SealedDoorModel::createBodyLayer);
         }

@@ -58,6 +58,7 @@ public class ReaperEntity extends AbstractSpellCastingMob implements Enemy, IAni
         super(pEntityType, pLevel);
 
         this.cache = GeckoLibUtil.createInstanceCache(this);
+        this.customAnimationToPlay = null;
 
         this.movementController = new AnimationController<>(this, "movement", 0, this::movementPredicate);
 
