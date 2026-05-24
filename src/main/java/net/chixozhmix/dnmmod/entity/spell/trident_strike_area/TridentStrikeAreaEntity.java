@@ -235,6 +235,11 @@ public class TridentStrikeAreaEntity extends Entity {
         }
     }
 
+    @Override
+    public boolean shouldRender(double pX, double pY, double pZ) {
+        return true;
+    }
+
     static {
         DATA_LENGTH = SynchedEntityData.defineId(TridentStrikeAreaEntity.class, EntityDataSerializers.FLOAT);
         DATA_WIDTH = SynchedEntityData.defineId(TridentStrikeAreaEntity.class, EntityDataSerializers.FLOAT);

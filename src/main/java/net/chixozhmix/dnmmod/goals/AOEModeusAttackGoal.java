@@ -33,11 +33,6 @@ public class AOEModeusAttackGoal extends Goal {
     private List<TridentStrikeAreaEntity> beamIndicators = new ArrayList<>();
 
     public AOEModeusAttackGoal(ModeusBoss modeus, int warmupTime, int activeTime, int cooldownTime,
-                               int beamCount, float damage, float range, double beamWidth) {
-        this(modeus, warmupTime, activeTime, cooldownTime, beamCount, damage, range, beamWidth, 0x0D7278);
-    }
-
-    public AOEModeusAttackGoal(ModeusBoss modeus, int warmupTime, int activeTime, int cooldownTime,
                                int beamCount, float damage, float range, double beamWidth, int areaColor) {
         this.modeus = modeus;
         this.warmupTime = warmupTime;
@@ -94,7 +89,7 @@ public class AOEModeusAttackGoal extends Goal {
         this.modeus.getNavigation().stop();
         this.modeus.setUsingAOE(true);
         this.modeus.setInvulnerable(true);
-        this.modeus.playAnimation("radial_beam_charge");
+        //this.modeus.playAnimation("radial_beam_charge");
 
         createBeamIndicators();
     }
@@ -244,13 +239,6 @@ public class AOEModeusAttackGoal extends Goal {
 
                     if (distToBeam <= beamWidth + entity.getBbWidth() / 2.0) {
                         entity.hurt(this.modeus.damageSources().magic(), damage);
-
-                        Vec3 knockback = new Vec3(
-                                entity.getX() - this.modeus.getX(),
-                                0.2,
-                                entity.getZ() - this.modeus.getZ()
-                        ).normalize().scale(0.8);
-                        entity.setDeltaMovement(entity.getDeltaMovement().add(knockback));
 
                         serverLevel.sendParticles(ParticleTypes.ENCHANTED_HIT,
                                 entity.getX(), entity.getY() + entity.getBbHeight() / 2, entity.getZ(),

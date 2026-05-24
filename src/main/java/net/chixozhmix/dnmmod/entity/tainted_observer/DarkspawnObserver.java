@@ -1,5 +1,7 @@
 package net.chixozhmix.dnmmod.entity.tainted_observer;
 
+import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
+import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.goals.IBeamAttackMob;
 import net.chixozhmix.dnmmod.goals.CapturingTargetAttackGoal;
 import net.minecraft.core.BlockPos;
@@ -38,9 +40,7 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.Comparator;
-import java.util.EnumSet;
-import java.util.List;
+import java.util.*;
 
 public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IBeamAttackMob {
     private static final EntityDataAccessor<Integer> DATA_ATTACK_TARGET_ID =
@@ -159,7 +159,7 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
         this.goalSelector.addGoal(1, new DarkspawnObserverAttackStrategyGoal());
         this.goalSelector.addGoal(2, new DarkspawnObserverSweepAttackGoal());
         this.goalSelector.addGoal(3, new DarkspawnObserverCircleAroundAnchorGoal());
-        this.targetSelector.addGoal(1, new DarkspawnObserverAttackPlayerTargetGoal());
+        this.targetSelector.addGoal(1, new DarkspawnObserverAttackTargetGoal());
     }
 
     @Override
@@ -472,9 +472,15 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
         }
     }
 
-    class DarkspawnObserverAttackPlayerTargetGoal extends Goal {
+    class DarkspawnObserverAttackTargetGoal extends Goal {
         private final TargetingConditions attackTargeting = TargetingConditions.forCombat().range((double)64.0F);
         private int nextScanTick = reducedTickDelay(20);
+
+        private static final Set<Class<? extends Mob>> BLACKLIST = Set.of(
+                DarkspawnObserver.class,
+                DarkspawnLarva.class,
+                ModeusBoss.class
+        );
 
         public boolean canUse() {
             if (this.nextScanTick > 0) {
@@ -482,13 +488,27 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
                 return false;
             } else {
                 this.nextScanTick = reducedTickDelay(60);
-                List<Player> $$0 = DarkspawnObserver.this.level().getNearbyPlayers(this.attackTargeting, DarkspawnObserver.this, DarkspawnObserver.this.getBoundingBox().inflate((double)16.0F, (double)64.0F, (double)16.0F));
-                if (!$$0.isEmpty()) {
-                    $$0.sort(Comparator.<Player>comparingDouble(p -> p.getY()).reversed());
+                List<Mob> mobs = DarkspawnObserver.this.level().getNearbyEntities(Mob.class, this.attackTargeting, DarkspawnObserver.this,
+                        DarkspawnObserver.this.getBoundingBox().inflate((double)16.0F, (double)64.0F, (double)16.0F));
+                List<Player> players = DarkspawnObserver.this.level().getNearbyPlayers(this.attackTargeting, DarkspawnObserver.this,
+                        DarkspawnObserver.this.getBoundingBox().inflate((double)16.0F, (double)64.0F, (double)16.0F));
 
-                    for(Player $$1 : $$0) {
-                        if (DarkspawnObserver.this.canAttack($$1, TargetingConditions.DEFAULT)) {
-                            DarkspawnObserver.this.setTarget($$1);
+                List<LivingEntity> targets = new ArrayList<>();
+                targets.addAll(players);
+
+
+                for (Mob mob : mobs) {
+                    if(!isBlackListMob(mob)) {
+                        targets.add(mob);
+                    }
+                }
+
+                if (!targets.isEmpty()) {
+                    targets.sort(Comparator.<LivingEntity>comparingDouble(p -> p.getY()).reversed());
+
+                    for(LivingEntity target : targets) {
+                        if (DarkspawnObserver.this.canAttack(target, TargetingConditions.DEFAULT)) {
+                            DarkspawnObserver.this.setTarget(target);
                             return true;
                         }
                     }
@@ -499,8 +519,24 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
         }
 
         public boolean canContinueToUse() {
-            LivingEntity $$0 = DarkspawnObserver.this.getTarget();
-            return $$0 != null ? DarkspawnObserver.this.canAttack($$0, TargetingConditions.DEFAULT) : false;
+            LivingEntity target = DarkspawnObserver.this.getTarget();
+            if (target == null) {
+                return false;
+            }
+            // Дополнительная проверка при продолжении преследования
+            if (isBlackListMob(target)) {
+                return false;
+            }
+            return DarkspawnObserver.this.canAttack(target, TargetingConditions.DEFAULT);
+        }
+
+        private boolean isBlackListMob(LivingEntity entity) {
+            for(Class<? extends Mob> blackListClasses : BLACKLIST) {
+                if(blackListClasses.isInstance(entity))
+                    return true;
+            }
+
+            return false;
         }
     }
 

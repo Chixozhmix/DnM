@@ -105,7 +105,7 @@ public class ModeusFirstPhaseAttackGoal extends Goal {
     }
 
     protected void resetAttackTimer() {
-        this.attackTime = 80;
+        this.attackTime = 60;
     }
 
     private void knockbackEntity(LivingEntity mob) {

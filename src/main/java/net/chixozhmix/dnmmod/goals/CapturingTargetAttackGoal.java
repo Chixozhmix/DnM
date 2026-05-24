@@ -32,9 +32,9 @@ public class CapturingTargetAttackGoal extends Goal {
         this.mobEffect = effect;
         this.damage = damage;
         this.knockback = knockback;
-        this.attackCooldown = 200;
+        this.attackCooldown = 100;
         this.cooldownTime = 0;
-        this.attackRange = 20.0D;
+        this.attackRange = 25.0D;
         this.attackSqr = this.attackRange * this.attackRange;
 
         this.setFlags(EnumSet.of(Flag.LOOK));
