@@ -29,7 +29,6 @@ public class AOEModeusAttackGoal extends Goal {
     private int cooldownCounter;
     private State currentState = State.COOLDOWN;
 
-    // Список созданных индикаторов лучей
     private List<TridentStrikeAreaEntity> beamIndicators = new ArrayList<>();
 
     public AOEModeusAttackGoal(ModeusBoss modeus, int warmupTime, int activeTime, int cooldownTime,
@@ -89,7 +88,6 @@ public class AOEModeusAttackGoal extends Goal {
         this.modeus.getNavigation().stop();
         this.modeus.setUsingAOE(true);
         this.modeus.setInvulnerable(true);
-        //this.modeus.playAnimation("radial_beam_charge");
 
         createBeamIndicators();
     }
@@ -192,8 +190,6 @@ public class AOEModeusAttackGoal extends Goal {
             this.modeus.playAnimation("radial_beam_attack");
             this.modeus.level().playSound(null, this.modeus.blockPosition(),
                     SoundEvents.WARDEN_SONIC_BOOM, this.modeus.getSoundSource(), 2.0F, 0.8F);
-
-            //removeBeamIndicators();
         }
     }
 
@@ -262,7 +258,6 @@ public class AOEModeusAttackGoal extends Goal {
             for (double d = 0.5; d < range; d += 0.6) {
                 Vec3 pos = start.add(beamDir.scale(d));
 
-                // Чередующиеся партиклы для эффекта
                 if (this.tickCounter % 4 < 2) {
                     serverLevel.sendParticles(ParticleTypes.SONIC_BOOM,
                             pos.x, pos.y + 0.1, pos.z,

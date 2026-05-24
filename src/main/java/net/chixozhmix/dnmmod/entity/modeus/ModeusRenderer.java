@@ -3,6 +3,7 @@ package net.chixozhmix.dnmmod.entity.modeus;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import io.redspace.ironsspellbooks.render.RenderHelper;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -16,6 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
+import software.bernie.geckolib.core.object.Color;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class ModeusRenderer extends GeoEntityRenderer<ModeusBoss> {
@@ -159,5 +161,10 @@ public class ModeusRenderer extends GeoEntityRenderer<ModeusBoss> {
                 .uv2(15728880)
                 .normal(normal, 0.0F, 1.0F, 0.0F)
                 .endVertex();
+    }
+
+    @Override
+    protected float getDeathMaxRotation(ModeusBoss animatable) {
+        return 0.0F;
     }
 }

@@ -1,19 +1,26 @@
 package net.chixozhmix.dnmmod.entity.modeus;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
+import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FireBossEntity;
+import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
 import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserver;
 import net.chixozhmix.dnmmod.goals.*;
+import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.registers.RegistrySpells;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -28,6 +35,7 @@ import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -42,9 +50,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
+import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -70,6 +80,8 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
             SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> MELEE_ATTACK_TYPE =
             SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> IS_USING_LOSS_MAGE =
+            SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.BOOLEAN);
 
     private boolean phaseTransitionTriggered = false;
     private boolean finalPhaseTransitionTriggered = false;
@@ -78,17 +90,30 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     private TentacleModeusAttackGoal tentackeAttackGoal;
 
     private int spawnTimer;
-    private final int timer = 140;
-    private final float spawnDistanceSqr = 144.0F;
+    private final int timer = 250;
+    private final float spawnDistanceSqr = 900.0F;
     private boolean isInvulnerable = false;
 
-    private int attackDuration = 80;
+    private final int attackDuration = 40;
     public int clientSideAttackTime;
+
+    private int lossMageAnimTimer = 0;
+    private static final int LOSS_MAGE_ANIM_DURATION = 13;
+
+    private int effectTimer = 0;
+
+    private final float halfHealth;
+    private final float finalHealth;
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
     private static final RawAnimation RISE_ANIM = RawAnimation.begin().thenPlay("raise");
-    private static final RawAnimation DEATH = RawAnimation.begin().thenPlay("death");
+
+    private static final String CAST_T_POSE = "cast_t_pose";
+    private static final String CHARGE_SPLIT = "charge_spit";
+    private static final String RADIAL_BEAM_CHARGE = "radial_beam_charge";
+    private static final String CHARGE_TENTACLE_ATTACK = "charge_tentackle_attack";
+    private static final String KATANA_SLASH = "katana_upslash";
 
     private int riseAnimTime;
     private final AnimatableInstanceCache cache;
@@ -128,6 +153,9 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.cache = GeckoLibUtil.createInstanceCache(this);
         this.customAnimationToPlay = null;
 
+        this.halfHealth = this.getMaxHealth() / 1.5F;
+        this.finalHealth = this.getMaxHealth() / 3.0F;
+
         this.movementController = new AnimationController<>(this, "movement", 2, this::movementPredicate);
         this.riseController = new AnimationController<>(this, "rise", 2, this::risePredicate);
         this.attackController = new AnimationController<>(this, "attack", 2, this::attackPredicate);
@@ -141,8 +169,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
                 200,
                 25,
                 10.0F,
-                15.0F,
-                0x0D7278
+                15.0F
         );
 
         setSpawnTimer(timer);
@@ -167,6 +194,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.entityData.define(DATA_IS_USING_TENTACLE, false);
         this.entityData.define(DATA_ATTACK_TARGET_ID, 0);
         this.entityData.define(MELEE_ATTACK_TYPE, 0);
+        this.entityData.define(IS_USING_LOSS_MAGE, false);
     }
 
     @Override
@@ -205,30 +233,37 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
             return PlayState.CONTINUE;
         }
 
+        if (isLossMage()) {
+            if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
+                state.getController().setAnimation(RawAnimation.begin().thenPlay(KATANA_SLASH));
+            }
+            return PlayState.CONTINUE;
+        }
+
         if (isUsingKnockback()) {
             if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
-                state.getController().setAnimation(RawAnimation.begin().thenPlay("cast_t_pose"));
+                state.getController().setAnimation(RawAnimation.begin().thenPlay(CAST_T_POSE));
             }
             return PlayState.CONTINUE;
         }
 
         if(hasActiveAttackTarget()) {
             if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
-                state.getController().setAnimation(RawAnimation.begin().thenPlay("charge_spit"));
+                state.getController().setAnimation(RawAnimation.begin().thenPlay(CHARGE_SPLIT));
             }
             return PlayState.CONTINUE;
         }
 
         if(isUsingAOE()) {
             if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
-                state.getController().setAnimation(RawAnimation.begin().thenPlay("radial_beam_charge"));
+                state.getController().setAnimation(RawAnimation.begin().thenPlay(RADIAL_BEAM_CHARGE));
             }
             return PlayState.CONTINUE;
         }
 
         if(isUsingTentacle()) {
             if (state.getController().getAnimationState() == AnimationController.State.STOPPED) {
-                state.getController().setAnimation(RawAnimation.begin().thenPlay("charge_tentackle_attack"));
+                state.getController().setAnimation(RawAnimation.begin().thenPlay(CHARGE_TENTACLE_ATTACK));
             }
             return PlayState.CONTINUE;
         }
@@ -240,7 +275,6 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     private PlayState movementPredicate(AnimationState<ModeusBoss> state) {
         if (this.isAnimatingRise())
             return PlayState.STOP;
-
 
         if (state.isMoving()) {
             state.getController().setAnimation(WALK_ANIM);
@@ -315,12 +349,27 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     public void tick() {
         super.tick();
 
-        if (this.aoeAttackGoal != null && !this.level().isClientSide) {
-            this.aoeAttackGoal.updateCooldown();
+        if (this.effectTimer > 0) {
+            this.effectTimer--;
+        } else if ((isPhase(Phases.FirstPhase) || isPhase(Phases.SecondPhase)) && !isUsingTentacle()) {
+            if(this.getTarget() != null)
+                lossMagicEffect();
         }
 
-        if (this.tentackeAttackGoal != null && !this.level().isClientSide) {
-            this.tentackeAttackGoal.updateCooldown();
+        if (lossMageAnimTimer > 0) {
+            lossMageAnimTimer--;
+            if (lossMageAnimTimer <= 0) {
+                setUsingLossMage(false);
+            }
+        }
+
+        if (!this.level().isClientSide) {
+            if (this.aoeAttackGoal != null) {
+                this.aoeAttackGoal.updateCooldown();
+            }
+            if (this.tentackeAttackGoal != null) {
+                this.tentackeAttackGoal.updateCooldown();
+            }
         }
 
         if (this.level().isClientSide) {
@@ -355,15 +404,42 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
             return;
         }
 
-        float halfHealth = this.getMaxHealth() / 1.5F;
-        float finalHealth = this.getMaxHealth() / 3.0F;
-
-        if (this.isPhase(Phases.FirstPhase) && !phaseTransitionTriggered && this.getHealth() <= halfHealth) {
+        if (this.isPhase(Phases.FirstPhase) && !phaseTransitionTriggered && this.getHealth() <= this.halfHealth) {
             switchToSecondPhase();
         }
 
-        if (this.isPhase(Phases.SecondPhase) && !finalPhaseTransitionTriggered && this.getHealth() <= finalHealth) {
+        if (this.isPhase(Phases.SecondPhase) && !finalPhaseTransitionTriggered && this.getHealth() <= this.finalHealth) {
             switchToFinalPhase();
+        }
+    }
+
+    @Override
+    public void die(DamageSource pDamageSource) {
+        super.die(pDamageSource);
+        if (this.isDeadOrDying() && !this.level().isClientSide) {
+            this.castComplete();
+            this.serverTriggerAnimation("death");
+            Vec3 vec3 = this.getBoundingBox().getCenter();
+            MagicManager.spawnParticles(this.level(), (ParticleOptions) ParticleTypes.SCULK_SOUL, vec3.x, vec3.y, vec3.z, 25, 0.2, 0.2, 0.2, 0.12, false);
+        }
+    }
+
+    @Override
+    public void calculateEntityAnimation(boolean pIncludeHeight) {
+        super.calculateEntityAnimation(false);
+    }
+
+    @Override
+    protected void tickDeath() {
+        ++this.deathTime;
+        if (!this.level().isClientSide) {
+            float scale = this.getScale();
+            Vec3 vec3 = this.position();
+            if (this.deathTime >= 40 && !this.level().isClientSide() && !this.isRemoved()) {
+
+                this.remove(RemovalReason.KILLED);
+                MagicManager.spawnParticles(this.level(), (ParticleOptions)ParticleTypes.SOUL, vec3.x, vec3.y + (double)1.0F, vec3.z, 50, 0.3, 0.3, 0.3, 0.2 * (double)scale, true);
+            }
         }
     }
 
@@ -376,12 +452,9 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     }
 
     private MeleeAttackType selectMeleeAttack() {
-        float roll = this.random.nextFloat();
-        if (roll <= 0.3F) {
-            return MeleeAttackType.DOWN_ATTACK;
-        } else {
-            return MeleeAttackType.SLASH_ATTACK;
-        }
+        return this.random.nextFloat() <= 0.3F ?
+                MeleeAttackType.DOWN_ATTACK :
+                MeleeAttackType.SLASH_ATTACK;
     }
 
     private void switchToSecondPhase() {
@@ -471,20 +544,20 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new ModeusFirstPhaseAttackGoal(this));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(2, new CapturingTargetAttackGoal(this, 40, false, null, 5.0F, 1.2F));
+        this.goalSelector.addGoal(2, new CapturingTargetAttackGoal(this, 40, false, null, 8.0F, 1.2F));
     }
 
     protected void setSecondPhaseGoal(){
         this.goalSelector.getAvailableGoals().forEach(WrappedGoal::stop);
         this.goalSelector.removeAllGoals((x) -> true);
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(2, (new WarlockAttackGoal(this, (double)1.25F, 30, 55))
+        this.goalSelector.addGoal(2, (new WarlockAttackGoal(this, (double)1.25F, 30, 40))
                 .setSpells(
                         List.of(SpellRegistry.STARFALL_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
                         List.of(SpellRegistry.SHADOW_SLASH.get()),
                         List.of(),
                         List.of())
-                .setSingleUseSpell(SpellRegistry.SCULK_TENTACLES_SPELL.get(), 60, 220, 3, 4));
+                .setSingleUseSpell(SpellRegistry.SUMMON_SWORDS.get(), 60, 220, 5, 5));
         this.goalSelector.addGoal(1, this.tentackeAttackGoal);
         this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -525,10 +598,29 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     public boolean isUsingTentacle() {
         return this.entityData.get(DATA_IS_USING_TENTACLE);
     }
+    public void setUsingLossMage(boolean value) {
+        this.entityData.set(IS_USING_LOSS_MAGE, value);
+    }
+    public boolean isLossMage() {
+        return this.entityData.get(IS_USING_LOSS_MAGE);
+    }
 
     @Override
     public boolean isPushable() {
         return false;
+    }
+
+    @Override
+    public boolean isPushedByFluid(FluidType type) {
+        return false;
+    }
+
+    @Override
+    public void push(Entity pEntity) {
+    }
+
+    @Override
+    public void push(double pX, double pY, double pZ) {
     }
 
     @Override
@@ -557,6 +649,39 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
 
     private void setSpawnTimer(int timer) {
         this.spawnTimer = timer;
+    }
+
+    private void lossMagicEffect() {
+        this.lossMageAnimTimer = LOSS_MAGE_ANIM_DURATION;
+
+        AABB checkArea = this.getBoundingBox().inflate(25);
+
+        if (!this.level().isClientSide) {
+            this.setUsingLossMage(true);
+
+            this.level().getEntitiesOfClass(LivingEntity.class, checkArea,
+                    entity -> !(entity instanceof ModeusBoss) &&
+                            !(entity instanceof DarkspawnLarva) &&
+                            !entity.hasEffect(ModEffects.LOSS_MAGIC.get())
+            ).forEach(entity -> {
+                entity.addEffect(new MobEffectInstance(ModEffects.LOSS_MAGIC.get(), 200, 0));
+            });
+
+            MagicManager.spawnParticles(this.level(),
+                    new BlastwaveParticleOptions(
+                            ((SchoolType) SchoolRegistry.ELDRITCH.get()).getTargetingColor(),
+                            20
+                    ),
+                    this.getX(),
+                    this.getBoundingBox().getCenter().y,
+                    this.getZ(),
+                    1,
+                    0.0F, 0.0F, 0.0F, 0.0F,
+                    true
+            );
+        }
+
+        this.effectTimer = 500;
     }
 
     public void spawnDarkspawn(boolean left) {

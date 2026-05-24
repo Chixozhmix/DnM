@@ -26,6 +26,7 @@ public class ModEffects {
     public static final String ELDRITCH_RESIST_UUID = "e7d4e4a9-2d8f-4b3c-9a6e-4d1f7c5a8e1a";
 
     public static final RegistryObject<MobEffect> MAGE_ARMOR = EFFECTS.register("mage_armor", MageArmorEffect::new);
+    public static final RegistryObject<MobEffect> LOSS_MAGIC = EFFECTS.register("loss_magic", LossMagicEffect::new);
     public static final RegistryObject<MobEffect> ACID = EFFECTS.register("acid_effect",
             () -> new AcidEffect(MobEffectCategory.HARMFUL, 0x4CAF50, 1.0f));
     public static final RegistryObject<MobEffect> PHANTOM_EFFECT = EFFECTS.register("phantom_effect",

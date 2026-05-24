@@ -21,7 +21,6 @@ public class TentacleModeusAttackGoal extends Goal {
     private final float tentacleDamage;
     private final float spawnRadius;
     private final float minDistanceBetweenTentacles;
-    private final int areaColor;
 
     private int tickCounter;
     private int cooldownCounter;
@@ -29,11 +28,9 @@ public class TentacleModeusAttackGoal extends Goal {
 
     private final List<Vec3> spawnPositions = new ArrayList<>();
 
-    private final Map<TridentStrikeAreaEntity, Vec3> indicators = new HashMap<>();
-
     public TentacleModeusAttackGoal(ModeusBoss modeus, int warmupTime, int activeTime,
                                     int cooldownTime, int tentacleCount, float tentacleDamage,
-                                    float spawnRadius, int areaColor) {
+                                    float spawnRadius) {
         this.modeus = modeus;
         this.warmupTime = warmupTime;
         this.activeTime = activeTime;
@@ -42,7 +39,6 @@ public class TentacleModeusAttackGoal extends Goal {
         this.tentacleDamage = tentacleDamage;
         this.spawnRadius = spawnRadius;
         this.minDistanceBetweenTentacles = 3.0F;
-        this.areaColor = areaColor;
 
         this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
         this.cooldownCounter = this.cooldownTime / 2;

@@ -211,7 +211,7 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<DarkspawnObserver>> DARKSPAWN_OBSERVER =
             ENTITY_TYPES.register("darkspawn_observer", () ->
                     EntityType.Builder.of(DarkspawnObserver::new, MobCategory.MONSTER)
-                            .sized(1.0f, 1.5f)
+                            .sized(1.5f, 1.5f)
                             .clientTrackingRange(32)
                             .build("darkspawn_observer"));
 

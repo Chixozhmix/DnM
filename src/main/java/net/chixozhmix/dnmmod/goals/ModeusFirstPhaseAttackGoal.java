@@ -36,7 +36,7 @@ public class ModeusFirstPhaseAttackGoal extends Goal {
         this.setFlags(EnumSet.of(Flag.LOOK, Flag.TARGET));
         if (abstractSpellCastingMob instanceof PathfinderMob m) {
             this.mob = m;
-            this.attackRadius = 5.0F;
+            this.attackRadius = 6.0F;
             this.attackRadiusSqr = this.attackRadius * this.attackRadius;
         } else {
             throw new IllegalStateException("Unable to add " + this.getClass().getSimpleName() + "to entity, must extend PathfinderMob.");
