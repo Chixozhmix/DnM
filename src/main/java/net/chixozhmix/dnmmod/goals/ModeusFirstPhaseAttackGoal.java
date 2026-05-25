@@ -134,7 +134,7 @@ public class ModeusFirstPhaseAttackGoal extends Goal {
                 entity.hurt(mob.damageSources().indirectMagic(mob, mob), 6);
 
                 entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 160, 0));
-                entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 160, 1));
+                entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 1));
 
                 Vec3 direction = entity.position().subtract(mob.position());
                 if (direction.lengthSqr() < 0.0001) continue;

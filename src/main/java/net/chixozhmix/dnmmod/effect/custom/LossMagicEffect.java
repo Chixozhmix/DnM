@@ -10,7 +10,7 @@ public class LossMagicEffect extends MobEffect {
         super(MobEffectCategory.HARMFUL, 0x003338);
         this.addAttributeModifier(AttributeRegistry.SPELL_POWER.get(),
                 "1d19a1d3-6b2f-11ee-4c10-0222ac123007",
-                -0.8,
+                -0.6,
                 AttributeModifier.Operation.MULTIPLY_TOTAL);
     }
 

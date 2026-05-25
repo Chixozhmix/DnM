@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.blocks.custom.AntibuilderBlock;
 import net.chixozhmix.dnmmod.blocks.custom.LeshyAltarBlock;
 import net.chixozhmix.dnmmod.blocks.custom.ScrollTableBlock;
 import net.chixozhmix.dnmmod.blocks.custom.SealedDoorBlock;
@@ -10,6 +11,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -38,6 +41,11 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> DOOR_OF_SEAL = registerBlock("door_of_seal",
             () -> new SealedDoorBlock());
+    public static final RegistryObject<Block> ANTIBUILDER_BLOCK = registerBlock("antibuilder_block",
+            () -> new AntibuilderBlock(BlockBehaviour.Properties.of().lightLevel((state) -> 10).noLootTable()
+                    .pushReaction(PushReaction.BLOCK)
+                    .mapColor(MapColor.SAND)
+                    .requiresCorrectToolForDrops().sound(SoundType.WOOD).strength(-1.0F, 3600000.0F)));
     public static final RegistryObject<Block> UNBREAKING_BRICKS = registerBlock("unbreaking_bricks", () ->
             new Block(BlockBehaviour.Properties.copy(Blocks.BEDROCK).sound(SoundType.DEEPSLATE).noLootTable()));
 

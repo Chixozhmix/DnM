@@ -89,8 +89,10 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     private AOEModeusAttackGoal aoeAttackGoal;
     private TentacleModeusAttackGoal tentackeAttackGoal;
 
+    private Vec3 spawnPos = null;
+
     private int spawnTimer;
-    private final int timer = 250;
+    private final int timer = 260;
     private final float spawnDistanceSqr = 900.0F;
     private boolean isInvulnerable = false;
 
@@ -161,7 +163,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.attackController = new AnimationController<>(this, "attack", 2, this::attackPredicate);
 
         this.aoeAttackGoal = new AOEModeusAttackGoal(this, 40, 80, 200,
-                10, 12.0F, 20.0F, 2.2, 0x0D7278);
+                8, 12.0F, 20.0F, 2.0, 0x0D7278);
         this.tentackeAttackGoal = new TentacleModeusAttackGoal(
                 this,
                 40,
@@ -182,6 +184,14 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
 
     public static AttributeSupplier.Builder prepareAttributes() {
         return ATTRIBUTES;
+    }
+
+    @Override
+    public void onAddedToWorld() {
+        super.onAddedToWorld();
+        if (!level().isClientSide && spawnPos == null) {
+            this.spawnPos = this.position();
+        }
     }
 
     @Override
@@ -321,17 +331,15 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
         if (this.isPhase(Phases.FirstPhase) && !phaseTransitionTriggered) {
-            float halfHealth = this.getMaxHealth() / 1.5F;
             float newHealth = this.getHealth() - pAmount;
-            if (newHealth < halfHealth) {
-                pAmount = this.getHealth() - halfHealth;
+            if (newHealth < this.halfHealth) {
+                pAmount = this.getHealth() - this.halfHealth;
             }
         }
         else if(this.isPhase(Phases.SecondPhase) && !finalPhaseTransitionTriggered) {
-            float finalHealth = this.getMaxHealth() / 3.0F;
             float newHealth = this.getHealth() - pAmount;
-            if (newHealth < finalHealth) {
-                pAmount = this.getHealth() - finalHealth;
+            if (newHealth < this.finalHealth) {
+                pAmount = this.getHealth() - this.finalHealth;
             }
         }
 
@@ -345,13 +353,25 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         return super.hurt(pSource, pAmount);
     }
 
+    public void checkDistanceToSpawn() {
+        if(spawnPos == null || level().isClientSide) return;
+
+        double maxDistance = 30;
+        if(this.distanceToSqr(spawnPos) > maxDistance * maxDistance) {
+            this.teleportTo(spawnPos.x, spawnPos.y, spawnPos.z);
+
+            MagicManager.spawnParticles(level(), ParticleTypes.PORTAL,
+                    spawnPos.x, spawnPos.y + 1, spawnPos.z, 50, 0.5, 0.5, 0.5, 0.1, true);
+        }
+    }
+
     @Override
     public void tick() {
         super.tick();
 
         if (this.effectTimer > 0) {
             this.effectTimer--;
-        } else if ((isPhase(Phases.FirstPhase) || isPhase(Phases.SecondPhase)) && !isUsingTentacle()) {
+        } else if (isPhase(Phases.FirstPhase)) {
             if(this.getTarget() != null)
                 lossMagicEffect();
         }
@@ -402,6 +422,10 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
                 this.setOldPosAndRot();
             }
             return;
+        }
+
+        if (this.getTarget() != null && !this.isAnimatingRise()) {
+            checkDistanceToSpawn();
         }
 
         if (this.isPhase(Phases.FirstPhase) && !phaseTransitionTriggered && this.getHealth() <= this.halfHealth) {
@@ -499,6 +523,14 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         if (pCompound.contains("BossPhase")) {
             this.setPhaseValue(pCompound.getInt("BossPhase"));
         }
+
+        if (pCompound.contains("SpawnX")) {
+            double x = pCompound.getDouble("SpawnX");
+            double y = pCompound.getDouble("SpawnY");
+            double z = pCompound.getDouble("SpawnZ");
+            this.spawnPos = new Vec3(x, y, z);
+        }
+
         phaseTransitionTriggered = pCompound.getBoolean("PhaseTransitionTriggered");
         finalPhaseTransitionTriggered = pCompound.getBoolean("finalPhaseTransitionTriggered");
 
@@ -516,6 +548,12 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         pCompound.putInt("BossPhase", this.getPhase());
         pCompound.putBoolean("PhaseTransitionTriggered", phaseTransitionTriggered);
         pCompound.putBoolean("finalPhaseTransitionTriggered", finalPhaseTransitionTriggered);
+
+        if (spawnPos != null) {
+            pCompound.putDouble("SpawnX", spawnPos.x);
+            pCompound.putDouble("SpawnY", spawnPos.y);
+            pCompound.putDouble("SpawnZ", spawnPos.z);
+        }
     }
 
     public boolean isAnimatingRise() {
@@ -544,7 +582,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new ModeusFirstPhaseAttackGoal(this));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(2, new CapturingTargetAttackGoal(this, 40, false, null, 8.0F, 1.2F));
+        this.goalSelector.addGoal(2, new CapturingTargetAttackGoal(this, 40, false, null, 8.0F, -2.0F, 80));
     }
 
     protected void setSecondPhaseGoal(){
@@ -553,13 +591,13 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(2, (new WarlockAttackGoal(this, (double)1.25F, 30, 40))
                 .setSpells(
-                        List.of(SpellRegistry.STARFALL_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
+                        List.of(SpellRegistry.MAGIC_ARROW_SPELL.get(), SpellRegistry.MAGIC_MISSILE_SPELL.get()),
                         List.of(SpellRegistry.SHADOW_SLASH.get()),
                         List.of(),
                         List.of())
                 .setSingleUseSpell(SpellRegistry.SUMMON_SWORDS.get(), 60, 220, 5, 5));
         this.goalSelector.addGoal(1, this.tentackeAttackGoal);
-        this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
+        this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 30.0F, (double)0.9F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
 
@@ -571,11 +609,11 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
                 .setSpells(
                         List.of(SpellRegistry.SONIC_BOOM_SPELL.get(), SpellRegistry.ELDRITCH_BLAST_SPELL.get()),
                         List.of(SpellRegistry.SHADOW_SLASH.get()),
-                        List.of(SpellRegistry.TELEPORT_SPELL.get()),
+                        List.of(),
                         List.of())
                 .setSingleUseSpell(RegistrySpells.HUNGER_OF_HADAR.get(), 70, 220, 2, 3));
         this.goalSelector.addGoal(1, this.aoeAttackGoal);
-        this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 32.0F, (double)0.9F));
+        this.goalSelector.addGoal(5, new PatrolNearLocationGoal(this, 30.0F, (double)0.9F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
     }
 

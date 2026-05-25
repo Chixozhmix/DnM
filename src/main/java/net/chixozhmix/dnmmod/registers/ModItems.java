@@ -333,7 +333,7 @@ public class ModItems {
     public static final RegistryObject<ForgeSpawnEggItem> DEFILED_WIZARD_SPAWN_EGG = ITEMS.register("defiled_wizard_spawn_egg", () ->
             new ForgeSpawnEggItem(ModEntityType.DEFILED_WIZARD, 0x044554, 0x032026, PropertiesHelper.stackItemProperties(64)));
     public static final RegistryObject<ForgeSpawnEggItem> DEFILED_PRIEST_SPAWN_EGG = ITEMS.register("defiled_priest_spawn_egg", () ->
-            new ForgeSpawnEggItem(ModEntityType.DEFILED_WIZARD, 0x020B0D, 0x09313B, PropertiesHelper.stackItemProperties(64)));
+            new ForgeSpawnEggItem(ModEntityType.DEFILED_PRIEST, 0x020B0D, 0x09313B, PropertiesHelper.stackItemProperties(64)));
     public static final RegistryObject<ForgeSpawnEggItem> DARKSPAWN_LARVA_SPAWN_EGG = ITEMS.register("darkspawn_larva_spawn_egg", () ->
             new ForgeSpawnEggItem(ModEntityType.DARKSPAWN_LARVA, 0x020B0D, 0x09313B, PropertiesHelper.stackItemProperties(64)));
 

@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.blocks.entity.AntibuilderBlockEntity;
 import net.chixozhmix.dnmmod.blocks.entity.ScrollTableEntity;
 import net.chixozhmix.dnmmod.blocks.entity.SealedDoorBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -17,6 +18,9 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<SealedDoorBlockEntity>> DOOR_OF_SEAL = BLOCK_ENTITY.register("door_of_seal", () ->
             BlockEntityType.Builder.of(SealedDoorBlockEntity::new, ModBlocks.DOOR_OF_SEAL.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<AntibuilderBlockEntity>> ANTIBUILDER_BLOCK_ENTITY = BLOCK_ENTITY.register("antibuilder", () ->
+            BlockEntityType.Builder.of(AntibuilderBlockEntity::new, ModBlocks.ANTIBUILDER_BLOCK.get()).build(null));
 
 
     public static void register(IEventBus eventBus) {

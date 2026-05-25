@@ -33,7 +33,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.DIAMOND_SCIMITAR);
         handheldItem(ModItems.DIAMOND_SICKLE);
         handheldItem(ModItems.DIAMOND_KLEVETS);
-        handheldItem(ModItems.PHANTOM_POTION);
         curioItem(ModItems.PROTECTION_RING);
         simpleItem(ModItems.COMPONENT_BAG);
         simpleItem(ModItems.MEDIUM_COMPONENT_BAG);
@@ -61,6 +60,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.PARCHMENT);
         simpleItem(ModItems.TAINTED_KEY);
         simpleItem(ModItems.THE_HAG_MUSIC_DISC);
+        simpleItem(ModItems.PHANTOM_POTION);
         //Staff and wands
         handheldItem(ModItems.WOODEN_WAND);
         handheldItem(ModItems.CRYOMANCER_WAND);

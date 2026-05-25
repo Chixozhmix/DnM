@@ -29,13 +29,10 @@ public class SealedDoorRenderer implements BlockEntityRenderer<SealedDoorBlockEn
 
     @Override
     public void render(SealedDoorBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
-        // ★ Выходим сразу, если это не базовый блок ★
+
         if (!blockEntity.isBaseBlock()) return;
 
         poseStack.pushPose();
-
-        // Смещаемся так, чтобы модель встала ровно по центру всей структуры
-        // Центр нижнего ряда находится ровно в этом BlockEntity
         poseStack.translate(0.5D, 0.5D, 0.5D);
 
         Direction facing = blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
@@ -43,10 +40,9 @@ public class SealedDoorRenderer implements BlockEntityRenderer<SealedDoorBlockEn
             case SOUTH -> poseStack.mulPose(Axis.YP.rotationDegrees(180));
             case WEST  -> poseStack.mulPose(Axis.YP.rotationDegrees(90));
             case EAST  -> poseStack.mulPose(Axis.YP.rotationDegrees(270));
-            default    -> {} // NORTH
+            default    -> {}
         }
 
-        // Анимация
         this.model.left_door.yRot = 0.0F;
         this.model.right_door.yRot = 0.0F;
 

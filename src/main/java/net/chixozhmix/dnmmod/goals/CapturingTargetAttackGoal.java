@@ -25,14 +25,14 @@ public class CapturingTargetAttackGoal extends Goal {
     private final float damage;
     private final float knockback;
 
-    public CapturingTargetAttackGoal(Mob mob, int attackDuration, boolean addEffect, @Nullable MobEffect effect, float damage, float knockback) {
+    public CapturingTargetAttackGoal(Mob mob, int attackDuration, boolean addEffect, @Nullable MobEffect effect, float damage, float knockback, int attackCooldown) {
         this.mob = mob;
         this.addEffect = addEffect;
         this.attackDuration = attackDuration;
         this.mobEffect = effect;
         this.damage = damage;
         this.knockback = knockback;
-        this.attackCooldown = 80;
+        this.attackCooldown = attackCooldown;
         this.cooldownTime = 0;
         this.attackRange = 25.0D;
         this.attackSqr = this.attackRange * this.attackRange;

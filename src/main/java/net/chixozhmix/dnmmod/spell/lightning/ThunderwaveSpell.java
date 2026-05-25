@@ -98,14 +98,9 @@ public class ThunderwaveSpell extends AbstractSpell {
     private void knockbackEntity(LivingEntity caster, LivingEntity target) {
         Vec3 direction = target.position().subtract(caster.position()).normalize();
 
-        float knockbackStrength = 1.2F;
+        float knockbackStrength = 3.2F;
 
-        target.setDeltaMovement(target.getDeltaMovement().add(
-                direction.x * knockbackStrength,
-                Math.min(0.5, knockbackStrength * 0.3), // Небольшой подъем
-                direction.z * knockbackStrength
-        ));
-        target.hurtMarked = true;
+        target.knockback(knockbackStrength, -direction.x, -direction.z);
     }
 
     private float getDamage(int spellLevel, LivingEntity entity) {

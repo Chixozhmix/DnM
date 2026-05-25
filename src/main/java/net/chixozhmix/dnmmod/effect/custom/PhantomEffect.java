@@ -26,12 +26,10 @@ public class PhantomEffect extends MobEffect {
         if (pLivingEntity instanceof Player player) {
             Level level = player.level();
 
-            // Включаем полет без атрибута
             if (!player.getAbilities().mayfly) {
                 player.getAbilities().mayfly = true;
             }
 
-            // Автоматически активируем полет
             if (!player.getAbilities().flying) {
                 player.getAbilities().flying = true;
             }
@@ -125,7 +123,6 @@ public class PhantomEffect extends MobEffect {
         }
 
         private static void resetPlayerPhysics(Player player) {
-            // Отключаем полет только если игрок не в креативе и не в режиме наблюдателя
             if (!player.isCreative() && !player.isSpectator()) {
                 player.getAbilities().mayfly = false;
                 player.getAbilities().flying = false;
