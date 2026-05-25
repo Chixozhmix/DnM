@@ -50,6 +50,7 @@ import net.chixozhmix.dnmmod.renderer.ArmorEffectRenderer;
 import net.chixozhmix.dnmmod.screen.component_bag.ComponentBagScreen;
 import net.chixozhmix.dnmmod.screen.medium_bag.MediumBagScreen;
 import net.chixozhmix.dnmmod.screen.scroll_table.ScrollTableScreen;
+import net.chixozhmix.dnmmod.registers.ModStructures;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -129,6 +130,8 @@ public class DnMmod
         ModPotions.register(modEventBus);
         //Particles
         ParticleRegistry.register(modEventBus);
+        //Structures
+        ModStructures.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
     }

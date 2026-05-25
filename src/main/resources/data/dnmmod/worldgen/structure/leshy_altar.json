@@ -1,5 +1,6 @@
 {
-  "type": "minecraft:jigsaw",
+  "type": "dnmmod:lesy_altar_structure",
+  "liquid_settings": "ignore_waterlogging",
   "start_pool": "dnmmod:leshy_altar/start_pool",
   "size": 2,
   "biomes": "#dnmmod:has_structure/leshy_altar",
@@ -17,7 +18,7 @@
       "spawns": [
         {
           "type": "dnmmod:raven",
-          "weight": 30,
+          "weight": 10,
           "minCount": 2,
           "maxCount": 5
         }

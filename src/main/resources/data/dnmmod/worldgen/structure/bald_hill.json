@@ -1,5 +1,6 @@
 {
-  "type": "minecraft:jigsaw",
+  "type": "dnmmod:bald_hill_structure",
+  "liquid_settings": "ignore_waterlogging",
   "start_pool": "dnmmod:bald_hill/start_pool",
   "size": 2,
   "biomes": "#dnmmod:has_structure/bald_hill",

@@ -1,5 +1,4 @@
 {
-  "name": "dnmmod:leshy_altar/start_pool",
   "fallback": "minecraft:empty",
   "elements": [
     {
