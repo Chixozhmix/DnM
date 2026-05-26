@@ -243,6 +243,8 @@
   "ui.dnmmod.knock.complexity_blocked": "§c%d замка(ов) защищено!",
   "ui.dnmmod.knock.opened": "§aУспешно открыто %d замка(ов)",
 
+  "ui.dnmmod.leshy_altar_msg": "Леший не принял этого подношения",
+
   "creativetab.dnmmod.weapons": "Оружие",
   "creativetab.dnmmod.armor": "Броня",
   "creativetab.dnmmod.staffs": "Посохи и палочки",

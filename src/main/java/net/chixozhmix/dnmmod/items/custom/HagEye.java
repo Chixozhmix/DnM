@@ -77,7 +77,7 @@ public class HagEye extends Item implements IPresetSpellContainer {
         if (itemStack != null) {
             if (!ISpellContainer.isSpellContainer(itemStack)) {
                 ISpellContainer spellContainer = ISpellContainer.create(1, true, false);
-                spellContainer.addSpell((AbstractSpell) SpellRegistry.POISON_ARROW_SPELL.get(), 4, true, itemStack);
+                spellContainer.addSpell(SpellRegistry.POISON_ARROW_SPELL.get(), 4, true, itemStack);
                 spellContainer.save(itemStack);
             }
 

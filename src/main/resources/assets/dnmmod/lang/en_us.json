@@ -240,6 +240,8 @@
   "ui.dnmmod.knock.complexity_blocked": "§c%d lock(s) protected by magical enchantments!",
   "ui.dnmmod.knock.opened": "§aSuccessfully opened %d lock(s)",
 
+  "ui.dnmmod.leshy_altar_msg": "Leshy did not accept this offering",
+
   "creativetab.dnmmod.weapons": "Weapons",
   "creativetab.dnmmod.armor": "Armor",
   "creativetab.dnmmod.staffs": "Staffs and wands",
