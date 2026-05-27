@@ -1,7 +1,7 @@
 package net.chixozhmix.dnmmod.items.client;
 
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.items.custom.ImprovedArcher;
+import net.chixozhmix.dnmmod.items.custom.armor.ImprovedArcher;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.DefaultedItemGeoModel;
 

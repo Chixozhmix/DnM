@@ -121,6 +121,11 @@
   "item.dnmmod.mithril_leggings": "Mithril leggings",
   "item.dnmmod.mithril_boots": "Mithril boots",
 
+  "item.dnmmod.waning_moon_helmet": "Waning Moon helmet",
+  "item.dnmmod.waning_moon_chestplate": "Waning Moon chestplate",
+  "item.dnmmod.waning_moon_leggings": "Waning Moon leggings",
+  "item.dnmmod.waning_moon_boots": "Waning Moon boots",
+
   "item.dnmmod.voile_of_death": "Voile of death",
 
   "item.dnmmod.protection_ring": "Protection ring",
@@ -222,6 +227,10 @@
   "tooltip.dnmmod.hag_eye": "The Hag Coven often creates similar trinkets from those they once ate. A simple magical trinket that hides pleasant bonuses. They say it helps you see in the dark, and you can also use it to spot even those who are outside the walls!",
   "tooltip.dnmmod.wand_core": "In order for the wand to have magical properties, it needs to be powered. The core of the wand is made from various magical components that grant magical properties to the wand created by the caster.",
   "tooltip.dnmmod.forest_heart": "By killing a Leshy, which happens to a very small number of mortals, the killer can get a truly valuable thing - the Forest Heart, which has amazing properties to control plants and protect the lives of those who touch the ground.",
+  "tooltip.dnmmod.waning_moon_armor": "The moon's circle never showed itself during the day. Druids of this circle prefer to gather by moonlight, guarding their forests at night while others sleep. Many of them serve the Leshy, the ancient spirits of nature and the guardians of the forest.",
+
+  "tooltip.dnmmod.waning_moon_armor.shift": "When full set:\nIf you have less than 25% mana reserve: Increases mana regeneration by 30%. \nIf you have less than 30% health: Reduces spell cooldown by 20%.",
+  "tooltip.dnmmod.down_shift": "Press Shift for more information",
 
   "ui.dnmmod.bounces": "Bounces: %d",
   "ui.dnmmod.spell_component": "Spell component: %s",

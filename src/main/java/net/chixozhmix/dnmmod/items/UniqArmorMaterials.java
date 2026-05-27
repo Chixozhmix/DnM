@@ -77,7 +77,20 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
             new AttributeModifier("Blood magic", (double)0.15F, AttributeModifier.Operation.MULTIPLY_BASE),
             (Attribute) AttributeRegistry.BLOOD_MAGIC_RESIST.get(),
             new AttributeModifier("Blood resist", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
-            ));
+            )),
+    WANING_MOON_ARMOR("waning_moon_armor", 39, heavyArmorMap(), 15, SoundEvents.ARMOR_EQUIP_LEATHER, 3.0F,
+            0.1F, () -> Ingredient.of(new ItemLike[]{(ItemLike) ItemRegistry.MITHRIL_INGOT.get()}),
+            Map.of(AttributeRegistry.NATURE_SPELL_POWER.get(),
+                    new AttributeModifier("Nature Spell Power", 0.15F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    AttributeRegistry.SPELL_RESIST.get(),
+                    new AttributeModifier("Spell resist", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    AttributeRegistry.MAX_MANA.get(),
+                    new AttributeModifier("Max mana", 140, AttributeModifier.Operation.ADDITION),
+                    AttributeRegistry.SPELL_POWER.get(),
+                    new AttributeModifier("Spell power", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    AttributesMod.HEALING,
+                    new AttributeModifier("healing", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+                    ));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;

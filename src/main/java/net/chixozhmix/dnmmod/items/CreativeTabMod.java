@@ -75,6 +75,10 @@ public class CreativeTabMod {
                         output.accept(ModItems.MITHRILL_CHESTPLATE.get());
                         output.accept(ModItems.MITHRILL_LEGGINGS.get());
                         output.accept(ModItems.MITHRILL_BOOTS.get());
+                        output.accept(ModItems.WANING_MOON_HELMET.get());
+                        output.accept(ModItems.WANING_MOON_CHESTPLATE.get());
+                        output.accept(ModItems.WANING_MOON_LEGGINGS.get());
+                        output.accept(ModItems.WANING_MOON_BOOTS.get());
                         output.accept(ModItems.VOILE_OF_DEATH.get());
                     })
                     .build());

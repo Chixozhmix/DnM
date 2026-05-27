@@ -16,6 +16,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.PropertiesHelper;
 import net.chixozhmix.dnmmod.items.ModArmorMaterials;
 import net.chixozhmix.dnmmod.items.custom.*;
+import net.chixozhmix.dnmmod.items.custom.armor.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -28,10 +29,12 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.puffish.attributesmod.AttributesMod;
 
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.MULTIPLY_BASE;
 
@@ -175,10 +178,10 @@ public class ModItems {
     public static final RegistryObject<Item> TAINTED_STAFF = ITEMS.register("tainted_staff",
             () -> new TaintedStaff(PropertiesHelper.stackItemProperties(1).rarity(Rarity.EPIC),
                     new StaffTier(2.0F, -3.0F, new AttributeContainer[]
-                            {new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.30F, MULTIPLY_BASE),
+                            {new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.20F, MULTIPLY_BASE),
                                     new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.15F, MULTIPLY_BASE),
-                                    new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, 0.15F, MULTIPLY_BASE),
-                                    new AttributeContainer(AttributeRegistry.SPELL_POWER, 0.1F, MULTIPLY_BASE)})));
+                                    new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, 0.10F, MULTIPLY_BASE),
+                                    new AttributeContainer(AttributeRegistry.SPELL_POWER, 0.05F, MULTIPLY_BASE)})));
     //Items
     public static final RegistryObject<Item> ECTOPLASM = ITEMS.register("ectoplasm", () ->
             new Item(PropertiesHelper.stackItemProperties(64)));
@@ -287,6 +290,15 @@ public class ModItems {
             new MithrillArmor(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties()));
     public static final RegistryObject<Item> MITHRILL_BOOTS = ITEMS.register("mithril_boots", () ->
             new MithrillArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
+
+    public static final RegistryObject<Item> WANING_MOON_HELMET = ITEMS.register("waning_moon_helmet", () ->
+            new WaningMoonArmor(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties()));
+    public static final RegistryObject<Item> WANING_MOON_CHESTPLATE = ITEMS.register("waning_moon_chestplate", () ->
+            new WaningMoonArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties()));
+    public static final RegistryObject<Item> WANING_MOON_LEGGINGS = ITEMS.register("waning_moon_leggings", () ->
+            new WaningMoonArmor(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties()));
+    public static final RegistryObject<Item> WANING_MOON_BOOTS = ITEMS.register("waning_moon_boots", () ->
+            new WaningMoonArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
 
     public static final RegistryObject<Item> VOILE_OF_DEATH = ITEMS.register("voile_of_death", () ->
             new VoileOfDeathArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties().rarity(Rarity.RARE)));

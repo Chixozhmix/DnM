@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.items.custom;
+package net.chixozhmix.dnmmod.items.custom.armor;
 
 import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
 import io.redspace.ironsspellbooks.item.armor.ExtendedArmorItem;

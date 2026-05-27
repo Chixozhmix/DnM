@@ -37,13 +37,14 @@ public class LeshyAltarBlock extends BaseEntityBlock {
     private static final List<Item> ITEMS = Arrays.asList(
             Items.GOLDEN_APPLE,
             Items.ENDER_PEARL,
-            Items.APPLE
+            Items.ENDER_EYE
     );
 
     private static final List<Item> UNIQUE_ITEMS = Arrays.asList(
-            Items.NETHERITE_INGOT,
-            Items.NETHERITE_CHESTPLATE,
-            Items.NETHERITE_SWORD
+            ModItems.WANING_MOON_CHESTPLATE.get(),
+            ModItems.WANING_MOON_LEGGINGS.get(),
+            ModItems.WANING_MOON_HELMET.get(),
+            ModItems.WANING_MOON_BOOTS.get()
     );
 
     private static final List<MobEffect> EFFECTS = Arrays.asList(

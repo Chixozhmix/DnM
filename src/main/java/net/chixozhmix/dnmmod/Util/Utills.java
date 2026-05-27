@@ -33,7 +33,7 @@ public class Utills {
     }
     public static MobEffectInstance randomEffect(List<MobEffect> effectInstanceList) {
         MobEffect effect = effectInstanceList.get(RANDOM.nextInt(effectInstanceList.size()));
-        return new MobEffectInstance(effect, 24000, 0);
+        return new MobEffectInstance(effect, 12000, 0);
     }
     public static Item randomItem(List<Item> itemList) {
         return itemList.get(RANDOM.nextInt(itemList.size()));

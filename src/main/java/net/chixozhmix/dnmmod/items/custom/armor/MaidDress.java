@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.items.custom;
+package net.chixozhmix.dnmmod.items.custom.armor;
 
 import net.chixozhmix.dnmmod.items.client.MaidDressRenderer;
 import net.minecraft.client.model.HumanoidModel;

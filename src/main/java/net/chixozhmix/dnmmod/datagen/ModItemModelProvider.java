@@ -110,6 +110,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.MITHRILL_CHESTPLATE);
         simpleItem(ModItems.MITHRILL_LEGGINGS);
         simpleItem(ModItems.MITHRILL_BOOTS);
+        simpleItem(ModItems.WANING_MOON_BOOTS);
+        simpleItem(ModItems.WANING_MOON_LEGGINGS);
+        simpleItem(ModItems.WANING_MOON_CHESTPLATE);
+        simpleItem(ModItems.WANING_MOON_HELMET);
         simpleItem(ModItems.VOILE_OF_DEATH);
 
 

@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.Util;
 
+import io.redspace.ironsspellbooks.api.magic.MagicData;
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
 import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
 import net.minecraft.network.chat.Component;
@@ -67,5 +68,10 @@ public class SpellUtils {
 
     public static MutableComponent getComponentName(Item item) {
         return Component.translatable(item.getDescriptionId());
+    }
+
+    public static float getCurrentMana(Player player) {
+        MagicData magicData = MagicData.getPlayerMagicData(player);
+        return magicData.getMana();
     }
 }
