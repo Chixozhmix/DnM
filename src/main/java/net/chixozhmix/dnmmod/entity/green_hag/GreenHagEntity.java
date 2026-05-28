@@ -42,7 +42,7 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy, IB
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)6.0F)
             .add(Attributes.ATTACK_KNOCKBACK, (double)0.2F)
-            .add(Attributes.MAX_HEALTH, (double)220.0F)
+            .add(Attributes.MAX_HEALTH, (double)200.0F)
             .add(Attributes.FOLLOW_RANGE, (double)30.0F)
             .add(AttributeRegistry.SPELL_POWER.get(), (double)1.15F)
             .add(Attributes.MOVEMENT_SPEED, (double)0.25F)
@@ -73,10 +73,10 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy, IB
                         RegistrySpells.ICE_DAGGER.get(),
                         SpellRegistry.BLOOD_SLASH_SPELL.get()),
                         List.of(RegistrySpells.THUNDERWAVE.get()),
-                        List.of(),
+                        List.of(SpellRegistry.BLOOD_STEP_SPELL.get()),
                         List.of(SpellRegistry.FANG_WARD_SPELL.get(),
                                 SpellRegistry.ROOT_SPELL.get()))
-                .setSingleUseSpell(RegistrySpells.SUMMON_UNDEAD_SPIRIT.get(), 80, 350, 2, 3)
+                .setSingleUseSpell(RegistrySpells.SUMMON_UNDEAD_SPIRIT.get(), 80, 350, 1, 2)
                 .setDrinksPotions());
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, (double)1.0F));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -85,7 +85,6 @@ public class GreenHagEntity extends AbstractSpellCastingMob implements Enemy, IB
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this, new Class[0]));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, IronGolem.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Turtle.class, 10, true, false, Turtle.BABY_ON_LAND_SELECTOR));
     }
 
     public static AttributeSupplier.Builder prepareAttributes() {

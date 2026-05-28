@@ -51,7 +51,7 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
             .add(AttributeRegistry.SPELL_POWER.get(), (double)1.25F)
             .add(Attributes.MOVEMENT_SPEED, (double)0.22F)
             .add(Attributes.KNOCKBACK_RESISTANCE, (double)0.1F)
-            .add(Attributes.ARMOR, (double)15.0F)
+            .add(Attributes.ARMOR, (double)12.0F)
             .add(AttributeRegistry.SPELL_RESIST.get(), 0.5f)
             .add(AttributeRegistry.SUMMON_DAMAGE.get(), 0.4f);
 
@@ -72,7 +72,7 @@ public class LeshyEntity extends AbstractSpellCastingMob implements Enemy {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(4, new MeleeCasterAtackGoal(this, 1.25F, 35, 80)
+        this.goalSelector.addGoal(4, new MeleeCasterAtackGoal(this, 1.25F, 35, 45)
                 .setSpells(
                         List.of(SpellRegistry.ACID_ORB_SPELL.get(),
                                 RegistrySpells.CAUSTIC_BREW.get(),

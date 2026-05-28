@@ -175,6 +175,8 @@
   "block.dnmmod.scroll_table": "Стол для свитков",
   "block.dnmmod.door_of_seal": "Запечатанная Дверь",
   "block.dnmmod.unbreaking_bricks": "Неразрушимые кирпичи",
+  "block.dnmmod.antibuilder_block": "Антибилдер",
+  "block.dnmmod.block_of_seal": "Блок печати",
 
   "entity.dnmmod.cloud_dagger": "Магический кинжал",
   "entity.dnmmod.ice_dagger": "Ледяной кинжал",
@@ -253,6 +255,7 @@
   "ui.dnmmod.knock.opened": "§aУспешно открыто %d замка(ов)",
 
   "ui.dnmmod.leshy_altar_msg": "Леший не принял этого подношения",
+  "ui.dnmmod.block_of_seal_fail": "Лишь тишина исходит от печати",
 
   "creativetab.dnmmod.weapons": "Оружие",
   "creativetab.dnmmod.armor": "Броня",

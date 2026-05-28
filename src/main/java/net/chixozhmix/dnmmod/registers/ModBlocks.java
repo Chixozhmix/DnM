@@ -1,10 +1,7 @@
 package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.blocks.custom.AntibuilderBlock;
-import net.chixozhmix.dnmmod.blocks.custom.LeshyAltarBlock;
-import net.chixozhmix.dnmmod.blocks.custom.ScrollTableBlock;
-import net.chixozhmix.dnmmod.blocks.custom.SealedDoorBlock;
+import net.chixozhmix.dnmmod.blocks.custom.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -48,6 +45,8 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops().sound(SoundType.WOOD).strength(-1.0F, 3600000.0F)));
     public static final RegistryObject<Block> UNBREAKING_BRICKS = registerBlock("unbreaking_bricks", () ->
             new Block(BlockBehaviour.Properties.copy(Blocks.BEDROCK).sound(SoundType.DEEPSLATE).noLootTable()));
+    public static final RegistryObject<Block> BLOCK_OF_SEAL = registerBlock("block_of_seal", () ->
+            new BlockOfSeal(BlockBehaviour.Properties.copy(Blocks.BEDROCK).sound(SoundType.DEEPSLATE).noLootTable()));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

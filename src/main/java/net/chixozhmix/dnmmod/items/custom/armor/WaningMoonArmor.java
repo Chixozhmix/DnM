@@ -115,7 +115,7 @@ public class WaningMoonArmor extends ImbuableChestplateArmorItem {
         pTooltipComponents.add(Component.translatable("tooltip.dnmmod.waning_moon_armor"));
 
         if(Screen.hasShiftDown())
-            pTooltipComponents.add(Component.translatable("tooltip.dnmmod.waning_moon_armor.shift").withStyle(ChatFormatting.DARK_BLUE));
+            pTooltipComponents.add(Component.translatable("tooltip.dnmmod.waning_moon_armor.shift").withStyle(ChatFormatting.AQUA));
         else pTooltipComponents.add(Component.translatable("tooltip.dnmmod.down_shift").withStyle(ChatFormatting.GRAY));
 
     }

@@ -1,10 +1,7 @@
 package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.blocks.entity.AntibuilderBlockEntity;
-import net.chixozhmix.dnmmod.blocks.entity.LeshyAltarEntity;
-import net.chixozhmix.dnmmod.blocks.entity.ScrollTableEntity;
-import net.chixozhmix.dnmmod.blocks.entity.SealedDoorBlockEntity;
+import net.chixozhmix.dnmmod.blocks.entity.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -22,6 +19,8 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<AntibuilderBlockEntity>> ANTIBUILDER_BLOCK_ENTITY = BLOCK_ENTITY.register("antibuilder",
             () -> BlockEntityType.Builder.of(AntibuilderBlockEntity::new, ModBlocks.ANTIBUILDER_BLOCK.get()).build(null));
+    public static final RegistryObject<BlockEntityType<BlockOfSealEntity>> BLOCK_OF_SEAL_ENTITY = BLOCK_ENTITY.register("block_of_seal",
+            () -> BlockEntityType.Builder.of(BlockOfSealEntity::new, ModBlocks.BLOCK_OF_SEAL.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<LeshyAltarEntity>> LESHY_ALTAR = BLOCK_ENTITY.register("leshy_altar",
             () -> BlockEntityType.Builder.of(LeshyAltarEntity::new, ModBlocks.LESHY_ALTAR.get()).build(null));

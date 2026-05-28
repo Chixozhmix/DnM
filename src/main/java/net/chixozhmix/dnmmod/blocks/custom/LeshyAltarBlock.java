@@ -40,12 +40,14 @@ public class LeshyAltarBlock extends BaseEntityBlock {
             Items.ENDER_EYE
     );
 
-    private static final List<Item> UNIQUE_ITEMS = Arrays.asList(
-            ModItems.WANING_MOON_CHESTPLATE.get(),
-            ModItems.WANING_MOON_LEGGINGS.get(),
-            ModItems.WANING_MOON_HELMET.get(),
-            ModItems.WANING_MOON_BOOTS.get()
-    );
+    private static List<Item> getUniqueItems() {
+        return Arrays.asList(
+                ModItems.WANING_MOON_CHESTPLATE.get(),
+                ModItems.WANING_MOON_LEGGINGS.get(),
+                ModItems.WANING_MOON_HELMET.get(),
+                ModItems.WANING_MOON_BOOTS.get()
+        );
+    }
 
     private static final List<MobEffect> EFFECTS = Arrays.asList(
             MobEffects.NIGHT_VISION,
@@ -125,7 +127,7 @@ public class LeshyAltarBlock extends BaseEntityBlock {
                     }
 
                     altarEntity.incrementUseCount();
-                    Utills.randomGiver(pPlayer, EFFECTS, ITEMS, UNIQUE_ITEMS);
+                    Utills.randomGiver(pPlayer, EFFECTS, ITEMS, getUniqueItems());
 
                 } else {
                     pPlayer.sendSystemMessage(Component.translatable("ui.dnmmod.leshy_altar_msg"));

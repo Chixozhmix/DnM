@@ -120,7 +120,7 @@ public class CapturingTargetAttackGoal extends Goal {
     }
 
     private void effectAttack(LivingEntity target) {
-        target.addEffect(new MobEffectInstance(this.mobEffect, 200, 0));
+        target.addEffect(new MobEffectInstance(this.mobEffect, 100, 0));
     }
 
     private void knockbackEntity(LivingEntity mob, LivingEntity target, float strength) {

@@ -49,7 +49,8 @@ public class DefiledPriest extends AbstractSpellCastingMob implements Enemy, IAn
             .add(Attributes.ARMOR, 5.0F)
             .add(Attributes.KNOCKBACK_RESISTANCE, 0.2F)
             .add(Attributes.FOLLOW_RANGE, (double)30.0F)
-            .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)0.7F)
+            .add(AttributeRegistry.SPELL_POWER.get(), (double)0.7F)
+            .add(AttributeRegistry.SPELL_RESIST.get(), (double)0.3F)
             .add(Attributes.MOVEMENT_SPEED, (double)0.26F);
 
     public DefiledPriest(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {

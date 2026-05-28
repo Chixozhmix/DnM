@@ -172,6 +172,8 @@
   "block.dnmmod.scroll_table": "Scroll table",
   "block.dnmmod.door_of_seal": "Sealed Door",
   "block.dnmmod.unbreaking_bricks": "Unbreaking bricks",
+  "block.dnmmod.antibuilder_block": "Antibuilder block",
+  "block.dnmmod.block_of_seal": "Block of Seal",
 
   "entity.dnmmod.cloud_dagger": "Magic Dagger",
   "entity.dnmmod.ice_dagger": "Ice dagger",
@@ -250,6 +252,7 @@
   "ui.dnmmod.knock.opened": "§aSuccessfully opened %d lock(s)",
 
   "ui.dnmmod.leshy_altar_msg": "Leshy did not accept this offering",
+  "ui.dnmmod.block_of_seal_fail": "Only silence comes from the seal",
 
   "creativetab.dnmmod.weapons": "Weapons",
   "creativetab.dnmmod.armor": "Armor",

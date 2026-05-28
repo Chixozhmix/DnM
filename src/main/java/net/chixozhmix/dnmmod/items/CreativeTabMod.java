@@ -172,6 +172,7 @@ public class CreativeTabMod {
                         output.accept(ModBlocks.LESHY_ALTAR.get());
                         output.accept(ModBlocks.UNBREAKING_BRICKS.get());
                         output.accept(ModBlocks.DOOR_OF_SEAL.get());
+                        output.accept(ModBlocks.BLOCK_OF_SEAL.get());
                     })
                     .build());
 

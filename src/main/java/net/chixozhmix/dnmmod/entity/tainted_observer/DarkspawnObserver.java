@@ -155,7 +155,7 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new CapturingTargetAttackGoal(this, 40, true,
-                MobEffects.WEAKNESS, 0.0F, 0.0F, 100));
+                MobEffects.WEAKNESS, 0.0F, 0.0F, 200));
         this.goalSelector.addGoal(1, new DarkspawnObserverAttackStrategyGoal());
         this.goalSelector.addGoal(2, new DarkspawnObserverSweepAttackGoal());
         this.goalSelector.addGoal(3, new DarkspawnObserverCircleAroundAnchorGoal());
@@ -457,7 +457,7 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
                     DarkspawnObserver.this.attackPhase = DarkspawnObserver.AttackPhase.SWOOP;
                     this.setAnchorAboveTarget();
                     this.nextSweepTick = this.adjustedTickDelay((8 + DarkspawnObserver.this.random.nextInt(4)) * 20);
-                    DarkspawnObserver.this.playSound(SoundEvents.PHANTOM_SWOOP, 10.0F, 0.95F + DarkspawnObserver.this.random.nextFloat() * 0.1F);
+                    DarkspawnObserver.this.playSound(SoundEvents.PHANTOM_SWOOP, 5.0F, 0.95F + DarkspawnObserver.this.random.nextFloat() * 0.1F);
                 }
             }
 
