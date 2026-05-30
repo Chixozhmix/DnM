@@ -14,8 +14,6 @@ import net.chixozhmix.dnmmod.entity.small_ice_spider.SmallIceSpiderEntity;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.Tombstone;
 import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
 import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserver;
-import net.chixozhmix.dnmmod.particle.RavenParticle;
-import net.chixozhmix.dnmmod.particle.ShieldParticle;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
@@ -29,12 +27,10 @@ import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
-import net.chixozhmix.dnmmod.registers.ParticleRegistry;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -86,10 +82,5 @@ public class ModEvents {
                 Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(ModEntityType.SMALL_ICE_SPIDER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 ModSpawnRule::CastingMonsterSpawnRule, SpawnPlacementRegisterEvent.Operation.REPLACE);
-    }
-    @SubscribeEvent
-    public static void registresParticleFactory(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(ParticleRegistry.SHIELD_PARTICLES.get(), ShieldParticle.Provider::new);
-        event.registerSpriteSet(ParticleRegistry.RAVEN_PARTICLES.get(), RavenParticle.Provider::new);
     }
 }

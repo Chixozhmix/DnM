@@ -3,7 +3,6 @@ package net.chixozhmix.dnmmod.goals;
 import io.redspace.ironsspellbooks.entity.spells.void_tentacle.VoidTentacle;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
-import net.chixozhmix.dnmmod.entity.spell.trident_strike_area.TridentStrikeAreaEntity;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;

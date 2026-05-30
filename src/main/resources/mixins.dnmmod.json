@@ -4,7 +4,9 @@
   "refmap": "dnmmod.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "TestSpellMixin",
+    "TestSpellMixin"
+  ],
+  "client": [
     "TooltipMixin"
   ],
   "injectors": {

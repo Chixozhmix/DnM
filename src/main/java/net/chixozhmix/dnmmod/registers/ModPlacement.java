@@ -15,7 +15,7 @@ public class ModPlacement {
     public static final RegistryObject<StructurePlacementType<SingleStructurePlacement>> SINGLE =
             PLACEMENTS.register("single", () -> () -> SingleStructurePlacement.CODEC);
 
-    public void register(IEventBus eventBus) {
+    public static void register(IEventBus eventBus) {
         PLACEMENTS.register(eventBus);
     }
 }
