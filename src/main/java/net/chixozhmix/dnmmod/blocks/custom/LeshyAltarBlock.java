@@ -1,6 +1,6 @@
 package net.chixozhmix.dnmmod.blocks.custom;
 
-import net.chixozhmix.dnmmod.Util.Utills;
+import net.chixozhmix.dnmmod.Util.Utils;
 import net.chixozhmix.dnmmod.blocks.entity.LeshyAltarEntity;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
@@ -127,7 +127,7 @@ public class LeshyAltarBlock extends BaseEntityBlock {
                     }
 
                     altarEntity.incrementUseCount();
-                    Utills.randomGiver(pPlayer, EFFECTS, ITEMS, getUniqueItems());
+                    Utils.randomGiver(pPlayer, EFFECTS, ITEMS, getUniqueItems());
 
                 } else {
                     pPlayer.sendSystemMessage(Component.translatable("ui.dnmmod.leshy_altar_msg"));

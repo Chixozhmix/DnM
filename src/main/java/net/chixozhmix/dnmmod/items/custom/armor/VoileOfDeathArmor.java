@@ -38,7 +38,7 @@ public class VoileOfDeathArmor extends ExtendedArmorItem {
         if(player.getItemBySlot(EquipmentSlot.CHEST).getItem() != this)
             return;
 
-        if(currentHP <= maxHP/2) {
+        if(currentHP <= maxHP/3) {
             if(!player.hasEffect(ModEffects.PHANTOM_EFFECT.get()) && !player.hasEffect(MobEffectRegistry.TRUE_INVISIBILITY.get()))
             {
                 player.addEffect(new MobEffectInstance(

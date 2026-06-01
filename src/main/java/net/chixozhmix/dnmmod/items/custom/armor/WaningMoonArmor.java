@@ -5,6 +5,7 @@ import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
 import io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
+import net.chixozhmix.dnmmod.Util.Utils;
 import net.chixozhmix.dnmmod.items.UniqArmorMaterials;
 import net.chixozhmix.dnmmod.items.client.WaningMoonArmorModel;
 import net.minecraft.ChatFormatting;
@@ -33,7 +34,7 @@ public class WaningMoonArmor extends ImbuableChestplateArmorItem {
     @Override
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if(!level.isClientSide()) {
-            if(hasFullSet(player)) {
+            if(Utils.hasFullSet(player)) {
                 armorSetBonus(player);
             } else {
                 removeAllBonuses(player);
@@ -99,15 +100,16 @@ public class WaningMoonArmor extends ImbuableChestplateArmorItem {
         }
     }
 
+    /**Проверить, работает ли через утилиты**/
 
-    private boolean hasFullSet(Player player) {
-        ItemStack boots = player.getInventory().getArmor(0);
-        ItemStack leggings = player.getInventory().getArmor(1);
-        ItemStack chestplate = player.getInventory().getArmor(2);
-        ItemStack helmet = player.getInventory().getArmor(3);
-
-        return !helmet.isEmpty() && !chestplate.isEmpty() && !leggings.isEmpty() && !boots.isEmpty();
-    }
+//    private boolean hasFullSet(Player player) {
+//        ItemStack boots = player.getInventory().getArmor(0);
+//        ItemStack leggings = player.getInventory().getArmor(1);
+//        ItemStack chestplate = player.getInventory().getArmor(2);
+//        ItemStack helmet = player.getInventory().getArmor(3);
+//
+//        return !helmet.isEmpty() && !chestplate.isEmpty() && !leggings.isEmpty() && !boots.isEmpty();
+//    }
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {

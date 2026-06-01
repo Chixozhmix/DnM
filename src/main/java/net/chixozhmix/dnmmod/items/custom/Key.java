@@ -23,6 +23,7 @@ public class Key extends Item {
         super(pProperties);
     }
 
+    @Override
     public InteractionResult useOn(UseOnContext ctx) {
         Level world = ctx.getLevel();
         BlockPos pos = ctx.getClickedPos();

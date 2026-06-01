@@ -65,6 +65,7 @@ public class SpellComponentConfig {
             //DnM
             entries.add("net.chixozhmix.dnmmod.spell.blood.BurialGroundSpell|minecraft:soul_sand");
             entries.add("net.chixozhmix.dnmmod.spell.blood.SummonUndeadSpiritSpell|minecraft:skeleton_skull");
+            entries.add("net.chixozhmix.dnmmod.spell.blood.ContagionSpell|dnmmod:greemon_fang");
             entries.add("net.chixozhmix.dnmmod.spell.evocation.CloudDaggerSpell|dnmmod:iron_dagger");
             entries.add("net.chixozhmix.dnmmod.spell.evocation.ChromaticOrbSpell|minecraft:diamond");
             entries.add("net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell|dnmmod:raven_feather");

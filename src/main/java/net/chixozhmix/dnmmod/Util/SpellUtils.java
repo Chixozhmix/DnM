@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 public class SpellUtils {
+    //Проверка компонентов для заклинания
     public static boolean checkSpellComponent(LivingEntity entity, Item item) {
 
         if(entity.getItemInHand(InteractionHand.MAIN_HAND).getItem() == item ||
@@ -66,10 +67,12 @@ public class SpellUtils {
                 .orElse(false);
     }
 
+    //Получение названия предмета
     public static MutableComponent getComponentName(Item item) {
         return Component.translatable(item.getDescriptionId());
     }
 
+    //Получение текущей маны игрока
     public static float getCurrentMana(Player player) {
         MagicData magicData = MagicData.getPlayerMagicData(player);
         return magicData.getMana();

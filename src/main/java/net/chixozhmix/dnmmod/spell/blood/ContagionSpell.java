@@ -13,6 +13,7 @@ import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.SpellConfigHandler;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRay;
 import net.minecraft.network.chat.Component;
@@ -73,14 +74,20 @@ public class ContagionSpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 1)}),
+        List<MutableComponent> baseInfo = List.of(Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 1)}),
                 Component.translatable("ui.irons_spellbooks.effect_length", new Object[]{Utils.timeFromTicks(this.getDurability(spellLevel, caster), 2)}),
                 Component.translatable("ui.irons_spellbooks.radius", new Object[]{Utils.stringTruncation(getRadius(spellLevel, caster), 3)}));
 
+        return SpellConfigHandler.modifyGetUniqueInfo(spellLevel, caster, baseInfo,
+                "net.chixozhmix.dnmmod.spell.blood.ContagionSpell");
     }
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
+        if(!SpellConfigHandler.checkPreCastConditions(level, spellLevel, entity, playerMagicData,
+                "net.chixozhmix.dnmmod.spell.blood.ContagionSpell"))
+            return false;
+
         return Utils.preCastTargetHelper(level, entity, playerMagicData, this, 32, 0.35F);
     }
 
@@ -119,11 +126,13 @@ public class ContagionSpell extends AbstractSpell {
                         e -> e != target && e.isAlive()
                 );
                 for (LivingEntity living : livingEntities) {
-                    living.addEffect(new MobEffectInstance(
-                            MobEffects.POISON,
-                            this.getDurability(spellLevel, entity),
-                            1
-                    ));
+                    if(living != entity) {
+                        living.addEffect(new MobEffectInstance(
+                                MobEffects.POISON,
+                                this.getDurability(spellLevel, entity),
+                                1
+                        ));
+                    }
                 }
             }
         }
