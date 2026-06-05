@@ -103,7 +103,6 @@ public class DnMmod
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), Items.POISONOUS_POTATO, ModPotions.NATURE_RESIST_POTION.get()));
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), ItemRegistry.LIGHTNING_BOTTLE.get(), ModPotions.LIGHTNING_RESIST_POTION.get()));
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), Items.ECHO_SHARD, ModPotions.ELDRITCH_RESIST_POTION.get()));
-
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.AWKWARD, Items.GOLDEN_APPLE, ModPotions.RESISTANCE.get()));
     }
 

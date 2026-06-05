@@ -34,7 +34,7 @@ public class CapturingTargetAttackGoal extends Goal {
         this.knockback = knockback;
         this.attackCooldown = attackCooldown;
         this.cooldownTime = 0;
-        this.attackRange = 25.0D;
+        this.attackRange = 40.0D;
         this.attackSqr = this.attackRange * this.attackRange;
 
         this.setFlags(EnumSet.of(Flag.LOOK));

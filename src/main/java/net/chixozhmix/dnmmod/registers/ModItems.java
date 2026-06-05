@@ -15,6 +15,8 @@ import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.PropertiesHelper;
 import net.chixozhmix.dnmmod.items.ModArmorMaterials;
+import net.chixozhmix.dnmmod.items.WandItem;
+import net.chixozhmix.dnmmod.items.WandTier;
 import net.chixozhmix.dnmmod.items.custom.*;
 import net.chixozhmix.dnmmod.items.custom.armor.*;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -118,61 +120,23 @@ public class ModItems {
                     new SpellDataRegistryHolder(RegistrySpells.THICK_OF_FIGHT, 1)})));
     //Staffs and wands
     public static final RegistryObject<Item> WOODEN_WAND = ITEMS.register("wooden_wand",
-            () -> new StaffItem(PropertiesHelper.stackItemProperties(1),
-                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
-                    (Attribute)AttributeRegistry.SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.1, MULTIPLY_BASE))));
+            () -> new WandItem(PropertiesHelper.stackItemProperties(1), WandTier.WOODEN_WAND));
     public static final RegistryObject<Item> DRUID_WAND = ITEMS.register("druid_wand",
-            () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
-                    (Attribute)AttributeRegistry.NATURE_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
+            () -> new WandItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON), WandTier.DRUID_WAND));
     public static final RegistryObject<Item> ELECTROMANCER_WAND = ITEMS.register("electromancer_wand",
-            () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
-                    (Attribute)AttributeRegistry.LIGHTNING_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
+            () -> new WandItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON), WandTier.ELECTROMANCER_WAND));
     public static final RegistryObject<Item> CRYOMANCER_WAND = ITEMS.register("cryomancer_wand",
-            () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
-                    (Attribute)AttributeRegistry.ICE_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
+            () -> new WandItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON), WandTier.CRYOMANCER_WAND));
     public static final RegistryObject<Item> PYROMANCER_WAND = ITEMS.register("pyromancer_wand",
-            () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
-                    (Attribute)AttributeRegistry.FIRE_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
+            () -> new WandItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON), WandTier.PYROMANCER_WAND));
     public static final RegistryObject<Item> BLOOD_WAND = ITEMS.register("blood_wand",
-            () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
-                    (Attribute)AttributeRegistry.BLOOD_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
+            () -> new WandItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON), WandTier.BLOOD_WAND));
     public static final RegistryObject<Item> ENDER_WAND = ITEMS.register("ender_wand",
-            () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
-                    (Attribute)AttributeRegistry.ENDER_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
+            () -> new WandItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON), WandTier.ENDER_WAND));
     public static final RegistryObject<Item> SACRED_SYMBOL = ITEMS.register("sacred_symbol",
-            () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
-                    (Attribute)AttributeRegistry.HOLY_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE))));
+            () -> new WandItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),WandTier.SACRED_SYMBOL));
     public static final RegistryObject<Item> EVOKER_WAND = ITEMS.register("evoker_wand",
-            () -> new StaffItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON),
-                    (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F, MULTIPLY_BASE),
-                    (Attribute)AttributeRegistry.EVOCATION_SPELL_POWER.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15, MULTIPLY_BASE),
-                    (Attribute)AttributeRegistry.SUMMON_DAMAGE.get(),
-                    new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.10, MULTIPLY_BASE))));
+            () -> new WandItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON), WandTier.EVOKER_WAND));
     public static final RegistryObject<Item> TAINTED_STAFF = ITEMS.register("tainted_staff",
             () -> new TaintedStaff(PropertiesHelper.stackItemProperties(1).rarity(Rarity.EPIC),
                     new StaffTier(2.0F, -3.0F, new AttributeContainer[]

@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.api.spell;
 
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
+import net.chixozhmix.dnmmod.items.WandItem;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -15,6 +16,17 @@ public class ItemTypeHelper {
         return (mainHand.getItem() instanceof StaffItem) || (offHand.getItem() instanceof StaffItem);
 
         //return isHoldingItemOfClass(entity, "io.redspace.ironsspellbooks.item.weapons.StaffItem");
+    }
+
+    public static boolean isHoldingWand(LivingEntity entity) {
+
+        //???? не уверен, как лучше
+        ItemStack mainHand = entity.getItemInHand(InteractionHand.MAIN_HAND);
+        ItemStack offHand = entity.getItemInHand(InteractionHand.OFF_HAND);
+
+        return (mainHand.getItem() instanceof StaffItem) || (offHand.getItem() instanceof WandItem);
+
+        //return isHoldingItemOfClass(entity, "net.chixozhmix.dnmmod.items.WandItem");
     }
 
     private static boolean isHoldingItemOfClass(LivingEntity entity, String className) {

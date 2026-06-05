@@ -93,7 +93,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
 
     private int spawnTimer;
     private final int timer = 260;
-    private final float spawnDistanceSqr = 900.0F;
+    private final float spawnDistanceSqr = 1225.0F;
     private boolean isInvulnerable = false;
 
     private final int attackDuration = 40;
@@ -133,7 +133,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
             .add(Attributes.ATTACK_KNOCKBACK, (double)1.0F)
             .add(Attributes.KNOCKBACK_RESISTANCE, (double)0.8F)
             .add(Attributes.MAX_HEALTH, (double)950.0F)
-            .add(Attributes.FOLLOW_RANGE, (double)48.0F)
+            .add(Attributes.FOLLOW_RANGE, (double)58.0F)
             .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)1.5F)
             .add((Attribute) AttributeRegistry.ELDRITCH_MAGIC_RESIST.get(), (double)1.3F)
             .add(Attributes.MOVEMENT_SPEED, (double)0.26F)
@@ -163,15 +163,15 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.attackController = new AnimationController<>(this, "attack", 2, this::attackPredicate);
 
         this.aoeAttackGoal = new AOEModeusAttackGoal(this, 40, 80, 200,
-                8, 12.0F, 20.0F, 2.0, 0x0D7278);
+                8, 12.0F, 40.0F, 2.0, 0x0D7278);
         this.tentackeAttackGoal = new TentacleModeusAttackGoal(
                 this,
                 40,
                 140,
                 200,
-                25,
+                35,
                 10.0F,
-                15.0F
+                25.0F
         );
 
         setSpawnTimer(timer);
