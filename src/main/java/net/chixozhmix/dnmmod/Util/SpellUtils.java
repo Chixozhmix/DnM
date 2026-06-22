@@ -77,4 +77,18 @@ public class SpellUtils {
         MagicData magicData = MagicData.getPlayerMagicData(player);
         return magicData.getMana();
     }
+
+    //Скип спелов для миксина
+    public static boolean shouldSkipSpell(String spellClass) {
+        if (spellClass.startsWith("com.gametechbc.traveloptics") && !ModCapabilities.isTravelOpticsLoaded()) {
+            return true;
+        }
+        if (spellClass.startsWith("com.gametechbc.gtbcs_geomancy_plus") && !ModCapabilities.isGeomancyPlusLoaded()) {
+            return true;
+        }
+        if (spellClass.startsWith("net.alshanex.alshanex_familiars") && !ModCapabilities.isAlshanexFamiliarsLoaded()) {
+            return true;
+        }
+        return false;
+    }
 }

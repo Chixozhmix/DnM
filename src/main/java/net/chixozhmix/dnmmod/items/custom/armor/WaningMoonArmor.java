@@ -17,6 +17,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
@@ -122,6 +124,7 @@ public class WaningMoonArmor extends ImbuableChestplateArmorItem {
 
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     public GeoArmorRenderer<?> supplyRenderer() {
         return new GenericCustomArmorRenderer(new WaningMoonArmorModel());

@@ -72,6 +72,11 @@ public class ClientModEvents {
             CuriosRendererRegistry.register(ModItems.MAGICAL_GRIMOIRE.get(), SpellBookCurioRenderer::new);
 
             BlockEntityRenderers.register(ModBlockEntities.DOOR_OF_SEAL.get(), SealedDoorRenderer::new);
+
+//            ModCapabilities.isTravelOpticsLoaded();
+//            ModCapabilities.isGeomancyPlusLoaded();
+//            ModCapabilities.isAlshanexFamiliarsLoaded();
+//            ModCapabilities.isAlexsCavesLoaded();
         });
 
         EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);

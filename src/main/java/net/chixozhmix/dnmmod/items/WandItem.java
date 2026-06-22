@@ -36,10 +36,12 @@ public class WandItem extends CastingItem {
         this.defaultModifiers = builder.build();
     }
 
+    @Override
     public boolean isEnchantable(ItemStack pStack) {
         return true;
     }
 
+    @Override
     public int getEnchantmentValue(ItemStack stack) {
         return 20;
     }
@@ -53,7 +55,8 @@ public class WandItem extends CastingItem {
         StaffArmPose.initializeClientHelper(consumer);
     }
 
-    public @NotNull Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@NotNull EquipmentSlot pEquipmentSlot) {
+    @Override
+    public @NotNull Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot pEquipmentSlot) {
         return pEquipmentSlot == EquipmentSlot.MAINHAND ? this.defaultModifiers : super.getDefaultAttributeModifiers(pEquipmentSlot);
     }
 }

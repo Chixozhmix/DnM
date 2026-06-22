@@ -10,6 +10,8 @@ import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
 public class BladesingerArmor extends ImbuableChestplateArmorItem {
@@ -17,6 +19,7 @@ public class BladesingerArmor extends ImbuableChestplateArmorItem {
         super(UniqArmorMaterials.BLADESINGER_ARMOR, type, settings);
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     public GeoArmorRenderer<?> supplyRenderer() {
         return new GenericCustomArmorRenderer(new BladesingerArmorModel());

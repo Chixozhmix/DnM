@@ -3,7 +3,6 @@ package net.chixozhmix.dnmmod;
 import com.mojang.logging.LogUtils;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.chixozhmix.dnmmod.Util.BrewingRecipe;
-import net.chixozhmix.dnmmod.Util.ModCapabilities;
 import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
 import net.chixozhmix.dnmmod.registers.*;
 import net.chixozhmix.dnmmod.items.CreativeTabMod;
@@ -45,13 +44,8 @@ public class DnMmod
 
         MinecraftForge.EVENT_BUS.register(this);
 
+        //Config
         SpellComponentConfig.register();
-
-        ModCapabilities.isTravelOpticsLoaded();
-        ModCapabilities.isGeomancyPlusLoaded();
-        ModCapabilities.isAlshanexFamiliarsLoaded();
-        ModCapabilities.isAlexsCavesLoaded();
-
         //Sounds
         SoundsRegistry.register(modEventBus);
         //Entity
