@@ -169,9 +169,9 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
                 40,
                 140,
                 200,
-                35,
+                40,
                 10.0F,
-                25.0F
+                20.0F
         );
 
         setSpawnTimer(timer);
@@ -459,8 +459,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         if (!this.level().isClientSide) {
             float scale = this.getScale();
             Vec3 vec3 = this.position();
-            if (this.deathTime >= 40 && !this.level().isClientSide() && !this.isRemoved()) {
-
+            if (this.deathTime >= 60 && !this.level().isClientSide() && !this.isRemoved()) {
                 this.remove(RemovalReason.KILLED);
                 MagicManager.spawnParticles(this.level(), (ParticleOptions)ParticleTypes.SOUL, vec3.x, vec3.y + (double)1.0F, vec3.z, 50, 0.3, 0.3, 0.3, 0.2 * (double)scale, true);
             }

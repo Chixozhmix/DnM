@@ -197,8 +197,6 @@ public class ScrollTableRecipe implements Recipe<SimpleContainer> {
                 else if (element.isJsonArray()) {
                     // Обрабатываем JSON массивы
                     JsonArray array = element.getAsJsonArray();
-                    // Для простоты предположим, что массив содержит объекты
-                    // В вашем случае массив data содержит объекты со спеллами
                     net.minecraft.nbt.ListTag listTag = new net.minecraft.nbt.ListTag();
 
                     for (int i = 0; i < array.size(); i++) {

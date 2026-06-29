@@ -1,0 +1,43 @@
+{
+  "parent": "dnmmod:root",
+  "criteria": {
+    "killed_modeus": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "dnmmod:modeus"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.dnmmod.kill_modeus_descript"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "irons_spellbooks:eldritch_manuscript"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.dnmmod.kill_modeus"
+    }
+  },
+  "requirements": [
+    [
+      "killed_modeus"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}

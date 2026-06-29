@@ -46,7 +46,6 @@ public class ForestHeart extends Item implements IPresetSpellContainer {
                 pPlayer.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 400, 1));
                 pPlayer.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 600, 0));
 
-                // Устанавливаем кулдаун (1 секунда)
                 pPlayer.getCooldowns().addCooldown(this, 1200);
 
                 return InteractionResultHolder.success(itemstack);

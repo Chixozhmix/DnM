@@ -23,49 +23,35 @@ public class Key extends Item {
         super(pProperties);
     }
 
+    //Пока что не работает
     @Override
     public InteractionResult useOn(UseOnContext ctx) {
         Level world = ctx.getLevel();
         BlockPos pos = ctx.getClickedPos();
-        List<Lockable> match = (List) LocksUtil.intersecting(world, pos).collect(Collectors.toList());
-
+        List<Lockable> match = (List)LocksUtil.intersecting(world, pos).collect(Collectors.toList());
         if (match.isEmpty()) {
             return InteractionResult.PASS;
-        }
+        } else {
+            world.playSound(ctx.getPlayer(), pos, (SoundEvent)LocksSoundEvents.LOCK_OPEN.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+            if (world.isClientSide) {
+                return InteractionResult.SUCCESS;
+            } else {
+                for(Lockable lkb : match) {
+                    int complexityLevel = getComplexityLevel(lkb);
+                    if (complexityLevel > 0)
+                        return InteractionResult.FAIL;
+                    else
+                        lkb.lock.setLocked(!lkb.lock.isLocked());
+                }
 
-        ItemStack keyStack = ctx.getItemInHand();
+                if (!ctx.getPlayer().isCreative()) {
+                    ctx.getItemInHand().hurtAndBreak(1, ctx.getPlayer(),
+                            (player) -> player.broadcastBreakEvent(ctx.getHand()));
+                }
 
-        Lockable targetLock = match.get(0);
-
-        int lockComplexity = getComplexityLevel(targetLock);
-
-        if (lockComplexity > 0) {
-            if (!world.isClientSide) {
-                world.playSound(ctx.getPlayer(), pos,
-                        (SoundEvent) LocksSoundEvents.LOCK_RATTLE.get(),
-                        SoundSource.BLOCKS, 1.0F, 1.0F);
+                return InteractionResult.SUCCESS;
             }
-            return InteractionResult.FAIL;
         }
-
-        world.playSound(ctx.getPlayer(), pos,
-                (SoundEvent) LocksSoundEvents.LOCK_OPEN.get(),
-                SoundSource.BLOCKS, 1.0F, 1.0F);
-
-        if (world.isClientSide) {
-            return InteractionResult.SUCCESS;
-        }
-
-        if (!ctx.getPlayer().isCreative()) {
-            keyStack.hurtAndBreak(1, ctx.getPlayer(),
-                    (player) -> player.broadcastBreakEvent(ctx.getHand()));
-        }
-
-        for(Lockable lkb : match) {
-            lkb.lock.setLocked(!lkb.lock.isLocked());
-        }
-
-        return InteractionResult.SUCCESS;
     }
 
     @Override

@@ -122,7 +122,7 @@ public class BlockOfSealEntity extends BlockEntity {
     private void spawnCreature(ServerLevel level, BlockPos pos) {
         ModeusBoss modeusBoss = ModEntityType.MODEUS.get().create(level);
         if(modeusBoss != null) {
-            modeusBoss.setPos(pos.getX(), pos.getY() + 0.5, pos.getZ() + 2.0f);
+            modeusBoss.setPos(pos.getX(), pos.getY() + 0.5, pos.getZ() + 3.0f);
             modeusBoss.finalizeSpawn(level, level.getCurrentDifficultyAt(pos), MobSpawnType.SPAWNER, null, null);
             level.addFreshEntity(modeusBoss);
         }
