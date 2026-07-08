@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.registers;
 
+import io.redspace.ironslib.statue.block.statue_block.decorative.DecorativeStatueBlockEntity;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.blocks.entity.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -24,6 +25,10 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<LeshyAltarEntity>> LESHY_ALTAR = BLOCK_ENTITY.register("leshy_altar",
             () -> BlockEntityType.Builder.of(LeshyAltarEntity::new, ModBlocks.LESHY_ALTAR.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<DecorativeStatueBlockEntity>> WARRIOR_STATUE_BLOCK = BLOCK_ENTITY.register("warrior_statue",
+            () -> BlockEntityType.Builder.of(DecorativeStatueBlockEntity.from(ModBlockEntities.WARRIOR_STATUE_BLOCK),
+                    ModBlocks.WARRIOR_STATUE_BLOCK.get()).build(null));
 
 
     public static void register(IEventBus eventBus) {

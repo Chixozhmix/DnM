@@ -4,6 +4,7 @@ import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.blocks.client.SealedDoorModel;
 import net.chixozhmix.dnmmod.blocks.client.SealedDoorRenderer;
+import net.chixozhmix.dnmmod.blocks.client.statue.WarriorStatueRenderer;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarvaRenderer;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarvaRenderer;
@@ -72,11 +73,7 @@ public class ClientModEvents {
             CuriosRendererRegistry.register(ModItems.MAGICAL_GRIMOIRE.get(), SpellBookCurioRenderer::new);
 
             BlockEntityRenderers.register(ModBlockEntities.DOOR_OF_SEAL.get(), SealedDoorRenderer::new);
-
-//            ModCapabilities.isTravelOpticsLoaded();
-//            ModCapabilities.isGeomancyPlusLoaded();
-//            ModCapabilities.isAlshanexFamiliarsLoaded();
-//            ModCapabilities.isAlexsCavesLoaded();
+            BlockEntityRenderers.register(ModBlockEntities.WARRIOR_STATUE_BLOCK.get(), WarriorStatueRenderer::new);
         });
 
         EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);
