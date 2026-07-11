@@ -119,6 +119,10 @@ public class ModItems {
     public static final RegistryObject<Item> BLADESINGER_SWORD = ITEMS.register("bladesinger_sword", () ->
             new BladesingerSword(SpellDataRegistryHolder.of(new SpellDataRegistryHolder[]{
                     new SpellDataRegistryHolder(RegistrySpells.THICK_OF_FIGHT, 1)})));
+
+    public static final RegistryObject<Item> ICE_ARROW = ITEMS.register("ice_arrow",
+            () -> new IceArrow(PropertiesHelper.stackItemProperties(64)));
+
     //Staffs and wands
     public static final RegistryObject<Item> WOODEN_WAND = ITEMS.register("wooden_wand",
             () -> new WandItem(PropertiesHelper.stackItemProperties(1), WandTier.WOODEN_WAND));

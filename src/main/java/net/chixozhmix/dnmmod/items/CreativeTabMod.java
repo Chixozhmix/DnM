@@ -49,6 +49,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.DIAMOND_KATANA.get());
                         output.accept(ModItems.RITUAL_DAGGER.get());
                         output.accept(ModItems.BLADESINGER_SWORD.get());
+                        output.accept(ModItems.ICE_ARROW.get());
                     })
                     .build());
     public static final RegistryObject<CreativeModeTab> ARMOR_TAB = CREATIVE_MOD_TABS.register("armor",

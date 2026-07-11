@@ -27,6 +27,7 @@
   "item.dnmmod.diamond_katana": "Алмазная катана",
   "item.dnmmod.ritual_dagger": "Ритуальный кинжал",
   "item.dnmmod.bladesinger_sword": "Меч Певца Клинков",
+  "item.dnmmod.ice_arrow": "Ледяная стрела",
 
 
   "item.dnmmod.hag_eye": "Глаз Карги",
@@ -226,6 +227,8 @@
   "entity.dnmmod.red_crystal": "Краный кристалл",
   "entity.dnmmod.trident_strike_area": "Луч Силы",
 
+  "entity.dnmmod.ice_arrow_entity": "Ледяная стрела",
+
   "tooltip.dnmmod.maid": "Почему нет?",
   "tooltip.dnmmod.voile_of_death": "Когда ваша жизнь в опасности, духи смерти укрывают вас от неизбежной смерти.",
 
@@ -236,6 +239,7 @@
   "tooltip.dnmmod.waning_moon_armor": "Круг Луны никогда не показывал себя днем. Друиды этого круга предпочитают собираться при луне, сторожа свои леса ночью, пока другие спят. Многие из них служат Лешим - древним духам природы и стражам леса.",
 
   "tooltip.dnmmod.waning_moon_armor.shift": "Когда комплект полон:\nЕсли у вас меньше 25% запаса маны: регенерация маны увеличивается на 30%. \nЕсли у вас меньше 30% здоровья: время восстановления заклинаний уменьшается на 20%.",
+
   "tooltip.dnmmod.down_shift": "Нажмите Shift для подробностей",
 
   "ui.dnmmod.bounces": "Отскакиваний: %d",

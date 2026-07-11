@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.entity.custom.IceArrowEntity;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
@@ -46,6 +47,7 @@ public class ModEntityType {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, DnMmod.MOD_ID);
 
+    //Spells
     public static final RegistryObject<EntityType<CloudDagger>> MAGIC_DAGGER =
             ENTITY_TYPES.register("magic_dagger",
                     () -> EntityType.Builder.<CloudDagger>of(CloudDagger::new, MobCategory.MISC)
@@ -110,6 +112,14 @@ public class ModEntityType {
                             .sized(2.0F, 2.0F)
                             .clientTrackingRange(64)
                             .build("tombstone"));
+
+    //ItemEntity
+    public static final RegistryObject<EntityType<IceArrowEntity>> ICE_ARROW_ENTITY = ENTITY_TYPES.register("ice_arrow_entity",
+            () -> EntityType.Builder.<IceArrowEntity>of(IceArrowEntity::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f)
+                    .clientTrackingRange(4)
+                    .updateInterval(20)
+                    .build("ice_arrow"));
 
 
     //Mobs

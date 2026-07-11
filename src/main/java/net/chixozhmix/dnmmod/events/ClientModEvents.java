@@ -41,6 +41,7 @@ import net.chixozhmix.dnmmod.entity.summoned.client.SummonedRavenModel;
 import net.chixozhmix.dnmmod.entity.summoned.client.SummonedRavenRenderer;
 import net.chixozhmix.dnmmod.entity.summoned.client.SummonedUndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserverRenderer;
+import net.chixozhmix.dnmmod.items.client.arrows.IceArrowRenderer;
 import net.chixozhmix.dnmmod.particle.RavenParticle;
 import net.chixozhmix.dnmmod.particle.ShieldParticle;
 import net.chixozhmix.dnmmod.registers.*;
@@ -49,6 +50,7 @@ import net.chixozhmix.dnmmod.screen.medium_bag.MediumBagScreen;
 import net.chixozhmix.dnmmod.screen.scroll_table.ScrollTableScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -87,6 +89,8 @@ public class ClientModEvents {
         EntityRenderers.register(ModEntityType.TOMBSTONE.get(), TombstoneRenderer::new);
         EntityRenderers.register(ModEntityType.RED_CRYSTAL.get(), RedCristallRenderer::new);
         EntityRenderers.register(ModEntityType.TRIDENT_STRIKE_AREA.get(), TridentStrikeAreaRenderer::new);
+
+        EntityRenderers.register(ModEntityType.ICE_ARROW_ENTITY.get(), IceArrowRenderer::new);
 
         EntityRenderers.register(ModEntityType.UNDEAD_SPIRIT.get(), UndeadSpiritRenderer::new);
         EntityRenderers.register(ModEntityType.SUMMONED_UNDEAD_SPIRIT.get(), SummonedUndeadSpiritRenderer::new);

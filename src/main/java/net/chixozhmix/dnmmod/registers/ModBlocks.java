@@ -1,7 +1,6 @@
 package net.chixozhmix.dnmmod.registers;
 
 import io.redspace.ironslib.statue.block.statue_block.AbstractStatueBlock;
-import io.redspace.ironslib.statue.block.statue_block.decorative.DecorativeStatueBlock;
 import io.redspace.ironslib.statue.block.statue_block.decorative.DecorativeStatueBlockEntity;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.blocks.custom.*;

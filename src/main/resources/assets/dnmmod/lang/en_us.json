@@ -27,6 +27,7 @@
   "item.dnmmod.diamond_katana": "Diamond katana",
   "item.dnmmod.ritual_dagger": "Ritual dagger",
   "item.dnmmod.bladesinger_sword": "Bladesinger sword",
+  "item.dnmmod.ice_arrow": "Ice arrow",
 
   "item.dnmmod.hag_eye": "Hag Eye",
   "item.dnmmod.forest_heart": "Forest Heart",
@@ -222,6 +223,8 @@
   "entity.dnmmod.summon_darkspawn_larva": "Summon darkspawn larva",
   "entity.dnmmod.red_crystal": "Red crystal",
   "entity.dnmmod.trident_strike_area": "Beam of Power",
+
+  "entity.dnmmod.ice_arrow_entity": "Ice arrow",
 
   "tooltip.dnmmod.maid": "Why not?",
   "tooltip.dnmmod.voile_of_death": "When your life is in danger, the spirits of death protect you from inevitable death.",
