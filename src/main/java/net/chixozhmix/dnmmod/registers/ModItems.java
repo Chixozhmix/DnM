@@ -203,6 +203,8 @@ public class ModItems {
             new Item(PropertiesHelper.stackItemProperties(64)));
     public static final RegistryObject<Item> TAINTED_KEY = ITEMS.register("tainted_key", () ->
             new Item(PropertiesHelper.stackItemProperties(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> ICE_STRING = ITEMS.register("ice_string", () ->
+            new Item(PropertiesHelper.stackItemProperties(64)));
     //Potions
     public static final RegistryObject<Item> PHANTOM_POTION = ITEMS.register("phantom_potion",
             () -> new SimpleElixir(ItemPropertiesHelper.material(), () ->

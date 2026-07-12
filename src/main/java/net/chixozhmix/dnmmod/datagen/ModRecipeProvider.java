@@ -250,6 +250,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('O', Items.OBSIDIAN)
                 .unlockedBy("has_obsidian", has(Items.OBSIDIAN))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ICE_ARROW.get())
+                .pattern(" I ")
+                .pattern(" F ")
+                .pattern(" S ")
+                .define('I', Items.IRON_NUGGET)
+                .define('F', ItemRegistry.FROZEN_BONE_SHARD.get())
+                .define('S', ModItems.ICE_STRING.get())
+                .unlockedBy("has_ice_string", has(ModItems.ICE_STRING.get()))
+                .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WAND_CORE.get(), 1)
                 .pattern("  A")
                 .pattern(" M ")
