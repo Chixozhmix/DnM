@@ -13,11 +13,11 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 
-public class WarriorStatueRenderer implements BlockEntityRenderer<DecorativeStatueBlockEntity> {
+public class WizardStatueRenderer implements BlockEntityRenderer<DecorativeStatueBlockEntity> {
     StaticModel model;
 
-    public WarriorStatueRenderer(BlockEntityRendererProvider.Context context) {
-        this.model = new StaticModel(DnMmod.id("geo/warrior_statue_geo.json"), DnMmod.id("textures/block/statues/warrior_statue.png"));
+    public WizardStatueRenderer(BlockEntityRendererProvider.Context context) {
+        this.model = new StaticModel(DnMmod.id("geo/wizard_statue_geo.json"), DnMmod.id("textures/block/statues/wizard_statue.png"));
 
     }
 

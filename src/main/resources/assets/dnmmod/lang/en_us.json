@@ -169,6 +169,9 @@
   "item.dnmmod.the_hag_disc": "The Hag Music Disc",
   "item.dnmmod.the_hag_disc.desc": "Gonich - The Hag",
 
+  "painting.dnmmod.golden_city.title": "Golden City",
+  "painting.dnmmod.golden_city.author": "Chixozhmix",
+
   "block.dnmmod.clay_shale": "Clay shale",
   "block.dnmmod.leshy_altar": "Leshy Altar",
   "block.dnmmod.scroll_table": "Scroll table",
@@ -177,6 +180,7 @@
   "block.dnmmod.antibuilder_block": "Antibuilder block",
   "block.dnmmod.block_of_seal": "Block of Seal",
   "block.dnmmod.warrior_statue": "Warrior statue",
+  "block.dnmmod.wizard_statue": "Wizard statue",
 
   "entity.dnmmod.cloud_dagger": "Magic Dagger",
   "entity.dnmmod.ice_dagger": "Ice dagger",

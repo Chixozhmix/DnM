@@ -44,6 +44,13 @@ public class ModBlocks {
                     return new DecorativeStatueBlockEntity(ModBlockEntities.WARRIOR_STATUE_BLOCK.get(), pPos, pState);
                 }
             });
+    public static final RegistryObject<AbstractStatueBlock> WIZARD_STATUE_BLOCK =
+            registerBlock("wizard_statue", () -> new AbstractStatueBlock(1, 2, 1) {
+                @Override
+                public @Nullable BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+                    return new DecorativeStatueBlockEntity(ModBlockEntities.WIZARD_STATUE_BLOCK.get(), pPos, pState);
+                }
+            });
 
 
     public static final RegistryObject<Block> SCROLL_TABLE = registerBlock("scroll_table", () ->

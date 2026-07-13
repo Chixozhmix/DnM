@@ -175,6 +175,7 @@ public class CreativeTabMod {
                         output.accept(ModBlocks.DOOR_OF_SEAL.get());
                         output.accept(ModBlocks.BLOCK_OF_SEAL.get());
                         output.accept(ModBlocks.WARRIOR_STATUE_BLOCK.get());
+                        output.accept(ModBlocks.WIZARD_STATUE_BLOCK.get());
                     })
                     .build());
 

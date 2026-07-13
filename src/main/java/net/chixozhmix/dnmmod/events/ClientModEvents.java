@@ -5,6 +5,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.blocks.client.SealedDoorModel;
 import net.chixozhmix.dnmmod.blocks.client.SealedDoorRenderer;
 import net.chixozhmix.dnmmod.blocks.client.statue.WarriorStatueRenderer;
+import net.chixozhmix.dnmmod.blocks.client.statue.WizardStatueRenderer;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarvaRenderer;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarvaRenderer;
@@ -76,6 +77,7 @@ public class ClientModEvents {
 
             BlockEntityRenderers.register(ModBlockEntities.DOOR_OF_SEAL.get(), SealedDoorRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.WARRIOR_STATUE_BLOCK.get(), WarriorStatueRenderer::new);
+            BlockEntityRenderers.register(ModBlockEntities.WIZARD_STATUE_BLOCK.get(), WizardStatueRenderer::new);
         });
 
         EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);

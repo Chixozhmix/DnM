@@ -52,6 +52,7 @@ public class DnMmod
         ModEntityType.register(modEventBus);
         //Items
         ModItems.register(modEventBus);
+        ModPaintings.register(modEventBus);
         //Blocks
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);

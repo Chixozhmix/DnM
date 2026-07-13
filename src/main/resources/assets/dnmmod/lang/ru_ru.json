@@ -29,7 +29,6 @@
   "item.dnmmod.bladesinger_sword": "Меч Певца Клинков",
   "item.dnmmod.ice_arrow": "Ледяная стрела",
 
-
   "item.dnmmod.hag_eye": "Глаз Карги",
   "item.dnmmod.forest_heart": "Сердце Леса",
   "item.dnmmod.wand_core": "Сердцевина палочки",
@@ -172,6 +171,9 @@
   "item.dnmmod.the_hag_disc": "Пластинка Карги",
   "item.dnmmod.the_hag_disc.desc": "Gonich - The Hag",
 
+  "painting.dnmmod.golden_city.title": "Золотой Город",
+  "painting.dnmmod.golden_city.author": "Chixozhmix",
+
   "block.dnmmod.clay_shale": "Глинистый сланец",
   "block.dnmmod.leshy_altar": "Алтарь Лешего",
   "block.dnmmod.scroll_table": "Стол для свитков",
@@ -180,6 +182,7 @@
   "block.dnmmod.antibuilder_block": "Антибилдер",
   "block.dnmmod.block_of_seal": "Блок печати",
   "block.dnmmod.warrior_statue": "Статуя воина",
+  "block.dnmmod.wizard_statue": "Статуя мага",
 
   "entity.dnmmod.cloud_dagger": "Магический кинжал",
   "entity.dnmmod.ice_dagger": "Ледяной кинжал",

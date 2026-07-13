@@ -29,6 +29,9 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<DecorativeStatueBlockEntity>> WARRIOR_STATUE_BLOCK = BLOCK_ENTITY.register("warrior_statue",
             () -> BlockEntityType.Builder.of(DecorativeStatueBlockEntity.from(ModBlockEntities.WARRIOR_STATUE_BLOCK),
                     ModBlocks.WARRIOR_STATUE_BLOCK.get()).build(null));
+    public static final RegistryObject<BlockEntityType<DecorativeStatueBlockEntity>> WIZARD_STATUE_BLOCK = BLOCK_ENTITY.register("wizard_statue",
+            () -> BlockEntityType.Builder.of(DecorativeStatueBlockEntity.from(ModBlockEntities.WIZARD_STATUE_BLOCK),
+                    ModBlocks.WIZARD_STATUE_BLOCK.get()).build(null));
 
 
     public static void register(IEventBus eventBus) {

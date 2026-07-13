@@ -21,7 +21,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.CLAY_SHALE.get())
-                .add(ModBlocks.WARRIOR_STATUE_BLOCK.get());
+                .add(ModBlocks.WARRIOR_STATUE_BLOCK.get())
+                .add(ModBlocks.WIZARD_STATUE_BLOCK.get());
 
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL);
 
@@ -33,7 +34,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
         this.tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.CLAY_SHALE.get())
-                .add(ModBlocks.WARRIOR_STATUE_BLOCK.get());
+                .add(ModBlocks.WARRIOR_STATUE_BLOCK.get())
+                .add(ModBlocks.WIZARD_STATUE_BLOCK.get());
 
         this.tag(BlockTags.NEEDS_IRON_TOOL);
 
