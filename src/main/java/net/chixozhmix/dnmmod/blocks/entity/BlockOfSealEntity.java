@@ -6,11 +6,13 @@ import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.registers.ModBlockEntities;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -120,10 +122,56 @@ public class BlockOfSealEntity extends BlockEntity {
     }
 
     private void spawnCreature(ServerLevel level, BlockPos pos) {
+        Player player = level.getNearestPlayer(
+                pos.getX() + 0.5,
+                pos.getY() + 0.5,
+                pos.getZ() + 0.5,
+                32.0,
+                false
+        );
+
+        if (player == null) {
+            return;
+        }
+
+        Direction direction = Direction.getNearest(
+                player.getX() - (pos.getX() + 0.5),
+                0,
+                player.getZ() - (pos.getZ() + 0.5)
+        );
+
+        double spawnX = pos.getX() + 0.5 + direction.getStepX() * 2.5;
+        double spawnY = pos.getY() + 0.5;
+        double spawnZ = pos.getZ() + 0.5 + direction.getStepZ() * 2.5;
+
         ModeusBoss modeusBoss = ModEntityType.MODEUS.get().create(level);
-        if(modeusBoss != null) {
-            modeusBoss.setPos(pos.getX(), pos.getY() + 0.5, pos.getZ() + 3.0f);
-            modeusBoss.finalizeSpawn(level, level.getCurrentDifficultyAt(pos), MobSpawnType.SPAWNER, null, null);
+
+        if (modeusBoss != null) {
+
+            double dx = player.getX() - spawnX;
+            double dz = player.getZ() - spawnZ;
+            float yaw = (float) (Math.toDegrees(Math.atan2(dz, dx)) - 90.0F);
+
+            modeusBoss.moveTo(
+                    spawnX,
+                    spawnY,
+                    spawnZ,
+                    yaw,
+                    0.0F
+            );
+
+            modeusBoss.setYRot(yaw);
+            modeusBoss.setYHeadRot(yaw);
+            modeusBoss.setYBodyRot(yaw);
+
+            modeusBoss.finalizeSpawn(
+                    level,
+                    level.getCurrentDifficultyAt(pos),
+                    MobSpawnType.SPAWNER,
+                    null,
+                    null
+            );
+
             level.addFreshEntity(modeusBoss);
         }
     }

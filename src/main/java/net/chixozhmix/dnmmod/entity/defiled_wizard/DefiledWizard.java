@@ -48,7 +48,7 @@ public class DefiledWizard extends AbstractSpellCastingMob implements Enemy, IAn
             .add(Attributes.ATTACK_KNOCKBACK, (double)0.03F)
             .add(Attributes.MAX_HEALTH, (double)30.0F)
             .add(Attributes.FOLLOW_RANGE, (double)35.0F)
-            .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)0.4F)
+            .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)0.3F)
             .add(Attributes.MOVEMENT_SPEED, (double)0.25F);
 
     public DefiledWizard(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
@@ -106,11 +106,11 @@ public class DefiledWizard extends AbstractSpellCastingMob implements Enemy, IAn
     protected void registerGoals() {
         this.goalSelector.addGoal(1, (new WizardAttackGoal(this, (double)1.25F, 35, 60))
                 .setSpells(
-                        List.of(SpellRegistry.MAGIC_MISSILE_SPELL.get(), SpellRegistry.STARFALL_SPELL.get()),
+                        List.of(SpellRegistry.MAGIC_MISSILE_SPELL.get()),
                         List.of(SpellRegistry.COUNTERSPELL_SPELL.get()),
                         List.of(SpellRegistry.TELEPORT_SPELL.get()),
                         List.of(SpellRegistry.EVASION_SPELL.get()))
-                .setSingleUseSpell(RegistrySpells.HUNGER_OF_HADAR.get(), 100, 350, 2, 3));
+                .setSingleUseSpell(RegistrySpells.HUNGER_OF_HADAR.get(), 100, 350, 1, 2));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, (double)1.0F));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));

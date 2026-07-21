@@ -1,0 +1,15 @@
+{
+  "name": "dnmmod:tainted_temple/rooms_coridor_pool_coridors",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "dnmmod:tainted_temple/coridors",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

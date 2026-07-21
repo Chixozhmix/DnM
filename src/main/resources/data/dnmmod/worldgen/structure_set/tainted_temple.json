@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "dnmmod:tainted_temple",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1261520434,
+    "spacing": 50,
+    "separation": 30,
+    "type": "minecraft:random_spread"
+  }
+}

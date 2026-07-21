@@ -7,16 +7,33 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:written_book",
-          "conditions": [
-            {
-              "condition": "minecraft:random_chance",
-              "chance": 0.4
-            }
-          ],
+          "weight": 3,
           "functions": [
             {
               "function": "minecraft:set_nbt",
               "tag": "{\"pages\":[\"{\\\"translate\\\":\\\"book.dnmmod.temple_book_1.page1\\\"}\"],\"title\":\"Untitled\",\"author\":\"unknown\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{\"pages\":[\"{\\\"translate\\\":\\\"book.dnmmod.temple_book_2.page1\\\"}\",\"{\\\"translate\\\":\\\"book.dnmmod.temple_book_2.page2\\\"}\"],\"title\":\"Untitled\",\"author\":\"unknown\"}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "weight": 7,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{\"pages\":[\"{\\\"translate\\\":\\\"book.dnmmod.temple_book_3.page1\\\"}\",\"{\\\"translate\\\":\\\"book.dnmmod.temple_book_3.page2\\\"}\",\"{\\\"translate\\\":\\\"book.dnmmod.temple_book_3.page3\\\"}\",\"{\\\"translate\\\":\\\"book.dnmmod.temple_book_3.page4\\\"}\"],\"title\":\"Untitled\",\"author\":\"unknown\"}"
             }
           ]
         }

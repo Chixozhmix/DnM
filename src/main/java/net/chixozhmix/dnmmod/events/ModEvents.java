@@ -82,5 +82,9 @@ public class ModEvents {
                 Mob::checkMobSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(ModEntityType.SMALL_ICE_SPIDER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 ModSpawnRule::CastingMonsterSpawnRule, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(ModEntityType.DEFILED_WIZARD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                ModSpawnRule::CastingMonsterSpawnRule, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(ModEntityType.DARKSPAWN_LARVA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                ModSpawnRule::CastingMonsterSpawnRule, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 }

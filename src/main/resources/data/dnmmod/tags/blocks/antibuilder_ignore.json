@@ -3,6 +3,8 @@
   "values": [
     "dnmmod:antibuilder_block",
     "dnmmod:door_of_seal",
-    "dnmmod:unbreaking_bricks"
+    "dnmmod:unbreaking_bricks",
+    "minecraft:structure_block",
+    "minecraft:jigsaw"
   ]
 }

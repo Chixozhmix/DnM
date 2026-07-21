@@ -1,0 +1,15 @@
+{
+  "name": "dnmmod:tainted_temple/workshops_storage_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "dnmmod:tainted_temple/storage",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

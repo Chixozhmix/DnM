@@ -171,6 +171,8 @@
 
   "painting.dnmmod.golden_city.title": "Golden City",
   "painting.dnmmod.golden_city.author": "Chixozhmix",
+  "painting.dnmmod.urtimiel.title": "Urtimiel",
+  "painting.dnmmod.urtimiel.author": "Chixozhmix",
 
   "block.dnmmod.clay_shale": "Clay shale",
   "block.dnmmod.leshy_altar": "Leshy Altar",
@@ -319,7 +321,15 @@
   "book.dnmmod.priest.page3": "destroying my body and enslaving my mind. Yet I will not yield. I have sealed the Hall of Glory to trap it inside. And even when my body changes, even when my mind no longer belongs to me, I will stand here.\n\nFor only thus can I earn forgiveness for what",
   "book.dnmmod.priest.page4": "we have done.",
 
-  "book.dnmmod.temple_book_1.page1": "This is the bottomless abyss, the well of all souls. From these emerald waters, new life is born. Come to me, child, let me embrace you. Eternity is in my arms.",
+  "book.dnmmod.temple_book_1.page1": "Behold the bottomless abyss, the wellspring of all souls. From these emerald waters, new life is born. Come to me, child, let me embrace you. Within my embrace lies Eternity.",
+
+  "book.dnmmod.temple_book_2.page1": "Elluvis shines down upon us from the heavens, guiding us toward the true beauty of nature and the world. Urtimiel gazes through the eyes of that radiant maiden in the sky, guiding us, teaching us. Blessed be those who bring forth life,",
+  "book.dnmmod.temple_book_2.page2": "and those who carry His word of beauty into the world. Urtimiel is our prince, and He grants His blessing to all who were born beneath Elluvis, for those are His stars, His eyes.\n\nHow sorrowful... it has been many years since I last beheld Him...",
+
+  "book.dnmmod.temple_book_3.page1": "She is beautiful, isn't she? The girl, the painting upon the wall, the view beyond the window. Beautiful, yes?\n\nHave you ever beheld beauty?\n\nYes, you have gazed upon the works of great artists, seen women",
+  "book.dnmmod.temple_book_3.page2": "of breathtaking beauty, and men as well. You have seen magnificent landscapes, enchanting beasts—but none of that is true beauty.\n\nTrue beauty does not reveal itself. It is hidden, concealed",
+  "book.dnmmod.temple_book_3.page3": "from curious eyes, from eyes unprepared. To behold true beauty is to risk blindness, madness, even death. Yes... true beauty is granted only to the chosen.",
+  "book.dnmmod.temple_book_3.page4": "It dwells within the shadows. It is grotesque and formless. It is magnificent and abhorrent.\n\nHave you ever beheld true beauty? Come. Let me show you.\n\nAnd you will never again be able to look upon a human face.",
 
   "book.dnmmod.modeus.page1": "I didn't know I didn't know I didn't know I didn't know I didn't know\n\nWhat a fool I am!\n\nWe had to find the light, we had to see the beauty...\n\nYou promised me... promised that I would see the true beauty,",
   "book.dnmmod.modeus.page2": "inaccessible to a mortal...\n\nI saw the city. It has seven gates and thousands of towers. I know this city. I saw him in my dreams.\n\nI know it because I've been building it myself ever since I heard you whisper.",

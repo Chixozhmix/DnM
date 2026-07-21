@@ -5,6 +5,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.world.structure.BaldHillStructure;
 import net.chixozhmix.dnmmod.world.structure.LeshyAltarStructure;
 import net.chixozhmix.dnmmod.world.structure.ShamanHouseStructure;
+import net.chixozhmix.dnmmod.world.structure.TaintedTempleStructure;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
@@ -21,6 +22,9 @@ public class ModStructures {
             () -> explicitStructureTypeTyping(ShamanHouseStructure.CODEC));
     public static final RegistryObject<StructureType<LeshyAltarStructure>> LESHY_ALTAR_STRUCTURE = STRUCTURE_TYPE.register("lesy_altar_structure",
             () -> explicitStructureTypeTyping(LeshyAltarStructure.CODEC));
+
+    public static final RegistryObject<StructureType<TaintedTempleStructure>> TAINTED_TEMPLE_STRUCTURE = STRUCTURE_TYPE.register("tainted_temple_structure",
+            () -> explicitStructureTypeTyping(TaintedTempleStructure.CODEC));
 
     private static <T extends Structure> StructureType<T> explicitStructureTypeTyping(Codec<T> structureCodec) {
         return () -> structureCodec;

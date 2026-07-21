@@ -13,6 +13,8 @@ public class ModPaintings {
 
     public static final RegistryObject<PaintingVariant> GOLDEN_CITY = PAINTING.register("golden_city", () ->
             new PaintingVariant(32, 64));
+    public static final RegistryObject<PaintingVariant> URTIMIEL = PAINTING.register("urtimiel", () ->
+            new PaintingVariant(32, 64));
 
     public static void register(IEventBus eventBus) {
         PAINTING.register(eventBus);
