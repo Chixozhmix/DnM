@@ -409,7 +409,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
                 --this.spawnTimer;
                 if(spawnTimer == 0 && !this.level().isClientSide) {
                     this.spawnDarkspawn(true);
-                    this.spawnDarkspawn(false);
+                    //this.spawnDarkspawn(false);
                     setSpawnTimer(timer);
                     }
             }

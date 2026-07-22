@@ -1,8 +1,10 @@
 package net.chixozhmix.dnmmod.Util;
 
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import net.chixozhmix.dnmmod.compat.Curios;
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
 import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
+import net.chixozhmix.dnmmod.registers.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
@@ -11,6 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import top.theillusivec4.curios.api.CuriosApi;
 
 public class SpellUtils {
     //Проверка компонентов для заклинания
@@ -39,17 +42,32 @@ public class SpellUtils {
             return false;
         }
 
-        // Проверяем сумки в инвентаре
+        // Проверяем обычный инвентарь
         for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
             ItemStack stack = player.getInventory().getItem(i);
-            if (stack.getItem() instanceof ComponentBag || stack.getItem() instanceof MediumComponentBag) {
+
+            if (stack.getItem() instanceof ComponentBag ||
+                    stack.getItem() instanceof MediumComponentBag) {
+
                 if (containsItemInBag(stack, item)) {
                     return true;
                 }
             }
         }
 
-        return false;
+        // Проверяем Curios
+        return CuriosApi.getCuriosInventory(player)
+                .map(curios ->
+                        curios.getStacksHandler(Curios.BAG_SLOT)
+                                .map(handler -> {
+                                    ItemStack stack = handler.getStacks().getStackInSlot(0);
+                                    return ((stack.getItem() instanceof ComponentBag) ||
+                                            (stack.getItem() instanceof MediumComponentBag))
+                                            && containsItemInBag(stack, item);
+                                })
+                                .orElse(false)
+                )
+                .orElse(false);
     }
 
     private static boolean containsItemInBag(ItemStack bagStack, Item item) {

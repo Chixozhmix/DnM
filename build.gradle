@@ -122,11 +122,13 @@ dependencies {
     implementation fg.deobf("curse.maven:puffish-attributes-991341:7437975")
 
     implementation fg.deobf("maven.modrinth:9nfaJPtX:DbpRfa2k")
+    //implementation fg.deobf("maven.modrinth:9nfaJPtX:FPYSRrdq")
 
     //Optional
     compileOnly fg.deobf('maven.modrinth:citadel:2.6.1')
     compileOnly fg.deobf("curse.maven:to-tweaks-irons-spells-1046916:7413341")
-    compileOnly fg.deobf("curse.maven:alshanexs-familiars-1171602:7413465")
+    compileOnly fg.deobf("curse.maven:alshanexs-familiars-1171602:7481428")
+    compileOnly fg.deobf("curse.maven:familiarslib-1316458:7696453")
     compileOnly fg.deobf('maven.modrinth:l_enders-cataclysm:NvvXful4')
     compileOnly fg.deobf('maven.modrinth:lionfish-api:2.4')
     compileOnly fg.deobf('maven.modrinth:alexs-caves:2.0.2')
@@ -139,7 +141,8 @@ dependencies {
     runtimeOnly fg.deobf("maven.modrinth:DYtfQEYj:VczKVetv")
 //    runtimeOnly fg.deobf('maven.modrinth:citadel:2.6.1')
 //    runtimeOnly fg.deobf("curse.maven:to-tweaks-irons-spells-1046916:7413341")
-//    runtimeOnly fg.deobf("curse.maven:alshanexs-familiars-1171602:7413465")
+//    runtimeOnly fg.deobf("curse.maven:alshanexs-familiars-1171602:7481428")
+//    runtimeOnly fg.deobf("curse.maven:familiarslib-1316458:7696453")
 //    runtimeOnly fg.deobf('maven.modrinth:l_enders-cataclysm:NvvXful4')
 //    runtimeOnly fg.deobf('maven.modrinth:lionfish-api:2.4')
 //    runtimeOnly fg.deobf('maven.modrinth:alexs-caves:2.0.2')

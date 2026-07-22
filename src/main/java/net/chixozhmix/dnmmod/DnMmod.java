@@ -67,7 +67,7 @@ public class DnMmod
         //Recipes
         ModRecipes.register(modEventBus);
         //Necromancy
-//        DnMAttributes.ATTRIBUTES.register(modEventBus);
+        //DnMAttributes.ATTRIBUTES.register(modEventBus);
 //        DnMSchools.DNM_SCHOOLS.register(modEventBus);
         //Fluid
         Fluids.register(modEventBus);

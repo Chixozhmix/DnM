@@ -3,10 +3,13 @@ package net.chixozhmix.dnmmod.goals;
 import io.redspace.ironsspellbooks.entity.spells.void_tentacle.VoidTentacle;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.*;
@@ -118,31 +121,63 @@ public class TentacleModeusAttackGoal extends Goal {
      * Генерирует случайные позиции для спавна тентаклей вокруг босса
      */
     private void generateSpawnPositions() {
+        if (!(modeus.level() instanceof ServerLevel serverLevel)) {
+            return;
+        }
+
         spawnPositions.clear();
-        Vec3 bossPos = this.modeus.position();
+
+        Vec3 bossPos = modeus.position();
         Random random = new Random();
         List<Vec3> candidates = new ArrayList<>();
 
-        int maxAttempts = this.tentacleCount * 10;
+        int maxAttempts = tentacleCount * 10;
         int attempts = 0;
 
-        while (candidates.size() < this.tentacleCount && attempts < maxAttempts) {
+        while (candidates.size() < tentacleCount && attempts < maxAttempts) {
+
             double angle = random.nextDouble() * Math.PI * 2;
-            double distance = Math.sqrt(random.nextDouble()) * this.spawnRadius;
+            double distance = Math.sqrt(random.nextDouble()) * spawnRadius;
 
             double x = bossPos.x + Math.cos(angle) * distance;
             double z = bossPos.z + Math.sin(angle) * distance;
-            double y = bossPos.y;
 
-            Vec3 candidatePos = new Vec3(x, y, z);
+            BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(
+                    (int)Math.floor(x),
+                    (int)Math.floor(bossPos.y + 6),
+                    (int)Math.floor(z)
+            );
+
+            while (pos.getY() > serverLevel.getMinBuildHeight()) {
+                BlockState state = serverLevel.getBlockState(pos);
+
+                if (state.isFaceSturdy(serverLevel, pos, Direction.UP)) {
+                    break;
+                }
+
+                pos.move(0, -1, 0);
+            }
+
+            if (pos.getY() <= serverLevel.getMinBuildHeight()) {
+                attempts++;
+                continue;
+            }
+
+            Vec3 candidatePos = new Vec3(
+                    x,
+                    pos.getY() + 1,
+                    z
+            );
 
             boolean tooClose = false;
-            for (Vec3 existingPos : candidates) {
-                if (candidatePos.distanceTo(existingPos) < this.minDistanceBetweenTentacles) {
+
+            for (Vec3 existing : candidates) {
+                if (candidatePos.distanceTo(existing) < minDistanceBetweenTentacles) {
                     tooClose = true;
                     break;
                 }
             }
+
             if (!tooClose && candidatePos.distanceTo(bossPos) > 1.5) {
                 candidates.add(candidatePos);
             }
@@ -150,7 +185,7 @@ public class TentacleModeusAttackGoal extends Goal {
             attempts++;
         }
 
-        this.spawnPositions.addAll(candidates);
+        spawnPositions.addAll(candidates);
     }
 
     private void handleWarmup() {

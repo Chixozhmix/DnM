@@ -362,7 +362,7 @@ public class ModItems {
                             (double)1.0F, (double)-2.0F, Map.of((Attribute) AttributeRegistry.MANA_REGEN.get(),
                             new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, (double)0.25F,
                                     AttributeModifier.Operation.MULTIPLY_BASE),
-                            (Attribute) net.alshanex.alshanex_familiars.registry.AttributeRegistry.SOUND_SPELL_POWER.get(),
+                            (Attribute) net.alshanex.familiarslib.registry.AttributeRegistry.SOUND_SPELL_POWER.get(),
                             new AttributeModifier(WAND_UUID, ATTRIBUTE_NAME, 0.15,
                                     AttributeModifier.Operation.MULTIPLY_BASE)))));
             KAPELLMEISTER_WAND_CORE = Optional.of(ALSHANEX_ITEMS.get().register("kapellmeister_wand_core",

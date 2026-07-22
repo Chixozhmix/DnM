@@ -305,6 +305,9 @@
   "sounds.dnmmod.greemon": "Greemon",
   "sounds.dnmmod.leshy": "Leshy",
 
+  "curios.identifier.bag_slot": "Bag",
+  "curios.modifiers.bag_slot": "When equipped as Bag:",
+
   "school.dnmmod.necro": "Necromancy",
 
   "fluid_type.dnmmod.phantom_potion": "Phantom potion",

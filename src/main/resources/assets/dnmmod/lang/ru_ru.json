@@ -300,6 +300,9 @@
   "sounds.dnmmod.greemon": "Гримон",
   "sounds.dnmmod.leshy": "Леший",
 
+  "curios.identifier.bag_slot": "Мешочек",
+  "curios.modifiers.bag_slot": "Если надето в качестве мешочка:",
+
   "school.dnmmod.necro": "Некромантия",
 
   "fluid_type.dnmmod.phantom_potion": "Зелье фантома",
