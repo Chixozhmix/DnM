@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMobRenderer;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.entity.GeckoEmissiveRendererHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -21,14 +22,6 @@ public class StormAtronachRenderer extends AbstractSpellCastingMobRenderer {
     }
 
     @Override
-    public void preRender(PoseStack poseStack, AbstractSpellCastingMob animatable, BakedGeoModel model, MultiBufferSource bufferSource,
-                          VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green,
-                          float blue, float alpha) {
-        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red,
-                green, blue, alpha);
-    }
-
-    @Override
     public void actuallyRender(PoseStack poseStack, AbstractSpellCastingMob animatable, BakedGeoModel model, RenderType renderType,
                                MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight,
                                int packedOverlay, float red, float green, float blue, float alpha) {
@@ -37,13 +30,8 @@ public class StormAtronachRenderer extends AbstractSpellCastingMobRenderer {
                 bufferSource, buffer, isReRender, partialTick,
                 packedLight, packedOverlay, red, green, blue, alpha);
 
-        // Затем рендерим светящийся слой
-        if (!isReRender) {
-            VertexConsumer emissiveBuffer = bufferSource.getBuffer(RenderType.entityTranslucentEmissive(EMISSIVE_TEXTURE));
-            super.actuallyRender(poseStack, animatable, model, renderType,
-                    bufferSource, emissiveBuffer, true, partialTick,
-                    15728880, packedOverlay, red, green, blue, alpha);
-        }
+        GeckoEmissiveRendererHelper.renderEmissiveLayer(this, animatable, poseStack, model, renderType, bufferSource, isReRender, partialTick,
+                packedOverlay, red, green, blue, alpha, EMISSIVE_TEXTURE);
     }
 
     @Override

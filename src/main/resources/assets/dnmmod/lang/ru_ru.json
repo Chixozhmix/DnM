@@ -232,6 +232,7 @@
   "entity.dnmmod.summon_darkspawn_larva": "Призванная личинка порождения тьмы",
   "entity.dnmmod.red_crystal": "Краный кристалл",
   "entity.dnmmod.trident_strike_area": "Луч Силы",
+  "entity.dnmmod.hidden_tentacle": "Скрытый тентакль",
 
   "entity.dnmmod.ice_arrow_entity": "Ледяная стрела",
 
@@ -403,5 +404,8 @@
   "spell.dnmmod.summon_darkspawn_larva.guide": "Вы взываете к силам скверны, призывая на помощь ее воинов.",
 
   "spell.dnmmod.raven_step": "Вороний Шаг",
-  "spell.dnmmod.raven_step.guide": "Духи Матери Воронов утягивают вас за собой туда, куда вы смотрите."
+  "spell.dnmmod.raven_step.guide": "Духи Матери Воронов утягивают вас за собой туда, куда вы смотрите.",
+
+  "spell.dnmmod.eldritch_beams": "Лучи Скверны",
+  "spell.dnmmod.eldritch_beams.guide": "Сила пустоты извергается из вас смертоносными лучами."
 }

@@ -230,6 +230,7 @@
   "entity.dnmmod.summon_darkspawn_larva": "Summon darkspawn larva",
   "entity.dnmmod.red_crystal": "Red crystal",
   "entity.dnmmod.trident_strike_area": "Beam of Power",
+  "entity.dnmmod.hidden_tentacle": "Hidden tentacle",
 
   "entity.dnmmod.ice_arrow_entity": "Ice arrow",
 
@@ -408,5 +409,8 @@
   "spell.dnmmod.summon_darkspawn_larva.guide": "You call upon the forces of blight, summoning its warriors to your aid.",
 
   "spell.dnmmod.raven_step": "Raven Step",
-  "spell.dnmmod.raven_step.guide": "The spirits of the Raven Mother pull you in the direction you're looking."
+  "spell.dnmmod.raven_step.guide": "The spirits of the Raven Mother pull you in the direction you're looking.",
+
+  "spell.dnmmod.eldritch_beams": "Rays of Corruption",
+  "spell.dnmmod.eldritch_beams.guide": "The power of the void is spewing deadly rays out of you."
 }

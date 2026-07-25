@@ -3,6 +3,7 @@ package net.chixozhmix.dnmmod.registers;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.spell.blood.*;
+import net.chixozhmix.dnmmod.spell.eldrich.EldritchBeams;
 import net.chixozhmix.dnmmod.spell.eldrich.HungerOfHadarSpell;
 import net.chixozhmix.dnmmod.spell.eldrich.SummonDarkspawnLarvaSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
@@ -48,6 +49,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> BURIAL_GROUND = registerSpell(new BurialGroundSpell());
     public static final RegistryObject<AbstractSpell> SUMMON_DARKSPAWN_LARVA = registerSpell(new SummonDarkspawnLarvaSpell());
     public static final RegistryObject<AbstractSpell> RAVEN_STEP_SPELL = registerSpell(new RavenStepSpell());
+    public static final RegistryObject<AbstractSpell> ELDRITCH_BEAMS = registerSpell(new EldritchBeams());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

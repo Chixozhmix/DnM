@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import io.redspace.ironsspellbooks.render.RenderHelper;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.entity.GeckoEmissiveRendererHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -38,12 +39,9 @@ public class ModeusRenderer extends GeoEntityRenderer<ModeusBoss> {
     @Override
     public void actuallyRender(PoseStack poseStack, ModeusBoss animatable, BakedGeoModel model, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         super.actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
-        if (!isReRender) {
-            VertexConsumer emissiveBuffer = bufferSource.getBuffer(RenderType.entityTranslucentEmissive(EMISSIVE_TEXTURE));
-            super.actuallyRender(poseStack, animatable, model, renderType,
-                    bufferSource, emissiveBuffer, true, partialTick,
-                    15728880, packedOverlay, red, green, blue, alpha);
-        }
+
+        GeckoEmissiveRendererHelper.renderEmissiveLayer(this, animatable, poseStack, model, renderType, bufferSource, isReRender, partialTick,
+                packedOverlay, red, green, blue, alpha, EMISSIVE_TEXTURE);
     }
 
     @Override

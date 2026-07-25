@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.IceArrowEntity;
+import net.chixozhmix.dnmmod.entity.hidden_tentacle.HiddenTentacleEntity;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
@@ -224,6 +225,12 @@ public class ModEntityType {
                             .sized(1.5f, 1.5f)
                             .clientTrackingRange(32)
                             .build("darkspawn_observer"));
+    public static final RegistryObject<EntityType<HiddenTentacleEntity>> HIDDEN_TENTACLE =
+            ENTITY_TYPES.register("hidden_tentacle", () ->
+                    EntityType.Builder.of(HiddenTentacleEntity::new, MobCategory.MONSTER)
+                            .sized(1.5f, 3.5f)
+                            .clientTrackingRange(32)
+                            .build("hidden_tentacle"));
 
     //SummonedMobs
     public static final RegistryObject<EntityType<SummonedUndeadSpirit>> SUMMONED_UNDEAD_SPIRIT =

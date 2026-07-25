@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.events;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.spawnrules.ModSpawnRule;
+import net.chixozhmix.dnmmod.entity.hidden_tentacle.HiddenTentacleEntity;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarva;
@@ -64,6 +65,7 @@ public class ModEvents {
         event.put(ModEntityType.DARKSPAWN_LARVA.get(), DarkspawnLarva.prepareAttributes().build());
         event.put(ModEntityType.DARKSPAWN_OBSERVER.get(), DarkspawnObserver.createAttributes());
         event.put(ModEntityType.SUMMON_DARKSPAWN_LARVA.get(), SummonDarkspawnLarva.prepareAttributes().build());
+        event.put(ModEntityType.HIDDEN_TENTACLE.get(), HiddenTentacleEntity.prepareAttributes().build());
     }
 
     @SubscribeEvent
@@ -85,6 +87,8 @@ public class ModEvents {
         event.register(ModEntityType.DEFILED_WIZARD.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 ModSpawnRule::CastingMonsterSpawnRule, SpawnPlacementRegisterEvent.Operation.REPLACE);
         event.register(ModEntityType.DARKSPAWN_LARVA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                ModSpawnRule::CastingMonsterSpawnRule, SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(ModEntityType.HIDDEN_TENTACLE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 ModSpawnRule::CastingMonsterSpawnRule, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 }

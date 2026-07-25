@@ -19,6 +19,7 @@ import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanRenderer;
 import net.chixozhmix.dnmmod.entity.goblin_warior.GoblinWariorRenderer;
 import net.chixozhmix.dnmmod.entity.greemon.GreemonRenderer;
 import net.chixozhmix.dnmmod.entity.green_hag.GreenHagRenderer;
+import net.chixozhmix.dnmmod.entity.hidden_tentacle.HiddenTentacleRenderer;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyRenderer;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusRenderer;
 import net.chixozhmix.dnmmod.entity.raven.RavenModel;
@@ -116,6 +117,7 @@ public class ClientModEvents {
         EntityRenderers.register(ModEntityType.DARKSPAWN_LARVA.get(), DarkspawnLarvaRenderer::new);
         EntityRenderers.register(ModEntityType.SUMMON_DARKSPAWN_LARVA.get(), SummonDarkspawnLarvaRenderer::new);
         EntityRenderers.register(ModEntityType.DARKSPAWN_OBSERVER.get(), DarkspawnObserverRenderer::new);
+        EntityRenderers.register(ModEntityType.HIDDEN_TENTACLE.get(), HiddenTentacleRenderer::new);
 
         MenuScreens.register(ModMenuTypes.COMPONENT_BAG_MENU.get(), ComponentBagScreen::new);
         MenuScreens.register(ModMenuTypes.MEDIUM_COMPONENT_BAG_MENU.get(), MediumBagScreen::new);

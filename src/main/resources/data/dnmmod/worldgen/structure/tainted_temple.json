@@ -26,6 +26,12 @@
           "weight": 2,
           "minCount": 1,
           "maxCount": 1
+        },
+        {
+          "type": "dnmmod:hidden_tentacle",
+          "weight": 3,
+          "minCount": 1,
+          "maxCount": 2
         }
       ]
     }

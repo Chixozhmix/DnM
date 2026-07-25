@@ -1,6 +1,5 @@
 package net.chixozhmix.dnmmod.blocks.entity;
 
-import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.chixozhmix.dnmmod.blocks.custom.BlockOfSeal;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.registers.ModBlockEntities;
@@ -37,7 +36,7 @@ public class BlockOfSealEntity extends BlockEntity {
 
             if(isLocked) {
                 entity.cooldownTimer++;
-                if(entity.cooldownTimer >= 1200) { // 60 секунд
+                if(entity.cooldownTimer >= 6000) { // 5 минут
                     level.setBlock(pos, blockState.setValue(BlockOfSeal.LOCKED, false), 3);
                     entity.cooldownTimer = 0;
                     entity.setChanged();

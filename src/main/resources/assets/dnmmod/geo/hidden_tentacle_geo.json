@@ -1,0 +1,53 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.hidden_tentacle",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 3,
+				"visible_bounds_offset": [0, -0.5, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-5, 0, -5], "size": [10, 21, 10], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "segment_1",
+					"parent": "root",
+					"pivot": [0, 19, 0],
+					"cubes": [
+						{"origin": [-4, 20, -4], "size": [8, 21, 8], "uv": [0, 31]}
+					]
+				},
+				{
+					"name": "segment_2",
+					"parent": "segment_1",
+					"pivot": [0, 41, 0],
+					"cubes": [
+						{"origin": [-3, 40, -3], "size": [6, 21, 6], "uv": [32, 31]}
+					]
+				},
+				{
+					"name": "segment_3",
+					"parent": "segment_2",
+					"pivot": [0, 61, 0],
+					"cubes": [
+						{"origin": [-1, 60, -1], "size": [2, 21, 2], "uv": [40, 0]}
+					]
+				},
+				{
+					"name": "segment_4",
+					"parent": "segment_3",
+					"pivot": [0, 80, 0]
+				}
+			]
+		}
+	]
+}
