@@ -1,16 +1,22 @@
 package net.chixozhmix.dnmmod.entity.modeus;
 
+import io.redspace.ironsspellbooks.api.network.IClientEventEntity;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
+import io.redspace.ironsspellbooks.api.util.BossbarManager;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMob;
 import io.redspace.ironsspellbooks.entity.mobs.goals.*;
+import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.ExtendedServerBossEvent;
 import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FireBossEntity;
+import io.redspace.ironsspellbooks.network.EntityEventPacket;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
+import io.redspace.ironsspellbooks.setup.PacketDistributor;
+import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
@@ -67,7 +73,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.List;
 
 
-public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker, IEntityAdditionalSpawnData, IBeamAttackMob {
+public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker, IEntityAdditionalSpawnData, IBeamAttackMob, IClientEventEntity {
     private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_IS_USING_KNOCKBACK =
@@ -83,6 +89,11 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     private static final EntityDataAccessor<Boolean> IS_USING_LOSS_MAGE =
             SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.BOOLEAN);
 
+    public static final byte CLIENT_STOP_TRACKING = 0;
+    public static final byte CLIENT_START_TRACKING = 1;
+
+    private static final BossbarManager.BossbarSprite BOSSBAR_SPRITE = new BossbarManager.BossbarSprite(DnMmod.id("boss_bars/modeus_boss_bar"), 192, 18, 3, -1);
+
     private boolean phaseTransitionTriggered = false;
     private boolean finalPhaseTransitionTriggered = false;
 
@@ -90,6 +101,8 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     private TentacleModeusAttackGoal tentackeAttackGoal;
 
     private Vec3 spawnPos = null;
+
+    private ExtendedServerBossEvent bossEvent;
 
     private int spawnTimer;
     private final int timer = 260;
@@ -125,8 +138,8 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     private final AnimationController<ModeusBoss> riseController;
     private final AnimationController<ModeusBoss> attackController;
 
-    private final ServerBossEvent bossEvent = new ServerBossEvent(Component.translatable("entity.dnmmod.modeus"),
-            BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
+//    private final ServerBossEvent bossEvent = new ServerBossEvent(Component.translatable("entity.dnmmod.modeus"),
+//            BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)10.0F)
@@ -154,6 +167,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.xpReward = 60;
         this.cache = GeckoLibUtil.createInstanceCache(this);
         this.customAnimationToPlay = null;
+        this.createBossEvent();
 
         this.halfHealth = this.getMaxHealth() / 1.5F;
         this.finalHealth = this.getMaxHealth() / 3.0F;
@@ -179,6 +193,28 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         if (this.isPhase(Phases.FirstPhase)) {
             this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.0F);
             this.getAttribute(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0F);
+        }
+    }
+
+
+    @Override
+    public void handleClientEvent(byte eventId) {
+        switch (eventId) {
+            case CLIENT_STOP_TRACKING -> {
+                BossbarManager.stopTracking(this.uuid);
+            }
+            case CLIENT_START_TRACKING -> {
+                BossbarManager.startTracking(this.uuid, BOSSBAR_SPRITE);
+            }
+        }
+    }
+
+    @Override
+    public void load(CompoundTag pCompound) {
+        super.load(pCompound);
+
+        if (!this.level().isClientSide) {
+            this.createBossEvent();
         }
     }
 
@@ -523,6 +559,10 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
             this.setPhaseValue(pCompound.getInt("BossPhase"));
         }
 
+        if (this.hasCustomName()) {
+            this.bossEvent.setName(this.getDisplayName());
+        }
+
         if (pCompound.contains("SpawnX")) {
             double x = pCompound.getDouble("SpawnX");
             double y = pCompound.getDouble("SpawnY");
@@ -850,12 +890,18 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     }
 
     /* BOSS BAR */
+    protected void createBossEvent() {
+        this.bossEvent = (ExtendedServerBossEvent) (new ExtendedServerBossEvent(this.getUUID(),
+                this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS))
+                .setDarkenScreen(true).setCreateWorldFog(true);
+    }
 
     @Override
     public void startSeenByPlayer(ServerPlayer pServerPlayer) {
         super.startSeenByPlayer(pServerPlayer);
 
         this.bossEvent.addPlayer(pServerPlayer);
+        PacketDistributor.sendToPlayer(pServerPlayer, new EntityEventPacket(this, (byte)1));
     }
 
     @Override
@@ -863,6 +909,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         super.stopSeenByPlayer(pServerPlayer);
 
         this.bossEvent.removePlayer(pServerPlayer);
+        PacketDistributor.sendToPlayer(pServerPlayer, new EntityEventPacket(this, (byte)0));
     }
 
     @Override

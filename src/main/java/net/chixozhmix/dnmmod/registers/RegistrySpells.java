@@ -5,6 +5,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.spell.blood.*;
 import net.chixozhmix.dnmmod.spell.eldrich.EldritchBeams;
 import net.chixozhmix.dnmmod.spell.eldrich.HungerOfHadarSpell;
+import net.chixozhmix.dnmmod.spell.eldrich.PsychicScreamSpell;
 import net.chixozhmix.dnmmod.spell.eldrich.SummonDarkspawnLarvaSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
 import net.chixozhmix.dnmmod.spell.fire.SummonFlameAtronach;
@@ -50,6 +51,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> SUMMON_DARKSPAWN_LARVA = registerSpell(new SummonDarkspawnLarvaSpell());
     public static final RegistryObject<AbstractSpell> RAVEN_STEP_SPELL = registerSpell(new RavenStepSpell());
     public static final RegistryObject<AbstractSpell> ELDRITCH_BEAMS = registerSpell(new EldritchBeams());
+    public static final RegistryObject<AbstractSpell> PSYCHIC_SCREAM = registerSpell(new PsychicScreamSpell());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

@@ -407,5 +407,8 @@
   "spell.dnmmod.raven_step.guide": "Духи Матери Воронов утягивают вас за собой туда, куда вы смотрите.",
 
   "spell.dnmmod.eldritch_beams": "Лучи Скверны",
-  "spell.dnmmod.eldritch_beams.guide": "Сила пустоты извергается из вас смертоносными лучами."
+  "spell.dnmmod.eldritch_beams.guide": "Сила пустоты извергается из вас смертоносными лучами.",
+
+  "spell.dnmmod.psychic_scream": "Психический крик",
+  "spell.dnmmod.psychic_scream.guide": "Вы издаете оглушительный крик, заставляющий врагов потерять рассудок"
 }

@@ -412,5 +412,8 @@
   "spell.dnmmod.raven_step.guide": "The spirits of the Raven Mother pull you in the direction you're looking.",
 
   "spell.dnmmod.eldritch_beams": "Rays of Corruption",
-  "spell.dnmmod.eldritch_beams.guide": "The power of the void is spewing deadly rays out of you."
+  "spell.dnmmod.eldritch_beams.guide": "The power of the void is spewing deadly rays out of you.",
+
+  "spell.dnmmod.psychic_scream": "Psychic Scream",
+  "spell.dnmmod.psychic_scream.guide": "You emit a deafening scream that makes your enemies lose their minds."
 }
