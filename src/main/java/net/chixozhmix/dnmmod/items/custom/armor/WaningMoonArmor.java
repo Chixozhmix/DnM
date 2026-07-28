@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.Util.Utils;
+import net.chixozhmix.dnmmod.api.misc.ISetArmor;
 import net.chixozhmix.dnmmod.items.UniqArmorMaterials;
 import net.chixozhmix.dnmmod.items.client.WaningMoonArmorModel;
 import net.minecraft.ChatFormatting;
@@ -25,7 +26,7 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import java.util.List;
 import java.util.UUID;
 
-public class WaningMoonArmor extends ImbuableChestplateArmorItem {
+public class WaningMoonArmor extends ImbuableChestplateArmorItem implements ISetArmor {
     private static final UUID MANA_REGEN_BONUS_UUID = UUID.fromString("a1b2c3d4-e5f6-7890-abcd-ef1234567890");
     private static final UUID COOLDOWN_BONUS_UUID = UUID.fromString("a1b2c3d1-e5f6-7890-abcd-ef1234647891");
 
@@ -44,7 +45,8 @@ public class WaningMoonArmor extends ImbuableChestplateArmorItem {
         }
     }
 
-    private void armorSetBonus(Player player) {
+    @Override
+    public void armorSetBonus(Player player) {
         float currentHealth = player.getHealth();
         float maxHealth = player.getMaxHealth();
         float healthPercentage = currentHealth / maxHealth;
@@ -89,7 +91,8 @@ public class WaningMoonArmor extends ImbuableChestplateArmorItem {
         }
     }
 
-    private void removeAllBonuses(Player player) {
+    @Override
+    public void removeAllBonuses(Player player) {
         AttributeInstance cooldownReduction = player.getAttribute(AttributeRegistry.COOLDOWN_REDUCTION.get());
         AttributeInstance manaRegen = player.getAttribute(AttributeRegistry.MANA_REGEN.get());
 
@@ -101,17 +104,6 @@ public class WaningMoonArmor extends ImbuableChestplateArmorItem {
             manaRegen.removeModifier(MANA_REGEN_BONUS_UUID);
         }
     }
-
-    /**Проверить, работает ли через утилиты**/
-
-//    private boolean hasFullSet(Player player) {
-//        ItemStack boots = player.getInventory().getArmor(0);
-//        ItemStack leggings = player.getInventory().getArmor(1);
-//        ItemStack chestplate = player.getInventory().getArmor(2);
-//        ItemStack helmet = player.getInventory().getArmor(3);
-//
-//        return !helmet.isEmpty() && !chestplate.isEmpty() && !leggings.isEmpty() && !boots.isEmpty();
-//    }
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {

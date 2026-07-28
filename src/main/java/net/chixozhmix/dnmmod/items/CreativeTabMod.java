@@ -80,6 +80,10 @@ public class CreativeTabMod {
                         output.accept(ModItems.WANING_MOON_CHESTPLATE.get());
                         output.accept(ModItems.WANING_MOON_LEGGINGS.get());
                         output.accept(ModItems.WANING_MOON_BOOTS.get());
+                        output.accept(ModItems.VESTMENTS_ARCHITECT_HELMET.get());
+                        output.accept(ModItems.VESTMENTS_ARCHITECT_CHESTPLATE.get());
+                        output.accept(ModItems.VESTMENTS_ARCHITECT_LEGGINGS.get());
+                        output.accept(ModItems.VESTMENTS_ARCHITECT_BOOTS.get());
                         output.accept(ModItems.VOILE_OF_DEATH.get());
                     })
                     .build());
@@ -163,6 +167,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.DEFILED_PRIEST_SPAWN_EGG.get());
                         output.accept(ModItems.DEFILED_WIZARD_SPAWN_EGG.get());
                         output.accept(ModItems.DARKSPAWN_LARVA_SPAWN_EGG.get());
+                        output.accept(ModItems.HIDDEN_TENTACLE_SPAWN_EGG.get());
                     })
                     .build());
     //Blocks

@@ -25,17 +25,17 @@ import net.chixozhmix.dnmmod.goals.*;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.registers.RegistrySpells;
+import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
@@ -137,9 +137,6 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     private final AnimationController<ModeusBoss> movementController;
     private final AnimationController<ModeusBoss> riseController;
     private final AnimationController<ModeusBoss> attackController;
-
-//    private final ServerBossEvent bossEvent = new ServerBossEvent(Component.translatable("entity.dnmmod.modeus"),
-//            BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_6);
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)10.0F)
@@ -495,7 +492,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         if (!this.level().isClientSide) {
             float scale = this.getScale();
             Vec3 vec3 = this.position();
-            if (this.deathTime >= 60 && !this.level().isClientSide() && !this.isRemoved()) {
+            if (this.deathTime >= 125 && !this.level().isClientSide() && !this.isRemoved()) {
                 this.remove(RemovalReason.KILLED);
                 MagicManager.spawnParticles(this.level(), (ParticleOptions)ParticleTypes.SOUL, vec3.x, vec3.y + (double)1.0F, vec3.z, 50, 0.3, 0.3, 0.3, 0.2 * (double)scale, true);
             }
@@ -887,6 +884,11 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         public String getAnimationName() {
             return animationName;
         }
+    }
+
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return SoundsRegistry.MODEUS_AMBIENT.get();
     }
 
     /* BOSS BAR */

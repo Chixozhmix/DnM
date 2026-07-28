@@ -269,6 +269,15 @@ public class ModItems {
     public static final RegistryObject<Item> WANING_MOON_BOOTS = ITEMS.register("waning_moon_boots", () ->
             new WaningMoonArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
 
+    public static final RegistryObject<Item> VESTMENTS_ARCHITECT_HELMET = ITEMS.register("vestments_architect_helmet", () ->
+            new VestmentsArchitectArmor(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties()));
+    public static final RegistryObject<Item> VESTMENTS_ARCHITECT_CHESTPLATE = ITEMS.register("vestments_architect_chestplate", () ->
+            new VestmentsArchitectArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties()));
+    public static final RegistryObject<Item> VESTMENTS_ARCHITECT_LEGGINGS = ITEMS.register("vestments_architect_leggings", () ->
+            new VestmentsArchitectArmor(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties()));
+    public static final RegistryObject<Item> VESTMENTS_ARCHITECT_BOOTS = ITEMS.register("vestments_architect_boots", () ->
+            new VestmentsArchitectArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
+
     public static final RegistryObject<Item> VOILE_OF_DEATH = ITEMS.register("voile_of_death", () ->
             new VoileOfDeathArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties().rarity(Rarity.RARE)));
 
@@ -317,6 +326,8 @@ public class ModItems {
             new ForgeSpawnEggItem(ModEntityType.DEFILED_PRIEST, 0x020B0D, 0x09313B, PropertiesHelper.stackItemProperties(64)));
     public static final RegistryObject<ForgeSpawnEggItem> DARKSPAWN_LARVA_SPAWN_EGG = ITEMS.register("darkspawn_larva_spawn_egg", () ->
             new ForgeSpawnEggItem(ModEntityType.DARKSPAWN_LARVA, 0x020B0D, 0x09313B, PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<ForgeSpawnEggItem> HIDDEN_TENTACLE_SPAWN_EGG = ITEMS.register("hidden_tentacle_spawn_egg", () ->
+            new ForgeSpawnEggItem(ModEntityType.HIDDEN_TENTACLE, 0x052121, 0x0C3636, PropertiesHelper.stackItemProperties(64)));
 
     //Music Discs
     public static final RegistryObject<Item> THE_HAG_MUSIC_DISC = ITEMS.register("the_hag_disc", () ->

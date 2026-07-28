@@ -80,6 +80,7 @@
   "item.dnmmod.defiled_wizard_spawn_egg": "Defiled wizard spawn egg",
   "item.dnmmod.defiled_priest_spawn_egg": "Defiled priest spawn egg",
   "item.dnmmod.darkspawn_larva_spawn_egg": "Darkspawn larva spawn egg",
+  "item.dnmmod.hidden_tentacle_spawn_egg": "Hidden tentacle spawn egg",
 
   "item.dnmmod.raven_feather": "Raven Feather",
   "item.dnmmod.burnt_sugar": "Burnt sugar",
@@ -127,6 +128,11 @@
   "item.dnmmod.waning_moon_chestplate": "Waning Moon chestplate",
   "item.dnmmod.waning_moon_leggings": "Waning Moon leggings",
   "item.dnmmod.waning_moon_boots": "Waning Moon boots",
+
+  "item.dnmmod.vestments_architect_helmet": "Architect hood",
+  "item.dnmmod.vestments_architect_chestplate": "Architect vestments",
+  "item.dnmmod.vestments_architect_leggings": "Architect leggings",
+  "item.dnmmod.vestments_architect_boots": "Architect boots",
 
   "item.dnmmod.voile_of_death": "Voile of death",
 
@@ -242,8 +248,11 @@
   "tooltip.dnmmod.wand_core": "In order for the wand to have magical properties, it needs to be powered. The core of the wand is made from various magical components that grant magical properties to the wand created by the caster.",
   "tooltip.dnmmod.forest_heart": "By killing a Leshy, which happens to a very small number of mortals, the killer can get a truly valuable thing - the Forest Heart, which has amazing properties to control plants and protect the lives of those who touch the ground.",
   "tooltip.dnmmod.waning_moon_armor": "The moon's circle never showed itself during the day. Druids of this circle prefer to gather by moonlight, guarding their forests at night while others sleep. Many of them serve the Leshy, the ancient spirits of nature and the guardians of the forest.",
+  "tooltip.dnmmod.vestments_architect": "The Architects of Beauty are the high priests of the Ancient God Urtimiel. They see the true beauty of the world - ugly and shapeless, devoid of everything that humans know about beauty.",
 
   "tooltip.dnmmod.waning_moon_armor.shift": "When full set:\nIf you have less than 25% mana reserve: Increases mana regeneration by 30%. \nIf you have less than 30% health: Reduces spell cooldown by 20%.",
+  "tooltip.dnmmod.vestments_architect.shift": "When full set:\nSpell Resist +20%. \nMax Health +6.\nImmunity to wither.\nWhen health drops below 30%, it creates an aura that affects everyone around it",
+
   "tooltip.dnmmod.down_shift": "Press Shift for more information",
 
   "ui.dnmmod.bounces": "Bounces: %d",

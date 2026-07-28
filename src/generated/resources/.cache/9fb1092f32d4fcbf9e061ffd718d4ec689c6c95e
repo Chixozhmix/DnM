@@ -1,4 +1,4 @@
-// 1.20.1	2026-05-19T16:37:34.3203683	Recipes
+// 1.20.1	2026-07-12T10:51:37.9674674	Recipes
 a238538041db1f523cd37b7af5ddc9a14ccf21c5 data/dnmmod/advancements/recipes/combat/bladesinger_sword.json
 66d9b096436d2f53c49785a5c55daa816a200934 data/dnmmod/advancements/recipes/combat/diamond_battleaxe.json
 98ae1d8dd16adc7d287c622589b5edc25b8bef65 data/dnmmod/advancements/recipes/combat/diamond_dagger.json
@@ -13,6 +13,7 @@ c959857d868b79b58ad2686dac55d664d6e1adb7 data/dnmmod/advancements/recipes/combat
 0ad440646169c8381f6439e010e65cd0aad834a4 data/dnmmod/advancements/recipes/combat/diamond_sickle.json
 a49ec79636a4da38707e3ddc4b84e4825a9362c6 data/dnmmod/advancements/recipes/combat/diamond_spear.json
 41900504b1a06829d28d4ba70d377eda37d5324f data/dnmmod/advancements/recipes/combat/diamond_trident.json
+89b211882ad304d1ee118d46463a6d306c78b7bc data/dnmmod/advancements/recipes/combat/ice_arrow.json
 f3a2fc3fb35d1a1e6bd7ed66dee7a4853a748460 data/dnmmod/advancements/recipes/combat/iron_battleaxe.json
 2cc6fbe9d8ef5776863af6f9f3df1c81cd3ccb8b data/dnmmod/advancements/recipes/combat/iron_dagger.json
 32ab931f8dfa4954ffc03f3c3c7f4a7636042a93 data/dnmmod/advancements/recipes/combat/iron_glaive.json
@@ -100,6 +101,7 @@ a1edfb9c79b2581c418cdfd5d08724d548eac6b7 data/dnmmod/recipes/ender_wand.json
 fa8cfa6b6c2fb36d5269ec213b532f2ef050565f data/dnmmod/recipes/ender_wand_core.json
 ddbba40cc092b4db2fdcd83a56a26b9adaf83c5f data/dnmmod/recipes/evoker_wand.json
 005603180772fcc1418fe13fb0f430320f16114c data/dnmmod/recipes/evoker_wand_core.json
+a1cad78f4a18aa8941547f4a4b273caa59b44c01 data/dnmmod/recipes/ice_arrow.json
 8cb440344abfd9c7263f373dba8b2a43c37f4d75 data/dnmmod/recipes/improved_archer_boots.json
 a089d6dab0dbab2dbada62946be19c6e22f449ce data/dnmmod/recipes/improved_archer_chestplate.json
 45d451b3efba5a97e879e9f4de1216bfe3ad5924 data/dnmmod/recipes/improved_archer_helmet.json

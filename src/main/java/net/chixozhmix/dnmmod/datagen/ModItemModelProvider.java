@@ -89,6 +89,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         spawnEggItem(ModItems.DEFILED_PRIEST_SPAWN_EGG);
         spawnEggItem(ModItems.DEFILED_WIZARD_SPAWN_EGG);
         spawnEggItem(ModItems.DARKSPAWN_LARVA_SPAWN_EGG);
+        spawnEggItem(ModItems.HIDDEN_TENTACLE_SPAWN_EGG);
         //Armor
         simpleItem(ModItems.MAID_DRESS);
         simpleItem(ModItems.MAID_CAP);
@@ -116,6 +117,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.WANING_MOON_LEGGINGS);
         simpleItem(ModItems.WANING_MOON_CHESTPLATE);
         simpleItem(ModItems.WANING_MOON_HELMET);
+        simpleItem(ModItems.VESTMENTS_ARCHITECT_BOOTS);
+        simpleItem(ModItems.VESTMENTS_ARCHITECT_LEGGINGS);
+        simpleItem(ModItems.VESTMENTS_ARCHITECT_CHESTPLATE);
+        simpleItem(ModItems.VESTMENTS_ARCHITECT_HELMET);
         simpleItem(ModItems.VOILE_OF_DEATH);
 
 

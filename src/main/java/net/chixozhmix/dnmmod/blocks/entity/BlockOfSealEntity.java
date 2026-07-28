@@ -4,11 +4,13 @@ import net.chixozhmix.dnmmod.blocks.custom.BlockOfSeal;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.registers.ModBlockEntities;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
+import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
@@ -94,7 +96,6 @@ public class BlockOfSealEntity extends BlockEntity {
                 }
 
                 if(entity.summonTimer <= 0) {
-                    //Добавить звук появления
                     entity.spawnCreature((ServerLevel) level, pos);
                     entity.summonTimer = 60;
                     BlockState newState = blockState.setValue(BlockOfSeal.LIT, false)
@@ -170,6 +171,8 @@ public class BlockOfSealEntity extends BlockEntity {
                     null,
                     null
             );
+
+            level.playSound(null, spawnX, spawnY, spawnZ, SoundsRegistry.SUMMON_FINISH.get(), SoundSource.HOSTILE, 3.0f, 1.0f);
 
             level.addFreshEntity(modeusBoss);
         }

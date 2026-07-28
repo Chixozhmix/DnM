@@ -82,10 +82,12 @@ public class AntibuilderBlockEntity extends BlockEntity {
             for (int y = -RADIUS; y <= RADIUS; y++) {
                 for (int z = -RADIUS; z <= RADIUS; z++) {
                     BlockState stateThere = this.getLevel().getBlockState(this.getBlockPos().offset(x, y, z));
-
                     BlockState originalState = this.getOriginalBlock(index);
 
-                    if (originalState.getBlock() != stateThere.getBlock()) {
+                    if (stateThere.isAir() && !originalState.isAir()) {
+                        this.updateStoredBlock(index, stateThere);
+                    }
+                    else if (originalState.getBlock() != stateThere.getBlock()) {
                         if (revertBlock(this.getBlockPos().offset(x, y, z), stateThere, originalState)) {
                             reverted = true;
                         } else {

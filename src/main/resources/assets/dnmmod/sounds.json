@@ -60,6 +60,16 @@
       "dnmmod:tall_the_dead"
     ]
   },
+  "modeus_ambient": {
+    "sounds": [
+      "dnmmod:modeus_ambient"
+    ]
+  },
+  "summon_finish": {
+    "sounds": [
+      "dnmmod:summon_finish"
+    ]
+  },
   "the_hag": {
     "sounds": [
       "dnmmod:the_hag"

@@ -16,6 +16,6 @@ public class ArcherArmor extends ExtendedArmorItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public GeoArmorRenderer<?> supplyRenderer() {
-        return new GenericCustomArmorRenderer(new ArcherArmorModel());
+        return new GenericCustomArmorRenderer<>(new ArcherArmorModel());
     }
 }

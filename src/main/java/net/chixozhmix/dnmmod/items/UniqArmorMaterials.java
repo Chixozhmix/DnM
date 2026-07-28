@@ -90,7 +90,17 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
                     new AttributeModifier("Spell power", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
                     AttributesMod.HEALING,
                     new AttributeModifier("healing", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
-                    ));
+                    )),
+    VESTMENTS_ARCHITECT_ARMOR("vestments_architect_armor", 39, heavyArmorMap(), 15, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F,
+            0.3F, () -> Ingredient.of(new ItemLike[]{(ItemLike) ItemRegistry.MITHRIL_INGOT.get()}),
+            Map.of(AttributeRegistry.ELDRITCH_SPELL_POWER.get(),
+            new AttributeModifier("Eldritch Spell Power", 0.15F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    AttributeRegistry.ENDER_SPELL_POWER.get(),
+                            new AttributeModifier("Ender Spell Power", 0.10F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    AttributeRegistry.MAX_MANA.get(),
+                            new AttributeModifier("Max mana", 180, AttributeModifier.Operation.ADDITION),
+                    AttributeRegistry.SPELL_POWER.get(),
+                            new AttributeModifier("Spell power", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;
