@@ -58,11 +58,11 @@ public class SummonDarkspawnLarva extends DarkspawnLarva implements IMagicSummon
     private final AnimationController<SummonDarkspawnLarva> riseController;
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
-            .add(Attributes.ATTACK_DAMAGE, (double)5.0F)
+            .add(Attributes.ATTACK_DAMAGE, (double)4.0F)
             .add(Attributes.ATTACK_KNOCKBACK, (double)0.1F)
-            .add(Attributes.MAX_HEALTH, (double)30.0F)
+            .add(Attributes.MAX_HEALTH, (double)25.0F)
             .add(Attributes.FOLLOW_RANGE, (double)25.0F)
-            .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)0.5F)
+            .add((Attribute) AttributeRegistry.SPELL_POWER.get(), (double)0.4F)
             .add(Attributes.MOVEMENT_SPEED, (double)0.27F)
             .add(ForgeMod.ENTITY_REACH.get(), 3.0F);
 

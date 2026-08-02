@@ -5,6 +5,7 @@ import io.redspace.ironsspellbooks.api.spells.CastSource;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -29,13 +30,10 @@ public class TestSpellMixin {
     private void injectComponentCheck(ItemStack stack, int spellLevel, Level level, Player player,
                                       CastSource castSource, boolean triggerCooldown,
                                       String castingEquipmentSlot, CallbackInfoReturnable<Boolean> cir) {
-        String spellClassName = ((AbstractSpell)(Object)this).getClass().getName();
+        AbstractSpell spell = (AbstractSpell)(Object)this;
+        ResourceLocation spellId = spell.getSpellResource();
 
-        if (SpellUtils.shouldSkipSpell(spellClassName)) {
-            return;
-        }
-
-        Supplier<Item> componentSupplier = SpellComponentConfig.getSpellComponents().get(spellClassName);
+        Supplier<Item> componentSupplier = SpellComponentConfig.getSpellComponents().get(spellId);
 
         if (componentSupplier != null) {
             Item requiredComponent = componentSupplier.get();

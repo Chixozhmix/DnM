@@ -418,5 +418,8 @@
   "spell.dnmmod.eldritch_beams.guide": "Сила пустоты извергается из вас смертоносными лучами.",
 
   "spell.dnmmod.psychic_scream": "Психический крик",
-  "spell.dnmmod.psychic_scream.guide": "Вы издаете оглушительный крик, заставляющий врагов потерять рассудок"
+  "spell.dnmmod.psychic_scream.guide": "Вы издаете оглушительный крик, заставляющий врагов потерять рассудок",
+
+  "spell.dnmmod.meteor_swarm": "Метеоритный Дождь",
+  "spell.dnmmod.meteor_swarm.guide": "Пылающие метеоры падают с неба, сокрушая врагов в огромном радиусе."
 }

@@ -424,5 +424,8 @@
   "spell.dnmmod.eldritch_beams.guide": "The power of the void is spewing deadly rays out of you.",
 
   "spell.dnmmod.psychic_scream": "Psychic Scream",
-  "spell.dnmmod.psychic_scream.guide": "You emit a deafening scream that makes your enemies lose their minds."
+  "spell.dnmmod.psychic_scream.guide": "You emit a deafening scream that makes your enemies lose their minds.",
+
+  "spell.dnmmod.meteor_swarm": "Meteor Swarm",
+  "spell.dnmmod.meteor_swarm.guide": "Fiery meteors rain from the heavens, crushing enemies within a vast radius."
 }

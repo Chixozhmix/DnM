@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.SpellConfigHandler;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
+import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -59,13 +60,13 @@ public class ChromaticOrbSpell extends AbstractSpell {
                 Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2)}));
 
         return SpellConfigHandler.modifyGetUniqueInfo(spellLevel, caster, baseInfo,
-                "net.chixozhmix.dnmmod.spell.evocation.ChromaticOrbSpell");
+                this);
     }
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
         if(!SpellConfigHandler.checkPreCastConditions(level, spellLevel, entity, playerMagicData,
-                "net.chixozhmix.dnmmod.spell.evocation.ChromaticOrbSpell"))
+                this))
             return false;
 
         return true;

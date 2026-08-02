@@ -27,6 +27,7 @@ import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRay;
 import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadar;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
+import net.chixozhmix.dnmmod.entity.spell.meteor.MeteorEntity;
 import net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement.RayOfEnfeeblement;
 import net.chixozhmix.dnmmod.entity.spell.red_cristall.RedCristallEntity;
 import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.tallTheDead;
@@ -113,6 +114,12 @@ public class ModEntityType {
                             .sized(2.0F, 2.0F)
                             .clientTrackingRange(64)
                             .build("tombstone"));
+    public static final RegistryObject<EntityType<MeteorEntity>> METEOR_ENTITY =
+            ENTITY_TYPES.register("meteor",
+                    () -> EntityType.Builder.<MeteorEntity>of(MeteorEntity::new, MobCategory.MISC)
+                            .sized(3.0F, 3.0F)
+                            .clientTrackingRange(64)
+                            .build("meteor"));
 
     //ItemEntity
     public static final RegistryObject<EntityType<IceArrowEntity>> ICE_ARROW_ENTITY = ENTITY_TYPES.register("ice_arrow_entity",

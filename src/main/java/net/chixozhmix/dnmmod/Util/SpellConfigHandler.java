@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.Util;
 
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -15,8 +16,8 @@ import java.util.function.Supplier;
 
 public class SpellConfigHandler {
     public static boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity,
-                                                 MagicData playerMagicData, String spellClassName) {
-        Supplier<Item> componentSupplier = SpellComponentConfig.getSpellComponents().get(spellClassName);
+                                                 MagicData playerMagicData, AbstractSpell spell) {
+        Supplier<Item> componentSupplier = SpellComponentConfig.getSpellComponents().get(spell.getSpellResource());
 
         if (componentSupplier != null) {
             Item requiredComponent = componentSupplier.get();
@@ -29,8 +30,8 @@ public class SpellConfigHandler {
 
     public static List<MutableComponent> modifyGetUniqueInfo(int spellLevel, LivingEntity caster,
                                                              List<MutableComponent> originalInfo,
-                                                             String spellClassName) {
-        Supplier<Item> componentSupplier = SpellComponentConfig.getSpellComponents().get(spellClassName);
+                                                             AbstractSpell spell) {
+        Supplier<Item> componentSupplier = SpellComponentConfig.getSpellComponents().get(spell.getSpellResource());
 
         if (componentSupplier != null) {
             Item requiredComponent = componentSupplier.get();

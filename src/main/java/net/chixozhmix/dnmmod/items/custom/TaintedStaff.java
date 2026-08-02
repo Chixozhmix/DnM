@@ -5,7 +5,7 @@ import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
-import io.redspace.ironsspellbooks.item.weapons.StaffTier;
+import net.chixozhmix.dnmmod.items.StaffTier;
 import net.chixozhmix.dnmmod.items.client.TaintedStaffrenderer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.world.item.ItemStack;

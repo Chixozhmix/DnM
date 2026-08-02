@@ -11,6 +11,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.SpellConfigHandler;
 import net.chixozhmix.dnmmod.api.spell.DnMSpellAnimations;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.Tombstone;
+import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -64,13 +65,13 @@ public class BurialGroundSpell extends AbstractSpell {
                         Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2))
         );
         return SpellConfigHandler.modifyGetUniqueInfo(spellLevel, caster, baseInfo,
-                "net.chixozhmix.dnmmod.spell.blood.BurialGroundSpell");
+                this);
     }
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
         if (!SpellConfigHandler.checkPreCastConditions(level, spellLevel, entity, playerMagicData,
-                "net.chixozhmix.dnmmod.spell.blood.BurialGroundSpell")) {
+                this)) {
             return false;
         }
         return true;

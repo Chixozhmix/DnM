@@ -33,7 +33,7 @@ public class EldritchBeams extends AbstractSpell {
         this.baseSpellPower = 6;
         this.spellPowerPerLevel = 1;
         this.castTime = 100;
-        this.baseManaCost = 60;
+        this.baseManaCost = 40;
     }
 
     private DefaultConfig defaultConfig = new DefaultConfig()

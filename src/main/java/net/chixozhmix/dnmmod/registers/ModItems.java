@@ -10,11 +10,11 @@ import io.redspace.ironsspellbooks.item.curios.CurioBaseItem;
 import io.redspace.ironsspellbooks.item.spell_books.SimpleAttributeSpellBook;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
-import io.redspace.ironsspellbooks.item.weapons.StaffTier;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.PropertiesHelper;
 import net.chixozhmix.dnmmod.items.ModArmorMaterials;
+import net.chixozhmix.dnmmod.items.StaffTier;
 import net.chixozhmix.dnmmod.items.WandItem;
 import net.chixozhmix.dnmmod.items.WandTier;
 import net.chixozhmix.dnmmod.items.custom.*;
@@ -143,12 +143,7 @@ public class ModItems {
     public static final RegistryObject<Item> EVOKER_WAND = ITEMS.register("evoker_wand",
             () -> new WandItem(PropertiesHelper.stackItemProperties(1).rarity(Rarity.UNCOMMON), WandTier.EVOKER_WAND));
     public static final RegistryObject<Item> TAINTED_STAFF = ITEMS.register("tainted_staff",
-            () -> new TaintedStaff(PropertiesHelper.stackItemProperties(1).rarity(Rarity.EPIC),
-                    new StaffTier(2.0F, -3.0F, new AttributeContainer[]
-                            {new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.20F, MULTIPLY_BASE),
-                                    new AttributeContainer(AttributeRegistry.ELDRITCH_SPELL_POWER, 0.15F, MULTIPLY_BASE),
-                                    new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, 0.10F, MULTIPLY_BASE),
-                                    new AttributeContainer(AttributeRegistry.SPELL_POWER, 0.05F, MULTIPLY_BASE)})));
+            () -> new TaintedStaff(PropertiesHelper.stackItemProperties(1).rarity(Rarity.EPIC), StaffTier.TAINTED_STAFF));
     //Items
     public static final RegistryObject<Item> ECTOPLASM = ITEMS.register("ectoplasm", () ->
             new Item(PropertiesHelper.stackItemProperties(64)));

@@ -1,10 +1,12 @@
 package net.chixozhmix.dnmmod.blocks.custom;
 
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.chixozhmix.dnmmod.Util.Utils;
 import net.chixozhmix.dnmmod.blocks.entity.LeshyAltarEntity;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
 import net.chixozhmix.dnmmod.registers.ModItems;
+import net.chixozhmix.dnmmod.registers.ModPotions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -34,11 +36,19 @@ import java.util.List;
 public class LeshyAltarBlock extends BaseEntityBlock {
     public static final VoxelShape SHAPE = Block.box(0,0,0,16,16,16);
 
-    private static final List<Item> ITEMS = Arrays.asList(
-            Items.GOLDEN_APPLE,
-            Items.ENDER_PEARL,
-            Items.ENDER_EYE
-    );
+    private static List<Item> getItems() {
+        return Arrays.asList(
+                Items.GOLDEN_APPLE,
+                Items.ENDER_PEARL,
+                Items.ENDER_EYE,
+                Items.POISONOUS_POTATO,
+                Items.GOLDEN_CARROT,
+                ModItems.DRUID_WAND_CORE.get(),
+                ItemRegistry.OAKSKIN_ELIXIR.get(),
+                ItemRegistry.POISONWARD_RING.get(),
+                Items.SPORE_BLOSSOM,
+                ModItems.RAVEN_FEATHER.get());
+    }
 
     private static List<Item> getUniqueItems() {
         return Arrays.asList(
@@ -127,7 +137,7 @@ public class LeshyAltarBlock extends BaseEntityBlock {
                     }
 
                     altarEntity.incrementUseCount();
-                    Utils.randomGiver(pPlayer, EFFECTS, ITEMS, getUniqueItems());
+                    Utils.randomGiver(pPlayer, EFFECTS, getItems(), getUniqueItems());
 
                 } else {
                     pPlayer.sendSystemMessage(Component.translatable("ui.dnmmod.leshy_altar_msg"));

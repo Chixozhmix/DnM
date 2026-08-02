@@ -11,6 +11,7 @@ import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -70,8 +71,8 @@ public class TooltipMixin {
 
     @Unique
     private static void addComponentInfoInternal(AbstractSpell spell, List<? super MutableComponent> list) {
-        String spellClassName = spell.getClass().getName();
-        Supplier<Item> componentSupplier = SpellComponentConfig.getSpellComponents().get(spellClassName);
+        ResourceLocation spellId = spell.getSpellResource(); // Или SpellRegistry.getSpellRegistry().getKey(spell);
+        Supplier<Item> componentSupplier = SpellComponentConfig.getSpellComponents().get(spellId);
 
         if (componentSupplier != null) {
             Item requiredComponent = componentSupplier.get();
@@ -83,7 +84,7 @@ public class TooltipMixin {
                         .map(obj -> ((Component) obj).getString())
                         .anyMatch(text -> text.contains(requiredName));
 
-                if(!alreadyExists) {
+                if (!alreadyExists) {
                     MutableComponent componentText = Component.translatable("ui.dnmmod.spell_component",
                                     SpellUtils.getComponentName(requiredComponent))
                             .withStyle(style -> style.withColor(0x30992B));

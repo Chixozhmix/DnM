@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.capabilities.magic.*;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.SpellConfigHandler;
 import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
+import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -74,13 +75,13 @@ public class SummonRavenSpell extends AbstractSpell {
         List<MutableComponent> baseInfo = List.of(Component.translatable("ui.irons_spellbooks.summon_count", new Object[]{this.getSummonCount(spellLevel, caster)}));
 
         return SpellConfigHandler.modifyGetUniqueInfo(spellLevel, caster, baseInfo,
-                "net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell");
+                this);
     }
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
         if(!SpellConfigHandler.checkPreCastConditions(level, spellLevel, entity, playerMagicData,
-                "net.chixozhmix.dnmmod.spell.nature.SummonRavenSpell"))
+                this))
             return false;
 
         return true;

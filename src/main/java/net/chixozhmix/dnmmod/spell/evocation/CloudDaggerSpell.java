@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.SpellConfigHandler;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
+import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -59,7 +60,7 @@ public class CloudDaggerSpell extends AbstractSpell {
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
         if(!SpellConfigHandler.checkPreCastConditions(level, spellLevel, entity, playerMagicData,
-                "net.chixozhmix.dnmmod.spell.evocation.CloudDaggerSpell"))
+                this))
             return false;
 
         Utils.preCastTargetHelper(level, entity, playerMagicData, this, 32, 0.15F, false);
@@ -74,7 +75,7 @@ public class CloudDaggerSpell extends AbstractSpell {
                 Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2)}));
 
         return SpellConfigHandler.modifyGetUniqueInfo(spellLevel, caster, baseInfo,
-                "net.chixozhmix.dnmmod.spell.evocation.CloudDaggerSpell");
+                this);
     }
 
     @Override

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 
 public class LeshyAltarEntity extends BlockEntity {
     private int useCount = 0;
-    private static final int MAX_USES = 4;
+    private static final int MAX_USES = 7;
 
     public LeshyAltarEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.LESHY_ALTAR.get(), pPos, pBlockState);

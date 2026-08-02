@@ -16,6 +16,7 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.SpellConfigHandler;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRay;
+import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -79,13 +80,13 @@ public class ContagionSpell extends AbstractSpell {
                 Component.translatable("ui.irons_spellbooks.radius", new Object[]{Utils.stringTruncation(getRadius(spellLevel, caster), 3)}));
 
         return SpellConfigHandler.modifyGetUniqueInfo(spellLevel, caster, baseInfo,
-                "net.chixozhmix.dnmmod.spell.blood.ContagionSpell");
+                this);
     }
 
     @Override
     public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
         if(!SpellConfigHandler.checkPreCastConditions(level, spellLevel, entity, playerMagicData,
-                "net.chixozhmix.dnmmod.spell.blood.ContagionSpell"))
+                this))
             return false;
 
         return Utils.preCastTargetHelper(level, entity, playerMagicData, this, 32, 0.35F);

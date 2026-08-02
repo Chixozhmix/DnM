@@ -8,6 +8,7 @@ import net.chixozhmix.dnmmod.spell.eldrich.HungerOfHadarSpell;
 import net.chixozhmix.dnmmod.spell.eldrich.PsychicScreamSpell;
 import net.chixozhmix.dnmmod.spell.eldrich.SummonDarkspawnLarvaSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
+import net.chixozhmix.dnmmod.spell.fire.MeteorSwarmSpell;
 import net.chixozhmix.dnmmod.spell.fire.SummonFlameAtronach;
 import net.chixozhmix.dnmmod.spell.ice.AgathysArmorSpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
@@ -52,6 +53,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> RAVEN_STEP_SPELL = registerSpell(new RavenStepSpell());
     public static final RegistryObject<AbstractSpell> ELDRITCH_BEAMS = registerSpell(new EldritchBeams());
     public static final RegistryObject<AbstractSpell> PSYCHIC_SCREAM = registerSpell(new PsychicScreamSpell());
+    public static final RegistryObject<AbstractSpell> METEOR_SWARM = registerSpell(new MeteorSwarmSpell());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

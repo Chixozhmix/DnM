@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.events;
 
+import io.redspace.ironsspellbooks.entity.spells.fireball.FireballRenderer;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.blocks.client.SealedDoorModel;
@@ -52,7 +53,6 @@ import net.chixozhmix.dnmmod.screen.medium_bag.MediumBagScreen;
 import net.chixozhmix.dnmmod.screen.scroll_table.ScrollTableScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -92,6 +92,7 @@ public class ClientModEvents {
         EntityRenderers.register(ModEntityType.TOMBSTONE.get(), TombstoneRenderer::new);
         EntityRenderers.register(ModEntityType.RED_CRYSTAL.get(), RedCristallRenderer::new);
         EntityRenderers.register(ModEntityType.TRIDENT_STRIKE_AREA.get(), TridentStrikeAreaRenderer::new);
+        EntityRenderers.register(ModEntityType.METEOR_ENTITY.get(), (pContext) -> new FireballRenderer(pContext, 3.0f));
 
         EntityRenderers.register(ModEntityType.ICE_ARROW_ENTITY.get(), IceArrowRenderer::new);
 
