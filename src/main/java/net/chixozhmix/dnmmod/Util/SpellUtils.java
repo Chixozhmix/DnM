@@ -4,14 +4,16 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import net.chixozhmix.dnmmod.compat.Curios;
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
 import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
-import net.chixozhmix.dnmmod.registers.ModItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import top.theillusivec4.curios.api.CuriosApi;
 
@@ -108,5 +110,26 @@ public class SpellUtils {
             return true;
         }
         return false;
+    }
+
+    //Левитация
+    public static void applyHovering(Entity entity, double baseHoverHeight, double motionSpeed, double deadzone, boolean hurtMarked) {
+        BlockPos groundPos;
+        for(groundPos = entity.blockPosition().below(); entity.level().isEmptyBlock(groundPos) && groundPos.getY() > entity.level().getMinBuildHeight(); groundPos = groundPos.below()) {
+
+        }
+
+        double groundHeight = (groundPos.getY() + 1);
+        double targetHoverHeight = groundHeight + baseHoverHeight;
+        double currentY = entity.getY();
+        double deltaY = targetHoverHeight - currentY;
+        if (Math.abs(deltaY) > deadzone) {
+            Vec3 motion = entity.getDeltaMovement();
+            entity.setDeltaMovement(motion.x, deltaY * motionSpeed, motion.z);
+        }
+
+        entity.hurtMarked = hurtMarked;
+        entity.fallDistance = 0.0F;
+        entity.setOnGround(false);
     }
 }

@@ -4,10 +4,15 @@ import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.AnimationHolder;
+import io.redspace.ironsspellbooks.api.util.CameraShakeData;
+import io.redspace.ironsspellbooks.api.util.CameraShakeManager;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.ParticleSpawnHelper;
+import net.chixozhmix.dnmmod.Util.SpellUtils;
+import net.chixozhmix.dnmmod.api.spell.DnMSpellAnimations;
 import net.chixozhmix.dnmmod.entity.spell.meteor.MeteorEntity;
 import net.chixozhmix.dnmmod.events.SpellTickHelper;
 import net.chixozhmix.dnmmod.particle.ParticleDirection;
@@ -40,7 +45,7 @@ public class MeteorSwarmSpell extends AbstractSpell {
             .setMinRarity(SpellRarity.LEGENDARY)
             .setMaxLevel(1)
             .setSchoolResource(SchoolRegistry.FIRE_RESOURCE)
-            .setCooldownSeconds(60)
+            .setCooldownSeconds(300)
             .build();
 
     @Override
@@ -56,6 +61,16 @@ public class MeteorSwarmSpell extends AbstractSpell {
     @Override
     public CastType getCastType() {
         return CastType.LONG;
+    }
+
+    @Override
+    public AnimationHolder getCastStartAnimation() {
+        return DnMSpellAnimations.METEOR_SWARM_START;
+    }
+
+    @Override
+    public AnimationHolder getCastFinishAnimation() {
+        return DnMSpellAnimations.METEOR_SWARM_END;
     }
 
     @Override
@@ -76,7 +91,10 @@ public class MeteorSwarmSpell extends AbstractSpell {
 
     @Override
     public void onServerCastTick(Level level, int spellLevel, LivingEntity entity, @Nullable MagicData playerMagicData) {
-        ParticleSpawnHelper.spawnParticlesCelindr(level, entity, 6, ParticleHelper.FIRE, ParticleDirection.UPWARD, (double)3.0F, (double)2.0F, (double)2.0F);
+        ParticleSpawnHelper.spawnParticlesCelindr(level, entity, 6, ParticleHelper.FIRE, ParticleDirection.INWARD, (double)3.0F, (double)2.0F, (double)2.0F);
+        if(playerMagicData != null && playerMagicData.getCastDurationRemaining() <= 180)
+            SpellUtils.applyHovering(entity, 2.0F, 0.2, 0.3, true);
+
         super.onServerCastTick(level, spellLevel, entity, playerMagicData);
     }
 
@@ -110,7 +128,7 @@ public class MeteorSwarmSpell extends AbstractSpell {
                 RandomSource random = level.random;
 
                 double angle = random.nextDouble() * Math.PI * 2;
-                double radius = Math.sqrt(random.nextDouble()) * 8;
+                double radius = Math.sqrt(random.nextDouble()) * 20;
 
                 double offsetX = Math.cos(angle) * radius;
                 double offsetZ = Math.sin(angle) * radius;
@@ -146,6 +164,7 @@ public class MeteorSwarmSpell extends AbstractSpell {
             });
         }
 
+        CameraShakeManager.addCameraShake(new CameraShakeData(50, entity.position(), 15.0F));
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
@@ -154,6 +173,6 @@ public class MeteorSwarmSpell extends AbstractSpell {
     }
 
     public int getRadius() {
-        return 15;
+        return 20;
     }
 }

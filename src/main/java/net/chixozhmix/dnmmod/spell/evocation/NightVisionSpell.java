@@ -32,7 +32,7 @@ public class NightVisionSpell extends AbstractSpell {
             .setMinRarity(SpellRarity.RARE)
             .setSchoolResource(SchoolRegistry.EVOCATION_RESOURCE)
             .setMaxLevel(1)
-            .setCooldownSeconds(180)
+            .setCooldownSeconds(100)
             .build();
 
     @Override

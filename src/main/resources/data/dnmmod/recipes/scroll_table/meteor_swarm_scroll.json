@@ -1,0 +1,30 @@
+{
+  "type": "dnmmod:scroll_table",
+  "ingredients": [
+    {"item": "irons_spellbooks:legendary_ink"},
+    {"item": "minecraft:blaze_rod"},
+    {"item": "irons_spellbooks:cinder_essence"},
+    {"item": "irons_spellbooks:cinder_essence"},
+    {"item": "irons_spellbooks:arcane_essence"},
+    {"item": "minecraft:magma_block" },
+    {"item":  "dnmmod:parchment"}
+  ],
+  "output": {
+    "item": "irons_spellbooks:scroll"
+  },
+  "nbt": {
+    "irons_spellbooks:spell_container": {
+      "maxSpells": 1,
+      "mustEquip": 0,
+      "spellWheel": 0,
+      "data": [
+        {
+          "index": 0,
+          "id": "dnmmod:meteor_swarm",
+          "locked": 1,
+          "level": 1
+        }
+      ]
+    }
+  }
+}

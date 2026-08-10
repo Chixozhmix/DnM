@@ -67,7 +67,7 @@ public class MeteorEntity extends AbstractMagicProjectile {
 
     @Override
     public float getSpeed() {
-        return 1.10f;
+        return 1.3f;
     }
 
     @Override
@@ -101,7 +101,7 @@ public class MeteorEntity extends AbstractMagicProjectile {
             PacketDistributor.sendToPlayersTrackingEntity(this, new FieryExplosionParticlesPacket(hitResult.getLocation().subtract(this.getDeltaMovement().scale((double)0.5F)), this.getExplosionRadius()));
             this.playSound(SoundEvents.GENERIC_EXPLODE, 4.0F, (1.0F + (this.level().random.nextFloat() - this.level().random.nextFloat()) * 0.2F) * 0.7F);
             this.discardHelper(hitResult);
-            CameraShakeManager.addCameraShake(new CameraShakeData(50, this.position(), 25.0F));
+            CameraShakeManager.addCameraShake(new CameraShakeData(50, this.position(), 40.0F));
         }
     }
 

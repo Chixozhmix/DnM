@@ -8,6 +8,8 @@ public class DnMSpellAnimations {
     public static ResourceLocation ANIMATION_RESOURCE = ResourceLocation.fromNamespaceAndPath("dnmmod", "animation");
     public static final AnimationHolder RAISE_SOMETHING = new AnimationHolder(DnMmod.id("raise_something"), true, true);
     public static final AnimationHolder AOE_END = new AnimationHolder(DnMmod.id("aoe_end"), true, true);
+    public static final AnimationHolder METEOR_SWARM_START = new AnimationHolder(DnMmod.id("meteor_swarm_start"), true, true);
+    public static final AnimationHolder METEOR_SWARM_END = new AnimationHolder(DnMmod.id("meteor_swarm_end"), true, true);
 
     //WAND ANIMATIONS (очень криво работает анимация instant. Почему-то он запомнил первую анимацию и не меняет ее вообще)
 //    public static final AnimationHolder WAND_INSTANT_CAST = new AnimationHolder(DnMmod.id("wand_instant_cast"), true, false);

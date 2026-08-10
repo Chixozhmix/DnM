@@ -40,7 +40,7 @@ public class EldritchBeams extends AbstractSpell {
             .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(SchoolRegistry.ELDRITCH_RESOURCE)
             .setMaxLevel(3)
-            .setCooldownSeconds(200)
+            .setCooldownSeconds(150)
             .build();
 
     @Override

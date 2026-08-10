@@ -301,6 +301,7 @@
   "effect.dnmmod.ender_resistance": "Сопротивление эндеру",
   "effect.dnmmod.disorientation": "Дизориентация",
   "effect.dnmmod.loss_mage": "Потеря магии",
+  "effect.dnmmod.mana_shield": "Щит Маны",
 
   "sounds.dnmmod.ghost_ambient": "Призрак",
   "sounds.dnmmod.undead_spirit": "Дух Нежити",
@@ -421,5 +422,8 @@
   "spell.dnmmod.psychic_scream.guide": "Вы издаете оглушительный крик, заставляющий врагов потерять рассудок",
 
   "spell.dnmmod.meteor_swarm": "Метеоритный Дождь",
-  "spell.dnmmod.meteor_swarm.guide": "Пылающие метеоры падают с неба, сокрушая врагов в огромном радиусе."
+  "spell.dnmmod.meteor_swarm.guide": "Пылающие метеоры падают с неба, сокрушая врагов в огромном радиусе.",
+
+  "spell.dnmmod.mana_shield": "Щит маны",
+  "spell.dnmmod.mana_shield.guide": "Используйте ресурс своей маны, чтобы защитить тело от ран."
 }
