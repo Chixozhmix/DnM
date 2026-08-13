@@ -17,6 +17,7 @@ import net.chixozhmix.dnmmod.items.ModArmorMaterials;
 import net.chixozhmix.dnmmod.items.StaffTier;
 import net.chixozhmix.dnmmod.items.WandItem;
 import net.chixozhmix.dnmmod.items.WandTier;
+import net.chixozhmix.dnmmod.items.curio.ProtectiveBrasletItem;
 import net.chixozhmix.dnmmod.items.custom.*;
 import net.chixozhmix.dnmmod.items.custom.armor.*;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -285,6 +286,8 @@ public class ModItems {
                     .withAttributes(Curios.RING_SLOT, new AttributeContainer[]{
                             new AttributeContainer(() -> Attributes.ARMOR, 2.0D, AttributeModifier.Operation.ADDITION)
                     })));
+    public static final RegistryObject<CurioBaseItem> PROTECTIVE_BRASLET = ITEMS.register("protective_braslet",
+            () -> new ProtectiveBrasletItem(PropertiesHelper.stackItemProperties(1)));
 
     public static final RegistryObject<Item> COMPONENT_BAG = ITEMS.register("component_bag",
             () -> new ComponentBag(PropertiesHelper.itemProperties()));

@@ -83,6 +83,10 @@ public class DnMmod
 
     private void enqueueIMC(InterModEnqueueEvent event) {
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
+                () -> new SlotTypeMessage.Builder("bracelet")
+                        .size(2)
+                        .build());
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
                 () -> SlotTypePreset.HEAD.getMessageBuilder().build());
     }
 

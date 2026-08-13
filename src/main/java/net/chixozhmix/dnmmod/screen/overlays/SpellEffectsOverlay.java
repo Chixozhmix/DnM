@@ -14,22 +14,14 @@ import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 public class SpellEffectsOverlay implements IGuiOverlay {
     public static final SpellEffectsOverlay instance = new SpellEffectsOverlay();
 
-    public final static ResourceLocation MANA_SHIELD_TEXTURE = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "textures/gui/overlays/mana_shield_overlay.png");
+    public final static ResourceLocation MANA_SHIELD_TEXTURE = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "textures/gui/overlays/mana_shield/frame_0.png");
     public final static ResourceLocation MAGE_ARMOR_TEXTURE = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "textures/gui/overlays/mage_armor_overlay.png");
 
     public static final ResourceLocation[] MANA_SHIELD_FRAMES = {
-            ResourceLocation.fromNamespaceAndPath(
-                    DnMmod.MOD_ID,
-                    "textures/gui/overlays/mana_shield/frame_0.png"
-            ),
-            ResourceLocation.fromNamespaceAndPath(
-                    DnMmod.MOD_ID,
-                    "textures/gui/overlays/mana_shield/frame_1.png"
-            ),
-            ResourceLocation.fromNamespaceAndPath(
-                    DnMmod.MOD_ID,
-                    "textures/gui/overlays/mana_shield/frame_2.png"
-            )
+            ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "textures/gui/overlays/mana_shield/frame_0.png"),
+            ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "textures/gui/overlays/mana_shield/frame_1.png"),
+            ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "textures/gui/overlays/mana_shield/frame_2.png"),
+            ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "textures/gui/overlays/mana_shield/frame_3.png")
     };
 
     @Override
@@ -43,9 +35,9 @@ public class SpellEffectsOverlay implements IGuiOverlay {
 
         if(player.hasEffect(ModEffects.MANA_SHIELD.get())) {
             renderOverlayAdditive(guiGraphics, MANA_SHIELD_TEXTURE, 0.129f, 0.431f, 0.929f, 0.25f, screenWidth, screenHeight);
-            //renderAnimatedOverlay(guiGraphics, MANA_SHIELD_FRAMES, 0.129f, 0.431f, 0.929f, 0.25f, screenWidth, screenHeight, 6);
+            //renderAnimatedOverlay(guiGraphics, MANA_SHIELD_FRAMES, 0.129f, 0.431f, 0.929f, 0.25f, screenWidth, screenHeight, 5);
         }
-        if (player.hasEffect(ModEffects.MAGE_ARMOR.get())) {
+        if (player.hasEffect(ModEffects.MAGE_ARMOR.get()) && !player.hasEffect(ModEffects.MANA_SHIELD.get())) {
             renderOverlayAdditive(guiGraphics, MAGE_ARMOR_TEXTURE, 0.129f, 0.431f, 0.929f, 0.25f, screenWidth, screenHeight);
         }
     }
