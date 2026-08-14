@@ -8,7 +8,7 @@ import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.Util.Utils;
 import net.chixozhmix.dnmmod.api.misc.ISetArmor;
 import net.chixozhmix.dnmmod.items.UniqArmorMaterials;
-import net.chixozhmix.dnmmod.items.client.WaningMoonArmorModel;
+import net.chixozhmix.dnmmod.items.client.armor.WaningMoonArmorModel;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;

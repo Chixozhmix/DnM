@@ -1,4 +1,4 @@
-// 1.20.1	2026-05-27T21:55:31.6463088	Item Models: dnmmod
+// 1.20.1	2026-08-13T22:17:18.0482846	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
@@ -44,6 +44,9 @@ c17373fb6f5b039d59a309fa464d788c6a7daa80 assets/dnmmod/models/item/evoker_wand_c
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/greemon_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/green_hag_spawn_egg.json
 b1305a5b9f21ff7d150660da71f4064d036416c3 assets/dnmmod/models/item/hag_eye.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/hidden_tentacle_spawn_egg.json
+01caf087d396584112cf8e37d753ff664268915f assets/dnmmod/models/item/ice_arrow.json
+acc3a55fcc2b039ee7a78cf8246edb32f2761ba3 assets/dnmmod/models/item/ice_string.json
 2cff632b6eeec0eca5375524b9a953802aad1c96 assets/dnmmod/models/item/improved_archer_boots.json
 db02d229833d6a2c51c3cf97c3ae6e37e00a634c assets/dnmmod/models/item/improved_archer_chestplate.json
 dfcfd0c249acec641ccf1f188cd4acd5c0da1a4a assets/dnmmod/models/item/improved_archer_helmet.json
@@ -67,6 +70,7 @@ bd79495f6d712c3e566a253bdc27ea6981a4603f assets/dnmmod/models/item/mithril_leggi
 9ccc08c1b57b7457dabc30981d43404833baf26c assets/dnmmod/models/item/parchment.json
 c83702519870098645981ce7c433a90419921414 assets/dnmmod/models/item/phantom_potion.json
 bb8ffd78305763235cd4b46cb12776df844a268e assets/dnmmod/models/item/protection_ring.json
+00bbe9ea5777f54670e06836a00b62f59ee2915f assets/dnmmod/models/item/protective_bracelet.json
 076a49d47ab5abf4c058c95e7e54faa4c2fd1823 assets/dnmmod/models/item/pyromancer_wand.json
 bff4666c5792b6c45bc79e73ea5acae62da6fee9 assets/dnmmod/models/item/pyromancer_wand_core.json
 e956d3f901ac08687c6a9524afd8c6060cc114c5 assets/dnmmod/models/item/raven_feather.json
@@ -82,6 +86,10 @@ a0aea36d4a44b2a0f495770187057b013811e21a assets/dnmmod/models/item/shadow_archer
 0d301f200f81369275d81929ff6a599f1fa3cbe4 assets/dnmmod/models/item/tainted_key.json
 918a4739a6f4bdfb71ddd3395fdbbf69f2c380bf assets/dnmmod/models/item/the_hag_disc.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/undead_spirit_spawn_egg.json
+60b4cb60472114b2353839bdfe24d15cc5080226 assets/dnmmod/models/item/vestments_architect_boots.json
+d8e02fc0f0308b69f941bac8d2b9663bab613469 assets/dnmmod/models/item/vestments_architect_chestplate.json
+26389bb3c96aa69f86a6726bce2d1fdf23044ab6 assets/dnmmod/models/item/vestments_architect_helmet.json
+fa0e8ed7aa5733a9953c053f6d2d8675f5c2a9f1 assets/dnmmod/models/item/vestments_architect_leggings.json
 b46d37cf243327909c4bee607bf1004c02306d83 assets/dnmmod/models/item/voile_of_death.json
 65bad3bcd9abdeccb9af0b76dab8c5763d4a0413 assets/dnmmod/models/item/wand_core.json
 146877f8a88481568afe1481fe482da485c545b3 assets/dnmmod/models/item/waning_moon_boots.json

@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.items.client;
+package net.chixozhmix.dnmmod.items.client.armor;
 
 import net.chixozhmix.dnmmod.items.custom.armor.MaidDress;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;

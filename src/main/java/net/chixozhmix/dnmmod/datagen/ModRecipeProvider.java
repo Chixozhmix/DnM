@@ -504,6 +504,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('G', Items.GOLD_INGOT)
                 .unlockedBy("has_mithril_scrap", has(ItemRegistry.MITHRIL_SCRAP.get()))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PROTECTIVE_BRASLET.get(), 1)
+                .pattern("AGA")
+                .pattern("GLG")
+                .pattern("AGA")
+                .define('A', ItemRegistry.ARCANE_INGOT.get())
+                .define('L', Items.LAPIS_LAZULI)
+                .define('G', Items.GOLD_INGOT)
+                .unlockedBy("has_arcane_ingot", has(ItemRegistry.ARCANE_INGOT.get()))
+                .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MIRROR.get(), 1)
                 .pattern(" I ")
                 .pattern("IGI")

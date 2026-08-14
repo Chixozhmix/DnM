@@ -7,7 +7,7 @@ import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
 import io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem;
 import net.chixozhmix.dnmmod.items.UniqArmorMaterials;
-import net.chixozhmix.dnmmod.items.client.ShadowArcherModel;
+import net.chixozhmix.dnmmod.items.client.armor.ShadowArcherModel;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

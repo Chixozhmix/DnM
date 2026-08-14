@@ -1,6 +1,6 @@
 package net.chixozhmix.dnmmod.items.custom.armor;
 
-import net.chixozhmix.dnmmod.items.client.MaidDressRenderer;
+import net.chixozhmix.dnmmod.items.client.armor.MaidDressRenderer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;

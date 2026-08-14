@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "dnmmod:magical_grimoire"
+    "dnmmod:magical_grimoire",
+    "dnmmod:tainted_spellbook"
   ]
 }

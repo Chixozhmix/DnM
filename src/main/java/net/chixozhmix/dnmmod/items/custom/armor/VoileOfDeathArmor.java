@@ -4,7 +4,7 @@ import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
 import io.redspace.ironsspellbooks.item.armor.ExtendedArmorItem;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import net.chixozhmix.dnmmod.items.UniqArmorMaterials;
-import net.chixozhmix.dnmmod.items.client.VoileOfDeathModel;
+import net.chixozhmix.dnmmod.items.client.armor.VoileOfDeathModel;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;

@@ -91,7 +91,7 @@ public class MeteorSwarmSpell extends AbstractSpell {
 
     @Override
     public void onServerCastTick(Level level, int spellLevel, LivingEntity entity, @Nullable MagicData playerMagicData) {
-        ParticleSpawnHelper.spawnParticlesCelindr(level, entity, 6, ParticleHelper.FIRE, ParticleDirection.INWARD, (double)3.0F, (double)2.0F, (double)2.0F);
+        ParticleSpawnHelper.spawnParticlesCelindr(level, entity, 6, ParticleHelper.FIRE, ParticleDirection.INWARD, 3.0F, 1.0F, 0.0F);
         if(playerMagicData != null && playerMagicData.getCastDurationRemaining() <= 180)
             SpellUtils.applyHovering(entity, 2.0F, 0.2, 0.3, true);
 
@@ -103,13 +103,7 @@ public class MeteorSwarmSpell extends AbstractSpell {
         Vec3 eyePos = entity.getEyePosition();
         Vec3 look = entity.getLookAngle();
 
-        HitResult hit = level.clip(new ClipContext(
-                eyePos,
-                eyePos.add(look.scale(64)),
-                ClipContext.Block.OUTLINE,
-                ClipContext.Fluid.NONE,
-                entity
-        ));
+        HitResult hit = level.clip(new ClipContext(eyePos, eyePos.add(look.scale(64)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity));
 
         Vec3 targetPos;
 

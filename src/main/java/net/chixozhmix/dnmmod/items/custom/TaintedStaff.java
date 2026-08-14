@@ -6,7 +6,7 @@ import io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import net.chixozhmix.dnmmod.items.StaffTier;
-import net.chixozhmix.dnmmod.items.client.TaintedStaffrenderer;
+import net.chixozhmix.dnmmod.items.client.item.TaintedStaffrenderer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
@@ -42,6 +42,7 @@ public class TaintedStaff extends StaffItem implements GeoItem, IPresetSpellCont
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
     }
+
 
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {

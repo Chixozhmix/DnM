@@ -20,6 +20,7 @@ import net.chixozhmix.dnmmod.items.WandTier;
 import net.chixozhmix.dnmmod.items.curio.ProtectiveBrasletItem;
 import net.chixozhmix.dnmmod.items.custom.*;
 import net.chixozhmix.dnmmod.items.custom.armor.*;
+import net.chixozhmix.dnmmod.items.custom.spellbooks.TaintedSpellbook;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -257,36 +258,38 @@ public class ModItems {
             new MithrillArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
 
     public static final RegistryObject<Item> WANING_MOON_HELMET = ITEMS.register("waning_moon_helmet", () ->
-            new WaningMoonArmor(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties()));
+            new WaningMoonArmor(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties().rarity(Rarity.RARE)));
     public static final RegistryObject<Item> WANING_MOON_CHESTPLATE = ITEMS.register("waning_moon_chestplate", () ->
-            new WaningMoonArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties()));
+            new WaningMoonArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties().rarity(Rarity.RARE)));
     public static final RegistryObject<Item> WANING_MOON_LEGGINGS = ITEMS.register("waning_moon_leggings", () ->
-            new WaningMoonArmor(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties()));
+            new WaningMoonArmor(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties().rarity(Rarity.RARE)));
     public static final RegistryObject<Item> WANING_MOON_BOOTS = ITEMS.register("waning_moon_boots", () ->
-            new WaningMoonArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
+            new WaningMoonArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties().rarity(Rarity.RARE)));
 
     public static final RegistryObject<Item> VESTMENTS_ARCHITECT_HELMET = ITEMS.register("vestments_architect_helmet", () ->
-            new VestmentsArchitectArmor(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties()));
+            new VestmentsArchitectArmor(ArmorItem.Type.HELMET, PropertiesHelper.itemProperties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> VESTMENTS_ARCHITECT_CHESTPLATE = ITEMS.register("vestments_architect_chestplate", () ->
-            new VestmentsArchitectArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties()));
+            new VestmentsArchitectArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> VESTMENTS_ARCHITECT_LEGGINGS = ITEMS.register("vestments_architect_leggings", () ->
-            new VestmentsArchitectArmor(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties()));
+            new VestmentsArchitectArmor(ArmorItem.Type.LEGGINGS, PropertiesHelper.itemProperties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> VESTMENTS_ARCHITECT_BOOTS = ITEMS.register("vestments_architect_boots", () ->
-            new VestmentsArchitectArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties()));
+            new VestmentsArchitectArmor(ArmorItem.Type.BOOTS, PropertiesHelper.itemProperties().rarity(Rarity.EPIC)));
 
     public static final RegistryObject<Item> VOILE_OF_DEATH = ITEMS.register("voile_of_death", () ->
             new VoileOfDeathArmor(ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties().rarity(Rarity.RARE)));
 
     //Spellbooks
     public static final RegistryObject<Item> MAGICAL_GRIMOIRE = ITEMS.register("magical_grimoire",
-            () -> new SimpleAttributeSpellBook(8, SpellRarity.RARE, AttributeRegistry.COOLDOWN_REDUCTION.get(), 0.05, (double)50.0F));
+            () -> new SimpleAttributeSpellBook(8, SpellRarity.RARE, AttributeRegistry.COOLDOWN_REDUCTION.get(), 0.05, 50.0F));
+    public static final RegistryObject<Item> TAINTED_SPELLBOOK = ITEMS.register("tainted_spellbook",
+            TaintedSpellbook::new);
     //Curios
     public static final RegistryObject<CurioBaseItem> PROTECTION_RING = ITEMS.register("protection_ring",
             () -> (new CurioBaseItem(PropertiesHelper.stackItemProperties(1))
                     .withAttributes(Curios.RING_SLOT, new AttributeContainer[]{
                             new AttributeContainer(() -> Attributes.ARMOR, 2.0D, AttributeModifier.Operation.ADDITION)
                     })));
-    public static final RegistryObject<CurioBaseItem> PROTECTIVE_BRASLET = ITEMS.register("protective_braslet",
+    public static final RegistryObject<CurioBaseItem> PROTECTIVE_BRASLET = ITEMS.register("protective_bracelet",
             () -> new ProtectiveBrasletItem(PropertiesHelper.stackItemProperties(1)));
 
     public static final RegistryObject<Item> COMPONENT_BAG = ITEMS.register("component_bag",

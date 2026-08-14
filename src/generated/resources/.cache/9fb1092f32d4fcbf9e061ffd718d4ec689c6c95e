@@ -1,4 +1,4 @@
-// 1.20.1	2026-07-12T10:51:37.9674674	Recipes
+// 1.20.1	2026-08-13T22:22:28.4350472	Recipes
 a238538041db1f523cd37b7af5ddc9a14ccf21c5 data/dnmmod/advancements/recipes/combat/bladesinger_sword.json
 66d9b096436d2f53c49785a5c55daa816a200934 data/dnmmod/advancements/recipes/combat/diamond_battleaxe.json
 98ae1d8dd16adc7d287c622589b5edc25b8bef65 data/dnmmod/advancements/recipes/combat/diamond_dagger.json
@@ -59,6 +59,7 @@ b23cdaabf24feeda2d78b117c650ad605f822baa data/dnmmod/advancements/recipes/misc/m
 3be34695cbae4d24be4be97343420d6ad14a0198 data/dnmmod/advancements/recipes/misc/mirror.json
 c32807d44ab1602b9157d5832f033aefd1684fb1 data/dnmmod/advancements/recipes/misc/parchment.json
 e9d0c728bfcfab8a4fb1186d0d434ee69cddbc3b data/dnmmod/advancements/recipes/misc/protection_ring.json
+26393d18c0b2e87ab5bed75e5be102c2e07fa405 data/dnmmod/advancements/recipes/misc/protective_bracelet.json
 e4d268e1247859fac7079fbf5c19088ec9f0b914 data/dnmmod/advancements/recipes/misc/pyromancer_wand.json
 a4155f67d0853afdd78d6cd9763dbf91594e931f data/dnmmod/advancements/recipes/misc/pyromancer_wand_core.json
 51222d78520b518735423645a3839ab3f14e3056 data/dnmmod/advancements/recipes/misc/sacred_symbol.json
@@ -127,6 +128,7 @@ f01c28feb246aea91836d6da8e6a387d0d05ef2e data/dnmmod/recipes/medium_component_ba
 85fff502f760acf3ce7088ac4bf96f73579e8692 data/dnmmod/recipes/mirror.json
 f4100aac1d61aad568c5b91b699c7a223b588cfd data/dnmmod/recipes/parchment.json
 8e1cab751e773a9efdb80216cdde9b0716b7501e data/dnmmod/recipes/protection_ring.json
+31c0befd563108e34d830fbabac73e7c062818bf data/dnmmod/recipes/protective_bracelet.json
 18cd021d88edd95d619cc67fd7984ab8d30f917d data/dnmmod/recipes/pyromancer_wand.json
 2c3f15136b9de2b4a4d5b00b814dbe6aa4f0f217 data/dnmmod/recipes/pyromancer_wand_core.json
 7be569fd8e238477e5342115a9fcf89b3981684a data/dnmmod/recipes/ritual_dagger.json

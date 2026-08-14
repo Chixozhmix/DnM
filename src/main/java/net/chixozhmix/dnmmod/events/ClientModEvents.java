@@ -75,11 +75,14 @@ public class ClientModEvents {
     {
         event.enqueueWork(() -> {
             CuriosRendererRegistry.register(ModItems.MAGICAL_GRIMOIRE.get(), SpellBookCurioRenderer::new);
+            CuriosRendererRegistry.register(ModItems.TAINTED_SPELLBOOK.get(), SpellBookCurioRenderer::new);
 
             BlockEntityRenderers.register(ModBlockEntities.DOOR_OF_SEAL.get(), SealedDoorRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.WARRIOR_STATUE_BLOCK.get(), WarriorStatueRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.WIZARD_STATUE_BLOCK.get(), WizardStatueRenderer::new);
         });
+
+        //DnMSpellAnimationOverrides.register();
 
         EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);
         EntityRenderers.register(ModEntityType.ICE_DAGGER.get(), IceDaggerRenderer::new);

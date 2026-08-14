@@ -61,6 +61,7 @@
   "item.dnmmod.geomancy_wand": "Geomancy wand",
 
   "item.dnmmod.magical_grimoire": "Magical grimoire",
+  "item.dnmmod.tainted_spellbook": "Tainted spellbook",
 
   "item.dnmmod.component_bag": "Component bag",
   "item.dnmmod.medium_component_bag": "Medium component bag",
@@ -137,7 +138,7 @@
   "item.dnmmod.voile_of_death": "Voile of death",
 
   "item.dnmmod.protection_ring": "Protection ring",
-  "item.dnmmod:protective_braslet": "Bracelet of Protection",
+  "item.dnmmod.protective_bracelet": "Bracelet of Protection",
 
   "item.minecraft.potion.effect.corpse_poison": "Corpse poison",
   "item.minecraft.splash_potion.effect.corpse_poison": "Splash corpse poison",

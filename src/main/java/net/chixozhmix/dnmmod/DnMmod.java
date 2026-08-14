@@ -66,9 +66,6 @@ public class DnMmod
         ModMenuTypes.register(modEventBus);
         //Recipes
         ModRecipes.register(modEventBus);
-        //Necromancy
-        //DnMAttributes.ATTRIBUTES.register(modEventBus);
-//        DnMSchools.DNM_SCHOOLS.register(modEventBus);
         //Fluid
         Fluids.register(modEventBus);
         //Potions
@@ -83,9 +80,7 @@ public class DnMmod
 
     private void enqueueIMC(InterModEnqueueEvent event) {
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
-                () -> new SlotTypeMessage.Builder("bracelet")
-                        .size(2)
-                        .build());
+                () -> new SlotTypeMessage.Builder("bracelet").size(2).build());
         InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE,
                 () -> SlotTypePreset.HEAD.getMessageBuilder().build());
     }

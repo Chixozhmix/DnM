@@ -62,6 +62,7 @@
   "item.dnmmod.geomancy_wand": "Палочка геоманта",
 
   "item.dnmmod.magical_grimoire": "Магический гримуар",
+  "item.dnmmod.tainted_spellbook": "Оскверненная книга заклинаний",
 
   "item.dnmmod.component_bag": "Сумка с компонентами",
   "item.dnmmod.medium_component_bag": "Средняя сумка с компонентами",
@@ -138,7 +139,7 @@
   "item.dnmmod.voile_of_death": "Вуаль Смерти",
 
   "item.dnmmod.protection_ring": "Кольцо защиты",
-  "item.dnmmod:protective_braslet": "Браслет Защиты",
+  "item.dnmmod.protective_bracelet": "Браслет Защиты",
 
   "item.minecraft.potion.effect.corpse_poison": "Трупный яд",
   "item.minecraft.splash_potion.effect.corpse_poison": "Взрывной трупный яд",

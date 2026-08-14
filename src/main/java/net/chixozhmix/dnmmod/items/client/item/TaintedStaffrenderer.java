@@ -1,4 +1,4 @@
-package net.chixozhmix.dnmmod.items.client;
+package net.chixozhmix.dnmmod.items.client.item;
 
 import net.chixozhmix.dnmmod.items.custom.TaintedStaff;
 import software.bernie.geckolib.renderer.GeoItemRenderer;

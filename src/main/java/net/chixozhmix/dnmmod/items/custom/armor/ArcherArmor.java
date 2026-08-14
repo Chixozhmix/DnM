@@ -3,7 +3,7 @@ package net.chixozhmix.dnmmod.items.custom.armor;
 import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
 import io.redspace.ironsspellbooks.item.armor.ExtendedArmorItem;
 import net.chixozhmix.dnmmod.items.UniqArmorMaterials;
-import net.chixozhmix.dnmmod.items.client.ArcherArmorModel;
+import net.chixozhmix.dnmmod.items.client.armor.ArcherArmorModel;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;

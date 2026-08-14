@@ -109,6 +109,7 @@ public class CreativeTabMod {
                         PropertiesHelper.addOptionalItem(output, ModItems.GEOMANCY_WAND);
 
                         output.accept(ModItems.MAGICAL_GRIMOIRE.get());
+                        output.accept(ModItems.TAINTED_SPELLBOOK.get());
                     })
                     .build());
     //Items
@@ -148,6 +149,7 @@ public class CreativeTabMod {
 
                         output.accept(ModItems.BLADE_RUNE.get());
                         output.accept(ModItems.PROTECTION_RING.get());
+                        output.accept(ModItems.PROTECTIVE_BRASLET.get());
 
                         output.accept(ModItems.COMPONENT_BAG.get());
                         output.accept(ModItems.MEDIUM_COMPONENT_BAG.get());

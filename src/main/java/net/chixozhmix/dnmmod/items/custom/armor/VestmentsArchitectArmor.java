@@ -7,7 +7,7 @@ import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import net.chixozhmix.dnmmod.Util.Utils;
 import net.chixozhmix.dnmmod.api.misc.ISetArmor;
 import net.chixozhmix.dnmmod.items.UniqArmorMaterials;
-import net.chixozhmix.dnmmod.items.client.VestmentsArchitectModel;
+import net.chixozhmix.dnmmod.items.client.armor.VestmentsArchitectModel;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
