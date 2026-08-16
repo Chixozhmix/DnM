@@ -70,14 +70,7 @@ public class SpellEffectsOverlay implements IGuiOverlay {
         gui.setColor(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
-    private static void renderAnimatedOverlay(
-            GuiGraphics gui,
-            ResourceLocation[] frames,
-            float r, float g, float b, float a,
-            int screenWidth,
-            int screenHeight,
-            int ticksPerFrame
-    ) {
+    private static void renderAnimatedOverlay(GuiGraphics gui, ResourceLocation[] frames, float r, float g, float b, float a, int screenWidth, int screenHeight, int ticksPerFrame) {
         Minecraft minecraft = Minecraft.getInstance();
 
         if (minecraft.level == null)

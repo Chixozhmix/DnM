@@ -38,6 +38,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.RITUAL_DAGGER);
         simpleItem(ModItems.ICE_ARROW);
         simpleItem(ModItems.ICE_STRING);
+        simpleItem(ModItems.FIRE_SALTS);
         //Items
         simpleItem(ModItems.HAG_EYE);
         simpleItem(ModItems.WAND_CORE);

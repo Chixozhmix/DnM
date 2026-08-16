@@ -1,4 +1,4 @@
-// 1.20.1	2026-08-13T22:17:18.0482846	Item Models: dnmmod
+// 1.20.1	2026-08-16T12:20:19.7945936	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
@@ -36,6 +36,7 @@ bad901a2e66acf730206fce5dee4272452dc4025 assets/dnmmod/models/item/ender_wand.js
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/evil_storm_atronach_spawn_egg.json
 14250d1e40e96c6d26d9cc2985313202e10bed77 assets/dnmmod/models/item/evoker_wand.json
 c17373fb6f5b039d59a309fa464d788c6a7daa80 assets/dnmmod/models/item/evoker_wand_core.json
+7e2d84fdaea321db7450e1c62d98b6aca2a31068 assets/dnmmod/models/item/fire_salts.json
 54db09c13bd7cdc4522a86c93e05403b9e2116b7 assets/dnmmod/models/item/forest_heart.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/ghost_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/goblin_shaman_spawn_egg.json

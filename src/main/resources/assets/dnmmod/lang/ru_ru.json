@@ -44,7 +44,6 @@
   "item.dnmmod.kapellmeister_wand_core": "Сердцевина палочки капельмейстера",
   "item.dnmmod.crystallized_lightning": "Кристаллизированная молния",
   "item.dnmmod.greemon_fang": "Клык гримона",
-  "item.dnmmod.morokei_mask": "Маска Морокея",
 
   "item.dnmmod.wooden_wand": "Деревянная палочка",
   "item.dnmmod.cryomancer_wand": "Палочка криоманта",
@@ -94,6 +93,7 @@
   "item.dnmmod.parchment": "Пергамент",
   "item.dnmmod.tainted_key": "Оскверненный Ключ",
   "item.dnmmod.ice_string": "Ледяная нить",
+  "item.dnmmod.fire_salts": "Огненная соль",
 
   "item.dnmmod.ectoplasm": "Эктоплазма",
   "item.dnmmod.phantom_potion": "Зелье фантома",

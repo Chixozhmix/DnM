@@ -27,7 +27,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
@@ -202,6 +201,8 @@ public class ModItems {
             new Item(PropertiesHelper.stackItemProperties(1).rarity(Rarity.RARE)));
     public static final RegistryObject<Item> ICE_STRING = ITEMS.register("ice_string", () ->
             new Item(PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<Item> FIRE_SALTS = ITEMS.register("fire_salts", () ->
+            new Item(PropertiesHelper.stackItemProperties(64)));
     //Potions
     public static final RegistryObject<Item> PHANTOM_POTION = ITEMS.register("phantom_potion",
             () -> new SimpleElixir(ItemPropertiesHelper.material(), () ->
@@ -287,8 +288,7 @@ public class ModItems {
     public static final RegistryObject<CurioBaseItem> PROTECTION_RING = ITEMS.register("protection_ring",
             () -> (new CurioBaseItem(PropertiesHelper.stackItemProperties(1))
                     .withAttributes(Curios.RING_SLOT, new AttributeContainer[]{
-                            new AttributeContainer(() -> Attributes.ARMOR, 2.0D, AttributeModifier.Operation.ADDITION)
-                    })));
+                            new AttributeContainer(() -> Attributes.ARMOR, 2.0D, AttributeModifier.Operation.ADDITION)})));
     public static final RegistryObject<CurioBaseItem> PROTECTIVE_BRASLET = ITEMS.register("protective_bracelet",
             () -> new ProtectiveBrasletItem(PropertiesHelper.stackItemProperties(1)));
 

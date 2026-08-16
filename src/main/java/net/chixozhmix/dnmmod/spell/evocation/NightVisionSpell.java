@@ -4,12 +4,14 @@ import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
+import io.redspace.ironsspellbooks.api.util.Utils;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
@@ -31,8 +33,8 @@ public class NightVisionSpell extends AbstractSpell {
     private DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.RARE)
             .setSchoolResource(SchoolRegistry.EVOCATION_RESOURCE)
-            .setMaxLevel(1)
-            .setCooldownSeconds(100)
+            .setMaxLevel(4)
+            .setCooldownSeconds(115)
             .build();
 
     @Override
@@ -52,9 +54,7 @@ public class NightVisionSpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(
-                Component.translatable("ui.irons_spellbooks.effect_length", "60s")
-        );
+        return List.of(Component.translatable("ui.irons_spellbooks.effect_length", new Object[]{Utils.timeFromTicks((float)this.getDurationTick(spellLevel, caster), 1)}));
     }
 
     @Override
@@ -63,11 +63,15 @@ public class NightVisionSpell extends AbstractSpell {
 
         entity.addEffect(new MobEffectInstance(
                 MobEffects.NIGHT_VISION,
-                1200,
+                this.getDurationTick(spellLevel, entity),
                 0,
                 false,
                 false,
                 true
         ));
+    }
+
+    private int getDurationTick(int spellLevel, Entity caster) {
+        return (int) ((450f * spellLevel) * 2);
     }
 }

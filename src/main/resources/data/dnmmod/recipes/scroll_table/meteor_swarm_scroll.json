@@ -5,8 +5,8 @@
     {"item": "minecraft:blaze_rod"},
     {"item": "irons_spellbooks:cinder_essence"},
     {"item": "irons_spellbooks:cinder_essence"},
-    {"item": "irons_spellbooks:arcane_essence"},
-    {"item": "minecraft:magma_block" },
+    {"item": "dnmmod:fire_salts"},
+    {"item": "minecraft:magma_block"},
     {"item":  "dnmmod:parchment"}
   ],
   "output": {
