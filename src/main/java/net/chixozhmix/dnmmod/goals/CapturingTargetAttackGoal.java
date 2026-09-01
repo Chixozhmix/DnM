@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.goals;
 
+import net.chixozhmix.chilib.utils.entity.IBeamAttackMob;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;

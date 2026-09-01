@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.items.custom;
 
+import net.chixozhmix.dnmmod.api.events.D20RollEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.util.Random;
 
@@ -26,6 +28,9 @@ public class D20Item extends Item {
             Random random = new Random();
 
             int diceRoll = random.nextInt(1, 21);
+
+            D20RollEvent rollEvent = new D20RollEvent(pPlayer, diceRoll);
+            MinecraftForge.EVENT_BUS.post(rollEvent);
 
             pPlayer.sendSystemMessage(Component.literal(String.valueOf(diceRoll)));
 

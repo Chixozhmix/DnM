@@ -43,7 +43,7 @@ public class SpellComponentConfig {
         private List<String> getDefaultEntries() {
             List<String> entries = new ArrayList<>();
 
-            // Iron's Spells (теперь через modid:spell_id)
+            // Iron's Spells
             entries.add("irons_spellbooks:raise_dead|minecraft:rotten_flesh");
             entries.add("irons_spellbooks:greater_heal|minecraft:glistering_melon_slice");
             entries.add("irons_spellbooks:summon_ender_chest|minecraft:chest");
@@ -58,17 +58,17 @@ public class SpellComponentConfig {
             entries.add("irons_spellbooks:ball_lightning|irons_spellbooks:lightning_bottle");
             entries.add("irons_spellbooks:charge|irons_spellbooks:energized_core");
             entries.add("irons_spellbooks:lightning_bolt|minecraft:lightning_rod");
-            entries.add("irons_spellbooks:lightning_lance|dnmmod:iron_trident");
+            //entries.add("irons_spellbooks:lightning_lance|dnmmod:iron_trident"); заменить компонент или убрать
             entries.add("irons_spellbooks:thunderstorm|dnmmod:crystallized_lightning");
             entries.add("irons_spellbooks:chain_lightning|irons_spellbooks:heavy_chain_necklace");
             entries.add("irons_spellbooks:earthquake|minecraft:coarse_dirt");
             entries.add("irons_spellbooks:sacrifice|dnmmod:ritual_dagger");
 
-            // DnM (замените на правильный namespace вашего мода и ID заклинаний)
+            // DnM
             entries.add("dnmmod:burial_ground|minecraft:soul_sand");
             entries.add("dnmmod:summon_undead_spirit|minecraft:skeleton_skull");
             entries.add("dnmmod:contagion|dnmmod:greemon_fang");
-            entries.add("dnmmod:cloud_dagger|dnmmod:iron_dagger");
+            entries.add("dnmmod:cloud_daggers|minecraft:glass");
             entries.add("dnmmod:chromatic_orb|minecraft:diamond");
             entries.add("dnmmod:summon_raven|dnmmod:raven_feather");
 

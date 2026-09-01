@@ -214,6 +214,9 @@
   "death.attack.dnmmod.hunger_of_hadar": "%1$s was devoured by Hadar",
   "death.attack.dnmmod.thunderwave": "%1$s was torn apart by a thunderclap",
   "death.attack.dnmmod.summon_darkspawn_larva": "%1$s was killed by blight",
+  "death.attack.dnmmod.meteor_swarm": "%1$s was crushed by a meteorite",
+  "death.attack.dnmmod.eldritch_beams": "%1$s destroyed by cursed energy",
+  "death.attack.dnmmod.psychic_scream": "%1$s could not withstand the mental pressure",
 
   "entity.dnmmod.undead_spirit": "Undead Spirit",
   "entity.dnmmod.summoned_undead_spirit": "Undead Spirit",

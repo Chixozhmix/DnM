@@ -21,18 +21,6 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         //Weapons
-        handheldItem(ModItems.IRON_DAGGER);
-        handheldItem(ModItems.IRON_BATTLEAXE);
-        handheldItem(ModItems.IRON_MACE);
-        handheldItem(ModItems.IRON_SCIMITAR);
-        handheldItem(ModItems.IRON_SICKLE);
-        handheldItem(ModItems.IRON_KLEVETS);
-        handheldItem(ModItems.DIAMOND_DAGGER);
-        handheldItem(ModItems.DIAMOND_BATTLEAXE);
-        handheldItem(ModItems.DIAMOND_MACE);
-        handheldItem(ModItems.DIAMOND_SCIMITAR);
-        handheldItem(ModItems.DIAMOND_SICKLE);
-        handheldItem(ModItems.DIAMOND_KLEVETS);
         simpleItem(ModItems.COMPONENT_BAG);
         simpleItem(ModItems.MEDIUM_COMPONENT_BAG);
         handheldItem(ModItems.RITUAL_DAGGER);

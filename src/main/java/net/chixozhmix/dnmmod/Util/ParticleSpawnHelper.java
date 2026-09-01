@@ -1,7 +1,7 @@
 package net.chixozhmix.dnmmod.Util;
 
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
-import net.chixozhmix.dnmmod.particle.ParticleDirection;
+import net.chixozhmix.chilib.particles.ParticleDirection;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;

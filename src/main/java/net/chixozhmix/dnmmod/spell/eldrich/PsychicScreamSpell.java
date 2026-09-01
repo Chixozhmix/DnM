@@ -4,13 +4,12 @@ import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
-import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
+import net.chixozhmix.chilib.events.TickHelper;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.events.SpellTickHelper;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -97,7 +96,7 @@ public class PsychicScreamSpell extends AbstractSpell {
     }
 
     private void addRunLater(Level level, int spellLevel, LivingEntity entity, int delayTicks) {
-        SpellTickHelper.runLater(level, delayTicks, () -> {
+        TickHelper.runLater(level, delayTicks, () -> {
             if (entity.isAlive()) spawnBlastwave(level, spellLevel, entity);
         });
     }

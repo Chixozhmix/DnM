@@ -1,10 +1,6 @@
 package net.chixozhmix.dnmmod.Util;
 
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.RegistryObject;
-
-import java.util.Optional;
 
 public class PropertiesHelper {
     public static Item.Properties itemProperties() {
@@ -19,14 +15,5 @@ public class PropertiesHelper {
     public static Item.Properties stackItemProperties(int size) {
         return new Item.Properties()
                 .stacksTo(size);
-    }
-
-    public static void addOptionalItem(CreativeModeTab.Output output,
-                                       Optional<RegistryObject<Item>> optionalItem) {
-        optionalItem.ifPresent(regObj -> {
-            if (regObj.isPresent()) {
-                output.accept(regObj.get());
-            }
-        });
     }
 }

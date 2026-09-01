@@ -54,7 +54,6 @@ public class EventUtils {
                     ItemStack bracelet = slotResult.stack();
                     UUID owner = ProtectiveBrasletItem.getOwner(bracelet);
                     if (owner != null && source.getUUID().equals(owner)) {
-                        System.out.println(owner);
                         event.setCanceled(true);
                     }
                 });
@@ -77,5 +76,4 @@ public class EventUtils {
             }
         }
     }
-
 }

@@ -1,8 +1,8 @@
 package net.chixozhmix.dnmmod.entity.tainted_observer;
 
+import net.chixozhmix.chilib.utils.entity.IBeamAttackMob;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
-import net.chixozhmix.dnmmod.goals.IBeamAttackMob;
 import net.chixozhmix.dnmmod.goals.CapturingTargetAttackGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;

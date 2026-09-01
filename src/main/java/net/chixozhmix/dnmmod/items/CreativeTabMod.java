@@ -1,5 +1,6 @@
 package net.chixozhmix.dnmmod.items;
 
+import net.chixozhmix.chilib.utils.items.ItemUtils;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.PropertiesHelper;
 import net.chixozhmix.dnmmod.registers.ModBlocks;
@@ -18,35 +19,9 @@ public class CreativeTabMod {
 
     //Weapons
     public static final RegistryObject<CreativeModeTab> WEAPONS_TAB = CREATIVE_MOD_TABS.register("weapons",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.IRON_DAGGER.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.RITUAL_DAGGER.get()))
                     .title(Component.translatable("creativetab.dnmmod.weapons"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.IRON_DAGGER.get());
-                        output.accept(ModItems.IRON_SPEAR.get());
-                        output.accept(ModItems.IRON_GREATAXE.get());
-                        output.accept(ModItems.IRON_HALBERD.get());
-                        output.accept(ModItems.IRON_BATTLEAXE.get());
-                        output.accept(ModItems.IRON_GREATSWORD.get());
-                        output.accept(ModItems.IRON_MACE.get());
-                        output.accept(ModItems.IRON_SCIMITAR.get());
-                        output.accept(ModItems.IRON_GLAIVE.get());
-                        output.accept(ModItems.IRON_SICKLE.get());
-                        output.accept(ModItems.IRON_KLEVETS.get());
-                        output.accept(ModItems.IRON_TRIDENT.get());
-                        output.accept(ModItems.IRON_KATANA.get());
-                        output.accept(ModItems.DIAMOND_DAGGER.get());
-                        output.accept(ModItems.DIAMOND_SPEAR.get());
-                        output.accept(ModItems.DIAMOND_GREATAXE.get());
-                        output.accept(ModItems.DIAMOND_HALBERD.get());
-                        output.accept(ModItems.DIAMOND_BATTLEAXE.get());
-                        output.accept(ModItems.DIAMOND_GREATSWORD.get());
-                        output.accept(ModItems.DIAMOND_MACE.get());
-                        output.accept(ModItems.DIAMOND_SCIMITAR.get());
-                        output.accept(ModItems.DIAMOND_GLAIVE.get());
-                        output.accept(ModItems.DIAMOND_SICKLE.get());
-                        output.accept(ModItems.DIAMOND_KLEVETS.get());
-                        output.accept(ModItems.DIAMOND_TRIDENT.get());
-                        output.accept(ModItems.DIAMOND_KATANA.get());
                         output.accept(ModItems.RITUAL_DAGGER.get());
                         output.accept(ModItems.BLADESINGER_SWORD.get());
                         output.accept(ModItems.ICE_ARROW.get());
@@ -104,9 +79,9 @@ public class CreativeTabMod {
                         output.accept(ModItems.SACRED_SYMBOL.get());
                         output.accept(ModItems.TAINTED_STAFF.get());
 
-                        PropertiesHelper.addOptionalItem(output, ModItems.AQUA_WAND);
-                        PropertiesHelper.addOptionalItem(output, ModItems.KAPELLMEISTER_WAND);
-                        PropertiesHelper.addOptionalItem(output, ModItems.GEOMANCY_WAND);
+                        ItemUtils.addOptionalItem(output, ModItems.AQUA_WAND);
+                        ItemUtils.addOptionalItem(output, ModItems.KAPELLMEISTER_WAND);
+                        ItemUtils.addOptionalItem(output, ModItems.GEOMANCY_WAND);
 
                         output.accept(ModItems.MAGICAL_GRIMOIRE.get());
                         output.accept(ModItems.TAINTED_SPELLBOOK.get());
@@ -145,9 +120,9 @@ public class CreativeTabMod {
                         output.accept(ModItems.EVOKER_WAND_CORE.get());
                         output.accept(ModItems.ENDER_WAND_CORE.get());
 
-                        PropertiesHelper.addOptionalItem(output, ModItems.AQUA_WAND_CORE);
-                        PropertiesHelper.addOptionalItem(output, ModItems.KAPELLMEISTER_WAND_CORE);
-                        PropertiesHelper.addOptionalItem(output, ModItems.GEOMANCY_WAND_CORE);
+                        ItemUtils.addOptionalItem(output, ModItems.AQUA_WAND_CORE);
+                        ItemUtils.addOptionalItem(output, ModItems.KAPELLMEISTER_WAND_CORE);
+                        ItemUtils.addOptionalItem(output, ModItems.GEOMANCY_WAND_CORE);
 
                         output.accept(ModItems.BLADE_RUNE.get());
                         output.accept(ModItems.PROTECTION_RING.get());
@@ -185,6 +160,7 @@ public class CreativeTabMod {
                         output.accept(ModBlocks.BLOCK_OF_SEAL.get());
                         output.accept(ModBlocks.WARRIOR_STATUE_BLOCK.get());
                         output.accept(ModBlocks.WIZARD_STATUE_BLOCK.get());
+                        output.accept(ModBlocks.SCROLL_TABLE.get());
                     })
                     .build());
 

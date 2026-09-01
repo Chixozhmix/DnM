@@ -3,6 +3,7 @@ package net.chixozhmix.dnmmod.items;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.item.armor.IronsExtendedArmorMaterial;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
+import net.chixozhmix.chilib.attributes.ChiAttributes;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -15,7 +16,6 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.puffish.attributesmod.AttributesMod;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -25,57 +25,57 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
     ARCHER("archer", 10, lightArmorMap(), 15,
             SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F,
             () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.LEATHER}),
-            Map.of((Attribute) Attributes.MOVEMENT_SPEED,
+            Map.of(Attributes.MOVEMENT_SPEED,
                     new AttributeModifier("Speed", (double)0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) AttributesMod.RANGED_DAMAGE,
+                    ChiAttributes.ARROW_DAMAGE.get(),
                     new AttributeModifier("Arrow Power", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
                     )),
     IMPROVED_ARCHER("improved_archer", 15, mediumArmorMap(), 15,
             SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F,
             () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.IRON_INGOT}),
-            Map.of((Attribute) Attributes.MOVEMENT_SPEED,
+            Map.of(Attributes.MOVEMENT_SPEED,
                     new AttributeModifier("Speed", (double)0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) AttributesMod.RANGED_DAMAGE,
+                    ChiAttributes.ARROW_DAMAGE.get(),
                     new AttributeModifier("Arrow Power", 0.1F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) AttributesMod.BOW_PROJECTILE_SPEED,
+                    ChiAttributes.ARROW_VELOCITY.get(),
                     new AttributeModifier("Bow Speed", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
             )),
     SHADOW_ARCHER("shadow_archer", 37, heavyArmorMap(), 15,
             SoundEvents.ARMOR_EQUIP_NETHERITE, 0.0F, 0.0F,
             () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.NETHERITE_INGOT}),
-            Map.of((Attribute) Attributes.MOVEMENT_SPEED,
+            Map.of(Attributes.MOVEMENT_SPEED,
                     new AttributeModifier("Speed", (double)0.1F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    AttributesMod.RANGED_DAMAGE,
+                    ChiAttributes.ARROW_DAMAGE.get(),
                     new AttributeModifier("Arrow Power", 0.15F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) AttributesMod.BOW_PROJECTILE_SPEED,
+                    ChiAttributes.ARROW_VELOCITY.get(),
                     new AttributeModifier("Bow Speed", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
             )),
     BLADESINGER_ARMOR("bladesinger_armor", 37, heavyArmorMap(), 15,
             SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F,
             () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.NETHERITE_INGOT}),
-            Map.of((Attribute) Attributes.ATTACK_DAMAGE,
+            Map.of(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier("Attack Damage", (double)0.1F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) AttributeRegistry.SPELL_POWER.get(),
+                    AttributeRegistry.SPELL_POWER.get(),
                     new AttributeModifier("Spell Power", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) AttributeRegistry.MAX_MANA.get(),
+                    AttributeRegistry.MAX_MANA.get(),
                     new AttributeModifier("Max Mana", 100.0F, AttributeModifier.Operation.ADDITION)
             )),
     MITHRILL_ARMOR("mithrill_armor", 39, heavyArmorMap(), 15,
             SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F, 0.0F,
             () -> Ingredient.of(new ItemLike[]{(ItemLike) ItemRegistry.MITHRIL_INGOT.get()}),
-            Map.of((Attribute) AttributeRegistry.SPELL_RESIST.get(),
+            Map.of(AttributeRegistry.SPELL_RESIST.get(),
                     new AttributeModifier("Spell resist", (double)0.1F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier("Speed", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    (Attribute) AttributesMod.MELEE_RESISTANCE,
-                    new AttributeModifier("Meele resist", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+                    Attributes.MOVEMENT_SPEED,
+                    new AttributeModifier("Speed", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+//                    AttributesMod.MELEE_RESISTANCE,
+//                    new AttributeModifier("Meele resist", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
             )),
     VOILE_OF_DEATH("voile_of_death", 35, lightArmorMap(), 15,
     SoundEvents.ARMOR_EQUIP_NETHERITE, 0.0F, 0.0F,
             () -> Ingredient.of(new ItemLike[]{(ItemLike) Items.NETHERITE_INGOT}),
-            Map.of((Attribute) AttributeRegistry.BLOOD_SPELL_POWER.get(),
+            Map.of(AttributeRegistry.BLOOD_SPELL_POWER.get(),
             new AttributeModifier("Blood magic", (double)0.15F, AttributeModifier.Operation.MULTIPLY_BASE),
-            (Attribute) AttributeRegistry.BLOOD_MAGIC_RESIST.get(),
+            AttributeRegistry.BLOOD_MAGIC_RESIST.get(),
             new AttributeModifier("Blood resist", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
             )),
     WANING_MOON_ARMOR("waning_moon_armor", 39, heavyArmorMap(), 15, SoundEvents.ARMOR_EQUIP_LEATHER, 3.0F,
@@ -88,7 +88,7 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
                     new AttributeModifier("Max mana", 140, AttributeModifier.Operation.ADDITION),
                     AttributeRegistry.SPELL_POWER.get(),
                     new AttributeModifier("Spell power", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
-                    AttributesMod.HEALING,
+                    ChiAttributes.HEAL.get(),
                     new AttributeModifier("healing", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
                     )),
     VESTMENTS_ARCHITECT_ARMOR("vestments_architect_armor", 39, heavyArmorMap(), 15, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.0F,

@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.world.structure;
 
 import com.mojang.serialization.Codec;
+import net.chixozhmix.chilib.world.structures.BaseJigsawStructure;
 import net.chixozhmix.dnmmod.registers.ModStructures;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -11,7 +12,7 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 
 import java.util.Optional;
 
-public class LeshyAltarStructure extends BaseJigsawStructure{
+public class LeshyAltarStructure extends BaseJigsawStructure {
     public static final Codec<LeshyAltarStructure> CODEC =
             createCodec(LeshyAltarStructure::new);
 

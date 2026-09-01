@@ -1,4 +1,4 @@
-// 1.20.1	2026-08-16T12:20:19.7945936	Item Models: dnmmod
+// 1.20.1	2026-09-01T21:18:19.8409618	Item Models: dnmmod
 a64067664471ebd921a7f57aee8dfb446b9699a0 assets/dnmmod/models/item/archer_armor_boots.json
 325ebe4a802b481870151238fe47bd04bb73461e assets/dnmmod/models/item/archer_armor_chestplate.json
 70769dea75d2b67356684536fa527b8ca6908cbd assets/dnmmod/models/item/archer_armor_helmet.json
@@ -19,12 +19,6 @@ b8b985f080c11123b66420d9c4407f8df6ed8ce4 assets/dnmmod/models/item/cryomancer_wa
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/darkspawn_larva_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/defiled_priest_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/defiled_wizard_spawn_egg.json
-3d2db95f7c0f1496a9ef50733e1b65c5f7619937 assets/dnmmod/models/item/diamond_battleaxe.json
-5e8c0253b8b15f7e2c89e1dd4f041ccb5773d982 assets/dnmmod/models/item/diamond_dagger.json
-5c494f930a458bfc964a43297e697bbd71912979 assets/dnmmod/models/item/diamond_klevets.json
-f6c9f4b5ee8f57be04b0e0ef7fea195745b365d3 assets/dnmmod/models/item/diamond_mace.json
-c679d7de37dfd41202b76d1cded4762556e74c2e assets/dnmmod/models/item/diamond_scimitar.json
-fef8c3a5db423efa4cf3ad02adfba5799217a174 assets/dnmmod/models/item/diamond_sickle.json
 a841d0e50a7ce09d0e25f4e958ef1ba2577cdab7 assets/dnmmod/models/item/druid_wand.json
 fdcd70c1a6a9b92a38a3bb8c8336ebf8dd60008c assets/dnmmod/models/item/druid_wand_core.json
 83324c4acb05a2157f339e9122591581dabf26c5 assets/dnmmod/models/item/ectoplasm.json
@@ -52,13 +46,7 @@ acc3a55fcc2b039ee7a78cf8246edb32f2761ba3 assets/dnmmod/models/item/ice_string.js
 db02d229833d6a2c51c3cf97c3ae6e37e00a634c assets/dnmmod/models/item/improved_archer_chestplate.json
 dfcfd0c249acec641ccf1f188cd4acd5c0da1a4a assets/dnmmod/models/item/improved_archer_helmet.json
 bc484072c5143712f46c45496a181389bb38b500 assets/dnmmod/models/item/improved_archer_leggings.json
-80f6badbf194949546db729dea0e96c47ff7c4d3 assets/dnmmod/models/item/iron_battleaxe.json
-0ec0c7a2b29a22b73989b04abff82e2240fe7291 assets/dnmmod/models/item/iron_dagger.json
-cc732266c40ec5f6e06eb03b62af32640b806ff1 assets/dnmmod/models/item/iron_klevets.json
-09697377cef873fa19ef159ee16b747ba84a19e1 assets/dnmmod/models/item/iron_mace.json
 541aaef04c2350bbd25700192c288fc9994ae5de assets/dnmmod/models/item/iron_ring.json
-d5962e67dd51a6cd88327dc6f2183134c2fa3a71 assets/dnmmod/models/item/iron_scimitar.json
-20d9a85d1c3c98db6819142969686a46e264c26f assets/dnmmod/models/item/iron_sickle.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/dnmmod/models/item/leshy_spawn_egg.json
 db3aebb84646c5179e1ffdd450e447969e0b50fb assets/dnmmod/models/item/maid_cap.json
 51ba6441b6fb63dcaf9b2c0e8d28257d3226cb43 assets/dnmmod/models/item/maid_dress.json

@@ -48,17 +48,16 @@ public class CorpsePoison extends MobEffect {
         if(effect != null) {
             Level level = entity.level();
             if (!level.isClientSide()) {
-                // Отправляем пакет частиц на клиент
                 ((ServerLevel) level).sendParticles(
-                        ParticleHelper.POISON_CLOUD,  // Тип частиц для эффектов зелий
-                        entity.getX(),                // X координата
-                        entity.getY() + entity.getBbHeight() / 2,  // Центр существа
-                        entity.getZ(),                // Z координата
-                        20,                           // Количество частиц
-                        entity.getBbWidth(),          // Разброс по X
-                        entity.getBbHeight() / 2,     // Разброс по Y
-                        entity.getBbWidth(),          // Разброс по Z
-                        0.5                           // Скорость
+                        ParticleHelper.POISON_CLOUD,
+                        entity.getX(),
+                        entity.getY() + entity.getBbHeight() / 2,
+                        entity.getZ(),
+                        20,
+                        entity.getBbWidth(),
+                        entity.getBbHeight() / 2,
+                        entity.getBbWidth(),
+                        0.5
                 );
             }
 

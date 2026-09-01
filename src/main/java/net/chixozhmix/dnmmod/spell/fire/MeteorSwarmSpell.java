@@ -9,18 +9,20 @@ import io.redspace.ironsspellbooks.api.util.CameraShakeData;
 import io.redspace.ironsspellbooks.api.util.CameraShakeManager;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
+import net.chixozhmix.chilib.events.TickHelper;
+import net.chixozhmix.chilib.particles.ParticleDirection;
+import net.chixozhmix.chilib.utils.SpellUtils;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.ParticleSpawnHelper;
-import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.api.spell.DnMSpellAnimations;
 import net.chixozhmix.dnmmod.entity.spell.meteor.MeteorEntity;
-import net.chixozhmix.dnmmod.events.SpellTickHelper;
-import net.chixozhmix.dnmmod.particle.ParticleDirection;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
@@ -84,6 +86,14 @@ public class MeteorSwarmSpell extends AbstractSpell {
     }
 
     @Override
+    public CastResult canBeCastedBy(int spellLevel, CastSource castSource, MagicData playerMagicData, Player player) {
+        if(castSource == CastSource.SCROLL)
+            return new CastResult(CastResult.Type.FAILURE, Component.translatable("ui.irons_spellbooks.cast_error_scroll", new Object[]{this.getDisplayName(player)}).withStyle(ChatFormatting.RED));
+
+        return super.canBeCastedBy(spellLevel, castSource, playerMagicData, player);
+    }
+
+    @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(Component.translatable("ui.irons_spellbooks.damage", new Object[]{Utils.stringTruncation((double)this.getDamage(spellLevel, caster), 2)}),
                 Component.translatable("ui.irons_spellbooks.radius", new Object[]{this.getRadius()}));
@@ -117,7 +127,7 @@ public class MeteorSwarmSpell extends AbstractSpell {
 
             final int index = i;
 
-            SpellTickHelper.runLater(level, index * 20, () -> {
+            TickHelper.runLater(level, index * 20, () -> {
 
                 RandomSource random = level.random;
 

@@ -1,17 +1,12 @@
 package net.chixozhmix.dnmmod;
 
 import com.mojang.logging.LogUtils;
-import io.redspace.ironsspellbooks.registries.ItemRegistry;
-import net.chixozhmix.dnmmod.Util.BrewingRecipe;
 import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
 import net.chixozhmix.dnmmod.registers.*;
 import net.chixozhmix.dnmmod.items.CreativeTabMod;
 import net.chixozhmix.dnmmod.registers.ModStructures;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -87,17 +82,7 @@ public class DnMmod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.POISON, ModItems.GREEMON_FANG.get(), ModPotions.CORPSE_POISON.get()));
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), Items.ENDER_PEARL, ModPotions.ENDER_RESIST_POTION.get()));
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), Items.BLAZE_ROD, ModPotions.FIRE_RESIST_POTION.get()));
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), ItemRegistry.FROZEN_BONE_SHARD.get(), ModPotions.ICE_RESIST_POTION.get()));
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), ItemRegistry.BLOOD_VIAL.get(), ModPotions.BLOOD_RESIST_POTION.get()));
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), Items.EMERALD, ModPotions.EVOCATION_RESIST_POTION.get()));
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), ItemRegistry.DIVINE_PEARL.get(), ModPotions.HOLY_RESIST_POTION.get()));
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), Items.POISONOUS_POTATO, ModPotions.NATURE_RESIST_POTION.get()));
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), ItemRegistry.LIGHTNING_BOTTLE.get(), ModPotions.LIGHTNING_RESIST_POTION.get()));
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(ModPotions.RESISTANCE.get(), Items.ECHO_SHARD, ModPotions.ELDRITCH_RESIST_POTION.get()));
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(Potions.AWKWARD, Items.GOLDEN_APPLE, ModPotions.RESISTANCE.get()));
+        DnMBrewingRegistry.registerRecipes();
     }
 
     // Add the example block item to the building blocks tab

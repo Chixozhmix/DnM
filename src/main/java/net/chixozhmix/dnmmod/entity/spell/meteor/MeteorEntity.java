@@ -92,7 +92,7 @@ public class MeteorEntity extends AbstractMagicProjectile {
                 }
             }
 
-            Explosion explosion = new Explosion(this.level(), (Entity)null, ((AbstractSpell)RegistrySpells.METEOR_SWARM.get()).getDamageSource(this, this.getOwner()), (ExplosionDamageCalculator)null, this.getX(), this.getY(), this.getZ(), this.getExplosionRadius(), true, Explosion.BlockInteraction.DESTROY);
+            Explosion explosion = new Explosion(this.level(), this.getOwner(), ((AbstractSpell)RegistrySpells.METEOR_SWARM.get()).getDamageSource(this, this.getOwner()), (ExplosionDamageCalculator)null, this.getX(), this.getY(), this.getZ(), this.getExplosionRadius(), true, Explosion.BlockInteraction.DESTROY);
             if (!MinecraftForge.EVENT_BUS.post(new ExplosionEvent.Start(this.level(), explosion))) {
                 explosion.explode();
                 explosion.finalizeExplosion(false);

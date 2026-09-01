@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.world.structure;
 
 import com.mojang.serialization.Codec;
+import net.chixozhmix.chilib.world.structures.BaseJigsawStructure;
 import net.chixozhmix.dnmmod.registers.ModStructures;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;

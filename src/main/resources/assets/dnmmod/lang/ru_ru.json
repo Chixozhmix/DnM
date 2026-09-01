@@ -215,6 +215,9 @@
   "death.attack.dnmmod.hunger_of_hadar": "%1$s был пожран Хадаром",
   "death.attack.dnmmod.thunderwave": "%1$s был разорван раскатом грома",
   "death.attack.dnmmod.summon_darkspawn_larva": "%1$s был убит порождением мора",
+  "death.attack.dnmmod.meteor_swarm": "%1$s был раздавлен метеоритом",
+  "death.attack.dnmmod.eldritch_beams": "%1$s Уничтожен проклятой энергией",
+  "death.attack.dnmmod.psychic_scream": "%1$s не выдержал психического давления",
 
   "entity.dnmmod.undead_spirit": "Дух Нежити",
   "entity.dnmmod.summoned_undead_spirit": "Дух Нежити",

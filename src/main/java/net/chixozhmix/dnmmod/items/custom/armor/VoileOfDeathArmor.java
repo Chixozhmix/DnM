@@ -38,7 +38,7 @@ public class VoileOfDeathArmor extends ExtendedArmorItem {
         if(player.getItemBySlot(EquipmentSlot.CHEST).getItem() != this)
             return;
 
-        if(currentHP <= maxHP/3) {
+        if(currentHP <= maxHP/4) {
             if(!player.hasEffect(ModEffects.PHANTOM_EFFECT.get()) && !player.hasEffect(MobEffectRegistry.TRUE_INVISIBILITY.get()))
             {
                 player.addEffect(new MobEffectInstance(
@@ -57,7 +57,7 @@ public class VoileOfDeathArmor extends ExtendedArmorItem {
                         false
                 ));
 
-                stack.hurtAndBreak(1, player, (e) -> {
+                stack.hurtAndBreak(2, player, (e) -> {
                     e.broadcastBreakEvent(EquipmentSlot.CHEST);
                 });
             }

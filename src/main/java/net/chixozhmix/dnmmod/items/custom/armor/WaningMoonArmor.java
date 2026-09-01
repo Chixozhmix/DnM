@@ -4,9 +4,9 @@ import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
 import io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
+import net.chixozhmix.chilib.utils.items.ISetArmor;
+import net.chixozhmix.chilib.utils.items.ItemUtils;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
-import net.chixozhmix.dnmmod.Util.Utils;
-import net.chixozhmix.dnmmod.api.misc.ISetArmor;
 import net.chixozhmix.dnmmod.items.UniqArmorMaterials;
 import net.chixozhmix.dnmmod.items.client.armor.WaningMoonArmorModel;
 import net.minecraft.ChatFormatting;
@@ -37,7 +37,7 @@ public class WaningMoonArmor extends ImbuableChestplateArmorItem implements ISet
     @Override
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if(!level.isClientSide()) {
-            if(Utils.hasFullSet(player)) {
+            if(ItemUtils.hasFullSet(player)) {
                 armorSetBonus(player);
             } else {
                 removeAllBonuses(player);

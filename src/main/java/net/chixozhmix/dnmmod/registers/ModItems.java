@@ -1,6 +1,8 @@
 package net.chixozhmix.dnmmod.registers;
 
 import com.gametechbc.traveloptics.api.init.TravelopticsAttributes;
+import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
+import io.redspace.ironsspellbooks.api.item.weapons.MagicSwordItem;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
@@ -11,12 +13,10 @@ import io.redspace.ironsspellbooks.item.spell_books.SimpleAttributeSpellBook;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.item.weapons.StaffItem;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
+import net.chixozhmix.chilib.utils.items.ItemUtils;
+import net.chixozhmix.chilib.utils.items.PropertiesHelper;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.Util.PropertiesHelper;
-import net.chixozhmix.dnmmod.items.ModArmorMaterials;
-import net.chixozhmix.dnmmod.items.StaffTier;
-import net.chixozhmix.dnmmod.items.WandItem;
-import net.chixozhmix.dnmmod.items.WandTier;
+import net.chixozhmix.dnmmod.items.*;
 import net.chixozhmix.dnmmod.items.curio.ProtectiveBrasletItem;
 import net.chixozhmix.dnmmod.items.custom.*;
 import net.chixozhmix.dnmmod.items.custom.armor.*;
@@ -51,72 +51,20 @@ public class ModItems {
     private static final UUID WAND_UUID = UUID.fromString("667ad88f-901d-4691-b2a2-3664e42026d3");
     private static final String ATTRIBUTE_NAME = "Weapon modifier";
 
-    private static RegistryObject<Item> registerSword(String name, Tier tier, int damage, float speed, int durability) {
-        return ITEMS.register(name, () ->
-                new SwordItem(tier, damage, speed,
-                        PropertiesHelper.durabilityItemProperties(durability)));
-    }
-    private static RegistryObject<Item> registerAxe(String name, Tier tier, float damage, float speed, int durability) {
-        return ITEMS.register(name, () ->
-                new AxeItem(tier, damage, speed,
-                        PropertiesHelper.durabilityItemProperties(durability)));
-    }
+//    private static RegistryObject<Item> registerSword(String name, Tier tier, int damage, float speed, int durability) {
+//        return ITEMS.register(name, () ->
+//                new SwordItem(tier, damage, speed,
+//                        PropertiesHelper.durabilityItemProperties(durability)));
+//    }
+//    private static RegistryObject<Item> registerAxe(String name, Tier tier, float damage, float speed, int durability) {
+//        return ITEMS.register(name, () ->
+//                new AxeItem(tier, damage, speed,
+//                        PropertiesHelper.durabilityItemProperties(durability)));
+//    }
 
     //Weapons
-    public static final RegistryObject<Item> IRON_DAGGER = registerSword("iron_dagger", Tiers.IRON,
-            1, -1.4f, 300);
-    public static final RegistryObject<Item> IRON_KLEVETS = registerSword("iron_klevets", Tiers.IRON,
-            3, -1.6f, 330);
-    public static final RegistryObject<Item> IRON_SICKLE = registerSword("iron_sickle", Tiers.IRON,
-            2, -1.5f, 320);
-    public static final RegistryObject<Item> IRON_MACE = registerSword("iron_mace", Tiers.IRON,
-            2, -2.0f, 360);
-    public static final RegistryObject<Item> IRON_SCIMITAR = registerSword("iron_scimitar", Tiers.IRON,
-            3, -1.8f, 340);
-    public static final RegistryObject<Item> IRON_BATTLEAXE = registerAxe("iron_battleaxe", Tiers.IRON,
-            3.5F, -2.5f, 260);
-    public static final RegistryObject<Item> IRON_SPEAR = registerSword("iron_spear", Tiers.IRON,
-            4, -2.4f, 350);
-    public static final RegistryObject<Item> IRON_HALBERD = registerSword("iron_halberd", Tiers.IRON,
-            4, -2.0f, 310);
-    public static final RegistryObject<Item> IRON_GREATAXE = registerAxe("iron_greataxe", Tiers.IRON,
-            9, -3.4f, 400);
-    public static final RegistryObject<Item> IRON_GREATSWORD = registerSword("iron_greatsword", Tiers.IRON,
-            8, -2.8f, 460);
-    public static final RegistryObject<Item> IRON_GLAIVE = registerSword("iron_glaive", Tiers.IRON,
-            4, -2.4f, 460);
-    public static final RegistryObject<Item> IRON_TRIDENT = registerSword("iron_trident", Tiers.IRON,
-            4, -2.6f, 430);
-    public static final RegistryObject<Item> IRON_KATANA = registerSword("iron_katana", Tiers.IRON,
-            4, -2.0f, 330);
-    public static final RegistryObject<Item> DIAMOND_DAGGER = registerSword("diamond_dagger", Tiers.DIAMOND,
-            1, -1.4f, 1200);
-    public static final RegistryObject<Item> DIAMOND_KLEVETS = registerSword("diamond_klevets", Tiers.DIAMOND,
-            3, -1.6f, 1130);
-    public static final RegistryObject<Item> DIAMOND_SICKLE = registerSword("diamond_sickle", Tiers.DIAMOND,
-            2, -1.5f, 1020);
-    public static final RegistryObject<Item> DIAMOND_MACE = registerSword("diamond_mace", Tiers.DIAMOND,
-            2, -2.0f, 1160);
-    public static final RegistryObject<Item> DIAMOND_SCIMITAR = registerSword("diamond_scimitar", Tiers.DIAMOND,
-            3, -1.8f, 1040);
-    public static final RegistryObject<Item> DIAMOND_BATTLEAXE = registerAxe("diamond_battleaxe", Tiers.DIAMOND,
-            3.5F, -2.5f, 660);
-    public static final RegistryObject<Item> DIAMOND_SPEAR = registerSword("diamond_spear", Tiers.DIAMOND,
-            4, -2.4f, 1250);
-    public static final RegistryObject<Item> DIAMOND_HALBERD = registerSword("diamond_halberd", Tiers.DIAMOND,
-            4, -2.0f, 1110);
-    public static final RegistryObject<Item> DIAMOND_GREATAXE = registerAxe("diamond_greataxe", Tiers.DIAMOND,
-            9, -3.4f, 1500);
-    public static final RegistryObject<Item> DIAMOND_GREATSWORD = registerSword("diamond_greatsword", Tiers.DIAMOND,
-            8, -2.8f, 1560);
-    public static final RegistryObject<Item> DIAMOND_GLAIVE = registerSword("diamond_glaive", Tiers.DIAMOND,
-            4, -2.4f, 1300);
-    public static final RegistryObject<Item> DIAMOND_TRIDENT = registerSword("diamond_trident", Tiers.DIAMOND,
-            4, -2.6f, 1230);
-    public static final RegistryObject<Item> DIAMOND_KATANA = registerSword("diamond_katana", Tiers.DIAMOND,
-            4, -2.0f, 1030);
-    public static final RegistryObject<Item> RITUAL_DAGGER = registerSword("ritual_dagger", Tiers.DIAMOND,
-            1, -1.4f, 400);
+    public static final RegistryObject<Item> RITUAL_DAGGER = ITEMS.register("ritual_dagger", () -> new ExtendedSwordItem(DnMWeaponTier.RITUAL_DAGGER,
+            PropertiesHelper.itemProperties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> BLADESINGER_SWORD = ITEMS.register("bladesinger_sword", () ->
             new BladesingerSword(SpellDataRegistryHolder.of(new SpellDataRegistryHolder[]{
                     new SpellDataRegistryHolder(RegistrySpells.THICK_OF_FIGHT, 1)})));
@@ -206,7 +154,7 @@ public class ModItems {
     //Potions
     public static final RegistryObject<Item> PHANTOM_POTION = ITEMS.register("phantom_potion",
             () -> new SimpleElixir(ItemPropertiesHelper.material(), () ->
-                    new MobEffectInstance(ModEffects.PHANTOM_EFFECT.get(), 900, 0)));
+                    new MobEffectInstance(ModEffects.PHANTOM_EFFECT.get(), 500, 0)));
     //Armor
     public static final RegistryObject<Item> MAID_DRESS = ITEMS.register("maid_dress",
             () -> new MaidDress(ModArmorMaterials.MAIDDRESS, ArmorItem.Type.CHESTPLATE, PropertiesHelper.itemProperties()));

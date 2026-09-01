@@ -42,10 +42,6 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
 
     private static final EntityDimensions DIMENSIONS = EntityDimensions.fixed(0.6f, 0.6f);
 
-    private static final float DAGGER_CHANCE = 0.3F;
-    private static final float LEATHER_HELMET_CHANCE = 0.3F;
-    private static final float EQUIPMENT_DROP_CHANCE = 0.1F;
-
     public GoblinWariorEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.xpReward = 5;
@@ -140,23 +136,6 @@ public class GoblinWariorEntity extends Monster implements GeoEntity {
         RandomSource randomsource = Utils.random;
         this.populateDefaultEquipmentSlots(randomsource, pDifficulty);
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
-    }
-
-    @Override
-    protected void populateDefaultEquipmentSlots(RandomSource pRandom, DifficultyInstance pDifficulty) {
-        float randomValue = pRandom.nextFloat();
-
-        if (randomValue < DAGGER_CHANCE) {
-            this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.IRON_DAGGER.get()));
-        } else {
-            this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
-        }
-
-        if (pRandom.nextFloat() < LEATHER_HELMET_CHANCE) {
-            this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.LEATHER_HELMET));
-        }
-
-        this.setDropChance(EquipmentSlot.MAINHAND, EQUIPMENT_DROP_CHANCE);
     }
 
     @Override
