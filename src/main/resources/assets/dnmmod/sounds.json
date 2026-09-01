@@ -70,6 +70,16 @@
       "dnmmod:summon_finish"
     ]
   },
+  "meteor_swarm_cast": {
+    "sounds": [
+      "dnmmod:meteor_swarm_cast"
+    ]
+  },
+  "meteor_explosion": {
+    "sounds": [
+      "dnmmod:meteor_explosion"
+    ]
+  },
   "the_hag": {
     "sounds": [
       "dnmmod:the_hag"

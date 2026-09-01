@@ -65,23 +65,6 @@ public class LeshyAltarBlock extends BaseEntityBlock {
             MobEffects.MOVEMENT_SPEED
     );
 
-    private static final List<Item> USED_ITEM = Arrays.asList(
-            Items.POTATO,
-            Items.APPLE,
-            Items.CHICKEN,
-            Items.TROPICAL_FISH,
-            Items.PUFFERFISH,
-            Items.COD,
-            Items.SALMON,
-            Items.PORKCHOP,
-            Items.MUTTON,
-            Items.BEEF,
-            Items.RABBIT,
-            Items.SWEET_BERRIES,
-            Items.CARROT,
-            Items.BEETROOT
-    );
-
     public LeshyAltarBlock(Properties pProperties) {
         super(pProperties);
     }
@@ -149,7 +132,7 @@ public class LeshyAltarBlock extends BaseEntityBlock {
     }
 
     private boolean isUsedItem(ItemStack item) {
-        return USED_ITEM.contains(item.getItem());
+        return item.isEdible();
     }
 
     //spaw

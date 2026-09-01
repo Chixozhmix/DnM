@@ -26,6 +26,8 @@ public class SoundsRegistry{
     public static final RegistryObject<SoundEvent> THE_HAG = registerSoundEvent("the_hag");
     public static final RegistryObject<SoundEvent> MODEUS_AMBIENT = registerSoundEvent("modeus_ambient");
     public static final RegistryObject<SoundEvent> SUMMON_FINISH = registerSoundEvent("summon_finish");
+    public static final RegistryObject<SoundEvent> METEOR_SWARM_CAST = registerSoundEvent("meteor_swarm_cast");
+    public static final RegistryObject<SoundEvent> METEOR_EXPLOSION = registerSoundEvent("meteor_explosion");
 
     public static final RegistryObject<SoundEvent> THE_HAG_DISC = registerSoundEvent("the_hag_disc");
 

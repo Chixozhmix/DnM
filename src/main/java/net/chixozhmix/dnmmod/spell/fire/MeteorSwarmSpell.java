@@ -16,10 +16,12 @@ import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.ParticleSpawnHelper;
 import net.chixozhmix.dnmmod.api.spell.DnMSpellAnimations;
 import net.chixozhmix.dnmmod.entity.spell.meteor.MeteorEntity;
+import net.chixozhmix.dnmmod.registers.SoundsRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -30,6 +32,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 
 @AutoSpellConfig
 public class MeteorSwarmSpell extends AbstractSpell {
@@ -73,6 +76,11 @@ public class MeteorSwarmSpell extends AbstractSpell {
     @Override
     public AnimationHolder getCastFinishAnimation() {
         return DnMSpellAnimations.METEOR_SWARM_END;
+    }
+
+    @Override
+    public Optional<SoundEvent> getCastStartSound() {
+        return Optional.of(SoundsRegistry.METEOR_SWARM_CAST.get());
     }
 
     @Override
