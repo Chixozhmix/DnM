@@ -2,6 +2,8 @@ package net.chixozhmix.dnmmod.goals;
 
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.spell.trident_strike_area.TridentStrikeAreaEntity;
+import net.chixozhmix.dnmmod.network.ModNetwork;
+import net.chixozhmix.dnmmod.network.packet.DangerZonesPacket;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -89,7 +91,7 @@ public class AOEModeusAttackGoal extends Goal {
         this.modeus.setUsingAOE(true);
         this.modeus.setInvulnerable(true);
 
-        createBeamIndicators();
+        sendDangerZones();
     }
 
     @Override
@@ -101,7 +103,7 @@ public class AOEModeusAttackGoal extends Goal {
         this.modeus.setUsingAOE(false);
         this.modeus.setInvulnerable(false);
 
-        removeBeamIndicators();
+        clearDangerZonesOnClients();
     }
 
     @Override
@@ -124,48 +126,6 @@ public class AOEModeusAttackGoal extends Goal {
         if (this.cooldownCounter > 0 && currentState == State.COOLDOWN) {
             this.cooldownCounter--;
         }
-    }
-
-    /**
-     * Создает визуальные индикаторы для каждого луча
-     */
-    private void createBeamIndicators() {
-        if (!(modeus.level() instanceof ServerLevel serverLevel)) return;
-
-        float angleStep = 360f / beamCount;
-        Vec3 startPos = modeus.getEyePosition().subtract(0.0F, 1.0F, 0.0F);
-
-        for (int i = 0; i < beamCount; i++) {
-            double angle = Math.toRadians(angleStep * i);
-            Vec3 beamDir = new Vec3(Math.cos(angle), 0, Math.sin(angle)).normalize();
-
-            TridentStrikeAreaEntity indicator = new TridentStrikeAreaEntity(
-                    serverLevel,
-                    startPos,
-                    beamDir,
-                    range,
-                    (float) beamWidth,
-                    areaColor
-            );
-
-            indicator.setDuration(warmupTime + 40);
-            indicator.setShouldFade(true);
-            serverLevel.addFreshEntity(indicator);
-
-            beamIndicators.add(indicator);
-        }
-    }
-
-    /**
-     * Удаляет все индикаторы
-     */
-    private void removeBeamIndicators() {
-        for (TridentStrikeAreaEntity indicator : beamIndicators) {
-            if (indicator != null && indicator.isAlive()) {
-                indicator.discard();
-            }
-        }
-        beamIndicators.clear();
     }
 
     private void handleWarmup() {
@@ -274,5 +234,36 @@ public class AOEModeusAttackGoal extends Goal {
     @Override
     public boolean requiresUpdateEveryTick() {
         return true;
+    }
+
+    private void sendDangerZones() {
+        List<DangerZonesPacket.DangerZoneData> zones = createDangerZones();
+
+        DangerZonesPacket packet = new DangerZonesPacket(modeus.getId(), zones);
+
+        ModNetwork.sendToTrackingPlayer(packet, modeus);
+    }
+
+    private List<DangerZonesPacket.DangerZoneData> createDangerZones() {
+        List<DangerZonesPacket.DangerZoneData> zones = new ArrayList<>();
+        float angleStep = 360.0F / beamCount;
+        Vec3 bossPos = modeus.position(); // Опорная точка — босс
+
+        for (int i = 0; i < beamCount; i++) {
+            double angle = Math.toRadians(angleStep * i);
+            float rotation = (float) (-angle);
+            zones.add(new DangerZonesPacket.DangerZoneData(
+                    bossPos.x, bossPos.y, bossPos.z,
+                    rotation,
+                    (float) range,
+                    (float) (beamWidth * 2.0)
+            ));
+        }
+        return zones;
+    }
+
+    private void clearDangerZonesOnClients() {
+        DangerZonesPacket packet = new DangerZonesPacket(modeus.getId(), List.of());
+        ModNetwork.sendToTrackingPlayer(packet, modeus);
     }
 }

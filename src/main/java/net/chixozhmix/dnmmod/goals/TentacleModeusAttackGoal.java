@@ -3,6 +3,8 @@ package net.chixozhmix.dnmmod.goals;
 import io.redspace.ironsspellbooks.entity.spells.void_tentacle.VoidTentacle;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
+import net.chixozhmix.dnmmod.network.ModNetwork;
+import net.chixozhmix.dnmmod.network.packet.DangerZonesPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -88,6 +90,8 @@ public class TentacleModeusAttackGoal extends Goal {
         this.modeus.setInvulnerable(true);
 
         generateSpawnPositions();
+
+        sendDangerZones();
     }
 
     @Override
@@ -97,6 +101,8 @@ public class TentacleModeusAttackGoal extends Goal {
         this.tickCounter = 0;
         this.modeus.setUsingTentacle(false);
         this.modeus.setInvulnerable(false);
+
+        clearDangerZonesOnClients();
 
         this.spawnPositions.clear();
     }
@@ -253,5 +259,18 @@ public class TentacleModeusAttackGoal extends Goal {
         if (this.cooldownCounter > 0 && currentState == State.COOLDOWN) {
             this.cooldownCounter--;
         }
+    }
+
+    private void sendDangerZones() {
+        List<DangerZonesPacket.DangerZoneData> zones = spawnPositions.stream().map(pos ->
+                new DangerZonesPacket.DangerZoneData(pos.x, pos.y, pos.z, 0.0F, 3.0F, 3.0F)).toList();
+
+        DangerZonesPacket packet = new DangerZonesPacket(modeus.getId(), zones);
+        ModNetwork.sendToTrackingPlayer(packet, modeus);
+    }
+
+    private void clearDangerZonesOnClients() {
+        DangerZonesPacket packet = new DangerZonesPacket(modeus.getId(), List.of());
+        ModNetwork.sendToTrackingPlayer(packet, modeus);
     }
 }

@@ -6,6 +6,7 @@ import com.mojang.math.Axis;
 import io.redspace.ironsspellbooks.render.RenderHelper;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.entity.GeckoEmissiveRendererHelper;
+import net.chixozhmix.dnmmod.entity.misc.DangerZoneRenderLayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -29,6 +30,7 @@ public class ModeusRenderer extends GeoEntityRenderer<ModeusBoss> {
 
     public ModeusRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new ModeusModel());
+        this.addRenderLayer(new DangerZoneRenderLayer<>(this));
     }
 
     @Override

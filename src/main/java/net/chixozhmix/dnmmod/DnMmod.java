@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod;
 
 import com.mojang.logging.LogUtils;
 import net.chixozhmix.dnmmod.configs.SpellComponentConfig;
+import net.chixozhmix.dnmmod.network.ModNetwork;
 import net.chixozhmix.dnmmod.registers.*;
 import net.chixozhmix.dnmmod.items.CreativeTabMod;
 import net.chixozhmix.dnmmod.registers.ModStructures;
@@ -83,6 +84,8 @@ public class DnMmod
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         DnMBrewingRegistry.registerRecipes();
+
+        ModNetwork.register();
     }
 
     // Add the example block item to the building blocks tab

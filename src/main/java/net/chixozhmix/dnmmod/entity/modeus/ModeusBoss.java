@@ -18,6 +18,7 @@ import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.setup.PacketDistributor;
 import net.chixozhmix.chilib.utils.entity.IBeamAttackMob;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.entity.DangerZoneProvider;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
@@ -63,6 +64,7 @@ import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -71,10 +73,12 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
-public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker, IEntityAdditionalSpawnData, IBeamAttackMob, IClientEventEntity {
+public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnimatedAttacker, IEntityAdditionalSpawnData, IBeamAttackMob, IClientEventEntity, DangerZoneProvider {
     private static final EntityDataAccessor<Boolean> DATA_IS_ANIMATING_RISE = SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> PHASE = SynchedEntityData.defineId(ModeusBoss.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_IS_USING_KNOCKBACK =
@@ -94,6 +98,8 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     public static final byte CLIENT_START_TRACKING = 1;
 
     private static final BossbarManager.BossbarSprite BOSSBAR_SPRITE = new BossbarManager.BossbarSprite(DnMmod.id("boss_bars/modeus_boss_bar"), 192, 18, 3, -1);
+
+    private final List<DangerZonePosition> clientDangerZonePositions = new ArrayList<>();
 
     private boolean phaseTransitionTriggered = false;
     private boolean finalPhaseTransitionTriggered = false;
@@ -194,6 +200,14 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         }
     }
 
+    public void setClientDangerZonePositions(Collection<DangerZonePosition> positions) {
+        this.clientDangerZonePositions.clear();
+        this.clientDangerZonePositions.addAll(positions);
+    }
+
+    public void clearClientDangerZonePositions() {
+        this.clientDangerZonePositions.clear();
+    }
 
     @Override
     public void handleClientEvent(byte eventId) {
@@ -858,6 +872,27 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.isInvulnerable = invulnerable;
     }
 
+    @Override
+    public Collection<DangerZone> getDangerZones() {
+        if (clientDangerZonePositions.isEmpty())
+            return List.of();
+
+        List<DangerZone> zones = new ArrayList<>();
+
+        for (DangerZonePosition position : clientDangerZonePositions) {
+            // Убираем вычитание bossPos, так как координаты уже привязаны правильно
+            Vector3f offset = new Vector3f((float) (position.x() - this.getX()), (float) (position.y() - this.getY()), (float) (position.z() - this.getZ()));
+
+            zones.add(new DangerZone()
+                    .setOffset(offset)
+                    .setSize(position.length(), position.width())
+                    .setRotation(position.rotation())
+                    .setColor(0x197491));
+        }
+
+        return zones;
+    }
+
     public static enum Phases {
         FirstPhase(0),
         SecondPhase(1),
@@ -920,5 +955,8 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         super.aiStep();
 
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+    }
+
+    public record DangerZonePosition(double x, double y, double z, float rotation, float length,float width) {
     }
 }
