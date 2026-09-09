@@ -9,9 +9,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class RavenParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
 
-    protected RavenParticle(ClientLevel level, double x, double y, double z,
-                            double xSpeed, double ySpeed, double zSpeed,
-                            SpriteSet spriteSet) {
+    protected RavenParticle(ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, SpriteSet spriteSet) {
         super(level, x, y, z, xSpeed, ySpeed, zSpeed);
 
         this.sprites = spriteSet;

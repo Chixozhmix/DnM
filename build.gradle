@@ -75,6 +75,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    mavenCentral()
 
     maven {
         name = "Forge"
@@ -131,8 +132,8 @@ dependencies {
     compileOnly fg.deobf("curse.maven:to-tweaks-irons-spells-1046916:7413341")
     compileOnly fg.deobf("curse.maven:alshanexs-familiars-1171602:7481428")
     compileOnly fg.deobf("curse.maven:familiarslib-1316458:7696453")
-    compileOnly fg.deobf('maven.modrinth:l_enders-cataclysm:NvvXful4')
-    compileOnly fg.deobf('maven.modrinth:lionfish-api:2.4')
+//    compileOnly fg.deobf('maven.modrinth:l_enders-cataclysm:NvvXful4')
+//    compileOnly fg.deobf('maven.modrinth:lionfish-api:2.4')
     compileOnly fg.deobf('maven.modrinth:alexs-caves:2.0.2')
     compileOnly fg.deobf("curse.maven:locks-unofficial-1128357:6115787")
     compileOnly fg.deobf("curse.maven:gtbcs-spelllib-1194714:6973032")
