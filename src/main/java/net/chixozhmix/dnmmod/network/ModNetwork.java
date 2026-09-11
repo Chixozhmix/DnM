@@ -24,14 +24,6 @@ public class ModNetwork {
                 .simpleChannel();
 
         INSTANCE = net;
-
-//        INSTANCE.registerMessage(
-//                id(),
-//                DangerZonesPacket.class,
-//                DangerZonesPacket::encode,
-//                DangerZonesPacket::decode,
-//                DangerZonesPacket::handle
-//        );
     }
 
     public static <MSG> void sendToServer(MSG message) {

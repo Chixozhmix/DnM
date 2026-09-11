@@ -2,8 +2,8 @@ package net.chixozhmix.dnmmod.entity.defiled_priest;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.chixozhmix.chilib.utils.entity.geckolib.GeckoEmissiveRendererHelper;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.Util.entity.GeckoEmissiveRendererHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
