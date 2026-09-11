@@ -1,7 +1,6 @@
 package net.chixozhmix.dnmmod.network;
 
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.network.packet.DangerZonesPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -26,13 +25,13 @@ public class ModNetwork {
 
         INSTANCE = net;
 
-        INSTANCE.registerMessage(
-                id(),
-                DangerZonesPacket.class,
-                DangerZonesPacket::encode,
-                DangerZonesPacket::decode,
-                DangerZonesPacket::handle
-        );
+//        INSTANCE.registerMessage(
+//                id(),
+//                DangerZonesPacket.class,
+//                DangerZonesPacket::encode,
+//                DangerZonesPacket::decode,
+//                DangerZonesPacket::handle
+//        );
     }
 
     public static <MSG> void sendToServer(MSG message) {

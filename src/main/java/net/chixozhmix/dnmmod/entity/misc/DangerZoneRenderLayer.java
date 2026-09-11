@@ -3,8 +3,8 @@ package net.chixozhmix.dnmmod.entity.misc;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import it.unimi.dsi.fastutil.doubles.Double2DoubleFunction;
+import net.chixozhmix.chilib.utils.entity.geckolib.DangerZoneProvider;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.Util.entity.DangerZoneProvider;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
@@ -61,7 +61,7 @@ public class DangerZoneRenderLayer <T extends GeoAnimatable & DangerZoneProvider
         Vector3f offset = dangerZone.getOffset();
         poseStack.translate(offset.x, offset.y + 0.251F, offset.z);
         poseStack.mulPose(new Quaternionf().rotateY(dangerZone.getRotation()));
-        Vector2f scale = dangerZone.getSize();
+        Vector3f scale = dangerZone.getSize();
         poseStack.scale(scale.x, 1.0F, scale.y);
         AnimatableTexture.setAndUpdate(DANGER_ZONE_TEXTURE);
         this.renderQuad(poseStack, buffer, packedLight, packedOverlay, dangerZone.getColor());

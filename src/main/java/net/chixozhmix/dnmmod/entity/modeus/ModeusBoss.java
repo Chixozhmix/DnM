@@ -16,9 +16,11 @@ import io.redspace.ironsspellbooks.entity.mobs.wizards.fire_boss.FireBossEntity;
 import io.redspace.ironsspellbooks.network.EntityEventPacket;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.setup.PacketDistributor;
-import net.chixozhmix.chilib.utils.entity.IBeamAttackMob;
+import net.chixozhmix.chilib.goals.CapturingTargetAttackGoal;
+import net.chixozhmix.chilib.utils.entity.beamAttacker.BeamAttackController;
+import net.chixozhmix.chilib.utils.entity.beamAttacker.IBeamAttackMob;
+import net.chixozhmix.chilib.utils.entity.geckolib.DangerZoneProvider;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.Util.entity.DangerZoneProvider;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
@@ -99,8 +101,6 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
 
     private static final BossbarManager.BossbarSprite BOSSBAR_SPRITE = new BossbarManager.BossbarSprite(DnMmod.id("boss_bars/modeus_boss_bar"), 192, 18, 3, -1);
 
-    private final List<DangerZonePosition> clientDangerZonePositions = new ArrayList<>();
-
     private boolean phaseTransitionTriggered = false;
     private boolean finalPhaseTransitionTriggered = false;
 
@@ -115,9 +115,6 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     private final int timer = 260;
     private final float spawnDistanceSqr = 1225.0F;
     private boolean isInvulnerable = false;
-
-    private final int attackDuration = 40;
-    public int clientSideAttackTime;
 
     private int lossMageAnimTimer = 0;
     private static final int LOSS_MAGE_ANIM_DURATION = 13;
@@ -145,6 +142,8 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     private final AnimationController<ModeusBoss> riseController;
     private final AnimationController<ModeusBoss> attackController;
 
+    private final List<DangerZone> clientDangerZones = new ArrayList<>();
+
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)10.0F)
             .add(Attributes.ATTACK_KNOCKBACK, (double)1.0F)
@@ -157,6 +156,8 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
             .add(ForgeMod.ENTITY_REACH.get(), 5.0F)
             .add(Attributes.ARMOR, 10.0F)
             .add(AttributeRegistry.SPELL_RESIST.get(), 1.3F);
+
+    private final BeamAttackController beamAttack = new BeamAttackController(40);
 
 
     public ModeusBoss(Level pLevel) {
@@ -198,15 +199,6 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
             this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.0F);
             this.getAttribute(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0F);
         }
-    }
-
-    public void setClientDangerZonePositions(Collection<DangerZonePosition> positions) {
-        this.clientDangerZonePositions.clear();
-        this.clientDangerZonePositions.addAll(positions);
-    }
-
-    public void clearClientDangerZonePositions() {
-        this.clientDangerZonePositions.clear();
     }
 
     @Override
@@ -441,13 +433,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         }
 
         if (this.level().isClientSide) {
-            if (this.hasActiveAttackTarget()) {
-                if (this.clientSideAttackTime < this.attackDuration) {
-                    ++this.clientSideAttackTime;
-                }
-            } else {
-                this.clientSideAttackTime = 0;
-            }
+            beamAttack.tickClient(this.hasActiveAttackTarget());
         }
 
         if(this.getTarget() != null && (isPhase(Phases.FirstPhase) || isPhase(Phases.FinalPhase))) {
@@ -613,6 +599,33 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
 
     public void triggerRiseAnimation() {
         this.entityData.set(DATA_IS_ANIMATING_RISE, true);
+    }
+
+    @Override
+    public void setActiveAttackTarget(int i) {
+        this.entityData.set(DATA_ATTACK_TARGET_ID, i);
+    }
+
+    @Override
+    public boolean hasActiveAttackTarget() {
+        return this.entityData.get(DATA_ATTACK_TARGET_ID) != 0;
+    }
+
+    @Override
+    public @Nullable LivingEntity getActiveAttackTarget() {
+        if (!this.hasActiveAttackTarget()) return null;
+
+        if (this.level().isClientSide) {
+            Entity entity = this.level().getEntity(this.entityData.get(DATA_ATTACK_TARGET_ID));
+            return entity instanceof LivingEntity ? (LivingEntity) entity : null;
+        }
+
+        return this.getTarget();
+    }
+
+    @Override
+    public BeamAttackController getBeamAttackController() {
+        return beamAttack;
     }
 
     @Override
@@ -834,36 +847,6 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         this.entityData.set(PHASE, phaseValue);
     }
 
-    @Override
-    public void setActiveAttackTarget(int entityId) {
-        this.entityData.set(DATA_ATTACK_TARGET_ID, entityId);
-    }
-
-    @Override
-    public boolean hasActiveAttackTarget() {
-        return this.entityData.get(DATA_ATTACK_TARGET_ID) != 0;
-    }
-
-    @Override
-    public @Nullable LivingEntity getActiveAttackTarget() {
-        if (!this.hasActiveAttackTarget()) return null;
-        if (this.level().isClientSide) {
-            Entity entity = this.level().getEntity(this.entityData.get(DATA_ATTACK_TARGET_ID));
-            return entity instanceof LivingEntity ? (LivingEntity) entity : null;
-        }
-        return this.getTarget();
-    }
-
-    @Override
-    public int getAttackDuration() {
-        return this.attackDuration;
-    }
-
-    @Override
-    public float getAttackAnimationScale(float partialTicks) {
-        return ((float)this.clientSideAttackTime + partialTicks) / (float)this.attackDuration;
-    }
-
     public boolean isInvulnerable() {
         return isInvulnerable;
     }
@@ -874,23 +857,13 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
 
     @Override
     public Collection<DangerZone> getDangerZones() {
-        if (clientDangerZonePositions.isEmpty())
-            return List.of();
+        return clientDangerZones;
+    }
 
-        List<DangerZone> zones = new ArrayList<>();
-
-        for (DangerZonePosition position : clientDangerZonePositions) {
-            // Убираем вычитание bossPos, так как координаты уже привязаны правильно
-            Vector3f offset = new Vector3f((float) (position.x() - this.getX()), (float) (position.y() - this.getY()), (float) (position.z() - this.getZ()));
-
-            zones.add(new DangerZone()
-                    .setOffset(offset)
-                    .setSize(position.length(), position.width())
-                    .setRotation(position.rotation())
-                    .setColor(0x197491));
-        }
-
-        return zones;
+    @Override
+    public void setClientDangerZones(List<DangerZone> zones) {
+        clientDangerZones.clear();
+        clientDangerZones.addAll(zones);
     }
 
     public static enum Phases {
@@ -955,8 +928,5 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
         super.aiStep();
 
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
-    }
-
-    public record DangerZonePosition(double x, double y, double z, float rotation, float length,float width) {
     }
 }

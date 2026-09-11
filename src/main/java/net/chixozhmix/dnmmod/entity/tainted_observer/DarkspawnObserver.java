@@ -1,9 +1,10 @@
 package net.chixozhmix.dnmmod.entity.tainted_observer;
 
-import net.chixozhmix.chilib.utils.entity.IBeamAttackMob;
+import net.chixozhmix.chilib.goals.CapturingTargetAttackGoal;
+import net.chixozhmix.chilib.utils.entity.beamAttacker.BeamAttackController;
+import net.chixozhmix.chilib.utils.entity.beamAttacker.IBeamAttackMob;
 import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
-import net.chixozhmix.dnmmod.goals.CapturingTargetAttackGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -46,9 +47,6 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
     private static final EntityDataAccessor<Integer> DATA_ATTACK_TARGET_ID =
             SynchedEntityData.defineId(DarkspawnObserver.class, EntityDataSerializers.INT);
 
-    private int attackDuration = 80;
-    public int clientSideAttackTime;
-
     private static final int MAX_FLY_HEIGHT = 40;
     Vec3 moveTargetPoint;
     BlockPos anchorPoint;
@@ -71,6 +69,8 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
             .add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
             .add(Attributes.FLYING_SPEED, 0.40D).build();
 
+    private final BeamAttackController beamAttack = new BeamAttackController(80);
+
     public DarkspawnObserver(EntityType<? extends FlyingMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.xpReward = 5;
@@ -92,13 +92,7 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
         super.tick();
 
         if (this.level().isClientSide) {
-            if (this.hasActiveAttackTarget()) {
-                if (this.clientSideAttackTime < this.attackDuration) {
-                    ++this.clientSideAttackTime;
-                }
-            } else {
-                this.clientSideAttackTime = 0;
-            }
+            beamAttack.tickClient(this.hasActiveAttackTarget());
         }
 
         if (this.spawnPoint != null) {
@@ -216,9 +210,29 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
         this.entityData.define(DATA_ATTACK_TARGET_ID, 0);
     }
 
+//    @Override
+//    public void setActiveAttackTarget(int entityId) {
+//        this.entityData.set(DATA_ATTACK_TARGET_ID, entityId);
+//    }
+//
+//    @Override
+//    public boolean hasActiveAttackTarget() {
+//        return this.entityData.get(DATA_ATTACK_TARGET_ID) != 0;
+//    }
+//
+//    @Override
+//    public @Nullable LivingEntity getActiveAttackTarget() {
+//        if (!this.hasActiveAttackTarget()) return null;
+//        if (this.level().isClientSide) {
+//            Entity entity = this.level().getEntity(this.entityData.get(DATA_ATTACK_TARGET_ID));
+//            return entity instanceof LivingEntity ? (LivingEntity) entity : null;
+//        }
+//        return this.getTarget();
+//    }
+
     @Override
-    public void setActiveAttackTarget(int entityId) {
-        this.entityData.set(DATA_ATTACK_TARGET_ID, entityId);
+    public void setActiveAttackTarget(int i) {
+        this.entityData.set(DATA_ATTACK_TARGET_ID, i);
     }
 
     @Override
@@ -229,21 +243,18 @@ public class DarkspawnObserver extends FlyingMob implements GeoEntity, Enemy, IB
     @Override
     public @Nullable LivingEntity getActiveAttackTarget() {
         if (!this.hasActiveAttackTarget()) return null;
+
         if (this.level().isClientSide) {
             Entity entity = this.level().getEntity(this.entityData.get(DATA_ATTACK_TARGET_ID));
             return entity instanceof LivingEntity ? (LivingEntity) entity : null;
         }
+
         return this.getTarget();
     }
 
     @Override
-    public int getAttackDuration() {
-        return this.attackDuration;
-    }
-
-    @Override
-    public float getAttackAnimationScale(float partialTicks) {
-        return ((float)this.clientSideAttackTime + partialTicks) / (float)this.attackDuration;
+    public BeamAttackController getBeamAttackController() {
+        return beamAttack;
     }
 
     abstract class DarkspawnObserverMoveTargetGoal extends Goal {

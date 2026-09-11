@@ -1,9 +1,9 @@
 package net.chixozhmix.dnmmod.goals;
 
+import net.chixozhmix.chilib.client.danger_zone.ZoneType;
+import net.chixozhmix.chilib.network.ChiLibNetwork;
+import net.chixozhmix.chilib.network.packet.DangerZonesPacket;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
-import net.chixozhmix.dnmmod.entity.spell.trident_strike_area.TridentStrikeAreaEntity;
-import net.chixozhmix.dnmmod.network.ModNetwork;
-import net.chixozhmix.dnmmod.network.packet.DangerZonesPacket;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -30,8 +30,6 @@ public class AOEModeusAttackGoal extends Goal {
     private int tickCounter;
     private int cooldownCounter;
     private State currentState = State.COOLDOWN;
-
-    private List<TridentStrikeAreaEntity> beamIndicators = new ArrayList<>();
 
     public AOEModeusAttackGoal(ModeusBoss modeus, int warmupTime, int activeTime, int cooldownTime,
                                int beamCount, float damage, float range, double beamWidth, int areaColor) {
@@ -241,29 +239,44 @@ public class AOEModeusAttackGoal extends Goal {
 
         DangerZonesPacket packet = new DangerZonesPacket(modeus.getId(), zones);
 
-        ModNetwork.sendToTrackingPlayer(packet, modeus);
+        ChiLibNetwork.sendToTrackingPlayer(packet, modeus);
     }
 
     private List<DangerZonesPacket.DangerZoneData> createDangerZones() {
         List<DangerZonesPacket.DangerZoneData> zones = new ArrayList<>();
+
         float angleStep = 360.0F / beamCount;
-        Vec3 bossPos = modeus.position(); // Опорная точка — босс
 
         for (int i = 0; i < beamCount; i++) {
             double angle = Math.toRadians(angleStep * i);
-            float rotation = (float) (-angle);
+
+            double dirX = Math.cos(angle);
+            double dirZ = Math.sin(angle);
+
+            double centerDistance = range / 2.0;
+
+            double x = dirX * centerDistance;
+            double z = dirZ * centerDistance;
+
+            float rotation = (float) (Math.PI / 2.0 - angle);
+
             zones.add(new DangerZonesPacket.DangerZoneData(
-                    bossPos.x, bossPos.y, bossPos.z,
+                    ZoneType.RECTANGLE,
+                    x,
+                    0.0,
+                    z,
                     rotation,
-                    (float) range,
-                    (float) (beamWidth * 2.0)
+                    (float) (beamWidth * 2.0),
+                    1.0F,
+                    (float) range
             ));
         }
+
         return zones;
     }
 
     private void clearDangerZonesOnClients() {
         DangerZonesPacket packet = new DangerZonesPacket(modeus.getId(), List.of());
-        ModNetwork.sendToTrackingPlayer(packet, modeus);
+        ChiLibNetwork.sendToTrackingPlayer(packet, modeus);
     }
 }

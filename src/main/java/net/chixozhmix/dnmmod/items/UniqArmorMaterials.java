@@ -66,9 +66,9 @@ public enum UniqArmorMaterials implements IronsExtendedArmorMaterial {
             Map.of(AttributeRegistry.SPELL_RESIST.get(),
                     new AttributeModifier("Spell resist", (double)0.1F, AttributeModifier.Operation.MULTIPLY_BASE),
                     Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier("Speed", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
-//                    AttributesMod.MELEE_RESISTANCE,
-//                    new AttributeModifier("Meele resist", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
+                    new AttributeModifier("Speed", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE),
+                    ChiAttributes.PHYSIC_RESISTANCE.get(),
+                    new AttributeModifier("Meele resist", 0.05F, AttributeModifier.Operation.MULTIPLY_BASE)
             )),
     VOILE_OF_DEATH("voile_of_death", 35, lightArmorMap(), 15,
     SoundEvents.ARMOR_EQUIP_NETHERITE, 0.0F, 0.0F,

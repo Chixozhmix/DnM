@@ -2,9 +2,10 @@ package net.chixozhmix.dnmmod.goals;
 
 import io.redspace.ironsspellbooks.entity.spells.void_tentacle.VoidTentacle;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import net.chixozhmix.chilib.client.danger_zone.ZoneType;
+import net.chixozhmix.chilib.network.ChiLibNetwork;
+import net.chixozhmix.chilib.network.packet.DangerZonesPacket;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
-import net.chixozhmix.dnmmod.network.ModNetwork;
-import net.chixozhmix.dnmmod.network.packet.DangerZonesPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -262,15 +263,19 @@ public class TentacleModeusAttackGoal extends Goal {
     }
 
     private void sendDangerZones() {
-        List<DangerZonesPacket.DangerZoneData> zones = spawnPositions.stream().map(pos ->
-                new DangerZonesPacket.DangerZoneData(pos.x, pos.y, pos.z, 0.0F, 3.0F, 3.0F)).toList();
+        List<DangerZonesPacket.DangerZoneData> zones =
+                spawnPositions.stream()
+                        .map(pos -> {
+                            Vec3 offset = pos.subtract(modeus.position());
+                            return new DangerZonesPacket.DangerZoneData(ZoneType.RECTANGLE, offset.x, 0.0, offset.z, 0.0F, 3.0F, 1.0F, 3.0F);
+                        }).toList();
 
         DangerZonesPacket packet = new DangerZonesPacket(modeus.getId(), zones);
-        ModNetwork.sendToTrackingPlayer(packet, modeus);
+        ChiLibNetwork.sendToTrackingPlayer(packet, modeus);
     }
 
     private void clearDangerZonesOnClients() {
         DangerZonesPacket packet = new DangerZonesPacket(modeus.getId(), List.of());
-        ModNetwork.sendToTrackingPlayer(packet, modeus);
+        ChiLibNetwork.sendToTrackingPlayer(packet, modeus);
     }
 }
