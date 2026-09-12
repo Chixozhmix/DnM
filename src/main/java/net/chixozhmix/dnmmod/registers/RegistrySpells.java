@@ -10,6 +10,7 @@ import net.chixozhmix.dnmmod.spell.eldrich.SummonDarkspawnLarvaSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
 import net.chixozhmix.dnmmod.spell.fire.MeteorSwarmSpell;
 import net.chixozhmix.dnmmod.spell.fire.SummonFlameAtronach;
+import net.chixozhmix.dnmmod.spell.holy.CompelledDuelSpell;
 import net.chixozhmix.dnmmod.spell.ice.AgathysArmorSpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
 import net.chixozhmix.dnmmod.spell.lightning.SummonStormAtronach;
@@ -55,6 +56,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> PSYCHIC_SCREAM = registerSpell(new PsychicScreamSpell());
     public static final RegistryObject<AbstractSpell> METEOR_SWARM = registerSpell(new MeteorSwarmSpell());
     public static final RegistryObject<AbstractSpell> MANA_SHIELD_SPELL = registerSpell(new ManaShieldSpell());
+    public static final RegistryObject<AbstractSpell> COMPELLED_DUEL = registerSpell(new CompelledDuelSpell());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

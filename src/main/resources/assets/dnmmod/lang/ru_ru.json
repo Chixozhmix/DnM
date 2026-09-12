@@ -242,6 +242,7 @@
   "ui.dnmmod.bounces": "Отскакиваний: %d",
   "ui.dnmmod.spell_component": "Компонент заклинания: %s",
   "ui.dnmmod.damage_min_health": "Урон по существам, чье здоровье меньше максимума: %s",
+  "ui.dnmmod.targets": "Целей: %s",
 
   "ui.dnmmod.green_hag_bossbar": "Зеленая Карга",
   "ui.dnmmod.leshy_bossbar": "Леший",
@@ -407,5 +408,8 @@
   "spell.dnmmod.meteor_swarm.guide": "Пылающие метеоры падают с неба, сокрушая врагов в огромном радиусе.",
 
   "spell.dnmmod.mana_shield": "Щит маны",
-  "spell.dnmmod.mana_shield.guide": "Используйте ресурс своей маны, чтобы защитить тело от ран."
+  "spell.dnmmod.mana_shield.guide": "Используйте ресурс своей маны, чтобы защитить тело от ран.",
+
+  "spell.dnmmod.compelled_duel": "Вызов на дуэль",
+  "spell.dnmmod.compelled_duel.guide": "Заставьте существо смотреть только на вас."
 }

@@ -241,6 +241,7 @@
   "ui.dnmmod.bounces": "Bounces: %d",
   "ui.dnmmod.spell_component": "Spell component: %s",
   "ui.dnmmod.damage_min_health": "Damage to a creature with less than maximum health: %s",
+  "ui.dnmmod.targets": "Targets: %s",
 
   "ui.dnmmod.green_hag_bossbar": "Green Hag",
   "ui.dnmmod.leshy_bossbar": "Leshy",
@@ -414,5 +415,8 @@
   "spell.dnmmod.meteor_swarm.guide": "Fiery meteors rain from the heavens, crushing enemies within a vast radius.",
 
   "spell.dnmmod.mana_shield": "Mana Shield",
-  "spell.dnmmod.mana_shield.guide": "Use your mana to protect your body from harm."
+  "spell.dnmmod.mana_shield.guide": "Use your mana to protect your body from harm.",
+
+  "spell.dnmmod.compelled_duel": "Compelled Duel",
+  "spell.dnmmod.compelled_duel.guide": "Make the creature look only at you."
 }
