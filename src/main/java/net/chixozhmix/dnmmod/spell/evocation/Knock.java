@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 @AutoSpellConfig
 public class Knock extends AbstractSpell {
-    private static final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "knock");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "knock");
 
     public Knock() {
         this.manaCostPerLevel = 10;

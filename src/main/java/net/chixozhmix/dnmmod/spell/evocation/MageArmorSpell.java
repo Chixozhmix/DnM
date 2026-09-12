@@ -21,7 +21,7 @@ import java.util.List;
 @AutoSpellConfig
 public class MageArmorSpell extends AbstractSpell {
 
-    private static final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "mage_armor");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "mage_armor");
 
     public MageArmorSpell() {
         this.manaCostPerLevel = 10;

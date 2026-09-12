@@ -18,7 +18,7 @@ import java.util.List;
 @AutoSpellConfig
 public class CausticBrewSpell extends AbstractSpell {
 
-    private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "caustic_brew");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "caustic_brew");
 
     public CausticBrewSpell() {
         this.manaCostPerLevel = 10;

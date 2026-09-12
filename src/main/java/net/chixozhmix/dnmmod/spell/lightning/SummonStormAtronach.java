@@ -29,7 +29,7 @@ import java.util.Optional;
 
 @AutoSpellConfig
 public class SummonStormAtronach extends AbstractSpell {
-    private static ResourceLocation spellId = new ResourceLocation(DnMmod.MOD_ID, "summon_storm_atronach");
+    private final ResourceLocation spellId = new ResourceLocation(DnMmod.MOD_ID, "summon_storm_atronach");
 
     public SummonStormAtronach() {
         this.manaCostPerLevel = 10;

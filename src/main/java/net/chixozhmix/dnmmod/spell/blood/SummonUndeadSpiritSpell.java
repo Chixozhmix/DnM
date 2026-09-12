@@ -32,7 +32,7 @@ import java.util.Optional;
 @AutoSpellConfig
 public class SummonUndeadSpiritSpell extends AbstractSpell {
 
-    private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "summon_undead_spirit");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "summon_undead_spirit");
 
     public SummonUndeadSpiritSpell() {
         this.manaCostPerLevel = 10;

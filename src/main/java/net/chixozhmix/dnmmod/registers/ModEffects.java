@@ -39,6 +39,7 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> DISORIENTATION = EFFECTS.register("disorientation", () -> new DisorientationEffect());
     public static final RegistryObject<MobEffect> MIND_CONTROL = EFFECTS.register("mind_control", () -> new MindControlEffect());
     public static final RegistryObject<MobEffect> MANA_SHIELD = EFFECTS.register("mana_shield", () -> new ManaShield());
+    public static RegistryObject<MobEffect> COMPELLED_DUEL = EFFECTS.register("compelled_duel", () -> new CompelledDuelEffect());
 
     public static final RegistryObject<MobEffect> ENDER_RESISTANCE = EFFECTS.register("ender_resistance", () ->
             new ResistanceEffect(0x490552).addAttributeModifier(AttributeRegistry.ENDER_MAGIC_RESIST.get(), ENDER_RESIST_UUID, 0.2, AttributeModifier.Operation.MULTIPLY_BASE));
