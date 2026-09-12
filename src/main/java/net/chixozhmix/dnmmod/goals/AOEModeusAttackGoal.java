@@ -1,8 +1,8 @@
 package net.chixozhmix.dnmmod.goals;
 
-import net.chixozhmix.chilib.client.danger_zone.ZoneType;
 import net.chixozhmix.chilib.network.ChiLibNetwork;
 import net.chixozhmix.chilib.network.packet.DangerZonesPacket;
+import net.chixozhmix.chilib.utils.entity.geckolib.ZoneType;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
