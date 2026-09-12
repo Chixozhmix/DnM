@@ -25,6 +25,7 @@ public class ModEffects {
     public static final String LIGHTNING_RESIST_UUID = "b7c1e5a9-2f8d-4b3c-9a6e-4d1f7c2b8e0a";
     public static final String ELDRITCH_RESIST_UUID = "e7d4e4a9-2d8f-4b3c-9a6e-4d1f7c5a8e1a";
 
+
     public static final RegistryObject<MobEffect> MAGE_ARMOR = EFFECTS.register("mage_armor", MageArmorEffect::new);
     public static final RegistryObject<MobEffect> LOSS_MAGIC = EFFECTS.register("loss_magic", LossMagicEffect::new);
     public static final RegistryObject<MobEffect> ACID = EFFECTS.register("acid_effect",
@@ -41,6 +42,7 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> MANA_SHIELD = EFFECTS.register("mana_shield", ManaShield::new);
     public static final RegistryObject<MobEffect> COMPELLED_DUEL = EFFECTS.register("compelled_duel", CompelledDuelEffect::new);
 
+    //Resistance Effects
     public static final RegistryObject<MobEffect> ENDER_RESISTANCE = EFFECTS.register("ender_resistance", () ->
             new ResistanceEffect(0x490552).addAttributeModifier(AttributeRegistry.ENDER_MAGIC_RESIST.get(), ENDER_RESIST_UUID, 0.2, AttributeModifier.Operation.MULTIPLY_BASE));
     public static final RegistryObject<MobEffect> FIRE_RESISTANCE = EFFECTS.register("fire_resistance", () ->
