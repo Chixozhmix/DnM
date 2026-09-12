@@ -35,10 +35,11 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> AGATHYS_ARMOR = EFFECTS.register("agathys_armor", AgathysArmor::new);
     public static final RegistryObject<MobEffect> THICK_OF_FIGHT = EFFECTS.register("thick_of_fight", ThickOfFight::new);
     public static final RegistryObject<MobEffect> CORPSE_POISON = EFFECTS.register("corpse_poison", () -> new CorpsePoison(1));
-    public static final RegistryObject<MobEffect> REAPER_EFFECT = EFFECTS.register("reaper_effect", () -> new ReaperEffect());
-    public static final RegistryObject<MobEffect> DISORIENTATION = EFFECTS.register("disorientation", () -> new DisorientationEffect());
-    public static final RegistryObject<MobEffect> MIND_CONTROL = EFFECTS.register("mind_control", () -> new MindControlEffect());
-    public static final RegistryObject<MobEffect> MANA_SHIELD = EFFECTS.register("mana_shield", () -> new ManaShield());
+    public static final RegistryObject<MobEffect> REAPER_EFFECT = EFFECTS.register("reaper_effect", ReaperEffect::new);
+    public static final RegistryObject<MobEffect> DISORIENTATION = EFFECTS.register("disorientation", DisorientationEffect::new);
+    public static final RegistryObject<MobEffect> MIND_CONTROL = EFFECTS.register("mind_control", MindControlEffect::new);
+    public static final RegistryObject<MobEffect> MANA_SHIELD = EFFECTS.register("mana_shield", ManaShield::new);
+    public static final RegistryObject<MobEffect> COMPELLED_DUEL = EFFECTS.register("compelled_duel", CompelledDuelEffect::new);
 
     public static final RegistryObject<MobEffect> ENDER_RESISTANCE = EFFECTS.register("ender_resistance", () ->
             new ResistanceEffect(0x490552).addAttributeModifier(AttributeRegistry.ENDER_MAGIC_RESIST.get(), ENDER_RESIST_UUID, 0.2, AttributeModifier.Operation.MULTIPLY_BASE));
