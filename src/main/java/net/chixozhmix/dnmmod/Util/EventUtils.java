@@ -22,13 +22,10 @@ public class EventUtils {
     public static void ManaShield(LivingHurtEvent event, LivingEntity target) {
         if(target.hasEffect(ModEffects.MANA_SHIELD.get())) {
             float damage = event.getAmount();
-
             MagicData magicData = MagicData.getPlayerMagicData(target);
-
             float mana = SpellUtils.getCurrentMana((Player) target);
 
-            if(mana <= 0)
-                return;
+            if(mana <= 0) return;
 
             float manaCost = (float) (damage + (target.getAttributeValue(AttributeRegistry.MAX_MANA.get()) * 0.1f));
 
@@ -44,9 +41,7 @@ public class EventUtils {
     }
 
     public static void ProtectiveBracelet(LivingHurtEvent event, LivingEntity target, Entity source) {
-        if (source == null) {
-            return;
-        }
+        if (source == null) return;
 
         CuriosApi.getCuriosHelper()
                 .findCurios(target, ModItems.PROTECTIVE_BRASLET.get())
@@ -62,18 +57,11 @@ public class EventUtils {
     public static void DeathWisp(LivingHurtEvent event, LivingEntity target, Entity source) {
         if (!(source instanceof LivingEntity attacker)) return;
 
-        if (attacker.getMobType() == MobType.UNDEAD
-                && attacker.getClass() != ReaperEntity.class && !target.hasEffect(ModEffects.REAPER_EFFECT.get())) {
-
+        if (attacker.getMobType() == MobType.UNDEAD && attacker.getClass() != ReaperEntity.class && !target.hasEffect(ModEffects.REAPER_EFFECT.get())) {
             RandomSource random = target.getRandom();
 
-            if (random.nextFloat() <= 0.01F) {
-                target.addEffect(new MobEffectInstance(
-                        ModEffects.REAPER_EFFECT.get(),
-                        600,
-                        0
-                ));
-            }
+            if (random.nextFloat() <= 0.01F)
+                target.addEffect(new MobEffectInstance(ModEffects.REAPER_EFFECT.get(), 600, 0));
         }
     }
 }
