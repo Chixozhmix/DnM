@@ -19,6 +19,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 import java.util.UUID;
 
 public class EventUtils {
+    //Щит маны
     public static void ManaShield(LivingHurtEvent event, LivingEntity target) {
         if(target.hasEffect(ModEffects.MANA_SHIELD.get())) {
             float damage = event.getAmount();
@@ -43,6 +44,7 @@ public class EventUtils {
         }
     }
 
+    //Браслет Защиты
     public static void ProtectiveBracelet(LivingHurtEvent event, LivingEntity target, Entity source) {
         if (source == null) {
             return;
@@ -59,6 +61,7 @@ public class EventUtils {
                 });
     }
 
+    //Шепот смерти
     public static void DeathWisp(LivingHurtEvent event, LivingEntity target, Entity source) {
         if (!(source instanceof LivingEntity attacker)) return;
 
