@@ -25,7 +25,7 @@ import java.util.List;
 @AutoSpellConfig
 public class CloudDaggerSpell extends AbstractSpell {
 
-    private static final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "cloud_daggers");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "cloud_daggers");
 
     public CloudDaggerSpell() {
         this.manaCostPerLevel = 10;

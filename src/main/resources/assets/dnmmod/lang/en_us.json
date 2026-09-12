@@ -231,6 +231,8 @@
   "tooltip.dnmmod.waning_moon_armor": "The moon's circle never showed itself during the day. Druids of this circle prefer to gather by moonlight, guarding their forests at night while others sleep. Many of them serve the Leshy, the ancient spirits of nature and the guardians of the forest.",
   "tooltip.dnmmod.vestments_architect": "The Architects of Beauty are the high priests of the Ancient God Urtimiel. They see the true beauty of the world - ugly and shapeless, devoid of everything that humans know about beauty.",
 
+  "tooltip.dnmmod.dragon_priest_mask": "From this mask comes an ancient power and a whisper in an unknown language.",
+
   "tooltip.dnmmod.waning_moon_armor.shift": "When full set:\nIf you have less than 25% mana reserve: Increases mana regeneration by 30%. \nIf you have less than 30% health: Reduces spell cooldown by 20%.",
   "tooltip.dnmmod.vestments_architect.shift": "When full set:\nSpell Resist +20%. \nMax Health +6.\nImmunity to wither.\nWhen health drops below 30%, it creates an aura that affects everyone around it",
 

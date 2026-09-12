@@ -20,7 +20,7 @@ import java.util.List;
 @AutoSpellConfig
 public class NightVisionSpell extends AbstractSpell {
 
-    private static final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "night_vision");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "night_vision");
 
     public NightVisionSpell() {
         this.manaCostPerLevel = 10;

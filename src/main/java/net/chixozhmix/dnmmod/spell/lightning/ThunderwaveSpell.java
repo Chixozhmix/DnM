@@ -26,7 +26,7 @@ import java.util.Optional;
 @AutoSpellConfig
 public class ThunderwaveSpell extends AbstractSpell {
 
-    private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "thunderwave");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "thunderwave");
 
     public ThunderwaveSpell() {
         this.manaCostPerLevel = 10;

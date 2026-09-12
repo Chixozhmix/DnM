@@ -18,7 +18,7 @@ import java.util.List;
 @AutoSpellConfig
 public class ThickOfFightSpell extends AbstractSpell {
 
-    private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "thick_of_fight");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "thick_of_fight");
 
     public ThickOfFightSpell() {
         this.manaCostPerLevel = 10;

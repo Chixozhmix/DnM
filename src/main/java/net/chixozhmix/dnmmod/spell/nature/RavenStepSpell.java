@@ -35,7 +35,7 @@ import java.util.Optional;
 
 @AutoSpellConfig
 public class RavenStepSpell extends AbstractSpell {
-    private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "raven_step");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "raven_step");
 
     public RavenStepSpell() {
 

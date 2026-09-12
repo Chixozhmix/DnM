@@ -23,7 +23,7 @@ import java.util.List;
 
 public class ManaShieldSpell extends AbstractSpell {
 
-    private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "mana_shield");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "mana_shield");
 
     public ManaShieldSpell() {
         this.manaCostPerLevel = 10;

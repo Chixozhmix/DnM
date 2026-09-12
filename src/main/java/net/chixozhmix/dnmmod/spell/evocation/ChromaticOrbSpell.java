@@ -21,7 +21,7 @@ import java.util.List;
 @AutoSpellConfig
 public class ChromaticOrbSpell extends AbstractSpell {
 
-    private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "chromatic_orb");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "chromatic_orb");
 
     public ChromaticOrbSpell() {
         this.baseManaCost = 50;

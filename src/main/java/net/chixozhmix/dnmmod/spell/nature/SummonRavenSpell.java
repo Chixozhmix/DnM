@@ -32,7 +32,7 @@ import java.util.Optional;
 @AutoSpellConfig
 public class SummonRavenSpell extends AbstractSpell {
 
-    private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "summon_ravens");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "summon_ravens");
 
     public SummonRavenSpell() {
 

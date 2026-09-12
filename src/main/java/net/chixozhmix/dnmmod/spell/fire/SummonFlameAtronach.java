@@ -26,7 +26,7 @@ import java.util.List;
 
 @AutoSpellConfig
 public class SummonFlameAtronach extends AbstractSpell {
-    private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "summon_flame_atronach");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "summon_flame_atronach");
 
     public SummonFlameAtronach() {
         this.manaCostPerLevel = 10;

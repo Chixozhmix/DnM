@@ -36,7 +36,7 @@ import java.util.Optional;
 
 @AutoSpellConfig
 public class MeteorSwarmSpell extends AbstractSpell {
-    private static ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "meteor_swarm");
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "meteor_swarm");
 
     public MeteorSwarmSpell() {
         this.manaCostPerLevel = 10;
