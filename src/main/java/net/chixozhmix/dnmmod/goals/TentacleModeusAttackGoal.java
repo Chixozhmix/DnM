@@ -2,9 +2,9 @@ package net.chixozhmix.dnmmod.goals;
 
 import io.redspace.ironsspellbooks.entity.spells.void_tentacle.VoidTentacle;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
-import net.chixozhmix.chilib.client.danger_zone.ZoneType;
 import net.chixozhmix.chilib.network.ChiLibNetwork;
 import net.chixozhmix.chilib.network.packet.DangerZonesPacket;
+import net.chixozhmix.chilib.utils.entity.geckolib.ZoneType;
 import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

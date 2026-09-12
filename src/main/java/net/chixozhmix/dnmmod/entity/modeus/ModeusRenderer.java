@@ -55,25 +55,6 @@ public class ModeusRenderer extends GeoEntityRenderer<ModeusBoss> {
         return RenderType.entityTranslucent(texture);
     }
 
-    private Vec3 getPosition(LivingEntity entity, double yOffset, float partialTick) {
-        double x = Mth.lerp(partialTick, entity.xOld, entity.getX());
-        double y = Mth.lerp(partialTick, entity.yOld, entity.getY()) + yOffset;
-        double z = Mth.lerp(partialTick, entity.zOld, entity.getZ());
-        return new Vec3(x, y, z);
-    }
-
-    private static void vertex(VertexConsumer consumer, Matrix4f pose, Matrix3f normal,
-                               float x, float y, float z, int red, int green, int blue,
-                               float u, float v) {
-        consumer.vertex(pose, x, y, z)
-                .color(red, green, blue, 255)
-                .uv(u, v)
-                .overlayCoords(OverlayTexture.NO_OVERLAY)
-                .uv2(15728880)
-                .normal(normal, 0.0F, 1.0F, 0.0F)
-                .endVertex();
-    }
-
     @Override
     protected float getDeathMaxRotation(ModeusBoss animatable) {
         return 0.0F;
