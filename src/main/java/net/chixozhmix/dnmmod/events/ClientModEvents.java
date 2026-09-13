@@ -31,6 +31,7 @@ import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectileRenderer
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrbRenderer;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDaggerRenderer;
 import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRayRenderer;
+import net.chixozhmix.dnmmod.entity.spell.dark_bolt.DarkBoltProjectileRenderer;
 import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadarRenderer;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDaggerRenderer;
 import net.chixozhmix.dnmmod.entity.spell.ray_of_enfeeblement.RayOfEnfeeblementRenderer;
@@ -87,6 +88,7 @@ public class ClientModEvents {
         EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);
         EntityRenderers.register(ModEntityType.ICE_DAGGER.get(), IceDaggerRenderer::new);
         EntityRenderers.register(ModEntityType.ACID_PROJECTILE.get(), AcidProjectileRenderer::new);
+        EntityRenderers.register(ModEntityType.DARK_BOLT.get(), DarkBoltProjectileRenderer::new);
         EntityRenderers.register(ModEntityType.CHROMATIC_ORB.get(), ChromaticOrbRenderer::new);
         EntityRenderers.register(ModEntityType.RAY_OF_ENFEEBLEMENT.get(), RayOfEnfeeblementRenderer::new);
         EntityRenderers.register(ModEntityType.CONTAGION_RAY.get(), ContagionRayRenderer::new);
@@ -132,6 +134,7 @@ public class ClientModEvents {
     public static void onRegisterLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(IceDaggerRenderer.MODEL_LAYER_LOCATION, IceDaggerRenderer::createBodyLayer);
         event.registerLayerDefinition(AcidProjectileRenderer.MODEL_LAYER_LOCATION, AcidProjectileRenderer::createBodyLayer);
+        event.registerLayerDefinition(DarkBoltProjectileRenderer.MODEL_LAYER_LOCATION, DarkBoltProjectileRenderer::createBodyLayer);
         event.registerLayerDefinition(ChromaticOrbRenderer.MODEL_LAYER_LOCATION, ChromaticOrbRenderer::createBodyLayer);
         event.registerLayerDefinition(RavenRenderer.MODEL_LAYER_LOCATION, RavenModel::createBodyLayer);
         event.registerLayerDefinition(SummonedRavenRenderer.MODEL_LAYER_LOCATION, SummonedRavenModel::createBodyLayer);

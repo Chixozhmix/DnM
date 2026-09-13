@@ -25,6 +25,7 @@ import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRay;
+import net.chixozhmix.dnmmod.entity.spell.dark_bolt.DarkBoltProjectile;
 import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadar;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
 import net.chixozhmix.dnmmod.entity.spell.meteor.MeteorEntity;
@@ -120,6 +121,12 @@ public class ModEntityType {
                             .sized(3.0F, 3.0F)
                             .clientTrackingRange(64)
                             .build("meteor"));
+    public static final RegistryObject<EntityType<DarkBoltProjectile>> DARK_BOLT =
+            ENTITY_TYPES.register("dark_bolt_projectile",
+                    () -> EntityType.Builder.<DarkBoltProjectile>of(DarkBoltProjectile::new, MobCategory.MISC)
+                            .sized(1.0f, 1.0f)
+                            .clientTrackingRange(32)
+                            .build("dark_bolt_projectile"));
 
     //ItemEntity
     public static final RegistryObject<EntityType<IceArrowEntity>> ICE_ARROW_ENTITY = ENTITY_TYPES.register("ice_arrow_entity",

@@ -414,5 +414,8 @@
   "spell.dnmmod.meteor_swarm.guide": "Fiery meteors rain from the heavens, crushing enemies within a vast radius.",
 
   "spell.dnmmod.mana_shield": "Mana Shield",
-  "spell.dnmmod.mana_shield.guide": "Use your mana to protect your body from harm."
+  "spell.dnmmod.mana_shield.guide": "Use your mana to protect your body from harm.",
+
+  "spell.dnmmod.dark_bolt": "Dark Bolt",
+  "spell.dnmmod.dark_bolt.guide": "The sphere of dark energy is rushing toward your goal."
 }

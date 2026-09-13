@@ -407,5 +407,8 @@
   "spell.dnmmod.meteor_swarm.guide": "Пылающие метеоры падают с неба, сокрушая врагов в огромном радиусе.",
 
   "spell.dnmmod.mana_shield": "Щит маны",
-  "spell.dnmmod.mana_shield.guide": "Используйте ресурс своей маны, чтобы защитить тело от ран."
+  "spell.dnmmod.mana_shield.guide": "Используйте ресурс своей маны, чтобы защитить тело от ран.",
+
+  "spell.dnmmod.dark_bolt": "Мистический заряд",
+  "spell.dnmmod.dark_bolt.guide": "Сфера темной энергии устремляется к вашей цели."
 }

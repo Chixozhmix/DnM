@@ -78,7 +78,7 @@ public class AcidProjectile extends AbstractMagicProjectile {
 
         if (this.level().isClientSide) return;
 
-        DamageSources.applyDamage(pResult.getEntity(), 8, damageSource);
+        DamageSources.applyDamage(pResult.getEntity(), this.damage, damageSource);
 
         if(pResult.getEntity() instanceof LivingEntity livingEntity){
             applyAcidEffect(livingEntity);

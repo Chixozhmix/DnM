@@ -160,6 +160,6 @@ public class EldritchBeams extends AbstractSpell {
     }
 
     private float getDamage(int spellLevel, LivingEntity entity) {
-        return this.getSpellPower(spellLevel, entity) * 1.7F;
+        return this.getSpellPower(spellLevel, entity) * 1.3F;
     }
 }

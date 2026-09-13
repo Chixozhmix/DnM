@@ -40,7 +40,7 @@ public class MeteorSwarmSpell extends AbstractSpell {
 
     public MeteorSwarmSpell() {
         this.manaCostPerLevel = 10;
-        this.baseSpellPower = 10;
+        this.baseSpellPower = 6;
         this.spellPowerPerLevel = 3;
         this.castTime = 200;
         this.baseManaCost = 400;
@@ -181,7 +181,7 @@ public class MeteorSwarmSpell extends AbstractSpell {
     }
 
     public float getDamage(int spellLevel, LivingEntity caster) {
-        return 10.0F + 5.0F * this.getSpellPower(spellLevel, caster);
+        return 5.0f * this.getSpellPower(spellLevel, caster);
     }
 
     public int getRadius() {
