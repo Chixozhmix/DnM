@@ -173,6 +173,8 @@
   "entity.dnmmod.chromatic_orb": "Хроматический шар",
   "entity.dnmmod.acid_projectile": "Кислотный снаряд",
   "entity.dnmmod.ray_of_enfeeblement": "Луч слабости",
+  "entity.dnmmod.dark_bolt": "Мистический заряд",
+  "entity.dnmmod.vortex": "Вихрь",
 
   "death.attack.dnmmod.ice_dagger": "%1$s был проткнут льдом",
   "death.attack.dnmmod.cloud_dagger": "%1$s был изрезан на куски",
@@ -410,5 +412,8 @@
   "spell.dnmmod.mana_shield.guide": "Используйте ресурс своей маны, чтобы защитить тело от ран.",
 
   "spell.dnmmod.dark_bolt": "Мистический заряд",
-  "spell.dnmmod.dark_bolt.guide": "Сфера темной энергии устремляется к вашей цели."
+  "spell.dnmmod.dark_bolt.guide": "Сфера темной энергии устремляется к вашей цели.",
+
+  "spell.dnmmod.vortex": "Вихрь",
+  "spell.dnmmod.vortex.guide": "Вы вызываете вихрь, защищающий вас от врагов."
 }
