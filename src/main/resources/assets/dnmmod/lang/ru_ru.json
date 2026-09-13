@@ -285,6 +285,7 @@
   "effect.dnmmod.disorientation": "Дизориентация",
   "effect.dnmmod.loss_mage": "Потеря магии",
   "effect.dnmmod.mana_shield": "Щит Маны",
+  "effect.dnmmod.compelled_duel": "Вызов на дуэль",
 
   "sounds.dnmmod.ghost_ambient": "Призрак",
   "sounds.dnmmod.undead_spirit": "Дух Нежити",

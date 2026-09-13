@@ -78,7 +78,7 @@ public class CompelledDuelSpell extends AbstractSpell {
             var targetEntity = targetData.getTarget((ServerLevel) level);
             if(targetEntity instanceof Mob mob) {
                 CompelledDuelEffect.setTarget(mob, entity);
-                mob.addEffect(new MobEffectInstance(ModEffects.COMPELLED_DUEL.get(), 400, 0));
+                mob.addEffect(new MobEffectInstance(ModEffects.COMPELLED_DUEL.get(), 600, 0));
                 var recasts = playerMagicData.getPlayerRecasts();
                 if (!recasts.hasRecastForSpell(getSpellId())) {
                     recasts.addRecast(new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, entity),
