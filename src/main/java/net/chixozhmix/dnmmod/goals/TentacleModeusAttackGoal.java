@@ -5,7 +5,7 @@ import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.chixozhmix.chilib.network.ChiLibNetwork;
 import net.chixozhmix.chilib.network.packet.DangerZonesPacket;
 import net.chixozhmix.chilib.utils.entity.geckolib.ZoneType;
-import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
+import net.chixozhmix.dnmmod.entity.bosses.modeus.ModeusBoss;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;

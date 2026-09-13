@@ -1,6 +1,6 @@
 package net.chixozhmix.dnmmod.effect.custom;
 
-import net.chixozhmix.dnmmod.entity.reaper.ReaperEntity;
+import net.chixozhmix.dnmmod.entity.evil.reaper.ReaperEntity;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;

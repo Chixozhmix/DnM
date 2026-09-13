@@ -56,6 +56,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> METEOR_SWARM = registerSpell(new MeteorSwarmSpell());
     public static final RegistryObject<AbstractSpell> MANA_SHIELD_SPELL = registerSpell(new ManaShieldSpell());
     public static final RegistryObject<AbstractSpell> DARK_BOLT_SPELL = registerSpell(new DarkBoltSpell());
+    public static final RegistryObject<AbstractSpell> VORTEX_SPELL = registerSpell(new VortexSpell());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

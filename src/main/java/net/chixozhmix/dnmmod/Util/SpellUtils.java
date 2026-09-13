@@ -3,7 +3,6 @@ package net.chixozhmix.dnmmod.Util;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import net.chixozhmix.dnmmod.compat.Curios;
-import net.chixozhmix.dnmmod.entity.spell.dark_bolt.DarkBoltProjectile;
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
 import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
 import net.minecraft.network.chat.Component;

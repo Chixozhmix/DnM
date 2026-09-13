@@ -5,12 +5,14 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.damage.SpellDamageSource;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.entity.spell.dark_bolt.DarkBoltProjectile;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
@@ -20,7 +22,7 @@ import java.util.List;
 public class DarkBoltSpell extends AbstractSpell {
     private final ResourceLocation spellId = new ResourceLocation(DnMmod.MOD_ID, "dark_bolt");
 
-    private DefaultConfig defaultConfig = new DefaultConfig()
+    private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.COMMON)
             .setMaxLevel(10)
             .setSchoolResource(SchoolRegistry.BLOOD_RESOURCE)
@@ -63,5 +65,10 @@ public class DarkBoltSpell extends AbstractSpell {
 
     private float getDamage(int spellLevel, LivingEntity entity) {
         return this.getSpellPower(spellLevel, entity) / 2;
+    }
+
+    @Override
+    public SpellDamageSource getDamageSource(Entity projectile, Entity attacker) {
+        return super.getDamageSource(projectile, attacker).setLifestealPercent(0.05f);
     }
 }

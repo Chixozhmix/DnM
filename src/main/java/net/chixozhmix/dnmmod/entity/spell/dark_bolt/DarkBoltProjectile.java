@@ -57,7 +57,7 @@ public class DarkBoltProjectile extends AbstractMagicProjectile {
 
     @Override
     public float getSpeed() {
-        return 2.5f;
+        return 3.5f;
     }
 
     @Override
