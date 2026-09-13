@@ -1,7 +1,7 @@
 package net.chixozhmix.dnmmod.blocks.entity;
 
 import net.chixozhmix.dnmmod.blocks.custom.BlockOfSeal;
-import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
+import net.chixozhmix.dnmmod.entity.bosses.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.registers.ModBlockEntities;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
 import net.chixozhmix.dnmmod.registers.SoundsRegistry;

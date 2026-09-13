@@ -2,29 +2,30 @@ package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.IceArrowEntity;
-import net.chixozhmix.dnmmod.entity.hidden_tentacle.HiddenTentacleEntity;
-import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
+import net.chixozhmix.dnmmod.entity.evil.hidden_tentacle.HiddenTentacleEntity;
+import net.chixozhmix.dnmmod.entity.bosses.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
-import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
-import net.chixozhmix.dnmmod.entity.darkspawn_larva.summon.SummonDarkspawnLarva;
-import net.chixozhmix.dnmmod.entity.defiled_priest.DefiledPriest;
-import net.chixozhmix.dnmmod.entity.defiled_wizard.DefiledWizard;
-import net.chixozhmix.dnmmod.entity.evil_flame_atronach.EvilFlameAtronach;
-import net.chixozhmix.dnmmod.entity.evil_storm_atronach.EvilStormAtronach;
-import net.chixozhmix.dnmmod.entity.flame_atronach.FlameAtronachEntity;
-import net.chixozhmix.dnmmod.entity.ghost.GhostEntity;
-import net.chixozhmix.dnmmod.entity.goblin_shaman.GoblinShamanEntity;
-import net.chixozhmix.dnmmod.entity.goblin_warior.GoblinWariorEntity;
-import net.chixozhmix.dnmmod.entity.greemon.GreemonEntity;
-import net.chixozhmix.dnmmod.entity.green_hag.GreenHagEntity;
-import net.chixozhmix.dnmmod.entity.leshy.LeshyEntity;
-import net.chixozhmix.dnmmod.entity.raven.RavenEntity;
-import net.chixozhmix.dnmmod.entity.reaper.ReaperEntity;
-import net.chixozhmix.dnmmod.entity.small_ice_spider.SmallIceSpiderEntity;
+import net.chixozhmix.dnmmod.entity.evil.darkspawn_larva.DarkspawnLarva;
+import net.chixozhmix.dnmmod.entity.evil.darkspawn_larva.summon.SummonDarkspawnLarva;
+import net.chixozhmix.dnmmod.entity.evil.defiled_priest.DefiledPriest;
+import net.chixozhmix.dnmmod.entity.evil.defiled_wizard.DefiledWizard;
+import net.chixozhmix.dnmmod.entity.evil.evil_flame_atronach.EvilFlameAtronach;
+import net.chixozhmix.dnmmod.entity.evil.evil_storm_atronach.EvilStormAtronach;
+import net.chixozhmix.dnmmod.entity.summons.flame_atronach.FlameAtronachEntity;
+import net.chixozhmix.dnmmod.entity.evil.ghost.GhostEntity;
+import net.chixozhmix.dnmmod.entity.evil.goblin_shaman.GoblinShamanEntity;
+import net.chixozhmix.dnmmod.entity.evil.goblin_warior.GoblinWariorEntity;
+import net.chixozhmix.dnmmod.entity.evil.greemon.GreemonEntity;
+import net.chixozhmix.dnmmod.entity.bosses.green_hag.GreenHagEntity;
+import net.chixozhmix.dnmmod.entity.bosses.leshy.LeshyEntity;
+import net.chixozhmix.dnmmod.entity.neutral.raven.RavenEntity;
+import net.chixozhmix.dnmmod.entity.evil.reaper.ReaperEntity;
+import net.chixozhmix.dnmmod.entity.evil.small_ice_spider.SmallIceSpiderEntity;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.chixozhmix.dnmmod.entity.spell.chromatic_orb.ChromaticOrb;
 import net.chixozhmix.dnmmod.entity.spell.cloud_dagger.CloudDagger;
 import net.chixozhmix.dnmmod.entity.spell.contagion_ray.ContagionRay;
+import net.chixozhmix.dnmmod.entity.spell.dark_bolt.DarkBoltProjectile;
 import net.chixozhmix.dnmmod.entity.spell.hunger_of_hadar.HungerOfHadar;
 import net.chixozhmix.dnmmod.entity.spell.ice_dagger.IceDagger;
 import net.chixozhmix.dnmmod.entity.spell.meteor.MeteorEntity;
@@ -33,10 +34,10 @@ import net.chixozhmix.dnmmod.entity.spell.red_cristall.RedCristallEntity;
 import net.chixozhmix.dnmmod.entity.spell.tall_the_dead.tallTheDead;
 import net.chixozhmix.dnmmod.entity.spell.tombstone.Tombstone;
 import net.chixozhmix.dnmmod.entity.spell.trident_strike_area.TridentStrikeAreaEntity;
-import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
-import net.chixozhmix.dnmmod.entity.summoned.SummonedRavenEntity;
-import net.chixozhmix.dnmmod.entity.summoned.SummonedUndeadSpirit;
-import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserver;
+import net.chixozhmix.dnmmod.entity.summons.storm_atronach.StormAtronach;
+import net.chixozhmix.dnmmod.entity.summons.summoned.SummonedRavenEntity;
+import net.chixozhmix.dnmmod.entity.summons.summoned.SummonedUndeadSpirit;
+import net.chixozhmix.dnmmod.entity.evil.tainted_observer.DarkspawnObserver;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -120,6 +121,12 @@ public class ModEntityType {
                             .sized(3.0F, 3.0F)
                             .clientTrackingRange(64)
                             .build("meteor"));
+    public static final RegistryObject<EntityType<DarkBoltProjectile>> DARK_BOLT =
+            ENTITY_TYPES.register("dark_bolt_projectile",
+                    () -> EntityType.Builder.<DarkBoltProjectile>of(DarkBoltProjectile::new, MobCategory.MISC)
+                            .sized(1.0f, 1.0f)
+                            .clientTrackingRange(32)
+                            .build("dark_bolt_projectile"));
 
     //ItemEntity
     public static final RegistryObject<EntityType<IceArrowEntity>> ICE_ARROW_ENTITY = ENTITY_TYPES.register("ice_arrow_entity",

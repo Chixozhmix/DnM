@@ -1,21 +1,21 @@
 package net.chixozhmix.dnmmod.Util;
 
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import net.chixozhmix.dnmmod.compat.Curios;
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
 import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import top.theillusivec4.curios.api.CuriosApi;
+
 
 public class SpellUtils {
     //Проверка компонентов для заклинания
@@ -110,5 +110,12 @@ public class SpellUtils {
             return true;
         }
         return false;
+    }
+
+    public static void shootProjectile(AbstractMagicProjectile projectile, Level level, LivingEntity entity, float damage) {
+        projectile.setPos(entity.position().add((double)0.0F, (double)entity.getEyeHeight() - projectile.getBoundingBox().getYsize() * (double)0.5F, (double)0.0F));
+        projectile.shoot(entity.getLookAngle());
+        projectile.setDamage(damage);
+        level.addFreshEntity(projectile);
     }
 }

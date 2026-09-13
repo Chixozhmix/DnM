@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.entity.spell.acid_projectile.AcidProjectile;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -58,15 +59,12 @@ public class CausticBrewSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        super.onCast(level, spellLevel, entity, castSource, playerMagicData);
-
         AcidProjectile acidProjectile = new AcidProjectile(level, entity);
-        acidProjectile.setPos(entity.getX(), entity.getEyeY(), entity.getZ());
-        acidProjectile.shoot(entity.getLookAngle());
-        level.addFreshEntity(acidProjectile);
+        SpellUtils.shootProjectile(acidProjectile, level, entity, this.getDamage(spellLevel, entity));
+        super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
     private float getDamage(int spellLevel, LivingEntity entity) {
-        return this.getSpellPower(spellLevel, entity) * 1.5F;
+        return this.getSpellPower(spellLevel, entity) * 1.2F;
     }
 }

@@ -70,7 +70,7 @@ public class WandTier implements IronsWeaponTier {
                 new AttributeContainer(AttributeRegistry.HOLY_SPELL_POWER, 0.15, AttributeModifier.Operation.MULTIPLY_BASE)});
         EVOKER_WAND = new WandTier(damage_modifier, speed_modifier, new AttributeContainer[]{
                 new AttributeContainer(AttributeRegistry.MANA_REGEN, (double)0.25F, AttributeModifier.Operation.MULTIPLY_BASE),
-                new AttributeContainer(AttributeRegistry.NATURE_SPELL_POWER, 0.15, AttributeModifier.Operation.MULTIPLY_BASE),
+                new AttributeContainer(AttributeRegistry.EVOCATION_SPELL_POWER, 0.15, AttributeModifier.Operation.MULTIPLY_BASE),
                 new AttributeContainer(AttributeRegistry.SUMMON_DAMAGE, 0.10f, AttributeModifier.Operation.MULTIPLY_BASE)});
 
     }

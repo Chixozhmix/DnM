@@ -2,7 +2,7 @@ package net.chixozhmix.dnmmod.Util;
 
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import net.chixozhmix.dnmmod.entity.reaper.ReaperEntity;
+import net.chixozhmix.dnmmod.entity.evil.reaper.ReaperEntity;
 import net.chixozhmix.dnmmod.items.curio.ProtectiveBrasletItem;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.chixozhmix.dnmmod.registers.ModItems;

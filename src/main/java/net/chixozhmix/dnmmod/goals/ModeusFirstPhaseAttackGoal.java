@@ -2,10 +2,10 @@ package net.chixozhmix.dnmmod.goals;
 
 import io.redspace.ironsspellbooks.api.entity.IMagicEntity;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import net.chixozhmix.dnmmod.entity.darkspawn_larva.DarkspawnLarva;
-import net.chixozhmix.dnmmod.entity.modeus.ModeusBoss;
+import net.chixozhmix.dnmmod.entity.evil.darkspawn_larva.DarkspawnLarva;
+import net.chixozhmix.dnmmod.entity.bosses.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.spell.red_cristall.RedCristallEntity;
-import net.chixozhmix.dnmmod.entity.tainted_observer.DarkspawnObserver;
+import net.chixozhmix.dnmmod.entity.evil.tainted_observer.DarkspawnObserver;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

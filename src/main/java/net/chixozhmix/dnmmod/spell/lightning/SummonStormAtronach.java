@@ -8,7 +8,7 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.*;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.chixozhmix.dnmmod.DnMmod;
-import net.chixozhmix.dnmmod.entity.storm_atronach.StormAtronach;
+import net.chixozhmix.dnmmod.entity.summons.storm_atronach.StormAtronach;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
