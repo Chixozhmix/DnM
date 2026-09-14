@@ -28,7 +28,7 @@ public class VortexAOE extends AoeEntity {
     public VortexAOE(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.setCircular();
-        this.reapplicationDelay = 2;
+        this.reapplicationDelay = 10;
     }
 
     @Override

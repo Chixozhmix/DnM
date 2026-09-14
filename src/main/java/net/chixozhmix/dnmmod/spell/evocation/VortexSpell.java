@@ -24,8 +24,8 @@ public class VortexSpell extends AbstractSpell {
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMaxLevel(5)
             .setSchoolResource(SchoolRegistry.EVOCATION_RESOURCE)
-            .setCooldownSeconds(75)
-            .setMinRarity(SpellRarity.RARE)
+            .setCooldownSeconds(65)
+            .setMinRarity(SpellRarity.UNCOMMON)
             .build();
 
     public VortexSpell() {
@@ -78,7 +78,7 @@ public class VortexSpell extends AbstractSpell {
     }
 
     private float getKnockbackStrength(int spellLevel, LivingEntity entity) {
-        return (this.getSpellPower(spellLevel, entity)) * 0.3f;
+        return (this.getSpellPower(spellLevel, entity)) * 0.15f;
     }
 
     private float getDamage(int spelLevel, LivingEntity entity) {
