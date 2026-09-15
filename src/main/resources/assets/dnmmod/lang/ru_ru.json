@@ -286,6 +286,8 @@
   "effect.dnmmod.disorientation": "Дизориентация",
   "effect.dnmmod.loss_mage": "Потеря магии",
   "effect.dnmmod.mana_shield": "Щит Маны",
+  "effect.dnmmod.antimagic": "Немота",
+  "effect.dnmmod.sealing_gates_effect": "Запечатывание Врат",
 
   "sounds.dnmmod.ghost_ambient": "Призрак",
   "sounds.dnmmod.undead_spirit": "Дух Нежити",

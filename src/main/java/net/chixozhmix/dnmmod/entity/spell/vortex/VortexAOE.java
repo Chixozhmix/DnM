@@ -1,6 +1,5 @@
 package net.chixozhmix.dnmmod.entity.spell.vortex;
 
-import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AoeEntity;
@@ -10,9 +9,7 @@ import net.chixozhmix.dnmmod.registers.RegistrySpells;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -96,6 +93,11 @@ public class VortexAOE extends AoeEntity {
         for (int i = 0; i < count; i++) {
             swirlingParticle(radius, pos, random.nextFloat() < 0.3 ? new DustParticleOptions(new Vector3f(0.2f, 0.2f, 0.2f), 1.0f) : ParticleTypes.ASH);
         }
+    }
+
+    @Override
+    public EntityDimensions getDimensions(Pose pPose) {
+        return EntityDimensions.scalable(this.getRadius() * 2.0F, HEIGHT);
     }
 
     private void swirlingParticle(float radius, Vec3 pos, ParticleOptions particle) {
