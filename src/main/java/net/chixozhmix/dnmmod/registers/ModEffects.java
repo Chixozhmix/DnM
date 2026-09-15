@@ -42,10 +42,6 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> MIND_CONTROL = EFFECTS.register("mind_control", MindControlEffect::new);
     public static final RegistryObject<MobEffect> MANA_SHIELD = EFFECTS.register("mana_shield", ManaShield::new);
     public static final RegistryObject<MobEffect> COMPELLED_DUEL = EFFECTS.register("compelled_duel", CompelledDuelEffect::new);
-    public static final RegistryObject<MobEffect> REAPER_EFFECT = EFFECTS.register("reaper_effect", () -> new ReaperEffect());
-    public static final RegistryObject<MobEffect> DISORIENTATION = EFFECTS.register("disorientation", () -> new DisorientationEffect());
-    public static final RegistryObject<MobEffect> MIND_CONTROL = EFFECTS.register("mind_control", () -> new MindControlEffect());
-    public static final RegistryObject<MobEffect> MANA_SHIELD = EFFECTS.register("mana_shield", () -> new ManaShield());
     public static final RegistryObject<MobEffect> ANTIMAGIC = EFFECTS.register("antimagic", () -> new CLMobEffect.SimpleEffect(MobEffectCategory.HARMFUL, 0x2D244F));
     public static final RegistryObject<MobEffect> SEALING_GATES = EFFECTS.register("sealing_gates_effect", SealingGatesEffect::new);
 
