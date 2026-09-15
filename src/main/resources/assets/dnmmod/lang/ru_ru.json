@@ -173,6 +173,8 @@
   "entity.dnmmod.chromatic_orb": "Хроматический шар",
   "entity.dnmmod.acid_projectile": "Кислотный снаряд",
   "entity.dnmmod.ray_of_enfeeblement": "Луч слабости",
+  "entity.dnmmod.dark_bolt": "Мистический заряд",
+  "entity.dnmmod.vortex": "Вихрь",
 
   "death.attack.dnmmod.ice_dagger": "%1$s был проткнут льдом",
   "death.attack.dnmmod.cloud_dagger": "%1$s был изрезан на куски",
@@ -286,6 +288,8 @@
   "effect.dnmmod.loss_mage": "Потеря магии",
   "effect.dnmmod.mana_shield": "Щит Маны",
   "effect.dnmmod.compelled_duel": "Вызов на дуэль",
+  "effect.dnmmod.antimagic": "Немота",
+  "effect.dnmmod.sealing_gates_effect": "Запечатывание Врат",
 
   "sounds.dnmmod.ghost_ambient": "Призрак",
   "sounds.dnmmod.undead_spirit": "Дух Нежити",
@@ -416,4 +420,8 @@
 
   "spell.dnmmod.compelled_duel": "Вызов на дуэль",
   "spell.dnmmod.compelled_duel.guide": "Заставьте существо смотреть только на вас."
+  "spell.dnmmod.dark_bolt.guide": "Сфера темной энергии устремляется к вашей цели.",
+
+  "spell.dnmmod.vortex": "Вихрь",
+  "spell.dnmmod.vortex.guide": "Вы вызываете вихрь, защищающий вас от врагов."
 }

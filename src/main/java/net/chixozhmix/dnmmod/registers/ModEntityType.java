@@ -11,6 +11,7 @@ import net.chixozhmix.dnmmod.entity.evil.defiled_priest.DefiledPriest;
 import net.chixozhmix.dnmmod.entity.evil.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.evil.evil_flame_atronach.EvilFlameAtronach;
 import net.chixozhmix.dnmmod.entity.evil.evil_storm_atronach.EvilStormAtronach;
+import net.chixozhmix.dnmmod.entity.spell.vortex.VortexAOE;
 import net.chixozhmix.dnmmod.entity.summons.flame_atronach.FlameAtronachEntity;
 import net.chixozhmix.dnmmod.entity.evil.ghost.GhostEntity;
 import net.chixozhmix.dnmmod.entity.evil.goblin_shaman.GoblinShamanEntity;
@@ -127,6 +128,12 @@ public class ModEntityType {
                             .sized(1.0f, 1.0f)
                             .clientTrackingRange(32)
                             .build("dark_bolt_projectile"));
+    public static final RegistryObject<EntityType<VortexAOE>> VORTEX_AOE =
+            ENTITY_TYPES.register("votrex_aoe",
+                    () -> EntityType.Builder.<VortexAOE>of(VortexAOE::new, MobCategory.MISC)
+                            .sized(1.0f, VortexAOE.HEIGHT)
+                            .clientTrackingRange(32)
+                            .build("votrex_aoe"));
 
     //ItemEntity
     public static final RegistryObject<EntityType<IceArrowEntity>> ICE_ARROW_ENTITY = ENTITY_TYPES.register("ice_arrow_entity",

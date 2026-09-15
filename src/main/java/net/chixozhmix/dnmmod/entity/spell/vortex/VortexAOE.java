@@ -1,0 +1,121 @@
+package net.chixozhmix.dnmmod.entity.spell.vortex;
+
+import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.damage.DamageSources;
+import io.redspace.ironsspellbooks.entity.spells.AoeEntity;
+import io.redspace.ironsspellbooks.particle.SwirlingParticleOptions;
+import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import net.chixozhmix.dnmmod.registers.RegistrySpells;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import org.joml.Vector3f;
+
+import java.util.Optional;
+
+public class VortexAOE extends AoeEntity {
+    public static final float HEIGHT = 6f;
+
+    private float strength;
+
+    public VortexAOE(EntityType<? extends Projectile> pEntityType, Level pLevel) {
+        super(pEntityType, pLevel);
+        this.setCircular();
+        this.reapplicationDelay = 10;
+    }
+
+    @Override
+    public void applyEffect(LivingEntity livingEntity) {
+
+    }
+
+    @Override
+    public float getParticleCount() {
+        return 0;
+    }
+
+    @Override
+    public Optional<ParticleOptions> getParticle() {
+        return Optional.empty();
+    }
+
+    @Override
+    public void tick() {
+        Entity owner = this.getOwner();
+
+        if(owner == null || !owner.isAlive()) {
+            this.discard();
+            return;
+        }
+
+        this.setPos(owner.getX(), owner.getY(), owner.getZ());
+        this.setDeltaMovement(Vec3.ZERO);
+
+        super.tick();
+
+        var entities = level().getEntities(this, this.getBoundingBox(), this::canHitEntity);
+        var radius = getRadius();
+
+        for (Entity entity : entities) {
+            if(entity.distanceToSqr(this) < radius * radius) {
+                Vec3 offset = entity.position().subtract(this.position());
+                if(offset.horizontalDistanceSqr() < 1) continue;
+
+                Vec3 radial = new Vec3(offset.x, 0, offset.z).normalize();
+                Vec3 tangent = new Vec3(-radial.z, 0, radial.x);
+                Vec3 push = tangent.scale(getStrengthKnockback() * Math.PI).add(radial.scale(-getStrengthKnockback()));
+                entity.setDeltaMovement(entity.getDeltaMovement().add(push.scale(Utils.clampedKnockbackResistanceFactor(entity, 0.4f, 1f))));
+                DamageSources.applyDamage(entity, this.damage, (RegistrySpells.VORTEX_SPELL.get()).getDamageSource(this, this.getOwner()));
+            }
+        }
+
+        if((tickCount - 1) % 10 == 0)
+            playSound(SoundRegistry.CONE_OF_COLD_LOOP.get(), 2, random.nextIntBetweenInclusive(15, 20)*0.1f);
+    }
+
+    @Override
+    protected boolean canHitEntity(Entity pTarget) {
+        return super.canHitEntity(pTarget) && !DamageSources.isFriendlyFireBetween(this.getOwner(), pTarget);
+    }
+
+    @Override
+    public void ambientParticles() {
+        if (!level().isClientSide) {
+            return;
+        }
+        Vec3 pos = position();
+        float radius = getRadius();
+        int count = (int) (8 * (radius * radius / 64f)) * 3;
+        for (int i = 0; i < count; i++) {
+            swirlingParticle(radius, pos, random.nextFloat() < 0.3 ? new DustParticleOptions(new Vector3f(0.2f, 0.2f, 0.2f), 1.0f) : ParticleTypes.ASH);
+        }
+    }
+
+    @Override
+    public EntityDimensions getDimensions(Pose pPose) {
+        return EntityDimensions.scalable(this.getRadius() * 2.0F, HEIGHT);
+    }
+
+    private void swirlingParticle(float radius, Vec3 pos, ParticleOptions particle) {
+        float diameter = radius * (.1f + .9f * random.nextFloat()) * 2;
+        float angularSpeed = 10f * (random.nextFloat() + 0.5f);
+        Vec3 center = pos.add(Utils.getRandomVec3(1f).multiply(1, 1.5, 1)).add(0, 1, 0);
+        Vec3 speed = Utils.getRandomVec3(0.04);
+        Vec3 up = new Vec3(0, 1, 0).add(Utils.getRandomVec3(0.25)).normalize();
+        level().addParticle(new SwirlingParticleOptions(
+                particle, up, new Vec3(0, 0, 1), new Vec3(diameter, diameter, angularSpeed), new Vec3(0, 0, 0)
+        ), true, center.x, center.y, center.z, speed.x, speed.y, speed.z);
+    }
+
+    private float getStrengthKnockback() {
+        return this.strength;
+    }
+
+    public void setStrengthKnockback (float strengthKnockback) {
+        this.strength = strengthKnockback;
+    }
+}

@@ -24,8 +24,8 @@ public class ChromaticOrbSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(DnMmod.MOD_ID, "chromatic_orb");
 
     public ChromaticOrbSpell() {
-        this.baseManaCost = 50;
-        this.baseSpellPower = 6;
+        this.baseManaCost = 45;
+        this.baseSpellPower = 5;
         this.castTime = 15;
         this.manaCostPerLevel = 10;
         this.spellPowerPerLevel = 1;
@@ -33,7 +33,7 @@ public class ChromaticOrbSpell extends AbstractSpell {
 
     private DefaultConfig defaultConfig = new DefaultConfig()
             .setMaxLevel(10)
-            .setCooldownSeconds(30)
+            .setCooldownSeconds(20)
             .setMinRarity(SpellRarity.UNCOMMON)
             .setSchoolResource(SchoolRegistry.EVOCATION_RESOURCE)
             .build();
@@ -74,8 +74,6 @@ public class ChromaticOrbSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        super.onCast(level, spellLevel, entity, castSource, playerMagicData);
-
         ChromaticOrb orb = new ChromaticOrb(level, entity);
         Vec3 spawn = entity.getEyePosition().add(entity.getForward().normalize());
         orb.setPos(spawn);
@@ -84,10 +82,11 @@ public class ChromaticOrbSpell extends AbstractSpell {
         orb.setDamage(getDamage(spellLevel, entity));
         orb.setBounces(getBounces(spellLevel));
         level.addFreshEntity(orb);
+        super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
     private float getDamage(int spellLevel, LivingEntity entity) {
-        return this.getSpellPower(spellLevel, entity) * 1.7F;
+        return this.getSpellPower(spellLevel, entity) * 1.3F;
     }
 
     private int getBounces(int spellLevel) {

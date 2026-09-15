@@ -55,6 +55,7 @@ import net.chixozhmix.dnmmod.screen.scroll_table.ScrollTableScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -97,6 +98,7 @@ public class ClientModEvents {
         EntityRenderers.register(ModEntityType.TOMBSTONE.get(), TombstoneRenderer::new);
         EntityRenderers.register(ModEntityType.RED_CRYSTAL.get(), RedCristallRenderer::new);
         EntityRenderers.register(ModEntityType.TRIDENT_STRIKE_AREA.get(), TridentStrikeAreaRenderer::new);
+        EntityRenderers.register(ModEntityType.VORTEX_AOE.get(), NoopRenderer::new);
         EntityRenderers.register(ModEntityType.METEOR_ENTITY.get(), (pContext) -> new FireballRenderer(pContext, 4.0f));
 
         EntityRenderers.register(ModEntityType.ICE_ARROW_ENTITY.get(), IceArrowRenderer::new);

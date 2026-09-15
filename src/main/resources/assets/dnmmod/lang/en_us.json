@@ -172,6 +172,8 @@
   "entity.dnmmod.chromatic_orb": "Chromatic orb",
   "entity.dnmmod.acid_projectile": "Acid projectile",
   "entity.dnmmod.ray_of_enfeeblement": "Ray of enfeeblement",
+  "entity.dnmmod.dark_bolt": "Dark Bolt",
+  "entity.dnmmod.vortex": "Vortex",
 
   "death.attack.dnmmod.ice_dagger": "%1$s was pierced by ice",
   "death.attack.dnmmod.cloud_dagger": "%1$s was cut to pieces",
@@ -293,6 +295,8 @@
   "effect.dnmmod.loss_mage": "Loss Mage",
   "effect.dnmmod.mana_shield": "Mana Shield",
   "effect.dnmmod.compelled_duel": "Compelled Duel",
+  "effect.dnmmod.antimagic": "Antimagic effect",
+  "effect.dnmmod.sealing_gates_effect": "Sealing Gates",
 
   "sounds.dnmmod.ghost_ambient": "Ghost",
   "sounds.dnmmod.undead_spirit": "Undead Spirit",
@@ -419,6 +423,10 @@
   "spell.dnmmod.mana_shield.guide": "Use your mana to protect your body from harm.",
 
   "spell.dnmmod.dark_bolt": "Dark Bolt",
+  "spell.dnmmod.dark_bolt.guide": "The sphere of dark energy is rushing toward your goal.",
+
+  "spell.dnmmod.vortex": "Vortex",
+  "spell.dnmmod.vortex.guide": "You summon a vortex that protects you from your enemies."
   "spell.dnmmod.dark_bolt.guide": "The sphere of dark energy is rushing toward your goal.",
 
   "spell.dnmmod.compelled_duel": "Compelled Duel",
