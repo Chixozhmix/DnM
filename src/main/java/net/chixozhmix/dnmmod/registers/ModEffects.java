@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.registers;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import net.chixozhmix.chilib.registers.CLMobEffect;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.effect.custom.*;
 import net.minecraft.world.effect.MobEffect;
@@ -40,6 +41,7 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> DISORIENTATION = EFFECTS.register("disorientation", () -> new DisorientationEffect());
     public static final RegistryObject<MobEffect> MIND_CONTROL = EFFECTS.register("mind_control", () -> new MindControlEffect());
     public static final RegistryObject<MobEffect> MANA_SHIELD = EFFECTS.register("mana_shield", () -> new ManaShield());
+    public static final RegistryObject<MobEffect> ANTIMAGIC = EFFECTS.register("antimagic", () -> new CLMobEffect.SimpleEffect(MobEffectCategory.HARMFUL, 0x2D244F));
 
     public static final RegistryObject<MobEffect> ENDER_RESISTANCE = EFFECTS.register("ender_resistance", () ->
             new ResistanceEffect(0x490552).addAttributeModifier(AttributeRegistry.ENDER_MAGIC_RESIST.get(), ENDER_RESIST_UUID, 0.2, AttributeModifier.Operation.MULTIPLY_BASE));
