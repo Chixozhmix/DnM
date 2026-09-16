@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.registers;
 
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import net.chixozhmix.chilib.attributes.ChiAttributes;
 import net.chixozhmix.chilib.registers.CLMobEffect;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.effect.custom.*;
@@ -26,6 +27,8 @@ public class ModEffects {
     public static final String LIGHTNING_RESIST_UUID = "b7c1e5a9-2f8d-4b3c-9a6e-4d1f7c2b8e0a";
     public static final String ELDRITCH_RESIST_UUID = "e7d4e4a9-2d8f-4b3c-9a6e-4d1f7c5a8e1a";
 
+    public static final String JUMP_UUID = "a7d4e2a5-2d8f-4b3c-9a6e-4d1f7c5a8e1a";
+
 
     public static final RegistryObject<MobEffect> MAGE_ARMOR = EFFECTS.register("mage_armor", MageArmorEffect::new);
     public static final RegistryObject<MobEffect> LOSS_MAGIC = EFFECTS.register("loss_magic", LossMagicEffect::new);
@@ -44,6 +47,7 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> COMPELLED_DUEL = EFFECTS.register("compelled_duel", CompelledDuelEffect::new);
     public static final RegistryObject<MobEffect> ANTIMAGIC = EFFECTS.register("antimagic", () -> new CLMobEffect.SimpleEffect(MobEffectCategory.HARMFUL, 0x2D244F));
     public static final RegistryObject<MobEffect> SEALING_GATES = EFFECTS.register("sealing_gates_effect", SealingGatesEffect::new);
+    public static final RegistryObject<MobEffect> JUMP = EFFECTS.register("jump", () -> new CLMobEffect.SimpleEffect(MobEffectCategory.BENEFICIAL, 0x6F701F));
 
     public static final RegistryObject<MobEffect> ENDER_RESISTANCE = EFFECTS.register("ender_resistance", () ->
             new ResistanceEffect(0x490552).addAttributeModifier(AttributeRegistry.ENDER_MAGIC_RESIST.get(), ENDER_RESIST_UUID, 0.2, AttributeModifier.Operation.MULTIPLY_BASE));
