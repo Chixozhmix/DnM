@@ -8,8 +8,7 @@ import net.chixozhmix.dnmmod.blocks.client.SealedDoorRenderer;
 import net.chixozhmix.dnmmod.blocks.client.statue.WarriorStatueRenderer;
 import net.chixozhmix.dnmmod.blocks.client.statue.WizardStatueRenderer;
 import net.chixozhmix.dnmmod.entity.custom.client.UndeadSpiritRenderer;
-import net.chixozhmix.dnmmod.entity.dragons.client.models.AbstractDragonModel;
-import net.chixozhmix.dnmmod.entity.dragons.client.renderer.AbstractDragonRenderer;
+import net.chixozhmix.dnmmod.entity.dragons.client.abstract_dragon.AbstractDragonRenderer;
 import net.chixozhmix.dnmmod.entity.evil.darkspawn_larva.DarkspawnLarvaRenderer;
 import net.chixozhmix.dnmmod.entity.evil.darkspawn_larva.summon.SummonDarkspawnLarvaRenderer;
 import net.chixozhmix.dnmmod.entity.evil.defiled_priest.DefiledPriestrenderer;
@@ -148,7 +147,7 @@ public class ClientModEvents {
         event.registerLayerDefinition(SummonedRavenRenderer.MODEL_LAYER_LOCATION, SummonedRavenModel::createBodyLayer);
         event.registerLayerDefinition(RayOfEnfeeblementRenderer.MODEL_LAYER_LOCATION, RayOfEnfeeblementRenderer::createBodyLayer);
         event.registerLayerDefinition(RedCristallModel.LAYER_LOCATION, RedCristallModel::createBodyLayer);
-        event.registerLayerDefinition(AbstractDragonModel.LAYER_LOCATION, AbstractDragonModel::createBodyLayer);
+        //event.registerLayerDefinition(AbstractDragonModel.LAYER_LOCATION, AbstractDragonModel::createBodyLayer);
 
         event.registerLayerDefinition(SealedDoorModel.LAYER_LOCATION, SealedDoorModel::createBodyLayer);
     }

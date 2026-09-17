@@ -15,8 +15,7 @@ import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class ModeusRenderer extends GeoEntityRenderer<ModeusBoss> {
-    private static final ResourceLocation EMISSIVE_TEXTURE =
-            new ResourceLocation(DnMmod.MOD_ID, "textures/entity/modeus/modeus_glowing.png");
+    private static final ResourceLocation EMISSIVE_TEXTURE = new ResourceLocation(DnMmod.MOD_ID, "textures/entity/modeus/modeus_glowing.png");
     private static final ResourceLocation BEAM_TEXTURE = new ResourceLocation("textures/entity/guardian_beam.png");
     private static final RenderType BEAM_RENDER_TYPE = RenderType.entityCutoutNoCull(BEAM_TEXTURE);
 

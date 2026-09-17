@@ -1,6 +1,6 @@
 package net.chixozhmix.dnmmod.entity.dragons;
 
-import net.chixozhmix.dnmmod.entity.bosses.modeus.ModeusBoss;
+import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import net.chixozhmix.dnmmod.entity.dragons.client.AnimationsEnum;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -16,12 +16,23 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Objects;
 
-public class AbstractDragonEntity extends PathfinderMob implements Enemy {
+public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEntity, IAnimatedAttacker {
     //Для движения хитбоксов
     private static final EntityDataAccessor<String> ANIM_STATE = SynchedEntityData.defineId(AbstractDragonEntity.class, EntityDataSerializers.STRING);
+
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
+    private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)12.0F)
@@ -42,16 +53,17 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
     private final DragonPartEntity[] parts;
 
     //Animations
-    public final AnimationState idle = new AnimationState();
-    private int idleAnimationTimeout = 0;
-    public final AnimationState walk = new AnimationState();
+    private final AnimatableInstanceCache cache;
+    private RawAnimation customAnimationToPlay;
+
+    private final AnimationController<AbstractDragonEntity> movementController;
 
     public AbstractDragonEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.xpReward = 5;
 
         //Parts
-        this.head = new DragonPartEntity(this, "head", 1.5f, 2f);
+        this.head = new DragonPartEntity(this, "head", 1.5f, 1.5f);
         this.neck = new DragonPartEntity(this, "neck", 1.5f, 0.7f);
         this.neck2 = new DragonPartEntity(this, "neck2", 1.5f, 0.7f);
         this.torso = new DragonPartEntity(this, "torso", 2.5f, 1.5f);
@@ -61,6 +73,21 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
 
         this.parts = new DragonPartEntity[] {head, neck, neck2, torso, leftWing, rightWing};
         this.setId(ENTITY_COUNTER.getAndAdd(this.parts.length + 1) + 1);
+
+        this.movementController = new AnimationController<>(this, "movement", 2, this::movementPredicate);
+        this.cache = GeckoLibUtil.createInstanceCache(this);
+    }
+
+    private PlayState movementPredicate(AnimationState<AbstractDragonEntity> state) {
+        if (state.isMoving() && this.onGround()) {
+            setAnimState(AnimationsEnum.WALK);
+            state.getController().setAnimation(WALK_ANIM);
+            return PlayState.CONTINUE;
+        }
+
+        state.getController().setAnimation(IDLE_ANIM);
+        setAnimState(AnimationsEnum.IDLE);
+        return PlayState.CONTINUE;
     }
 
     @Override
@@ -92,7 +119,6 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2F, true));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 30.0F));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
@@ -107,36 +133,6 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
     @Override
     public void tick() {
         super.tick();
-
-        if(this.level().isClientSide) {
-            setupAnimationStates();
-        }
-
-        if (!level().isClientSide) {
-            if (getDeltaMovement().horizontalDistanceSqr() > 0.0001 && !Objects.equals(getAnimState(), AnimationsEnum.FLY.getAnimId())) {
-                setAnimState(AnimationsEnum.WALK);
-            } else {
-                setAnimState(AnimationsEnum.IDLE);
-            }
-        }
-    }
-
-    private void setupAnimationStates() {
-        if(this.idleAnimationTimeout <= 0) {
-            this.idleAnimationTimeout = 40;
-            this.idle.start(this.tickCount);
-        } else
-            --this.idleAnimationTimeout;
-    }
-
-    @Override
-    protected void updateWalkAnimation(float pPartialTick) {
-        float f;
-        if(this.getPose() == Pose.STANDING) {
-            f = Math.min(pPartialTick * 6f, 1f);
-        } else f = 0f;
-
-        this.walkAnimation.update(f, 0.2f);
     }
 
     @Override
@@ -151,20 +147,23 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
         float cos = Mth.cos(bodyYaw);
 
         if(Objects.equals(getAnimState(), AnimationsEnum.IDLE.getAnimId())) {
-
-            leftWing.setPartSize(2.0f, 2.0f);
-            rightWing.setPartSize(2.0f, 2.0f);
+            updateSinglePart(head, 0.0, 3.0, -4.5, -sin, -cos);
+            updateSinglePart(neck, 0.0, 2.5, -2.0, -sin, -cos);
+            updateSinglePart(neck2, 0.0, 3.0, -3.0, -sin, -cos);
+//            leftWing.setPartSize(2.0f, 2.0f);
+//            rightWing.setPartSize(2.0f, 2.0f);
         }
         if(Objects.equals(getAnimState(), AnimationsEnum.WALK.getAnimId())) {
-            leftWing.setPartSize(4.0f, 2.0f);
-            rightWing.setPartSize(4.0f, 2.0f);
+            updateSinglePart(head, 0.0, 2.5, -4.5, -sin, -cos);
+            updateSinglePart(neck, 0.0, 2.0, -2.0, -sin, -cos);
+            updateSinglePart(neck2, 0.0, 2.5, -3.0, -sin, -cos);
+
+//            leftWing.setPartSize(4.0f, 2.0f);
+//            rightWing.setPartSize(4.0f, 2.0f);
         }
 
 
-        updateSinglePart(head, 0.0, 3.0, -4.0, -sin, -cos);
         updateSinglePart(torso, 0.0, 1.0, 0.0, -sin, -cos);
-        updateSinglePart(neck, 0.0, 2.5, -2.0, -sin, -cos);
-        updateSinglePart(neck2, 0.0, 3.0, -3.0, -sin, -cos);
         updateSinglePart(leftWing, 2.0, 1.0, 0.0, -sin, -cos);
         updateSinglePart(rightWing, -2.0, 1.0, 0.0, -sin, -cos);
     }
@@ -185,7 +184,8 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
         part.setPos(worldX, worldY, worldZ);
         part.setYRot(this.getYRot());
         part.setXRot(this.getXRot());
-        part.yRotO = this.yRotO; part.xRotO = this.xRotO;
+        part.yRotO = this.yRotO;
+        part.xRotO = this.xRotO;
     }
 
     @Override
@@ -202,11 +202,26 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
     public void recreateFromPacket(ClientboundAddEntityPacket pPacket) {
         super.recreateFromPacket(pPacket);
 
-        if (true) return; // Forge: Fix MC-158205: Moved into setId()
+        if (true) return;
         DragonPartEntity[] adragonpart = this.parts;
 
         for(int i = 0; i < adragonpart.length; ++i) {
             adragonpart[i].setId(i + pPacket.getId());
         }
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        controllerRegistrar.add(movementController);
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
+    }
+
+    @Override
+    public void playAnimation(String s) {
+
     }
 }
