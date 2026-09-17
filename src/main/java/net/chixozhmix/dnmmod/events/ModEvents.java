@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.events;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.Util.spawnrules.ModSpawnRule;
+import net.chixozhmix.dnmmod.entity.dragons.AbstractDragonEntity;
 import net.chixozhmix.dnmmod.entity.evil.hidden_tentacle.HiddenTentacleEntity;
 import net.chixozhmix.dnmmod.entity.bosses.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.evil.darkspawn_larva.DarkspawnLarva;
@@ -66,6 +67,9 @@ public class ModEvents {
         event.put(ModEntityType.DARKSPAWN_OBSERVER.get(), DarkspawnObserver.createAttributes());
         event.put(ModEntityType.SUMMON_DARKSPAWN_LARVA.get(), SummonDarkspawnLarva.prepareAttributes().build());
         event.put(ModEntityType.HIDDEN_TENTACLE.get(), HiddenTentacleEntity.prepareAttributes().build());
+
+        //Dragons
+        event.put(ModEntityType.ABSTRACT_DRAGON.get(), AbstractDragonEntity.prepareAttributes().build());
     }
 
     @SubscribeEvent

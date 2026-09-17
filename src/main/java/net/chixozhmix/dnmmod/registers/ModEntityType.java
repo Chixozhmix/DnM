@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.registers;
 
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.IceArrowEntity;
+import net.chixozhmix.dnmmod.entity.dragons.AbstractDragonEntity;
 import net.chixozhmix.dnmmod.entity.evil.hidden_tentacle.HiddenTentacleEntity;
 import net.chixozhmix.dnmmod.entity.bosses.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
@@ -150,7 +151,6 @@ public class ModEntityType {
                     .updateInterval(20)
                     .build("ice_arrow"));
 
-
     //Mobs
     public static final RegistryObject<EntityType<UndeadSpiritEntity>> UNDEAD_SPIRIT =
             ENTITY_TYPES.register("undead_spirit", () -> EntityType.Builder.of(UndeadSpiritEntity::new, MobCategory.MONSTER)
@@ -291,6 +291,14 @@ public class ModEntityType {
                             .sized(0.9f, 2.2f)
                             .clientTrackingRange(32)
                             .build("summon_darkspawn_larva"));
+
+    //Dragons
+    public static final RegistryObject<EntityType<AbstractDragonEntity>> ABSTRACT_DRAGON =
+            ENTITY_TYPES.register("abstract_dragon", () -> EntityType.Builder.of(
+                    AbstractDragonEntity::new, MobCategory.MONSTER)
+                    .sized(1.0f, 2.0f)
+                    .clientTrackingRange(64)
+                    .build("abstract_dragon"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
