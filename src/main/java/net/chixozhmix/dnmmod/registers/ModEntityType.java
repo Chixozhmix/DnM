@@ -296,7 +296,7 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<AbstractDragonEntity>> ABSTRACT_DRAGON =
             ENTITY_TYPES.register("abstract_dragon", () -> EntityType.Builder.of(
                     AbstractDragonEntity::new, MobCategory.MONSTER)
-                    .sized(1.0f, 2.0f)
+                    .sized(3.0f, 3.0f)
                     .clientTrackingRange(64)
                     .build("abstract_dragon"));
 

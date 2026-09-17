@@ -1,9 +1,11 @@
 package net.chixozhmix.dnmmod.entity.dragons;
 
+import net.chixozhmix.dnmmod.entity.bosses.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.dragons.client.AnimationsEnum;
-import net.chixozhmix.dnmmod.entity.dragons.client.animations.AbstractDragonModelAnimation;
-import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -13,10 +15,13 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 public class AbstractDragonEntity extends PathfinderMob implements Enemy {
+    //Для движения хитбоксов
+    private static final EntityDataAccessor<String> ANIM_STATE = SynchedEntityData.defineId(AbstractDragonEntity.class, EntityDataSerializers.STRING);
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)12.0F)
@@ -31,30 +36,30 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
     public final  DragonPartEntity neck2;
     public final  DragonPartEntity torso;
 
-    public final  DragonPartEntity attack_zone;
+    public final  DragonPartEntity leftWing;
+    public final  DragonPartEntity rightWing;
 
     private final DragonPartEntity[] parts;
 
     //Animations
-    private AnimationsEnum currentAnimation = AnimationsEnum.IDLE;
-
     public final AnimationState idle = new AnimationState();
     private int idleAnimationTimeout = 0;
-    public static final AnimationState walk = new AnimationState();
+    public final AnimationState walk = new AnimationState();
 
     public AbstractDragonEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.xpReward = 5;
 
         //Parts
-        this.head = new DragonPartEntity(this, "head", 1.5f, 1f);
+        this.head = new DragonPartEntity(this, "head", 1.5f, 2f);
         this.neck = new DragonPartEntity(this, "neck", 1.5f, 0.7f);
         this.neck2 = new DragonPartEntity(this, "neck2", 1.5f, 0.7f);
         this.torso = new DragonPartEntity(this, "torso", 2.5f, 1.5f);
 
-        this.attack_zone = new DragonPartEntity(this, "attack_zone", 2.5f, 2.5f);
+        this.leftWing = new DragonPartEntity(this, "leftWing", 2.0f, 2.0f);
+        this.rightWing = new DragonPartEntity(this, "rightWing", 2.0f, 2.0f);
 
-        this.parts = new DragonPartEntity[] {head, neck, neck2, torso};
+        this.parts = new DragonPartEntity[] {head, neck, neck2, torso, leftWing, rightWing};
         this.setId(ENTITY_COUNTER.getAndAdd(this.parts.length + 1) + 1);
     }
 
@@ -63,6 +68,24 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
         super.setId(pId);
         for (int i = 0; i < this.parts.length; i++) {
             this.parts[i].setId(pId + i + 1);
+        }
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(ANIM_STATE, "IDLE");
+    }
+
+    public String getAnimState() {
+        return this.entityData.get(ANIM_STATE);
+    }
+
+    public void setAnimState(AnimationsEnum animId) {
+        String newState = animId.getAnimId();
+
+        if (!Objects.equals(getAnimState(), newState)) {
+            this.entityData.set(ANIM_STATE, newState);
         }
     }
 
@@ -87,6 +110,14 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
 
         if(this.level().isClientSide) {
             setupAnimationStates();
+        }
+
+        if (!level().isClientSide) {
+            if (getDeltaMovement().horizontalDistanceSqr() > 0.0001 && !Objects.equals(getAnimState(), AnimationsEnum.FLY.getAnimId())) {
+                setAnimState(AnimationsEnum.WALK);
+            } else {
+                setAnimState(AnimationsEnum.IDLE);
+            }
         }
     }
 
@@ -119,10 +150,23 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
         float sin = Mth.sin(bodyYaw);
         float cos = Mth.cos(bodyYaw);
 
+        if(Objects.equals(getAnimState(), AnimationsEnum.IDLE.getAnimId())) {
+
+            leftWing.setPartSize(2.0f, 2.0f);
+            rightWing.setPartSize(2.0f, 2.0f);
+        }
+        if(Objects.equals(getAnimState(), AnimationsEnum.WALK.getAnimId())) {
+            leftWing.setPartSize(4.0f, 2.0f);
+            rightWing.setPartSize(4.0f, 2.0f);
+        }
+
+
+        updateSinglePart(head, 0.0, 3.0, -4.0, -sin, -cos);
         updateSinglePart(torso, 0.0, 1.0, 0.0, -sin, -cos);
         updateSinglePart(neck, 0.0, 2.5, -2.0, -sin, -cos);
         updateSinglePart(neck2, 0.0, 3.0, -3.0, -sin, -cos);
-        updateSinglePart(head, 0.0, 3.0, -4.0, -sin, -cos);
+        updateSinglePart(leftWing, 2.0, 1.0, 0.0, -sin, -cos);
+        updateSinglePart(rightWing, -2.0, 1.0, 0.0, -sin, -cos);
     }
 
     private void updateSinglePart(DragonPartEntity part, double localX, double localY, double localZ, float sin, float cos) {
@@ -142,14 +186,6 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy {
         part.setYRot(this.getYRot());
         part.setXRot(this.getXRot());
         part.yRotO = this.yRotO; part.xRotO = this.xRotO;
-    }
-
-    public AnimationsEnum getCurrentAnimation() {
-        return currentAnimation;
-    }
-
-    public void setCurrentAnimation(AnimationsEnum animation) {
-        this.currentAnimation = animation;
     }
 
     @Override

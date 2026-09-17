@@ -14,7 +14,7 @@ public class DragonPartEntity extends PartEntity<AbstractDragonEntity> {
     public final AbstractDragonEntity parentMob;
     public final String name;
 
-    private final EntityDimensions size;
+    private EntityDimensions size;
 
     public DragonPartEntity(AbstractDragonEntity parent, String name, float width, float height) {
         super(parent);
@@ -23,6 +23,15 @@ public class DragonPartEntity extends PartEntity<AbstractDragonEntity> {
         this.name = name;
         this.size = EntityDimensions.scalable(width, height);
 
+        this.refreshDimensions();
+    }
+
+    public void setPartSize(float width, float height) {
+        if (this.size.width == width && this.size.height == height) {
+            return;
+        }
+
+        this.size = EntityDimensions.scalable(width, height);
         this.refreshDimensions();
     }
 
