@@ -3,6 +3,7 @@ package net.chixozhmix.dnmmod.registers;
 import net.chixozhmix.dnmmod.DnMmod;
 import net.chixozhmix.dnmmod.entity.custom.IceArrowEntity;
 import net.chixozhmix.dnmmod.entity.dragons.AbstractDragonEntity;
+import net.chixozhmix.dnmmod.entity.dragons.DragonPartEntity;
 import net.chixozhmix.dnmmod.entity.evil.hidden_tentacle.HiddenTentacleEntity;
 import net.chixozhmix.dnmmod.entity.bosses.modeus.ModeusBoss;
 import net.chixozhmix.dnmmod.entity.custom.UndeadSpiritEntity;
@@ -296,7 +297,7 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<AbstractDragonEntity>> ABSTRACT_DRAGON =
             ENTITY_TYPES.register("abstract_dragon", () -> EntityType.Builder.of(
                     AbstractDragonEntity::new, MobCategory.MONSTER)
-                    .sized(3.0f, 3.0f)
+                    .sized(4.0f, 4.0f)
                     .clientTrackingRange(64)
                     .build("abstract_dragon"));
 
