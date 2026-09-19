@@ -5,6 +5,7 @@ public enum AnimationsEnum {
     IDLE ("IDLE"),
     WALK ("WALK"),
     FLY ("FLY"),
+    FLY_IDLE ("FLY_IDLE"),
 
     //Attacks
     BIT ("BIT"),
