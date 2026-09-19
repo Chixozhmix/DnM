@@ -2,6 +2,7 @@ package net.chixozhmix.dnmmod.entity.dragons;
 
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
 import net.chixozhmix.dnmmod.Util.ModTags;
+import net.chixozhmix.dnmmod.api.entity.dragons.HitboxController;
 import net.chixozhmix.dnmmod.entity.dragons.client.AnimationsEnum;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
@@ -222,7 +223,8 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     @Override
     public void aiStep() {
         super.aiStep();
-        updateParts();
+
+        HitboxController.updateParts(this);
 
         if (!this.level().isClientSide && this.tickCount % 10 == 0) {
             destroyBlocksAround(10, 5);
@@ -233,108 +235,6 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
 //        if (!this.onGround() && motion.y < 0.0D) {
 //            this.setDeltaMovement(motion.multiply(1.0D, 0.6D, 1.0D));
 //        }
-    }
-
-    //Управляет хитбоксами частей (Да, я устанавливаю их вручную. Я просто не знаю, как сделать это по другому, так что приходится выкручиваться)
-    private void updateParts() {
-        float bodyYaw = this.yBodyRot * Mth.DEG_TO_RAD;
-        float sin = Mth.sin(bodyYaw);
-        float cos = Mth.cos(bodyYaw);
-
-        //Стоит
-        if(Objects.equals(getAnimState(), AnimationsEnum.IDLE.getAnimId())) {
-            updateSinglePart(head, 0.0, 2.5, -8.5, -sin, -cos);
-            updateSinglePart(neck, 0.0, 2.5, -3.5, -sin, -cos);
-            updateSinglePart(neck2, 0.0, 3.5, -6.0, -sin, -cos);
-
-            updateSinglePart(tail1, 0, 1.5, 3.5, -sin, -cos);
-            updateSinglePart(tail2, 0, 0.0, 7.0, -sin, -cos);
-            updateSinglePart(tail3, 0, 0.0, 11.5, -sin, -cos);
-
-            updateSinglePart(leftWing, 5.0, 1.0, 0.0, -sin, -cos);
-            updateSinglePart(rightWing, -5.0, 1.0, 0.0, -sin, -cos);
-
-            leftWing.setPartSize(5.0f, 5.0f);
-            rightWing.setPartSize(5.0f, 5.0f);
-        }
-        //Завис в воздухе
-        if(Objects.equals(getAnimState(), AnimationsEnum.FLY_IDLE.getAnimId())) {
-            updateSinglePart(head, 0.0, 6.5, -5.0, -sin, -cos);
-            updateSinglePart(neck, 0.0, 5.0, -1.5, -sin, -cos);
-            updateSinglePart(neck2, 0.0, 6.5, -2.0, -sin, -cos);
-
-            updateSinglePart(tail1, 0, -1.5, 2.5, -sin, -cos);
-            updateSinglePart(tail2, 0, -3.0, 3.0, -sin, -cos);
-            updateSinglePart(tail3, 0, -6.0, 3.5, -sin, -cos);
-
-            updateSinglePart(leftWing, 8.0, 1.0, 0.0, -sin, -cos);
-            updateSinglePart(rightWing, -8.0, 1.0, 0.0, -sin, -cos);
-
-            leftWing.setPartSize(8.0f, 5.0f);
-            rightWing.setPartSize(8.0f, 5.0f);
-        }
-        //Идет
-        if(Objects.equals(getAnimState(), AnimationsEnum.WALK.getAnimId())) {
-            updateSinglePart(head, 0.0, 2.5, -8.5, -sin, -cos);
-            updateSinglePart(neck, 0.0, 2.5, -3.5, -sin, -cos);
-            updateSinglePart(neck2, 0.0, 3.0, -6.0, -sin, -cos);
-
-            updateSinglePart(tail1, 0, 1.5, 3.5, -sin, -cos);
-            updateSinglePart(tail2, 0, 1.0, 7.0, -sin, -cos);
-            updateSinglePart(tail3, 0, 1.0, 11.5, -sin, -cos);
-
-            updateSinglePart(leftWing, 5.0, 1.0, 0.0, -sin, -cos);
-            updateSinglePart(rightWing, -5.0, 1.0, 0.0, -sin, -cos);
-
-            leftWing.setPartSize(5.0f, 5.0f);
-            rightWing.setPartSize(5.0f, 5.0f);
-        }
-        //Летит
-        if(Objects.equals(getAnimState(), AnimationsEnum.FLY.getAnimId())) {
-            updateSinglePart(head, 0.0, 2.5, -8.5, -sin, -cos);
-            updateSinglePart(neck, 0.0, 2.5, -3.5, -sin, -cos);
-            updateSinglePart(neck2, 0.0, 3.0, -6.0, -sin, -cos);
-
-            updateSinglePart(tail1, 0, 2.5, 3.5, -sin, -cos);
-            updateSinglePart(tail2, 0, 2.0, 7.0, -sin, -cos);
-            updateSinglePart(tail3, 0, 2.0, 11.5, -sin, -cos);
-
-            updateSinglePart(leftWing, 8.0, 1.0, 0.0, -sin, -cos);
-            updateSinglePart(rightWing, -8.0, 1.0, 0.0, -sin, -cos);
-
-            leftWing.setPartSize(8.0f, 5.0f);
-            rightWing.setPartSize(8.0f, 5.0f);
-        }
-
-//        if(Objects.equals(getAnimState(), AnimationsEnum.BIT.getAnimId())) {
-//            updateSinglePart(head, 0.0, 0.5, -8.5, -sin, -cos);
-//            updateSinglePart(neck, 0.0, 2.5, -3.5, -sin, -cos);
-//            updateSinglePart(neck2, 0.0, 3.0, -6.0, -sin, -cos);
-//
-//            updateSinglePart(tail1, 0, 1.5, 3.5, -sin, -cos);
-//            updateSinglePart(tail2, 0, 1.0, 7.0, -sin, -cos);
-//            updateSinglePart(tail3, 0, 1.0, 11.5, -sin, -cos);
-//        }
-    }
-
-    private void updateSinglePart(DragonPartEntity part, double localX, double localY, double localZ, float sin, float cos) {
-        double worldX = this.getX() + (localX * cos - localZ * sin);
-        double worldY = this.getY() + localY;
-        double worldZ = this.getZ() + (localX * sin + localZ * cos);
-
-        part.xo = part.getX();
-        part.yo = part.getY();
-        part.zo = part.getZ();
-
-        part.xOld = part.getX();
-        part.yOld = part.getY();
-        part.zOld = part.getZ();
-
-        part.setPos(worldX, worldY, worldZ);
-        part.setYRot(this.getYRot());
-        part.setXRot(this.getXRot());
-        part.yRotO = this.yRotO;
-        part.xRotO = this.xRotO;
     }
 
     //Это, наверно, тупо и не очень оптимизировано, но по другому я не смог это сделать
