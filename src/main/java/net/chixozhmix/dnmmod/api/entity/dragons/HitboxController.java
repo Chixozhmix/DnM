@@ -7,6 +7,8 @@ import net.minecraft.util.Mth;
 
 import java.util.Objects;
 
+
+//Пока это будет так - лучшее, что я смог придумать
 public class HitboxController {
 
     public static void updateParts(AbstractDragonEntity dragon) {
@@ -78,15 +80,31 @@ public class HitboxController {
             dragon.leftWing.setPartSize(8.0f, 5.0f);
             dragon.rightWing.setPartSize(8.0f, 5.0f);
         }
-
+        //Укус
         if(Objects.equals(dragon.getAnimState(), AnimationsEnum.BIT.getAnimId())) {
             updateSinglePart(dragon, dragon.head, 0.0, 0.5, -8.5, -sin, -cos);
             updateSinglePart(dragon, dragon.neck, 0.0, 2.5, -3.5, -sin, -cos);
             updateSinglePart(dragon, dragon.neck2, 0.0, 3.0, -6.0, -sin, -cos);
 
-            updateSinglePart(dragon, dragon.tail1, 0, 1.5, 3.5, -sin, -cos);
-            updateSinglePart(dragon, dragon.tail2, 0, 1.0, 7.0, -sin, -cos);
-            updateSinglePart(dragon, dragon.tail3, 0, 1.0, 11.5, -sin, -cos);
+            updateSinglePart(dragon, dragon.tail1, 0, 2.0, 3.5, -sin, -cos);
+            updateSinglePart(dragon, dragon.tail2, 0, 1.5, 7.0, -sin, -cos);
+            updateSinglePart(dragon, dragon.tail3, 0, 1.5, 11.5, -sin, -cos);
+
+            updateSinglePart(dragon, dragon.leftWing, 5.0, 1.0, 0.0, -sin, -cos);
+            updateSinglePart(dragon, dragon.rightWing, -5.0, 1.0, 0.0, -sin, -cos);
+
+            dragon.leftWing.setPartSize(5.0f, 5.0f);
+            dragon.rightWing.setPartSize(5.0f, 5.0f);
+        }
+        //Дыхание
+        if(Objects.equals(dragon.getAnimState(), AnimationsEnum.BREATH_ATTACK.getAnimId())) {
+            updateSinglePart(dragon, dragon.head, 0.0, 0.5, -8.5, -sin, -cos);
+            updateSinglePart(dragon, dragon.neck, 0.0, 2.5, -3.5, -sin, -cos);
+            updateSinglePart(dragon, dragon.neck2, 0.0, 3.0, -6.0, -sin, -cos);
+
+            updateSinglePart(dragon, dragon.tail1, 0, 2.0, 3.5, -sin, -cos);
+            updateSinglePart(dragon, dragon.tail2, 0, 1.5, 7.0, -sin, -cos);
+            updateSinglePart(dragon, dragon.tail3, 0, 1.5, 11.5, -sin, -cos);
 
             updateSinglePart(dragon, dragon.leftWing, 5.0, 1.0, 0.0, -sin, -cos);
             updateSinglePart(dragon, dragon.rightWing, -5.0, 1.0, 0.0, -sin, -cos);

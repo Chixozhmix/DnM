@@ -22,6 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -38,6 +39,7 @@ import java.util.Objects;
 public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEntity, IAnimatedAttacker {
     //Для движения хитбоксов
     private static final EntityDataAccessor<String> ANIM_STATE = SynchedEntityData.defineId(AbstractDragonEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<Boolean> FLYING = SynchedEntityData.defineId(AbstractDragonEntity.class, EntityDataSerializers.BOOLEAN);
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
@@ -67,6 +69,15 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
 
     private final DragonPartEntity[] parts;
 
+    //Flying
+    private boolean flying = false;
+    private double flyingHeight = 30.0D; //20 - 40
+    private int flyTime = 0;
+    private double flightTargetX;
+    private double flightTargetZ;
+    private int flightDecisionCooldown = 100;
+
+
     //Animations
     private final AnimatableInstanceCache cache;
     private RawAnimation customAnimationToPlay;
@@ -82,9 +93,6 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     public AbstractDragonEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.xpReward = 5;
-
-        //Flying (Нужно придумать что-то нормальное)
-        //this.moveControl = new FlyingMoveControl(this, 10, false);
 
         //Parts
         this.head = new DragonPartEntity(this, "head", 2.5f, 2.5f);
@@ -105,15 +113,6 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
         this.cache = GeckoLibUtil.createInstanceCache(this);
     }
 
-//    @Override
-//    protected PathNavigation createNavigation(Level pLevel) {
-//        FlyingPathNavigation flyingpathnavigator = new FlyingPathNavigation(this, pLevel);
-//        flyingpathnavigator.setCanOpenDoors(false);
-//        flyingpathnavigator.setCanFloat(true);
-//        flyingpathnavigator.setCanPassDoors(true);
-//        return flyingpathnavigator;
-//    }
-
     @Override
     protected int calculateFallDamage(float pFallDistance, float pDamageMultiplier) {
         return 0;
@@ -131,18 +130,18 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
             return PlayState.CONTINUE;
         }
         //Полет
-//        if(state.isMoving() && !this.onGround())
-//        {
-//            setAnimState(AnimationsEnum.FLY);
-//            state.getController().setAnimation(FLY_ANIM);
-//            return PlayState.CONTINUE;
-//        }
-//        //Завис в воздухе (приземляется)
-//        if(this.getDeltaMovement().x <= 0 && this.getDeltaMovement().y <= 0 && !this.onGround()) {
-//            setAnimState(AnimationsEnum.FLY_IDLE);
-//            state.getController().setAnimation(FLY_IDLE_ANIM);
-//            return PlayState.CONTINUE;
-//        }
+        if(isFlying())
+        {
+            setAnimState(AnimationsEnum.FLY);
+            state.getController().setAnimation(FLY_ANIM);
+            return PlayState.CONTINUE;
+        }
+        //Завис в воздухе (приземляется)
+        if(this.getDeltaMovement().x <= 0 && this.getDeltaMovement().y <= 0 && !this.onGround()) {
+            setAnimState(AnimationsEnum.FLY_IDLE);
+            state.getController().setAnimation(FLY_IDLE_ANIM);
+            return PlayState.CONTINUE;
+        }
 
         state.getController().setAnimation(IDLE_ANIM);
         setAnimState(AnimationsEnum.IDLE);
@@ -161,6 +160,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(ANIM_STATE, "IDLE");
+        this.entityData.define(FLYING, false);
     }
 
     public String getAnimState() {
@@ -173,6 +173,14 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
         if (!Objects.equals(getAnimState(), newState)) {
             this.entityData.set(ANIM_STATE, newState);
         }
+    }
+
+    public boolean isFlying() {
+        return this.entityData.get(FLYING);
+    }
+
+    public void setFlying(boolean flying) {
+        this.entityData.set(FLYING, flying);
     }
 
     @Override
@@ -224,6 +232,12 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     public void aiStep() {
         super.aiStep();
 
+        if (!this.level().isClientSide) {
+            updateFlightDecision();
+            if (isFlying())
+                tickFlight();
+        }
+
         HitboxController.updateParts(this);
 
         if (!this.level().isClientSide && this.tickCount % 10 == 0) {
@@ -231,10 +245,140 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
         }
 
         //Плавное приземление (не придумал, как сделать по другому)
-//        Vec3 motion = this.getDeltaMovement();
-//        if (!this.onGround() && motion.y < 0.0D) {
-//            this.setDeltaMovement(motion.multiply(1.0D, 0.6D, 1.0D));
-//        }
+        Vec3 motion = this.getDeltaMovement();
+        if (!this.onGround() && motion.y < 0.0D) {
+            this.setDeltaMovement(motion.multiply(1.0D, 0.9D, 1.0D));
+        }
+    }
+
+    private void tickFlight() {
+        if (!isFlying())
+            return;
+
+        if (flyTime > 0) {
+            flyTime--;
+        } else {
+            land();
+            return;
+        }
+
+        double groundY = getGroundHeight();
+
+        // Желаемая высота относительно земли
+        double targetY = groundY + flyingHeight;
+
+        double dx = flightTargetX - this.getX();
+        double dz = flightTargetZ - this.getZ();
+
+        double horizontalDistance = Math.sqrt(dx * dx + dz * dz);
+
+        // Если долетели до точки — выбираем новую
+        if (horizontalDistance < 5.0D) {
+            double angle = this.random.nextDouble() * Math.PI * 2.0D;
+
+            double distance = 20.0D + this.random.nextDouble() * 30.0D;
+
+            flightTargetX = this.getX() + Math.cos(angle) * distance;
+            flightTargetZ = this.getZ() + Math.sin(angle) * distance;
+        }
+
+        // Направление
+        dx = flightTargetX - this.getX();
+        dz = flightTargetZ - this.getZ();
+
+        horizontalDistance = Math.sqrt(dx * dx + dz * dz);
+
+        if (horizontalDistance > 0.001D) {
+            dx /= horizontalDistance;
+            dz /= horizontalDistance;
+        }
+
+        // Вертикальное движение
+        double dy = targetY - this.getY();
+
+        // Ограничиваем вертикальную скорость
+        double verticalSpeed = Mth.clamp(dy * 0.08D, -0.25D, 0.25D);
+
+        // Горизонтальная скорость
+        double speed = 0.45D;
+        Vec3 movement = new Vec3(dx * speed, verticalSpeed, dz * speed);
+        this.setDeltaMovement(movement);
+
+        // Поворачиваем дракона по направлению движения
+        float targetYaw = (float) (Mth.atan2(dz, dx) * 180.0D / Math.PI) - 90.0F;
+        this.setYRot(Mth.rotLerp(0.15F, this.getYRot(), targetYaw));
+        this.yRotO = this.getYRot();
+    }
+
+    private void updateFlightDecision() {
+        if(flightDecisionCooldown > 0) {
+            flightDecisionCooldown--;
+            return;
+        }
+
+        //5-10 seconds
+        flightDecisionCooldown = 100 + this.random.nextInt(100);
+
+        if(isFlying()) {
+            if(this.random.nextFloat() < 0.35F)
+                land();
+            return;
+        }
+
+        if(getTarget() != null && getTarget().isAlive()) {
+            if(this.random.nextFloat() < 0.65F)
+                takeOff();
+        }
+
+        if(this.random.nextFloat() < 0.25F)
+            takeOff();
+    }
+
+    private void takeOff() {
+        if(isFlying())
+            return;
+
+        setFlying(true);
+
+        flyingHeight = 20.0D + this.random.nextDouble() * 20.0D;
+        double angle = this.random.nextDouble() * Math.PI * 2.0D;
+        double distance = 20.0D + this.random.nextDouble() * 30.0D;
+
+        flightTargetX = this.getX() + Math.cos(angle) * distance;
+        flightTargetZ = this.getZ() + Math.sin(angle) * distance;
+
+        flyTime = 200 + this.random.nextInt(200);
+
+        this.setNoGravity(true);
+
+        this.setDeltaMovement(this.getDeltaMovement().x, 0.35D, this.getDeltaMovement().z);
+    }
+
+    private void land() {
+        if (!isFlying())
+            return;
+
+        setFlying(false);
+
+        this.setNoGravity(false);
+        Vec3 motion = this.getDeltaMovement();
+
+        this.setDeltaMovement(motion.x, Math.min(motion.y, 0.0D), motion.z);
+    }
+
+    private double getGroundHeight() {
+        BlockPos pos = this.blockPosition();
+
+        for(int y = pos.getY(); y >= this.level().getMinBuildHeight(); y--) {
+            BlockPos check = new BlockPos(pos.getX(), y, pos.getZ());
+            BlockState state = this.level().getBlockState(check);
+
+            if(!state.isAir() && !state.liquid()) {
+                return y + 1.0D;
+            }
+        }
+
+        return this.level().getMinBuildHeight();
     }
 
     //Это, наверно, тупо и не очень оптимизировано, но по другому я не смог это сделать

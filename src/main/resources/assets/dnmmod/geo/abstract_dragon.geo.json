@@ -7,8 +7,8 @@
 				"texture_width": 1168,
 				"texture_height": 1168,
 				"visible_bounds_width": 47,
-				"visible_bounds_height": 20,
-				"visible_bounds_offset": [0, 2, 0]
+				"visible_bounds_height": 21,
+				"visible_bounds_offset": [0, 2.5, 0]
 			},
 			"bones": [
 				{
@@ -236,18 +236,16 @@
 				{
 					"name": "head",
 					"parent": "neck3",
-					"pivot": [0, 54, -112],
-					"cubes": [
-						{"origin": [5.4, 49, -135.8], "size": [0, 7, 21.8], "uv": [858, 128]},
-						{"origin": [-5.1, 49, -135.8], "size": [0, 7, 21.8], "uv": [860, 835]}
-					]
+					"pivot": [0, 54, -112]
 				},
 				{
 					"name": "jaw1",
 					"parent": "head",
 					"pivot": [0, 58, -114],
 					"cubes": [
-						{"origin": [-6, 55, -137], "size": [12, 7.5, 30], "uv": [826, 0]}
+						{"origin": [-6, 55, -137], "size": [12, 7.5, 30], "uv": [826, 0]},
+						{"origin": [5.4, 49, -135.8], "size": [0, 7, 21.8], "uv": [858, 128]},
+						{"origin": [-5.1, 49, -135.8], "size": [0, 7, 21.8], "uv": [860, 835]}
 					]
 				},
 				{
