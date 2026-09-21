@@ -82,7 +82,7 @@ public class JumpAOE extends AoeEntity {
             for(int i = 0; i < intensity; ++i) {
                 Vec3 vec3 = this.position().add(this.uniformlyDistributedPointInRadius(radius));
                 BlockPos blockPos = BlockPos.containing(Utils.moveToRelativeGroundLevel(level, vec3, 4)).below();
-                Utils.createTremorBlock(level, blockPos, 0.1F + this.random.nextFloat() * 0.2F);
+                Utils.createTremorBlock(level, blockPos, 0.2F + this.random.nextFloat() * 0.2F);
             }
 
             if (this.waveAnim >= 0) {
