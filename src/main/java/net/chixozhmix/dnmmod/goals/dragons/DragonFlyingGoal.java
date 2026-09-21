@@ -1,10 +1,8 @@
 package net.chixozhmix.dnmmod.goals.dragons;
 
 import net.chixozhmix.dnmmod.entity.dragons.AbstractDragonEntity;
-import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.EnumSet;
@@ -19,8 +17,12 @@ public class DragonFlyingGoal extends Goal {
 
     private int flightTime;
 
-    public DragonFlyingGoal(AbstractDragonEntity dragon) {
+    private Vec3 flyingOrigin;
+    private double flyingRadius;
+
+    public DragonFlyingGoal(AbstractDragonEntity dragon, double flyingRadius) {
         this.dragon = dragon;
+        this.flyingRadius = flyingRadius;
 
         this.setFlags(EnumSet.of(Goal.Flag.MOVE));
     }
@@ -50,7 +52,7 @@ public class DragonFlyingGoal extends Goal {
             return dragon.getRandom().nextFloat() < 0.65F;
         }
 
-        return dragon.getRandom().nextFloat() < 0.25F;
+        return dragon.getRandom().nextFloat() < 0.35F;
     }
 
     @Override
@@ -62,13 +64,13 @@ public class DragonFlyingGoal extends Goal {
     public void start() {
         dragon.setFlying(true);
 
+        flyingOrigin = dragon.getSpawnPos();
         flightHeight = 20.0D + dragon.getRandom().nextDouble() * 20.0D;
 
         chooseNewFlightTarget();
 
         // 10-20 секунд
         flightTime = 200 + dragon.getRandom().nextInt(200);
-
         dragon.setNoGravity(true);
 
         dragon.setDeltaMovement(dragon.getDeltaMovement().x, 0.35D, dragon.getDeltaMovement().z);
@@ -92,9 +94,16 @@ public class DragonFlyingGoal extends Goal {
     }
 
     private void tickFlight() {
-
         double groundY = dragon.getGroundHeight();
         double targetY = groundY + flightHeight;
+
+        double distanceFromOrigin = dragon.position().subtract(flyingOrigin).horizontalDistance();
+
+        if (distanceFromOrigin > flyingRadius) {
+            targetX = flyingOrigin.x;
+            targetZ = flyingOrigin.z;
+        }
+
         double dx = targetX - dragon.getX();
         double dz = targetZ - dragon.getZ();
 
@@ -129,8 +138,9 @@ public class DragonFlyingGoal extends Goal {
 
     private void chooseNewFlightTarget() {
         double angle = dragon.getRandom().nextDouble() * Math.PI * 2.0D;
-        double distance = 20.0D + dragon.getRandom().nextDouble() * 30.0D;
-        targetX = dragon.getX() + Math.cos(angle) * distance;
-        targetZ = dragon.getZ() + Math.sin(angle) * distance;
+        double distance = 10.0D + dragon.getRandom().nextDouble() * 25.0D;
+
+        targetX = flyingOrigin.x + Math.cos(angle) * distance;
+        targetZ = flyingOrigin.z + Math.sin(angle) * distance;
     }
 }

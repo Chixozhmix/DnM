@@ -3,18 +3,18 @@ package net.chixozhmix.dnmmod.entity.dragons;
 import io.redspace.ironsspellbooks.api.util.CameraShakeData;
 import io.redspace.ironsspellbooks.api.util.CameraShakeManager;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
+import io.redspace.ironsspellbooks.entity.mobs.goals.PatrolNearLocationGoal;
 import net.chixozhmix.dnmmod.Util.ModTags;
 import net.chixozhmix.dnmmod.api.entity.dragons.HitboxController;
 import net.chixozhmix.dnmmod.entity.dragons.client.AnimationsEnum;
-import net.chixozhmix.dnmmod.entity.spell.JumpAOE;
 import net.chixozhmix.dnmmod.goals.dragons.DragonFlyingGoal;
+import net.chixozhmix.dnmmod.goals.dragons.DragonPatrolLocationGoal;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -42,10 +42,10 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import java.util.Objects;
 
 public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEntity, IAnimatedAttacker {
-    //Для движения хитбоксов
     private static final EntityDataAccessor<String> ANIM_STATE = SynchedEntityData.defineId(AbstractDragonEntity.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<Boolean> FLYING = SynchedEntityData.defineId(AbstractDragonEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> LANDING = SynchedEntityData.defineId(AbstractDragonEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<String> DRAGON_TYPE = SynchedEntityData.defineId(AbstractDragonEntity.class, EntityDataSerializers.STRING);
 
     private static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("idle");
     private static final RawAnimation WALK_ANIM = RawAnimation.begin().thenLoop("walk");
@@ -63,6 +63,8 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
             .add(Attributes.MOVEMENT_SPEED, (double)0.3F)
             .add(ForgeMod.ENTITY_REACH.get(), 10.0F);
 
+    private Vec3 spawnPos = null;
+
     //Parts
     public final  DragonPartEntity head;
     public final  DragonPartEntity neck;
@@ -78,12 +80,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     private final DragonPartEntity[] parts;
 
     //Flying
-//    private double flyingHeight = 30.0D; //20 - 40
-//    private int flyTime = 0;
-//    private double flightTargetX;
-//    private double flightTargetZ;
-    private int flightDecisionCooldown = 100;
-
+    private int flightDecisionCooldown = 50;
 
     //Animations
     private final AnimatableInstanceCache cache;
@@ -96,6 +93,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
 //    private int bitTick = 0; // 19 тиков длится анимация - на 12 тике атакует
 //    private int wingTick = 0;
 //    private int tailTick = 0;
+//    private int breathTick = 0;
 
     public AbstractDragonEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -154,6 +152,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
 //            state.getController().setAnimation(BIT_ANIM);
 //            return PlayState.CONTINUE;
 //        }
+//        }
 
         state.getController().setAnimation(IDLE_ANIM);
         setAnimState(AnimationsEnum.IDLE);
@@ -172,6 +171,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(ANIM_STATE, "IDLE");
+        this.entityData.define(DRAGON_TYPE, "RED");
         this.entityData.define(FLYING, false);
         this.entityData.define(LANDING, false);
     }
@@ -204,11 +204,29 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
         this.entityData.set(LANDING, landing);
     }
 
+    public void setDragonType(DragonTypes type) {
+        this.entityData.set(DRAGON_TYPE, type.getType());
+    }
+
+    public String getDragonType() {
+        return this.entityData.get(DRAGON_TYPE);
+    }
+
+    public Vec3 getSpawnPos() {
+        return spawnPos;
+    }
+
+    public void setSpawnPos(Vec3 spawnPos) {
+        this.spawnPos = spawnPos;
+    }
+
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new DragonFlyingGoal(this));
-        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(1, new DragonFlyingGoal(this, 120));
+
+        this.goalSelector.addGoal(2, new DragonPatrolLocationGoal(this, 120, 1.0D));
+
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 30.0F));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 
@@ -283,8 +301,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     }
 
     public void resetFlightDecisionCooldown() {
-        flightDecisionCooldown =
-                100 + this.random.nextInt(100);
+        flightDecisionCooldown = 100 + this.random.nextInt(100);
     }
 
     public double getGroundHeight() {
@@ -300,6 +317,44 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
         }
 
         return this.level().getMinBuildHeight();
+    }
+
+    @Override
+    public void onAddedToWorld() {
+        super.onAddedToWorld();
+
+        if(!this.level().isClientSide && getSpawnPos() == null) {
+            setSpawnPos(this.position());
+        }
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+
+        if(pCompound.contains("SpawnX")) {
+            double x = pCompound.getDouble("SpawnX");
+            double y = pCompound.getDouble("SpawnY");
+            double z = pCompound.getDouble("SpawnZ");
+
+            Vec3 spawnPos = new Vec3(x, y, z);
+            setSpawnPos(spawnPos);
+        }
+
+        setFlying(false);
+        setLanding(true);
+        setNoGravity(false);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+
+        if(getSpawnPos() != null) {
+            pCompound.putDouble("SpawnX", getSpawnPos().x);
+            pCompound.putDouble("SpawnY", getSpawnPos().y);
+            pCompound.putDouble("SpawnZ", getSpawnPos().z);
+        }
     }
 
     //Это, наверно, тупо и не очень оптимизировано, но по другому я не смог это сделать
