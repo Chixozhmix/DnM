@@ -3,11 +3,11 @@ package net.chixozhmix.dnmmod.entity.dragons;
 import io.redspace.ironsspellbooks.api.util.CameraShakeData;
 import io.redspace.ironsspellbooks.api.util.CameraShakeManager;
 import io.redspace.ironsspellbooks.entity.mobs.IAnimatedAttacker;
-import io.redspace.ironsspellbooks.entity.mobs.goals.PatrolNearLocationGoal;
 import net.chixozhmix.dnmmod.Util.ModTags;
 import net.chixozhmix.dnmmod.api.entity.dragons.HitboxController;
 import net.chixozhmix.dnmmod.entity.dragons.client.AnimationsEnum;
 import net.chixozhmix.dnmmod.goals.dragons.DragonFlyingGoal;
+import net.chixozhmix.dnmmod.goals.dragons.DragonMeleeAttackGoal;
 import net.chixozhmix.dnmmod.goals.dragons.DragonPatrolLocationGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -28,7 +28,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -52,16 +51,15 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     private static final RawAnimation FLY_ANIM = RawAnimation.begin().thenLoop("fly");
     private static final RawAnimation FLY_IDLE_ANIM = RawAnimation.begin().thenLoop("fly_idle");
 
-    private static final RawAnimation BIT_ANIM = RawAnimation.begin().thenLoop("bit");
+    private static final RawAnimation BIT_ANIM = RawAnimation.begin().thenPlay("bit");
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)12.0F)
-            //.add(Attributes.FLYING_SPEED, 0.9F)
             .add(Attributes.ATTACK_KNOCKBACK, (double)0.15F)
             .add(Attributes.MAX_HEALTH, (double)400.0F)
-            .add(Attributes.FOLLOW_RANGE, (double)32.0F)
-            .add(Attributes.MOVEMENT_SPEED, (double)0.3F)
-            .add(ForgeMod.ENTITY_REACH.get(), 10.0F);
+            .add(Attributes.FOLLOW_RANGE, (double)35.0F)
+            .add(Attributes.KNOCKBACK_RESISTANCE, (double)1.0F)
+            .add(Attributes.MOVEMENT_SPEED, (double)0.3F);
 
     private Vec3 spawnPos = null;
 
@@ -69,6 +67,8 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     public final  DragonPartEntity head;
     public final  DragonPartEntity neck;
     public final  DragonPartEntity neck2;
+
+    public final DragonPartEntity torso;
 
     public final DragonPartEntity tail1;
     public final DragonPartEntity tail2;
@@ -87,13 +87,13 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     private RawAnimation customAnimationToPlay;
 
     private final AnimationController<AbstractDragonEntity> movementController;
+    private final AnimationController<AbstractDragonEntity> attackController;
 
     //Attack (Возможно стоит придумать что-то другое, но в теории это работает)
-//    Entity target = null;
-//    private int bitTick = 0; // 19 тиков длится анимация - на 12 тике атакует
-//    private int wingTick = 0;
-//    private int tailTick = 0;
-//    private int breathTick = 0;
+    private int bitTick = 0; // 19 тиков длится анимация - на 12 тике атакует
+    private int wingTick = 0;
+    private int tailTick = 0;
+    private int breathTick = 0;
 
     public AbstractDragonEntity(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -104,6 +104,8 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
         this.neck = new DragonPartEntity(this, "neck", 2.5f, 1.4f);
         this.neck2 = new DragonPartEntity(this, "neck2", 2.5f, 1.4f);
 
+        this.torso = new DragonPartEntity(this, "torso", 4.0f, 4.0f);
+
         this.tail1 = new DragonPartEntity(this, "tail1", 2.5f, 2.5f);
         this.tail2 = new DragonPartEntity(this, "tail2", 2.5f, 2.5f);
         this.tail3 = new DragonPartEntity(this, "tail3", 2.5f, 2.5f);
@@ -111,11 +113,14 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
         this.leftWing = new DragonPartEntity(this, "leftWing", 5.0f, 5.0f);
         this.rightWing = new DragonPartEntity(this, "rightWing", 5.0f, 5.0f);
 
-        this.parts = new DragonPartEntity[] {head, neck, neck2, tail1, tail2, tail3, leftWing, rightWing};
+        this.parts = new DragonPartEntity[] {head, neck, neck2, torso, tail1, tail2, tail3, leftWing, rightWing};
         this.setId(ENTITY_COUNTER.getAndAdd(this.parts.length + 1) + 1);
 
         this.movementController = new AnimationController<>(this, "movement", 2, this::movementPredicate);
+        this.attackController = new AnimationController<>(this, "attack", 2, this::attackPredicate);
         this.cache = GeckoLibUtil.createInstanceCache(this);
+
+        this.setPersistenceRequired();
     }
 
     @Override
@@ -141,22 +146,29 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
         }
 
         //Ходьба
-        if (state.isMoving() && this.onGround()) {
+        if (state.isMoving() && this.onGround() && !Objects.equals(getAnimState(), AnimationsEnum.BIT.getAnimId())) {
             setAnimState(AnimationsEnum.WALK);
             state.getController().setAnimation(WALK_ANIM);
             return PlayState.CONTINUE;
         }
 
-        //Атака
-//        if (Objects.equals(getAnimState(), AnimationsEnum.BIT.getAnimId())) {
-//            state.getController().setAnimation(BIT_ANIM);
-//            return PlayState.CONTINUE;
-//        }
-//        }
+        if(!Objects.equals(getAnimState(), AnimationsEnum.BIT.getAnimId())) {
+            state.getController().setAnimation(IDLE_ANIM);
+            setAnimState(AnimationsEnum.IDLE);
+        }
 
-        state.getController().setAnimation(IDLE_ANIM);
-        setAnimState(AnimationsEnum.IDLE);
         return PlayState.CONTINUE;
+    }
+
+    private PlayState attackPredicate(AnimationState<AbstractDragonEntity> state) {
+        //Атака
+        if (Objects.equals(getAnimState(), AnimationsEnum.BIT.getAnimId())) {
+            state.getController().setAnimation(BIT_ANIM);
+            return PlayState.CONTINUE;
+        }
+
+        state.getController().forceAnimationReset();
+        return PlayState.STOP;
     }
 
     @Override
@@ -179,7 +191,6 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     public String getAnimState() {
         return this.entityData.get(ANIM_STATE);
     }
-
     public void setAnimState(AnimationsEnum animId) {
         String newState = animId.getAnimId();
 
@@ -191,7 +202,6 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     public boolean isFlying() {
         return this.entityData.get(FLYING);
     }
-
     public void setFlying(boolean flying) {
         this.entityData.set(FLYING, flying);
     }
@@ -199,7 +209,6 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     public boolean isLanding() {
         return this.entityData.get(LANDING);
     }
-
     public void setLanding(boolean landing) {
         this.entityData.set(LANDING, landing);
     }
@@ -207,7 +216,6 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     public void setDragonType(DragonTypes type) {
         this.entityData.set(DRAGON_TYPE, type.getType());
     }
-
     public String getDragonType() {
         return this.entityData.get(DRAGON_TYPE);
     }
@@ -215,17 +223,45 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     public Vec3 getSpawnPos() {
         return spawnPos;
     }
-
     public void setSpawnPos(Vec3 spawnPos) {
         this.spawnPos = spawnPos;
+    }
+
+    public void setBitTick(int bitTick) {
+        this.bitTick = bitTick;
+    }
+    public int getBitTick() {
+        return bitTick;
+    }
+
+    public void setWingTick(int wingAttackTick) {
+        this.wingTick = wingAttackTick;
+    }
+    public int getWingTick() {
+        return wingTick;
+    }
+
+    public void setTailTick(int tailTick) {
+        this.tailTick = tailTick;
+    }
+    public int getTailTick() {
+        return tailTick;
+    }
+
+    public void setBreathTick(int breathTick) {
+        this.breathTick = breathTick;
+    }
+    public int getBreathTick() {
+        return breathTick;
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new DragonFlyingGoal(this, 120));
+        this.goalSelector.addGoal(2, new DragonFlyingGoal(this, 120));
 
-        this.goalSelector.addGoal(2, new DragonPatrolLocationGoal(this, 120, 1.0D));
+        this.goalSelector.addGoal(1, new DragonMeleeAttackGoal(this));
+        this.goalSelector.addGoal(3, new DragonPatrolLocationGoal(this, 120, 1.0D));
 
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 30.0F));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
@@ -240,32 +276,16 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     }
 
     @Override
-    public void tick() {
-        super.tick();
-        //Теоритичеси это работает, но нужна кастомная цель атаки, которая бы учитывала реальное расстояние. Стандартный MeleeAttack работает криво.
-//        if(bitTick > 0) {
-//            --bitTick;
-//
-//            if(bitTick == 10) {
-//                if(target != null && target.isAlive() && this.distanceTo(target) <= 15 && this.hasLineOfSight(target)) {
-//                    super.doHurtTarget(target);
-//                }
-//
-//            }
-//
-//            if(bitTick == 0) {
-//                 setAnimState(AnimationsEnum.IDLE);
-//            }
-//        }
-    }
+    public void remove(RemovalReason reason) {
+        System.out.println(
+                "DRAGON REMOVED: id=" + getId() +
+                        " reason=" + reason
+        );
 
-//    @Override
-//    public boolean doHurtTarget(Entity pEntity) {
-//        setAnimState(AnimationsEnum.BIT);
-//        this.target = pEntity;
-//        this.bitTick = 20;
-//        return true;
-//    }
+        Thread.dumpStack();
+
+        super.remove(reason);
+    }
 
     @Override
     public void aiStep() {
@@ -407,6 +427,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(movementController);
+        controllerRegistrar.add(attackController);
     }
 
     @Override
@@ -427,12 +448,28 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     @Override
     public AABB getBoundingBoxForCulling() {
         return new AABB(
-                this.getX() - 8.0,
-                this.getY() - 2.0,
-                this.getZ() - 12.0,
-                this.getX() + 8.0,
-                this.getY() + 8.0,
-                this.getZ() + 12.0
+                this.getX() - 32.0,
+                this.getY() - 32.0,
+                this.getZ() - 32.0,
+                this.getX() + 32.0,
+                this.getY() + 32.0,
+                this.getZ() + 32.0
         );
+    }
+
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return false;
+    }
+
+    @Override
+    public boolean shouldRenderAtSqrDistance(double pDistance) {
+        return true;
+    }
+
+    //Потому что майнкрафт почему-то удалял дракона, как только он оказывался в выгруженных чанках.
+    @Override
+    public void checkDespawn() {
+
     }
 }

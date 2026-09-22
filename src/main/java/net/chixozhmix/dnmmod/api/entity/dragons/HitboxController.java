@@ -22,6 +22,8 @@ public class HitboxController {
             updateSinglePart(dragon, dragon.neck, 0.0, 2.5, -3.5, -sin, -cos);
             updateSinglePart(dragon, dragon.neck2, 0.0, 3.5, -6.0, -sin, -cos);
 
+            updateSinglePart(dragon, dragon.torso, 0.0, 0.0, 0.0, -sin, -cos);
+
             updateSinglePart(dragon, dragon.tail1, 0, 1.5, 3.5, -sin, -cos);
             updateSinglePart(dragon, dragon.tail2, 0, 0.0, 7.0, -sin, -cos);
             updateSinglePart(dragon, dragon.tail3, 0, 0.0, 11.5, -sin, -cos);
@@ -37,6 +39,8 @@ public class HitboxController {
             updateSinglePart(dragon, dragon.head, 0.0, 6.5, -5.0, -sin, -cos);
             updateSinglePart(dragon, dragon.neck, 0.0, 5.0, -1.5, -sin, -cos);
             updateSinglePart(dragon, dragon.neck2, 0.0, 6.5, -2.0, -sin, -cos);
+
+            updateSinglePart(dragon, dragon.torso, 0.0, 0.0, 0.0, -sin, -cos);
 
             updateSinglePart(dragon, dragon.tail1, 0, -1.5, 2.5, -sin, -cos);
             updateSinglePart(dragon, dragon.tail2, 0, -3.0, 3.0, -sin, -cos);
@@ -54,6 +58,8 @@ public class HitboxController {
             updateSinglePart(dragon, dragon.neck, 0.0, 2.5, -3.5, -sin, -cos);
             updateSinglePart(dragon, dragon.neck2, 0.0, 3.0, -6.0, -sin, -cos);
 
+            updateSinglePart(dragon, dragon.torso, 0.0, 0.0, 0.0, -sin, -cos);
+
             updateSinglePart(dragon, dragon.tail1, 0, 1.5, 3.5, -sin, -cos);
             updateSinglePart(dragon, dragon.tail2, 0, 1.0, 7.0, -sin, -cos);
             updateSinglePart(dragon, dragon.tail3, 0, 1.0, 11.5, -sin, -cos);
@@ -70,6 +76,8 @@ public class HitboxController {
             updateSinglePart(dragon, dragon.neck, 0.0, 2.5, -3.5, -sin, -cos);
             updateSinglePart(dragon, dragon.neck2, 0.0, 3.0, -6.0, -sin, -cos);
 
+            updateSinglePart(dragon, dragon.torso, 0.0, 0.0, 0.0, -sin, -cos);
+
             updateSinglePart(dragon, dragon.tail1, 0, 2.5, 3.5, -sin, -cos);
             updateSinglePart(dragon, dragon.tail2, 0, 2.0, 7.0, -sin, -cos);
             updateSinglePart(dragon, dragon.tail3, 0, 2.0, 11.5, -sin, -cos);
@@ -82,9 +90,11 @@ public class HitboxController {
         }
         //Укус
         if(Objects.equals(dragon.getAnimState(), AnimationsEnum.BIT.getAnimId())) {
-            updateSinglePart(dragon, dragon.head, 0.0, 0.5, -8.5, -sin, -cos);
+            updateSinglePart(dragon, dragon.head, 0.0, 1.0, -8.5, -sin, -cos);
             updateSinglePart(dragon, dragon.neck, 0.0, 2.5, -3.5, -sin, -cos);
             updateSinglePart(dragon, dragon.neck2, 0.0, 3.0, -6.0, -sin, -cos);
+
+            updateSinglePart(dragon, dragon.torso, 0.0, 0.0, 0.0, -sin, -cos);
 
             updateSinglePart(dragon, dragon.tail1, 0, 2.0, 3.5, -sin, -cos);
             updateSinglePart(dragon, dragon.tail2, 0, 1.5, 7.0, -sin, -cos);
@@ -101,6 +111,8 @@ public class HitboxController {
             updateSinglePart(dragon, dragon.head, 0.0, 0.5, -8.5, -sin, -cos);
             updateSinglePart(dragon, dragon.neck, 0.0, 2.5, -3.5, -sin, -cos);
             updateSinglePart(dragon, dragon.neck2, 0.0, 3.0, -6.0, -sin, -cos);
+
+            updateSinglePart(dragon, dragon.torso, 0.0, 0.0, 0.0, -sin, -cos);
 
             updateSinglePart(dragon, dragon.tail1, 0, 2.0, 3.5, -sin, -cos);
             updateSinglePart(dragon, dragon.tail2, 0, 1.5, 7.0, -sin, -cos);
