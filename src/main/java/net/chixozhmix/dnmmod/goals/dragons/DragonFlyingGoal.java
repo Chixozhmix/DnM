@@ -2,11 +2,13 @@ package net.chixozhmix.dnmmod.goals.dragons;
 
 import net.chixozhmix.dnmmod.entity.dragons.AbstractDragonEntity;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.EnumSet;
 
+//Почему-то дракон летит задом, когда у него есть цель. Причем только в направлении +X -Z. Надо пофиксить
 public class DragonFlyingGoal extends Goal {
     private final AbstractDragonEntity dragon;
 
@@ -19,6 +21,9 @@ public class DragonFlyingGoal extends Goal {
 
     private Vec3 flyingOrigin;
     private double flyingRadius;
+
+    private final double FLY_START_PERSECUTION_DISTANCE = 20;
+    private final double FLY_END_PERSECUTION_DISTANCE = 10;
 
     public DragonFlyingGoal(AbstractDragonEntity dragon, double flyingRadius) {
         this.dragon = dragon;
@@ -48,7 +53,10 @@ public class DragonFlyingGoal extends Goal {
         dragon.resetFlightDecisionCooldown();
 
         // Если есть цель — чаще летаем
-        if (dragon.getTarget() != null && dragon.getTarget().isAlive()) {
+        if (hasTarget()) {
+            if (dragon.distanceTo(dragon.getTarget()) > FLY_START_PERSECUTION_DISTANCE)
+                return true;
+
             return dragon.getRandom().nextFloat() < 0.65F;
         }
 
@@ -57,6 +65,10 @@ public class DragonFlyingGoal extends Goal {
 
     @Override
     public boolean canContinueToUse() {
+        if(hasTarget())
+            if(dragon.distanceTo(dragon.getTarget()) <= FLY_END_PERSECUTION_DISTANCE)
+                return false;
+
         return dragon.isFlying() && flightTime > 0 && !dragon.isDeadOrDying();
     }
 
@@ -94,12 +106,17 @@ public class DragonFlyingGoal extends Goal {
     }
 
     private void tickFlight() {
+        LivingEntity target = dragon.getTarget();
+
         double groundY = dragon.getGroundHeight();
         double targetY = groundY + flightHeight;
 
+        if(hasTarget())
+            targetY = Math.max(target.getY() + 8, groundY + 10);
+
         double distanceFromOrigin = dragon.position().subtract(flyingOrigin).horizontalDistance();
 
-        if (distanceFromOrigin > flyingRadius) {
+        if (distanceFromOrigin > flyingRadius && !hasTarget()) {
             targetX = flyingOrigin.x;
             targetZ = flyingOrigin.z;
         }
@@ -137,10 +154,22 @@ public class DragonFlyingGoal extends Goal {
     }
 
     private void chooseNewFlightTarget() {
+        LivingEntity target = dragon.getTarget();
+
+        if(hasTarget()) {
+            targetX = target.getX();
+            targetZ = target.getZ();
+            return;
+        }
+
         double angle = dragon.getRandom().nextDouble() * Math.PI * 2.0D;
         double distance = 10.0D + dragon.getRandom().nextDouble() * 25.0D;
 
         targetX = flyingOrigin.x + Math.cos(angle) * distance;
         targetZ = flyingOrigin.z + Math.sin(angle) * distance;
+    }
+
+    private boolean hasTarget() {
+        return dragon.getTarget() != null && dragon.getTarget().isAlive();
     }
 }

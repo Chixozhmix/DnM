@@ -8,7 +8,6 @@ import net.minecraft.world.entity.ai.goal.Goal;
 
 import java.util.EnumSet;
 
-//Когда игрок оказывается в центре дракона - дракон не атакует. Нужно будет пофиксить
 public class DragonMeleeAttackGoal extends Goal {
 
     private final AbstractDragonEntity dragon;
@@ -21,7 +20,7 @@ public class DragonMeleeAttackGoal extends Goal {
 
     public DragonMeleeAttackGoal(AbstractDragonEntity dragon) {
         this.dragon = dragon;
-        this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+        //this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
     }
 
     @Override
@@ -60,6 +59,9 @@ public class DragonMeleeAttackGoal extends Goal {
         if (target == null || !target.isAlive())
             return;
 
+        if(dragon.isFlying())
+            return;
+
         double headDistanceSqr = dragon.head.distanceToSqr(target);
         double torsoDistanceSqr = dragon.torso.distanceToSqr(target);
 
@@ -92,7 +94,6 @@ public class DragonMeleeAttackGoal extends Goal {
 
                 attackPerformed = true;
 
-                //if(dragon.head.getBoundingBox().inflate(0.5).intersects(target.getBoundingBox()))
                   if(dragon.head.distanceTo(target) <= ATTACK_START_DISTANCE || dragon.torso.distanceTo(target) <= ATTACK_START_DISTANCE)
                     dragon.doHurtTarget(target);
             }
