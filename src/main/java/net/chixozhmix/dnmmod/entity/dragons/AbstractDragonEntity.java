@@ -28,6 +28,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.ForgeMod;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -59,6 +60,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
             .add(Attributes.MAX_HEALTH, (double)400.0F)
             .add(Attributes.FOLLOW_RANGE, (double)35.0F)
             .add(Attributes.KNOCKBACK_RESISTANCE, (double)1.0F)
+            .add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 3)
             .add(Attributes.MOVEMENT_SPEED, (double)0.3F);
 
     private Vec3 spawnPos = null;
@@ -299,7 +301,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
 
         HitboxController.updateParts(this);
 
-        if (!this.level().isClientSide && this.tickCount % 10 == 0) {
+        if (!this.level().isClientSide) {
             destroyBlocksAround(10, 5);
         }
 
@@ -385,7 +387,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
             for (int y = -verticalRadius; y <= verticalRadius; y++) {
                 for (int z = -radius; z <= radius; z++) {
                     if (x * x + z * z > radius * radius) continue;
-                    if (y < 0) continue;
+                    if (y < 3) continue;
 
                     BlockPos pos = center.offset(x, y, z);
 
@@ -395,7 +397,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
             }
         }
     }
-
+//
     private boolean shouldDestroyBlock(BlockPos pos) {
         BlockState state = this.level().getBlockState(pos);
 
@@ -467,7 +469,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
         return true;
     }
 
-    //Потому что майнкрафт почему-то удалял дракона, как только он оказывался в выгруженных чанках.
+    //Потому что майнкрафт удалял дракона, как только он оказывался в выгруженных чанках.
     @Override
     public void checkDespawn() {
 

@@ -60,17 +60,19 @@ public class DragonMeleeAttackGoal extends Goal {
         if (target == null || !target.isAlive())
             return;
 
-        double distanceSqr = dragon.head.distanceToSqr(target);
+        double headDistanceSqr = dragon.head.distanceToSqr(target);
+        double torsoDistanceSqr = dragon.torso.distanceToSqr(target);
+
+        boolean inAttackRange = headDistanceSqr <= ATTACK_START_DISTANCE * ATTACK_START_DISTANCE || torsoDistanceSqr <= ATTACK_START_DISTANCE * ATTACK_START_DISTANCE;
 
         // ------------------------------------------------
         // ИДЁМ К ЦЕЛИ
         // ------------------------------------------------
 
-        if (attackTick <= 0 && distanceSqr > ATTACK_START_DISTANCE * ATTACK_START_DISTANCE) {
+        if (attackTick <= 0 && !inAttackRange) {
             dragon.getNavigation().moveTo(target, dragon.getAttribute(Attributes.MOVEMENT_SPEED).getValue() + 0.85);
 
             dragon.getLookControl().setLookAt(target);
-
             return;
         }
 
