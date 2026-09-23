@@ -61,7 +61,8 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
             .add(Attributes.FOLLOW_RANGE, (double)96.0F)
             .add(Attributes.KNOCKBACK_RESISTANCE, (double)1.0F)
             .add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 3)
-            .add(Attributes.MOVEMENT_SPEED, (double)0.3F);
+            .add(ForgeMod.SWIM_SPEED.get(), 1.2F)
+            .add(Attributes.MOVEMENT_SPEED, (double)0.32F);
 
     private Vec3 spawnPos = null;
 

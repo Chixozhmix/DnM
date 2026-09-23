@@ -26,13 +26,13 @@ public class DragonMeleeAttackGoal extends Goal {
     @Override
     public boolean canUse() {
         LivingEntity target = dragon.getTarget();
-        return target != null && target.isAlive();
+        return target != null && target.isAlive() && !dragon.isFlying();
     }
 
     @Override
     public boolean canContinueToUse() {
         LivingEntity target = dragon.getTarget();
-        return target != null && target.isAlive();
+        return target != null && target.isAlive() && !dragon.isFlying();
     }
 
     @Override

@@ -8,7 +8,6 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.EnumSet;
 
-//Почему-то дракон летит задом, когда у него есть цель. Причем только в направлении +X -Z. Надо пофиксить
 public class DragonFlyingGoal extends Goal {
     private final AbstractDragonEntity dragon;
 
@@ -22,8 +21,8 @@ public class DragonFlyingGoal extends Goal {
     private Vec3 flyingOrigin;
     private double flyingRadius;
 
-    private final double FLY_START_PERSECUTION_DISTANCE = 20;
-    private final double FLY_END_PERSECUTION_DISTANCE = 10;
+    private final double FLY_START_PERSECUTION_DISTANCE = 30;
+    private final double FLY_END_PERSECUTION_DISTANCE = 15;
 
     public DragonFlyingGoal(AbstractDragonEntity dragon, double flyingRadius) {
         this.dragon = dragon;
@@ -75,6 +74,8 @@ public class DragonFlyingGoal extends Goal {
     @Override
     public void start() {
         dragon.setFlying(true);
+
+        dragon.getNavigation().stop();
 
         flyingOrigin = dragon.getSpawnPos();
         flightHeight = 20.0D + dragon.getRandom().nextDouble() * 20.0D;
