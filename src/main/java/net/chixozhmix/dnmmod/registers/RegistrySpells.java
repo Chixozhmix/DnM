@@ -10,7 +10,9 @@ import net.chixozhmix.dnmmod.spell.eldrich.SummonDarkspawnLarvaSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
 import net.chixozhmix.dnmmod.spell.fire.MeteorSwarmSpell;
 import net.chixozhmix.dnmmod.spell.fire.SummonFlameAtronach;
+import net.chixozhmix.dnmmod.spell.holy.AuraOfPowerSpell;
 import net.chixozhmix.dnmmod.spell.holy.CompelledDuelSpell;
+import net.chixozhmix.dnmmod.spell.holy.TurnUndeadAuraSpell;
 import net.chixozhmix.dnmmod.spell.ice.AgathysArmorSpell;
 import net.chixozhmix.dnmmod.spell.ice.IceDaggerSpell;
 import net.chixozhmix.dnmmod.spell.lightning.SummonStormAtronach;
@@ -59,6 +61,8 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> COMPELLED_DUEL = registerSpell(new CompelledDuelSpell());
     public static final RegistryObject<AbstractSpell> DARK_BOLT_SPELL = registerSpell(new DarkBoltSpell());
     public static final RegistryObject<AbstractSpell> VORTEX_SPELL = registerSpell(new VortexSpell());
+    public static final RegistryObject<AbstractSpell> AURA_POWER = registerSpell(new AuraOfPowerSpell());
+    public static final RegistryObject<AbstractSpell> TURN_UNDEAD_AURA = registerSpell(new TurnUndeadAuraSpell());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

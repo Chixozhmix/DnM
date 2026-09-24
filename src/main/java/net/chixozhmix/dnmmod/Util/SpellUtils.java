@@ -3,6 +3,7 @@ package net.chixozhmix.dnmmod.Util;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import net.chixozhmix.dnmmod.compat.Curios;
+import net.chixozhmix.dnmmod.entity.spell.auras.AbstractAura;
 import net.chixozhmix.dnmmod.items.custom.ComponentBag;
 import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
 import net.minecraft.network.chat.Component;
@@ -117,5 +118,22 @@ public class SpellUtils {
         projectile.shoot(entity.getLookAngle());
         projectile.setDamage(damage);
         level.addFreshEntity(projectile);
+    }
+
+    public static void addAura(AbstractAura aura, Level level, float ragius, int duration, LivingEntity entity) {
+        aura.moveTo(entity.position());
+        aura.setOwner(entity);
+        aura.setRadius(ragius);
+        aura.setDuration(duration);
+        level.addFreshEntity(aura);
+    }
+
+    public static void addAura(AbstractAura aura, Level level, float radius, int duration, float damage, LivingEntity entity) {
+        aura.moveTo(entity.position());
+        aura.setOwner(entity);
+        aura.setRadius(radius);
+        aura.setDamage(damage);
+        aura.setDuration(duration);
+        level.addFreshEntity(aura);
     }
 }

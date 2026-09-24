@@ -100,7 +100,9 @@ public class ClientModEvents {
         EntityRenderers.register(ModEntityType.RED_CRYSTAL.get(), RedCristallRenderer::new);
         EntityRenderers.register(ModEntityType.TRIDENT_STRIKE_AREA.get(), TridentStrikeAreaRenderer::new);
         EntityRenderers.register(ModEntityType.VORTEX_AOE.get(), NoopRenderer::new);
+        EntityRenderers.register(ModEntityType.POWER_AURA.get(), NoopRenderer::new);
         EntityRenderers.register(ModEntityType.JUMP_AOE.get(), NoopRenderer::new);
+        EntityRenderers.register(ModEntityType.TURN_UNDEAD_ENTITY.get(), NoopRenderer::new);
         EntityRenderers.register(ModEntityType.METEOR_ENTITY.get(), (pContext) -> new FireballRenderer(pContext, 4.0f));
 
         EntityRenderers.register(ModEntityType.ICE_ARROW_ENTITY.get(), IceArrowRenderer::new);

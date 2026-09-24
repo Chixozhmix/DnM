@@ -14,6 +14,8 @@ import net.chixozhmix.dnmmod.entity.evil.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.evil.evil_flame_atronach.EvilFlameAtronach;
 import net.chixozhmix.dnmmod.entity.evil.evil_storm_atronach.EvilStormAtronach;
 import net.chixozhmix.dnmmod.entity.spell.JumpAOE;
+import net.chixozhmix.dnmmod.entity.spell.auras.PowerAuraEntity;
+import net.chixozhmix.dnmmod.entity.spell.auras.TurnUndeadAuraEntity;
 import net.chixozhmix.dnmmod.entity.spell.vortex.VortexAOE;
 import net.chixozhmix.dnmmod.entity.summons.flame_atronach.FlameAtronachEntity;
 import net.chixozhmix.dnmmod.entity.evil.ghost.GhostEntity;
@@ -143,6 +145,18 @@ public class ModEntityType {
                             .sized(1.0f, 0.8f)
                             .clientTrackingRange(32)
                             .build("jump_aoe"));
+    public static final RegistryObject<EntityType<PowerAuraEntity>> POWER_AURA =
+            ENTITY_TYPES.register("power_aura", () ->
+                    EntityType.Builder.of(PowerAuraEntity::new, MobCategory.MISC)
+                            .sized(1.0f, 1.0f)
+                            .clientTrackingRange(32)
+                            .build("power_aura"));
+    public static final RegistryObject<EntityType<TurnUndeadAuraEntity>> TURN_UNDEAD_ENTITY =
+            ENTITY_TYPES.register("turn_undead", () ->
+                    EntityType.Builder.of(TurnUndeadAuraEntity::new, MobCategory.MISC)
+                            .sized(1.0f, 1.0f)
+                            .clientTrackingRange(32)
+                            .build("turn_undead"));
 
     //ItemEntity
     public static final RegistryObject<EntityType<IceArrowEntity>> ICE_ARROW_ENTITY = ENTITY_TYPES.register("ice_arrow_entity",
