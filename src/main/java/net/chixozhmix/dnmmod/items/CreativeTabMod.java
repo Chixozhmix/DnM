@@ -106,6 +106,7 @@ public class CreativeTabMod {
                         output.accept(ModItems.THE_HAG_MUSIC_DISC.get());
                         output.accept(ModItems.ICE_STRING.get());
                         output.accept(ModItems.FIRE_SALTS.get());
+                        output.accept(ModItems.TAINTED_COMPASS.get());
 
                         output.accept(ModItems.HAG_EYE.get());
                         output.accept(ModItems.FOREST_HEART.get());

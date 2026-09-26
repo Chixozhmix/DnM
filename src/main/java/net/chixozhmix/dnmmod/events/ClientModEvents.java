@@ -47,6 +47,7 @@ import net.chixozhmix.dnmmod.entity.summons.summoned.client.SummonedRavenRendere
 import net.chixozhmix.dnmmod.entity.summons.summoned.client.SummonedUndeadSpiritRenderer;
 import net.chixozhmix.dnmmod.entity.evil.tainted_observer.DarkspawnObserverRenderer;
 import net.chixozhmix.dnmmod.items.client.arrows.IceArrowRenderer;
+import net.chixozhmix.dnmmod.items.custom.TaintedCompassItem;
 import net.chixozhmix.dnmmod.particle.RavenParticle;
 import net.chixozhmix.dnmmod.particle.ShieldParticle;
 import net.chixozhmix.dnmmod.registers.*;
@@ -57,6 +58,9 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.NoopRenderer;
+import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -85,7 +89,9 @@ public class ClientModEvents {
             BlockEntityRenderers.register(ModBlockEntities.WIZARD_STATUE_BLOCK.get(), WizardStatueRenderer::new);
         });
 
-        //DnMSpellAnimationOverrides.register();
+        ItemProperties.register(ModItems.TAINTED_COMPASS.get(), ResourceLocation.withDefaultNamespace("angle"),
+                new CompassItemPropertyFunction((pLevel, pStack, pEntity)
+                        -> TaintedCompassItem.getTempleLocation(pEntity, pStack.getOrCreateTag())));
 
         EntityRenderers.register(ModEntityType.MAGIC_DAGGER.get(), CloudDaggerRenderer::new);
         EntityRenderers.register(ModEntityType.ICE_DAGGER.get(), IceDaggerRenderer::new);

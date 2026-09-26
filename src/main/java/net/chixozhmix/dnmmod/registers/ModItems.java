@@ -148,6 +148,8 @@ public class ModItems {
             new Item(PropertiesHelper.stackItemProperties(64)));
     public static final RegistryObject<Item> FIRE_SALTS = ITEMS.register("fire_salts", () ->
             new Item(PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<Item> TAINTED_COMPASS = ITEMS.register("tainted_compass", () ->
+            new TaintedCompassItem(PropertiesHelper.stackItemProperties(1)));
     //Potions
     public static final RegistryObject<Item> PHANTOM_POTION = ITEMS.register("phantom_potion",
             () -> new SimpleElixir(ItemPropertiesHelper.material(), () ->
