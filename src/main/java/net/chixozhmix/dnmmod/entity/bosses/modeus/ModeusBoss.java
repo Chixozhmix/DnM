@@ -395,7 +395,7 @@ public class ModeusBoss extends AbstractSpellCastingMob implements Enemy, IAnima
     public void checkDistanceToSpawn() {
         if(spawnPos == null || level().isClientSide) return;
 
-        double maxDistance = 30;
+        double maxDistance = 50;
         if(this.distanceToSqr(spawnPos) > maxDistance * maxDistance) {
             this.teleportTo(spawnPos.x, spawnPos.y, spawnPos.z);
 
