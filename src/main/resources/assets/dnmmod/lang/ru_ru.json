@@ -422,5 +422,11 @@
   "spell.dnmmod.compelled_duel.guide": "Заставьте существо смотреть только на вас.",
 
   "spell.dnmmod.vortex": "Вихрь",
-  "spell.dnmmod.vortex.guide": "Вы вызываете вихрь, защищающий вас от врагов."
+  "spell.dnmmod.vortex.guide": "Вы вызываете вихрь, защищающий вас от врагов.",
+
+  "spell.dnmmod.aura_power": "Аура Силы",
+  "spell.dnmmod.aura_power.guide": "Вы окутываете себя магической аурой, которая усилит вас и ваших союзников.",
+
+  "spell.dnmmod.turn_undead": "Аура Изгнания Нежити",
+  "spell.dnmmod.turn_undead.guide": "Вас окутывает божественная энергия, и нежить вокруг вас погибает."
 }

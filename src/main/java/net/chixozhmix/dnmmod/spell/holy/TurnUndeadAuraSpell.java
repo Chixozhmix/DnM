@@ -5,7 +5,11 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.util.ParticleHelper;
+import net.chixozhmix.chilib.particles.ParticleDirection;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.ParticleSpawnHelper;
 import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.entity.spell.auras.TurnUndeadAuraEntity;
 import net.chixozhmix.dnmmod.registers.ModEntityType;
@@ -14,6 +18,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -58,11 +63,18 @@ public class TurnUndeadAuraSpell extends AbstractSpell {
     }
 
     @Override
+    public void onServerCastTick(Level level, int spellLevel, LivingEntity entity, @Nullable MagicData playerMagicData) {
+        ParticleSpawnHelper.spawnParticlesCelindr(level, entity, 6, ParticleHelper.WISP, ParticleDirection.INWARD, 2.0F, 1.0F, 0.0F);
+        super.onServerCastTick(level, spellLevel, entity, playerMagicData);
+    }
+
+    @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         TurnUndeadAuraEntity turnUndeadAuraEntity = new TurnUndeadAuraEntity(ModEntityType.TURN_UNDEAD_ENTITY.get(), level);
         SpellUtils.addAura(turnUndeadAuraEntity, level, this.getRadius(entity, spellLevel),
                 this.getDuration(spellLevel), this.getDamage(spellLevel, entity), entity);
 
+        MagicManager.spawnParticles(level, ParticleHelper.WISP, entity.getX(), entity.getY() + 1, entity.getZ(), 30, 0.5, 0.5, 0.5, 0.4, true);
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
@@ -71,7 +83,7 @@ public class TurnUndeadAuraSpell extends AbstractSpell {
     }
 
     private int getDuration(int spellLevel) {
-        return 200 + (spellLevel + 2) * 2;
+        return 200 + ((spellLevel + 2) * 20);
     }
 
     private float getDamage(int spellLevel, LivingEntity caster) {

@@ -429,5 +429,11 @@
   "spell.dnmmod.vortex.guide": "You summon a vortex that protects you from your enemies.",
 
   "spell.dnmmod.compelled_duel": "Compelled Duel",
-  "spell.dnmmod.compelled_duel.guide": "Force a creature to look only at you."
+  "spell.dnmmod.compelled_duel.guide": "Force a creature to look only at you.",
+
+  "spell.dnmmod.aura_power": "Aura of power",
+  "spell.dnmmod.aura_power.guide": "You envelop yourself in a magical aura that empowers you and your allies.",
+
+  "spell.dnmmod.turn_undead": "Turn Undead Aura",
+  "spell.dnmmod.turn_undead.guide": "You are enveloped in divine energy, causing the undead around you to perish."
 }

@@ -1,6 +1,7 @@
 package net.chixozhmix.dnmmod.entity.spell.auras;
 
 import io.redspace.ironsspellbooks.entity.spells.AoeEntity;
+import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.projectile.Projectile;
@@ -58,5 +59,23 @@ public abstract class AbstractAura extends AoeEntity {
             return this.getOwner().getBbHeight() + 2;
 
         return 3;
+    }
+
+    @Override
+    public void ambientParticles() {
+        if (!level().isClientSide) return;
+
+        Vec3 center = position();
+        float radius = getRadius();
+        int count = (int) (8 * (radius * radius / 64f));
+        for (int i = 0; i < count; i++) {
+            double angle = this.random.nextDouble() * Math.PI * 2;
+            double distance = Math.sqrt(this.random.nextDouble()) * radius;
+            double x = Math.cos(angle) * distance;
+            double z = Math.sin(angle) * distance;
+            double y = this.random.nextDouble() * 2.0;
+
+            level().addParticle(ParticleHelper.WISP, center.x + x, center.y + y, center.z + z, 0.0, 0.02, 0.0);
+        }
     }
 }
