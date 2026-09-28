@@ -429,5 +429,8 @@
   "spell.dnmmod.aura_power.guide": "Вы окутываете себя магической аурой, которая усилит вас и ваших союзников.",
 
   "spell.dnmmod.turn_undead": "Аура Изгнания Нежити",
-  "spell.dnmmod.turn_undead.guide": "Вас окутывает божественная энергия, и нежить вокруг вас погибает."
+  "spell.dnmmod.turn_undead.guide": "Вас окутывает божественная энергия, и нежить вокруг вас погибает.",
+
+  "spell.dnmmod.false_life": "Псевдожизнь",
+  "spell.dnmmod.false_life.guide": "Жизненная сила тех, кто вас окружает, дает вам жизнь."
 }

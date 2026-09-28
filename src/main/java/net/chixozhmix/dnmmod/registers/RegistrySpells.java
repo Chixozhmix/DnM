@@ -63,6 +63,7 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> VORTEX_SPELL = registerSpell(new VortexSpell());
     public static final RegistryObject<AbstractSpell> AURA_POWER = registerSpell(new AuraOfPowerSpell());
     public static final RegistryObject<AbstractSpell> TURN_UNDEAD_AURA = registerSpell(new TurnUndeadAuraSpell());
+    public static final RegistryObject<AbstractSpell> FALSE_LIFE = registerSpell(new FalseLifeSpell());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

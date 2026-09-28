@@ -71,6 +71,7 @@ public class SpellComponentConfig {
             entries.add("dnmmod:cloud_daggers|minecraft:glass");
             entries.add("dnmmod:chromatic_orb|minecraft:diamond");
             entries.add("dnmmod:summon_raven|dnmmod:raven_feather");
+            entries.add("dnmmod:false_life|irons_spellbooks:blood_vial");
 
             // TravelOptics
             if (ModCapabilities.isTravelOpticsLoaded()) {

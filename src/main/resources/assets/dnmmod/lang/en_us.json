@@ -436,5 +436,8 @@
   "spell.dnmmod.aura_power.guide": "You envelop yourself in a magical aura that empowers you and your allies.",
 
   "spell.dnmmod.turn_undead": "Turn Undead Aura",
-  "spell.dnmmod.turn_undead.guide": "You are enveloped in divine energy, causing the undead around you to perish."
+  "spell.dnmmod.turn_undead.guide": "You are enveloped in divine energy, causing the undead around you to perish.",
+
+  "spell.dnmmod.false_life": "False Life",
+  "spell.dnmmod.false_life.guide": "The life force of those around you gives you life."
 }
