@@ -14,6 +14,7 @@ import net.chixozhmix.dnmmod.entity.evil.defiled_wizard.DefiledWizard;
 import net.chixozhmix.dnmmod.entity.evil.evil_flame_atronach.EvilFlameAtronach;
 import net.chixozhmix.dnmmod.entity.evil.evil_storm_atronach.EvilStormAtronach;
 import net.chixozhmix.dnmmod.entity.spell.JumpAOE;
+import net.chixozhmix.dnmmod.entity.spell.auras.AngazzarsAuraEntity;
 import net.chixozhmix.dnmmod.entity.spell.auras.PowerAuraEntity;
 import net.chixozhmix.dnmmod.entity.spell.auras.TurnUndeadAuraEntity;
 import net.chixozhmix.dnmmod.entity.spell.vortex.VortexAOE;
@@ -157,6 +158,12 @@ public class ModEntityType {
                             .sized(1.0f, 1.0f)
                             .clientTrackingRange(32)
                             .build("turn_undead"));
+    public static final RegistryObject<EntityType<AngazzarsAuraEntity>> ANGAZZARS_AURA_ENTITY =
+            ENTITY_TYPES.register("angazzars_aura", () ->
+                    EntityType.Builder.of(AngazzarsAuraEntity::new, MobCategory.MISC)
+                            .sized(1.0f, 1.0f)
+                            .clientTrackingRange(32)
+                            .build("angazzars_aura"));
 
     //ItemEntity
     public static final RegistryObject<EntityType<IceArrowEntity>> ICE_ARROW_ENTITY = ENTITY_TYPES.register("ice_arrow_entity",

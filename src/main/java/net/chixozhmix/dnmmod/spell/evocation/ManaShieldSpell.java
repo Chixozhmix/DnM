@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.particle.SwirlingParticleOptions;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -67,7 +68,7 @@ public class ManaShieldSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        entity.addEffect(new MobEffectInstance(ModEffects.MANA_SHIELD.get(), (int) this.getSpellPower(spellLevel, entity), 0));
+        SpellUtils.addEffect(entity, ModEffects.MANA_SHIELD.get(), (int) this.getSpellPower(spellLevel, entity), 0);
         MagicManager.spawnParticles(level, ParticleTypes.ENCHANT, entity.getX(), entity.getY() + (double)1.0F, entity.getZ(), 50, 0.3, 0.2, 0.2, 0.3, false);
         MagicManager.spawnParticles(level, new SwirlingParticleOptions(ParticleTypes.PORTAL, new Vec3((double)0.0F, (double)1.0F, (double)0.0F), new Vec3((double)1.0F, (double)0.0F, (double)0.0F), new Vec3((double)0.8F, (double)0.8F, (double)14.0F), new Vec3(0.025, 0.025, -0.05)), entity.getX(), entity.getY() + (double)1.0F, entity.getZ(), 35, (double)0.0F, (double)0.5F, (double)0.0F, 0.01, false);
 

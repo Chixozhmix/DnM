@@ -9,6 +9,8 @@ import net.chixozhmix.dnmmod.items.custom.MediumComponentBag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -135,5 +137,9 @@ public class SpellUtils {
         aura.setDamage(damage);
         aura.setDuration(duration);
         level.addFreshEntity(aura);
+    }
+
+    public static void addEffect(LivingEntity entity, MobEffect effect, int duration, int amplifier) {
+        entity.addEffect(new MobEffectInstance(effect, duration, amplifier, false, false, false));
     }
 }

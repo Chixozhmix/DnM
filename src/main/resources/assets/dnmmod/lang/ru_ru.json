@@ -432,5 +432,8 @@
   "spell.dnmmod.turn_undead.guide": "Вас окутывает божественная энергия, и нежить вокруг вас погибает.",
 
   "spell.dnmmod.false_life": "Псевдожизнь",
-  "spell.dnmmod.false_life.guide": "Жизненная сила тех, кто вас окружает, дает вам жизнь."
+  "spell.dnmmod.false_life.guide": "Жизненная сила тех, кто вас окружает, дает вам жизнь.",
+
+  "spell.dnmmod.angazzars_cloak": "Плащ Ангаззара",
+  "spell.dnmmod.angazzars_cloak.guide": "Окружите себя потоками огня, которые защитят вас от стрел и подожгут врагов."
 }

@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import net.chixozhmix.dnmmod.DnMmod;
+import net.chixozhmix.dnmmod.Util.SpellUtils;
 import net.chixozhmix.dnmmod.registers.ModEffects;
 import net.chixozhmix.dnmmod.registers.ParticleRegistry;
 import net.minecraft.network.chat.Component;
@@ -68,16 +69,7 @@ public class MageArmorSpell extends AbstractSpell {
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
-
-        entity.addEffect(
-                new MobEffectInstance(
-                        ModEffects.MAGE_ARMOR.get(),
-                        1200,
-                        (int) this.getSpellPower(spellLevel, entity) / 2,
-                        false,
-                        false,
-                        true
-        ));
+        SpellUtils.addEffect(entity, ModEffects.MAGE_ARMOR.get(), 1200, (int) this.getSpellPower(spellLevel, entity) / 2);
 
         if (!level.isClientSide) {
             for (int i = 0; i < 4; i++) {

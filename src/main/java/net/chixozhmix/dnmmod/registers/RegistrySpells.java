@@ -8,6 +8,7 @@ import net.chixozhmix.dnmmod.spell.eldrich.HungerOfHadarSpell;
 import net.chixozhmix.dnmmod.spell.eldrich.PsychicScreamSpell;
 import net.chixozhmix.dnmmod.spell.eldrich.SummonDarkspawnLarvaSpell;
 import net.chixozhmix.dnmmod.spell.evocation.*;
+import net.chixozhmix.dnmmod.spell.fire.AngazzarCloakSpell;
 import net.chixozhmix.dnmmod.spell.fire.MeteorSwarmSpell;
 import net.chixozhmix.dnmmod.spell.fire.SummonFlameAtronach;
 import net.chixozhmix.dnmmod.spell.holy.AuraOfPowerSpell;
@@ -64,6 +65,8 @@ public class RegistrySpells {
     public static final RegistryObject<AbstractSpell> AURA_POWER = registerSpell(new AuraOfPowerSpell());
     public static final RegistryObject<AbstractSpell> TURN_UNDEAD_AURA = registerSpell(new TurnUndeadAuraSpell());
     public static final RegistryObject<AbstractSpell> FALSE_LIFE = registerSpell(new FalseLifeSpell());
+    public static final RegistryObject<AbstractSpell> JUMP = registerSpell(new JumpSpell());
+    public static final RegistryObject<AbstractSpell> ANGAZZARS_CLOAK = registerSpell(new AngazzarCloakSpell());
 
     //Optional
     public static Optional<RegistryObject<AbstractSpell>> KNOCK = Optional.empty();

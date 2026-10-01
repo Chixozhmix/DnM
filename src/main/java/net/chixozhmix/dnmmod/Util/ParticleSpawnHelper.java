@@ -1,6 +1,8 @@
 package net.chixozhmix.dnmmod.Util;
 
+import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.particle.SwirlingParticleOptions;
 import net.chixozhmix.chilib.particles.ParticleDirection;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.entity.Entity;
@@ -36,5 +38,16 @@ public class ParticleSpawnHelper {
             }
         }
 
+    }
+
+    public static void swirlingParticle(Level level, float radius, Vec3 pos, ParticleOptions particle) {
+        float diameter = radius * (.1f + .9f * RANDOM.nextFloat()) * 2;
+        float angularSpeed = 10f * (RANDOM.nextFloat() + 0.5f);
+        Vec3 center = pos.add(io.redspace.ironsspellbooks.api.util.Utils.getRandomVec3(1f).multiply(1, 1.5, 1)).add(0, 1, 0);
+        Vec3 speed = io.redspace.ironsspellbooks.api.util.Utils.getRandomVec3(0.04);
+        Vec3 up = new Vec3(0, 1, 0).add(Utils.getRandomVec3(0.25)).normalize();
+        level.addParticle(new SwirlingParticleOptions(
+                particle, up, new Vec3(0, 0, 1), new Vec3(diameter, diameter, angularSpeed), new Vec3(0, 0, 0)
+        ), true, center.x, center.y, center.z, speed.x, speed.y, speed.z);
     }
 }

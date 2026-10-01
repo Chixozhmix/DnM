@@ -439,5 +439,8 @@
   "spell.dnmmod.turn_undead.guide": "You are enveloped in divine energy, causing the undead around you to perish.",
 
   "spell.dnmmod.false_life": "False Life",
-  "spell.dnmmod.false_life.guide": "The life force of those around you gives you life."
+  "spell.dnmmod.false_life.guide": "The life force of those around you gives you life.",
+
+  "spell.dnmmod.angazzars_cloak": "Angazzar's Cloak",
+  "spell.dnmmod.angazzars_cloak.guide": "Surround yourself with streams of fire that protect you from arrows and set enemies on fire."
 }
