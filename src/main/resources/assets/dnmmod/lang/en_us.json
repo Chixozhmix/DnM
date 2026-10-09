@@ -19,6 +19,8 @@
   "item.dnmmod.crystallized_lightning": "Crystallized lightning",
   "item.dnmmod.greemon_fang": "Greemon fang",
   "item.dnmmod.tainted_compass": "Tainted compass",
+  "item.dnmmod.red_dragon_scales": "Red dragon scales",
+  "item.dnmmod.dragon_bone": "Dragon bone",
 
   "item.dnmmod.wooden_wand": "Wooden wand",
   "item.dnmmod.cryomancer_wand": "Cryomancer wand",
@@ -194,6 +196,9 @@
   "death.attack.dnmmod.meteor_swarm": "%1$s was crushed by a meteorite",
   "death.attack.dnmmod.eldritch_beams": "%1$s destroyed by cursed energy",
   "death.attack.dnmmod.psychic_scream": "%1$s could not withstand the mental pressure",
+  "death.attack.dnmmod.turn_undead": "%1$s was banished from this world",
+  "death.attack.dnmmod.angazzars_cloak": "%1$s was incinerated",
+  "death.attack.dnmmod.vortex": "%1$s was killed by gusts of wind",
 
   "entity.dnmmod.undead_spirit": "Undead Spirit",
   "entity.dnmmod.summoned_undead_spirit": "Undead Spirit",
@@ -442,5 +447,8 @@
   "spell.dnmmod.false_life.guide": "The life force of those around you gives you life.",
 
   "spell.dnmmod.angazzars_cloak": "Angazzar's Cloak",
-  "spell.dnmmod.angazzars_cloak.guide": "Surround yourself with streams of fire that protect you from arrows and set enemies on fire."
+  "spell.dnmmod.angazzars_cloak.guide": "Surround yourself with streams of fire that protect you from arrows and set enemies on fire.",
+
+  "spell.dnmmod.jump": "Jump",
+  "spell.dnmmod.jump.guide": "Fill your legs with magical power to increase the strength of your jump."
 }

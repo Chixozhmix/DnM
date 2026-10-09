@@ -150,6 +150,12 @@ public class ModItems {
             new Item(PropertiesHelper.stackItemProperties(64)));
     public static final RegistryObject<Item> TAINTED_COMPASS = ITEMS.register("tainted_compass", () ->
             new TaintedCompassItem(PropertiesHelper.stackItemProperties(1)));
+
+    public static final RegistryObject<Item> DRAGON_BONE = ITEMS.register("dragon_bone", () ->
+            new Item(PropertiesHelper.stackItemProperties(64)));
+    public static final RegistryObject<Item> RED_DRAGON_SCALES = ITEMS.register("red_dragon_scales", () ->
+            new Item(PropertiesHelper.stackItemProperties(64)));
+
     //Potions
     public static final RegistryObject<Item> PHANTOM_POTION = ITEMS.register("phantom_potion",
             () -> new SimpleElixir(ItemPropertiesHelper.material(), () ->

@@ -132,6 +132,9 @@ public class CreativeTabMod {
                         output.accept(ModItems.COMPONENT_BAG.get());
                         output.accept(ModItems.MEDIUM_COMPONENT_BAG.get());
 
+                        output.accept(ModItems.RED_DRAGON_SCALES.get());
+                        output.accept(ModItems.DRAGON_BONE.get());
+
                         output.accept(ModItems.GHOST_SPAWN_EGG.get());
                         output.accept(ModItems.UNDEAD_SPIRIT_SPAWN_EGG.get());
                         output.accept(ModItems.RAVEN_SPAWN_EGG.get());

@@ -49,6 +49,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.IRON_RING);
         simpleItem(ModItems.PARCHMENT);
         simpleItem(ModItems.TAINTED_KEY);
+        simpleItem(ModItems.RED_DRAGON_SCALES);
+        simpleItem(ModItems.DRAGON_BONE);
         simpleItem(ModItems.THE_HAG_MUSIC_DISC);
         simpleItem(ModItems.PHANTOM_POTION);
         curioItem(ModItems.PROTECTION_RING);

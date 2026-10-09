@@ -195,6 +195,9 @@
   "death.attack.dnmmod.meteor_swarm": "%1$s был раздавлен метеоритом",
   "death.attack.dnmmod.eldritch_beams": "%1$s Уничтожен проклятой энергией",
   "death.attack.dnmmod.psychic_scream": "%1$s не выдержал психического давления",
+  "death.attack.dnmmod.turn_undead": "%1$s был изгнан",
+  "death.attack.dnmmod.angazzars_cloak": "%1$s был сожжен",
+  "death.attack.dnmmod.vortex": "%1$s стерт порывами ветра",
 
   "entity.dnmmod.undead_spirit": "Дух Нежити",
   "entity.dnmmod.summoned_undead_spirit": "Дух Нежити",
@@ -435,5 +438,8 @@
   "spell.dnmmod.false_life.guide": "Жизненная сила тех, кто вас окружает, дает вам жизнь.",
 
   "spell.dnmmod.angazzars_cloak": "Плащ Ангаззара",
-  "spell.dnmmod.angazzars_cloak.guide": "Окружите себя потоками огня, которые защитят вас от стрел и подожгут врагов."
+  "spell.dnmmod.angazzars_cloak.guide": "Окружите себя потоками огня, которые защитят вас от стрел и подожгут врагов.",
+
+  "spell.dnmmod.jump": "Прыжок",
+  "spell.dnmmod.jump.guide": "Наполните свои ноги магической силой, чтобы увеличить силу своего прыжка."
 }
