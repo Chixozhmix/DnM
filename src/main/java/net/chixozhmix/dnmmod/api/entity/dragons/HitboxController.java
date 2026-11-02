@@ -54,9 +54,9 @@ public class HitboxController {
         }
         //Идет
         if(Objects.equals(dragon.getAnimState(), AnimationsEnum.WALK.getAnimId())) {
-            updateSinglePart(dragon, dragon.head, 0.0, 2.5, -8.5, -sin, -cos);
-            updateSinglePart(dragon, dragon.neck, 0.0, 2.5, -3.5, -sin, -cos);
-            updateSinglePart(dragon, dragon.neck2, 0.0, 3.0, -6.0, -sin, -cos);
+            updateSinglePart(dragon, dragon.head, 0.0, 1.5, -8.5, -sin, -cos);
+            updateSinglePart(dragon, dragon.neck, 0.0, 1.5, -3.5, -sin, -cos);
+            updateSinglePart(dragon, dragon.neck2, 0.0, 2.0, -6.0, -sin, -cos);
 
             updateSinglePart(dragon, dragon.torso, 0.0, 0.0, 0.0, -sin, -cos);
 

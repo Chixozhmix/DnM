@@ -53,6 +53,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
     private static final RawAnimation FLY_IDLE_ANIM = RawAnimation.begin().thenLoop("fly_idle");
 
     private static final RawAnimation BIT_ANIM = RawAnimation.begin().thenPlay("bit");
+    private static final RawAnimation BREATH_ANIM = RawAnimation.begin().thenPlay("breath_attack");
 
     private static final AttributeSupplier.Builder ATTRIBUTES = LivingEntity.createLivingAttributes()
             .add(Attributes.ATTACK_DAMAGE, (double)12.0F)
@@ -61,7 +62,7 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
             .add(Attributes.FOLLOW_RANGE, (double)96.0F)
             .add(Attributes.KNOCKBACK_RESISTANCE, (double)1.0F)
             .add(ForgeMod.STEP_HEIGHT_ADDITION.get(), 3)
-            .add(ForgeMod.SWIM_SPEED.get(), 1.2F)
+            .add(ForgeMod.SWIM_SPEED.get(), 1.5F)
             .add(Attributes.MOVEMENT_SPEED, (double)0.32F);
 
     private Vec3 spawnPos = null;
@@ -160,6 +161,10 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
             setAnimState(AnimationsEnum.IDLE);
         }
 
+        if (Objects.equals(getAnimState(), AnimationsEnum.BREATH_ATTACK.getAnimId())) {
+            return PlayState.CONTINUE;
+        }
+
         return PlayState.CONTINUE;
     }
 
@@ -167,6 +172,11 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
         //Атака
         if (Objects.equals(getAnimState(), AnimationsEnum.BIT.getAnimId())) {
             state.getController().setAnimation(BIT_ANIM);
+            return PlayState.CONTINUE;
+        }
+
+        if(Objects.equals(getAnimState(), AnimationsEnum.BREATH_ATTACK.getAnimId())) {
+            state.getController().setAnimation(BREATH_ANIM);
             return PlayState.CONTINUE;
         }
 
@@ -244,12 +254,12 @@ public class AbstractDragonEntity extends PathfinderMob implements Enemy, GeoEnt
         return wingTick;
     }
 
-    public void setTailTick(int tailTick) {
-        this.tailTick = tailTick;
-    }
-    public int getTailTick() {
-        return tailTick;
-    }
+//    public void setTailTick(int tailTick) {
+//        this.tailTick = tailTick;
+//    }
+//    public int getTailTick() {
+//        return tailTick;
+//    }
 
     public void setBreathTick(int breathTick) {
         this.breathTick = breathTick;
