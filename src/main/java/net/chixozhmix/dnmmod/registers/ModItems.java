@@ -1,6 +1,6 @@
 package net.chixozhmix.dnmmod.registers;
 
-import com.gametechbc.traveloptics.api.init.TravelopticsAttributes;
+import com.gametechbc.traveloptics.init.TravelopticsAttributes;
 import io.redspace.ironsspellbooks.api.item.weapons.ExtendedSwordItem;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
